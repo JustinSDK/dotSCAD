@@ -1,2 +1,0 @@
-# lib-openscad
-OpenSCAD libraries
