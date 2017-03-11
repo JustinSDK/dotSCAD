@@ -14,12 +14,12 @@ Creates a polyline from a list of `x`, `y` coordinates. It depends on the `line2
 
 	polyline2d(points = [[1, 2], [-5, -4], [-5, 3], [5, 5]], width = 1);
 
-![polyline2d](images/polyline2d-1.JPG)
+![polyline2d](images/lib-polyline2d-1.JPG)
 
     polyline2d(points = [[1, 2], [-5, -4], [-5, 3], [5, 5]], width = 1,
                endingStyle = CAP_ROUND);
 
-![polyline2d](images/polyline2d-2.JPG)
+![polyline2d](images/lib-polyline2d-2.JPG)
 
 	polyline2d(points = [[1, 2], [-5, -4], [-5, 3], [5, 5]], width = 1,
                startingStyle = CAP_ROUND, endingStyle = CAP_ROUND);
