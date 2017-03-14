@@ -1,3 +1,15 @@
+/**
+* polyline2d.scad
+*
+* Creates a polyline from a list of x, y coordinates. It depends on the line2d module so you have to include line2d.scad.
+* 
+* @copyright Justin Lin, 2017
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib-polyline2d.html
+*
+**/
+
 module polyline2d(points, width, startingStyle = CAP_SQUARE, endingStyle = CAP_SQUARE, round_fn = 24) {
     module line_segment(index) {
 	    styles = index == 1 ? [startingStyle, CAP_ROUND] : (

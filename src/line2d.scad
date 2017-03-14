@@ -1,3 +1,15 @@
+/**
+* line2d.scad
+*
+* Creates a line from two points.
+* 
+* @copyright Justin Lin, 2017
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib-line2d.html
+*
+**/
+
 // The end-cap style
 CAP_BUTT = 0;
 CAP_SQUARE = 1;
