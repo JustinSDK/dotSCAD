@@ -3,7 +3,7 @@
 *
 * Create an arc. You can pass a 2 element vector to define the central angle. 
 * It provides a fn parameter consistent with the $fn parameter of the circle module.
-* It depeonds on the circular_sector module so you have to include circular_sector.scad.
+* It depends on the circular_sector module so you have to include circular_sector.scad.
 * 
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
