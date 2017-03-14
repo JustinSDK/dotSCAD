@@ -6,3 +6,4 @@ These fundamental modules are helpful when I am playing OpenSCAD.
 - [line2d](https://openhome.cc/eGossip/OpenSCAD/lib-line2d.html)
 - [polyline2d](https://openhome.cc/eGossip/OpenSCAD/lib-polyline2d.html)
 - [circular_sector](https://openhome.cc/eGossip/OpenSCAD/lib-circular_sector.html)
+- [arc](https://openhome.cc/eGossip/OpenSCAD/lib-arc.html)
