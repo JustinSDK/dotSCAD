@@ -1,6 +1,6 @@
 # lib-openscad
 
-These fundamental modules are helpful when I am playing OpenSCAD.
+These fundamental modules are helpful when playing OpenSCAD.
 
 ## 2D
 - [line2d](https://openhome.cc/eGossip/OpenSCAD/lib-line2d.html)
