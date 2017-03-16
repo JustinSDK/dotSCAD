@@ -8,7 +8,7 @@ Creates a 3D line from two points.
 - `p2` : 3 element vector `[x, y, z]`.
 - `thickness` : The line thickness.
 - `p1Style` : The end-cap style of the point `p1`. The value must be `CAP_BUTT`, `CAP_CIRCLE` or `CAP_SPHERE`. The default value is `CAP_CIRCLE`. 
-- `p2Style` : The end-cap style of the point `p2`. The value must be `CAP_BUTT`, `CAP_CIRCLE` or `CAP_ROUND`. The default value is `CAP_CIRCLE`. 
+- `p2Style` : The end-cap style of the point `p2`. The value must be `CAP_BUTT`, `CAP_CIRCLE` or `CAP_SPHERE`. The default value is `CAP_CIRCLE`. 
 - `fn` : It controlls the `$fn` value used by the `circle` or `sphere` module. The default value is `24`.
 
 ## Examples
