@@ -2,7 +2,7 @@
 
 > These fundamental modules are helpful when playing OpenSCAD.
 
-![license/LGPL](https://img.shields.io/badge/license-LGPL-blue.svg)
+[![license/LGPL](https://img.shields.io/badge/license-LGPL-blue.svg)](https://github.com/JustinSDK/lib-openscad/blob/master/LICENSE)
 
 I've been using OpenSCAD for years and created some funny things. Some of them include several important ideas and details. To prevent forgetfulness, I decided to [write them down](https://openhome.cc/eGossip/OpenSCAD/). Some examples developed in the documentation are useful so I elaborate them into this library.
 
