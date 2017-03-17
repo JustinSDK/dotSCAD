@@ -16,6 +16,7 @@ I've been using OpenSCAD for years and created some funny things. Some of them i
 
 - 3D
 	- [line3d](https://openhome.cc/eGossip/OpenSCAD/lib-line3d.html)
+	- [polyline3d](https://openhome.cc/eGossip/OpenSCAD/lib-polyline3d.html)
 
 - Transformations
 	- [hollow_out](https://openhome.cc/eGossip/OpenSCAD/lib-hollow_out.html)
