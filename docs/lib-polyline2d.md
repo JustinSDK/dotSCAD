@@ -8,7 +8,7 @@ Creates a polyline from a list of `x`, `y` coordinates. It depends on the `line2
 - `width` : The line width.
 - `startingStyle` : The end-cap style of the starting point. The value must be `CAP_BUTT`, `CAP_SQUARE` or `CAP_ROUND` (defined in line2d.scad). The default value is `CAP_SQUARE`. 
 - endingStyle : The end-cap style of the ending point. The value must be `CAP_BUTT`, `CAP_SQUARE` or `CAP_ROUND` (defined in line2d.scad). The default value is `CAP_SQUARE`. 
-- `round_fn` = When the end-cap style is `CAP_ROUND`, it controlls the `$fn` value used by the `circle` module. The default value is `24`.
+- `round_fn` : When the end-cap style is `CAP_ROUND`, it controlls the `$fn` value used by the `circle` module. The default value is `24`.
 
 ## Examples
 
