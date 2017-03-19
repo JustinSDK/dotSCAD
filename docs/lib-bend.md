@@ -34,7 +34,7 @@ Once you have the size of the containing cube, you can use it as the `size` argu
 
 ![bend](images/lib-bend-2.JPG)
 
-The arc shape is smoother if the `frags` is larger. 
+The arc shape is smoother if the `frags` value is larger. 
 	
 	x = 9.25;
 	y = 9.55;
