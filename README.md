@@ -21,4 +21,5 @@ I've been using OpenSCAD for years and created some funny things. Some of them i
 
 - Transformations
 	- [hollow_out](https://openhome.cc/eGossip/OpenSCAD/lib-hollow_out.html)
+	- [bend](https://openhome.cc/eGossip/OpenSCAD/lib-bend.html)
 
