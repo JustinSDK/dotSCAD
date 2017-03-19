@@ -10,11 +10,7 @@
 *
 **/
 
-CAP_BUTT = 0;
-CAP_CIRCLE = 1;
-CAP_SPHERE = 2;
-
-module line3d(p1, p2, thickness, p1Style = CAP_CIRCLE, p2Style = CAP_CIRCLE, fn = 24) {
+module line3d(p1, p2, thickness, p1Style = "CAP_CIRCLE", p2Style = "CAP_CIRCLE", fn = 24) {
     $fn = fn;
     
     r = thickness / 2;
@@ -52,9 +48,9 @@ module line3d(p1, p2, thickness, p1Style = CAP_CIRCLE, p2Style = CAP_CIRCLE, fn 
     }
     
     module cap(p, style) {
-        if(style == CAP_CIRCLE) {
+        if(style == "CAP_CIRCLE") {
             capCube(p);     
-        } else if(style == CAP_SPHERE) { 
+        } else if(style == "CAP_SPHERE") { 
             if(fn > 4) {
                 capSphere(p);  
             } else {

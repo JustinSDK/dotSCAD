@@ -10,12 +10,7 @@
 *
 **/
 
-// The end-cap style
-CAP_BUTT = 0;
-CAP_SQUARE = 1;
-CAP_ROUND = 2; 
-
-module line2d(p1, p2, width, p1Style = CAP_SQUARE, p2Style =  CAP_SQUARE, round_fn = 24) {
+module line2d(p1, p2, width, p1Style = "CAP_SQUARE", p2Style =  "CAP_SQUARE", round_fn = 24) {
     $fn = round_fn;
     half_width = 0.5 * width;
 
@@ -44,15 +39,15 @@ module line2d(p1, p2, width, p1Style = CAP_SQUARE, p2Style =  CAP_SQUARE, round_
             circle(half_width, center = true);    
     }
     
-    if(p1Style == CAP_SQUARE) {
+    if(p1Style == "CAP_SQUARE") {
         square_end(p1);
-    } else if(p1Style == CAP_ROUND) {
+    } else if(p1Style == "CAP_ROUND") {
         round_end(p1);
     }
     
-    if(p2Style == CAP_SQUARE) {
+    if(p2Style == "CAP_SQUARE") {
         square_end(p2);
-    } else if(p2Style == CAP_ROUND) {
+    } else if(p2Style == "CAP_ROUND") {
         round_end(p2);
     }
 }

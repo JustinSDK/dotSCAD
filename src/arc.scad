@@ -12,14 +12,9 @@
 *
 **/
 
-
-LINE_CROSS = 0;
-LINE_OUTWARD = 1; 
-LINE_INWARD = 2;
-
-module arc(radius, angles, width, width_mode = LINE_CROSS, fn = 24) {
-    w_offset = width_mode == LINE_CROSS ? [width / 2, -width / 2] : (
-        width_mode == LINE_INWARD ? [0, -width] : [width, 0]
+module arc(radius, angles, width, width_mode = "LINE_CROSS", fn = 24) {
+    w_offset = width_mode == "LINE_CROSS" ? [width / 2, -width / 2] : (
+        width_mode == "LINE_INWARD" ? [0, -width] : [width, 0]
     );
     
     difference() {

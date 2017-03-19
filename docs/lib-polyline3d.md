@@ -6,8 +6,8 @@ Creates a polyline from a list of `[x, y, z]` coordinates. It depends on the `li
 
 - `points` : The list of `[x, y, z]` points of the polyline. : A vector of 3 element vectors. The points are indexed from 0 to n-1.
 - `thickness` : The line thickness.
-- `startingStyle` : The end-cap style of the starting point. The value must be `CAP_BUTT`, `CAP_CIRCLE` or `CAP_SPHERE` (defined in line3d.scad). The default value is `CAP_CIRCLE`. 
-- endingStyle : The end-cap style of the ending point. The value must be `CAP_BUTT`, `CAP_CIRCLE` or `CAP_SPHERE` (defined in line3d.scad). The default value is `CAP_CIRCLE`.
+- `startingStyle` : The end-cap style of the starting point. The value must be `"CAP_BUTT"`, `"CAP_CIRCLE"` or `"CAP_SPHERE"`. The default value is `"CAP_CIRCL"`. 
+- endingStyle : The end-cap style of the ending point. The value must be `"CAP_BUTT"`, `"CAP_CIRCLE"` or `"CAP_SPHERE"`. The default value is `"CAP_CIRCLE"`.
 - `fn` : It controlls the `$fn` value used by the `circle` and `sphere` module. The default value is `24`.
 
 ## Examples
@@ -32,7 +32,7 @@ Creates a polyline from a list of `[x, y, z]` coordinates. It depends on the `li
 	        [5, 5, 4]
 	    ], 
 	    thickness = 1,
-	    endingStyle = CAP_SPHERE
+	    endingStyle = "CAP_SPHERE"
 	);
 
 ![polyline3d](images/lib-polyline3d-2.JPG)
@@ -45,8 +45,8 @@ Creates a polyline from a list of `[x, y, z]` coordinates. It depends on the `li
 	        [5, 5, 4]
 	    ], 
 	    thickness = 1,
-	    startingStyle = CAP_SPHERE,
-	    endingStyle = CAP_SPHERE
+	    startingStyle = "CAP_SPHERE",
+	    endingStyle = "CAP_SPHERE"
 	);
 
 ![polyline3d](images/lib-polyline3d-3.JPG)

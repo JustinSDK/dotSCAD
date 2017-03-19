@@ -11,11 +11,11 @@
 *
 **/
 
-module polyline3d(points, thickness, startingStyle = CAP_CIRCLE, endingStyle = CAP_CIRCLE, fn = 24) {
+module polyline3d(points, thickness, startingStyle = "CAP_CIRCLE", endingStyle = "CAP_CIRCLE", fn = 24) {
     module line_segment(index) {
-        styles = index == 1 ? [startingStyle, CAP_BUTT] : (
-            index == len(points) - 1 ? [CAP_SPHERE, endingStyle] : [
-                CAP_SPHERE, CAP_BUTT
+        styles = index == 1 ? [startingStyle, "CAP_BUTT"] : (
+            index == len(points) - 1 ? ["CAP_SPHERE", endingStyle] : [
+                "CAP_SPHERE", "CAP_BUTT"
             ]
         );
         
