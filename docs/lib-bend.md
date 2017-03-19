@@ -6,7 +6,7 @@ Bend a 3D object into an arc shape.
 
 - `size` : The size of a cube which can contain the target object.
 - `angle` : The central angle of the arc shape. The radius of the arc is calculated automatically.
-- `fn` : Number of fragments. The target object will be cut into `fn` fragments and recombined into an arc shape.
+- `frags` : Number of fragments. The target object will be cut into `frags` fragments and recombined into an arc shape. The default value is 24.
 
 ## Examples
 
