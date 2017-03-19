@@ -10,7 +10,7 @@
 *
 * @see https://openhome.cc/eGossip/OpenSCAD/lib-arc.html
 *
-**/
+**/ 
 
 module arc(radius, angles, width, width_mode = "LINE_CROSS", fn = 24) {
     w_offset = width_mode == "LINE_CROSS" ? [width / 2, -width / 2] : (
@@ -18,7 +18,7 @@ module arc(radius, angles, width, width_mode = "LINE_CROSS", fn = 24) {
     );
     
     difference() {
-        sector(radius + w_offset[0], angles, fn);
-        sector(radius + w_offset[1], angles, fn);
+        circular_sector(radius + w_offset[0], angles, fn);
+        circular_sector(radius + w_offset[1], angles, fn);
     }
-} 
+}
