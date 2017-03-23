@@ -6,7 +6,6 @@ Create a circular sector. You can pass a 2 element vector to define the central 
 
 - `radius` : The radius of the circle.
 - `angles` : A 2 element vector which defines the central angle. The first element of the vector is the beginning angle in degrees, and the second element is the ending angle.
-- `fn` : The `$fn` value used by the `circle` module internally. The default value is 24.
 
 ## Examples
 
