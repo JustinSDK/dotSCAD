@@ -19,9 +19,9 @@ I've been using OpenSCAD for years and created some funny things. Some of them i
 	- [polyline3d](https://openhome.cc/eGossip/OpenSCAD/lib-polyline3d.html)
 	- [hull_polyline3d](https://openhome.cc/eGossip/OpenSCAD/lib-hull_polyline3d.html)
 
-- Transformations
+- Transformation
 	- [hollow_out](https://openhome.cc/eGossip/OpenSCAD/lib-hollow_out.html)
 	- [bend](https://openhome.cc/eGossip/OpenSCAD/lib-bend.html)
 
-- Math
+- Path
     - [bezier](https://openhome.cc/eGossip/OpenSCAD/lib-bezier.html)
