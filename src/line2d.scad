@@ -1,8 +1,7 @@
 /**
 * line2d.scad
 *
-* Creates a line from two points. When the end points are CAP_ROUND, 
-* you can use $fa, $fs or $fn to controll the circle module used internally.
+* Creates a line from two points.
 * 
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
