@@ -1,6 +1,6 @@
 # circular_sector
 
-Create a circular sector. You can pass a 2 element vector to define the central angle. It provides a `fn` parameter consistent with the `$fn` parameter of the `circle` module.
+Create a circular sector. You can pass a 2 element vector to define the central angle. Its `$fa`, `$fs` and `$fn` parameters are consistent with the circle module.
 
 ## Parameters
 
@@ -12,7 +12,7 @@ Create a circular sector. You can pass a 2 element vector to define the central 
 
     circular_sector(radius = 20, angles = [-50, -150]);  
     translate([-15, 0, 0]) circular_sector(radius = 20, angles = [45, 135]);  
-    translate([15, 0, 0]) circular_sector(radius = 20, angles = [45, 135], fn = 12);  
+    translate([15, 0, 0]) circular_sector(radius = 20, angles = [45, 135], $fn = 12);  
 
 ![circular_sector](images/lib-circular_sector-1.JPG)
 
