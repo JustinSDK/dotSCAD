@@ -10,9 +10,7 @@
 *
 **/
 
-module line3d(p1, p2, thickness, p1Style = "CAP_CIRCLE", p2Style = "CAP_CIRCLE", fn = 24) {
-    $fn = fn;
-    
+module line3d(p1, p2, thickness, p1Style = "CAP_CIRCLE", p2Style = "CAP_CIRCLE") {
     r = thickness / 2;
     
     dx = p2[0] - p1[0];
