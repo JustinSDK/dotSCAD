@@ -17,8 +17,6 @@ module circular_sector(radius, angles) {
         max(min(360 / $fa, radius * 2 * 3.14159 / $fs), 5)
     ;
     
-    echo(frags);
-    
     r = radius / cos(180 / frags);
     step = -360 / frags; 
 
