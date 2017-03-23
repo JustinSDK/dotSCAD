@@ -8,7 +8,7 @@ Creates a polyline from a list of `[x, y, z]` coordinates. It depends on the `li
 - `thickness` : The line thickness.
 - `startingStyle` : The end-cap style of the starting point. The value must be `"CAP_BUTT"`, `"CAP_CIRCLE"` or `"CAP_SPHERE"`. The default value is `"CAP_CIRCL"`. 
 - endingStyle : The end-cap style of the ending point. The value must be `"CAP_BUTT"`, `"CAP_CIRCLE"` or `"CAP_SPHERE"`. The default value is `"CAP_CIRCLE"`.
-- `fn` : It controlls the `$fn` value used by the `circle` and `sphere` module. The default value is `24`.
+- `$fa`, `$fs`, `$fn` : Used by the `circle` or `sphere` module internally. Check [the circle module](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Using_the_2D_Subsystem#circle) or [the sphere module](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Primitive_Solids#sphere) for more details. 
 
 ## Examples
 
@@ -19,7 +19,8 @@ Creates a polyline from a list of `[x, y, z]` coordinates. It depends on the `li
 	        [-5, 3, 3], 
 	        [5, 5, 4]
 	    ], 
-	    thickness = 1
+	    thickness = 1,
+        $fn = 24
 	);
 
 ![polyline3d](images/lib-polyline3d-1.JPG)
@@ -32,7 +33,8 @@ Creates a polyline from a list of `[x, y, z]` coordinates. It depends on the `li
 	        [5, 5, 4]
 	    ], 
 	    thickness = 1,
-	    endingStyle = "CAP_SPHERE"
+	    endingStyle = "CAP_SPHERE",
+        $fn = 24
 	);
 
 ![polyline3d](images/lib-polyline3d-2.JPG)
@@ -46,7 +48,8 @@ Creates a polyline from a list of `[x, y, z]` coordinates. It depends on the `li
 	    ], 
 	    thickness = 1,
 	    startingStyle = "CAP_SPHERE",
-	    endingStyle = "CAP_SPHERE"
+	    endingStyle = "CAP_SPHERE",
+        $fn = 24
 	);
 
 ![polyline3d](images/lib-polyline3d-3.JPG)
@@ -60,6 +63,6 @@ Creates a polyline from a list of `[x, y, z]` coordinates. It depends on the `li
 	    for(a = [0:fa:360 * circles]) 
 	        [r * cos(a), r * sin(a), h / (360 / fa) * (a / fa)]
 	];
-	polyline3d(points, thickness = 1);
+	polyline3d(points, thickness = 1, $fn = 24);
 
 ![polyline3d](images/lib-polyline3d-4.JPG)
