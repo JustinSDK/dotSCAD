@@ -18,13 +18,17 @@ Create an arc. You can pass a 2 element vector to define the central angle. Its 
 
 ![arc](images/lib-arc-1.JPG)
 
+    $fn = 24;
     arc(radius = 20, angles = [45, 290], width = 2, width_mode = "LINE_INWARD");
     %circle(r = 20); 
 
 ![arc](images/lib-arc-2.JPG)
 
+    $fn = 24;
     arc(radius = 20, angles = [45, 290], width = 2, width_mode = "LINE_OUTWARD");
     %circle(r = 20); 
 
 ![arc](images/lib-arc-3.JPG)
+
+
 
