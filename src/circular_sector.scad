@@ -1,7 +1,7 @@
 /**
 * circular_sector.scad
 *
-* Create a circular sector. You can pass a 2 element vector to define the central angle. It provides a fn parameter consistent with the $fn parameter of the circle module.
+* Create a circular sector. You can pass a 2 element vector to define the central angle. Its $fa, $fs and $fn parameters are consistent with the circle module.
 * 
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
@@ -11,9 +11,16 @@
 **/
 
 
-module circular_sector(radius, angles, fn = 24) {
-    r = radius / cos(180 / fn);
-    step = -360 / fn;
+module circular_sector(radius, angles) {
+    frags = $fn > 0 ? 
+        ($fn >= 3 ? $fn : 3) : 
+        max(min(360 / $fa, radius * 2 * 3.14159 / $fs), 5)
+    ;
+    
+    echo(frags);
+    
+    r = radius / cos(180 / frags);
+    step = -360 / frags; 
 
     points = concat([[0, 0]],
         [for(a = [angles[0] : step : angles[1] - 360]) 
@@ -23,7 +30,7 @@ module circular_sector(radius, angles, fn = 24) {
     );
 
     difference() {
-        circle(radius, $fn = fn);
+        circle(radius);
         polygon(points);
     }
 }
