@@ -11,6 +11,11 @@
 **/
 
 module line3d(p1, p2, thickness, p1Style = "CAP_CIRCLE", p2Style = "CAP_CIRCLE") {
+    frags = $fn > 0 ? 
+        ($fn >= 3 ? $fn : 3) : 
+        max(min(360 / $fa, radius * 2 * 3.14159 / $fs), 5)
+    ;
+    
     r = thickness / 2;
     
     dx = p2[0] - p1[0];
@@ -49,7 +54,7 @@ module line3d(p1, p2, thickness, p1Style = "CAP_CIRCLE", p2Style = "CAP_CIRCLE")
         if(style == "CAP_CIRCLE") {
             capCube(p);     
         } else if(style == "CAP_SPHERE") { 
-            if(fn > 4) {
+            if(frags > 4) {
                 capSphere(p);  
             } else {
                 capCube(p);       
