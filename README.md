@@ -24,4 +24,5 @@ I've been using OpenSCAD for years and created some funny things. Some of them i
 	- [bend](https://openhome.cc/eGossip/OpenSCAD/lib-bend.html)
 
 - Path
+    - [circle_path](https://openhome.cc/eGossip/OpenSCAD/lib-circle_path.html)
     - [bezier](https://openhome.cc/eGossip/OpenSCAD/lib-bezier.html)
