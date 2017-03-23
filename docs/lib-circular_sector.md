@@ -6,7 +6,8 @@ Create a circular sector. You can pass a 2 element vector to define the central 
 
 - `radius` : The radius of the circle.
 - `angles` : A 2 element vector which defines the central angle. The first element of the vector is the beginning angle in degrees, and the second element is the ending angle.
-
+- `$fa`, `$fs`, `$fn` : Check [the circle module](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Using_the_2D_Subsystem#circle) for more details.
+-
 ## Examples
 
     circular_sector(radius = 20, angles = [-50, -150]);  

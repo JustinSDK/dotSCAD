@@ -1,7 +1,6 @@
 # line2d
 
-Creates a line from two points. When the end points are `CAP_ROUND`, 
-* you can use `$fa`, `$fs` or `$fn` to controll the circle module used internally.
+Creates a line from two points. When the end points are `CAP_ROUND`, you can use `$fa`, `$fs` or `$fn` to controll the `circle` module used internally.
 
 ## Parameters
 
@@ -10,6 +9,7 @@ Creates a line from two points. When the end points are `CAP_ROUND`,
 - `width` : The line width.
 - `p1Style` : The end-cap style of the point `p1`. The value must be `"CAP_BUTT"`, `"CAP_SQUARE"` or `"CAP_ROUND"`. The default value is `"CAP_SQUARE"`. 
 - `p2Style` : The end-cap style of the point `p2`. The value must be `"CAP_BUTT"`, `"CAP_SQUARE"` or `"CAP_ROUND"`. The default value is `"CAP_SQUARE"`. 
+- `$fa`, `$fs`, `$fn` : Check [the circle module](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Using_the_2D_Subsystem#circle) for more details.
 
 ## Examples
 
