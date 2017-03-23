@@ -3,7 +3,7 @@
 *
 * Creates a 3D polyline from a list of `[x, y, z]` coordinates. 
 * As the name says, it uses the built-in hull operation for each pair of points. 
-* It's slow. However, it can be used to create metallic effects when the fn parameter is small.
+* It's slow. However, it can be used to create metallic effects for a small $fn, large $fa or $fs.
 * 
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
@@ -12,8 +12,7 @@
 *
 **/
 
-module hull_polyline3d(points, thickness, fn = 3) {
-    $fn = fn;
+module hull_polyline3d(points, thickness) {
     half_thickness = thickness / 2;
     leng = len(points);
     
