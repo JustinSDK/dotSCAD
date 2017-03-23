@@ -1,12 +1,14 @@
 # hull_polyline3d
 
-Creates a 3D polyline from a list of `[x, y, z]` coordinates. As the name says, it uses the built-in hull operation for each pair of points. It's slow. However, it can be used to create metallic effects when the `fn` parameter is small.
+Creates a 3D polyline from a list of `[x, y, z]` coordinates. As the name says, it uses the built-in hull operation for each pair of points (created by the `sphere` module). It's slow. However, it can be used to create metallic effects for a small `$fn`, large `$fa` or `$fs`.
 
 ## Parameters
 
 - `points` : The list of `[x, y, z]` points of the polyline. : A vector of 3 element vectors. The points are indexed from 0 to n-1.
 - `thickness` : The line thickness.
-- `fn` : It controlls the `$fn` value used by the `sphere` module. The default value is `3`.
+- `$fa` : Fragment angle in degrees.
+- `$fs` : Fragment size in mm.
+- `$fn` : Resolution.
 
 ## Examples
 
@@ -18,7 +20,7 @@ Creates a 3D polyline from a list of `[x, y, z]` coordinates. As the name says, 
 	        [0, 0, 0]
 	    ], 
 	    thickness = 1, 
-	    fn = 3
+	    $fn = 3
 	);
 
 ![polyline3d](images/lib-hull_polyline3d-1.JPG)
@@ -35,7 +37,7 @@ Creates a 3D polyline from a list of `[x, y, z]` coordinates. As the name says, 
 	
 	for(i = [0:7]) {
 	    rotate(45 * i) 
-	        hull_polyline3d(points, 2, 3);
+	        hull_polyline3d(points, 2, $fn = 3);
 	}
 
 ![polyline3d](images/lib-hull_polyline3d-2.JPG)

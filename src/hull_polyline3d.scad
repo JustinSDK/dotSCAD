@@ -2,7 +2,7 @@
 * hull_polyline3d.scad
 *
 * Creates a 3D polyline from a list of `[x, y, z]` coordinates. 
-* As the name says, it uses the built-in hull operation for each pair of points. 
+* As the name says, it uses the built-in hull operation for each pair of points (created by the sphere module). 
 * It's slow. However, it can be used to create metallic effects for a small $fn, large $fa or $fs.
 * 
 * @copyright Justin Lin, 2017
