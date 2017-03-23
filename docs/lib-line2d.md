@@ -1,6 +1,7 @@
 # line2d
 
-Creates a line from two points. 
+Creates a line from two points. When the end points are `CAP_ROUND`, 
+* you can use `$fa`, `$fs` or `$fn` to controll the circle module used internally.
 
 ## Parameters
 
@@ -9,9 +10,10 @@ Creates a line from two points.
 - `width` : The line width.
 - `p1Style` : The end-cap style of the point `p1`. The value must be `"CAP_BUTT"`, `"CAP_SQUARE"` or `"CAP_ROUND"`. The default value is `"CAP_SQUARE"`. 
 - `p2Style` : The end-cap style of the point `p2`. The value must be `"CAP_BUTT"`, `"CAP_SQUARE"` or `"CAP_ROUND"`. The default value is `"CAP_SQUARE"`. 
-- `round_fn` : When the end-cap style is `"CAP_ROUND"`, it controlls the `$fn` value used by the `circle` module. The default value is `24`.
 
 ## Examples
+
+    $fn = 24;
 
 	line2d(p1 = [0, 0], p2 = [5, 0], width = 1);
 	
