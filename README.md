@@ -27,3 +27,6 @@ I've been using OpenSCAD for years and created some funny things. Some of them i
     - [circle_path](https://openhome.cc/eGossip/OpenSCAD/lib-circle_path.html)
     - [bezier](https://openhome.cc/eGossip/OpenSCAD/lib-bezier.html)
     - [cylinder_spiral](https://openhome.cc/eGossip/OpenSCAD/lib-cylinder_spiral.html)
+
+- Other
+    - [box_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-box_extrude.html)
