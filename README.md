@@ -1,4 +1,4 @@
-# lib-openscad
+# dotSCAD
 
 > These fundamental modules are helpful when playing OpenSCAD.
 
