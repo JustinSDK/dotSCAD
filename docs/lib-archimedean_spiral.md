@@ -45,7 +45,7 @@ An `init_angle` less than 180 degrees is not recommended because the function us
 
 ![archimedean_spiral](images/lib-archimedean_spiral-2.JPG)
 
-t = "3.141592653589793238462643383279502884197169399375105820974944592307816406286";
+    t = "3.141592653589793238462643383279502884197169399375105820974944592307816406286";
 
 	points = archimedean_spiral(
 	    arm_distance = 15,
