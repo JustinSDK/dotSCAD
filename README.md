@@ -1,10 +1,19 @@
 # dotSCAD
 
-> These fundamental modules are helpful when playing OpenSCAD.
+> These fundamental modules and functions are helpful when playing OpenSCAD.
 
 [![license/LGPL](https://img.shields.io/badge/license-LGPL-blue.svg)](https://github.com/JustinSDK/lib-openscad/blob/master/LICENSE)
 
-I've been using OpenSCAD for years and created some funny things. Some of them include several important ideas and details. To prevent forgetfulness, I decided to [write them down](https://openhome.cc/eGossip/OpenSCAD/). Some examples developed in the documentation are useful so I elaborate them into this library.
+Every module or function is located in the file which has the same name as the module or the function. For examples, if you want to use the `line2d` module to draw a line, `include <line2d.scad>` first. 
+
+	include <line2d.scad>;
+	line2d(p1 = [0, 0], p2 = [5, 0], width = 1);
+
+Some modules may depend on other modules. For example, the `polyline2d` module depends on the `line2d` module, so you also have to `include <line2d.scad>` besides `include <polyline3d.scad>`. 
+
+	include <line2d.scad>;
+	include <polyline3d.scad>;
+	polyline2d(points = [[1, 2], [-5, -4], [-5, 3], [5, 5]], width = 1);
 
 ## Documentation
 
@@ -31,3 +40,7 @@ I've been using OpenSCAD for years and created some funny things. Some of them i
 
 - Other
     - [box_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-box_extrude.html)
+
+## About dotSCAD
+
+I've been using OpenSCAD for years and created some funny things. Some of them include several important ideas and details. To prevent forgetfulness, I decided to [write them down](https://openhome.cc/eGossip/OpenSCAD/). Some examples developed in the documentation are useful so I elaborate them into this library.
