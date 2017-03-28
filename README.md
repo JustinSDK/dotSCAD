@@ -36,6 +36,9 @@ Some modules may depend on other modules. For example, the `polyline2d` module d
 	- [hollow_out](https://openhome.cc/eGossip/OpenSCAD/lib-hollow_out.html)
 	- [bend](https://openhome.cc/eGossip/OpenSCAD/lib-bend.html)
 
+- Functon
+	- [rotate_p](https://openhome.cc/eGossip/OpenSCAD/lib-rotate_p.html)
+
 - Path
     - [circle_path](https://openhome.cc/eGossip/OpenSCAD/lib-circle_path.html)
     - [bezier](https://openhome.cc/eGossip/OpenSCAD/lib-bezier.html)
