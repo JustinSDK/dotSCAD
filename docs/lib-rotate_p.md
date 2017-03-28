@@ -18,7 +18,7 @@ You can use the code below to create a line.
 	            sphere(1);   
 	}  
 
-The following code have the same effect.
+The following code has the same effect.
 
 	point = [20, 0, 0];
 	a = [0, -45, 45];
