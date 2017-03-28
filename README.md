@@ -44,6 +44,7 @@ Some modules may depend on other modules. For example, the `polyline2d` module d
 
 - Other
     - [box_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-box_extrude.html)
+    - [stereographic_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-stereographic_extrude.html)
 
 ## About dotSCAD
 
