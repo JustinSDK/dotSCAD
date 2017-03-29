@@ -4,7 +4,7 @@ Parses the string argument as an number. It depends on the `split_str` and the `
 
 ## Parameters
 
-- `t` : A String containing the number representation to be parsed.
+- `t` : A string containing the number representation to be parsed.
 
 ## Examples
 
