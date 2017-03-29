@@ -38,20 +38,20 @@ The `rotate_p` function is useful in some situations. For examples, you probably
 	step_angle = 10;
 	z_circles = 20;
 	
-	points_angles = [for(a = [0:step_angle:90 * z_circles]) 
+	points = [for(a = [0:step_angle:90 * z_circles]) 
 	    rotate_p(
 	        [radius, 0, 0], 
 	        [0, -90 + 2 * a / z_circles, a]
 	    )
 	];
 	
-    // Once you get all points on the path, you can place anything at each point.
-    // I just place a sphere as a simple demonstration.
-	for(pa = points_angles) {
-	    translate(pa[0]) 
+	// Once you get all points on the path, you can place anything at each point.
+	// I just place a sphere as a simple demonstration.
+	for(p = points) {
+	    translate(p) 
 	        sphere(1);
 	}
-
-    %sphere(radius);
+	
+	%sphere(radius);
 
 ![rotate_p](images/lib-rotate_p-2.JPG)
