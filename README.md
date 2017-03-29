@@ -47,6 +47,7 @@ Some modules may depend on other modules. For example, the `polyline2d` module d
     - [bezier](https://openhome.cc/eGossip/OpenSCAD/lib-bezier.html)
     - [cylinder_spiral](https://openhome.cc/eGossip/OpenSCAD/lib-cylinder_spiral.html)
     - [archimedean_spiral](https://openhome.cc/eGossip/OpenSCAD/lib-archimedean_spiral.html)
+    - [sphere_spiral](https://openhome.cc/eGossip/OpenSCAD/lib-sphere_spiral.html)
 
 - Other
     - [box_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-box_extrude.html)
