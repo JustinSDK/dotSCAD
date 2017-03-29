@@ -68,4 +68,4 @@ Creates all points and angles on the path of a spiral around a sphere. It return
 	        hull_polyline3d([for(pa = points_angles) pa[0]], 2);
 	}
 
-![sphere_spiral](images/lib-sphere_spiral-5.JPG)
+![sphere_spiral](images/lib-sphere_spiral-6.JPG)
