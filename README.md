@@ -50,6 +50,10 @@ Some modules may depend on other modules. For example, the `polyline2d` module d
     - [box_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-box_extrude.html)
     - [stereographic_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-stereographic_extrude.html)
 
+## Bugs and Feedback
+
+For bugs, questions and discussions please use the [Github Issues](https://github.com/JustinSDK/dotSCAD/issues).
+
 ## About dotSCAD
 
 I've been using OpenSCAD for years and created some funny things. Some of them include several important ideas and details. To prevent forgetfulness, I decided to [write them down](https://openhome.cc/eGossip/OpenSCAD/). Some examples developed in the documentation are useful so I elaborate them into this library.
