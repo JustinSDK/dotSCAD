@@ -40,6 +40,7 @@ Some modules may depend on other modules. For example, the `polyline2d` module d
 	- [rotate_p](https://openhome.cc/eGossip/OpenSCAD/lib-rotate_p.html)
 	- [sub_str](https://openhome.cc/eGossip/OpenSCAD/lib-sub_str.html)
 	- [split_str](https://openhome.cc/eGossip/OpenSCAD/lib-split_str.html)
+	- [parse_number](https://openhome.cc/eGossip/OpenSCAD/lib-parse_number.html)
 	
 - Path
     - [circle_path](https://openhome.cc/eGossip/OpenSCAD/lib-circle_path.html)
