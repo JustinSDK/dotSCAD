@@ -53,15 +53,3 @@ function archimedean_spiral(arm_distance, init_angle, point_distance, num_of_poi
            let(r = b * theta, a = (rt_dir == "CT_CLK" ? 1 : -1) * theta * 57.2958)
            [[r * cos(a), r * sin(a)], a]
     ];
-    
-points_angles = archimedean_spiral(
-    arm_distance = 10,  
-    init_angle = 180, 
-    point_distance = 5,
-    num_of_points = 100 
-); 
-
-for(pa = points_angles) {
-    translate(pa[0]) 
-        circle(2);
-}    
