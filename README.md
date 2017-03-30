@@ -6,13 +6,13 @@
 
 ## Introduction
 
-Every module or function is located in the file which has the same name as the module or the function. For examples, if you want to use the `line2d` module to draw a line, `include <line2d.scad>` first. 
+Every module or function is located in the file which has the same name as the module or the function. For examples, if you want to use the `line2d` module to draw a line, `include <line2d.scad>;` first. 
 
 	include <line2d.scad>;
 
 	line2d(p1 = [0, 0], p2 = [5, 0], width = 1);
 
-Some modules may depend on other modules. For example, the `polyline2d` module depends on the `line2d` module, so you also have to `include <line2d.scad>` besides `include <polyline3d.scad>`. 
+Some modules may depend on other modules. For example, the `polyline2d` module depends on the `line2d` module, so you also have to `include <line2d.scad>;` besides `include <polyline3d.scad>;`. 
 
 	include <line2d.scad>;
 	include <polyline3d.scad>;
