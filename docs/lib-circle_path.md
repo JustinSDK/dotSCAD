@@ -9,6 +9,8 @@ Sometimes you need all points on the path of a circle. Here's the function. Its 
 
 ## Examples
 
+    include <circle_path.scad>;
+
 	$fn = 24;
 	
 	points = circle_path(radius = 50);

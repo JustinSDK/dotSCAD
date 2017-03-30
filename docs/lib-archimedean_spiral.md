@@ -1,6 +1,6 @@
 # archimedean_spiral
 
-Get all points and angles on the path of an archimedean_spiral. The distance between two  points is almost constant. 
+Gets all points and angles on the path of an archimedean_spiral. The distance between two  points is almost constant. 
 
 It returns a vector of `[[x, y], angle]`. 
 
@@ -17,6 +17,7 @@ An `init_angle` less than 180 degrees is not recommended because the function us
 ## Examples
     
 	include <polyline2d.scad>;
+    include <archimedean_spiral.scad>;
 	
 	points_angles = archimedean_spiral(
 	    arm_distance = 10,
@@ -32,6 +33,8 @@ An `init_angle` less than 180 degrees is not recommended because the function us
 
 ![archimedean_spiral](images/lib-archimedean_spiral-1.JPG)
 	
+    include <archimedean_spiral.scad>;
+    
 	points_angles = archimedean_spiral(
 	    arm_distance = 10,  
 	    init_angle = 180, 
@@ -46,6 +49,8 @@ An `init_angle` less than 180 degrees is not recommended because the function us
 
 ![archimedean_spiral](images/lib-archimedean_spiral-2.JPG)
 
+    include <archimedean_spiral.scad>;
+    
     t = "3.141592653589793238462643383279502884197169399375105820974944592307816406286";
 
 	points = archimedean_spiral(

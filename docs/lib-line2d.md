@@ -13,6 +13,8 @@ Creates a line from two points. When the end points are `CAP_ROUND`, you can use
 
 ## Examples
 
+    include <line2d.scad>;
+    
     $fn = 24;
 
 	line2d(p1 = [0, 0], p2 = [5, 0], width = 1);

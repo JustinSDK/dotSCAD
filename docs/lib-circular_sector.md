@@ -1,6 +1,6 @@
 # circular_sector
 
-Create a circular sector. You can pass a 2 element vector to define the central angle. Its `$fa`, `$fs` and `$fn` parameters are consistent with the circle module.
+Creates a circular sector. You can pass a 2 element vector to define the central angle. Its `$fa`, `$fs` and `$fn` parameters are consistent with the circle module.
 
 ## Parameters
 
@@ -9,6 +9,8 @@ Create a circular sector. You can pass a 2 element vector to define the central 
 - `$fa`, `$fs`, `$fn` : Check [the circle module](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Using_the_2D_Subsystem#circle) for more details.
 -
 ## Examples
+
+    include <circular_sector.scad>;
 
     circular_sector(radius = 20, angles = [-50, -150]);  
     translate([-15, 0, 0]) circular_sector(radius = 20, angles = [45, 135]);  

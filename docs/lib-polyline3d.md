@@ -12,6 +12,8 @@ Creates a polyline from a list of `[x, y, z]` coordinates. It depends on the `li
 
 ## Examples
 
+    include <polyline3d.scad>;
+
 	polyline3d(
 	    points = [
 	        [1, 2, 1], 
@@ -24,6 +26,8 @@ Creates a polyline from a list of `[x, y, z]` coordinates. It depends on the `li
 	);
 
 ![polyline3d](images/lib-polyline3d-1.JPG)
+
+    include <polyline3d.scad>;
 
 	polyline3d(
 	    points = [
@@ -38,6 +42,8 @@ Creates a polyline from a list of `[x, y, z]` coordinates. It depends on the `li
 	);
 
 ![polyline3d](images/lib-polyline3d-2.JPG)
+
+    include <polyline3d.scad>;
 
 	polyline3d(
 	    points = [
@@ -54,6 +60,8 @@ Creates a polyline from a list of `[x, y, z]` coordinates. It depends on the `li
 
 ![polyline3d](images/lib-polyline3d-3.JPG)
 
+    include <polyline3d.scad>;
+    
 	r = 20;
 	h = 5;
 	fa = 15;

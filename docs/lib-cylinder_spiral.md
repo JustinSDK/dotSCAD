@@ -1,6 +1,6 @@
 # cylinder_spiral
 
-Get all points on the path of a spiral around a cylinder. Its `$fa`, `$fs` and `$fn` parameters are consistent with the `cylinder` module. It depends on the `circle_path` module so you have to include circle_path.scad.
+Gets all points on the path of a spiral around a cylinder. Its `$fa`, `$fs` and `$fn` parameters are consistent with the `cylinder` module. It depends on the `circle_path` module so you have to include circle_path.scad.
 
 ## Parameters
 

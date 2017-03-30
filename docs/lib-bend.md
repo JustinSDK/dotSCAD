@@ -1,6 +1,6 @@
 # bend
 
-Bend a 3D object into an arc shape.
+Bends a 3D object into an arc shape.
 
 ## Parameters
 
@@ -12,6 +12,8 @@ Bend a 3D object into an arc shape.
 
 The containing cube of the target object should be laid down on the x-y plane. For examples.
 
+    include <bend.scad>;
+
 	x = 9.25;
 	y = 9.55;
 	z = 1;  
@@ -22,6 +24,8 @@ The containing cube of the target object should be laid down on the x-y plane. F
 ![bend](images/lib-bend-1.JPG)
 
 Once you have the size of the containing cube, you can use it as the `size` argument of the `bend` module.
+
+    include <bend.scad>;
 
 	x = 9.25;
 	y = 9.55;
@@ -35,6 +39,8 @@ Once you have the size of the containing cube, you can use it as the `size` argu
 ![bend](images/lib-bend-2.JPG)
 
 The arc shape is smoother if the `frags` value is larger. 
+
+    include <bend.scad>;
 	
 	x = 9.25;
 	y = 9.55;

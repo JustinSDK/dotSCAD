@@ -11,6 +11,8 @@ Given a set of control points, the bezier function returns points of the Bézier
 
 If you have four control points and combine with the `hull_polyline3d` module:
 
+    include <bezier.scad>;
+
 	t_step = 0.05;
 	width = 2;
 	

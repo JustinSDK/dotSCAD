@@ -10,6 +10,8 @@ Creates a 3D polyline from a list of `[x, y, z]` coordinates. As the name says, 
 
 ## Examples
 
+    include <hull_polyline3d.scad>;
+
 	hull_polyline3d(
 	    points = [
 	        [1, 2, 3], 
@@ -23,6 +25,8 @@ Creates a 3D polyline from a list of `[x, y, z]` coordinates. As the name says, 
 
 ![polyline3d](images/lib-hull_polyline3d-1.JPG)
 
+    include <hull_polyline3d.scad>;
+    
 	r = 50;
 	points = [
 	    for(a = [0:180]) 

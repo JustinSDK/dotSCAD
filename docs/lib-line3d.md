@@ -13,6 +13,8 @@ Creates a 3D line from two points.
 
 ## Examples
 
+    include <line3d.scad>;
+    
 	line3d(
 	    p1 = [0, 0, 0], 
 	    p2 = [10, 2, 10], 
@@ -21,6 +23,8 @@ Creates a 3D line from two points.
 	);   
 
 ![line3d](images/lib-line3d-1.JPG)
+
+    include <line3d.scad>;
 	
 	line3d(
 	    p1 = [0, 0, 0], 
@@ -33,6 +37,8 @@ Creates a 3D line from two points.
 
 ![line3d](images/lib-line3d-2.JPG)
 			   
+    include <line3d.scad>;
+    
     line3d(
         p1 = [0, 0, 0], 
         p2 = [10, 2, 10], 

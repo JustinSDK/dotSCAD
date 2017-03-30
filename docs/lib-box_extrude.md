@@ -1,6 +1,6 @@
 # box_extrude
 
-Create a box (container) from a 2D object.
+Creates a box (container) from a 2D object.
 
 ## Parameters
 
@@ -9,11 +9,15 @@ Create a box (container) from a 2D object.
 
 ## Examples
 
+    include <box_extrude.scad>;
+    
 	box_extrude(height = 30, shell_thickness = 2) 
 	    circle(r = 30);
 
 ![box_extrude](images/lib-box_extrude-1.JPG)
 
+    include <box_extrude.scad>;
+    
 	box_extrude(height = 30, shell_thickness = 2) 
 	    text("XD", size = 40, font = "Cooper Black");
 
