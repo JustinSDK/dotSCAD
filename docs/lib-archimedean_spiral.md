@@ -12,6 +12,7 @@ An `init_angle` less than 180 degrees is not recommended because the function us
 - `init_angle` : In polar coordinates `(r, θ)` Archimedean spiral can be described by the equation `r = bθ ` where `θ` is measured in radians. For being consistent with OpenSCAD, the function here use degrees. The `init_angle` is which angle the first point want to start.
 - `point_distance` : Distance between two points on the path.
 - `num_of_points` : How many points do you want?
+- `rt_dir` : `"CT_CLK"` for counterclockwise. `"CLK"` for clockwise. The default value is `"CT_CLK"`.
 
 ## Examples
     

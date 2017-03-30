@@ -46,10 +46,22 @@ function _find_radians(b, point_distance, radians, n, count = 1) =
     is required. To avoid a small error value at the calculated distance between two points, you 
     may try a smaller point_distance.
 */
-function archimedean_spiral(arm_distance, init_angle, point_distance, num_of_points) =
+function archimedean_spiral(arm_distance, init_angle, point_distance, num_of_points, rt_dir = "CT_CLK") =
     let(b = arm_distance / 6.28318, init_radian = init_angle *3.14159 / 180)
     [
         for(theta = _find_radians(b, point_distance, [init_radian], num_of_points)) 
-           let(r = b * theta, a = theta * 57.2958)
+           let(r = b * theta, a = (rt_dir == "CT_CLK" ? 1 : -1) * theta * 57.2958)
            [[r * cos(a), r * sin(a)], a]
     ];
+    
+points_angles = archimedean_spiral(
+    arm_distance = 10,  
+    init_angle = 180, 
+    point_distance = 5,
+    num_of_points = 100 
+); 
+
+for(pa = points_angles) {
+    translate(pa[0]) 
+        circle(2);
+}    
