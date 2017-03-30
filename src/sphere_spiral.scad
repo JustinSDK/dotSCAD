@@ -13,9 +13,13 @@
 *
 **/ 
 
-function sphere_spiral(radius, za_step, z_circles = 1, begin_angle = 0, end_angle = 0) = 
+function sphere_spiral(radius, za_step, z_circles = 1, begin_angle = 0, end_angle = 0, vt_dir = "CT_CLK", rt_dir = "SPI_DOWN") = 
     [
         for(a = [begin_angle:za_step:90 * z_circles - end_angle]) 
-            let(ra = [0, -90 + 2 * a / z_circles, a])
+            let(
+                ya = rt_dir == "SPI_DOWN" ? (-90 + 2 * a / z_circles) : (90 + 2 * a / z_circles),
+                za = (vt_dir == "CT_CLK" ? 1 : -1) * a,
+                ra = [0, ya, za]
+            )
             [rotate_p([radius, 0, 0], ra), ra]
     ];
