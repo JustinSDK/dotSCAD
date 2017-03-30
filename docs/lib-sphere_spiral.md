@@ -9,8 +9,8 @@ Creates all points and angles on the path of a spiral around a sphere. It return
 - `z_circles` : The spiral rotates around the z axis. This parameter determines how many circles it will rotate from the top to the end. It defaults to 1.
 - `begin_angle` : The default value is 0 which means begins from the north pole of the sphere. See examples below.
 - `end_angle` : The default value is 0 which means begins from the sourth pole of the sphere. See examples below.
-- `vt_dir` : `"CT_CLK"` for counterclockwise. `"CLK"` for clockwise. The default value is `"CT_CLK"`.
-- `rt_dir` : `"SPI_DOWN"` for spiraling down. `"SPI_UP"` for spiraling up. The default value is `"SPI_DOWN"`.
+- `vt_dir` : `"SPI_DOWN"` for spiraling down. `"SPI_UP"` for spiraling up. The default value is `"SPI_DOWN"`.
+- `rt_dir` : `"CT_CLK"` for counterclockwise. `"CLK"` for clockwise. The default value is `"CT_CLK"`.
 
 ## Examples
     
