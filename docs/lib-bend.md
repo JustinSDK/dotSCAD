@@ -10,7 +10,7 @@ Bends a 3D object into an arc shape.
 
 ## Examples
 
-The containing cube of the target object should be laid down on the x-y plane. For examples.
+The containing cube of the target object should be laid down on the x-y plane. For example.
 
     include <bend.scad>;
 

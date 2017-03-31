@@ -36,7 +36,7 @@ The following code has the same effect.
 
 ![rotate_p](images/lib-rotate_p-1.JPG)
 
-The `rotate_p` function is useful in some situations. For examples, you probably want to get all points on the path of a spiral around a sphere. 
+The `rotate_p` function is useful in some situations. For example, you probably want to get all points on the path of a spiral around a sphere. 
 
     include <rotate_p.scad>;
 
