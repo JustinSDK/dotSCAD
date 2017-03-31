@@ -11,7 +11,7 @@ An OpenSCAD implementation of Turtle Graphics. It moves on the xy plane. You can
     - `"angle"` : Sets or gets the angle of a turtle. If you provide a turtle data and the angle, such as `turtle2d("angle", turtle, 45)`, it will sets the angle. Giving a turtle data only will return the angle.
     - `"pt"` : Sets or Gets `[x, y]` of a turtle. If you provide a turtle data and the coordinates, such as `turtle2d("pt", turtle, [10, 20])`, it will sets the coordinates. Giving a turtle data only will return the coordinates.
     - `"forward"` : Forwards a turtle. The command needs two arguments. The first one is a turtle data, and the second one is the length. For example, `turtle2d("forward", turtle, 100)`.
-    - `"forward"` : Turns a turtle. The command needs two arguments. The first one is a turtle data, and the second one is the angle. For example, `turtle2d("turn", turtle, 180)`.
+    - `"turn"` : Turns a turtle. The command needs two arguments. The first one is a turtle data, and the second one is the angle. For example, `turtle2d("turn", turtle, 180)`.
 
 ## Examples
 	    
