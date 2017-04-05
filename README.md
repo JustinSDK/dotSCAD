@@ -31,7 +31,8 @@ Some modules may depend on other modules. For example, the `polyline2d` module d
 	- [line3d](https://openhome.cc/eGossip/OpenSCAD/lib-line3d.html)
 	- [polyline3d](https://openhome.cc/eGossip/OpenSCAD/lib-polyline3d.html)
 	- [hull_polyline3d](https://openhome.cc/eGossip/OpenSCAD/lib-hull_polyline3d.html)
-
+	- [function_grapher](https://openhome.cc/eGossip/OpenSCAD/lib-function_grapher.html)
+	
 - Transformation
 	- [hollow_out](https://openhome.cc/eGossip/OpenSCAD/lib-hollow_out.html)
 	- [bend](https://openhome.cc/eGossip/OpenSCAD/lib-bend.html)
