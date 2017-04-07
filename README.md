@@ -46,7 +46,7 @@ Some modules may depend on other modules. For example, the `polyline2d` module d
 - Path
     - [circle_path](https://openhome.cc/eGossip/OpenSCAD/lib-circle_path.html)
     - [bezier](https://openhome.cc/eGossip/OpenSCAD/lib-bezier.html)
-    - [cylinder_spiral](https://openhome.cc/eGossip/OpenSCAD/lib-cylinder_spiral.html)
+    - [helix](https://openhome.cc/eGossip/OpenSCAD/lib-helix.html)
     - [archimedean_spiral](https://openhome.cc/eGossip/OpenSCAD/lib-archimedean_spiral.html)
     - [sphere_spiral](https://openhome.cc/eGossip/OpenSCAD/lib-sphere_spiral.html)
 
