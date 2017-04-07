@@ -1,5 +1,5 @@
 /**
-* cylinder_spiral.scad
+* helix.scad
 *
 * Get all points on the path of a spiral around a cylinder. 
 * Its $fa, $fs and $fn parameters are consistent with the cylinder module.
@@ -8,11 +8,11 @@
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *
-* @see https://openhome.cc/eGossip/OpenSCAD/lib-cylinder_spiral.html
+* @see https://openhome.cc/eGossip/OpenSCAD/lib-helix.html
 *
 **/ 
 
-function cylinder_spiral(radius, levels, level_dist, 
+function helix(radius, levels, level_dist, 
                          vt_dir = "SPI_DOWN", rt_dir = "CT_CLK") = 
     let(
         points = circle_path(radius),
