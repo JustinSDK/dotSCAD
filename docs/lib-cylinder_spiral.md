@@ -1,4 +1,4 @@
-# cylinder_spiral
+# helix
 
 Gets all points on the path of a spiral around a cylinder. Its `$fa`, `$fs` and `$fn` parameters are consistent with the `cylinder` module. It depends on the `circle_path` module so you have to include circle_path.scad.
 
@@ -15,12 +15,12 @@ Gets all points on the path of a spiral around a cylinder. Its `$fa`, `$fs` and 
 ## Examples
     
 	include <circle_path.scad>;
-	include <cylinder_spiral.scad>;
+	include <helix.scad>;
 	include <hull_polyline3d.scad>;
 	
 	$fn = 12;
 	
-	points = cylinder_spiral(
+	points = helix(
 	    radius = 40, 
 	    levels = 10, 
 	    level_dist = 10, 
@@ -35,5 +35,5 @@ Gets all points on the path of a spiral around a cylinder. Its `$fa`, `$fs` and 
 	hull_polyline3d(points, 2);
 
 
-![cylinder_spiral](images/lib-cylinder_spiral-1.JPG)
+![helix](images/lib-helix-1.JPG)
 
