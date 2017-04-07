@@ -13,6 +13,7 @@ Creates a polyline from a list of `x`, `y` coordinates. When the end points are 
 
 ## Examples
 
+    include <line2d.scad>;
     include <polyline2d.scad>;
 
     $fn = 24;
@@ -20,6 +21,7 @@ Creates a polyline from a list of `x`, `y` coordinates. When the end points are 
 
 ![polyline2d](images/lib-polyline2d-1.JPG)
 
+    include <line2d.scad>;
     include <polyline2d.scad>;
     
     $fn = 24;
@@ -28,6 +30,7 @@ Creates a polyline from a list of `x`, `y` coordinates. When the end points are 
 
 ![polyline2d](images/lib-polyline2d-2.JPG)
 
+    include <line2d.scad>;
     include <polyline2d.scad>;
     
     $fn = 24;

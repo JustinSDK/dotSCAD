@@ -8,6 +8,8 @@ Parses the string argument as an number. It depends on the `split_str` and the `
 
 ## Examples
 
+	include <sub_str.scad>;
+	include <split_str.scad>;
     include <parse_number.scad>;
     
 	echo(parse_number("10") + 1);    // ECHO: 11

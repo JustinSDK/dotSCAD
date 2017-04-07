@@ -11,7 +11,8 @@ Creates an arc. You can pass a 2 element vector to define the central angle. Its
 
 
 ## Examples
-    
+
+    include<circular_sector.scad>;    
     include <arc.scad>;
     
     $fn = 24;
@@ -20,6 +21,7 @@ Creates an arc. You can pass a 2 element vector to define the central angle. Its
 
 ![arc](images/lib-arc-1.JPG)
 
+    include<circular_sector.scad>; 
     include <arc.scad>;
     
     $fn = 24;
@@ -28,6 +30,7 @@ Creates an arc. You can pass a 2 element vector to define the central angle. Its
 
 ![arc](images/lib-arc-2.JPG)
 
+    include<circular_sector.scad>; 
     include <arc.scad>;
     
     $fn = 24;
