@@ -41,7 +41,7 @@ function _bezier_curve_point(t, points) =
     ];
 
 function bezier_curve(t_step, points) = 
-    [
-        for(t = [0: t_step: 1 + t_step]) 
+    concat([
+        for(t = [0: t_step: 1]) 
             _bezier_curve_point(t, points)
-    ];
+    ], [_bezier_curve_point(1, points)]);
