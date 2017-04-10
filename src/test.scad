@@ -1,4 +1,6 @@
-include <hull_polyline3d.scad>;
+
+include <line3d.scad>;
+include <polyline3d.scad>;
 include <bezier_curve.scad>;
 include <bezier_surface.scad>; 
 include <function_grapher.scad>;
@@ -14,53 +16,72 @@ ctrl_pts = [
 ];
 
 g = bezier_surface(t_step, ctrl_pts);
-function_grapher(g, thickness);
+color("yellow") function_grapher(g, thickness);
+width = 2;
+
+    
 
 demo = "YES";
-// demo
+ani = "YES";
+
 if(demo == "YES") {
     width = 2;
     r = 3;
+
+    
 
     pts = [
         for(i = [0:len(ctrl_pts) - 1]) 
             bezier_curve(t_step, ctrl_pts[i])
     ]; 
 
-    // first bezier curve
-    for(i = [0:len(ctrl_pts) - 1]) {
-        color("green") union() {
-            for(j = [0:len(ctrl_pts[i]) - 1]) {
-                translate(ctrl_pts[i][j])
-                    sphere(r = r);
+    if(ani == "YES") {
+        // first bezier curve
+        for(i = [0:len(ctrl_pts) - 1]) {
+            color("green") union() {
+                for(j = [0:len(ctrl_pts[i]) - 1]) {
+                    translate(ctrl_pts[i][j])
+                        sphere(r = r);
+                }
+
+                for(j = [0:len(ctrl_pts[i]) - 1]) {
+                    polyline3d( 
+                        ctrl_pts[i]
+                    , width);
+                }            
             }
-
-            for(j = [0:len(ctrl_pts[i]) - 1]) {
-                hull_polyline3d( 
-                    ctrl_pts[i]
-                , width);
-            }            
+            
+            color("red") 
+                polyline3d(
+                    bezier_curve(t_step, ctrl_pts[i]), width
+                ); 
         }
-        
-        color("red") 
-            hull_polyline3d(
-                bezier_curve(t_step, ctrl_pts[i]), width
-            ); 
+
+        step = len(g[0]);
+        echo(step); 
+
+        // second bezier curve
+        ctrl_pts2 = [for(i = [0:len(pts) - 1]) pts[i][$t * step]];
+        color("blue") union() {
+            for(pt = ctrl_pts2) {
+                translate(pt) 
+                    sphere(r = r);
+            }    
+            polyline3d(ctrl_pts2, width);
+        }
+
+        color("black") 
+            polyline3d(g[$t * step], width);    
+    } else {
+        // first bezier curve
+        for(i = [0:len(ctrl_pts) - 1]) {
+            color("green") union() {
+                for(j = [0:len(ctrl_pts[i]) - 1]) {
+                    translate(ctrl_pts[i][j])
+                        sphere(r = r);
+                }            
+            }
+        }
+        color("green") function_grapher(ctrl_pts, width, style = "LINES");
     }
-
-    step = len(g[0]);
-    echo(step); 
-
-    // second bezier curve
-    ctrl_pts2 = [for(i = [0:len(pts) - 1]) pts[i][$t * step]];
-    color("blue") union() {
-        for(pt = ctrl_pts2) {
-            translate(pt) 
-                sphere(r = r);
-        }    
-        hull_polyline3d(ctrl_pts2, width);
-    }
-
-    color("black") 
-        hull_polyline3d(g[$t * step], width);    
 }

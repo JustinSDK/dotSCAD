@@ -12,8 +12,8 @@
 *
 **/ 
 
-function _combi(r, n) = 
-    n == 0 ? 1 : (_combi(r, n - 1) * (r - n + 1) / n);
+function _combi(n, k) = 
+    k == 0 ? 1 : (_combi(n, k - 1) * (n - k + 1) / k);
         
 function bezier_curve_coordinate(t, pn, n, i = 0) = 
     i == n + 1 ? 0 : 
