@@ -1,7 +1,7 @@
 /**
 * hollow_out.scad
 *
-* Hollow out a 2D object. 
+* Hollows out a 2D object. 
 * 
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html

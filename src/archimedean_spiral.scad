@@ -1,12 +1,12 @@
 /**
 * archimedean_spiral.scad
 *
-*  Get all points and angles on the path of an archimedean_spiral. The distance between two  points is almost constant. 
+*  Gets all points and angles on the path of an archimedean_spiral. The distance between two  points is almost constant. 
 * 
 *  It returns a vector of [[x, y], angle]. 
 *
-*  In polar coordinates (r, £c) Archimedean spiral can be described by the equation r = b£c where
-*  £c is measured in radians. For being consistent with OpenSCAD, the function here use degrees.
+*  In polar coordinates (r, ï¿½c) Archimedean spiral can be described by the equation r = bï¿½c where
+*  ï¿½c is measured in radians. For being consistent with OpenSCAD, the function here use degrees.
 *
 *  An init_angle less than 180 degrees is not recommended because the function uses an approximate 
 *  approach. If you really want an init_angle less than 180 degrees, a larger arm_distance 
@@ -39,8 +39,8 @@ function _find_radians(b, point_distance, radians, n, count = 1) =
     );
 
 /* 
-    In polar coordinates (r, £c) Archimedean spiral can be described by the equation r = b£c where
-    £c is measured in radians. For being consistent with OpenSCAD, the function here use degrees.
+    In polar coordinates (r, ï¿½c) Archimedean spiral can be described by the equation r = bï¿½c where
+    ï¿½c is measured in radians. For being consistent with OpenSCAD, the function here use degrees.
     An init_angle angle less than 180 degrees is not recommended because the function uses an 
     approximate approach. If you really want an angle less than 180 degrees, a larger arm_distance 
     is required. To avoid a small error value at the calculated distance between two points, you 
