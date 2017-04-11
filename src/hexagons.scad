@@ -11,12 +11,6 @@
 *
 **/ 
 
-radius = 20;
-levels = 3;
-spacing = 2;
-
-thickness = 20;
-
 module hexagons(radius, spacing, levels) {
     beginning_n = 2 * levels - 1; 
     offset_x = radius * cos(30);
@@ -52,6 +46,3 @@ module hexagons(radius, spacing, levels) {
             }
         }
 }
-
-linear_extrude(thickness) 
-    hexagons(radius, spacing, levels);
