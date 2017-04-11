@@ -26,6 +26,7 @@ Some modules may depend on other modules. For example, the `polyline2d` module d
 	- [polyline2d](https://openhome.cc/eGossip/OpenSCAD/lib-polyline2d.html)
 	- [circular_sector](https://openhome.cc/eGossip/OpenSCAD/lib-circular_sector.html)
 	- [arc](https://openhome.cc/eGossip/OpenSCAD/lib-arc.html)
+	- [hexagons](https://openhome.cc/eGossip/OpenSCAD/lib-hexagons.html)
 
 - 3D
 	- [line3d](https://openhome.cc/eGossip/OpenSCAD/lib-line3d.html)
