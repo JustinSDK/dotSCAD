@@ -57,6 +57,7 @@ Some modules may depend on other modules. For example, the `polyline2d` module d
     - [stereographic_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-stereographic_extrude.html)
     - [turtle2d](https://openhome.cc/eGossip/OpenSCAD/lib-turtle2d.html)
     - [turtle3d](https://openhome.cc/eGossip/OpenSCAD/lib-turtle3d.html)
+	- [log](https://openhome.cc/eGossip/OpenSCAD/lib-log.html)
 
 ## Bugs and Feedback
 
