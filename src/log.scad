@@ -54,11 +54,11 @@ module log(level = "INFO", level_color) {
             
             // level text
             echo(
-                str(
-                    "<b>", 
-                        "<font color='", c, "'>", 
+                str( 
+                    "<b>",
+                        "<span style='color:", c, "'>", 
                             lv, 
-                        "</font>", 
+                        "</span>", 
                     "</b>"
                 )
             );
