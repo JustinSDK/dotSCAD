@@ -52,9 +52,12 @@ Some modules may depend on other modules. For example, the `polyline2d` module d
     - [archimedean_spiral](https://openhome.cc/eGossip/OpenSCAD/lib-archimedean_spiral.html)
     - [sphere_spiral](https://openhome.cc/eGossip/OpenSCAD/lib-sphere_spiral.html)
 
-- Other
+- Extrude
     - [box_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-box_extrude.html)
+	- [ellipse_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-ellipse_extrude.html)
     - [stereographic_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-stereographic_extrude.html)
+
+- Other
     - [turtle2d](https://openhome.cc/eGossip/OpenSCAD/lib-turtle2d.html)
     - [turtle3d](https://openhome.cc/eGossip/OpenSCAD/lib-turtle3d.html)
 	- [log](https://openhome.cc/eGossip/OpenSCAD/lib-log.html)
