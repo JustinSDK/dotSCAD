@@ -22,7 +22,8 @@ Some modules may depend on other modules. For example, the `polyline2d` module d
 ## Documentation
 
 - 2D
-    - [rounded_square](https://openhome.cc/eGossip/OpenSCAD/lib-rounded_square.html)
+    - [ellipse](https://openhome.cc/eGossip/OpenSCAD/lib-ellipse.html)
+	- [rounded_square](https://openhome.cc/eGossip/OpenSCAD/lib-rounded_square.html)
 	- [line2d](https://openhome.cc/eGossip/OpenSCAD/lib-line2d.html)
 	- [polyline2d](https://openhome.cc/eGossip/OpenSCAD/lib-polyline2d.html)
 	- [circular_sector](https://openhome.cc/eGossip/OpenSCAD/lib-circular_sector.html)
