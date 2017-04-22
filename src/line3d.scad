@@ -39,7 +39,7 @@ module line3d(p1, p2, thickness, p1Style = "CAP_CIRCLE", p2Style = "CAP_CIRCLE")
                     circle(r, $fn = frags_of_4);
     }
                 
-    module capCube(p) {
+    module capCircle(p) {
         w = r / 1.414;
         translate(p) 
             rotate([0, ay, az]) 
@@ -56,13 +56,9 @@ module line3d(p1, p2, thickness, p1Style = "CAP_CIRCLE", p2Style = "CAP_CIRCLE")
     
     module cap(p, style) {
         if(style == "CAP_CIRCLE") {
-            capCube(p);     
+            capCircle(p);     
         } else if(style == "CAP_SPHERE") { 
-            if(frags > 4) {
-                capSphere(p);  
-            } else {
-                capCube(p);       
-            }        
+            capSphere(p);  
         }       
     }
     
