@@ -16,9 +16,11 @@ module rounded_square(size, corner_r, center = false) {
         ($fn >= 3 ? $fn : 3) : 
         max(min(360 / $fa, corner_r * 2 * 3.14159 / $fs), 5);
 
-    quarter_frags = 360 / (frags + frags % 4);
-    step_a = 360 / (frags + frags % 4);
+    remain = frags % 4;
+    corner_frags = (remain / 4) > 0.5 ? frags - remain + 4 : frags - remain;
 
+    step_a = 360 / corner_frags;
+ 
     x = len(size) == undef ? size : size[0];
     y = len(size) == undef ? size : size[1];
 
