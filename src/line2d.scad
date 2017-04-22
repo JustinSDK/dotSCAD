@@ -11,7 +11,7 @@
 **/
 
 module line2d(p1, p2, width, p1Style = "CAP_SQUARE", p2Style =  "CAP_SQUARE") {
-    half_width = 0.5 * width;
+    half_width = 0.5 * width;    
 
     atan_angle = atan2(p2[1] - p1[1], p2[0] - p1[0]);
     angle = 90 - atan_angle;
@@ -27,15 +27,23 @@ module line2d(p1, p2, width, p1Style = "CAP_SQUARE", p2Style =  "CAP_SQUARE") {
         p2 + offset2, p1 + offset2
     ]);
     
+    frags = $fn > 0 ? 
+        ($fn >= 3 ? $fn : 3) : 
+        max(min(360 / $fa, half_width * 2 * 3.14159 / $fs), 5);    
+        
+    remain = frags % 4;
+    end_frags = (remain / 4) > 0.5 ? frags - remain + 4 : frags - remain;
+        
     module square_end(point) {
         translate(point) 
             rotate(atan_angle) 
                 square(width, center = true);    
     }
-    
+
     module round_end(point) {
         translate(point) 
-            circle(half_width, center = true);    
+            rotate(atan_angle) 
+                circle(half_width, center = true, $fn = end_frags);    
     }
     
     if(p1Style == "CAP_SQUARE") {
