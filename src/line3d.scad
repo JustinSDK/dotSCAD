@@ -17,6 +17,10 @@ module line3d(p1, p2, thickness, p1Style = "CAP_CIRCLE", p2Style = "CAP_CIRCLE")
         ($fn >= 3 ? $fn : 3) : 
         max(min(360 / $fa, r * 6.28318 / $fs), 5)
     ;
+
+    remain = frags % 4;
+    frags_of_4 = (remain / 4) > 0.5 ? frags - remain + 4 : frags - remain;
+    half_fa = 180 / frags_of_4;
     
     dx = p2[0] - p1[0];
     dy = p2[1] - p1[1];
@@ -32,7 +36,7 @@ module line3d(p1, p2, thickness, p1Style = "CAP_CIRCLE", p2Style = "CAP_CIRCLE")
         translate(p1) 
             rotate([0, ay, az]) 
                 linear_extrude(length) 
-                    circle(r);
+                    circle(r, $fn = frags_of_4);
     }
                 
     module capCube(p) {
@@ -41,13 +45,13 @@ module line3d(p1, p2, thickness, p1Style = "CAP_CIRCLE", p2Style = "CAP_CIRCLE")
             rotate([0, ay, az]) 
                 translate([0, 0, -w]) 
                     linear_extrude(w * 2) 
-                        circle(r);       
+                        circle(r, $fn = frags_of_4);       
     }
-    
+
     module capSphere(p) {
         translate(p) 
             rotate([0, ay, az]) 
-                sphere(r * 1.0087);          
+                sphere(r / cos(half_fa), $fn = frags_of_4);          
     }
     
     module cap(p, style) {
