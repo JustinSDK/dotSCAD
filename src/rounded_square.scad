@@ -14,7 +14,7 @@
 module rounded_square(size, corner_r, center = false) {
     frags = $fn > 0 ? 
         ($fn >= 3 ? $fn : 3) : 
-        max(min(360 / $fa, corner_r * 2 * 3.14159 / $fs), 5);
+        max(min(360 / $fa, corner_r * 6.28318 / $fs), 5);
 
     remain = frags % 4;
     corner_frags = (remain / 4) > 0.5 ? frags - remain + 4 : frags - remain;

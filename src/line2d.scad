@@ -29,7 +29,7 @@ module line2d(p1, p2, width, p1Style = "CAP_SQUARE", p2Style =  "CAP_SQUARE") {
     
     frags = $fn > 0 ? 
         ($fn >= 3 ? $fn : 3) : 
-        max(min(360 / $fa, half_width * 2 * 3.14159 / $fs), 5);    
+        max(min(360 / $fa, half_width * 6.28318 / $fs), 5);    
         
     remain = frags % 4;
     end_frags = (remain / 4) > 0.5 ? frags - remain + 4 : frags - remain;

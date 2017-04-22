@@ -14,7 +14,7 @@
 module ellipse(axes) {
     frags = $fn > 0 ? 
         ($fn >= 3 ? $fn : 3) : 
-        max(min(360 / $fa, axes[0] * 2 * 3.14159 / $fs), 5);    
+        max(min(360 / $fa, axes[0] * 6.28318 / $fs), 5);    
     
     step_a = 360 / frags;
     polygon(
