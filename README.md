@@ -40,6 +40,7 @@ Some modules may depend on other modules. For example, the `polyline2d` module d
 	- [function_grapher](https://openhome.cc/eGossip/OpenSCAD/lib-function_grapher.html)
 	
 - Transformation
+    - [along_with](https://openhome.cc/eGossip/OpenSCAD/lib-along_with.html)
 	- [hollow_out](https://openhome.cc/eGossip/OpenSCAD/lib-hollow_out.html)
 	- [bend](https://openhome.cc/eGossip/OpenSCAD/lib-bend.html)
 
