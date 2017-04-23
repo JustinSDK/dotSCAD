@@ -33,6 +33,7 @@ Some modules may depend on other modules. For example, the `polyline2d` module d
 	- [hexagons](https://openhome.cc/eGossip/OpenSCAD/lib-hexagons.html)
 
 - 3D
+	- [rounded_cube](https://openhome.cc/eGossip/OpenSCAD/lib-rounded_cube.html)
 	- [line3d](https://openhome.cc/eGossip/OpenSCAD/lib-line3d.html)
 	- [polyline3d](https://openhome.cc/eGossip/OpenSCAD/lib-polyline3d.html)
 	- [hull_polyline3d](https://openhome.cc/eGossip/OpenSCAD/lib-hull_polyline3d.html)
