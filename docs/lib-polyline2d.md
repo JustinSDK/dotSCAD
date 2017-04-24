@@ -5,7 +5,7 @@ Creates a polyline from a list of `x`, `y` coordinates. When the end points are 
 
 ## Parameters
 
-- `points` : The list of `x`, `y` points of the polyline. : A vector of 2 element vectors. The points are indexed from 0 to n-1.
+- `points` : The list of `[x, y]` points of the polyline. The points are indexed from 0 to n-1.
 - `width` : The line width.
 - `startingStyle` : The end-cap style of the starting point. The value must be `"CAP_BUTT"`, `"CAP_SQUARE"` or `"CAP_ROUND"`. The default value is `"CAP_SQUARE"`. 
 - endingStyle : The end-cap style of the ending point. The value must be `"CAP_BUTT"`, `"CAP_SQUARE"` or `"CAP_ROUND"`. The default value is `"CAP_SQUARE"`. 

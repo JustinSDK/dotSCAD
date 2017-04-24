@@ -4,7 +4,7 @@ Creates a polyline from a list of `[x, y, z]` coordinates. It depends on the `li
 
 ## Parameters
 
-- `points` : The list of `[x, y, z]` points of the polyline. : A vector of 3 element vectors. The points are indexed from 0 to n-1.
+- `points` : The list of `[x, y, z]` points of the polyline. The points are indexed from 0 to n-1.
 - `thickness` : The line thickness.
 - `startingStyle` : The end-cap style of the starting point. The value must be `"CAP_BUTT"`, `"CAP_CIRCLE"` or `"CAP_SPHERE"`. The default value is `"CAP_CIRCL"`. 
 - endingStyle : The end-cap style of the ending point. The value must be `"CAP_BUTT"`, `"CAP_CIRCLE"` or `"CAP_SPHERE"`. The default value is `"CAP_CIRCLE"`.
