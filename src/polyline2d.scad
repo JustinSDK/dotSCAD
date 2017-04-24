@@ -15,8 +15,8 @@
 module polyline2d(points, width, startingStyle = "CAP_SQUARE", endingStyle = "CAP_SQUARE") {
     module line_segment(index) {
         styles = index == 1 ? [startingStyle, "CAP_ROUND"] : (
-            index == len(points) - 1 ? ["CAP_ROUND", endingStyle] : [
-                "CAP_ROUND", "CAP_ROUND"
+            index == len(points) - 1 ? ["CAP_BUTT", endingStyle] : [
+                "CAP_BUTT", "CAP_ROUND"
             ]
         );
         
