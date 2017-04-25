@@ -5,6 +5,7 @@ Sometimes you need all points on the path of a circle. Here's the function. Its 
 ## Parameters
 
 - `radius` : The radius of the circle.
+- `n` : The number of points you want. It's not greater than the fragments of the circle.
 - `$fa`, `$fs`, `$fn` : Check [the circle module](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Using_the_2D_Subsystem#circle) for more details.
 
 ## Examples
