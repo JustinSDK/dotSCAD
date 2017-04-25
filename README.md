@@ -56,6 +56,7 @@ Some modules may depend on other modules. For example, the `polyline2d` module d
     - [bezier_curve](https://openhome.cc/eGossip/OpenSCAD/lib-bezier_curve.html)
 	- [bezier_surface](https://openhome.cc/eGossip/OpenSCAD/lib-bezier_surface.html)
     - [helix](https://openhome.cc/eGossip/OpenSCAD/lib-helix.html)
+    - [golden_spiral](https://openhome.cc/eGossip/OpenSCAD/lib-golden_spiral.html)
     - [archimedean_spiral](https://openhome.cc/eGossip/OpenSCAD/lib-archimedean_spiral.html)
     - [sphere_spiral](https://openhome.cc/eGossip/OpenSCAD/lib-sphere_spiral.html)
 

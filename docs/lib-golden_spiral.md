@@ -4,6 +4,8 @@ Gets all points and angles on the path of a golden spiral. The distance between 
 
 It returns a vector of `[[x, y], angle]`. 
 
+Because of depending on `circle_path` and `rotate_p`, remember to include "circle_path.scad" and "rotate_p.scad".
+
 ## Parameters
 
 - `from` : The nth Fibonacci number you wanna start from.
@@ -13,56 +15,38 @@ It returns a vector of `[[x, y], angle]`.
 
 ## Examples
     
-	include <polyline2d.scad>;
-    include <archimedean_spiral.scad>;
+	include <circle_path.scad>;
+	include <rotate_p.scad>;
+	include <golden_spiral.scad>;
+	        
+	pts_angles = golden_spiral(
+	    from = 3, 
+	    to = 10, 
+	    point_distance = 1
+	);
 	
-	points_angles = archimedean_spiral(
-	    arm_distance = 10,
-	    init_angle = 180,
-	    point_distance = 5,
-	    num_of_points = 100 
-	); 
-	
-	points = [for(pa = points_angles) pa[0]];
-	
-	polyline2d(points, width = 1);
+	for(pt_angle = pts_angles) {
+	    translate(pt_angle[0]) 
+	        sphere(0.5);
+    }
 
-
-![archimedean_spiral](images/lib-archimedean_spiral-1.JPG)
+![golden_spiral](images/lib-golden_spiral-1.JPG)
 	
-    include <archimedean_spiral.scad>;
-    
-	points_angles = archimedean_spiral(
-	    arm_distance = 10,  
-	    init_angle = 180, 
-	    point_distance = 5,
-	    num_of_points = 100 
-	); 
-	
-	for(pa = points_angles) {
-	    translate(pa[0]) 
-	        circle(2);
+	include <circle_path.scad>;
+	include <rotate_p.scad>;
+	include <golden_spiral.scad>;
+	        
+	pts_angles = golden_spiral(
+	    from = 5, 
+	    to = 11, 
+	    point_distance = 4
+	);
+	    
+	for(pt_angle = pts_angles) {
+	    translate(pt_angle[0]) 
+	        rotate([90, 0, pt_angle[1]])
+	            linear_extrude(1, center = true) 
+	                text("A", valign = "center", halign = "center");
 	}
-
-![archimedean_spiral](images/lib-archimedean_spiral-2.JPG)
-
-    include <archimedean_spiral.scad>;
     
-    t = "3.141592653589793238462643383279502884197169399375105820974944592307816406286";
-
-	points = archimedean_spiral(
-	    arm_distance = 15,
-	    init_angle = 450, 
-	    point_distance = 12, 
-	    num_of_points = len(t) 
-	); 
-	
-	for(i = [0: len(points) - 1]) {
-	    translate(points[i][0])          
-	        rotate(points[i][1] + 90)  
-	            text(t[i], valign = "center", halign = "center");
-	}
-
-![archimedean_spiral](images/lib-archimedean_spiral-3.JPG)
-
-
+![golden_spiral](images/lib-golden_spiral-2.JPG)
