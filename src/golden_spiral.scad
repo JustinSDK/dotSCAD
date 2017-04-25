@@ -39,18 +39,18 @@ function _golden_spiral_from_ls_or_eql_to(from, to, point_distance ) =
         f2 = _fast_fibonacci(from + 1),
         fn = floor(f1 * 6.28312 / point_distance), 
         $fn = fn + 4 - (fn % 4),
-        arc_points = [
+        arc_points_angles = [
             for(pt = circle_path(radius = f1, n = $fn / 4 + 1))
-                [pt[0], pt[1], 0] // to 3D points because of rotate_p
+                [[pt[0], pt[1], 0], 0] // to 3D points because of rotate_p
         ],
         offset = f2 - f1
     ) _remove_same_pts(
-        arc_points, 
+        arc_points_angles, 
         [
-            for(pt = _golden_spiral(from + 1, to, point_distance)) 
-                rotate_p(pt, [0, 0, 90]) + [0, -offset, 0]
+            for(pt_a = _golden_spiral(from + 1, to, point_distance)) 
+                [rotate_p(pt_a[0], [0, 0, 90]) + [0, -offset, 0], pt_a[1] + 90]
         ]
-    );
+    ); 
 
 function _golden_spiral(from, to, point_distance) = 
     from <= to ? 
@@ -58,6 +58,6 @@ function _golden_spiral(from, to, point_distance) =
 
 function golden_spiral(from, to, point_distance) =    
     [
-        for(pt = _golden_spiral(from, to, point_distance)) 
-            [pt[0], pt[1]]  // to 2D points
+        for(pt_a = _golden_spiral(from, to, point_distance)) 
+            [[pt_a[0][0], pt_a[0][1]], pt_a[1]]  // to 2D points
     ];    
