@@ -6,8 +6,8 @@ It returns a vector of `[[x, y], angle]`.
 
 ## Parameters
 
-- `from` : If any ray from the origin intersects two successive turnings of the spiral, we'll have two points. The `arm_distance` is the distance between these two points.
-- `to` : In polar coordinates `(r, θ)` Archimedean spiral can be described by the equation `r = bθ ` where `θ` is measured in radians. For being consistent with OpenSCAD, the function here use degrees. The `init_angle` is which angle the first point want to start.
+- `from` : The nth Fibonacci number you wanna start from.
+- `to` : The nth Fibonacci number you wanna go to.
 - `point_distance` : Distance between two points on the path.
 - `rt_dir` : `"CT_CLK"` for counterclockwise. `"CLK"` for clockwise. The default value is `"CT_CLK"`.
 
