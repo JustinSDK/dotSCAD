@@ -12,14 +12,15 @@
 *
 **/
 
-function circle_path(radius) =
+function circle_path(radius, n) =
     let(
         _frags = $fn > 0 ? 
             ($fn >= 3 ? $fn : 3) : 
             max(min(360 / $fa, radius * 6.28318 / $fs), 5),
-        step_a = 360 / _frags
+        step_a = 360 / _frags,
+        end_a = 360 - step_a * ((n == undef || n > _frags) ? 1 : _frags - n + 1)
     )
     [
-        for(a = [0 : step_a : 360 - step_a]) 
-            [radius * cos(a), radius * sin(a)]
+        for(a = [0 : step_a : end_a]) 
+            [radius * cos(a), radius * sin(a), 0]
     ];
