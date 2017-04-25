@@ -22,5 +22,5 @@ function circle_path(radius, n) =
     )
     [
         for(a = [0 : step_a : end_a]) 
-            [radius * cos(a), radius * sin(a), 0]
+            [radius * cos(a), radius * sin(a)]
     ];
