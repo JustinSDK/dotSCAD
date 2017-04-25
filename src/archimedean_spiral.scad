@@ -1,7 +1,7 @@
 /**
 * archimedean_spiral.scad
 *
-*  Gets all points and angles on the path of an archimedean_spiral. The distance between two  points is almost constant. 
+*  Gets all points and angles on the path of an archimedean spiral. The distance between two  points is almost constant. 
 * 
 *  It returns a vector of [[x, y], angle]. 
 *
