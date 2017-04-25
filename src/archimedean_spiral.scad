@@ -38,14 +38,6 @@ function _find_radians(b, point_distance, radians, n, count = 1) =
         count + 1) 
     );
 
-/* 
-    In polar coordinates (r, �c) Archimedean spiral can be described by the equation r = b�c where
-    �c is measured in radians. For being consistent with OpenSCAD, the function here use degrees.
-    An init_angle angle less than 180 degrees is not recommended because the function uses an 
-    approximate approach. If you really want an angle less than 180 degrees, a larger arm_distance 
-    is required. To avoid a small error value at the calculated distance between two points, you 
-    may try a smaller point_distance.
-*/
 function archimedean_spiral(arm_distance, init_angle, point_distance, num_of_points, rt_dir = "CT_CLK") =
     let(b = arm_distance / 6.28318, init_radian = init_angle *3.14159 / 180)
     [
