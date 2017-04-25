@@ -11,17 +11,6 @@
 *
 **/ 
 
-module arc(radius, angles, width, width_mode = "LINE_CROSS") {
-    w_offset = width_mode == "LINE_CROSS" ? [width / 2, -width / 2] : (
-        width_mode == "LINE_INWARD" ? [0, -width] : [width, 0]
-    );
-    
-    difference() {
-        circular_sector(radius + w_offset[0], angles);
-        circular_sector(radius + w_offset[1], angles);
-    }
-}
-
 function _rotx(pt, a) = 
     let(cosa = cos(a), sina = sin(a))
     [
