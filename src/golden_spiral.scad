@@ -33,34 +33,43 @@ function _remove_same_pts(pts1, pts2) =
         concat(pts1, [for(i = [1:len(pts2) - 1]) pts2[i]]) : 
         concat(pts1, pts2);    
 
-function _golden_spiral_from_ls_or_eql_to(from, to, point_distance ) = 
+function _golden_spiral_from_ls_or_eql_to(from, to, point_distance, rt_dir) = 
     let(
         f1 = _fast_fibonacci(from),
         f2 = _fast_fibonacci(from + 1),
         fn = floor(f1 * 6.28312 / point_distance), 
         $fn = fn + 4 - (fn % 4),
         circle_pts = circle_path(radius = f1, n = $fn / 4 + 1),
-        a_step = 360 / $fn,
-        arc_points_angles = [
-            for(i = [0:len(circle_pts) - 1])
+        len_pts = len(circle_pts),
+        a_step = 360 / $fn * rt_dir,
+        arc_points_angles = (rt_dir == 1 ? [
+            for(i = [0:len_pts - 1])
                 // to 3D points because of rotate_p
                 [[circle_pts[i][0], circle_pts[i][1], 0], a_step * i] 
-        ],
+        ] : [
+            for(i = [0:len_pts - 1]) let(idx = len_pts - i - 1)
+                // to 3D points because of rotate_p
+                [[circle_pts[idx][0], circle_pts[idx][1], 0], a_step * i] 
+        ]),
         offset = f2 - f1
     ) _remove_same_pts(
         arc_points_angles, 
         [
-            for(pt_a = _golden_spiral(from + 1, to, point_distance)) 
-                [rotate_p(pt_a[0], [0, 0, 90]) + [0, -offset, 0], pt_a[1] + 90]
-        ]
+            for(pt_a = _golden_spiral(from + 1, to, point_distance, rt_dir)) 
+                [ 
+                    rotate_p(pt_a[0], [0, 0, 90 * rt_dir]) + 
+                    (rt_dir == 1 ? [0, -offset, 0] : [-offset, 0, 0]), 
+                    pt_a[1] + 90 * rt_dir
+                ]
+        ] 
     ); 
 
-function _golden_spiral(from, to, point_distance) = 
+function _golden_spiral(from, to, point_distance, rt_dir) = 
     from <= to ? 
-        _golden_spiral_from_ls_or_eql_to(from, to, point_distance) : [];
+        _golden_spiral_from_ls_or_eql_to(from, to, point_distance, rt_dir) : [];
 
-function golden_spiral(from, to, point_distance) =    
+function golden_spiral(from, to, point_distance, rt_dir = "CT_CLK") =    
     [
-        for(pt_a = _golden_spiral(from, to, point_distance)) 
+        for(pt_a = _golden_spiral(from, to, point_distance, (rt_dir == "CT_CLK" ? 1 : -1))) 
             [[pt_a[0][0], pt_a[0][1]], pt_a[1]]  // to 2D points
     ];    
