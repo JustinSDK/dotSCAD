@@ -1,6 +1,6 @@
 # golden_spiral
 
-Gets all points and angles on the path of a golden spiral. The distance between two  points is almost constant. 
+Gets all points and angles on the path of a golden spiral based on Fibonacci numbers. The distance between two  points is almost constant. 
 
 It returns a vector of `[[x, y], angle]`. 
 
