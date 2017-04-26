@@ -6,7 +6,7 @@ Creates a 3D polyline from a list of `[x, y, z]` coordinates. As the name says, 
 
 - `points` : The list of `[x, y, z]` points of the polyline. The points are indexed from 0 to n-1.
 - `thickness` : The line thickness.
-- `$fa`, `$fs`, `$fn` : Check [the sphere module](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Primitive_Solids#sphere) for more details,.
+- `$fa`, `$fs`, `$fn` : Check [the sphere module](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Primitive_Solids#sphere) for more details.
 
 ## Examples
 
