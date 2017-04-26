@@ -6,7 +6,7 @@ Creates a box (container) from a 2D object.
 
 - `height` : The box height.
 - `shell_thickness` : The thickness between the exterior and interior.
-- `offset_mode` : `"delta"` (default) or `r`. See [offset](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Transformations#offset) for details.
+- `offset_mode` : `"delta"` (default) or `"r"`. See [offset](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Transformations#offset) for details.
 - `chamfer` : Default `false`. See [offset](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Transformations#offset) for details.
 
 ## Examples
