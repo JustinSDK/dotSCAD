@@ -22,6 +22,4 @@ module box_extrude(height, shell_thickness) {
         }    
 }
 
-box_extrude(height = 30, shell_thickness = 2) 
-    text("XD", size = 40, font = "Cooper Black");
     
