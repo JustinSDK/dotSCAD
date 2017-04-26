@@ -1,6 +1,6 @@
 # bezier_curve
 
-Given a set of control points, the bezier_curve function returns points of the Bézier path. Combined with the `polyline`, `polyline3d` or `hull_polyline3d` module defined in my library, you can create a Bézier curve.
+Given a set of control points, the `bezier_curve` function returns points of the Bézier path. Combined with the `polyline`, `polyline3d` or `hull_polyline3d` module defined in my library, you can create a Bézier curve.
 
 ## Parameters
 
