@@ -7,7 +7,7 @@ The 2D polygon should center at the origin and you have to determine the side le
 ## Parameters
 
 - `shadow_side_leng` : The side length of a square which can cover the 2D polygon.
-- `$fa`, `$fs`, `$fn` : Check [the sphere module](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Primitive_Solids#sphere for more details.
+- `$fa`, `$fs`, `$fn` : Check [the sphere module](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Primitive_Solids#sphere) for more details.
 
 
 ## Examples

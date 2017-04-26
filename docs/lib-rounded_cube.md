@@ -1,13 +1,13 @@
 # rounded_cube
 
-Creates a cube in the first octant. When center is true, the cube is centered on the origin.
+Creates a cube in the first octant. When `center` is `true`, the cube is centered on the origin.
 
 ## Parameters
 
 - `size` : Accepts a single value, cube with all sides this length. It also accepts 3 value array `[x, y, z]`, cube with dimensions `x`, `y` and `z`.
 - `corner_r` : The corner is one-eight of a sphere. The `corner_r` parameter determines the sphere radius.
 - `center` : `false` (default), 1st (positive) octant, one corner at (0,0,0). `true`, cube is centered at (0,0).
-- `$fa`, `$fs`, `$fn` : Used to control the four quadrants. Check [the circle module](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Using_the_2D_Subsystem#circle) for more details. The final fragments of a sphere will be a multiple of 4 to fit edges.
+- `$fa`, `$fs`, `$fn` : Used to control the eight quadrants. Check [the circle module](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Using_the_2D_Subsystem#circle) for more details. The final fragments of a sphere will be a multiple of 4 to fit edges.
 
 ## Examples
 

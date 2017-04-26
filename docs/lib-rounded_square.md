@@ -1,6 +1,6 @@
 # rounded_square
 
-Creates a rounded square or rectangle in the first quadrant. When center is true the square is centered on the origin.
+Creates a rounded square or rectangle in the first quadrant. When `center` is `true` the square is centered on the origin.
 
 ## Parameters
 
