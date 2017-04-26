@@ -17,7 +17,10 @@ function helix(radius, levels, level_dist,
     let(
         points = circle_path(radius),
         leng = len(points),
-        offset_z = level_dist / _frags(radius),
+        _frags = $fn > 0 ? 
+            ($fn >= 3 ? $fn : 3) : 
+            max(min(360 / $fa, radius * 6.28318 / $fs), 5),
+        offset_z = level_dist / _frags,
         v_dir = (vt_dir == "SPI_DOWN" ? -1 : 1),
         r_dir = (rt_dir == "CT_CLK" ? 1 : -1)
     ) [
