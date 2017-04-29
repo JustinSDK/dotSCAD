@@ -44,16 +44,16 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
         pts_faces1 = tri_shell_points(top_tri1);
         pts_faces2 = tri_shell_points(top_tri2);
         
-        hull() {
-            polyhedron(
+         
+        hull() polyhedron(
                 points = pts_faces1[0], 
                 faces = pts_faces1[1]
             );
-            polyhedron(
+
+        hull() polyhedron(
                 points = pts_faces2[0],
                 faces = pts_faces2[1]
             );
-        }
     }
 
     module tri_to_lines(tri1, tri2) {
