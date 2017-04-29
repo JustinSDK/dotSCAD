@@ -1,11 +1,11 @@
 # rotate_p
 
-Rotates a point `a` degrees around an arbitrary axis. The rotation is applied in the following order: `x`, `y`, `z`. 
+Rotates a point `a` degrees around an arbitrary axis. It behaves as the built-in `rotate` module
 
 ## Parameters
 
-- `point` : The point `[x, y, z]`.
-- `a` : An array `[deg_x, deg_y, deg_z]`. The same as the `a` parameter of the built-in `rotate`.
+- `point` : A 3D point `[x, y, z]` or a 2D point `[x, y]`.
+- `a` : If it's `[deg_x, deg_y, deg_z]`, the rotation is applied in the order `x`, `y`, `z`. If it's `[deg_x, deg_y]`, the rotation is applied in the order `x`, `y`.  If it's`[deg_x]`, the rotation is only applied to the `x` axis. If it's an number, the rotation is only applied to the `z` axis.
 
 ## Examples
     
