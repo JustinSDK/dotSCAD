@@ -44,7 +44,7 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
         pts_faces1 = tri_shell_points(top_tri1);
         pts_faces2 = tri_shell_points(top_tri2);
         
-         
+        // hull is for preventing from WARNING: Object may not be a valid 2-manifold
         hull() polyhedron(
                 points = pts_faces1[0], 
                 faces = pts_faces1[1]
