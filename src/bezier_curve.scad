@@ -31,21 +31,21 @@ function bezier_curve_coordinate(t, pn, n, i = 0) =
             bezier_curve_coordinate(t, pn, n, i + 1));
         
 function _bezier_curve_point(t, points) = 
-    let(n = len(points) - 1)
+    let(n = len(points) - 1) 
     [
         bezier_curve_coordinate(
             t, 
-            [points[0][0], points[1][0], points[2][0], points[3][0]], 
+            [for(p = points) p[0]], 
             n
         ),
         bezier_curve_coordinate(
             t,  
-            [points[0][1], points[1][1], points[2][1], points[3][1]], 
+            [for(p = points) p[1]], 
             n
         ),
         bezier_curve_coordinate(
             t, 
-            [points[0][2], points[1][2], points[2][2], points[3][2]], 
+            [for(p = points) p[2]], 
             n
         )
     ];
