@@ -41,6 +41,7 @@ Some modules may depend on other modules. For example, the `polyline2d` module d
 	- [hull_polyline3d](https://openhome.cc/eGossip/OpenSCAD/lib-hull_polyline3d.html)
 	- [function_grapher](https://openhome.cc/eGossip/OpenSCAD/lib-function_grapher.html)
 	- [polysections](https://openhome.cc/eGossip/OpenSCAD/lib-polysections.html)
+	- [path_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-path_extrude.html)
 	
 - Transformation
     - [along_with](https://openhome.cc/eGossip/OpenSCAD/lib-along_with.html)

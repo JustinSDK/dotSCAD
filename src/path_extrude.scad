@@ -1,8 +1,23 @@
-module path_extrude(shape_pts, points, triangles = "RADIAL") {
+/**
+* path_extrude.scad
+*
+* It extrudes a 2D shape along a path. 
+* This module is suitable for a path created by a continuous function.
+* It depends on the rotate_p function and the polysections module. 
+* Remember to include "rotate_p.scad" and "polysections.scad".
+*
+* @copyright Justin Lin, 2017
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib-path_extrude.html
+*
+**/
+
+module path_extrude(shape_pts, path_pts, triangles = "RADIAL") {
     function first_section() = 
         let(
-            p1 = points[0],
-            p2 = points[1],
+            p1 = path_pts[0],
+            p2 = path_pts[1],
             dx = p2[0] - p1[0],
             dy = p2[1] - p1[1],
             dz = p2[2] - p1[2],
@@ -30,12 +45,12 @@ module path_extrude(shape_pts, points, triangles = "RADIAL") {
         ];
     
 
-    len_pts = len(points);
+    len_path_pts = len(path_pts);
     
     function path_extrude_inner(index) =
-       index == len_pts ? [] :
+       index == len_path_pts ? [] :
            concat(
-               [section(points[index - 1], points[index])],
+               [section(path_pts[index - 1], path_pts[index])],
                path_extrude_inner(index + 1)
            );
 
