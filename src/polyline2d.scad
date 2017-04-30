@@ -13,9 +13,11 @@
 **/
 
 module polyline2d(points, width, startingStyle = "CAP_SQUARE", endingStyle = "CAP_SQUARE") {
+    leng_pts = len(points);
+
     module line_segment(index) {
         styles = index == 1 ? [startingStyle, "CAP_ROUND"] : (
-            index == len(points) - 1 ? ["CAP_BUTT", endingStyle] : [
+            index == leng_pts - 1 ? ["CAP_BUTT", endingStyle] : [
                 "CAP_BUTT", "CAP_ROUND"
             ]
         );
@@ -24,12 +26,12 @@ module polyline2d(points, width, startingStyle = "CAP_SQUARE", endingStyle = "CA
                p1Style = styles[0], p2Style = styles[1]);
     }
 
-    module polyline2d_inner(points, index) {
-        if(index < len(points)) {
+    module polyline2d_inner(index) {
+        if(index < leng_pts) {
             line_segment(index);
-            polyline2d_inner(points, index + 1);
+            polyline2d_inner(index + 1);
         } 
     }
 
-    polyline2d_inner(points, 1);
+    polyline2d_inner(1);
 }
