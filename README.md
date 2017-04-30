@@ -32,6 +32,7 @@ Some modules may depend on other modules. For example, the `polyline2d` module d
 	- [circular_sector](https://openhome.cc/eGossip/OpenSCAD/lib-circular_sector.html)
 	- [arc](https://openhome.cc/eGossip/OpenSCAD/lib-arc.html)
 	- [hexagons](https://openhome.cc/eGossip/OpenSCAD/lib-hexagons.html)
+	- [polytransversals](https://openhome.cc/eGossip/OpenSCAD/lib-polytransversals.html)
 
 - 3D
 	- [rounded_cube](https://openhome.cc/eGossip/OpenSCAD/lib-rounded_cube.html)
