@@ -12,9 +12,11 @@
 **/
 
 module polyline3d(points, thickness, startingStyle = "CAP_CIRCLE", endingStyle = "CAP_CIRCLE") {
+    leng_pts = len(points);
+    
     module line_segment(index) {
         styles = index == 1 ? [startingStyle, "CAP_BUTT"] : (
-            index == len(points) - 1 ? ["CAP_SPHERE", endingStyle] : [
+            index == leng_pts - 1 ? ["CAP_SPHERE", endingStyle] : [
                 "CAP_SPHERE", "CAP_BUTT"
             ]
         );
@@ -23,12 +25,12 @@ module polyline3d(points, thickness, startingStyle = "CAP_CIRCLE", endingStyle =
                p1Style = styles[0], p2Style = styles[1]);
     }
 
-    module polyline3d_inner(points, index) {
-        if(index < len(points)) {
+    module polyline3d_inner(index) {
+        if(index < leng_pts) {
             line_segment(index);
-            polyline3d_inner(points, index + 1);
+            polyline3d_inner(index + 1);
         }
     }
 
-    polyline3d_inner(points, 1);
+    polyline3d_inner(1);
 }
