@@ -21,7 +21,7 @@ Some modules may depend on other modules. For example, the `polyline2d` module d
 
 	polyline2d(points = [[1, 2], [-5, -4], [-5, 3], [5, 5]], width = 1);
 
-If OpenSCAD generates "WARNING: Ignoring unknown xxx function" or "WARNING: Ignoring unknown xxx module" when using one module of dotSCAD. Just try to `include <xxx.scad>`.
+If OpenSCAD generates "WARNING: Ignoring unknown xxx function" or "WARNING: Ignoring unknown xxx module" when using one module of dotSCAD. Just try to `include <xxx.scad>;`.
 
 ## Documentation
 
