@@ -43,7 +43,6 @@ If OpenSCAD generates "WARNING: Ignoring unknown xxx function" or "WARNING: Igno
 	- [hull_polyline3d](https://openhome.cc/eGossip/OpenSCAD/lib-hull_polyline3d.html)
 	- [function_grapher](https://openhome.cc/eGossip/OpenSCAD/lib-function_grapher.html)
 	- [polysections](https://openhome.cc/eGossip/OpenSCAD/lib-polysections.html)
-	- [path_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-path_extrude.html)
 	
 - Transformation
     - [along_with](https://openhome.cc/eGossip/OpenSCAD/lib-along_with.html)
@@ -69,7 +68,8 @@ If OpenSCAD generates "WARNING: Ignoring unknown xxx function" or "WARNING: Igno
     - [box_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-box_extrude.html)
 	- [ellipse_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-ellipse_extrude.html)
     - [stereographic_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-stereographic_extrude.html)
-
+	- [path_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-path_extrude.html)
+	
 - Other
     - [turtle2d](https://openhome.cc/eGossip/OpenSCAD/lib-turtle2d.html)
     - [turtle3d](https://openhome.cc/eGossip/OpenSCAD/lib-turtle3d.html)
