@@ -35,6 +35,7 @@ If OpenSCAD generates "WARNING: Ignoring unknown xxx function" or "WARNING: Igno
 	- [arc](https://openhome.cc/eGossip/OpenSCAD/lib-arc.html)
 	- [hexagons](https://openhome.cc/eGossip/OpenSCAD/lib-hexagons.html)
 	- [polytransversals](https://openhome.cc/eGossip/OpenSCAD/lib-polytransversals.html)
+	- [path_extend](https://openhome.cc/eGossip/OpenSCAD/lib-path_extend.html)
 
 - 3D
 	- [rounded_cube](https://openhome.cc/eGossip/OpenSCAD/lib-rounded_cube.html)
