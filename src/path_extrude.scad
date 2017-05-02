@@ -13,7 +13,7 @@
 *
 **/
 
-module path_extrude(shape_pts, path_pts, triangles = "RADIAL") {
+module path_extrude(shape_pts, path_pts, triangles = "RADIAL", scale = 1.0) {
     function first_section() = 
         let(
             p1 = path_pts[0],
@@ -28,9 +28,11 @@ module path_extrude(shape_pts, path_pts, triangles = "RADIAL") {
             for(p = shape_pts) 
                 rotate_p(p, [0, ay, az]) + p1
         ];
-    
 
-    function section(p1, p2) = 
+    len_path_pts = len(path_pts);  
+    scale_step = (scale - 1) / (len_path_pts - 1);
+
+    function section(p1, p2, i) = 
         let(
             dx = p2[0] - p1[0],
             dy = p2[1] - p1[1],
@@ -41,16 +43,16 @@ module path_extrude(shape_pts, path_pts, triangles = "RADIAL") {
         )
         [
             for(p = shape_pts) 
-                rotate_p(p + [0, 0, length], [0, ay, az]) + p1
+                rotate_p(p * (1 + scale_step * i) + [0, 0, length], [0, ay, az]) + p1
         ];
     
 
-    len_path_pts = len(path_pts);
+    
     
     function path_extrude_inner(index) =
        index == len_path_pts ? [] :
            concat(
-               [section(path_pts[index - 1], path_pts[index])],
+               [section(path_pts[index - 1], path_pts[index],  index)],
                path_extrude_inner(index + 1)
            );
 
