@@ -13,7 +13,7 @@
 *
 **/
 
-module path_extend(stroke_pts, path_pts) {
+module path_extend(stroke_pts, path_pts, scale = 1.0) {
     function length(p1, p2) = 
         let(
             x1 = p1[0],
@@ -32,6 +32,10 @@ module path_extend(stroke_pts, path_pts) {
     
     leng_path_pts = len(path_pts);
 
+    scale_step = (scale - 1) / (leng_path_pts - 1);
+
+    echo(scale_step);
+
     function first_stroke() =
         let(
             p1 = path_pts[0],
@@ -43,20 +47,20 @@ module path_extend(stroke_pts, path_pts) {
                 rotate_p(p, a) + p1
         ];    
     
-    function stroke(p1, p2) =
+    function stroke(p1, p2, i) =
         let(
             leng = length(p1, p2),
             a = az(p1, p2)
         )
         [
             for(p = stroke_pts)
-                rotate_p(p + [0, leng], a) + p1
+                rotate_p(p * (1 + scale_step * i) + [0, leng], a) + p1
         ];
         
     function path_extend_inner(index) =
         index == leng_path_pts ? [] :
             concat(
-               [stroke(path_pts[index - 1], path_pts[index])],
+               [stroke(path_pts[index - 1], path_pts[index], index)],
                path_extend_inner(index + 1)
            );
     
