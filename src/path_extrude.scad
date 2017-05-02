@@ -13,7 +13,7 @@
 *
 **/
 
-module path_extrude(shape_pts, path_pts, triangles = "RADIAL", twist = 0, scale = 1.0) {
+module path_extrude(shape_pts, path_pts, triangles = "RADIAL", twist = 0, scale = [1.0, 1.0]) {
     function first_section() = 
         let(
             p1 = path_pts[0],
@@ -29,9 +29,16 @@ module path_extrude(shape_pts, path_pts, triangles = "RADIAL", twist = 0, scale 
                 rotate_p(p, [0, ay, az]) + p1
         ];
 
-    len_path_pts = len(path_pts);  
-    scale_step = (scale - 1) / (len_path_pts - 1);
-    twist_step = twist / (len_path_pts - 1);
+    len_path_pts = len(path_pts);    
+    len_path_pts_minus_one = len_path_pts - 1;     
+
+    scale_step_vt = len(scale) == 2 ? 
+        [(scale[0] - 1) / len_path_pts_minus_one, (scale[1] - 1) / len_path_pts_minus_one] :
+        [(scale - 1) / len_path_pts_minus_one, (scale - 1) / len_path_pts_minus_one];
+
+    scale_step_x = scale_step_vt[0];
+    scale_step_y = scale_step_vt[1];
+    twist_step = twist / len_path_pts_minus_one;
 
     function section(p1, p2, i) = 
         let(
@@ -44,11 +51,11 @@ module path_extrude(shape_pts, path_pts, triangles = "RADIAL", twist = 0, scale 
         )
         [
             for(p = shape_pts) 
+                let(scaled_p = [p[0] * (1 + scale_step_x * i), p[1] * (1 + scale_step_y * i), p[2]])
                 rotate_p(
-                     rotate_p(p * (1 + scale_step * i), twist_step * i) + [0, 0, length], 
+                     rotate_p(scaled_p, twist_step * i) + [0, 0, length], 
                      [0, ay, az]
                 ) + p1
-                //rotate_p(p * (1 + scale_step * i) + [0, 0, length], [0, ay, az]) + p1
         ];
     
 
