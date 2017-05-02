@@ -12,6 +12,7 @@ When using this module, you should use points to represent the 2D shape. You nee
 - `path_pts` : A list of points represent the path.
 - `triangles` : `"RADIAL"` (default), `"HOLLOW"` or user-defined indexes. See example below.
 - `twist` : The number of degrees of through which the shape is extruded.
+- `scale` : Scales the 2D shape by this value over the length of the extrusion. Scale can be a scalar or a vector.
 
 ## Examples
 
