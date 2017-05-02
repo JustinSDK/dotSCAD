@@ -10,6 +10,7 @@ When using this module, you should use points to represent the 2D stroke.
 
 - `stroke_pts` : A list of points represent a stroke. See the example below.
 - `path_pts` : A list of points represent the path.
+- `scale` : Scales the 2D shape by this value over the length of the extrusion.
 
 ## Examples
 
