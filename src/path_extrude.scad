@@ -13,7 +13,7 @@
 *
 **/
 
-module path_extrude(shape_pts, path_pts, triangles = "RADIAL", twist = 0, scale = [1.0, 1.0]) {
+module path_extrude(shape_pts, path_pts, triangles = "RADIAL", twist = 0, scale = 1.0) {
     function first_section() = 
         let(
             p1 = path_pts[0],
