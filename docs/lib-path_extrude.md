@@ -11,6 +11,7 @@ When using this module, you should use points to represent the 2D shape. You nee
 - `shape_pts` : A list of points represent a shape. See the example below.
 - `path_pts` : A list of points represent the path.
 - `triangles` : `"RADIAL"` (default), `"HOLLOW"` or user-defined indexes. See example below.
+- `twist` : The number of degrees of through which the shape is extruded.
 
 ## Examples
 
