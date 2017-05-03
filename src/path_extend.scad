@@ -13,7 +13,7 @@
 *
 **/
 
-module path_extend(stroke_pts, path_pts, scale = 1.0, round_robin = false) {
+module path_extend(stroke_pts, path_pts, scale = 1.0, closed = false) {
     function length(p1, p2) = 
         let(
             x1 = p1[0],
@@ -62,7 +62,7 @@ module path_extend(stroke_pts, path_pts, scale = 1.0, round_robin = false) {
                path_extend_inner(index + 1)
            );
 
-    if(round_robin && path_pts[0] == path_pts[leng_path_pts - 1]) {
+    if(closed && path_pts[0] == path_pts[leng_path_pts - 1]) {
         strokes = path_extend_inner(1);
         polytransversals(
             concat(strokes, [strokes[0]])
