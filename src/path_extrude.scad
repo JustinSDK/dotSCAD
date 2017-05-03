@@ -17,6 +17,17 @@ module path_extrude(shape_pts, path_pts, triangles = "RADIAL", twist = 0, scale 
     
     s_pts = len(shape_pts[0]) == 3 ? shape_pts : [for(p = shape_pts) [p[0], p[1], 0]];
 
+    len_path_pts = len(path_pts);    
+    len_path_pts_minus_one = len_path_pts - 1;     
+
+    scale_step_vt = len(scale) == 2 ? 
+        [(scale[0] - 1) / len_path_pts_minus_one, (scale[1] - 1) / len_path_pts_minus_one] :
+        [(scale - 1) / len_path_pts_minus_one, (scale - 1) / len_path_pts_minus_one];
+
+    scale_step_x = scale_step_vt[0];
+    scale_step_y = scale_step_vt[1];
+    twist_step = twist / len_path_pts_minus_one;
+
     function first_section() = 
         let(
             p1 = path_pts[0],
@@ -31,17 +42,6 @@ module path_extrude(shape_pts, path_pts, triangles = "RADIAL", twist = 0, scale 
             for(p = s_pts) 
                 rotate_p(p, [0, ay, az]) + p1
         ];
-
-    len_path_pts = len(path_pts);    
-    len_path_pts_minus_one = len_path_pts - 1;     
-
-    scale_step_vt = len(scale) == 2 ? 
-        [(scale[0] - 1) / len_path_pts_minus_one, (scale[1] - 1) / len_path_pts_minus_one] :
-        [(scale - 1) / len_path_pts_minus_one, (scale - 1) / len_path_pts_minus_one];
-
-    scale_step_x = scale_step_vt[0];
-    scale_step_y = scale_step_vt[1];
-    twist_step = twist / len_path_pts_minus_one;
 
     function section(p1, p2, i) = 
         let(
@@ -61,9 +61,6 @@ module path_extrude(shape_pts, path_pts, triangles = "RADIAL", twist = 0, scale 
                 ) + p1
         ];
     
-
-    
-    
     function path_extrude_inner(index) =
        index == len_path_pts ? [] :
            concat(
@@ -71,8 +68,12 @@ module path_extrude(shape_pts, path_pts, triangles = "RADIAL", twist = 0, scale 
                path_extrude_inner(index + 1)
            );
 
-    polysections(
-        concat([first_section()], path_extrude_inner(1)),
-        triangles = triangles
-    );    
+    if(path_pts[0] == path_pts[len_path_pts_minus_one]) {
+   
+    } else {
+        polysections(
+            concat([first_section()], path_extrude_inner(1)),
+            triangles = triangles
+        ); 
+    }
 }
