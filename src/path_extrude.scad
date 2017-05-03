@@ -28,6 +28,9 @@ module path_extrude(shape_pts, path_pts, triangles = "RADIAL", twist = 0, scale 
     scale_step_y = scale_step_vt[1];
     twist_step = twist / len_path_pts_minus_one;
 
+    function to3d(pts) = 
+        len(pts[0]) == 3 ? pts : [for(p = pts) [p[0], p[1], 0]];
+
     function first_section() = 
         let(
             p1 = path_pts[0],
