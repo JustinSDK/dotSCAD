@@ -11,6 +11,7 @@ When using this module, you should use points to represent the 2D stroke.
 - `stroke_pts` : A list of points represent a stroke. See the example below.
 - `path_pts` : A list of points represent the path.
 - `scale` : Scales the 2D shape by this value over the length of the extrusion.
+- `round_robin` : If the first point and the last point of `path_pts` has the same coordinate, setting `round_robin` to `true` will connect them automatically.
 
 ## Examples
 
