@@ -13,8 +13,8 @@
 *
 **/
 
-module path_extrude(shape_pts, path_pts, triangles = "RADIAL", twist = 0, scale = 1.0) {
-    
+module path_extrude(shape_pts, path_pts, triangles = "RADIAL", twist = 0, scale = 1.0, round_robin = false) {
+
     s_pts = to3d(shape_pts);
     pth_pts = to3d(path_pts);
 
@@ -72,8 +72,13 @@ module path_extrude(shape_pts, path_pts, triangles = "RADIAL", twist = 0, scale 
                path_extrude_inner(index + 1)
            );
 
-    if(pth_pts[0] == pth_pts[len_path_pts_minus_one]) {
-   
+    if(round_robin && pth_pts[0] == pth_pts[len_path_pts_minus_one]) {
+        // round-robin
+        sections = path_extrude_inner(1);
+        polysections(
+            concat(sections, [sections[0]]),
+            triangles = triangles
+        );   
     } else {
         polysections(
             concat([first_section()], path_extrude_inner(1)),
