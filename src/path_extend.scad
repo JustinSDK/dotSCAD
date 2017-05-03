@@ -34,8 +34,6 @@ module path_extend(stroke_pts, path_pts, scale = 1.0, round_robin = false) {
 
     scale_step = (scale - 1) / (leng_path_pts - 1);
 
-    echo(scale_step);
-
     function first_stroke() =
         let(
             p1 = path_pts[0],
@@ -63,8 +61,12 @@ module path_extend(stroke_pts, path_pts, scale = 1.0, round_robin = false) {
                [stroke(path_pts[index - 1], path_pts[index], index)],
                path_extend_inner(index + 1)
            );
-    if(round_robin && path_pts[0] == path_pts[leng_path_pts - 1]) {
 
+    if(round_robin && path_pts[0] == path_pts[leng_path_pts - 1]) {
+        strokes = path_extend_inner(1);
+        polytransversals(
+            concat(strokes, [strokes[0]])
+        );
     } else {
         polytransversals(
             concat([first_stroke()], path_extend_inner(1))
