@@ -11,16 +11,25 @@
 *
 **/ 
 
-module along_with(points) {
-    if($children == 1) {
-        for(i = [0:len(points) - 1]) {
-            translate(points[i]) 
+module along_with(points, angles) {
+    module rotOrNot(i) {
+        if(angles == undef) {
+            children(0);
+        } else {
+            rotate(angles[i]) 
                 children(0);
+        }        
+    }
+
+    if($children == 1) { 
+        for(i = [0:len(points) - 1]) {
+            translate(points[i])  
+                rotOrNot(i) children(0);
         }
     } else {
         for(i = [0:min(len(points), $children) - 1]) {
             translate(points[i]) 
-                children(i);
+                rotOrNot(i) children(i);
         }
     }
 }
