@@ -5,6 +5,7 @@ Puts children along the given path. If there's only one child, it will put the c
 ## Parameters
 
 - `points` : The points along the path. 
+- `angles` : If it's given, rotate before translate each child.
 
 ## Examples
 
@@ -40,3 +41,23 @@ Puts children along the given path. If there's only one child, it will put the c
 
 ![along_with](images/lib-along_with-2.JPG)
 
+	include <along_with.scad>;
+	include <circle_path.scad>;
+	include <rotate_p.scad>;
+	include <golden_spiral.scad>;
+
+	pts_angles = golden_spiral(
+		from = 5, 
+		to = 11, 
+		point_distance = 4
+	);
+
+	points = [for(p_a = pts_angles) p_a[0]];
+	angles = [for(p_a = pts_angles) p_a[1]];
+
+	along_with(points, angles)
+		rotate([90, 0, 0]) 
+			linear_extrude(1, center = true) 
+				text("A", valign = "center", halign = "center");
+
+![along_with](images/lib-along_with-3.JPG)
