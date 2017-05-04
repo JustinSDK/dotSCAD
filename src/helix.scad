@@ -13,7 +13,7 @@
 **/ 
 
 function helix(radius, levels, level_dist, 
-                         vt_dir = "SPI_DOWN", rt_dir = "CT_CLK") = 
+               vt_dir = "SPI_DOWN", rt_dir = "CT_CLK") = 
     let(
         points = circle_path(radius),
         leng = len(points),
