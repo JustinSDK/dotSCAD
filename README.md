@@ -71,6 +71,7 @@ If OpenSCAD generates "WARNING: Ignoring unknown xxx function" or "WARNING: Igno
 	- [ellipse_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-ellipse_extrude.html)
     - [stereographic_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-stereographic_extrude.html)
 	- [path_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-path_extrude.html)
+	- [ring_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-ring_extrude.html)
 	
 - Other
     - [turtle2d](https://openhome.cc/eGossip/OpenSCAD/lib-turtle2d.html)
