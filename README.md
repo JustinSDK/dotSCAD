@@ -55,6 +55,7 @@ If OpenSCAD generates "WARNING: Ignoring unknown xxx function" or "WARNING: Igno
 	- [sub_str](https://openhome.cc/eGossip/OpenSCAD/lib-sub_str.html)
 	- [split_str](https://openhome.cc/eGossip/OpenSCAD/lib-split_str.html)
 	- [parse_number](https://openhome.cc/eGossip/OpenSCAD/lib-parse_number.html)
+	- [cross_sections](https://openhome.cc/eGossip/OpenSCAD/lib-cross_sections.html)
 	
 - Path
     - [circle_path](https://openhome.cc/eGossip/OpenSCAD/lib-circle_path.html)
