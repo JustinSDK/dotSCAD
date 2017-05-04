@@ -68,7 +68,7 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
     - [archimedean_spiral](https://openhome.cc/eGossip/OpenSCAD/lib-archimedean_spiral.html)
     - [sphere_spiral](https://openhome.cc/eGossip/OpenSCAD/lib-sphere_spiral.html)
 
-- Extrude
+- Extrusion
     - [box_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-box_extrude.html)
 	- [ellipse_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-ellipse_extrude.html)
     - [stereographic_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-stereographic_extrude.html)
