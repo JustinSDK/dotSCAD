@@ -45,3 +45,27 @@ Dependencies: `circle_path`, `rotate_p`, `golden_spiral.scad`, `cross_sections`,
 
 ![golden_spiral_extrude](images/lib-golden_spiral_extrude-1.JPG)
 
+include <circle_path.scad>;
+	include <rotate_p.scad>;
+	include <golden_spiral.scad>;
+	include <cross_sections.scad>;
+	include <polysections.scad>;
+	include <golden_spiral_extrude.scad>;
+
+	$fn = 12;
+
+	shape_pts = concat(
+		circle_path(radius = 3),
+		circle_path(radius = 2)
+	);
+
+	golden_spiral_extrude(
+		shape_pts, 
+		from = 5, 
+		to = 10, 
+		point_distance = 1,
+		scale = 10,
+		triangles = "HOLLOW"
+	);
+
+![golden_spiral_extrude](images/lib-golden_spiral_extrude-2.JPG)
