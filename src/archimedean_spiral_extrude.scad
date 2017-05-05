@@ -1,0 +1,33 @@
+/**
+* archimedean_spiral_extrude.scad
+*
+* Extrudes a 2D shape along the path of a archimedean spiral.
+*
+* @copyright Justin Lin, 2017
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib-archimedean_spiral_extrude.html
+*
+**/
+
+module archimedean_spiral_extrude(shape_pts, arm_distance, init_angle, point_distance, num_of_points, 
+                                  rt_dir = "CT_CLK", twist = 0, scale = 1.0, triangles = "RADIAL") {
+    points_angles = archimedean_spiral(
+        arm_distance = arm_distance,  
+        init_angle = init_angle, 
+        point_distance = point_distance,
+        num_of_points = num_of_points,
+        rt_dir = rt_dir
+    ); 
+
+    points = [for(pa = points_angles) pa[0]];
+    angles = [
+        for(pa = points_angles) 
+             [90, 0, pa[1]]
+    ];
+
+    polysections(
+        cross_sections(shape_pts, points, angles, twist, scale),
+        triangles = triangles
+    ); 
+}   
