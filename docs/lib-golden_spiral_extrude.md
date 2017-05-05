@@ -4,7 +4,7 @@ Extrudes a 2D shape along the path of a golden spiral.
 
 When using this module, you should use points to represent the 2D shape. You need to provide indexes of triangles, too. This module provides two prepared triangles indexes. One is `"RADIAL"`. See [polysections](https://openhome.cc/eGossip/OpenSCAD/lib-polysections.html) for details.
 
-Dependencies: `circle_path`, `rotate_p`, `golden_spiral.scad`, `cross_sections`, `polysections`.
+Dependencies: `circle_path`, `rotate_p`, `golden_spiral`, `cross_sections`, `polysections`.
 
 ## Parameters
 
