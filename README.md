@@ -76,6 +76,7 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 	- [ring_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-ring_extrude.html)
 	- [helix_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-helix_extrude.html)
 	- [golden_spiral_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-golden_spiral_extrude.html)
+	- [archimedean_spiral_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-archimedean_spiral_extrude.html)
 	
 - Other
     - [turtle2d](https://openhome.cc/eGossip/OpenSCAD/lib-turtle2d.html)
