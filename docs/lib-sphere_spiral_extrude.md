@@ -47,7 +47,6 @@ Dependencies: `rotate_p`, `sphere_spiral`, `cross_sections`, `polysections`.
 
 	points_triangles = shape_pentagram(2);
 
-
 	sphere_spiral_extrude(
 		shape_pts = points_triangles[0],
 		radius = 40, 
