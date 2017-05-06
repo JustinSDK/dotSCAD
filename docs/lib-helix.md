@@ -4,7 +4,7 @@ Gets all points on the path of a spiral around a cylinder. Its `$fa`, `$fs` and 
 
 ## Parameters
 
-- `radius` : The radius of the cylinder. It also accepts a vector `[r1, r2]`. `r1` is the bottom radius and `r2` the top radius of a cone.
+- `radius` : The radius of the cylinder. It also accepts a vector `[r1, r2]`. `r1` is the bottom radius and `r2` is the top radius of a cone.
 - `levels` : The level count is performed every 360 degrees. 
 - `level_dist` : The distance between two vertial points.
 - `vt_dir` : `"SPI_DOWN"` for spiraling down. `"SPI_UP"` for spiraling up. The default value is `"SPI_DOWN"`.

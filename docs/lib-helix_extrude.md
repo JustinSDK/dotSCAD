@@ -11,7 +11,7 @@ Dependencies: `helix`, `rotate_p.scad`, `cross_sections`, `polysections`.
 ## Parameters
 
 - `shape_pts` : A list of points represent a shape. See the example below.
-- `radius` : The radius of the cylinder. The radius of the cylinder. It also accepts a vector `[r1, r2]`. `r1` is the bottom radius and `r2` the top radius of a cone.
+- `radius` : The radius of the cylinder. The radius of the cylinder. It also accepts a vector `[r1, r2]`. `r1` is the bottom radius and `r2` is the top radius of a cone.
 - `levels` : The level count is performed every 360 degrees. 
 - `level_dist` : The distance between two vertial points.
 - `vt_dir` : `"SPI_DOWN"` for spiraling down. `"SPI_UP"` for spiraling up. The default value is `"SPI_DOWN"`.
