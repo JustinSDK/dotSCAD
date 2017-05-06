@@ -6,12 +6,12 @@ When using this module, you should use points to represent the 2D shape. You nee
 
 Its `$fa`, `$fs` and `$fn` parameters are consistent with the `cylinder` module. 
 
-Dependencies: `circle_path`, `helix`, `rotate_p.scad`, `cross_sections`, `polysections`.
+Dependencies: `helix`, `rotate_p.scad`, `cross_sections`, `polysections`.
 
 ## Parameters
 
 - `shape_pts` : A list of points represent a shape. See the example below.
-- `radius` : The radius of the cylinder.
+- `radius` : The radius of the cylinder. The radius of the cylinder. It also accepts a vector `[r1, r2]`. `r1` is the bottom radius and `r2` the top radius of a cone.
 - `levels` : The level count is performed every 360 degrees. 
 - `level_dist` : The distance between two vertial points.
 - `vt_dir` : `"SPI_DOWN"` for spiraling down. `"SPI_UP"` for spiraling up. The default value is `"SPI_DOWN"`.
@@ -23,7 +23,6 @@ Dependencies: `circle_path`, `helix`, `rotate_p.scad`, `cross_sections`, `polyse
 
 ## Examples
     
-	include <circle_path.scad>;
 	include <helix.scad>;
 	include <rotate_p.scad>;
 	include <cross_sections.scad>;
@@ -53,4 +52,41 @@ Dependencies: `circle_path`, `helix`, `rotate_p.scad`, `cross_sections`, `polyse
 	);
 
 ![helix_extrude](images/lib-helix_extrude-1.JPG)
+
+	include <helix.scad>;
+	include <rotate_p.scad>;
+	include <cross_sections.scad>;
+	include <polysections.scad>;
+	include <helix_extrude.scad>;
+
+    r1 = 40;
+	r2 = 20;
+	levels = 5;
+	level_dist = 10;
+
+	shape_pts = [
+		[0, -2], [0, 2],
+		[1, 2], [1, 0],
+		[9, 0], [9, 2],
+		[10, 2], [10, -2]
+	];
+
+	helix_extrude(shape_pts, 
+		radius = [r1, r2], 
+		levels = levels, 
+		level_dist = level_dist,
+		vt_dir = "SPI_UP",
+		triangles = [
+			[0, 1, 2],
+			[0, 2, 3],
+			[0, 3, 4],
+			[0, 4, 7],
+			[4, 5, 6],
+			[4, 6, 7]
+		]
+	);
+
+	%cylinder(h = levels * level_dist, r1 = r1, r2 = r2);
+
+![helix_extrude](images/lib-helix_extrude-2.JPG)
 
