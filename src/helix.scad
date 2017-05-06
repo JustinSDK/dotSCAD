@@ -12,33 +12,25 @@
 *
 **/ 
 
-function helix(radius, levels, level_dist, 
-               vt_dir = "SPI_DOWN", rt_dir = "CT_CLK") = 
+function helix(radius, levels, level_dist, vt_dir = "SPI_DOWN", rt_dir = "CT_CLK") = 
     let(
-        points = circle_path(radius),
-        leng = len(points),
+        r1 = len(radius) == undef ? radius : radius[0],
+        r2 = len(radius) == undef ? radius : radius[1],
         _frags = $fn > 0 ? 
             ($fn >= 3 ? $fn : 3) : 
-            max(min(360 / $fa, radius * 6.28318 / $fs), 5),
-        offset_z = level_dist / _frags,
-        v_dir = (vt_dir == "SPI_DOWN" ? -1 : 1),
-        r_dir = (rt_dir == "CT_CLK" ? 1 : -1)
-    ) [
-        for(l = [0:levels - 1])
-            for(i = [0:leng - 1])
-                r_dir == 1 ? [     // COUNT_CLOCKWISE
-                    points[i][0], 
-                    points[i][1],
-                    v_dir * (l * level_dist + offset_z * i)
-                ] : (             //  CLOCKWISE
-                        i == 0 ? [
-                            points[0][0],
-                            points[0][1],
-                            v_dir * l * level_dist
-                        ] : [
-                            points[leng - i][0], 
-                            points[leng - i][1], 
-                            v_dir * (l * level_dist + offset_z * i)
-                        ]
-                )
+            max(min(360 / $fa, r1 * 6.28318 / $fs), 5),
+        h = level_dist * levels,
+        vt_d = vt_dir == "SPI_DOWN" ? 1 : -1,
+        rt_d = rt_dir == "CT_CLK" ? 1 : -1,
+        r_diff = (r1 - r2) * vt_d,
+        h_step = level_dist / _frags * vt_d,
+        r_step = r_diff / (levels * _frags),
+        a_step = 360 / _frags * rt_d,
+        begin_r = vt_dir == "SPI_DOWN" ? r2 : r1,
+        begin_h = vt_dir == "SPI_DOWN" ? h : 0
+    )
+    [
+        for(i = [0:_frags * levels]) 
+            let(r = begin_r + r_step * i, a = a_step * i)
+                [r * cos(a), r * sin(a), begin_h - h_step * i]
     ];
