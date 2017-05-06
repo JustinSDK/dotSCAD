@@ -13,15 +13,21 @@
 module helix_extrude(shape_pts, radius, levels, level_dist, 
                      vt_dir = "SPI_DOWN", rt_dir = "CT_CLK", 
                      twist = 0, scale = 1.0, triangles = "RADIAL") {
+
+    r1 = len(radius) == undef ? radius : radius[0];
+    r2 = len(radius) == undef ? radius : radius[1];
+    
+    init_r = vt_dir == "SPI_DOWN" ? r2 : r1;
+
     frags = $fn > 0 ? 
             ($fn >= 3 ? $fn : 3) : 
-            max(min(360 / $fa, radius * 6.28318 / $fs), 5);
+            max(min(360 / $fa, init_r * 6.28318 / $fs), 5);
 
     v_dir = vt_dir == "SPI_UP" ? 1 : -1;
     r_dir = rt_dir == "CT_CLK" ? 1 : -1;
             
     angle_step = 360 / frags * r_dir;
-    initial_angle = atan2(level_dist / frags, 6.28318 * radius / frags) * v_dir * r_dir;
+    initial_angle = atan2(level_dist / frags, 6.28318 * init_r / frags) * v_dir * r_dir;
 
     path_points = helix(
         radius = radius, 
