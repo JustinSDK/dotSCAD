@@ -41,6 +41,7 @@ Dependencies: `circle_path`, `helix`, `rotate_p.scad`, `cross_sections`, `polyse
 		radius = 40, 
 		levels = 5, 
 		level_dist = 10,
+		vt_dir = "SPI_UP",
 		triangles = [
 			[0, 1, 2],
 			[0, 2, 3],
