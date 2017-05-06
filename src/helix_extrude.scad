@@ -11,7 +11,7 @@
 **/
 
 module helix_extrude(shape_pts, radius, levels, level_dist, 
-                     vt_dir = "SPI_UP", rt_dir = "CT_CLK", 
+                     vt_dir = "SPI_DOWN", rt_dir = "CT_CLK", 
                      twist = 0, scale = 1.0, triangles = "RADIAL") {
     frags = $fn > 0 ? 
             ($fn >= 3 ? $fn : 3) : 
