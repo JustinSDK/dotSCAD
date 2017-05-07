@@ -1,0 +1,1 @@
+function __is_vector(value) = !(value >= "") && len(value) != undef;

@@ -11,12 +11,14 @@
 *
 **/
 
+include <__private__/__is_vector.scad>;
 include <__private__/__frags.scad>;
 
 module rounded_cube(size, corner_r, center = false) {
-    x = len(size) == undef ? size : size[0];
-    y = len(size) == undef ? size : size[1];
-    z = len(size) == undef ? size : size[2];
+    is_vt = __is_vector(size);
+    x = is_vt ? size[0] : size;
+    y = is_vt ? size[1] : size;
+    z = is_vt ? size[2] : size;
 
     frags = __frags(corner_r);
 

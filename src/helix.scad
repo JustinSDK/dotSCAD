@@ -12,12 +12,14 @@
 *
 **/ 
 
+include <__private__/__is_vector.scad>;
 include <__private__/__frags.scad>;
 
 function helix(radius, levels, level_dist, vt_dir = "SPI_DOWN", rt_dir = "CT_CLK") = 
     let(
-        r1 = len(radius) == undef ? radius : radius[0],
-        r2 = len(radius) == undef ? radius : radius[1],
+        is_vt = __is_vector(radius),
+        r1 = is_vt ? radius[0] : radius,
+        r2 = is_vt ? radius[1] : radius,
         init_r = vt_dir == "SPI_DOWN" ? r2 : r1,
         _frags = __frags(init_r),
         h = level_dist * levels,

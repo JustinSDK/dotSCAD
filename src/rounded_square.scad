@@ -11,6 +11,7 @@
 *
 **/
 
+include <__private__/__is_vector.scad>;
 include <__private__/__frags.scad>;
 
 module rounded_square(size, corner_r, center = false) {
@@ -21,8 +22,9 @@ module rounded_square(size, corner_r, center = false) {
 
     step_a = 360 / corner_frags;
  
-    x = len(size) == undef ? size : size[0];
-    y = len(size) == undef ? size : size[1];
+    is_vt = __is_vector(size);
+    x = is_vt ? size[0] : size;
+    y = is_vt ? size[1] : size;
 
     half_x = x / 2;
     half_y = y / 2; 

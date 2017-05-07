@@ -13,6 +13,8 @@
 *
 **/
 
+include <__private__/__is_vector.scad>;
+
 module path_extrude(shape_pts, path_pts, triangles = "RADIAL", twist = 0, scale = 1.0, closed = false) {
 
     s_pts = to3d(shape_pts);
@@ -21,7 +23,7 @@ module path_extrude(shape_pts, path_pts, triangles = "RADIAL", twist = 0, scale 
     len_path_pts = len(pth_pts);    
     len_path_pts_minus_one = len_path_pts - 1;     
 
-    scale_step_vt = len(scale) == 2 ? 
+    scale_step_vt = __is_vector(scale) ? 
         [(scale[0] - 1) / len_path_pts_minus_one, (scale[1] - 1) / len_path_pts_minus_one] :
         [(scale - 1) / len_path_pts_minus_one, (scale - 1) / len_path_pts_minus_one];
 
