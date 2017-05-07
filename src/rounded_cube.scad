@@ -11,14 +11,14 @@
 *
 **/
 
+include <__private__/__frags.scad>;
+
 module rounded_cube(size, corner_r, center = false) {
     x = len(size) == undef ? size : size[0];
     y = len(size) == undef ? size : size[1];
     z = len(size) == undef ? size : size[2];
 
-    frags = $fn > 0 ? 
-        ($fn >= 3 ? $fn : 3) : 
-        max(min(360 / $fa, corner_r * 6.28318 / $fs), 5);
+    frags = __frags(corner_r);
 
     remain = frags % 4;
     corner_frags = (remain / 4) > 0.5 ? frags - remain + 4 : frags - remain;

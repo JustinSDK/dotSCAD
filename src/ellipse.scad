@@ -11,12 +11,10 @@
 *
 **/
 
-module ellipse(axes) {
-    frags = $fn > 0 ? 
-        ($fn >= 3 ? $fn : 3) : 
-        max(min(360 / $fa, axes[0] * 6.28318 / $fs), 5);    
-    
-    step_a = 360 / frags;
+include <__private__/__frags.scad>;
+
+module ellipse(axes) { 
+    step_a = 360 / __frags(axes[0]);
     polygon(
         [
             for(a = [0:step_a:360 - step_a]) 

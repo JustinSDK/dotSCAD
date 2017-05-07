@@ -12,13 +12,14 @@
 *
 **/ 
 
+include <__private__/__frags.scad>;
+
 function helix(radius, levels, level_dist, vt_dir = "SPI_DOWN", rt_dir = "CT_CLK") = 
     let(
         r1 = len(radius) == undef ? radius : radius[0],
         r2 = len(radius) == undef ? radius : radius[1],
-        _frags = $fn > 0 ? 
-            ($fn >= 3 ? $fn : 3) : 
-            max(min(360 / $fa, r1 * 6.28318 / $fs), 5),
+        init_r = vt_dir == "SPI_DOWN" ? r2 : r1,
+        _frags = __frags(init_r),
         h = level_dist * levels,
         vt_d = vt_dir == "SPI_DOWN" ? 1 : -1,
         rt_d = rt_dir == "CT_CLK" ? 1 : -1,

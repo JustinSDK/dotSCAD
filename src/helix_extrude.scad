@@ -10,6 +10,8 @@
 *
 **/
 
+include <__private__/__frags.scad>;
+
 module helix_extrude(shape_pts, radius, levels, level_dist, 
                      vt_dir = "SPI_DOWN", rt_dir = "CT_CLK", 
                      twist = 0, scale = 1.0, triangles = "RADIAL") {
@@ -19,9 +21,7 @@ module helix_extrude(shape_pts, radius, levels, level_dist,
     
     init_r = vt_dir == "SPI_DOWN" ? r2 : r1;
 
-    frags = $fn > 0 ? 
-            ($fn >= 3 ? $fn : 3) : 
-            max(min(360 / $fa, init_r * 6.28318 / $fs), 5);
+    frags = __frags(init_r);
 
     v_dir = vt_dir == "SPI_UP" ? 1 : -1;
     r_dir = rt_dir == "CT_CLK" ? 1 : -1;

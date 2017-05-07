@@ -12,11 +12,11 @@
 *
 **/
 
+include <__private__/__frags.scad>;
+
 function shape_square(size, corner_r = 0) = 
     let(
-        frags = $fn > 0 ? 
-            ($fn >= 3 ? $fn : 3) : 
-            max(min(360 / $fa, corner_r * 6.28318 / $fs), 5),
+        frags = __frags(corner_r),
         remain = frags % 4,
         corner_frags = (remain / 4) > 0.5 ? frags - remain + 4 : frags - remain,
         step_a = 360 / corner_frags,

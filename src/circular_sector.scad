@@ -10,12 +10,10 @@
 *
 **/
 
+include <__private__/__frags.scad>;
 
 module circular_sector(radius, angles) {
-    frags = $fn > 0 ? 
-        ($fn >= 3 ? $fn : 3) : 
-        max(min(360 / $fa, radius * 6.28318 / $fs), 5)
-    ;
+    frags = __frags(radius);
     
     r = radius / cos(180 / frags);
     step = -360 / frags; 

@@ -10,13 +10,12 @@
 *
 **/
 
+include <__private__/__frags.scad>;
+
 module line3d(p1, p2, thickness, p1Style = "CAP_CIRCLE", p2Style = "CAP_CIRCLE") {
     r = thickness / 2;
 
-    frags = $fn > 0 ? 
-        ($fn >= 3 ? $fn : 3) : 
-        max(min(360 / $fa, r * 6.28318 / $fs), 5)
-    ;
+    frags = __frags(r);
 
     remain = frags % 4;
     frags_of_4 = (remain / 4) > 0.5 ? frags - remain + 4 : frags - remain;

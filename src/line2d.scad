@@ -10,6 +10,8 @@
 *
 **/
 
+include <__private__/__frags.scad>;
+
 module line2d(p1, p2, width, p1Style = "CAP_SQUARE", p2Style =  "CAP_SQUARE") {
     half_width = 0.5 * width;    
 
@@ -27,9 +29,7 @@ module line2d(p1, p2, width, p1Style = "CAP_SQUARE", p2Style =  "CAP_SQUARE") {
         p2 + offset2, p1 + offset2
     ]);
     
-    frags = $fn > 0 ? 
-        ($fn >= 3 ? $fn : 3) : 
-        max(min(360 / $fa, half_width * 6.28318 / $fs), 5);    
+    frags = __frags(half_width);
         
     remain = frags % 4;
     end_frags = (remain / 4) > 0.5 ? frags - remain + 4 : frags - remain;
