@@ -44,12 +44,10 @@ function _golden_spiral_from_ls_or_eql_to(from, to, point_distance, rt_dir) =
         a_step = 360 / $fn * rt_dir,
         arc_points_angles = (rt_dir == 1 ? [
             for(i = [0:len_pts - 1])
-                // to 3D points because of rotate_p
-                [[circle_pts[i][0], circle_pts[i][1], 0], a_step * i] 
+                [circle_pts[i], a_step * i] 
         ] : [
             for(i = [0:len_pts - 1]) let(idx = len_pts - i - 1)
-                // to 3D points because of rotate_p
-                [[circle_pts[idx][0], circle_pts[idx][1], 0], a_step * i] 
+                [circle_pts[idx], a_step * i] 
         ]),
         offset = f2 - f1
     ) _remove_same_pts(
@@ -69,7 +67,4 @@ function _golden_spiral(from, to, point_distance, rt_dir) =
         _golden_spiral_from_ls_or_eql_to(from, to, point_distance, rt_dir) : [];
 
 function golden_spiral(from, to, point_distance, rt_dir = "CT_CLK") =    
-    [
-        for(pt_a = _golden_spiral(from, to, point_distance, (rt_dir == "CT_CLK" ? 1 : -1))) 
-            [[pt_a[0][0], pt_a[0][1]], pt_a[1]]  // to 2D points
-    ];    
+    _golden_spiral(from, to, point_distance, (rt_dir == "CT_CLK" ? 1 : -1));

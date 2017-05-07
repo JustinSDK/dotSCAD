@@ -11,8 +11,6 @@
 *
 **/ 
 
-include <line2d.scad>;
-
 function _turtle2d_turtle(x, y, angle) = [[x, y], angle];
 
 function _turtle2d_set_point(turtle, point) = [point, _turtle2d_get_angle(turtle)];

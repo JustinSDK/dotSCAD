@@ -12,6 +12,7 @@
 *
 **/
 
+include <__private__/__is_vector.scad>;
 include <__private__/__frags.scad>;
 
 function shape_square(size, corner_r = 0) = 
@@ -20,8 +21,8 @@ function shape_square(size, corner_r = 0) =
         remain = frags % 4,
         corner_frags = (remain / 4) > 0.5 ? frags - remain + 4 : frags - remain,
         step_a = 360 / corner_frags,
-        x = len(size) == undef ? size : size[0],
-        y = len(size) == undef ? size : size[1],
+        x = __is_vector(size) ? size[0] : size,
+        y = __is_vector(size) ? size[1] : size,
         half_x = x / 2,
         half_y = y / 2, 
         half_w = half_x - corner_r,

@@ -11,6 +11,9 @@
 *
 **/ 
 
+include <__private__/__to2d.scad>;
+include <__private__/__to3d.scad>;
+
 function _rotx(pt, a) = 
     let(cosa = cos(a), sina = sin(a))
     [
@@ -38,8 +41,6 @@ function _rotz(pt, a) =
 function _rotate_p_3d(point, a) =
     _rotz(_roty(_rotx(point, a[0]), a[1]), a[2]);
 
-function _to2d(p) = [p[0], p[1]];
-
 function to_avect(a) =
      len(a) == 3 ? a : (
          len(a) == 2 ? [a[0], a[1], 0] : (
@@ -51,6 +52,6 @@ function rotate_p(point, a) =
     let(angle = to_avect(a))
     len(point) == 3 ? 
         _rotate_p_3d(point, angle) :
-        _to2d(
-            _rotate_p_3d([point[0], point[1], 0], angle)
+        __to2d(
+            _rotate_p_3d(__to3d(point), angle)
         );
