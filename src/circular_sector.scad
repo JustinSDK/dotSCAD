@@ -13,20 +13,32 @@
 include <__private__/__frags.scad>;
 
 module circular_sector(radius, angles) {
+    function unit_xy(a) = [cos(a), sin(a)];  
+
     frags = __frags(radius);
     
-    r = radius / cos(180 / frags);
-    step = -360 / frags; 
+    a_step = 360 / frags;
+    
+    m = floor(angles[0] / a_step) + 1;
+    n = floor(angles[1] / a_step);
+    
+    half_a_step = a_step / 2;
+    leng = radius * cos(half_a_step);    
+    
+    function edge_r_begin(a) =
+        leng / cos(m * a_step - half_a_step - a);
 
-    points = concat([[0, 0]],
-        [for(a = [angles[0] : step : angles[1] - 360]) 
-            [r * cos(a), r * sin(a)]
+    function edge_r_end(a) =      
+        leng / cos((n + 0.5) * a_step - a);    
+    
+    points = concat(
+        [[0, 0], edge_r_begin(angles[0]) * unit_xy(angles[0])],
+        [
+            for(i = [m:n]) 
+                radius * unit_xy(a_step * i)
         ],
-        [[r * cos(angles[1]), r * sin(angles[1])]]
+        [edge_r_end(angles[1]) * unit_xy(angles[1])]
     );
 
-    difference() {
-        circle(radius);
-        polygon(points);
-    }
+    polygon(points);
 }
