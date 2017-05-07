@@ -12,7 +12,7 @@ Creates a circular sector. You can pass a 2 element vector to define the central
 
     include <circular_sector.scad>;
 
-    circular_sector(radius = 20, angles = [-50, -150]);  
+    circular_sector(radius = 20, angles = [210, 310]);   
     translate([-15, 0, 0]) circular_sector(radius = 20, angles = [45, 135]);  
     translate([15, 0, 0]) circular_sector(radius = 20, angles = [45, 135], $fn = 12);  
 
