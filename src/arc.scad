@@ -12,6 +12,8 @@
 *
 **/ 
 
+include <__private__/__frags.scad>;
+
 module arc(radius, angles, width, width_mode = "LINE_CROSS") {
 
     w_offset = width_mode == "LINE_CROSS" ? [width / 2, -width / 2] : (
