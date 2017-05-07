@@ -1,18 +1,18 @@
 /**
-* circular_sector.scad
+* pie.scad
 *
-* Creates a circular sector. You can pass a 2 element vector to define the central angle. Its $fa, $fs and $fn parameters are consistent with the circle module.
+* Creates a pie (circular sector). You can pass a 2 element vector to define the central angle. Its $fa, $fs and $fn parameters are consistent with the circle module.
 * 
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *
-* @see https://openhome.cc/eGossip/OpenSCAD/lib-circular_sector.html
+* @see https://openhome.cc/eGossip/OpenSCAD/lib-pie.html
 *
 **/
 
 include <__private__/__frags.scad>;
 
-module circular_sector(radius, angles) {
+module pie(radius, angles) {
 
     frags = __frags(radius);
     a_step = 360 / frags;
