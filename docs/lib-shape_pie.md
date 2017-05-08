@@ -13,6 +13,7 @@ Returns shape points and triangle indexes of a pie (circular sector) shape. They
 	include <shape_pie.scad>;
 	
 	shape_pts_tris = shape_pie(10, [45, 315], $fn = 24);
+    polygon(shape_pts_tris[0]);
 
 ![shape_pie](images/lib-shape_pie-1.JPG)
 
