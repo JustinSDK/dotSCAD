@@ -37,4 +37,4 @@ Returns shape points and triangle indexes of a rounded square or rectangle. They
 		triangles = shape_pts_angles[1]
 	);
 
-![along_with](images/lib-shape_square-2.JPG)
+![shape_square](images/lib-shape_square-2.JPG)
