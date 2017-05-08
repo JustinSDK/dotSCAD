@@ -16,20 +16,20 @@ Returns shape points and triangle indexes of a pie (circular sector) shape. They
 
 ![shape_pie](images/lib-shape_pie-1.JPG)
 
-include <shape_pie.scad>;
-include <helix.scad>;
-include <rotate_p.scad>;
-include <cross_sections.scad>;
-include <polysections.scad>;
-include <helix_extrude.scad>;
+    include <shape_pie.scad>;
+    include <helix.scad>;
+    include <rotate_p.scad>;
+    include <cross_sections.scad>;
+    include <polysections.scad>;
+    include <helix_extrude.scad>;
 
-shape_pts_tris = shape_pie(10, [45, 315], $fn = 8);
+    shape_pts_tris = shape_pie(10, [45, 315], $fn = 8);
 
-helix_extrude(shape_pts_tris[0], 
-    radius = 40, 
-    levels = 5, 
-    level_dist = 20,
-    triangles = shape_pts_tris[1]
-);
+    helix_extrude(shape_pts_tris[0], 
+        radius = 40, 
+        levels = 5, 
+        level_dist = 20,
+        triangles = shape_pts_tris[1]
+    );
 
 ![shape_pie](images/lib-shape_pie-2.JPG)
