@@ -13,6 +13,7 @@
 **/
 
 include <__private__/__frags.scad>;
+include <__private__/__triangles_radial.scad>;
 
 function shape_pie(radius, angles) =
     let(
@@ -32,7 +33,7 @@ function shape_pie(radius, angles) =
             ],
             [edge_r_end * [cos(angles[1]), sin(angles[1])]]
         ),
-        triangles = [for(i = [1:len(shape_pts) - 2]) [0, i, i + 1]]
+        triangles = __triangles_radial(shape_pts)
     )
     [
         shape_pts,

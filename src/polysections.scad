@@ -11,6 +11,8 @@
 *
 **/
 
+include <__private__/__triangles_radial.scad>;
+
 module polysections(sections, triangles = "RADIAL") {
     module tri_sections(tri1, tri2) {
         polyhedron(
@@ -28,14 +30,9 @@ module polysections(sections, triangles = "RADIAL") {
         i == len(vector) ? [] :
         concat(vector[i], flat(vector, i + 1));    
     
-    leng_section = len(sections[0]);
-    
-    function radial_tris() = [
-        for(i = [1:leng_section - 2]) [0, i, i + 1]
-    ];
-        
     function hollow_tris() = 
         let(
+            leng_section = len(sections[0]),
             inner_i_begin = leng_section / 2,
             pair_idxes = [for(i = [0:inner_i_begin - 1])
                 let(n = inner_i_begin + i + 1)
@@ -48,7 +45,7 @@ module polysections(sections, triangles = "RADIAL") {
            
         ) flat(pair_idxes); 
 
-    function tris() = triangles == "RADIAL" ? radial_tris() : 
+    function tris() = triangles == "RADIAL" ? __triangles_radial(sections[0]) : 
         (triangles == "HOLLOW" ? hollow_tris() : triangles);
     
     module two_sections(section1, section2) {

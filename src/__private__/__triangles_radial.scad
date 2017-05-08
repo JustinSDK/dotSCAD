@@ -1,0 +1,1 @@
+ function __triangles_radial(shape_pts) = [for(i = [1:len(shape_pts) - 2]) [0, i, i + 1]];
