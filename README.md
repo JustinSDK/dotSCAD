@@ -28,8 +28,8 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 ## Documentation
 
 - 2D
-    - [pie](https://openhome.cc/eGossip/OpenSCAD/lib-pie.html)
-	- [arc](https://openhome.cc/eGossip/OpenSCAD/lib-arc.html)
+    - [arc](https://openhome.cc/eGossip/OpenSCAD/lib-arc.html)
+	- [pie](https://openhome.cc/eGossip/OpenSCAD/lib-pie.html)
 	- [ellipse](https://openhome.cc/eGossip/OpenSCAD/lib-ellipse.html)
 	- [rounded_square](https://openhome.cc/eGossip/OpenSCAD/lib-rounded_square.html)
 	- [line2d](https://openhome.cc/eGossip/OpenSCAD/lib-line2d.html)
@@ -80,7 +80,8 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 	- [sphere_spiral_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-sphere_spiral_extrude.html)
 
 - Shape
-    - [shape_ellipse](https://openhome.cc/eGossip/OpenSCAD/lib-shape_ellipse.html)
+    - [shape_pie](https://openhome.cc/eGossip/OpenSCAD/lib-shape_pie.html)
+	- [shape_ellipse](https://openhome.cc/eGossip/OpenSCAD/lib-shape_ellipse.html)
     - [shape_square](https://openhome.cc/eGossip/OpenSCAD/lib-shape_square.html)
     - [shape_pentagram](https://openhome.cc/eGossip/OpenSCAD/lib-shape_pentagram.html)		
 	
