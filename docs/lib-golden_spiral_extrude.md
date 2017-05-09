@@ -2,7 +2,7 @@
 
 Extrudes a 2D shape along the path of a golden spiral. 
 
-When using this module, you should use points to represent the 2D shape. You need to provide indexes of triangles, too. This module provides two prepared triangles indexes. One is `"RADIAL"`. See [polysections](https://openhome.cc/eGossip/OpenSCAD/lib-polysections.html) for details.
+When using this module, you should use points to represent the 2D shape. You need to provide indexes of triangles, too. This module provides two prepared triangles indexes. See [polysections](https://openhome.cc/eGossip/OpenSCAD/lib-polysections.html) for details.
 
 Dependencies: `circle_path`, `rotate_p`, `golden_spiral`, `cross_sections`, `polysections`.
 
@@ -15,7 +15,7 @@ Dependencies: `circle_path`, `rotate_p`, `golden_spiral`, `cross_sections`, `pol
 - `rt_dir` : `"CT_CLK"` for counterclockwise. `"CLK"` for clockwise. The default value is `"CT_CLK"`.
 - `twist` : The number of degrees of through which the shape is extruded.
 - `scale` : Scales the 2D shape by this value over the length of the extrusion. Scale can be a scalar or a vector.
-- `triangles` : `"RADIAL"` (default), `"HOLLOW"` or user-defined indexes. See [polysections](https://openhome.cc/eGossip/OpenSCAD/lib-polysections.html) for details.
+- `triangles` : `"RADIAL"` (default), `"HOLLOW"`, `"TAPE"` or user-defined indexes. See [polysections](https://openhome.cc/eGossip/OpenSCAD/lib-polysections.html) for details.
 
 ## Examples
     

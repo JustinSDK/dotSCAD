@@ -4,13 +4,13 @@ It extrudes a 2D shape along a path. This module is suitable for a path created 
 
 It depends on the `rotate_p` function and the `polysections` module. Remember to include "rotate_p.scad" and "polysections.scad".
 
-When using this module, you should use points to represent the 2D shape. You need to provide indexes of triangles, too. This module provides two prepared triangles indexes. One is `"RADIAL"`. See [polysections](https://openhome.cc/eGossip/OpenSCAD/lib-polysections.html) for details.
+When using this module, you should use points to represent the 2D shape. You need to provide indexes of triangles, too. This module provides two prepared triangles indexes. See [polysections](https://openhome.cc/eGossip/OpenSCAD/lib-polysections.html) for details.
 
 ## Parameters
 
 - `shape_pts` : A list of points represent a shape. See the example below.
 - `path_pts` : A list of points represent the path.
-- `triangles` : `"RADIAL"` (default), `"HOLLOW"` or user-defined indexes. See example below.
+- `triangles` : `"RADIAL"` (default), `"HOLLOW"`, `"TAPE"` or user-defined indexes. See example below.
 - `twist` : The number of degrees of through which the shape is extruded.
 - `scale` : Scales the 2D shape by this value over the length of the extrusion. Scale can be a scalar or a vector.
 - `closed` : If the first point and the last point of `path_pts` has the same coordinate, setting `closed` to `true` will connect them automatically.

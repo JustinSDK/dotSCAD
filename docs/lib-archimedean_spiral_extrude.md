@@ -2,7 +2,7 @@
 
 Extrudes a 2D shape along the path of an archimedean spiral. 
 
-When using this module, you should use points to represent the 2D shape. You need to provide indexes of triangles, too. This module provides two prepared triangles indexes. One is `"RADIAL"`. See [polysections](https://openhome.cc/eGossip/OpenSCAD/lib-polysections.html) for details.
+When using this module, you should use points to represent the 2D shape. You need to provide indexes of triangles, too. This module provides two prepared triangles indexes. See [polysections](https://openhome.cc/eGossip/OpenSCAD/lib-polysections.html) for details.
 
 Dependencies: `rotate_p`, `archimedean_spiral`, `cross_sections`, `polysections`.
 
@@ -12,7 +12,7 @@ Dependencies: `rotate_p`, `archimedean_spiral`, `cross_sections`, `polysections`
 - `arm_distance`, `init_angle`, `point_distance`, `num_of_points` and `rt_dir` : See [archimedean_spiral](https://openhome.cc/eGossip/OpenSCAD/lib-archimedean_spiral.html) for details.
 - `twist` : The number of degrees of through which the shape is extruded.
 - `scale` : Scales the 2D shape by this value over the length of the extrusion. Scale can be a scalar or a vector.
-- `triangles` : `"RADIAL"` (default), `"HOLLOW"` or user-defined indexes. See [polysections](https://openhome.cc/eGossip/OpenSCAD/lib-polysections.html) for details.
+- `triangles` : `"RADIAL"` (default), `"HOLLOW"`, `"TAPE"` or user-defined indexes. See [polysections](https://openhome.cc/eGossip/OpenSCAD/lib-polysections.html) for details.
 
 ## Examples
     
