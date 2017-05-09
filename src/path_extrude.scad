@@ -14,9 +14,11 @@
 **/
 
 include <__private__/__is_vector.scad>;
+include <__private__/__to3d.scad>;
 
 module path_extrude(shape_pts, path_pts, triangles = "RADIAL", twist = 0, scale = 1.0, closed = false) {
-    
+    sh_pts = len(shape_pts[0]) == 3 ? shape_pts : [for(p = shape_pts) __to3d(p)];
+
     len_path_pts = len(path_pts);    
     len_path_pts_minus_one = len_path_pts - 1;     
 
@@ -39,7 +41,7 @@ module path_extrude(shape_pts, path_pts, triangles = "RADIAL", twist = 0, scale 
             az = atan2(dy, dx)
         )
         [
-            for(p = shape_pts) 
+            for(p = sh_pts) 
                 rotate_p(p, [0, ay, az]) + p1
         ];
 
@@ -53,7 +55,7 @@ module path_extrude(shape_pts, path_pts, triangles = "RADIAL", twist = 0, scale 
             az = atan2(dy, dx)
         )
         [
-            for(p = shape_pts) 
+            for(p = sh_pts) 
                 let(scaled_p = [p[0] * (1 + scale_step_x * i), p[1] * (1 + scale_step_y * i), p[2]])
                 rotate_p(
                      rotate_p(scaled_p, twist_step * i) + [0, 0, length], 
