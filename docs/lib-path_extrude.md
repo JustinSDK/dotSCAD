@@ -32,10 +32,10 @@ When using this module, you should use points to represent the 2D shape. You nee
 	p4 = [30, 50, -3];
 	
 	shape_pts = [
-	    [10, 0, 0],
-	    [15, 10, 0],
-	    [18, 9, 0],
-	    [20, 0, 0]
+	    [10, 0],
+	    [15, 10],
+	    [18, 9],
+	    [20, 0]
 	];
 	
 	path_pts = bezier_curve(t_step, 
@@ -62,15 +62,15 @@ When using this module, you should use points to represent the 2D shape. You nee
 	
 	shape_pts = [
 	    // outer
-	    [10, 0, 0],
-	    [15, 10, 0],
-	    [18, 9, 0],
-	    [20, 0, 0],
+	    [10, 0],
+	    [15, 10],
+	    [18, 9],
+	    [20, 0],
 	    // inner
-	    [12, 2, 0],
-	    [15, 7, 0],
-	    [17, 7, 0],
-	    [18, 2, 0]
+	    [12, 2],
+	    [15, 7],
+	    [17, 7],
+	    [18, 2]
 	];
 	
 	path_pts = bezier_curve(t_step, 
@@ -97,13 +97,13 @@ When using this module, you should use points to represent the 2D shape. You nee
 	
 	shape_pts = [
 	    // outer
-	    [10, 0, 0],
-	    [15, 10, 0],
-	    [30, 0, 0],
+	    [10, 0],
+	    [15, 10],
+	    [30, 0],
 	    // inner
-	    [12, 1, 0],
-	    [15, 8, 0],
-	    [26, 1, 0],        
+	    [12, 1],
+	    [15, 8],
+	    [26, 1],        
 	];
 	
 	path_pts = bezier_curve(t_step, 
