@@ -12,7 +12,7 @@ Looks like extruding along the path? Yes, it can perform the task; however, it's
 
 You can also view it as a better polyline3d module if you want. If you have only the points of a path, using `polyline3d` or `hull_polyline3d` is a simple solution. If you know the cross-sections along a path, you can use `polysections` to do more. 
 
-When using this module, you should use points to represent each cross-section. You need to provide indexes of triangles, too. This module provides two prepared triangles indexes. One is `"RADIAL"`. For example, if you have a cross-section such as:
+When using this module, you should use points to represent each cross-section. You need to provide indexes of triangles, too. This module provides three prepared triangles indexes. One is `"RADIAL"`. For example, if you have a cross-section such as:
 
 ![polysections](images/lib-polysections-3.JPG)
 
@@ -27,6 +27,10 @@ If your cross-sections are hollow, you may use `"HOLLOW"`. For example:
 When using `"HOLLOW"`, the above shape will be cut into triangles such as:
 
 ![polysections](images/lib-polysections-6.JPG)
+
+When using `"TAPE"`, a tape shape will be cut into triangles such as:
+
+![polysections](images/lib-polysections-10.JPG)
 
 You can cut triangles by yourself, for example, the indexes of the above triangles is:
 
@@ -44,7 +48,7 @@ Triangles may be defined in any order.
 ## Parameters
 
 - `sections` : A list of cross-sections. Each cross-section is represented by a list of points. See the example below.
-- `triangles` : `"RADIAL"` (default), `"HOLLOW"` or user-defined indexes. See example below.
+- `triangles` : `"RADIAL"` (default), `"HOLLOW"`, `"TAPE"` or user-defined indexes. See example below.
 
 ## Examples
 
