@@ -16,19 +16,13 @@ module line2d(p1, p2, width, p1Style = "CAP_SQUARE", p2Style =  "CAP_SQUARE") {
     half_width = 0.5 * width;    
 
     atan_angle = atan2(p2[1] - p1[1], p2[0] - p1[0]);
-    angle = 90 - atan_angle;
-    
-    offset_x = half_width * cos(angle);
-    offset_y = half_width * sin(angle);
-    
-    offset1 = [-offset_x, offset_y];
-    offset2 = [offset_x, -offset_y];
+    leng = sqrt(pow(p2[0] - p1[0], 2) + pow(p2[1] - p1[1], 2));
 
-    polygon(points=[
-        p1 + offset1, p2 + offset1,  
-        p2 + offset2, p1 + offset2
-    ]);
-    
+    translate(p1) 
+        rotate(atan_angle) 
+            translate([0, -width / 2]) 
+                square([leng, width]);
+
     frags = __frags(half_width);
         
     remain = frags % 4;
