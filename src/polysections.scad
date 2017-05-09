@@ -12,6 +12,7 @@
 **/
 
 include <__private__/__triangles_radial.scad>;
+include <__private__/__triangles_tape.scad>; 
 
 module polysections(sections, triangles = "RADIAL") {
     module tri_sections(tri1, tri2) {
@@ -46,8 +47,12 @@ module polysections(sections, triangles = "RADIAL") {
         ) flat(pair_idxes); 
 
     function tris() = triangles == "RADIAL" ? __triangles_radial(sections[0]) : 
-        (triangles == "HOLLOW" ? hollow_tris() : triangles);
-    
+        (
+            triangles == "HOLLOW" ? hollow_tris() : (
+                triangles == "TAPE" ? __triangles_tape(sections[0]) : triangles 
+            )
+        );
+
     module two_sections(section1, section2) {
         for(idx = tris()) {
             // hull is for preventing from WARNING: Object may not be a valid 2-manifold

@@ -1,11 +1,12 @@
-function __triangles_tape(leng_pts) =
+function __triangles_tape(shape_pts) =
+    let(leng = len(shape_pts))
     concat(
         [
-            for(i = [0:leng_pts / 2 - 2]) 
-                [i, leng_pts - i - 1, leng_pts - i - 2]
+            for(i = [0:leng / 2 - 2]) 
+                [i, leng - i - 1, leng - i - 2]
         ],
         [
-            for(i = [0:leng_pts / 2 - 2])
-                [i, i + 1, leng_pts - i - 2]
+            for(i = [0:leng / 2 - 2])
+                [i, i + 1, leng - i - 2]
         ]
     );
