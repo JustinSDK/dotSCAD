@@ -27,24 +27,23 @@ module polysections(sections, triangles = "RADIAL") {
         );  
     }
     
-    function flat(vector, i = 0) =
-        i == len(vector) ? [] :
-        concat(vector[i], flat(vector, i + 1));    
-    
     function hollow_tris() = 
         let(
             leng_section = len(sections[0]),
             inner_i_begin = leng_section / 2,
-            pair_idxes = [for(i = [0:inner_i_begin - 1])
-                let(n = inner_i_begin + i + 1)
+            pair_idxes = concat(
                 [
-                    [i, inner_i_begin + i, n % inner_i_begin + inner_i_begin], 
-                    [i, i + 1, n % leng_section]
+                    for(i = [0:inner_i_begin - 1]) 
+                        let(n = inner_i_begin + i + 1)
+                        [i, inner_i_begin + i, n % inner_i_begin + inner_i_begin]
+                ],
+                [
+                    for(i = [0:inner_i_begin - 1]) 
+                        let(n = inner_i_begin + i + 1)
+                        [i, i + 1, n % leng_section]
                 ]
-                
-            ]
-           
-        ) flat(pair_idxes); 
+            )
+        ) pair_idxes; 
 
     function tris() = triangles == "RADIAL" ? __triangles_radial(sections[0]) : 
         (
