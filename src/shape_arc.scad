@@ -14,8 +14,7 @@
 
 include <__private__/__frags.scad>;
 include <__private__/__triangles_tape.scad>;
-
-function _unit_xy(a) = [cos(a), sin(a)];
+include <__private__/__ra_to_xy.scad>;
     
 function _edge_r_begin(orig_r, a, a_step, m) =
     let(leng = orig_r * cos(a_step / 2))
@@ -39,21 +38,21 @@ function shape_arc(radius, angles, width, width_mode = "LINE_CROSS") =
         r_inner = radius + w_offset[1],
         points = concat(
             // outer arc path
-            [_edge_r_begin(r_outer, angles[0], a_step, m) * _unit_xy(angles[0])],
+            [_edge_r_begin(r_outer, angles[0], a_step, m) * __ra_to_xy(1, angles[0])],
             [
                 for(i = [m:n]) 
-                    r_outer * _unit_xy(a_step * i)
+                    r_outer * __ra_to_xy(1, a_step * i)
             ],
-            [_edge_r_end(r_outer, angles[1], a_step, n) * _unit_xy(angles[1])],
+            [_edge_r_end(r_outer, angles[1], a_step, n) * __ra_to_xy(1, angles[1])],
             // inner arc path
-            [_edge_r_end(r_inner, angles[1], a_step, n) * _unit_xy(angles[1])],
+            [_edge_r_end(r_inner, angles[1], a_step, n) * __ra_to_xy(1, angles[1])],
             [
                 for(i = [m:n]) 
                     let(idx = (n + (m - i)))
-                    r_inner * _unit_xy(a_step * idx)
+                    r_inner * __ra_to_xy(1, a_step * idx)
 
             ],
-            [_edge_r_begin(r_inner, angles[0], a_step, m) * _unit_xy(angles[0])]        
+            [_edge_r_begin(r_inner, angles[0], a_step, m) * __ra_to_xy(1, angles[0])]        
         ),
         triangles = __triangles_tape(points)
     )
