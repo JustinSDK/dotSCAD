@@ -11,7 +11,7 @@
 **/
 
 module archimedean_spiral_extrude(shape_pts, arm_distance, init_angle, point_distance, num_of_points, 
-                                  rt_dir = "CT_CLK", twist = 0, scale = 1.0, triangles = "RADIAL") {
+                                  rt_dir = "CT_CLK", twist = 0, scale = 1.0, triangles = "SOLID") {
     points_angles = archimedean_spiral(
         arm_distance = arm_distance,  
         init_angle = init_angle, 
