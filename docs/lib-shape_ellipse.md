@@ -1,6 +1,6 @@
 # shape_ellipse
 
-Returns shape points and triangle indexes of an ellipse. They can be used with xxx_extrude modules of dotSCAD. The shape points can be also used with the built-in polygon module. 
+Returns shape points of an ellipse. They can be used with xxx_extrude modules of dotSCAD. The shape points can be also used with the built-in polygon module. 
 
 ## Parameters
 
@@ -12,7 +12,7 @@ Returns shape points and triangle indexes of an ellipse. They can be used with x
 	include <shape_ellipse.scad>;
 
 	polygon(
-		shape_ellipse([40, 20])[0]
+		shape_ellipse([40, 20])
 	);
 
 ![shape_ellipse](images/lib-shape_ellipse-1.JPG)
@@ -27,13 +27,12 @@ Returns shape points and triangle indexes of an ellipse. They can be used with x
 
 	$fn = 8;
 		
-	shape_pts_tris = shape_ellipse([20, 10]);
+	shape_pts = shape_ellipse([20, 10]);
 
-	helix_extrude(shape_pts_tris[0], 
+	helix_extrude(shape_pts, 
 		radius = 40, 
 		levels = 5, 
-		level_dist = 20,
-		triangles = shape_pts_tris[1]
+		level_dist = 20
 	);
 
 ![shape_ellipse](images/lib-shape_ellipse-2.JPG)

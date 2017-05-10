@@ -13,7 +13,6 @@
 **/
 
 include <__private__/__frags.scad>;
-include <__private__/__triangles_radial.scad>;
 
 function shape_ellipse(axes) =
     let(
@@ -22,10 +21,5 @@ function shape_ellipse(axes) =
         shape_pts = [
             for(a = [0:step_a:360 - step_a]) 
                 [axes[0] * cos(a), axes[1] * sin(a)]
-        ],
-        triangles = __triangles_radial(shape_pts)
-    )
-    [
-        shape_pts,
-        triangles
-    ];
+        ]
+    ) shape_pts;
