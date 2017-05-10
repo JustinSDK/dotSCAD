@@ -31,7 +31,7 @@ module polysections(sections, triangles = "RADIAL") {
         let(
             leng_section = len(sections[0]),
             inner_i_begin = leng_section / 2,
-            pair_idxes = concat(
+            idxes = concat(
                 [
                     for(i = [0:inner_i_begin - 1]) 
                         let(n = inner_i_begin + i + 1)
@@ -43,7 +43,7 @@ module polysections(sections, triangles = "RADIAL") {
                         [i, i + 1, n % leng_section]
                 ]
             )
-        ) pair_idxes; 
+        ) idxes; 
 
     function tris() = triangles == "RADIAL" ? __triangles_radial(sections[0]) : 
         (
