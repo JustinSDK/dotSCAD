@@ -13,8 +13,8 @@ Returns shape points and triangle indexes of an arc shape. They can be used with
 
     include <shape_arc.scad>;
 
-    pts_tris = shape_arc(radius = 10, angles = [-90, 90], width = 5);
-    polygon(pts_tris[0]);
+    shape_pts = shape_arc(radius = 10, angles = [-90, 90], width = 5);
+    polygon(shape_pts);
 
 ![shape_arc](images/lib-shape_arc-1.JPG)
 
@@ -27,7 +27,7 @@ Returns shape points and triangle indexes of an arc shape. They can be used with
     t_step = 0.05;
     width = 2;
 
-    pts_tris = shape_arc(radius = 10, angles = [-90, 90], width = 5);
+    shape_pts = shape_arc(radius = 10, angles = [-90, 90], width = 5);
 
     p0 = [0, 0, 0];
     p1 = [40, 60, 35];
@@ -39,6 +39,6 @@ Returns shape points and triangle indexes of an arc shape. They can be used with
         [p0, p1, p2, p3, p4]
     );
 
-    path_extrude(pts_tris[0], path_pts, pts_tris[1]);     
+    path_extrude(shape_pts, path_pts);   
 
 ![shape_arc](images/lib-shape_arc-2.JPG)

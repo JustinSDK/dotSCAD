@@ -13,7 +13,6 @@
 **/ 
 
 include <__private__/__frags.scad>;
-include <__private__/__triangles_tape.scad>;
 include <__private__/__ra_to_xy.scad>;
     
 function _edge_r_begin(orig_r, a, a_step, m) =
@@ -53,10 +52,5 @@ function shape_arc(radius, angles, width, width_mode = "LINE_CROSS") =
 
             ],
             [__ra_to_xy(_edge_r_begin(r_inner, angles[0], a_step, m), angles[0])]        
-        ),
-        triangles = __triangles_tape(points)
-    )
-    [
-        points, 
-        triangles
-    ];
+        )
+    ) points;
