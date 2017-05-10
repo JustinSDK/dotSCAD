@@ -11,8 +11,6 @@
 *
 **/
 
-include <__private__/__triangles_tape.scad>; 
-
 module polysections(sections, triangles = "SOLID") {
     module solid_sections() {
         leng_sections = len(sections);
