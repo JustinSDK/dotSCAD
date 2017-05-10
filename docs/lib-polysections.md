@@ -14,25 +14,13 @@ You can also view it as a better polyline3d module if you want. If you have only
 
 When using this module, you should use points to represent each cross-section. 
 
-You need to provide indexes of triangles, too. This module provides three prepared triangles indexes. One is `"RADIAL"`. For example, if you have a cross-section such as:
-
-![polysections](images/lib-polysections-3.JPG)
-
-When using `"RADIAL"` (default), the module will cut them into triangles from the first point to each remaining point:
-
-![polysections](images/lib-polysections-4.JPG)
-
-If your cross-sections are hollow, you may use `"HOLLOW"`. For example:
+If your 2D shape is not solid, indexes of triangles are required. This module has a built-in index vector suitable for one type of hollow shapes. For example, if you have a cross-section such as:
 
 ![polysections](images/lib-polysections-5.JPG)
 
-When using `"HOLLOW"`, the above shape will be cut into triangles such as:
+When `triangles` is `"HOLLOW"`, the above shape will be cut into triangles such as:
 
 ![polysections](images/lib-polysections-6.JPG)
-
-When using `"TAPE"`, a tape shape will be cut into triangles such as:
-
-![polysections](images/lib-polysections-10.JPG)
 
 You can cut triangles by yourself, for example, the indexes of the above triangles is:
 
@@ -50,7 +38,7 @@ Triangles may be defined in any order.
 ## Parameters
 
 - `sections` : A list of cross-sections. Each cross-section is represented by a list of points. See the example below.
-- `triangles` : `"RADIAL"` (default), `"HOLLOW"`, `"TAPE"` or user-defined indexes. See example below.
+- `triangles` : `"SOLID"` (default), `"HOLLOW"`,  or user-defined indexes. See example below.
 
 ## Examples
 

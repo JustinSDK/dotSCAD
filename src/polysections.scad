@@ -11,10 +11,9 @@
 *
 **/
 
-include <__private__/__triangles_radial.scad>;
 include <__private__/__triangles_tape.scad>; 
 
-module polysections(sections, triangles) {
+module polysections(sections, triangles = "SOLID") {
     module solid_sections() {
         leng_sections = len(sections);
         leng_pts_section = len(sections[0]);
@@ -80,12 +79,8 @@ module polysections(sections, triangles) {
                 )
             ) idxes; 
 
-        function tris() = triangles == "RADIAL" ? __triangles_radial(sections[0]) : 
-            (
-                triangles == "HOLLOW" ? hollow_tris() : (
-                    triangles == "TAPE" ? __triangles_tape(sections[0]) : triangles 
-                )
-            );
+        function tris() =
+            triangles == "HOLLOW" ? hollow_tris() : triangles;
 
         module two_sections(section1, section2) {
             for(idx = tris()) {
@@ -114,7 +109,7 @@ module polysections(sections, triangles) {
     }
     
     //
-    if(triangles == undef) {
+    if(triangles == "SOLID") {
         solid_sections();
     } else {
         triangles_defined_sections();
