@@ -11,7 +11,7 @@
 **/
 
 module golden_spiral_extrude(shape_pts, from, to, point_distance, 
-                             rt_dir = "CT_CLK", twist = 0, scale = 1.0, triangles = "RADIAL") {
+                             rt_dir = "CT_CLK", twist = 0, scale = 1.0, triangles = "SOLID") {
 
     pts_angles = golden_spiral(
         from = from, 
