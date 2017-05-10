@@ -36,15 +36,7 @@ Dependencies: `rotate_p`, `archimedean_spiral`, `cross_sections`, `polysections`
 		init_angle = 180, 
 		point_distance = 5,
 		num_of_points = 100,
-		scale = [1, 5],
-		triangles = [
-			[0, 1, 2],
-			[0, 2, 3],
-			[0, 3, 4],
-			[0, 4, 7],
-			[4, 5, 6],
-			[4, 6, 7]
-		]
+		scale = [1, 5]
 	);
 
 ![archimedean_spiral_extrude](images/lib-archimedean_spiral_extrude-1.JPG)
