@@ -13,7 +13,7 @@
 
 include <__private__/__frags.scad>;
 
-module ring_extrude(shape_pts, radius, angle = 360, twist = 0, scale = 1.0, triangles = "RADIAL") {
+module ring_extrude(shape_pts, radius, angle = 360, twist = 0, scale = 1.0, triangles = "SOLID") {
     frags = __frags(radius);
 
     angle_step = 360 / frags;

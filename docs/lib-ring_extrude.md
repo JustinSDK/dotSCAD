@@ -6,7 +6,7 @@ Because we cannot retrieve the shape points of built-in 2D modules, it's necessa
 
 This module depends on `rotate_p`, `cross_section` and `polysections`. Remember to include corresponding ".scad".
 
-This module provides two prepared triangles indexes. See [polysections](https://openhome.cc/eGossip/OpenSCAD/lib-polysections.html) for details.
+If your 2D shape is not solid, indexes of triangles are required. See [polysections](https://openhome.cc/eGossip/OpenSCAD/lib-polysections.html) for details.
 
 ## Parameters
 
@@ -15,7 +15,7 @@ This module provides two prepared triangles indexes. See [polysections](https://
 - `angle` : Defaults to 360. Specifies the number of degrees to sweep, starting at the positive X axis.
 - `twist` : The number of degrees of through which the shape is extruded.
 - `scale` : Scales the 2D shape by this value over the length of the extrusion. Scale can be a scalar or a vector.
-- `triangles` : `"RADIAL"` (default), `"HOLLOW"`, `"TAPE"` or user-defined indexes. See [polysections](https://openhome.cc/eGossip/OpenSCAD/lib-polysections.html) for details.
+- `triangles` : `"SOLID"` (default), `"HOLLOW"` or user-defined indexes. See [polysections](https://openhome.cc/eGossip/OpenSCAD/lib-polysections.html) for details.
 
 ## Examples
 
