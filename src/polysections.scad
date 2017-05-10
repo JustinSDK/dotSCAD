@@ -12,26 +12,26 @@
 **/
 
 module polysections(sections, triangles = "SOLID") {
-    module solid_sections() {
-        leng_sections = len(sections);
-        leng_pts_section = len(sections[0]);
+    module solid_sections(sects) {
+        leng_sects = len(sects);
+        leng_pts_sect = len(sects[0]);
         
         side_idxes = [
-                for(j = [0:leng_pts_section:(leng_sections - 2) * leng_pts_section])
-                    for(i = [0:leng_pts_section - 1]) 
+                for(j = [0:leng_pts_sect:(leng_sects - 2) * leng_pts_sect])
+                    for(i = [0:leng_pts_sect - 1]) 
                         [
                             j + i, 
-                            j + (i + 1) % leng_pts_section, 
-                            j + (i + 1) % leng_pts_section + leng_pts_section , 
-                            j + i + leng_pts_section
+                            j + (i + 1) % leng_pts_sect, 
+                            j + (i + 1) % leng_pts_sect + leng_pts_sect , 
+                            j + i + leng_pts_sect
                         ]
              ];
 
-        first_idxes = [for(i = [0:leng_pts_section - 1]) i];   
+        first_idxes = [for(i = [0:leng_pts_sect - 1]) i];   
         
         last_idxes = [
-            for(i = [0:leng_pts_section - 1]) 
-                i + leng_pts_section * (leng_sections - 1)
+            for(i = [0:leng_pts_sect - 1]) 
+                i + leng_pts_sect * (leng_sects - 1)
         ];    
         
         v_pts = [
@@ -108,7 +108,7 @@ module polysections(sections, triangles = "SOLID") {
     
     //
     if(triangles == "SOLID") {
-        solid_sections();
+        solid_sections(sections);
     } else {
         triangles_defined_sections();
     }
