@@ -15,7 +15,7 @@ include <__private__/__frags.scad>;
 
 module helix_extrude(shape_pts, radius, levels, level_dist, 
                      vt_dir = "SPI_DOWN", rt_dir = "CT_CLK", 
-                     twist = 0, scale = 1.0, triangles = "RADIAL") {
+                     twist = 0, scale = 1.0, triangles = "SOLID") {
                          
     is_vt = __is_vector(radius);
     r1 = is_vt ? radius[0] : radius;
