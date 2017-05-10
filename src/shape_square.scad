@@ -14,7 +14,6 @@
 
 include <__private__/__is_vector.scad>;
 include <__private__/__frags.scad>;
-include <__private__/__triangles_radial.scad>;
 
 function shape_square(size, corner_r = 0) = 
     let(
@@ -37,10 +36,5 @@ function shape_square(size, corner_r = 0) =
             [for(a = [180 + step_a:step_a:270 - step_a]) [corner_r * cos(a) - half_w, corner_r * sin(a) - half_h]],
             [[-half_w, -half_y], [half_w, -half_y]],
             [for(a = [270 + step_a:step_a:360 - step_a]) [corner_r * cos(a) + half_w, corner_r * sin(a) - half_h]]
-        ),
-        triangles = __triangles_radial(shape_pts)
-    )
-    [
-       shape_pts,
-       triangles
-    ];
+        )
+    ) shape_pts;

@@ -1,6 +1,6 @@
 # shape_square
 
-Returns shape points and triangle indexes of a rounded square or rectangle. They can be used with xxx_extrude modules of dotSCAD. The shape points can be also used with the built-in polygon module. 
+Returns shape points of a rounded square or rectangle. They can be used with xxx_extrude modules of dotSCAD. The shape points can be also used with the built-in polygon module. 
 
 ## Parameters
 
@@ -13,7 +13,7 @@ Returns shape points and triangle indexes of a rounded square or rectangle. They
 	include <shape_square.scad>;
 
 	polygon(
-		shape_square(size = 50, corner_r = 5)[0]
+		shape_square(size = 50, corner_r = 5)
 	);
 
 ![shape_square](images/lib-shape_square-1.JPG)
@@ -26,15 +26,14 @@ Returns shape points and triangle indexes of a rounded square or rectangle. They
 
 	$fn = 36;
 
-	shape_pts_angles = shape_square(
+	shape_pts = shape_square(
 		size = [20, 10],
 		corner_r = 2
 	);
 
 	ring_extrude(
-		shape_pts_angles[0], 
-		radius = 50, angle = 180, twist = 180, scale = 2,
-		triangles = shape_pts_angles[1]
+		shape_pts, 
+		radius = 50, angle = 180, twist = 180, scale = 2
 	);
 
 ![shape_square](images/lib-shape_square-2.JPG)
