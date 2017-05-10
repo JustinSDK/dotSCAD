@@ -1,6 +1,6 @@
 # shape_pie
 
-Returns shape points and triangle indexes of a pie (circular sector) shape. They can be used with xxx_extrude modules of dotSCAD. The shape points can be also used with the built-in polygon module. 
+Returns shape points of a pie (circular sector) shape. They can be used with xxx_extrude modules of dotSCAD. The shape points can be also used with the built-in polygon module. 
 
 ## Parameters
 
@@ -12,8 +12,8 @@ Returns shape points and triangle indexes of a pie (circular sector) shape. They
 
 	include <shape_pie.scad>;
 	
-	shape_pts_tris = shape_pie(10, [45, 315], $fn = 24);
-    polygon(shape_pts_tris[0]);
+	shape_pts = shape_pie(10, [45, 315], $fn = 24);
+    polygon(shape_pts);
 
 ![shape_pie](images/lib-shape_pie-1.JPG)
 
@@ -24,13 +24,12 @@ Returns shape points and triangle indexes of a pie (circular sector) shape. They
     include <polysections.scad>;
     include <helix_extrude.scad>;
 
-    shape_pts_tris = shape_pie(10, [45, 315], $fn = 8);
+    shape_pts = shape_pie(10, [45, 315], $fn = 8);
 
-    helix_extrude(shape_pts_tris[0], 
+    helix_extrude(shape_pts, 
         radius = 40, 
         levels = 5, 
-        level_dist = 20,
-        triangles = shape_pts_tris[1]
+        level_dist = 20
     );
 
 ![shape_pie](images/lib-shape_pie-2.JPG)
