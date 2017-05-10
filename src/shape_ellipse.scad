@@ -1,7 +1,7 @@
 /**
 * shape_ellipse.scad
 *
-* Returns shape points and triangle indexes of an ellipse.
+* Returns shape points of an ellipse.
 * They can be used with xxx_extrude modules of dotSCAD.
 * The shape points can be also used with the built-in polygon module. 
 * 

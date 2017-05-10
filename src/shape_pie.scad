@@ -1,7 +1,7 @@
 /**
 * shape_pie.scad
 *
-* Returns shape points and triangle indexes of a pie (circular sector) shape.
+* Returns shape points of a pie (circular sector) shape.
 * They can be used with xxx_extrude modules of dotSCAD.
 * The shape points can be also used with the built-in polygon module. 
 *
