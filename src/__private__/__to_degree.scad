@@ -1,0 +1,1 @@
+function __to_degree(phi) = 180 / 3.14159 * phi;
