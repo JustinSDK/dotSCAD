@@ -1,3 +1,17 @@
+/**
+* shape_superformula.scad
+*
+* Returns shape points and triangle indexes of a Superformula shape. 
+* They can be used with xxx_extrude modules of dotSCAD.
+* The shape points can be also used with the built-in polygon module. 
+* 
+* @copyright Justin Lin, 2017
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib-shape_superformula.html
+*
+**/ 
+
 include <__private__/__ra_to_xy.scad>;
 include <__private__/__to_degree.scad>;
 include <__private__/__triangles_radial.scad>;
