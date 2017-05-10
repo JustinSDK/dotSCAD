@@ -12,7 +12,9 @@ Looks like extruding along the path? Yes, it can perform the task; however, it's
 
 You can also view it as a better polyline3d module if you want. If you have only the points of a path, using `polyline3d` or `hull_polyline3d` is a simple solution. If you know the cross-sections along a path, you can use `polysections` to do more. 
 
-When using this module, you should use points to represent each cross-section. You need to provide indexes of triangles, too. This module provides three prepared triangles indexes. One is `"RADIAL"`. For example, if you have a cross-section such as:
+When using this module, you should use points to represent each cross-section. 
+
+You need to provide indexes of triangles, too. This module provides three prepared triangles indexes. One is `"RADIAL"`. For example, if you have a cross-section such as:
 
 ![polysections](images/lib-polysections-3.JPG)
 

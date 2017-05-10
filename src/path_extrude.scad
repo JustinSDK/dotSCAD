@@ -16,7 +16,7 @@
 include <__private__/__is_vector.scad>;
 include <__private__/__to3d.scad>;
 
-module path_extrude(shape_pts, path_pts, triangles = "RADIAL", twist = 0, scale = 1.0, closed = false) {
+module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale = 1.0, closed = false) {
     sh_pts = len(shape_pts[0]) == 3 ? shape_pts : [for(p = shape_pts) __to3d(p)];
 
     len_path_pts = len(path_pts);    
