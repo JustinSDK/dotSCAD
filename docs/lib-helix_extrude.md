@@ -40,15 +40,7 @@ Dependencies: `helix`, `rotate_p.scad`, `cross_sections`, `polysections`.
 		radius = 40, 
 		levels = 5, 
 		level_dist = 10,
-		vt_dir = "SPI_UP",
-		triangles = [
-			[0, 1, 2],
-			[0, 2, 3],
-			[0, 3, 4],
-			[0, 4, 7],
-			[4, 5, 6],
-			[4, 6, 7]
-		]
+		vt_dir = "SPI_UP"
 	);
 
 ![helix_extrude](images/lib-helix_extrude-1.JPG)
@@ -59,7 +51,7 @@ Dependencies: `helix`, `rotate_p.scad`, `cross_sections`, `polysections`.
 	include <polysections.scad>;
 	include <helix_extrude.scad>;
 
-    r1 = 40;
+	r1 = 40;
 	r2 = 20;
 	levels = 5;
 	level_dist = 10;
@@ -75,15 +67,7 @@ Dependencies: `helix`, `rotate_p.scad`, `cross_sections`, `polysections`.
 		radius = [r1, r2], 
 		levels = levels, 
 		level_dist = level_dist,
-		vt_dir = "SPI_UP",
-		triangles = [
-			[0, 1, 2],
-			[0, 2, 3],
-			[0, 3, 4],
-			[0, 4, 7],
-			[4, 5, 6],
-			[4, 6, 7]
-		]
+		vt_dir = "SPI_UP"
 	);
 
 	%cylinder(h = levels * level_dist, r1 = r1, r2 = r2);
