@@ -38,21 +38,21 @@ function shape_arc(radius, angles, width, width_mode = "LINE_CROSS") =
         r_inner = radius + w_offset[1],
         points = concat(
             // outer arc path
-            [_edge_r_begin(r_outer, angles[0], a_step, m) * __ra_to_xy(1, angles[0])],
+            [__ra_to_xy(_edge_r_begin(r_outer, angles[0], a_step, m), angles[0])],
             [
                 for(i = [m:n]) 
-                    r_outer * __ra_to_xy(1, a_step * i)
+                    __ra_to_xy(r_outer, a_step * i)
             ],
-            [_edge_r_end(r_outer, angles[1], a_step, n) * __ra_to_xy(1, angles[1])],
+            [__ra_to_xy(_edge_r_end(r_outer, angles[1], a_step, n), angles[1])],
             // inner arc path
-            [_edge_r_end(r_inner, angles[1], a_step, n) * __ra_to_xy(1, angles[1])],
+            [__ra_to_xy(_edge_r_end(r_inner, angles[1], a_step, n), angles[1])],
             [
                 for(i = [m:n]) 
                     let(idx = (n + (m - i)))
-                    r_inner * __ra_to_xy(1, a_step * idx)
+                    __ra_to_xy(r_inner, a_step * idx)
 
             ],
-            [_edge_r_begin(r_inner, angles[0], a_step, m) * __ra_to_xy(1, angles[0])]        
+            [__ra_to_xy(_edge_r_begin(r_inner, angles[0], a_step, m), angles[0])]        
         ),
         triangles = __triangles_tape(points)
     )
