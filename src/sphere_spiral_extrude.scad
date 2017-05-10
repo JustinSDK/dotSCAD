@@ -12,7 +12,7 @@
 
 module sphere_spiral_extrude(shape_pts, radius, za_step, 
                              z_circles = 1, begin_angle = 0, end_angle = 0, vt_dir = "SPI_DOWN", rt_dir = "CT_CLK", 
-                             twist = 0, scale = 1.0, triangles = "RADIAL") {
+                             twist = 0, scale = 1.0, triangles = "SOLID") {
 
     points_angles = sphere_spiral(
         radius = radius, 
