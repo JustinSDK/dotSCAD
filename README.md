@@ -2,7 +2,7 @@
 
 > These fundamental modules and functions are helpful when playing OpenSCAD.
 
-![dotSCAD](docs/images/lib-shape_pentagram-2.JPG)
+![dotSCAD](GoldenTaiwan.JPG)
 
 [![license/LGPL](https://img.shields.io/badge/license-LGPL-blue.svg)](https://github.com/JustinSDK/lib-openscad/blob/master/LICENSE)
 
