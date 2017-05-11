@@ -43,6 +43,7 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 
 - 3D
 	- [rounded_cube](https://openhome.cc/eGossip/OpenSCAD/lib-rounded_cube.html)
+    - [rounded_cylinder](https://openhome.cc/eGossip/OpenSCAD/lib-rounded_cylinder.html)
 	- [line3d](https://openhome.cc/eGossip/OpenSCAD/lib-line3d.html)
 	- [polyline3d](https://openhome.cc/eGossip/OpenSCAD/lib-polyline3d.html)
 	- [hull_polyline3d](https://openhome.cc/eGossip/OpenSCAD/lib-hull_polyline3d.html)
