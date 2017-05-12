@@ -1,4 +1,4 @@
-function __multiple_of_4(n) =
+function __nearest_multiple_of_4(n) =
     let(
         remain = n % 4
     )

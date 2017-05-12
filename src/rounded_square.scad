@@ -13,14 +13,10 @@
 
 include <__private__/__is_vector.scad>;
 include <__private__/__frags.scad>;
+include <__private__/__nearest_multiple_of_4.scad>;
 
 module rounded_square(size, corner_r, center = false) {
-    frags = __frags(corner_r);
-
-    remain = frags % 4;
-    corner_frags = (remain / 4) > 0.5 ? frags - remain + 4 : frags - remain;
-
-    step_a = 360 / corner_frags;
+    step_a = 360 / __nearest_multiple_of_4(__frags(corner_r));
  
     is_vt = __is_vector(size);
     x = is_vt ? size[0] : size;
