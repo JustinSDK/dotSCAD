@@ -13,15 +13,14 @@
 include <__private__/__is_vector.scad>;
 include <__private__/__frags.scad>;
 
-module rounded_cylinder(radius, h, round_r, convexity = 2, center = false, slices = undef) {
+module rounded_cylinder(radius, h, round_r, convexity = 2, center = false) {
     is_vt = __is_vector(radius);
     r1 = is_vt ? radius[0] : radius;
     r2 = is_vt ? radius[1] : radius;
     
     function is_integer(n) = n % 1 == 0; 
 
-    function round_frags(sector_angle) = 
-        slices == undef ? __frags(round_r) * sector_angle / 360 : slices;
+    function round_frags(sector_angle) = __frags(round_r) * sector_angle / 360;
 
     function step_a(sector_angle, round_frags) =
         sector_angle / round_frags;

@@ -9,7 +9,6 @@ Creates a rounded cylinder.
 - `round_r` : The sphere radius which fits the edges of the bottom and the top.
 - `center` : `false` (default), z ranges from 0 to h. `true`, z ranges from -h/2 to +h/2
 - `convexity` : See [Rotate Extrude](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Using_the_2D_Subsystem#Rotate_Extrude) for details.
-- `slices` : The fragments of the rounded edge. 
 - `$fa`, `$fs`, `$fn` : Used to control the eight quadrants. Check [the circle module](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Using_the_2D_Subsystem#circle) for more details. The final fragments of a sphere will be a multiple of 4 to fit edges.
 
 ## Examples
