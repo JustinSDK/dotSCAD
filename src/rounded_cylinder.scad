@@ -18,34 +18,48 @@ module rounded_cylinder(radius, h, round_r, convexity = 2, center = false, slice
     r1 = is_vt ? radius[0] : radius;
     r2 = is_vt ? radius[1] : radius;
     
-    function step_a(sector_angle) =
-        sector_angle / (slices == undef ? __frags(round_r) * sector_angle / 360 : slices);
+    function round_frags(sector_angle) = 
+        slices == undef ? __frags(round_r) * sector_angle / 360 : slices;
+
+    function step_a(sector_angle, round_frags) =
+        sector_angle / round_frags;
     
     b_ang = atan2(h, r1 - r2);
     b_sector_angle = 180 - b_ang;
     b_leng = r1 - round_r / tan(b_ang / 2);
+    b_round_frags = round_frags(b_sector_angle);
+    b_end_angle = -90 + b_sector_angle;
     
     t_sector_angle = b_ang;
     t_leng = r2 - round_r * tan(t_sector_angle / 2);
+    t_round_frags = round_frags(t_sector_angle);
     
-    translate(center ? [0, 0, -h/2] : [0, 0, 0]) rotate_extrude(convexity = convexity) 
+    translate(center ? [0, 0, -h/2] : [0, 0, 0]) rotate(180) rotate_extrude(convexity = convexity) 
         polygon(
             concat(
                 [[0, 0], [b_leng, 0]],
                 [
-                    for(ang = [-90:step_a(b_sector_angle):-90 + b_sector_angle])
+                    for(ang = [-90:step_a(b_sector_angle, b_round_frags):b_end_angle])
                         [
                             round_r * cos(ang) + b_leng, 
                             round_r * sin(ang) + round_r
                         ]
                 ],
+                b_round_frags % 1 == 0 ? [] : [[
+                    round_r * cos(b_end_angle) + b_leng, 
+                    round_r * sin(b_end_angle) + round_r
+                ]],
                 [
-                    for(ang = [90 - t_sector_angle:step_a(t_sector_angle):90])
+                    for(ang = [90 - t_sector_angle:step_a(t_sector_angle, t_round_frags):90])
                         [
                             round_r * cos(ang) + t_leng, 
                             round_r * sin(ang) + h - round_r
                         ]
-                ],            
+                ],
+                t_round_frags % 1 == 0 ? [] : [[
+                    t_leng, 
+                    round_r + h - round_r               
+                ]],            
                 [[t_leng, h], [0, h]]
             )
         );
