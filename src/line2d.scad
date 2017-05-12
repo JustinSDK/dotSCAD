@@ -11,6 +11,7 @@
 **/
 
 include <__private__/__frags.scad>;
+include <__private__/__nearest_multiple_of_4.scad>;
 
 module line2d(p1, p2, width, p1Style = "CAP_SQUARE", p2Style =  "CAP_SQUARE") {
     half_width = 0.5 * width;    
@@ -23,10 +24,7 @@ module line2d(p1, p2, width, p1Style = "CAP_SQUARE", p2Style =  "CAP_SQUARE") {
             translate([0, -width / 2]) 
                 square([leng, width]);
 
-    frags = __frags(half_width);
-        
-    remain = frags % 4;
-    end_frags = (remain / 4) > 0.5 ? frags - remain + 4 : frags - remain;
+    frags = __nearest_multiple_of_4(__frags(half_width));
         
     module square_end(point) {
         translate(point) 
@@ -37,7 +35,7 @@ module line2d(p1, p2, width, p1Style = "CAP_SQUARE", p2Style =  "CAP_SQUARE") {
     module round_end(point) {
         translate(point) 
             rotate(atan_angle) 
-                circle(half_width, center = true, $fn = end_frags);    
+                circle(half_width, center = true, $fn = frags);    
     }
     
     if(p1Style == "CAP_SQUARE") {
