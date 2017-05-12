@@ -18,6 +18,8 @@ module rounded_cylinder(radius, h, round_r, convexity = 2, center = false, slice
     r1 = is_vt ? radius[0] : radius;
     r2 = is_vt ? radius[1] : radius;
     
+    function is_integer(n) = n % 1 == 0; 
+
     function round_frags(sector_angle) = 
         slices == undef ? __frags(round_r) * sector_angle / 360 : slices;
 
@@ -45,7 +47,7 @@ module rounded_cylinder(radius, h, round_r, convexity = 2, center = false, slice
                             round_r * sin(ang) + round_r
                         ]
                 ],
-                b_round_frags % 1 == 0 ? [] : [[
+                is_integer(b_round_frags) ? [] : [[
                     round_r * cos(b_end_angle) + b_leng, 
                     round_r * sin(b_end_angle) + round_r
                 ]],
@@ -56,7 +58,7 @@ module rounded_cylinder(radius, h, round_r, convexity = 2, center = false, slice
                             round_r * sin(ang) + h - round_r
                         ]
                 ],
-                t_round_frags % 1 == 0 ? [] : [[
+                is_integer(t_round_frags) ? [] : [[
                     t_leng, 
                     round_r + h - round_r               
                 ]],            
