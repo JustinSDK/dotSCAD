@@ -11,15 +11,13 @@
 **/
 
 include <__private__/__frags.scad>;
+include <__private__/__nearest_multiple_of_4.scad>;
 
 module line3d(p1, p2, thickness, p1Style = "CAP_CIRCLE", p2Style = "CAP_CIRCLE") {
     r = thickness / 2;
 
-    frags = __frags(r);
-
-    remain = frags % 4;
-    frags_of_4 = (remain / 4) > 0.5 ? frags - remain + 4 : frags - remain;
-    half_fa = 180 / frags_of_4;
+    frags = __nearest_multiple_of_4(__frags(r));
+    half_fa = 180 / frags;
     
     dx = p2[0] - p1[0];
     dy = p2[1] - p1[1];
@@ -35,7 +33,7 @@ module line3d(p1, p2, thickness, p1Style = "CAP_CIRCLE", p2Style = "CAP_CIRCLE")
         translate(p1) 
             rotate([0, ay, az]) 
                 linear_extrude(length) 
-                    circle(r, $fn = frags_of_4);
+                    circle(r, $fn = frags);
     }
                 
     module capCircle(p) {
@@ -44,13 +42,13 @@ module line3d(p1, p2, thickness, p1Style = "CAP_CIRCLE", p2Style = "CAP_CIRCLE")
             rotate([0, ay, az]) 
                 translate([0, 0, -w]) 
                     linear_extrude(w * 2) 
-                        circle(r, $fn = frags_of_4);       
+                        circle(r, $fn = frags);       
     }
 
     module capSphere(p) {
         translate(p) 
             rotate([0, ay, az]) 
-                sphere(r / cos(half_fa), $fn = frags_of_4);          
+                sphere(r / cos(half_fa), $fn = frags);          
     }
     
     module cap(p, style) {
