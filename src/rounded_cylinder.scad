@@ -17,11 +17,9 @@ module rounded_cylinder(radius, h, round_r, convexity = 2, center = false, slice
     is_vt = __is_vector(radius);
     r1 = is_vt ? radius[0] : radius;
     r2 = is_vt ? radius[1] : radius;
-
-    frags = __frags(round_r);
     
     function step_a(sector_angle) =
-        sector_angle / (slices == undef ? frags * sector_angle / 360 : slices);
+        sector_angle / (slices == undef ? __frags(round_r) * sector_angle / 360 : slices);
     
     b_ang = atan2(h, r1 - r2);
     b_sector_angle = 180 - b_ang;
