@@ -13,6 +13,7 @@
 
 include <__private__/__is_vector.scad>;
 include <__private__/__frags.scad>;
+include <__private__/__nearest_multiple_of_4.scad>;
 
 module rounded_cube(size, corner_r, center = false) {
     is_vt = __is_vector(size);
@@ -20,10 +21,7 @@ module rounded_cube(size, corner_r, center = false) {
     y = is_vt ? size[1] : size;
     z = is_vt ? size[2] : size;
 
-    frags = __frags(corner_r);
-
-    remain = frags % 4;
-    corner_frags = (remain / 4) > 0.5 ? frags - remain + 4 : frags - remain;
+    corner_frags = __nearest_multiple_of_4(__frags(corner_r));
     edge_d = corner_r * cos(180 / corner_frags);
 
     half_x = x / 2;
