@@ -34,3 +34,27 @@ Returns shape points of [Taiwan](https://www.google.com.tw/maps?q=taiwan&um=1&ie
 
 ![shape_taiwan](images/lib-shape_taiwan-2.JPG)
 
+	include <shape_taiwan.scad>;
+	include <helix.scad>;
+	include <rotate_p.scad>;
+	include <cross_sections.scad>;
+	include <polysections.scad>;
+	include <helix_extrude.scad>;
+
+	mirror_taiwan = [for(pt = shape_taiwan(80)) [pt[0] * -1, pt[1]]];
+
+	r1 = 15;
+	r2 = 100;
+	levels = 3;
+	level_dist = 50;
+
+	helix_extrude(mirror_taiwan, 
+		radius = [r1, r2], 
+		levels = levels, 
+		level_dist = level_dist,
+		vt_dir = "SPI_DOWN",
+		rt_dir = "CLK",
+		scale = 0.1
+	);
+
+![shape_taiwan](images/lib-shape_taiwan-3.JPG)
