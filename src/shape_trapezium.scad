@@ -18,9 +18,9 @@ include <__private__/__pie_for_rounding.scad>;
 include <__private__/__half_trapezium.scad>;
 include <__private__/__trapezium.scad>;
 
-function shape_trapezium(radius, h, corner_r = 0) = 
+function shape_trapezium(length, h, corner_r = 0) = 
     __trapezium(
-        radius = radius, 
+        length = length, 
         h = h, 
         round_r = corner_r
     );

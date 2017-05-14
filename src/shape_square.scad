@@ -25,7 +25,7 @@ function shape_square(size, corner_r = 0) =
         y = is_vt ? size[1] : size        
     )
     __trapezium(
-        radius = x / 2, 
+        length = x, 
         h = y, 
         round_r = corner_r
     );

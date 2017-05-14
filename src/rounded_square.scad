@@ -21,12 +21,9 @@ module rounded_square(size, corner_r, center = false) {
     is_vt = __is_vector(size);
     x = is_vt ? size[0] : size;
     y = is_vt ? size[1] : size;       
-
-    half_x = x / 2;
-    half_y = y / 2;
     
-    translate(center ? [0, 0] : [half_x, half_y]) polygon(__trapezium(
-        radius = half_x, 
+    translate(center ? [0, 0] : [x / 2, y / 2]) polygon(__trapezium(
+        length = x, 
         h = y, 
         round_r = corner_r
     ));
