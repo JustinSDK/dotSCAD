@@ -13,28 +13,21 @@
 
 include <__private__/__is_vector.scad>;
 include <__private__/__frags.scad>;
-include <__private__/__nearest_multiple_of_4.scad>;
+include <__private__/__pie_for_rounding.scad>;
+include <__private__/__half_trapezium.scad>;
+include <__private__/__trapezium.scad>;
 
 module rounded_square(size, corner_r, center = false) {
-    step_a = 360 / __nearest_multiple_of_4(__frags(corner_r));
- 
     is_vt = __is_vector(size);
     x = is_vt ? size[0] : size;
-    y = is_vt ? size[1] : size;
+    y = is_vt ? size[1] : size;       
 
     half_x = x / 2;
-    half_y = y / 2; 
-    half_w = half_x - corner_r;
-    half_h = half_y - corner_r;
-
-    translate(center ? [0, 0] : [half_x, half_y]) polygon(concat(
-        [[half_x, -half_h], [half_x, half_h]],
-        [for(a = [step_a:step_a:90 - step_a]) [corner_r * cos(a) + half_w, corner_r * sin(a) + half_h]],
-        [[half_w, half_y], [-half_w, half_y]],
-        [for(a = [90 + step_a:step_a:180 - step_a]) [corner_r * cos(a) - half_w, corner_r * sin(a) + half_h]], 
-        [[-half_x, half_h], [-half_x, -half_h]],
-        [for(a = [180 + step_a:step_a:270 - step_a]) [corner_r * cos(a) - half_w, corner_r * sin(a) - half_h]],
-        [[-half_w, -half_y], [half_w, -half_y]],
-        [for(a = [270 + step_a:step_a:360 - step_a]) [corner_r * cos(a) + half_w, corner_r * sin(a) - half_h]]
+    half_y = y / 2;
+    
+    translate(center ? [0, 0] : [half_x, half_y]) polygon(__trapezium(
+        radius = half_x, 
+        h = y, 
+        round_r = corner_r
     ));
 }
