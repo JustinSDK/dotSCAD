@@ -21,9 +21,6 @@ module rounded_cylinder(radius, h, round_r, convexity = 2, center = false) {
 
     function round_frags(sector_angle) = __frags(round_r) * sector_angle / 360;
 
-    function step_a(sector_angle, round_frags) =
-        sector_angle / round_frags;
-    
     b_ang = atan2(h, r1 - r2);
     b_sector_angle = 180 - b_ang;
     b_leng = r1 - round_r / tan(b_ang / 2);
