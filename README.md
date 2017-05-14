@@ -32,7 +32,6 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 - 2D
     - [arc](https://openhome.cc/eGossip/OpenSCAD/lib-arc.html)
 	- [pie](https://openhome.cc/eGossip/OpenSCAD/lib-pie.html)
-	- [ellipse](https://openhome.cc/eGossip/OpenSCAD/lib-ellipse.html)
 	- [rounded_square](https://openhome.cc/eGossip/OpenSCAD/lib-rounded_square.html)
 	- [line2d](https://openhome.cc/eGossip/OpenSCAD/lib-line2d.html)
 	- [polyline2d](https://openhome.cc/eGossip/OpenSCAD/lib-polyline2d.html)
