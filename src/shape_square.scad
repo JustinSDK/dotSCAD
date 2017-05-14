@@ -20,8 +20,9 @@ include <__private__/__trapezium.scad>;
 
 function shape_square(size, corner_r = 0) = 
     let(
-        x = __is_vector(size) ? size[0] : size,
-        y = __is_vector(size) ? size[1] : size        
+        is_vt = __is_vector(size),
+        x = is_vt ? size[0] : size,
+        y = is_vt ? size[1] : size        
     )
     __trapezium(
         radius = x / 2, 
