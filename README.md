@@ -74,14 +74,9 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
     - [box_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-box_extrude.html)
 	- [ellipse_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-ellipse_extrude.html)
     - [stereographic_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-stereographic_extrude.html)
-	- [path_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-path_extrude.html)
-	- [ring_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-ring_extrude.html)
-	- [helix_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-helix_extrude.html)
-	- [golden_spiral_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-golden_spiral_extrude.html)
-	- [archimedean_spiral_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-archimedean_spiral_extrude.html)
-	- [sphere_spiral_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-sphere_spiral_extrude.html)
+	- [rounded_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-rounded_extrude.html)
 
-- Shape
+- 2D Shape
     - [shape_taiwan](https://openhome.cc/eGossip/OpenSCAD/lib-shape_taiwan.html)
 	- [shape_arc](https://openhome.cc/eGossip/OpenSCAD/lib-shape_arc.html)
 	- [shape_pie](https://openhome.cc/eGossip/OpenSCAD/lib-shape_pie.html)
@@ -90,7 +85,15 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 	- [shape_trapezium](https://openhome.cc/eGossip/OpenSCAD/lib-shape_trapezium.html)
     - [shape_pentagram](https://openhome.cc/eGossip/OpenSCAD/lib-shape_pentagram.html)	
 	- [shape_superformula](https://openhome.cc/eGossip/OpenSCAD/lib-shape_superformula.html)	
-	
+
+- 2D Shape Extrusion
+	- [path_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-path_extrude.html)
+	- [ring_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-ring_extrude.html)
+	- [helix_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-helix_extrude.html)
+	- [golden_spiral_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-golden_spiral_extrude.html)
+	- [archimedean_spiral_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-archimedean_spiral_extrude.html)
+	- [sphere_spiral_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-sphere_spiral_extrude.html)
+
 - Other
     - [turtle2d](https://openhome.cc/eGossip/OpenSCAD/lib-turtle2d.html)
     - [turtle3d](https://openhome.cc/eGossip/OpenSCAD/lib-turtle3d.html)
