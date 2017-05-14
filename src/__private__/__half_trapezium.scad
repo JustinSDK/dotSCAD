@@ -1,7 +1,7 @@
 function __half_trapezium(radius, h, round_r) =
     let(
         is_vt = __is_vector(radius),
-        r1 = is_vt ? radius[0] : radiusm,
+        r1 = is_vt ? radius[0] : radius,
         r2 = is_vt ? radius[1] : radius,
         frags = __frags(round_r),
         b_ang = atan2(h, r1 - r2),
