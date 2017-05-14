@@ -12,7 +12,7 @@ function __pie_for_rounding(r, begin_a, end_a, frags) =
             ]
     ], 
     is_integer ? [] : [[
-                r * cos(end_a), 
-                r * sin(end_a)
-            ]]
+            r * cos(end_a), 
+            r * sin(end_a)
+        ]]
     );
