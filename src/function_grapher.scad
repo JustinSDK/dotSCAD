@@ -36,21 +36,51 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
         
         leng_pts = len(top_pts);
                 
-        top_faces = [
+        top_tri_faces1 = slicing == "SLASH" ? [
             for(yi = [0:rows - 2]) 
                 for(xi = [0:columns - 2])
                     [
                         xy_to_index(xi, yi, columns),
                         xy_to_index(xi + 1, yi, columns),
-                        xy_to_index(xi + 1, yi + 1, columns),
+                        xy_to_index(xi + 1, yi + 1, columns)
+                    ]    
+        ] : [
+            for(yi = [0:rows - 2]) 
+                for(xi = [0:columns - 2])
+                    [
+                        xy_to_index(xi, yi, columns),
+                        xy_to_index(xi + 1, yi, columns),
                         xy_to_index(xi, yi + 1, columns)
                     ]    
         ];
+
+        top_tri_faces2 = slicing == "SLASH" ? [
+            for(yi = [0:rows - 2]) 
+                for(xi = [0:columns - 2])
+                    [
+                        xy_to_index(xi, yi, columns),
+                        xy_to_index(xi + 1, yi + 1, columns),
+                        xy_to_index(xi, yi + 1, columns)
+                    ]    
+        ] : [
+            for(yi = [0:rows - 2]) 
+                for(xi = [0:columns - 2])
+                    [
+                        xy_to_index(xi + 1, yi, columns),
+                        xy_to_index(xi + 1, yi + 1, columns),
+                        xy_to_index(xi, yi + 1, columns)
+                    ]    
+        ];        
         
-        base_faces = [
-            for(face = top_faces)
+        base_tri_faces1 = [
+            for(face = top_tri_faces1)
                 face + [leng_pts, leng_pts, leng_pts, leng_pts]
         ];
+
+        base_tri_faces2 = [
+            for(face = top_tri_faces2)
+                face + [leng_pts, leng_pts, leng_pts, leng_pts]
+        ];        
         
         side_faces1 = [
             for(xi = [0:columns - 2])
@@ -102,8 +132,8 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
         polyhedron(
             points = concat(top_pts, base_pts), 
             faces = concat(
-                top_faces, 
-                base_faces, 
+                top_tri_faces1, top_tri_faces2,
+                base_tri_faces1, base_tri_faces2, 
                 side_faces1, 
                 side_faces2, 
                 side_faces3, 
