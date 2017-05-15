@@ -23,6 +23,14 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
     // Increasing $fn will be slow when you use "LINES" or "HULL_FACES".
     
     module faces() {
+        function xy_to_index(x, y, columns) = y * columns + x; 
+        function reverse(vt) = 
+            let(leng = len(vt))
+            [
+                for(i = [0:leng - 1])
+                    vt[leng - 1 - i]
+            ];
+
         top_pts = [
                 for(row_pts = points)
                     for(pt = row_pts)
@@ -71,17 +79,15 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
                         xy_to_index(xi + 1, yi, columns)
                     ]    
         ];        
-        
-        leng_tri_faces = len(top_tri_faces1); 
 
         base_tri_faces1 = [
-            for(i = [0:leng_tri_faces - 1])
-                top_tri_faces1[leng_tri_faces - 1 - i] + [leng_pts, leng_pts, leng_pts, leng_pts]
+            for(face = top_tri_faces1)
+                reverse(face) + [leng_pts, leng_pts, leng_pts]
         ];
 
         base_tri_faces2 = [
-            for(i = [0:leng_tri_faces - 1])
-                top_tri_faces2[leng_tri_faces - 1 - i] + [leng_pts, leng_pts, leng_pts, leng_pts]
+            for(face = top_tri_faces2)
+                reverse(face) + [leng_pts, leng_pts, leng_pts]
         ];
         
         side_faces1 = [
@@ -182,7 +188,7 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
         }
     }
     
-    function xy_to_index(x, y, columns) = y * columns + x; 
+    
     
 
     
