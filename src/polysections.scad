@@ -17,16 +17,26 @@ module polysections(sections, triangles = "SOLID") {
             leng_sects = len(sects),
             leng_pts_sect = len(sects[0])
         ) 
-        [
-            for(j = [begin_idx:leng_pts_sect:begin_idx + (leng_sects - 2) * leng_pts_sect])
-                for(i = [0:leng_pts_sect - 1]) 
-                    [
-                        j + i, 
-                        j + (i + 1) % leng_pts_sect, 
-                        j + (i + 1) % leng_pts_sect + leng_pts_sect , 
-                        j + i + leng_pts_sect
-                    ]
-        ];
+        concat(
+            [
+                for(j = [begin_idx:leng_pts_sect:begin_idx + (leng_sects - 2) * leng_pts_sect])
+                    for(i = [0:leng_pts_sect - 1]) 
+                        [
+                            j + i, 
+                            j + (i + 1) % leng_pts_sect, 
+                            j + (i + 1) % leng_pts_sect + leng_pts_sect
+                        ]
+            ],
+            [
+                for(j = [begin_idx:leng_pts_sect:begin_idx + (leng_sects - 2) * leng_pts_sect])
+                    for(i = [0:leng_pts_sect - 1]) 
+                        [
+                            j + i, 
+                            j + (i + 1) % leng_pts_sect + leng_pts_sect , 
+                            j + i + leng_pts_sect
+                        ]
+            ]      
+        );
 
     module solid_sections(sects) {
         leng_pts_sect = len(sects[0]);
@@ -43,6 +53,8 @@ module polysections(sections, triangles = "SOLID") {
                 for(pt = sect) 
                     pt
         ];
+
+        echo(side_indexes(sects));
         
         polyhedron(
             v_pts, 
