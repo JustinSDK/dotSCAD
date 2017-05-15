@@ -83,6 +83,7 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 	- [shape_ellipse](https://openhome.cc/eGossip/OpenSCAD/lib-shape_ellipse.html)
     - [shape_square](https://openhome.cc/eGossip/OpenSCAD/lib-shape_square.html)
 	- [shape_trapezium](https://openhome.cc/eGossip/OpenSCAD/lib-shape_trapezium.html)
+	- [shape_cyclicpolygon](https://openhome.cc/eGossip/OpenSCAD/lib-shape_cyclicpolygon.html)
     - [shape_pentagram](https://openhome.cc/eGossip/OpenSCAD/lib-shape_pentagram.html)	
 	- [shape_superformula](https://openhome.cc/eGossip/OpenSCAD/lib-shape_superformula.html)	
 
