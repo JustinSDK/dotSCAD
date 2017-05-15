@@ -54,8 +54,6 @@ module polysections(sections, triangles = "SOLID") {
                     pt
         ];
 
-        echo(side_indexes(sects));
-        
         polyhedron(
             v_pts, 
             concat([first_idxes], side_indexes(sects), [last_idxes])
