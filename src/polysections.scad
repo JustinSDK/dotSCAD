@@ -30,23 +30,24 @@ module polysections(sections, triangles = "SOLID") {
 
     module solid_sections(sects) {
         leng_pts_sect = len(sects[0]);
+  
+        first_idxes = [for(i = [0:leng_pts_sect - 1]) leng_pts_sect - 1 - i];  
 
-        first_idxes = [for(i = [0:leng_pts_sect - 1]) i];   
         last_idxes = [
             for(i = [0:leng_pts_sect - 1]) 
                 i + leng_pts_sect * (len(sects) - 1)
         ];    
-        
+
         v_pts = [
             for(sect = sects) 
                 for(pt = sect) 
                     pt
         ];
         
-       polyhedron(
-           v_pts, 
-           concat([first_idxes], side_indexes(sects), [last_idxes])
-       );    
+        polyhedron(
+            v_pts, 
+            concat([first_idxes], side_indexes(sects), [last_idxes])
+        );    
     }
 
     module hollow_sections(sects) {
