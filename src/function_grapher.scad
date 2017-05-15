@@ -16,44 +16,100 @@
 **/ 
 
 module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
+
+    rows = len(points);
+    columns = len(points[0]);
+
     // Increasing $fn will be slow when you use "LINES" or "HULL_FACES".
-     
-    function tri_shell_points(top) =
-        let(
-            z_offset = [0, 0, -thickness],
-            bottom = [
-                top[0] + z_offset, 
-                top[1] + z_offset, 
-                top[2] + z_offset
-            ],
-            faces = [
-                [0, 1, 2],
-                [3, 4, 5],
-                [0, 1, 4, 3],
-                [1, 2, 5, 4],
-                [2, 0, 3, 5]
-            ]
-        )
-        [
-            concat(top, bottom), 
-            faces
+    
+    module faces() {
+        top_pts = [
+                for(row_pts = points)
+                    for(pt = row_pts)
+                        pt
+        ];
+            
+        base_pts = [
+            for(pt = top_pts)
+                [pt[0], pt[1], pt[2] - thickness]
         ];
         
+        leng_pts = len(top_pts);
+                
+        top_faces = [
+            for(yi = [0:rows - 2]) 
+                for(xi = [0:columns - 2])
+                    [
+                        xy_to_index(xi, yi, columns),
+                        xy_to_index(xi + 1, yi, columns),
+                        xy_to_index(xi + 1, yi + 1, columns),
+                        xy_to_index(xi, yi + 1, columns)
+                    ]    
+        ];
         
-    module tri_to_faces(top_tri1, top_tri2) {
-        pts_faces1 = tri_shell_points(top_tri1);
-        pts_faces2 = tri_shell_points(top_tri2);
+        base_faces = [
+            for(face = top_faces)
+                face + [leng_pts, leng_pts, leng_pts, leng_pts]
+        ];
         
-        // hull is for preventing from WARNING: Object may not be a valid 2-manifold
-        hull() polyhedron(
-                points = pts_faces1[0], 
-                faces = pts_faces1[1]
-            );
+        side_faces1 = [
+            for(xi = [0:columns - 2])
+                [xi, xi + 1, xi + 1 + leng_pts, xi + leng_pts]
+        ];
 
-        hull() polyhedron(
-                points = pts_faces2[0],
-                faces = pts_faces2[1]
-            );
+        side_faces2 = [
+            for(yi = [0:rows - 2])
+                let(
+                    xi = columns - 1,
+                    idx1 = xy_to_index(xi, yi, columns),
+                    idx2 = xy_to_index(xi, yi + 1, columns)
+                )
+                [
+                    idx1,
+                    idx1 + leng_pts,
+                    idx2 + leng_pts,
+                    idx2
+                ]
+        ];                  
+      
+        side_faces3 = [
+            for(xi = [0:columns - 2])
+                let(
+                    idx1 = xy_to_index(xi, rows - 1, columns), 
+                    idx2 = xy_to_index(xi + 1, rows - 1, columns)
+                )
+                [
+                    idx1, idx2,
+                    idx2 + leng_pts,
+                    idx1 + leng_pts
+                ]
+        ];
+        
+        side_faces4 = [
+            for(yi = [0:rows - 2])
+                let(
+                    idx1 = xy_to_index(0, yi, columns),
+                    idx2 = xy_to_index(0, yi + 1, columns)
+                )
+                [
+                    idx1,
+                    idx1 + leng_pts,
+                    idx2 + leng_pts,
+                    idx2
+                ]
+        ];                  
+        
+        polyhedron(
+            points = concat(top_pts, base_pts), 
+            faces = concat(
+                top_faces, 
+                base_faces, 
+                side_faces1, 
+                side_faces2, 
+                side_faces3, 
+                side_faces4
+            )
+        );    
     }
 
     module tri_to_lines(tri1, tri2) {
@@ -76,38 +132,44 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
     }    
 
     module tri_to_graph(tri1, tri2) {
-        if(style == "FACES") {
-            tri_to_faces(tri1, tri2);
-        } else if(style == "LINES") {
+        if(style == "LINES") {
             tri_to_lines(tri1, tri2);
         } else {  // Warning: May be very slow!!
             tri_to_hull_faces(tri1, tri2);
         }
     }
+    
+    function xy_to_index(x, y, columns) = y * columns + x; 
+    
 
-    for(yi = [0:len(points) - 2]) {
-        for(xi = [0:len(points[yi]) - 2]) {
-            if(slicing == "SLASH") {
-                tri_to_graph([
-                    points[yi][xi], 
-                    points[yi][xi + 1], 
-                    points[yi + 1][xi + 1]
-                ], [
-                    points[yi][xi], 
-                    points[yi + 1][xi + 1], 
-                    points[yi + 1][xi]
-                ]);
-            } else {                
-                tri_to_graph([
-                    points[yi][xi], 
-                    points[yi][xi + 1], 
-                    points[yi + 1][xi]
-                ], [
-                    points[yi + 1][xi], 
-                    points[yi][xi + 1], 
-                    points[yi + 1][xi + 1]
-                ]);                    
-            }        
+    
+    if(style == "FACES") {
+        faces();
+    } else {
+        for(yi = [0:rows - 2]) {
+            for(xi = [0:columns - 2]) {
+                if(slicing == "SLASH") {
+                    tri_to_graph([
+                        points[yi][xi], 
+                        points[yi][xi + 1], 
+                        points[yi + 1][xi + 1]
+                    ], [
+                        points[yi][xi], 
+                        points[yi + 1][xi + 1], 
+                        points[yi + 1][xi]
+                    ]);
+                } else {                
+                    tri_to_graph([
+                        points[yi][xi], 
+                        points[yi][xi + 1], 
+                        points[yi + 1][xi]
+                    ], [
+                        points[yi + 1][xi], 
+                        points[yi][xi + 1], 
+                        points[yi + 1][xi + 1]
+                    ]);                    
+                }        
+            }
         }
     }
 }
