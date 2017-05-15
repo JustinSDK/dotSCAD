@@ -41,16 +41,16 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
                 for(xi = [0:columns - 2])
                     [
                         xy_to_index(xi, yi, columns),
-                        xy_to_index(xi + 1, yi, columns),
-                        xy_to_index(xi + 1, yi + 1, columns)
+                        xy_to_index(xi + 1, yi + 1, columns),
+                        xy_to_index(xi + 1, yi, columns)
                     ]    
         ] : [
             for(yi = [0:rows - 2]) 
                 for(xi = [0:columns - 2])
                     [
                         xy_to_index(xi, yi, columns),
-                        xy_to_index(xi + 1, yi, columns),
-                        xy_to_index(xi, yi + 1, columns)
+                        xy_to_index(xi, yi + 1, columns),
+                        xy_to_index(xi + 1, yi, columns)
                     ]    
         ];
 
@@ -59,32 +59,43 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
                 for(xi = [0:columns - 2])
                     [
                         xy_to_index(xi, yi, columns),
-                        xy_to_index(xi + 1, yi + 1, columns),
-                        xy_to_index(xi, yi + 1, columns)
+                        xy_to_index(xi, yi + 1, columns),
+                        xy_to_index(xi + 1, yi + 1, columns)
                     ]    
         ] : [
             for(yi = [0:rows - 2]) 
                 for(xi = [0:columns - 2])
                     [
-                        xy_to_index(xi + 1, yi, columns),
+                        xy_to_index(xi, yi + 1, columns),
                         xy_to_index(xi + 1, yi + 1, columns),
-                        xy_to_index(xi, yi + 1, columns)
+                        xy_to_index(xi + 1, yi, columns)
                     ]    
         ];        
         
+        leng_tri_faces = len(top_tri_faces1); 
+
         base_tri_faces1 = [
-            for(face = top_tri_faces1)
-                face + [leng_pts, leng_pts, leng_pts, leng_pts]
+            for(i = [0:leng_tri_faces - 1])
+                top_tri_faces1[leng_tri_faces - 1 - i] + [leng_pts, leng_pts, leng_pts, leng_pts]
         ];
 
         base_tri_faces2 = [
-            for(face = top_tri_faces2)
-                face + [leng_pts, leng_pts, leng_pts, leng_pts]
-        ];        
+            for(i = [0:leng_tri_faces - 1])
+                top_tri_faces2[leng_tri_faces - 1 - i] + [leng_pts, leng_pts, leng_pts, leng_pts]
+        ];
         
         side_faces1 = [
             for(xi = [0:columns - 2])
-                [xi, xi + 1, xi + 1 + leng_pts, xi + leng_pts]
+                let(
+                    idx1 = xy_to_index(xi, 0, columns),
+                    idx2 = xy_to_index(xi + 1, 0, columns)
+                )
+                [
+                    idx1,
+                    idx2,
+                    idx2 + leng_pts,
+                    idx1 + leng_pts
+                ]
         ];
 
         side_faces2 = [
@@ -96,22 +107,24 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
                 )
                 [
                     idx1,
-                    idx1 + leng_pts,
+                    idx2,
                     idx2 + leng_pts,
-                    idx2
+                    idx1 + leng_pts
                 ]
         ];                  
       
         side_faces3 = [
             for(xi = [0:columns - 2])
                 let(
-                    idx1 = xy_to_index(xi, rows - 1, columns), 
-                    idx2 = xy_to_index(xi + 1, rows - 1, columns)
+                    yi = rows - 1,
+                    idx1 = xy_to_index(xi, yi, columns), 
+                    idx2 = xy_to_index(xi + 1, yi, columns)
                 )
                 [
-                    idx1, idx2,
-                    idx2 + leng_pts,
-                    idx1 + leng_pts
+                    idx2,
+                    idx1,
+                    idx1 + leng_pts,
+                    idx2 + leng_pts
                 ]
         ];
         
@@ -122,10 +135,10 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
                     idx2 = xy_to_index(0, yi + 1, columns)
                 )
                 [
+                    idx2,
                     idx1,
                     idx1 + leng_pts,
-                    idx2 + leng_pts,
-                    idx2
+                    idx2 + leng_pts
                 ]
         ];                  
         
