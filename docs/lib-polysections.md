@@ -12,28 +12,30 @@ Looks like extruding along the path? Yes, it can perform the task; however, it's
 
 You can also view it as a better polyline3d module if you want. If you have only the points of a path, using `polyline3d` or `hull_polyline3d` is a simple solution. If you know the cross-sections along a path, you can use `polysections` to do more. 
 
-When using this module, you should use points to represent each cross-section. 
+When using this module, you should use points to represent each cross-section. The points of your 2D shape should have count-clockwise indexes. For example:
 
-If your 2D shape is not solid, indexes of triangles are required. This module has a built-in index vector suitable for one type of hollow shapes. For example, if you have a cross-section such as:
+![polysections](images/lib-polysections-10.JPG)
+
+If your 2D shape is hollow, set the `triangles` parameter to `"HOLLOW"` and index the points as the following:
 
 ![polysections](images/lib-polysections-5.JPG)
 
-When `triangles` is `"HOLLOW"`, the above shape will be cut into triangles such as:
+You can cut triangles by yourself. For example, the above shape can be cut into triangles such as:
 
 ![polysections](images/lib-polysections-6.JPG)
 
-You can cut triangles by yourself, for example, the indexes of the above triangles is:
+The indexes of the above triangles is:
 
     [
-        [0, 3, 4],
-        [0, 4, 1],
-        [1, 4, 5],
-        [1, 5, 2],
-        [2, 5, 3],
-        [2, 3, 0]
+        [0, 4, 3],
+        [0, 1, 4],
+        [1, 5, 4],
+        [1, 2, 5],
+        [2, 3, 5],
+        [2, 0, 3]
     ]
 
-Triangles may be defined in any order.
+In this module, triangles may be defined in any order. Of course, [following the preference of OpenSCAD](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Primitive_Solids#polyhedron) is ok.
 
 ## Parameters
 
@@ -44,24 +46,24 @@ Triangles may be defined in any order.
 
 	include <rotate_p.scad>;
 	include <polysections.scad>;
-	
+
 	section1 = [
-	    [10, 0, 0],
-	    [15, 10, 0],
-	    [18, 9, 0],
-	    [20, 0, 0]
+		[20, 0, 0],
+		[18, 9, 0],
+		[15, 10, 0],
+		[10, 0, 0]
 	];
-	
+
 	// spin section1
 	sections = [
-	    for(i = [0:55]) 
-	        [
-	            for(p = section1)
-	                let(pt = rotate_p(p, [90, 0, -10 * i]))
-	                [pt[0], pt[1] , pt[2] + i]
-	        ]
+		for(i = [0:55]) 
+			[
+				for(p = section1)
+					let(pt = rotate_p(p, [90, 0, 10 * i]))
+					[pt[0], pt[1] , pt[2] + i]
+			]
 	];
-	    
+
 	polysections(sections);
 
 ![polysections](images/lib-polysections-7.JPG)
@@ -71,15 +73,15 @@ Triangles may be defined in any order.
 	
 	section1 = [
 	    // outer
-	    [10, 0, 0],
-	    [15, 10, 0],
-	    [18, 9, 0],
-	    [20, 0, 0],
+		[20, 0, 0],
+		[18, 9, 0],
+		[15, 10, 0],
+		[10, 0, 0],
 	    // inner
-	    [12, 2, 0],
-	    [15, 7, 0],
-	    [17, 7, 0],
-	    [18, 2, 0]
+        [18, 2, 0],
+        [17, 7, 0],
+        [15, 7, 0],
+	    [12, 2, 0]
 	];
 	
 	// spin section1
@@ -87,7 +89,7 @@ Triangles may be defined in any order.
 	    for(i = [0:55]) 
 	        [
 	            for(p = section1)
-	                let(pt = rotate_p(p, [90, 0, -10 * i]))
+	                let(pt = rotate_p(p, [90, 0, 10 * i]))
 	                [pt[0], pt[1] , pt[2] + i]
 	        ]
 	];
@@ -101,13 +103,13 @@ Triangles may be defined in any order.
 	
 	section1 = [
 	    // outer
-	    [10, 0, 0],
+        [30, 0, 0],
 	    [15, 10, 0],
-	    [30, 0, 0],
+	    [10, 0, 0],
 	    // inner
-	    [12, 1, 0],
+	    [26, 1, 0],
 	    [15, 8, 0],
-	    [26, 1, 0],        
+	    [12, 1, 0],        
 	];
 	
 	// spin section1
@@ -115,7 +117,7 @@ Triangles may be defined in any order.
 	    for(i = [0:55]) 
 	        [
 	            for(p = section1)
-	                let(pt = rotate_p(p, [90, 0, -10 * i]))
+	                let(pt = rotate_p(p, [90, 0, 10 * i]))
 	                [pt[0], pt[1] , pt[2] + i]
 	        ]
 	];
@@ -123,13 +125,13 @@ Triangles may be defined in any order.
 	polysections(
 	   sections = sections, 
 	   triangles = [
-	        [0, 3, 4],
-	        [0, 4, 1],
-	        [1, 4, 5],
-	        [1, 5, 2],
-	        [2, 5, 3],
-	        [2, 3, 0]
-	    ]
+            [0, 3, 1],
+            [1, 3, 4],
+            [1, 4, 2],
+            [2, 4, 5],
+            [2, 5, 0],
+            [0, 5, 3]
+        ]
 	);
 
 ![polysections](images/lib-polysections-9.JPG)

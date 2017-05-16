@@ -12,6 +12,13 @@
 **/
 
 module polysections(sections, triangles = "SOLID") {
+    function reverse(vt) = 
+        let(leng = len(vt))
+        [
+            for(i = [0:leng - 1])
+                vt[leng - 1 - i]
+        ];
+
     function side_indexes(sects, begin_idx = 0) = 
         let(       
             leng_sects = len(sects),
@@ -39,13 +46,14 @@ module polysections(sections, triangles = "SOLID") {
         );
 
     module solid_sections(sects) {
+        leng_sects = len(sects);
         leng_pts_sect = len(sects[0]);
   
         first_idxes = [for(i = [0:leng_pts_sect - 1]) leng_pts_sect - 1 - i];  
 
         last_idxes = [
             for(i = [0:leng_pts_sect - 1]) 
-                i + leng_pts_sect * (len(sects) - 1)
+                i + leng_pts_sect * (leng_sects - 1)
         ];    
 
         v_pts = [
@@ -75,16 +83,27 @@ module polysections(sections, triangles = "SOLID") {
                     ]
             ]; 
 
-        function end_idxes(begin_idx) = 
+        function first_idxes() = 
             [
                 for(i =  [0:half_leng_sect - 1]) 
                     [
-                        begin_idx + i, 
-                        begin_idx + (i + 1) % half_leng_sect, 
-                        begin_idx + (i + 1) % half_leng_sect + half_leng_v_pts, 
-                        begin_idx + i + half_leng_v_pts
-                    ]
+                       i,
+                       i + half_leng_v_pts,
+                       (i + 1) % half_leng_sect + half_leng_v_pts, 
+                       (i + 1) % half_leng_sect
+                    ] 
             ];
+
+        function last_idxes(begin_idx) = 
+            [
+                for(i =  [0:half_leng_sect - 1]) 
+                    [
+                       begin_idx + i,
+                       begin_idx + (i + 1) % half_leng_sect,
+                       begin_idx + (i + 1) % half_leng_sect + half_leng_v_pts,
+                       begin_idx + i + half_leng_v_pts
+                    ]     
+            ];            
 
         outer_sects = strip_sects(0, half_leng_sect - 1);
         inner_sects = strip_sects(half_leng_sect, leng_sect - 1);
@@ -100,10 +119,14 @@ module polysections(sections, triangles = "SOLID") {
         inner_v_pts = to_v_pts(inner_sects);
 
         outer_idxes = side_indexes(outer_sects);
-        inner_idxes = side_indexes(inner_sects, half_leng_v_pts);
-        first_idxes = end_idxes(0);
-        last_idxes = end_idxes(half_leng_v_pts - half_leng_sect);
+        inner_idxes = [ 
+            for(idxes = side_indexes(inner_sects, half_leng_v_pts))
+                reverse(idxes)
+        ];
 
+        first_idxes = first_idxes();
+        last_idxes = last_idxes(half_leng_v_pts - half_leng_sect);
+        
         polyhedron(
               concat(outer_v_pts, inner_v_pts),
               concat(first_idxes, outer_idxes, inner_idxes, last_idxes)
@@ -116,8 +139,8 @@ module polysections(sections, triangles = "SOLID") {
                 points = concat(tri1, tri2),
                 faces = [
                     [0, 1, 2], 
-                    [3, 4, 5], 
-                    [0, 1, 4], [1, 2, 5], [2, 0, 3], 
+                    [3, 5, 4], 
+                    [0, 4, 1], [1, 5, 2], [2, 3, 0], 
                     [0, 3, 4], [1, 4, 5], [2, 5, 3]
                 ]
             );  
