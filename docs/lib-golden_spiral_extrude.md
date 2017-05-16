@@ -27,10 +27,10 @@ Dependencies: `circle_path`, `rotate_p`, `golden_spiral`, `cross_sections`, `pol
 	include <golden_spiral_extrude.scad>;
 
 	shape_pts = [
-		[-2, -10],
-		[-2, 10],
+		[2, -10],
 		[2, 10],
-		[2, -10]
+		[-2, 10],
+		[-2, -10]
 	];
 
 	golden_spiral_extrude(
