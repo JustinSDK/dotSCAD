@@ -23,7 +23,7 @@ module golden_spiral_extrude(shape_pts, from, to, point_distance,
     pts = [for(pt_angle = pts_angles) pt_angle[0]];
     angles = [
         for(pt_angle = pts_angles) 
-            [90, 0, pt_angle[1] + (rt_dir == "CT_CLK" ? 0 : 90)]
+            [90, 0, pt_angle[1] + (rt_dir == "CT_CLK" ? 0 : -90)]
     ];
 
     polysections(
