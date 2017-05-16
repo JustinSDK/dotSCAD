@@ -30,10 +30,14 @@ Dependencies: `helix`, `rotate_p.scad`, `cross_sections`, `polysections`.
 	include <helix_extrude.scad>;
 
 	shape_pts = [
-		[-5, -2], [-5, 2],
-		[-4, 2], [-4, 0],
-		[4, 0], [4, 2],
-		[5, 2], [5, -2]
+		[5, -2],
+		[5, 2], 
+		[4, 2],
+		[4, 0],
+		[-4, 0],
+		[-4, 2],    
+		[-5, 2],    
+		[-5, -2]
 	];
 
 	helix_extrude(shape_pts, 
@@ -57,10 +61,14 @@ Dependencies: `helix`, `rotate_p.scad`, `cross_sections`, `polysections`.
 	level_dist = 10;
 
 	shape_pts = [
-		[0, -2], [0, 2],
-		[1, 2], [1, 0],
-		[9, 0], [9, 2],
-		[10, 2], [10, -2]
+		[10, -2],
+		[10, 2],
+		[9, 2],
+		[9, 0],
+		[1, 0],
+		[1, 2],
+		[0, 2],
+		[0, -2],
 	];
 
 	helix_extrude(shape_pts, 
