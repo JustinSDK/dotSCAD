@@ -21,27 +21,27 @@ When using this module, you should use points to represent the 2D shape. If your
 	include <polysections.scad>;
 	include <path_extrude.scad>;
 	include <bezier_curve.scad>;
-	
+
 	t_step = 0.05;
 	width = 2;
-	
+
 	p0 = [0, 0, 0];
 	p1 = [40, 60, 35];
 	p2 = [-50, 70, 0];
 	p3 = [20, 150, -35];
 	p4 = [30, 50, -3];
-	
-	shape_pts = [
-	    [10, 0],
-	    [15, 10],
-	    [18, 9],
-	    [20, 0]
+
+	shape_pts = [   
+		[5, -5],
+		[3, 4],
+		[0, 5],
+		[-5, -5] 
 	];
-	
+
 	path_pts = bezier_curve(t_step, 
-	    [p0, p1, p2, p3, p4]
+		[p0, p1, p2, p3, p4]
 	);
-	
+
 	path_extrude(shape_pts, path_pts);
 
 ![path_extrude](images/lib-path_extrude-1.JPG)
@@ -50,33 +50,33 @@ When using this module, you should use points to represent the 2D shape. If your
 	include <polysections.scad>;
 	include <path_extrude.scad>;
 	include <bezier_curve.scad>;
-	
+
 	t_step = 0.05;
 	width = 2;
-	
+
 	p0 = [0, 0, 0];
 	p1 = [40, 60, 35];
 	p2 = [-50, 70, 0];
 	p3 = [20, 150, -35];
 	p4 = [30, 50, -3];
-	
+
 	shape_pts = [
-	    // outer
-	    [10, 0],
-	    [15, 10],
-	    [18, 9],
-	    [20, 0],
-	    // inner
-	    [12, 2],
-	    [15, 7],
-	    [17, 7],
-	    [18, 2]
+		// outer
+		[20, 0],
+		[18, 9],
+		[15, 10],    
+		[10, 0],
+		// inner
+		[18, 2],
+		[17, 7],
+		[15, 7],
+		[12, 2]
 	];
-	
+
 	path_pts = bezier_curve(t_step, 
-	    [p0, p1, p2, p3, p4]
+		[p0, p1, p2, p3, p4]
 	);
-	
+
 	path_extrude(shape_pts, path_pts, triangles = "HOLLOW");
 
 ![path_extrude](images/lib-path_extrude-2.JPG)
@@ -92,18 +92,18 @@ When using this module, you should use points to represent the 2D shape. If your
 	p0 = [0, 0, 0];
 	p1 = [40, 60, 35];
 	p2 = [-50, 70, 0];
-	p3 = [20, 150, -35];
-	p4 = [30, 50, -3];
+	p3 = [20, 150, -5];
+	p4 = [50, 50, -3];
 	
 	shape_pts = [
 	    // outer
+        [30, 0],
+        [15, 10],
 	    [10, 0],
-	    [15, 10],
-	    [30, 0],
 	    // inner
-	    [12, 1],
-	    [15, 8],
-	    [26, 1],        
+        [26, 1],
+        [15, 8],
+	    [12, 1]
 	];
 	
 	path_pts = bezier_curve(t_step, 
@@ -114,13 +114,13 @@ When using this module, you should use points to represent the 2D shape. If your
 	    shape_pts, 
 	    path_pts, 	   
 	    triangles = [
-	        [0, 3, 4],
-	        [0, 4, 1],
-	        [1, 4, 5],
-	        [1, 5, 2],
-	        [2, 5, 3],
-	        [2, 3, 0]
-	    ]
+            [0, 4, 3],
+            [0, 1, 4],
+            [1, 5, 4],
+            [1, 2, 5],
+            [2, 3, 5],
+            [2, 0, 3]
+        ]
 	);
 
 ![path_extrude](images/lib-path_extrude-3.JPG)
