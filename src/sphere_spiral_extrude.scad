@@ -24,8 +24,11 @@ module sphere_spiral_extrude(shape_pts, radius, za_step,
         rt_dir = rt_dir
     );
 
+    v_clk = vt_dir == "SPI_DOWN" ? 90 : -90;
+    r_clk = rt_dir == "CT_CLK" ? 0 : 180;
+
     points = [for(pa = points_angles) pa[0]];
-    angles = [for(pa = points_angles) [pa[1][0] + 90, pa[1][1], pa[1][2]]];
+    angles = [for(pa = points_angles) [pa[1][0] + v_clk, pa[1][1], pa[1][2] + r_clk]];
 
     polysections(
         cross_sections(
