@@ -37,7 +37,7 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
             dx = p2[0] - p1[0],
             dy = p2[1] - p1[1],
             dz = p2[2] - p1[2],
-            ay = 90 - atan2(dz, sqrt(pow(dx, 2) + pow(dy, 2))),
+            ay = -90 - atan2(dz, sqrt(pow(dx, 2) + pow(dy, 2))),
             az = atan2(dy, dx)
         )
         [
@@ -51,14 +51,16 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
             dy = p2[1] - p1[1],
             dz = p2[2] - p1[2],
             length = sqrt(pow(dx, 2) + pow(dy, 2) + pow(dz, 2)),
-            ay = 90 - atan2(dz, sqrt(pow(dx, 2) + pow(dy, 2))),
+            ay = - atan2(dz, sqrt(pow(dx, 2) + pow(dy, 2))),
             az = atan2(dy, dx)
         )
         [
             for(p = sh_pts) 
                 let(scaled_p = [p[0] * (1 + scale_step_x * i), p[1] * (1 + scale_step_y * i), p[2]])
                 rotate_p(
-                     rotate_p(scaled_p, twist_step * i) + [0, 0, length], 
+                     rotate_p(
+                         rotate_p(scaled_p, twist_step * i), [0, -90, 0]
+                     ) + [length, 0, 0], 
                      [0, ay, az]
                 ) + p1
         ];
