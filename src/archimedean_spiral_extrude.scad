@@ -20,10 +20,12 @@ module archimedean_spiral_extrude(shape_pts, arm_distance, init_angle, point_dis
         rt_dir = rt_dir
     ); 
 
+    clk_a = rt_dir == "CT_CLK" ? 0 : 180; 
+
     points = [for(pa = points_angles) pa[0]];
     angles = [
         for(pa = points_angles) 
-             [90, 0, pa[1]]
+             [90, 0, pa[1] + clk_a]
     ];
 
     polysections(
