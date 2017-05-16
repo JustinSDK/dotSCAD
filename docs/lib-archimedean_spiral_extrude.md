@@ -22,12 +22,15 @@ Dependencies: `rotate_p`, `archimedean_spiral`, `cross_sections`, `polysections`
 	include <polysections.scad>;
 	include <archimedean_spiral_extrude.scad>;
 
-
 	shape_pts = [
-		[-5, 0], [-5, 4],
-		[-4, 4], [-4, 2],
-		[4, 2], [4, 4],
-		[5, 4], [5, 0]
+		[5, 0],
+		[5, 4],
+		[4, 4], 
+		[4, 2], 
+		[-4, 2],
+		[-4, 4],
+		[-5, 4],
+		[-5, 0]
 	];
 
 	archimedean_spiral_extrude(
