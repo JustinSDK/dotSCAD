@@ -16,6 +16,13 @@ include <__private__/__frags.scad>;
 module helix_extrude(shape_pts, radius, levels, level_dist, 
                      vt_dir = "SPI_DOWN", rt_dir = "CT_CLK", 
                      twist = 0, scale = 1.0, triangles = "SOLID") {
+
+    function reverse(vt) = 
+        let(leng = len(vt))
+        [
+            for(i = [0:leng - 1])
+                vt[leng - 1 - i]
+        ];                         
                          
     is_vt = __is_vector(radius);
     r1 = is_vt ? radius[0] : radius;
@@ -39,8 +46,9 @@ module helix_extrude(shape_pts, radius, levels, level_dist,
         rt_dir = rt_dir
     );
 
-    angles = [for(i = [0:len(path_points) - 1]) [90 + initial_angle, 0, angle_step * i]];
-
+    clk_a = r_dir == 1 ? 0 : 180;
+    angles = [for(i = [0:len(path_points) - 1]) [90 + initial_angle, 0, clk_a + angle_step * i]];
+    
     polysections(
         cross_sections(shape_pts, path_points, angles, twist, scale),
         triangles = triangles
