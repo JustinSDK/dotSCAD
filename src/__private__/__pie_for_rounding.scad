@@ -4,7 +4,7 @@ function __pie_for_rounding(r, begin_a, end_a, frags) =
         step_a = sector_angle / frags,
         is_integer = frags % 1 == 0
     )
-    concat([
+    r < 0.00005 ? [[0, 0]] : concat([
         for(ang = [begin_a:step_a:end_a])
             [
                 r * cos(ang), 
