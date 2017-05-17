@@ -18,8 +18,9 @@ include <__private__/__to3d.scad>;
 
 module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale = 1.0, closed = false) {
     sh_pts = len(shape_pts[0]) == 3 ? shape_pts : [for(p = shape_pts) __to3d(p)];
+    pth_pts = len(path_pts[0]) == 3 ? path_pts : [for(p = path_pts) __to3d(p)];
 
-    len_path_pts = len(path_pts);    
+    len_path_pts = len(pth_pts);    
     len_path_pts_minus_one = len_path_pts - 1;     
 
     scale_step_vt = __is_vector(scale) ? 
@@ -32,8 +33,8 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
 
     function first_section() = 
         let(
-            p1 = path_pts[0], 
-            p2 = path_pts[1],
+            p1 = pth_pts[0], 
+            p2 = pth_pts[1],
             dx = p2[0] - p1[0],
             dy = p2[1] - p1[1],
             dz = p2[2] - p1[2],
@@ -68,11 +69,11 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
     function path_extrude_inner(index) =
        index == len_path_pts ? [] :
            concat(
-               [section(path_pts[index - 1], path_pts[index],  index)],
+               [section(pth_pts[index - 1], pth_pts[index],  index)],
                path_extrude_inner(index + 1)
            );
 
-    if(closed && path_pts[0] == path_pts[len_path_pts_minus_one]) {
+    if(closed && pth_pts[0] == pth_pts[len_path_pts_minus_one]) {
         // round-robin
         sections = path_extrude_inner(1);
         polysections(
