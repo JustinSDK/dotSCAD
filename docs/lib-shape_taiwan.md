@@ -41,14 +41,12 @@ Returns shape points of [Taiwan](https://www.google.com.tw/maps?q=taiwan&um=1&ie
 	include <polysections.scad>;
 	include <helix_extrude.scad>;
 
-	mirror_taiwan = [for(pt = shape_taiwan(80)) [pt[0] * -1, pt[1]]];
-
 	r1 = 15;
 	r2 = 100;
 	levels = 3;
 	level_dist = 50;
 
-	helix_extrude(mirror_taiwan, 
+	helix_extrude(shape_taiwan(80), 
 		radius = [r1, r2], 
 		levels = levels, 
 		level_dist = level_dist,

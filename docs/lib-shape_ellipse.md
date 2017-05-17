@@ -32,7 +32,8 @@ Returns shape points of an ellipse. They can be used with xxx_extrude modules of
 	helix_extrude(shape_pts, 
 		radius = 40, 
 		levels = 5, 
-		level_dist = 20
+		level_dist = 20,
+        rt_dir = "CLK"
 	);
 
 ![shape_ellipse](images/lib-shape_ellipse-2.JPG)

@@ -27,7 +27,7 @@ Returns shape points of an arc shape. They can be used with xxx_extrude modules 
     t_step = 0.05;
     width = 2;
 
-    shape_pts = shape_arc(radius = 10, angles = [-90, 90], width = 5);
+    shape_pts = shape_arc(radius = 10, angles = [90, 270], width = 5);
 
     p0 = [0, 0, 0];
     p1 = [40, 60, 35];
