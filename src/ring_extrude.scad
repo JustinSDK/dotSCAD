@@ -16,8 +16,8 @@ include <__private__/__frags.scad>;
 module ring_extrude(shape_pts, radius, angle = 360, twist = 0, scale = 1.0, triangles = "SOLID") {
     frags = __frags(radius);
     
-    // 359.9999 is for avoiding "CGAL ERROR: assertion violation"
-    ang = angle == 360 ? 359.9999 : angle;
+    // 359.999988 is for avoiding "CGAL ERROR: assertion violation"
+    ang = angle == 360 ? 359.999988 : angle;
 
     angle_step = 360 / frags;
     as = [for(a = [0:angle_step:ang]) [90, 0, a]];
