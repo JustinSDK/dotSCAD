@@ -11,13 +11,9 @@
 *
 **/
 
+include <__private__/__reverse.scad>;
+
 module polysections(sections, triangles = "SOLID") {
-    function reverse(vt) = 
-        let(leng = len(vt))
-        [
-            for(i = [0:leng - 1])
-                vt[leng - 1 - i]
-        ];
 
     function side_indexes(sects, begin_idx = 0) = 
         let(       
@@ -145,7 +141,7 @@ module polysections(sections, triangles = "SOLID") {
         outer_idxes = side_indexes(outer_sects);
         inner_idxes = [ 
             for(idxes = side_indexes(inner_sects, half_leng_v_pts))
-                reverse(idxes)
+                __reverse(idxes)
         ];
 
         first_idxes = first_idxes();
