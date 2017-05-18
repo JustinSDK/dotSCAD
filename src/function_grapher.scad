@@ -15,6 +15,8 @@
 *
 **/ 
 
+include <__private__/__reverse.scad>;
+
 module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
 
     rows = len(points);
@@ -24,12 +26,6 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
     
     module faces() {
         function xy_to_index(x, y, columns) = y * columns + x; 
-        function reverse(vt) = 
-            let(leng = len(vt))
-            [
-                for(i = [0:leng - 1])
-                    vt[leng - 1 - i]
-            ];
 
         top_pts = [
                 for(row_pts = points)
@@ -82,12 +78,12 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
 
         base_tri_faces1 = [
             for(face = top_tri_faces1)
-                reverse(face) + [leng_pts, leng_pts, leng_pts]
+                __reverse(face) + [leng_pts, leng_pts, leng_pts]
         ];
 
         base_tri_faces2 = [
             for(face = top_tri_faces2)
-                reverse(face) + [leng_pts, leng_pts, leng_pts]
+                __reverse(face) + [leng_pts, leng_pts, leng_pts]
         ];
         
         side_faces1 = [
