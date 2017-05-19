@@ -16,6 +16,7 @@
 include <__private__/__is_vector.scad>;
 include <__private__/__to3d.scad>;
 include <__private__/__angy_angz.scad>;
+include <__private__/__length_between.scad>;
 
 module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale = 1.0, closed = false) {
     sh_pts = len(shape_pts[0]) == 3 ? shape_pts : [for(p = shape_pts) __to3d(p)];
@@ -47,10 +48,7 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
 
     function section(p1, p2, i) = 
         let(
-            dx = p2[0] - p1[0],
-            dy = p2[1] - p1[1],
-            dz = p2[2] - p1[2],
-            length = sqrt(pow(dx, 2) + pow(dy, 2) + pow(dz, 2)),
+            length = __length_between(p1, p2),
             angy_angz = __angy_angz(p1, p2),
             ay = - angy_angz[0],
             az = angy_angz[1]
