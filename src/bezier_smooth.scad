@@ -12,20 +12,12 @@
 
 include <__private__/__to3d.scad>;
 include <__private__/__to2d.scad>;
+include <__private__/__angy_angz.scad>;
 
-function _ya_za(p1, p2) = 
-    let(
-        dx = p2[0] - p1[0],
-        dy = p2[1] - p1[1],
-        dz = p2[2] - p1[2],
-        za = atan2(dy, dx),
-        ya = atan2(dz, sqrt(pow(dx, 2) + pow(dy, 2)))
-    ) [ya, za];
-    
 function _corner_ctrl_pts(round_d, p1, p2, p3) =
     let(
-        _ya_za_1 = _ya_za(p1, p2),
-        _ya_za_2 = _ya_za(p3, p2),
+        _ya_za_1 = __angy_angz(p1, p2),
+        _ya_za_2 = __angy_angz(p3, p2),
         
         dz1 = sin(_ya_za_1[0]) * round_d,
         dxy1 = cos(_ya_za_1[0]) * round_d,
