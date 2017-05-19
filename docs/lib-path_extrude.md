@@ -52,7 +52,6 @@ When using this module, you should use points to represent the 2D shape. If your
 	include <bezier_curve.scad>;
 
 	t_step = 0.05;
-	width = 2;
 
 	p0 = [0, 0, 0];
 	p1 = [40, 60, 35];
@@ -87,7 +86,6 @@ When using this module, you should use points to represent the 2D shape. If your
 	include <bezier_curve.scad>;
 	
 	t_step = 0.05;
-	width = 2;
 	
 	p0 = [0, 0, 0];
 	p1 = [40, 60, 35];
