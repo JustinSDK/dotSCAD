@@ -6,6 +6,8 @@ Puts children along the given path. If there's only one child, it will put the c
 
 - `points` : The points along the path. 
 - `angles` : Rotate before translate each child. If not given, `angles` will be calculated automatically according to `points`.
+- `twist` : If given, each child will be twisted before applying each element of `points` and `angles`.
+- `scale` : If given, each child will be scaled before applying each element of `points` and `angles`. It accepts a single value, `[sx, sy]` or `[sx, sy, sz]`.
 
 ## Examples
 
@@ -72,7 +74,7 @@ Puts children along the given path. If there's only one child, it will put the c
 					scale([2, 1]) 
 						circle(1.25, $fn = 24);    
 		}
-		
+
 		for(a = [0:30:330]) {
 			rotate(a) 
 				translate([5, 0, 0]) 
@@ -97,7 +99,7 @@ Puts children along the given path. If there's only one child, it will put the c
 		[p0, p1, p2, p3, p4, p5]
 	);
 
-	along_with(path_pts)  
+	along_with(path_pts, scale = 0.5)  
 		scales();
 
 ![along_with](images/lib-along_with-4.JPG)
