@@ -13,8 +13,10 @@
 
 include <__private__/__angy_angz.scad>;
 
-module along_with(points, angles) {
+module along_with(points, angles, twist = 0) {
     leng_points = len(points);
+    twist_step_a = twist / leng_points;
+    echo(twist_step_a);
 
     function _path_angles(i = 0) = 
         i == leng_points - 1 ?
@@ -38,10 +40,12 @@ module along_with(points, angles) {
         translate(points[i]) 
             rotate(angs[i])
                 if(angles_defined) {
-                    children(0);
+                     rotate(twist_step_a * i) 
+                         children(0);
                 } else {
                     rotate([90, 0, -90])  
-                        children(0);                    
+                        rotate(twist_step_a * i) 
+                            children(0);                    
                 }
         }
 
