@@ -74,12 +74,12 @@ Puts children along the given path. If there's only one child, it will put the c
 		}
 		
 		for(a = [0:30:360 - 15]) {
-		rotate(a) 
-			translate([5, 0, 0]) 
-				one_scale();
-		rotate(a + 15) 
-			translate([5, 0, 1.75]) 
-				one_scale();
+			rotate(a) 
+				translate([5, 0, 0]) 
+					one_scale();
+			rotate(a + 15) 
+				translate([5, 0, 1.75]) 
+					one_scale();
 		}
 
 	}
