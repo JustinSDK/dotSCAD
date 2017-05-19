@@ -12,14 +12,26 @@
 **/ 
 
 include <__private__/__angy_angz.scad>;
+include <__private__/__is_vector.scad>;
 
-module along_with(points, angles, twist = 0) {
+module along_with(points, angles, twist = 0, scale = 1.0) {
     leng_points = len(points);
+    leng_points_minus_one = leng_points - 1;
     twist_step_a = twist / leng_points;
-    echo(twist_step_a);
+        
+    function scale_step() =
+        let(s =  (scale - 1) / leng_points_minus_one)
+        [s, s, s];
+
+    scale_step_vt = __is_vector(scale) ? 
+        [
+            (scale[0] - 1) / leng_points_minus_one, 
+            (scale[1] - 1) / leng_points_minus_one,
+            scale[2] == undef ? 0 : (scale[2] - 1) / leng_points_minus_one
+        ] : scale_step(); 
 
     function _path_angles(i = 0) = 
-        i == leng_points - 1 ?
+        i == leng_points_minus_one ?
                 [] : 
                 concat(
                     [__angy_angz(points[i], points[i + 1])], 
@@ -39,22 +51,18 @@ module along_with(points, angles, twist = 0) {
     module align(i) {
         translate(points[i]) 
             rotate(angs[i])
-                if(angles_defined) {
-                     rotate(twist_step_a * i) 
-                         children(0);
-                } else {
-                    rotate([90, 0, -90])  
-                        rotate(twist_step_a * i) 
-                            children(0);                    
-                }
-        }
+                rotate(angles_defined ? [0, 0, 0] : [90, 0, -90])
+                    rotate(twist_step_a * i) 
+                         scale([1, 1, 1] + scale_step_vt * i) 
+                             children(0);
+    }
 
     if($children == 1) { 
-        for(i = [0:len(points) - 1]) {
+        for(i = [0:leng_points_minus_one]) {
             align(i) children(0);
         }
     } else {
-        for(i = [0:min(len(points), $children) - 1]) {
+        for(i = [0:min(leng_points, $children) - 1]) {
             align(i) children(i);
         }
     }
