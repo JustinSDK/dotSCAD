@@ -5,7 +5,7 @@ Puts children along the given path. If there's only one child, it will put the c
 ## Parameters
 
 - `points` : The points along the path. 
-- `angles` : If it's given, rotate before translate each child.
+- `angles` : Rotate before translate each child. If not given, `angles` will be calculated automatically according to `points`.
 
 ## Examples
 
@@ -61,3 +61,43 @@ Puts children along the given path. If there's only one child, it will put the c
 				text("A", valign = "center", halign = "center");
 
 ![along_with](images/lib-along_with-3.JPG)
+
+	include <bezier_curve.scad>;
+	include <along_with.scad>;
+
+	module scales() {
+		module one_scale() {
+			rotate([0, 60, 0]) 
+				linear_extrude(1, center = true) 
+					scale([2, 1]) 
+						circle(1.25, $fn = 24);    
+		}
+		
+		for(a = [0:30:360 - 15]) {
+		rotate(a) 
+			translate([5, 0, 0]) 
+				one_scale();
+		rotate(a + 15) 
+			translate([5, 0, 1.75]) 
+				one_scale();
+		}
+
+	}
+
+	t_step = 0.01;
+
+	p0 = [0, 0, 0];
+	p1 = [0, 50, 35];
+	p2 = [-100, 70, 0];
+	p3 = [30, 120, -35];
+	p4 = [30, 150, -40];
+	p5 = [0, 200, -3];
+
+	path_pts = bezier_curve(t_step, 
+		[p0, p1, p2, p3, p4, p5]
+	);
+
+	along_with(path_pts)  
+		scales();
+
+![along_with](images/lib-along_with-4.JPG)

@@ -14,26 +14,25 @@
 include <__private__/__angy_angz.scad>;
 
 module along_with(points, angles) {
-    function _path_angles(path_pts, leng_path_pts, i = 0) = 
-        i == leng_path_pts - 1 ?
+    leng_points = len(points);
+
+    function _path_angles(i = 0) = 
+        i == leng_points - 1 ?
                 [] : 
                 concat(
-                    [__angy_angz(path_pts[i], path_pts[i + 1])], 
-                    _path_angles(path_pts, leng_path_pts, i + 1)
+                    [__angy_angz(points[i], points[i + 1])], 
+                    _path_angles(i + 1)
                 );
             
-    function path_angles(path_pts) = 
-       let(
-           leng_path_pts = len(path_pts),
-           angs = _path_angles(path_pts, leng_path_pts)
-       )
+    function path_angles(points) = 
+       let(angs = _path_angles())
        concat(
            [[0, -angs[0][0], angs[0][1]]], 
            [for(a = angs) [0, -a[0], a[1]]]
        );
        
     angles_defined = angles != undef;
-    angs = angles_defined ? angles : path_angles(path_pts);
+    angs = angles_defined ? angles : path_angles(points);
 
     module align(i) {
         translate(points[i]) 
