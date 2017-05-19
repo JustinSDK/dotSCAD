@@ -38,19 +38,22 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
             p1 = pth_pts[0], 
             p2 = pth_pts[1],
             angy_angz = __angy_angz(p1, p2),
-            ay = -90 - angy_angz[0],
+            ay = -angy_angz[0],
             az = angy_angz[1]
         )
         [
             for(p = sh_pts) 
-                rotate_p(p, [0, ay, az]) + p1
+                rotate_p(
+                    rotate_p(p, [90, 0, -90]), 
+                    [0, ay, az]
+                ) + p1
         ];
 
     function section(p1, p2, i) = 
         let(
             length = __length_between(p1, p2),
             angy_angz = __angy_angz(p1, p2),
-            ay = - angy_angz[0],
+            ay = -angy_angz[0],
             az = angy_angz[1]
         )
         [
@@ -58,7 +61,7 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
                 let(scaled_p = [p[0] * (1 + scale_step_x * i), p[1] * (1 + scale_step_y * i), p[2]])
                 rotate_p(
                      rotate_p(
-                         rotate_p(scaled_p, twist_step * i), [0, -90, 0]
+                         rotate_p(scaled_p, twist_step * i), [90, 0, -90]
                      ) + [length, 0, 0], 
                      [0, ay, az]
                 ) + p1
