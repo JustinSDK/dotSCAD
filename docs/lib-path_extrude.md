@@ -62,15 +62,15 @@ When using this module, you should use points to represent the 2D shape. If your
 
 	shape_pts = [
 		// outer
-		[20, 0],
-		[18, 9],
-		[15, 10],    
-		[10, 0],
+		[5, 0],
+		[3, 9],
+		[0, 10],    
+		[-5, 0],
 		// inner
-		[18, 2],
-		[17, 7],
-		[15, 7],
-		[12, 2]
+		[3, 2],
+		[2, 7],
+		[0, 7],
+		[-3, 2]
 	];
 
 	path_pts = bezier_curve(t_step, 
@@ -97,13 +97,13 @@ When using this module, you should use points to represent the 2D shape. If your
 	
 	shape_pts = [
 	    // outer
-        [30, 0],
-        [15, 10],
-	    [10, 0],
+        [10, 0],
+        [-5, 10],
+	    [-10, 0],
 	    // inner
-        [26, 1],
-        [15, 8],
-	    [12, 1]
+        [7, 1],
+        [-4, 8],
+	    [-7, 1]
 	];
 	
 	path_pts = bezier_curve(t_step, 
