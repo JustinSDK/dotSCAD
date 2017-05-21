@@ -13,6 +13,7 @@
 **/ 
 
 include <__private__/__frags.scad>;
+include <__private__/__ra_to_xy.scad>;
 
 module arc(radius, angles, width, width_mode = "LINE_CROSS") {
 
@@ -28,8 +29,6 @@ module arc(radius, angles, width, width_mode = "LINE_CROSS") {
     m = floor(angles[0] / a_step) + 1;
     n = floor(angles[1] / a_step);
     
-    function unit_xy(a) = [cos(a), sin(a)];
-    
     function edge_r_begin(orig_r, a) =
         let(leng = orig_r * cos(half_a_step))
         leng / cos(m * a_step - half_a_step - a);
@@ -43,21 +42,18 @@ module arc(radius, angles, width, width_mode = "LINE_CROSS") {
     
     points = concat(
         // outer arc path
-        [edge_r_begin(r_outer, angles[0]) * unit_xy(angles[0])],
-        [
-            for(i = [m:n]) 
-                r_outer * unit_xy(a_step * i)
-        ],
-        [edge_r_end(r_outer, angles[1]) *  unit_xy(angles[1])],
+        [__ra_to_xy(edge_r_begin(r_outer, angles[0]), angles[0])],
+        [for(i = [m:n]) __ra_to_xy(r_out, a_step * i)],
+        [__ra_to_xy(edge_r_end(r_outer, angles[1]), angles[1])],
         // inner arc path
-        [edge_r_end(r_inner, angles[1]) *  unit_xy(angles[1])],
+        [__ra_to_xy(edge_r_end(r_inner, angles[1]), angles[1])],
         [
             for(i = [m:n]) 
                 let(idx = (n + (m - i)))
-                r_inner * unit_xy(a_step * idx)
+                __ra_to_xy(r_inner, a_step * idx)
 
         ],
-        [edge_r_begin(r_inner, angles[0]) * unit_xy(angles[0])]        
+        [__ra_to_xy(edge_r_begin(r_inner, angles[0]), angles[0])]        
     );
      
     polygon(points);
