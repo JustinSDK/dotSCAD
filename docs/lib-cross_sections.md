@@ -1,6 +1,6 @@
 # cross_sections
 
-Given a starting cross-section, points and angles along the path, this function will return all cross-sections. Combined with the `polysections` module, you can create a specific path extrusion.
+Given a 2D shape, points and angles along the path, this function will return all cross-sections. Combined with the `polysections` module, you can create a specific path extrusion.
 
 It depends on the `rotate_p` function. Remember to include "rotate_p.scad".
 

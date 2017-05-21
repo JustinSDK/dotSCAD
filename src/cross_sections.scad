@@ -1,7 +1,7 @@
 /**
 * cross_sections.scad
 *
-* Given a starting cross-section, points and angles along the path, this function
+* Given a 2D shape, points and angles along the path, this function
 * will return all cross-sections.
 *
 * @copyright Justin Lin, 2017
