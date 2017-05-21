@@ -13,9 +13,10 @@
 **/ 
 
 include <__private__/__frags.scad>;
+include <__private__/__is_vector.scad>;
 include <__private__/__ra_to_xy.scad>;
 
-module arc(radius, angles, width, width_mode = "LINE_CROSS") {
+module arc(radius, angle, width, width_mode = "LINE_CROSS") {
 
     w_offset = width_mode == "LINE_CROSS" ? [width / 2, -width / 2] : (
         width_mode == "LINE_INWARD" ? [0, -width] : [width, 0]
@@ -26,6 +27,8 @@ module arc(radius, angles, width, width_mode = "LINE_CROSS") {
     a_step = 360 / frags;
     half_a_step = a_step / 2;
     
+    angles = __is_vector(angle) ? angle : [0, angle];
+
     m = floor(angles[0] / a_step) + 1;
     n = floor(angles[1] / a_step);
     
