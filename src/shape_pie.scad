@@ -13,6 +13,7 @@
 **/
 
 include <__private__/__frags.scad>;
+include <__private__/__ra_to_xy.scad>;
 
 function shape_pie(radius, angles) =
     let(
@@ -24,12 +25,12 @@ function shape_pie(radius, angles) =
         edge_r_begin = leng / cos((m - 0.5) * a_step - angles[0]),
         edge_r_end = leng / cos((n + 0.5) * a_step - angles[1]),
         shape_pts = concat(
-            [[0, 0], edge_r_begin * [cos(angles[0]), sin(angles[0])]],
+            [[0, 0], __ra_to_xy(edge_r_begin, angles[0])],
             [
                 for(i = [m:n]) 
-                    let(a = a_step * i)
-                    radius * [cos(a), sin(a)]
+                    let(a = a_step * i) 
+                    __ra_to_xy(radius, a)
             ],
-            [edge_r_end * [cos(angles[1]), sin(angles[1])]]
+            [__ra_to_xy(edge_r_end, angles[1])]
         )
     ) shape_pts;
