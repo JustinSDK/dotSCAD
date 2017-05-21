@@ -11,19 +11,17 @@
 **/
 
 include <__private__/__frags.scad>;
+include <__private__/__ra_to_xy.scad>;
 
 module pie(radius, angles) {
-
-    frags = __frags(radius);
-    a_step = 360 / frags;
+    
+    a_step = 360 / __frags(radius);
     
     m = floor(angles[0] / a_step) + 1;
     n = floor(angles[1] / a_step);
     
     half_a_step = a_step / 2;
     leng = radius * cos(half_a_step);    
-
-    function unit_xy(a) = [cos(a), sin(a)];  
 
     function edge_r_begin(a) =
         leng / cos((m - 0.5) * a_step - a);
@@ -32,12 +30,9 @@ module pie(radius, angles) {
         leng / cos((n + 0.5) * a_step - a);    
     
     points = concat(
-        [[0, 0], edge_r_begin(angles[0]) * unit_xy(angles[0])],
-        [
-            for(i = [m:n]) 
-                radius * unit_xy(a_step * i)
-        ],
-        [edge_r_end(angles[1]) * unit_xy(angles[1])]
+        [[0, 0], __ra_to_xy(edge_r_begin(angles[0]), angles[0])],
+        [for(i = [m:n]) __ra_to_xy(radius, a_step * i)],
+        [__ra_to_xy(edge_r_end(angles[1]), angles[1])]
     );
 
     polygon(points);
