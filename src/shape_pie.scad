@@ -13,13 +13,15 @@
 **/
 
 include <__private__/__frags.scad>;
+include <__private__/__is_vector.scad>;
 include <__private__/__ra_to_xy.scad>;
 
-function shape_pie(radius, angles) =
+function shape_pie(radius, angle) =
     let(
         frags = __frags(radius),
         a_step = 360 / frags,
         leng = radius * cos(a_step / 2),
+        angles = __is_vector(angle) ? angle : [0:angle],
         m = floor(angles[0] / a_step) + 1,
         n = floor(angles[1] / a_step),
         edge_r_begin = leng / cos((m - 0.5) * a_step - angles[0]),
