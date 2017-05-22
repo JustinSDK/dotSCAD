@@ -11,12 +11,15 @@
 **/
 
 include <__private__/__frags.scad>;
+include <__private__/__is_vector.scad>;
 include <__private__/__ra_to_xy.scad>;
-
-module pie(radius, angles) {
+ 
+module pie(radius, angle) {
     
     a_step = 360 / __frags(radius);
     
+    angles = __is_vector(angle) ? angle : [0, angle];
+
     m = floor(angles[0] / a_step) + 1;
     n = floor(angles[1] / a_step);
     
