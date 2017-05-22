@@ -52,12 +52,12 @@ module polysections(sections, triangles = "SOLID") {
             i < leng_pts_sect ?
                 (p == first_sect[i] ? i : search_at_first_sect(p, i + 1)) : -1;
         
-        function the_same_as_first_sect(sect) =
+        function the_same_as_first_sect() =
             let(
                 found_at_i = search_at_first_sect(last_sect[0])
             )
             found_at_i == -1 ? false : 
-                sect == concat(
+                last_sect == concat(
                     [for(i = [found_at_i:leng_pts_sect-1]) first_sect[i]],
                     [for(i = [0:found_at_i - 1]) first_sect[i]]
                 );
@@ -68,7 +68,7 @@ module polysections(sections, triangles = "SOLID") {
                     pt
         ];      
 
-        if(first_sect == last_sect || the_same_as_first_sect(last_sect)) {
+        if(first_sect == last_sect || the_same_as_first_sect()) {
             polyhedron(
                 v_pts, 
                 side_indexes(sects)
