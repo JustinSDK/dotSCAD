@@ -49,7 +49,7 @@ module polysections(sections, triangles = "SOLID") {
         let(
             found_at_i = search_at(f_sect, l_sect[0], leng_pts_sect)
         )
-        found_at_i == -1 ? false : 
+        found_at_i <= 0 ? false : 
             l_sect == concat(
                 [for(i = [found_at_i:leng_pts_sect-1]) f_sect[i]],
                 [for(i = [0:found_at_i - 1]) f_sect[i]]
