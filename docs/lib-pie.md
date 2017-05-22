@@ -5,7 +5,7 @@ Creates a pie (circular sector). You can pass a 2 element vector to define the c
 ## Parameters
 
 - `radius` : The radius of the circle.
-- `angles` : A single value or a 2 element vector which defines the central angle. The first element of the vector is the beginning angle in degrees, and the second element is the ending angle.
+- `angle` : A single value or a 2 element vector which defines the central angle. The first element of the vector is the beginning angle in degrees, and the second element is the ending angle.
 - `$fa`, `$fs`, `$fn` : Check [the circle module](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Using_the_2D_Subsystem#circle) for more details.
 
 ## Examples
