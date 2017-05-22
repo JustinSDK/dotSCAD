@@ -41,26 +41,26 @@ module polysections(sections, triangles = "SOLID") {
             ]      
         );
 
+    function search_at(f_sect, p, leng_pts_sect, i = 0) =
+        i < leng_pts_sect ?
+            (p == f_sect[i] ? i : search_at(f_sect, p, leng_pts_sect, i + 1)) : -1;
+    
+    function the_same_after_twisting(f_sect, l_sect, leng_pts_sect) =
+        let(
+            found_at_i = search_at(f_sect, l_sect[0], leng_pts_sect)
+        )
+        found_at_i == -1 ? false : 
+            l_sect == concat(
+                [for(i = [found_at_i:leng_pts_sect-1]) f_sect[i]],
+                [for(i = [0:found_at_i - 1]) f_sect[i]]
+            );        
+
     module solid_sections(sects) {
         
         leng_sects = len(sects);
         leng_pts_sect = len(sects[0]);
         first_sect = sects[0];
         last_sect = sects[leng_sects - 1];
-
-        function search_at_first_sect(p, i = 0) =
-            i < leng_pts_sect ?
-                (p == first_sect[i] ? i : search_at_first_sect(p, i + 1)) : -1;
-        
-        function the_same_after_twisting() =
-            let(
-                found_at_i = search_at_first_sect(last_sect[0])
-            )
-            found_at_i == -1 ? false : 
-                last_sect == concat(
-                    [for(i = [found_at_i:leng_pts_sect-1]) first_sect[i]],
-                    [for(i = [0:found_at_i - 1]) first_sect[i]]
-                );
    
         v_pts = [
             for(sect = sects) 
@@ -68,7 +68,7 @@ module polysections(sections, triangles = "SOLID") {
                     pt
         ];      
 
-        if(first_sect == last_sect || the_same_after_twisting()) {
+        if(first_sect == last_sect || the_same_after_twisting(first_sect, last_sect, leng_pts_sect)) {
             polyhedron(
                 v_pts, 
                 side_indexes(sects)
