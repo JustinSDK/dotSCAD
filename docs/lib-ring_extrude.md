@@ -12,7 +12,7 @@ If your 2D shape is not solid, indexes of triangles are required. See [polysecti
 
 - `shape_pts` : A list of points represent a shape. See the example below.
 - `radius` : The circle radius.
-- `angle` : Defaults to 360. Specifies the number of degrees to sweep, starting at the positive X axis.
+- `angle` : Defaults to 360. Specifies the number of degrees to sweep, starting at the positive X axis. It also accepts a 2 element vector which defines the central angle. The first element of the vector is the beginning angle in degrees, and the second element is the ending angle.
 - `twist` : The number of degrees of through which the shape is extruded.
 - `scale` : Scales the 2D shape by this value over the length of the extrusion. Scale can be a scalar or a vector.
 - `triangles` : `"SOLID"` (default), `"HOLLOW"` or user-defined indexes. See [polysections](https://openhome.cc/eGossip/OpenSCAD/lib-polysections.html) for details.
