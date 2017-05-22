@@ -144,13 +144,29 @@ module polysections(sections, triangles = "SOLID") {
                 __reverse(idxes)
         ];
 
-        first_idxes = first_idxes();
-        last_idxes = last_idxes(half_leng_v_pts - half_leng_sect);
+        first_outer_sect = outer_sects[0];
+        last_outer_sect = outer_sects[leng_sects - 1];
+        first_inner_sect = inner_sects[0];
+        last_inner_sect = inner_sects[leng_sects - 1];
         
-        polyhedron(
-              concat(outer_v_pts, inner_v_pts),
-              concat(first_idxes, outer_idxes, inner_idxes, last_idxes)
-        ); 
+        leng_pts_sect = len(first_outer_sect);
+
+        if((first_outer_sect == last_outer_sect && first_inner_sect == last_inner_sect) ||
+           (the_same_after_twisting(first_outer_sect, last_outer_sect, leng_pts_sect) && the_same_after_twisting(first_inner_sect, last_inner_sect, leng_pts_sect) )
+        ) {
+            polyhedron(
+                concat(outer_v_pts, inner_v_pts),
+                concat(outer_idxes, inner_idxes)
+            );             
+        } else {
+            first_idxes = first_idxes();
+            last_idxes = last_idxes(half_leng_v_pts - half_leng_sect);
+            
+            polyhedron(
+                concat(outer_v_pts, inner_v_pts),
+                concat(first_idxes, outer_idxes, inner_idxes, last_idxes)
+            ); 
+        }
     }
     
     module triangles_defined_sections() {
