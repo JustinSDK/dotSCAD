@@ -33,12 +33,12 @@ module ring_extrude(shape_pts, radius, angle = 360, twist = 0, scale = 1.0, tria
 
     angs = concat(
         [[90, 0, angles[0]]], 
-        [for(i = [m:n]) [90, 0, a_step * i]]
+        m > n ? [] : [for(i = [m:n]) [90, 0, a_step * i]]
     );
     pts = concat(
         [__ra_to_xy(begin_r(), angles[0])],
-        [for(i = [m:n]) __ra_to_xy(radius, a_step * i)]
-    );
+        m > n ? [] : [for(i = [m:n]) __ra_to_xy(radius, a_step * i)]
+    ); 
 
     is_angle_frag_end = angs[len(angs) - 1][2] == angles[1];
     
