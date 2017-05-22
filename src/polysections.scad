@@ -66,16 +66,19 @@ module polysections(sections, triangles = "SOLID") {
             for(sect = sects) 
                 for(pt = sect) 
                     pt
-        ];      
+        ];
 
-        if(first_sect == last_sect || the_same_after_twisting(first_sect, last_sect, leng_pts_sect)) {
+        function begin_end_the_same() =
+            first_sect == last_sect || 
+            the_same_after_twisting(first_sect, last_sect, leng_pts_sect);
+
+        if(begin_end_the_same()) {
             polyhedron(
                 v_pts, 
                 side_indexes(sects)
             ); 
         } else {
             first_idxes = [for(i = [0:leng_pts_sect - 1]) leng_pts_sect - 1 - i];  
-
             last_idxes = [
                 for(i = [0:leng_pts_sect - 1]) 
                     i + leng_pts_sect * (leng_sects - 1)
@@ -151,9 +154,14 @@ module polysections(sections, triangles = "SOLID") {
         
         leng_pts_sect = len(first_outer_sect);
 
-        if((first_outer_sect == last_outer_sect && first_inner_sect == last_inner_sect) ||
-           (the_same_after_twisting(first_outer_sect, last_outer_sect, leng_pts_sect) && the_same_after_twisting(first_inner_sect, last_inner_sect, leng_pts_sect) )
-        ) {
+        function begin_end_the_same() = 
+           (first_outer_sect == last_outer_sect && first_inner_sect == last_inner_sect) ||
+           (
+               the_same_after_twisting(first_outer_sect, last_outer_sect, leng_pts_sect) && 
+               the_same_after_twisting(first_inner_sect, last_inner_sect, leng_pts_sect)
+           ); 
+
+        if(begin_end_the_same()) {
             polyhedron(
                 concat(outer_v_pts, inner_v_pts),
                 concat(outer_idxes, inner_idxes)
