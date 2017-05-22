@@ -17,21 +17,41 @@ include <__private__/__ra_to_xy.scad>;
 module ring_extrude(shape_pts, radius, angle = 360, twist = 0, scale = 1.0, triangles = "SOLID") {
 
     a_step = 360 / __frags(radius);
-    n = floor(angle / a_step);
+
+    angles = __is_vector(angle) ? angle : [0, angle];
+
+    m = floor(angles[0] / a_step) + 1;
+    n = floor(angles[1] / a_step);
+
+    leng = radius * cos(a_step / 2);
+
+    function begin_r() =
+        leng / cos((m - 0.5) * a_step - angles[0]);
 
     function end_r() =      
-        radius * cos(a_step / 2) / cos((n + 0.5) * a_step - angle);
+        leng / cos((n + 0.5) * a_step - angles[1]);
 
-    angs = [for(a = [0:a_step:n * a_step]) [90, 0, a]];
-    pts = [for(a = angs) __ra_to_xy(radius, a[2])];
+    angs = concat(
+        [[90, 0, angles[0]]], 
+        [for(i = [m:n]) [90, 0, a_step * i]]
+    );
+    pts = concat(
+        [__ra_to_xy(begin_r(), angles[0])],
+        [for(i = [m:n]) __ra_to_xy(radius, a_step * i)]
+    );
 
-    is_angle_frag_end = angs[len(angs) - 1][2] == angle;
+    is_angle_frag_end = angs[len(angs) - 1][2] == angles[1];
     
-    angles = is_angle_frag_end ? angs : concat(angs, [[90, 0, angle]]);
-    points = is_angle_frag_end ? pts : concat(pts, [__ra_to_xy(end_r(), angle)]);
+    all_angles = is_angle_frag_end ? 
+        angs :  
+        concat(angs, [[90, 0, angles[1]]]);
+        
+    all_points = is_angle_frag_end ? 
+        pts :
+        concat(pts, [__ra_to_xy(end_r(), angles[1])]);
 
     polysections(
-        cross_sections(shape_pts, points, angles, twist, scale),
+        cross_sections(shape_pts, all_points, all_angles, twist, scale),
         triangles = triangles
     );
 }
