@@ -21,9 +21,9 @@ module crystal_ball(radius, theta = 360, phi = 180) {
     shape_pts = shape_pie(
         radius, 
         [90 - phis[1], 90 - phis[0]], 
-        $fn = __nearest_multiple_of_4(__frags(frags))
+        $fn = __nearest_multiple_of_4(frags)
     );
-                    
+
     // _hole_r = 0.0005 for avoiding warnings
     _hole_r = 0.0005;
     ring_extrude(
