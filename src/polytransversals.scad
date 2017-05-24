@@ -11,16 +11,30 @@
 *
 **/
 
+include <__private__/__reverse.scad>;
+
 module polytransversals(transversals) {
-    module two_transversals(trans1, trans2) {
-        leng_trans2 = len(trans2);
-        polygon(concat(
-            trans1, 
-            [for(i = [0:leng_trans2 - 1]) trans2[leng_trans2 - 1 - i]]
-        ));
-    }
-    
-    for(i = [0:len(transversals) - 2]) {
-        two_transversals(transversals[i], transversals[i + 1]);
-    }
+    leng_trs = len(transversals);
+    leng_tr = len(transversals[0]);
+
+    lefts = [
+        for(i = [1:leng_trs - 2]) 
+            let(tr = transversals[leng_trs - i])
+                tr[0]
+    ];
+
+    rights = [
+        for(i = [1:leng_trs - 2]) 
+            let(tr = transversals[i])
+                tr[leng_tr - 1]
+    ];
+
+    polygon(
+        concat(
+            transversals[0], 
+            rights, 
+            __reverse(transversals[leng_trs - 1]), 
+            lefts
+        )
+    );
 }
