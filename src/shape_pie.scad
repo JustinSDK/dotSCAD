@@ -33,6 +33,6 @@ function shape_pie(radius, angle) =
                     let(a = a_step * i) 
                     __ra_to_xy(radius, a)
             ],
-            [__ra_to_xy(edge_r_end, angles[1])]
+            angles[1] == a_step * n ? [] : [__ra_to_xy(edge_r_end, angles[1])]
         )
     ) shape_pts;
