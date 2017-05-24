@@ -33,6 +33,6 @@ function shape_superformula(phi_step, m1, m2, n1, n2 = 1, n3 = 1, a = 1, b = 1) 
                 )
                 __ra_to_xy(r, angle)
         ],
-        shape_pts = concat([[0, 0]], pts, [pts[0]])
+        shape_pts = concat(pts, [pts[0]])
         
     ) shape_pts;
