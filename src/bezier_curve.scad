@@ -12,6 +12,8 @@
 *
 **/ 
 
+include <__private__/__to2d.scad>;
+
 function _combi(n, k) =
     let(  
         bi_coef = [      
@@ -56,4 +58,5 @@ function bezier_curve(t_step, points) =
             for(t = [0: t_step: 1]) 
                 _bezier_curve_point(t, points)
         ], [_bezier_curve_point(1, points)])
-    ) pts;
+    ) 
+    len(points[0]) == 3 ? pts : [for(pt = pts) __to2d(pt)];
