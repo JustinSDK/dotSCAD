@@ -52,7 +52,7 @@ module ring_extrude(shape_pts, radius, angle = 360, twist = 0, scale = 1.0, tria
             
         all_points = is_angle_frag_end ? 
             pts :
-            concat(pts, [__ra_to_xy(end_r(), angles[1])]);
+            concat(pts, [__ra_to_xy(end_r, angles[1])]);
 
         polysections(
             cross_sections(shape_pts, all_points, all_angles, twist, scale),
