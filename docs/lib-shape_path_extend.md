@@ -1,10 +1,10 @@
-# path_extend
+# shape_path_extend
 
-It extends a 2D stroke along a path. This module is suitable for a path created by a continuous function. 
+It extends a 2D stroke along a path to create a 2D shape. This module is suitable for a path created by a continuous function. The returned points can be used with xxx_extrude modules of dotSCAD. The shape points can be also used with the built-in polygon module.
 
-It depends on the rotate_p function and the polytransversals module. Remember to include "rotate_p.scad" and "polytransversals.scad".
+When using this module, you should use points to represent the 2D stroke. 
 
-When using this module, you should use points to represent the 2D stroke.
+It depends on the `rotate_p` function. Remember to include "rotate_p.scad" and "polytransversals.scad".
 
 ## Parameters
 
@@ -16,8 +16,7 @@ When using this module, you should use points to represent the 2D stroke.
 ## Examples
 
 	include <rotate_p.scad>;
-	include <polytransversals.scad>;
-	include <path_extend.scad>;
+	include <shape_path_extend.scad>;
 	include <circle_path.scad>;
 	include <archimedean_spiral.scad>;
 	
@@ -25,7 +24,10 @@ When using this module, you should use points to represent the 2D stroke.
 	
 	stroke1 = [[-5, 2.5], [-2.5, 0], [0, 2.5], [2.5, 0], [5, 2.5]];
 	path_pts1 = circle_path(50, 60);
-	path_extend(stroke1, path_pts1);
+    polygon(
+	    shape_path_extend(stroke1, path_pts1)
+    );
+    
 	
 	stroke2 = [[-4, 0], [0, 4], [4, 0]];
 	pts_angles = archimedean_spiral(
@@ -36,9 +38,11 @@ When using this module, you should use points to represent the 2D stroke.
 	); 
 	
 	translate([120, 0, 0]) 
-	    path_extend(
-	        stroke2, 
-	        [for(pa = pts_angles) pa[0]]
-	    );
+	    polygon(
+            shape_path_extend(
+	            stroke2, 
+	            [for(pa = pts_angles) pa[0]]
+	        )
+        );
 
-![path_extend](images/lib-path_extend-1.JPG)
+![path_extend](images/lib-shape_path_extend-1.JPG)

@@ -38,7 +38,6 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 	- [hull_polyline2d](https://openhome.cc/eGossip/OpenSCAD/lib-hull_polyline2d.html)
 	- [hexagons](https://openhome.cc/eGossip/OpenSCAD/lib-hexagons.html)
 	- [polytransversals](https://openhome.cc/eGossip/OpenSCAD/lib-polytransversals.html)
-	- [path_extend](https://openhome.cc/eGossip/OpenSCAD/lib-path_extend.html)
 
 - 3D
 	- [rounded_cube](https://openhome.cc/eGossip/OpenSCAD/lib-rounded_cube.html)
@@ -87,7 +86,8 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 	- [shape_trapezium](https://openhome.cc/eGossip/OpenSCAD/lib-shape_trapezium.html)
 	- [shape_cyclicpolygon](https://openhome.cc/eGossip/OpenSCAD/lib-shape_cyclicpolygon.html)
     - [shape_pentagram](https://openhome.cc/eGossip/OpenSCAD/lib-shape_pentagram.html)	
-	- [shape_superformula](https://openhome.cc/eGossip/OpenSCAD/lib-shape_superformula.html)	
+	- [shape_superformula](https://openhome.cc/eGossip/OpenSCAD/lib-shape_superformula.html)
+	- [shape_path_extend](https://openhome.cc/eGossip/OpenSCAD/lib-shape_path_extend.html)		
 
 - 2D Shape Extrusion
 	- [path_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-path_extrude.html)
