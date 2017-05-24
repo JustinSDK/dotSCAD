@@ -13,14 +13,10 @@
 *
 **/
 
+include <__private__/__to3d.scad>;
+include <__private__/__length_between.scad>;
+
 module path_extend(stroke_pts, path_pts, scale = 1.0, closed = false) {
-    function length(p1, p2) = 
-        let(
-            x1 = p1[0],
-            y1 = p1[1],
-            x2 = p2[0],
-            y2 = p2[1]
-        ) sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
 
     function az(p1, p2) = 
         let(
@@ -47,7 +43,7 @@ module path_extend(stroke_pts, path_pts, scale = 1.0, closed = false) {
     
     function stroke(p1, p2, i) =
         let(
-            leng = length(p1, p2),
+            leng = __length_between(__to3d(p1), __to3d(p2)),
             a = az(p1, p2)
         )
         [
