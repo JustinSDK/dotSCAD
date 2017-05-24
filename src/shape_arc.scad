@@ -44,9 +44,9 @@ function shape_arc(radius, angle, width, width_mode = "LINE_CROSS") =
                 for(i = [m:n]) 
                     __ra_to_xy(r_outer, a_step * i)
             ],
-            [__ra_to_xy(_edge_r_end(r_outer, angles[1], a_step, n), angles[1])],
+            angles[1] == a_step * n ? [] : [__ra_to_xy(_edge_r_end(r_outer, angles[1], a_step, n), angles[1])],
             // inner arc path
-            [__ra_to_xy(_edge_r_end(r_inner, angles[1], a_step, n), angles[1])],
+            angles[1] == a_step * n ? [] : [__ra_to_xy(_edge_r_end(r_inner, angles[1], a_step, n), angles[1])],
             m >= n ? [] : [
                 for(i = [m:n]) 
                     let(idx = (n + (m - i)))
