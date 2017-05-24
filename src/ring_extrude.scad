@@ -25,10 +25,10 @@ module ring_extrude(shape_pts, radius, angle = 360, twist = 0, scale = 1.0, tria
 
     leng = radius * cos(a_step / 2);
 
-    function begin_r() =
+    begin_r =
         leng / cos((m - 0.5) * a_step - angles[0]);
 
-    function end_r() =      
+    end_r =      
         leng / cos((n + 0.5) * a_step - angles[1]);
 
     angs = concat(
@@ -36,7 +36,7 @@ module ring_extrude(shape_pts, radius, angle = 360, twist = 0, scale = 1.0, tria
         m > n ? [] : [for(i = [m:n]) [90, 0, a_step * i]]
     );
     pts = concat(
-        [__ra_to_xy(begin_r(), angles[0])],
+        [__ra_to_xy(begin_r, angles[0])],
         m > n ? [] : [for(i = [m:n]) __ra_to_xy(radius, a_step * i)]
     ); 
 
