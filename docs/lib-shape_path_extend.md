@@ -45,4 +45,34 @@ It depends on the `rotate_p` function. Remember to include "rotate_p.scad" and "
 	        )
         );
 
-![path_extend](images/lib-shape_path_extend-1.JPG)
+![shape_path_extend](images/lib-shape_path_extend-1.JPG)
+
+	include <rotate_p.scad>;
+	include <bezier_curve.scad>;
+	include <shape_path_extend.scad>;
+
+	include <polysections.scad>;
+	include <path_extrude.scad>;
+		
+		
+	t_step = 0.1;
+	width = 2;
+
+	p0 = [0, 0];
+	p1 = [40, 60];
+	p2 = [50, 90];
+	p3 = [0, 200];
+
+	path = bezier_curve(t_step, 
+		[p0, p1, p2, p3]
+	);
+
+	stroke = [[-5, 2.5], [-2.5, 0], [0, 2.5], [2.5, 0], [5, 2.5]];
+
+	path_extrude(
+		shape_path_extend(stroke, path, scale = 5), 
+		path,
+		scale = 0.1
+	);
+
+![shape_path_extend](images/lib-shape_path_extend-2.JPG)
