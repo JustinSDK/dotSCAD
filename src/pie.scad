@@ -35,7 +35,7 @@ module pie(radius, angle) {
     points = concat(
         [[0, 0], __ra_to_xy(edge_r_begin(angles[0]), angles[0])],
         m >= n ? [] : [for(i = [m:n]) __ra_to_xy(radius, a_step * i)],
-        [__ra_to_xy(edge_r_end(angles[1]), angles[1])]
+        angles[1] == a_step * n ? [] : [__ra_to_xy(edge_r_end(angles[1]), angles[1])]
     );
 
     polygon(points);
