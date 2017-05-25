@@ -42,8 +42,8 @@ module assertEqualPoint(expected, actual) {
     
     if(shifted_expected != shifted_actual) {
         fail(
-            str("expected: ", expected,
-            ", but: ", actual)
+            str("expected: ", shifted_expected / n,
+            ", but: ", shifted_actual / n)
         );
     }
 }
