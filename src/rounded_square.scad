@@ -22,9 +22,19 @@ module rounded_square(size, corner_r, center = false) {
     x = is_vt ? size[0] : size;
     y = is_vt ? size[1] : size;       
     
-    translate(center ? [0, 0] : [x / 2, y / 2]) polygon(__trapezium(
+    position = center ? [0, 0] : [x / 2, y / 2];
+    points = __trapezium(
         length = x, 
         h = y, 
         round_r = corner_r
-    ));
+    );
+
+    translate(position) 
+        polygon(points);
+
+    // hook for testing
+    test_rounded_square(position, points);
+}
+
+module test_rounded_square(position, points) {
 }
