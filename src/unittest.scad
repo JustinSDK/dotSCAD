@@ -34,7 +34,7 @@ module assertEqualPoint(expected, actual) {
     
     shifted_expected = shift_to_int(
         expected * n
-    );    
+    );
 
     shifted_actual = shift_to_int(
         actual * n
