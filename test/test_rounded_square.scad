@@ -1,5 +1,7 @@
 include <unittest.scad>;
 
+echo("==== test_rounded_square ====");
+
 module test_rounded_square_size_corner() {
     include <rounded_square.scad>;
     
