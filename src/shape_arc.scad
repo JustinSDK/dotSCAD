@@ -16,11 +16,11 @@ include <__private__/__frags.scad>;
 include <__private__/__is_vector.scad>;
 include <__private__/__ra_to_xy.scad>;
     
-function _edge_r_begin(orig_r, a, a_step, m) =
+function __edge_r_begin(orig_r, a, a_step, m) =
     let(leng = orig_r * cos(a_step / 2))
     leng / cos((m - 0.5) * a_step - a);
 
-function _edge_r_end(orig_r, a, a_step, n) =      
+function __edge_r_end(orig_r, a, a_step, n) =      
     let(leng = orig_r * cos(a_step / 2))    
     leng / cos((n + 0.5) * a_step - a);
 
@@ -39,20 +39,20 @@ function shape_arc(radius, angle, width, width_mode = "LINE_CROSS") =
         r_inner = radius + w_offset[1],
         points = concat(
             // outer arc path
-            [__ra_to_xy(_edge_r_begin(r_outer, angles[0], a_step, m), angles[0])],
+            [__ra_to_xy(__edge_r_begin(r_outer, angles[0], a_step, m), angles[0])],
             m > n ? [] : [
                 for(i = [m:n]) 
                     __ra_to_xy(r_outer, a_step * i)
             ],
-            angles[1] == a_step * n ? [] : [__ra_to_xy(_edge_r_end(r_outer, angles[1], a_step, n), angles[1])],
+            angles[1] == a_step * n ? [] : [__ra_to_xy(__edge_r_end(r_outer, angles[1], a_step, n), angles[1])],
             // inner arc path
-            angles[1] == a_step * n ? [] : [__ra_to_xy(_edge_r_end(r_inner, angles[1], a_step, n), angles[1])],
+            angles[1] == a_step * n ? [] : [__ra_to_xy(__edge_r_end(r_inner, angles[1], a_step, n), angles[1])],
             m > n ? [] : [
                 for(i = [m:n]) 
                     let(idx = (n + (m - i)))
                     __ra_to_xy(r_inner, a_step * idx)
 
             ],
-            [__ra_to_xy(_edge_r_begin(r_inner, angles[0], a_step, m), angles[0])]        
+            [__ra_to_xy(__edge_r_begin(r_inner, angles[0], a_step, m), angles[0])]        
         )
     ) points;
