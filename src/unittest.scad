@@ -26,8 +26,8 @@ module assertEqualPoint(expected, actual) {
 
     function shift_to_int(pt, n) = 
         len(pt) == 2 ? 
-            [round(pt[0] * n), round(pt[1] * n)] :
-            [round(pt[0] * n), round(pt[1] * n), round(pt[2] * n)];
+            [floor(pt[0] * n), floor(pt[1] * n)] :
+            [floor(pt[0] * n), floor(pt[1] * n), floor(pt[2] * n)];
     
     shifted_expected = shift_to_int(
         expected, 
