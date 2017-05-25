@@ -22,7 +22,7 @@ module fail(message) {
 }
 
 module assertEqualPoint(expected, actual) {
-    n = 10000;
+    n = 1000;
 
     function shift_to_int(pt, n) = 
         len(pt) == 2 ? 
