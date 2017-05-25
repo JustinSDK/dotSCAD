@@ -24,10 +24,13 @@ module fail(message) {
 module assertEqualPoint(expected, actual) {
     n = 1000;
 
+    function truncate_float_point(number) =
+        number >= 0 ? floor(number) : ceil(number);
+
     function shift_to_int(pt, n) = 
         len(pt) == 2 ? 
-            [floor(pt[0] * n), floor(pt[1] * n)] :
-            [floor(pt[0] * n), floor(pt[1] * n), floor(pt[2] * n)];
+            [truncate_float_point(pt[0] * n), truncate_float_point(pt[1] * n)] :
+            [truncate_float_point(pt[0] * n), truncate_float_point(pt[1] * n), truncate_float_point(pt[2] * n)];
     
     shifted_expected = shift_to_int(
         expected, 
@@ -41,8 +44,8 @@ module assertEqualPoint(expected, actual) {
     
     if(shifted_expected != shifted_actual) {
         fail(
-            str("expected: ", expected,
-            ", but: ", actual)
+            str("expected: ", shifted_expected,
+            ", but: ", shifted_actual)
         );
     }
 }
