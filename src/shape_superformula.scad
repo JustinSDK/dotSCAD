@@ -23,16 +23,12 @@ function _superformula_r(angle, m1, m2, n1, n2 = 1, n3 = 1, a = 1, b = 1) =
     );
 
 function shape_superformula(phi_step, m1, m2, n1, n2 = 1, n3 = 1, a = 1, b = 1) = 
-    let(
-        pts = [
-            for(phi = [0:phi_step: 6.28318]) 
-                let(
-                    angle = __to_degree(phi),
-                    r = _superformula_r(angle, m1, m2, n1, n2, n3, a, b)
-                    
-                )
-                __ra_to_xy(r, angle)
-        ],
-        shape_pts = concat(pts, [pts[0]])
-        
-    ) shape_pts;
+   [
+        for(phi = [0:phi_step:6.28318]) 
+            let(
+                angle = __to_degree(phi),
+                r = _superformula_r(angle, m1, m2, n1, n2, n3, a, b)
+                
+            )
+            __ra_to_xy(r, angle)
+   ];
