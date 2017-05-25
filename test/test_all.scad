@@ -8,3 +8,4 @@ include <test_shape_ellipse.scad>;
 include <test_shape_pie.scad>;
 include <test_shape_square.scad>;
 include <test_shape_trapezium.scad>;
+include <test_shape_superformula.scad>;
