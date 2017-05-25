@@ -1,8 +1,8 @@
 include <unittest.scad>;
 
-echo("==== test_rounded_square ====");
-
 module test_rounded_square_size_corner() {
+    echo("==== test_rounded_square_size_corner ====");
+
     include <rounded_square.scad>;
     
     module test_rounded_square(position, points) {
@@ -17,6 +17,8 @@ module test_rounded_square_size_corner() {
 }
 
 module test_rounded_square_size_corner_center() {
+    echo("==== test_rounded_square_size_corner_center ====");
+
     include <rounded_square.scad>;
     
     module test_rounded_square(position, points) {
@@ -35,6 +37,8 @@ module test_rounded_square_size_corner_center() {
 }
 
 module test_rounded_square_size_corner_center_fn() {
+    echo("==== test_rounded_square_size_corner_center_fn ====");
+
     include <rounded_square.scad>;
     
     module test_rounded_square(position, points) {
