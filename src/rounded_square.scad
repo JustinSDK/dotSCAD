@@ -36,5 +36,6 @@ module rounded_square(size, corner_r, center = false) {
     test_rounded_square(position, points);
 }
 
+// override it to test
 module test_rounded_square(position, points) {
 }
