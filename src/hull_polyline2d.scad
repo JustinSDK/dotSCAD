@@ -21,9 +21,9 @@ module hull_polyline2d(points, width) {
         point2 = points[index];
 
         hull() {
-            translate(points[index - 1]) 
+            translate(point1) 
                 circle(half_width);
-            translate(points[index]) 
+            translate(point2) 
                 circle(half_width);
         }
 
