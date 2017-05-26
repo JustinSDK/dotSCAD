@@ -60,6 +60,7 @@ module line2d(p1, p2, width, p1Style = "CAP_SQUARE", p2Style =  "CAP_SQUARE") {
     test_line2d_line(atan_angle, leng, width, frags);
 }
 
+// override them to test
 module test_line2d_cap(point, style) {
 }
 
