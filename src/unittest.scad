@@ -55,7 +55,7 @@ module assertEqualPoint(expected, actual) {
         
         if(shifted_expected != shifted_actual) {
             fail(
-                "assertEqualPoint", 
+                "Point", 
                 str("expected: ", shifted_expected / n,
                 ", but: ", shifted_actual / n)
             );
@@ -69,7 +69,7 @@ module assertEqualPoints(expected, actual) {
 
     if(leng_expected != leng_actual) {
          fail(
-            "assertEqualPoints", 
+            "Points", 
             str("expected length: ", leng_expected,
             ", but: ", leng_actual)
         );       
