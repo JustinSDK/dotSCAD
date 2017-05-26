@@ -1,9 +1,9 @@
-module fail(message) {
+module fail(title, message) {
     echo(
         str( 
             "<b>",
                 "<span style='color: red'>", 
-                    "FAIL", 
+                    "FAIL: ",  title,
                 "</span>", 
             "</b>"
         )
@@ -45,6 +45,7 @@ module assertEqualPoint(expected, actual) {
     
     if(shifted_expected != shifted_actual) {
         fail(
+            "assertEqualPoint", 
             str("expected: ", shifted_expected / n,
             ", but: ", shifted_actual / n)
         );
@@ -56,6 +57,7 @@ module assertEqualPoints(expected, actual) {
     leng_actual = len(actual);
     if(leng_expected != leng_actual) {
          fail(
+            "assertEqualPoints", 
             str("expected length: ", leng_expected,
             ", but: ", leng_actual)
         );       
