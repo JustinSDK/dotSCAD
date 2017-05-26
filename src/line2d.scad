@@ -24,13 +24,19 @@ module line2d(p1, p2, width, p1Style = "CAP_SQUARE", p2Style =  "CAP_SQUARE") {
     module square_end(point) {
         translate(point) 
             rotate(atan_angle) 
-                square(width, center = true);    
+                square(width, center = true);
+
+        // hook for testing
+        cap(point, "CAP_SQUARE");
     }
 
     module round_end(point) {
         translate(point) 
             rotate(atan_angle) 
                 circle(half_width, center = true, $fn = frags);    
+
+        // hook for testing
+        cap(point, "CAP_ROUND");                
     }
     
     if(p1Style == "CAP_SQUARE") {
@@ -54,6 +60,11 @@ module line2d(p1, p2, width, p1Style = "CAP_SQUARE", p2Style =  "CAP_SQUARE") {
     test_line2d_line(atan_angle, leng, width, frags);
 }
 
+module cap(point, style) {
+
+}
+
 module test_line2d_line(angle, length, width, frags) {
     echo(angle, length, width, frags);
 }
+
