@@ -21,9 +21,17 @@ module polyline2d(points, width, startingStyle = "CAP_SQUARE", endingStyle = "CA
                 "CAP_BUTT", "CAP_ROUND"
             ]
         );
+
+        p1 = points[index - 1];
+        p2 = points[index];
+        p1Style = styles[0];
+        p2Style = styles[1];
         
         line2d(points[index - 1], points[index], width, 
-               p1Style = styles[0], p2Style = styles[1]);
+               p1Style = p1Style, p2Style = p2Style);
+
+        // hook for testing
+        test_line_segment(index, p1, p2, width, p1Style, p2Style);
     }
 
     module polyline2d_inner(index) {
@@ -34,4 +42,8 @@ module polyline2d(points, width, startingStyle = "CAP_SQUARE", endingStyle = "CA
     }
 
     polyline2d_inner(1);
+}
+
+module test_line_segment(index, point1, point2, width, p1Style, p2Style) {
+
 }
