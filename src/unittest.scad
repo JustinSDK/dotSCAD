@@ -79,3 +79,14 @@ module assertEqualPoints(expected, actual) {
         }
     }
 }
+
+module assertEqual(expected, actual) {        
+    if(shifted_expected != shifted_actual) {
+        fail(
+            "Equality", 
+            str("expected: ", expected,
+            ", but: ", actual)
+        );
+    }
+    
+}
