@@ -81,7 +81,7 @@ module assertEqualPoints(expected, actual) {
 }
 
 module assertEqual(expected, actual) {        
-    if(shifted_expected != shifted_actual) {
+    if(expected != actual) {
         fail(
             "Equality", 
             str("expected: ", expected,
