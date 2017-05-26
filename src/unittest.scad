@@ -33,7 +33,7 @@ function all_shift_to_int(points, digits) =
     [for(pt = points) shift_to_int(pt, digits) / digits];
 
 module assertEqualPoint(expected, actual) {
-    n = 100000;
+    n = 10000;
 
     shifted_expected = shift_to_int(
         expected, n
