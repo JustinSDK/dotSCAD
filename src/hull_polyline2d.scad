@@ -17,12 +17,18 @@ module hull_polyline2d(points, width) {
     leng = len(points);
     
     module hull_line2d(index) {
+        point1 = points[index - 1];
+        point2 = points[index];
+
         hull() {
             translate(points[index - 1]) 
                 circle(half_width);
             translate(points[index]) 
                 circle(half_width);
         }
+
+        // hook for testing
+        test_line_segment(index, point1, point2, half_width);
     }
 
     module polyline2d_inner(index) {
@@ -33,4 +39,9 @@ module hull_polyline2d(points, width) {
     }
 
     polyline2d_inner(1);
+}
+
+// override to test
+module test_line_segment(index, point1, point2, radius) {
+
 }
