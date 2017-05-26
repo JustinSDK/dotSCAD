@@ -41,7 +41,7 @@ module hull_polyline2d(points, width) {
     polyline2d_inner(1);
 }
 
-// override to test
+// override it to test
 module test_line_segment(index, point1, point2, radius) {
 
 }
