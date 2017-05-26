@@ -52,7 +52,16 @@ module assertEqualPoint(expected, actual) {
 }
 
 module assertEqualPoints(expected, actual) {
-    for(i = [0:len(actual) - 1]) {        
-        assertEqualPoint(expected[i], actual[i]);
+    leng_expected = len(expected);
+    leng_actual = len(actual);
+    if(leng_expected != leng_actual) {
+         fail(
+            str("expected length: ", leng_expected,
+            ", but: ", leng_actual)
+        );       
+    } else {
+        for(i = [0:len(actual) - 1]) {        
+            assertEqualPoint(expected[i], actual[i]);
+        }
     }
 }
