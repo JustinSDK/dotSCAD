@@ -88,5 +88,13 @@ module assertEqual(expected, actual) {
             ", but: ", actual)
         );
     }
-    
+}
+
+module assertTrue(truth) {        
+    if(!truth) {
+        fail(
+            "Truth",
+             "expected: true, but: false"
+        );
+    }
 }
