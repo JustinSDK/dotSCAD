@@ -61,10 +61,8 @@ module line2d(p1, p2, width, p1Style = "CAP_SQUARE", p2Style =  "CAP_SQUARE") {
 }
 
 module cap(point, style) {
-
 }
 
 module test_line2d_line(angle, length, width, frags) {
-    echo(angle, length, width, frags);
 }
 
