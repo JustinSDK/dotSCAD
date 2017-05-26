@@ -38,7 +38,7 @@ module assertEqualPoint(expected, actual) {
 
     if(leng_expected != leng_actual) {
          fail(
-            "assertEqualPoint", 
+            "Point", 
             str("expected length: ", leng_expected,
             ", but: ", leng_actual)
         );       
