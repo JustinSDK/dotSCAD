@@ -61,8 +61,6 @@ module assertEqualPoint(expected, actual) {
             );
         }
     }
-
-    
 }
 
 module assertEqualPoints(expected, actual) {
