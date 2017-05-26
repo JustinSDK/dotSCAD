@@ -1,5 +1,6 @@
 // 2D
 include <test_rounded_square.scad>;
+include <test_line2d.scad>;
 
 // 2D Shape
 include <test_shape_arc.scad>;

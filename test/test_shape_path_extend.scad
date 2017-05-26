@@ -5,11 +5,10 @@ include <shape_path_extend.scad>;
 include <circle_path.scad>;
 include <archimedean_spiral.scad>;
 
-$fn = 96;
-
 module test_shape_path_extend_stroke1() {
     echo("==== test_shape_path_extend_stroke1 ====");
 
+    $fn = 96;
     stroke1 = [[-5, 2.5], [-2.5, 0], [0, 2.5], [2.5, 0], [5, 2.5]];
     path_pts1 = circle_path(50, 60);
     
@@ -22,7 +21,8 @@ module test_shape_path_extend_stroke1() {
 
 module test_shape_path_extend_stroke2() {
     echo("==== test_shape_path_extend_stroke2 ====");
-
+    
+    $fn = 96;
     stroke2 = [[-4, 0], [0, 4], [4, 0]];
     pts_angles = archimedean_spiral(
         arm_distance = 17,
