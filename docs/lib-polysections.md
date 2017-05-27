@@ -10,13 +10,13 @@ This module can use them to construct the following model:
 
 Looks like extruding along the path? Yes, it can perform the task; however, it's more flexible. 
 
-You can also view it as a better polyline3d module if you want. If you have only the points of a path, using `polyline3d` or `hull_polyline3d` is a simple solution. If you know the cross-sections along a path, you can use `polysections` to do more. 
+You can also view it as a better polyline3d module if you want. If you have only the points of a path, using `polyline3d` or `hull_polyline3d` is a simple solution. If you know the cross sections along a path, you can use `polysections` to do more. 
 
 When using this module, you should use points to represent each cross section. The points of your cross section should have count-clockwise indexes. For example:
 
 ![polysections](images/lib-polysections-10.JPG)
 
-If your 2D shape is hollow, set the `triangles` parameter to `"HOLLOW"` and index the points as the following:
+If your cross section is hollow, set the `triangles` parameter to `"HOLLOW"` and index the points as the following:
 
 ![polysections](images/lib-polysections-5.JPG)
 
