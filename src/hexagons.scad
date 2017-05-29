@@ -25,9 +25,9 @@ module hexagons(radius, spacing, levels) {
     }
     
     module line_hexagons(n) {
-        translate(center_offset) for(i = [0:n - 1]) {
+        for(i = [0:n - 1]) {
             offset_p = [i * offset_step, 0, 0];
-            translate(offset_p) 
+            translate(offset_p + center_offset) 
                 hexagon();
         }        
     }
