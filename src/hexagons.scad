@@ -15,11 +15,11 @@ module hexagons(radius, spacing, levels) {
     beginning_n = 2 * levels - 1; 
     offset_x = radius * cos(30);
     offset_y = radius + radius * sin(30);
+    r_hexagon = radius - spacing / 2;
 
     module hexagon() {
         rotate(30) 
-            offset(r = -spacing / 2) 
-                circle(radius, $fn = 6);     
+            circle(r_hexagon, $fn = 6);     
     }
     
     module line_hexagons(n) {
