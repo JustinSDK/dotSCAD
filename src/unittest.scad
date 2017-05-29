@@ -29,7 +29,7 @@ function shift_to_int(point, digits) =
         [round(pt[0]), round(pt[1])] :
         [round(pt[0]), round(pt[1]), round(pt[2])];
 
-function all_shift_to_int(points, digits) = 
+function round_pts(points, digits) = 
     [for(pt = points) shift_to_int(pt, digits) / digits];
 
 module assertEqualPoint(expected, actual) {

@@ -24,6 +24,17 @@ module hexagons(radius, spacing, levels) {
             circle(r_hexagon, $fn = 6);     
     }
 
+    function hexagons_pts(hex_datum) =
+        let(
+            tx = hex_datum[0][0],
+            ty = hex_datum[0][1],
+            n = hex_datum[1],
+            offset_xs = [for(i = [0:n - 1]) i * offset_step + center_offset] 
+        )
+        [
+            for(x = offset_xs) [x + tx, ty, 0]
+        ];
+
     module line_hexagons(hex_datum) {
         tx = hex_datum[0][0];
         ty = hex_datum[0][1];
@@ -34,9 +45,6 @@ module hexagons(radius, spacing, levels) {
             p = [x + tx, ty, 0];
             translate(p) 
                 hexagon();
-            
-            // hook for testing
-            test_each_hexagon(r_hexagon, p);
         }
     }
     
@@ -63,11 +71,17 @@ module hexagons(radius, spacing, levels) {
     );
 
     for(hex_datum = total_hex_data) {
-        line_hexagons(hex_datum);  
+        pts = hexagons_pts(hex_datum); 
+        for(pt = pts) {
+            translate(pt) 
+                hexagon();
+        }
+
+        
     }
 }
  
 // override it to test
-module test_each_hexagon(hex_r, pt) {
+module test_each_hexagon(hex_r, pts) {
 
 }
