@@ -35,6 +35,8 @@ module hexagons(radius, spacing, levels) {
             translate(p) 
                 hexagon();
             
+            // hook for testing
+            test_each_hexagon(r_hexagon, p);
         }
     }
     
@@ -63,4 +65,9 @@ module hexagons(radius, spacing, levels) {
     for(hex_datum = total_hex_data) {
         line_hexagons(hex_datum);  
     }
+}
+ 
+// override it to test
+module test_each_hexagon(hex_r, pt) {
+
 }
