@@ -24,29 +24,43 @@ module hexagons(radius, spacing, levels) {
             circle(r_hexagon, $fn = 6);     
     }
 
-    function offset_xs(n) =
-        [for(i = [0:n - 1]) i * offset_step + center_offset];
-    
-    module line_hexagons(n) {
-        for(x = offset_xs(n)) {
-            translate([x, 0, 0]) 
+    module line_hexagons(hex_datum) {
+        tx = hex_datum[0][0];
+        ty = hex_datum[0][1];
+        n = hex_datum[1]; 
+
+        offset_xs = [for(i = [0:n - 1]) i * offset_step + center_offset];
+        for(x = offset_xs) {
+            p = [x + tx, ty, 0];
+            translate(p) 
                 hexagon();
+            
         }
     }
     
-    line_hexagons(beginning_n);
-    
-    if(levels > 1) {
-        for(i = [1:beginning_n - levels]) {
-            x = offset_x * i;
-            y = offset_y * i;
-            n = beginning_n - i;
+    upper_hex_data = levels > 1 ? [
+        for(i = [1:beginning_n - levels])
+            let(
+                x = offset_x * i,
+                y = offset_y * i,
+                n = beginning_n - i
+            ) [[x, y], n]
+    ] : [];
 
-            translate([x, y, 0]) 
-                line_hexagons(n);  
+    lower_hex_data = levels > 1 ? [
+        for(hex_datum = upper_hex_data)
+        [[hex_datum[0][0], -hex_datum[0][1]], hex_datum[1]]
+    ] : [];
 
-            translate([x, -y, 0]) 
-                line_hexagons(n);  
-        }
+    total_hex_data = concat(
+        [
+            [[0, 0], beginning_n] // first line
+        ], 
+        upper_hex_data, 
+        lower_hex_data
+    );
+
+    for(hex_datum = total_hex_data) {
+        line_hexagons(hex_datum);  
     }
 }
