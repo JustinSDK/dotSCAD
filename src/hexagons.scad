@@ -23,13 +23,15 @@ module hexagons(radius, spacing, levels) {
         rotate(30) 
             circle(r_hexagon, $fn = 6);     
     }
+
+    function offset_xs(n) =
+        [for(i = [0:n - 1]) i * offset_step + center_offset];
     
     module line_hexagons(n) {
-        for(i = [0:n - 1]) {
-            offset_p = [i * offset_step + center_offset, 0, 0];
-            translate(offset_p) 
+        for(x = offset_xs(n)) {
+            translate([x, 0, 0]) 
                 hexagon();
-        }        
+        }
     }
     
     line_hexagons(beginning_n);
