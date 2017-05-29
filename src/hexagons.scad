@@ -36,12 +36,15 @@ module hexagons(radius, spacing, levels) {
             line_hexagons(beginning_n);
           
             if(levels > 1) {
-                for(i = [1:beginning_n - (levels)]) {
-                    translate([offset_x * i, offset_y * i, 0]) 
+                for(i = [1:beginning_n - levels]) {
+                    x = offset_x * i;
+                    y = offset_y * i;
+                    
+                    translate([x, y, 0]) 
                         line_hexagons(beginning_n - i);  
-                    mirror([0, 1, 0]) 
-                        translate([offset_x * i, offset_y * i, 0]) 
-                            line_hexagons(beginning_n - i);  
+
+                    translate([x, -y, 0]) 
+                        line_hexagons(beginning_n - i);  
                 }
             }
         }
