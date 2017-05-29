@@ -16,6 +16,7 @@ module hexagons(radius, spacing, levels) {
     offset_x = radius * cos(30);
     offset_y = radius + radius * sin(30);
     r_hexagon = radius - spacing / 2;
+    offset_step = 2 * offset_x;
 
     module hexagon() {
         rotate(30) 
@@ -23,9 +24,8 @@ module hexagons(radius, spacing, levels) {
     }
     
     module line_hexagons(n) {
-        offset = 2 * offset_x;
         for(i = [0:n - 1]) {
-            offset_p = [i * offset, 0, 0];
+            offset_p = [i * offset_step, 0, 0];
             translate(offset_p) 
                 hexagon();
         }        
