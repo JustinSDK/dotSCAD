@@ -36,10 +36,10 @@ module rounded_cube(size, corner_r, center = false) {
     half_leng = half_cube_leng - edge_d;
     
     corners = [
-        for(x = [-1, 1]) 
-            for(y = [-1, 1]) 
-            for(z = [-1, 1]) 
-                [half_l * x, -half_w * y, half_h * z]
+        for(z = [1, -1]) 
+            for(y = [1, -1]) 
+                for(x = [1, -1]) 
+                    [half_l * x, half_w * y, half_h * z]
     ];
 
     module corner(i) {
@@ -61,9 +61,9 @@ module rounded_cube(size, corner_r, center = false) {
     }
 
     // hook for testing
-    test_rounded_edge_corner_center(edge_d, corners, center_pts);
+    test_rounded_edge_corner_center(corners, center_pts);
 }
 
-module test_rounded_edge_corner_center(edge_dist, corners, center_pts) {
+module test_rounded_edge_corner_center(corners, center_pts) {
 
 }
