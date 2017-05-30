@@ -35,23 +35,26 @@ module rounded_cube(size, corner_r, center = false) {
     half_cube_leng = size / 2;
     half_leng = half_cube_leng - edge_d;
     
-    translate(center ? [0, 0, 0] : [half_x, half_y, half_z]) hull() {
-            translate([-half_l, -half_w, half_h]) 
-                sphere(corner_r, $fn = corner_frags);
-            translate([half_l, -half_w, half_h]) 
-                sphere(corner_r, $fn = corner_frags);
-            translate([half_l, half_w, half_h]) 
-                sphere(corner_r, $fn = corner_frags);
-            translate([-half_l, half_w, half_h]) 
-                sphere(corner_r, $fn = corner_frags);
+    corners = [
+        for(x = [-1, 1]) 
+            for(y = [-1, 1]) 
+            for(z = [-1, 1]) 
+                [half_l * x, -half_w * y, half_h * z]
+    ];
 
-            translate([-half_l, -half_w, -half_h]) 
-                sphere(corner_r, $fn = corner_frags);
-            translate([half_l, -half_w, -half_h]) 
-                sphere(corner_r, $fn = corner_frags);
-            translate([half_l, half_w, -half_h]) 
-                sphere(corner_r, $fn = corner_frags);
-            translate([-half_l, half_w, -half_h]) 
-                sphere(corner_r, $fn = corner_frags);        
+    module corner(i) {
+        translate(corners[i]) 
+            sphere(corner_r, $fn = corner_frags);        
+    }
+
+    translate(center ? [0, 0, 0] : [half_x, half_y, half_z]) hull() {
+            corner(0);
+            corner(1);
+            corner(2);
+            corner(3);
+            corner(4);
+            corner(5);
+            corner(6);
+            corner(7);      
     }
 }
