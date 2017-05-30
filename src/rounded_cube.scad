@@ -47,7 +47,9 @@ module rounded_cube(size, corner_r, center = false) {
             sphere(corner_r, $fn = corner_frags);        
     }
 
-    translate(center ? [0, 0, 0] : [half_x, half_y, half_z]) hull() {
+    center_pts = center ? [0, 0, 0] : [half_x, half_y, half_z];
+
+    translate(center_pts) hull() {
             corner(0);
             corner(1);
             corner(2);
@@ -57,4 +59,5 @@ module rounded_cube(size, corner_r, center = false) {
             corner(6);
             corner(7);      
     }
+
 }
