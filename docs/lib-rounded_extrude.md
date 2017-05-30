@@ -4,7 +4,7 @@ Extrudes a 2D object roundly from 0 to 180 degrees.
 
 ## Parameters
 
-- `size` : The size of A retangle which can cover the 2D object. Accepts single value, square with both sides this length. It also accepts 2 value array `[x, y]`, rectangle with dimensions `x` and `y`.
+- `size` : The size of a rectangle which can cover the 2D object. Accepts single value, square with both sides this length. It also accepts 2 value array `[x, y]`, rectangle with dimensions `x` and `y`.
 - `round_r` : The radius when extruding roundly.
 - `angle` : 0 to 180 degrees. The default value is 90 degrees. 
 - `convexity`, `twist`: The same as respective parameters of `linear_extrude`.
