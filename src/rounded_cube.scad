@@ -60,4 +60,10 @@ module rounded_cube(size, corner_r, center = false) {
             corner(7);      
     }
 
+    // hook for testing
+    test_rounded_edge_corner_center(edge_d, corners, center_pts);
+}
+
+module test_rounded_edge_corner_center(edge_dist, corners, center_pts) {
+
 }
