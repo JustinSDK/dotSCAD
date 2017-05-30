@@ -5,6 +5,9 @@ include <test_polyline2d.scad>;
 include <test_hull_polyline2d.scad>;
 include <test_hexagons.scad>;
 
+// 3D
+include <test_rounded_cube.scad>;
+
 // 2D Shape
 include <test_shape_arc.scad>;
 include <test_shape_cyclicpolygon.scad>;
