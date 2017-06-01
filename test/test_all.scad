@@ -9,6 +9,9 @@ include <test_hexagons.scad>;
 include <test_rounded_cube.scad>;
 include <test_rounded_cylinder.scad>;
 
+// Function
+include <test_paths2sections.scad>;
+
 // 2D Shape
 include <test_shape_arc.scad>;
 include <test_shape_cyclicpolygon.scad>;
