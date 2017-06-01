@@ -48,7 +48,8 @@ module rounded_cube(size, corner_r, center = false) {
     }
 
     center_pts = center ? [0, 0, 0] : [half_x, half_y, half_z];
-
+    
+    // Don't use `hull() for(...) {...}` because it's slow.
     translate(center_pts) hull() {
             corner(0);
             corner(1);
