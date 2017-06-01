@@ -5,7 +5,7 @@ Returns shape points of an isosceles trapezoid. They can be used with xxx_extrud
 ## Parameters
 
 - `length` : The base length of an isosceles trapezium. It also accepts a vector `[a, b]`. `a` is the bottom base and `b` is the top base.
-- `h` : The height of the cylinder or cone. 
+- `h` : The height of the isosceles trapezium. 
 - `corner_r` : The circle radius which fits the edges of the bottom and the top.
 - `$fa`, `$fs`, `$fn` : Used to control the corner fragments. Check [the circle module](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Using_the_2D_Subsystem#circle) for more details.
 
