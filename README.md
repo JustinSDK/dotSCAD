@@ -60,6 +60,7 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 	- [split_str](https://openhome.cc/eGossip/OpenSCAD/lib-split_str.html)
 	- [parse_number](https://openhome.cc/eGossip/OpenSCAD/lib-parse_number.html)
 	- [cross_sections](https://openhome.cc/eGossip/OpenSCAD/lib-cross_sections.html)
+	- [paths2sections](https://openhome.cc/eGossip/OpenSCAD/lib-paths2sections.html)
 	
 - Path
     - [circle_path](https://openhome.cc/eGossip/OpenSCAD/lib-circle_path.html)
