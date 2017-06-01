@@ -5,7 +5,7 @@ include <paths2sections.scad>;
 module test_paths2sections() {
     module test_simple_path() {
 
-        echo("==== test_simple_path ====");
+        echo("==== test_paths2sections_simple_path ====");
 
         paths = [
             [[5, 0, 5], [15, 10, 10], [25, 20, 5]],
@@ -29,7 +29,7 @@ module test_paths2sections() {
     
      module test_bezier_path() {
 
-        echo("==== test_bezier_path ====");
+        echo("==== test_paths2sections_bezier_path ====");
 
         t_step = 0.05;
 
