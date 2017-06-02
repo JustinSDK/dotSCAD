@@ -4,7 +4,7 @@ It extends a 2D stroke along a path to create a 2D shape. This module is suitabl
 
 When using this function, you should use points to represent the 2D stroke. 
 
-It depends on the `rotate_p` function. Remember to include "rotate_p.scad" and "polytransversals.scad".
+It depends on the `rotate_p` function. Remember to include "rotate_p.scad".
 
 ## Parameters
 
