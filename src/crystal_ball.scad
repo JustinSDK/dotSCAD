@@ -32,4 +32,13 @@ module crystal_ball(radius, theta = 360, phi = 180) {
         radius = _hole_r, 
         $fn = frags
     );
+
+    // hook for testing
+
+    test_crystal_ball_pie(shape_pts);
+}
+
+// override it to test
+module test_crystal_ball_pie(shape_pts) {
+
 }
