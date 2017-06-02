@@ -10,7 +10,7 @@ It depends on the `rotate_p` function. Remember to include "rotate_p.scad".
 
 - `stroke_pts` : A list of points represent a stroke. See the example below.
 - `path_pts` : A list of points represent the path.
-- `scale` : Scales the 2D shape by this value over the length of the extrusion.
+- `scale` : Scales the 2D shape by this value over the length of the extension.
 - `closed` : If the first point and the last point of `path_pts` has the same coordinate, setting `closed` to `true` will connect them automatically.
 
 ## Examples
