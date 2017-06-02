@@ -8,6 +8,7 @@ include <test_hexagons.scad>;
 // 3D
 include <test_rounded_cube.scad>;
 include <test_rounded_cylinder.scad>;
+include <test_crystal_ball.scad>;
 
 // Function
 include <test_paths2sections.scad>;
