@@ -2,7 +2,7 @@
 
 It extends a 2D stroke along a path to create a 2D shape. This module is suitable for a path created by a continuous function. The returned points can be used with xxx_extrude modules of dotSCAD. The shape points can be also used with the built-in polygon module.
 
-When using this module, you should use points to represent the 2D stroke. 
+When using this function, you should use points to represent the 2D stroke. 
 
 It depends on the `rotate_p` function. Remember to include "rotate_p.scad" and "polytransversals.scad".
 
