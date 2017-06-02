@@ -4,7 +4,7 @@ Returns shape points of a [Superformula](https://en.wikipedia.org/wiki/Superform
 
 ## Parameters
 
-- `phi_step` : The radius of the circle.
+- `phi_step` : The phi step of Superformula.
 - `m1`, `m2`, `n1`, `n2`, `n3`, `a`, `b` : The parameters of [Superformula](https://en.wikipedia.org/wiki/Superformula). The default value of `n2`, `n3`, `a`, and `b` is 1.
 
 ## Examples
