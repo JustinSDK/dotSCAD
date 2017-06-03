@@ -1,0 +1,75 @@
+# shape_glued2circles
+
+Returns shape points of two glued circles. They can be used with xxx_extrude modules of dotSCAD. The shape points can be also used with the built-in polygon module. 
+
+Dependencies: `rotate_p`, `bezier_curve`, `shape_pie`.
+
+## Parameters
+
+- `radius` : The radius of two circles.
+- `centre_dist` : The distance between centres of two circles.
+- `tangent_angle` : The angle of a tangent line. It defaults to 30 degrees. See examples below.
+- `t_step` : It defaults to 0.1. See [bezier_curve](https://openhome.cc/eGossip/OpenSCAD/lib-bezier_curve.html) for details.
+- `$fa`, `$fs`, `$fn` : Check [the circle module](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Using_the_2D_Subsystem#circle) for more details.
+
+## Examples
+
+    include <rotate_p.scad>;
+    include <bezier_curve.scad>;
+    include <shape_pie.scad>;
+    include <shape_glued2circles.scad>;
+
+    $fn = 36;
+
+    radius = 10;
+    centre_dist = 30;
+
+    shape_pts = shape_glued2circles(radius, centre_dist);
+    polygon(shape_pts); 
+
+![shape_glued2circles](images/lib-shape_glued2circles-1.JPG)
+
+    include <rotate_p.scad>;
+    include <bezier_curve.scad>;
+    include <shape_pie.scad>;
+    include <shape_glued2circles.scad>;
+
+    $fn = 36;
+
+    radius = 10;
+    centre_dist = 30;
+
+    shape_pts = shape_glued2circles(radius, centre_dist);
+    width = centre_dist / 2 + radius;
+
+    rotate_extrude() difference() {    
+        polygon(shape_pts);    
+
+        translate([-width, -radius]) 
+            square([width, radius * 2]);
+    }
+
+![shape_glued2circles](images/lib-shape_glued2circles-2.JPG)
+
+    include <rotate_p.scad>;
+    include <bezier_curve.scad>;
+    include <shape_pie.scad>;
+    include <shape_glued2circles.scad>;
+
+    $fn = 36;
+
+    radius = 10;
+    centre_dist = 30;
+
+    shape_pts = shape_glued2circles(radius, centre_dist);
+    width = centre_dist + radius * 2;
+
+    rotate_extrude() translate([0.00001, 0, 0]) 
+        rotate(-90) difference() { 
+            polygon(shape_pts);    
+
+            translate([0, -radius / 2]) 
+                square([width, radius], center = true);
+        }
+
+![shape_glued2circles](images/lib-shape_glued2circles-3.JPG)

@@ -88,6 +88,7 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 	- [shape_cyclicpolygon](https://openhome.cc/eGossip/OpenSCAD/lib-shape_cyclicpolygon.html)
     - [shape_pentagram](https://openhome.cc/eGossip/OpenSCAD/lib-shape_pentagram.html)	
 	- [shape_superformula](https://openhome.cc/eGossip/OpenSCAD/lib-shape_superformula.html)
+	- [shape_glued2circles](https://openhome.cc/eGossip/OpenSCAD/lib-shape_glued2circles.html)
 	- [shape_path_extend](https://openhome.cc/eGossip/OpenSCAD/lib-shape_path_extend.html)		
 
 - 2D Shape Extrusion
