@@ -23,9 +23,7 @@ module line3d(p1, p2, thickness, p1Style = "CAP_CIRCLE", p2Style = "CAP_CIRCLE")
     dy = p2[1] - p1[1];
     dz = p2[2] - p1[2];
     
-    
     length = sqrt(pow(dx, 2) + pow(dy, 2) + pow(dz, 2));
-
     ay = 90 - atan2(dz, sqrt(pow(dx, 2) + pow(dy, 2)));
     az = atan2(dy, dx);
 
@@ -35,30 +33,25 @@ module line3d(p1, p2, thickness, p1Style = "CAP_CIRCLE", p2Style = "CAP_CIRCLE")
                 linear_extrude(length) 
                     circle(r, $fn = frags);
     }
-                
-    module capCircle(p) {
-        w = r / 1.414;
-        translate(p) 
-            rotate([0, ay, az]) 
-                translate([0, 0, -w]) 
-                    linear_extrude(w * 2) 
-                        circle(r, $fn = frags);       
-    }
 
-    module capSphere(p) {
+    module cap_with(p) { 
         translate(p) 
             rotate([0, ay, az]) 
-                sphere(r / cos(half_fa), $fn = frags);          
-    }
-    
+                children();  
+    } 
+
     module cap(p, style) {
         if(style == "CAP_CIRCLE") {
-            capCircle(p);     
+            w = r / 1.414;
+            cap_with(p) 
+                linear_extrude(w * 2, center = true) 
+                    circle(r, $fn = frags);     
         } else if(style == "CAP_SPHERE") { 
-            capSphere(p);  
-        }       
+            cap_with(p)
+                sphere(r / cos(half_fa), $fn = frags);  
+        }            
     }
-    
+     
     cap_butt();
     cap(p1, p1Style);
     cap(p2, p2Style);
