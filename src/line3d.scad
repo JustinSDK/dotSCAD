@@ -47,7 +47,7 @@ module line3d(p1, p2, thickness, p1Style = "CAP_CIRCLE", p2Style = "CAP_CIRCLE")
     module cap(p, style) {
         if(style == "CAP_CIRCLE") {
             cap_leng = r / 1.414;
-            cap_with(p) 
+            cap_with(p) `
                 linear_extrude(cap_leng * 2, center = true) 
                     circle(r, $fn = frags);
 

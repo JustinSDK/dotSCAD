@@ -21,14 +21,19 @@ module fail(title, message) {
     }
 }
 
-function shift_to_int(point, digits) = 
-    let(pt = point * pow(10, digits))
+function round_n(number, float_digits = 4) =
+    let(n = pow(10, float_digits)) 
+    round(number * n) / n;
+
+function mul_round_pt(point, n) = 
+    let(pt = point * n)
     len(pt) == 2 ? 
         [round(pt[0]), round(pt[1])] :
         [round(pt[0]), round(pt[1]), round(pt[2])];
 
-function round_pts(points, float_digits) = 
-    [for(pt = points) shift_to_int(pt, float_digits) / pow(10, float_digits)];
+function round_pts(points, float_digits = 4) = 
+    let(n = pow(10, float_digits))
+    [for(pt = points) mul_round_pt(pt, n) / n];
 
 module assertEqualPoint(expected, actual, float_digits = 4) {
     leng_expected = len(expected);
@@ -41,12 +46,14 @@ module assertEqualPoint(expected, actual, float_digits = 4) {
             ", but: ", leng_actual)
         );       
     } else {
-        shifted_expected = shift_to_int(
-            expected, float_digits
+        n = pow(10, float_digits);
+
+        shifted_expected = mul_round_pt(
+            expected, n
         );
 
-        shifted_actual = shift_to_int(
-            actual, float_digits
+        shifted_actual = mul_round_pt(
+            actual, n
         );
         
         if(shifted_expected != shifted_actual) {
@@ -76,12 +83,15 @@ module assertEqualPoints(expected, actual, float_digits = 4) {
     }
 }
 
-module assertEqual(expected, actual) {        
-    if(expected != actual) {
+module assertEqual(expected, actual, float_digits = 4) {
+    r_expected = round_n(expected, float_digits);  
+    r_actual = round_n(actual, float_digits);  
+
+    if(r_expected != r_actual) {
         fail(
             "Equality", 
-            str("expected: ", expected,
-            ", but: ", actual)
+            str("expected: ", r_expected,
+            ", but: ", r_actual)
         );
     }
 }
@@ -93,4 +103,12 @@ module assertTrue(truth) {
              "expected: true, but: false"
         );
     }
+}
+
+module round_echo_pts(points, float_digits = 4) {
+    echo(round_pts(points, float_digits = 4));
+}
+
+module round_echo_n(number, float_digits = 4) {
+    echo(round_n(number, float_digits));
 }
