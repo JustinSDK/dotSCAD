@@ -22,17 +22,15 @@ module fail(title, message) {
 }
 
 function shift_to_int(point, digits) = 
-    let(
-        pt = point * digits
-    )
+    let(pt = point * pow(10, digits))
     len(pt) == 2 ? 
         [round(pt[0]), round(pt[1])] :
         [round(pt[0]), round(pt[1]), round(pt[2])];
 
-function round_pts(points, digits) = 
-    [for(pt = points) shift_to_int(pt, digits) / digits];
+function round_pts(points, float_digits) = 
+    [for(pt = points) shift_to_int(pt, float_digits) / pow(10, float_digits)];
 
-module assertEqualPoint(expected, actual) {
+module assertEqualPoint(expected, actual, float_digits = 4) {
     leng_expected = len(expected);
     leng_actual = len(actual);
 
@@ -43,14 +41,12 @@ module assertEqualPoint(expected, actual) {
             ", but: ", leng_actual)
         );       
     } else {
-        n = 10000;
-
         shifted_expected = shift_to_int(
-            expected, n
+            expected, float_digits
         );
 
         shifted_actual = shift_to_int(
-            actual, n
+            actual, float_digits
         );
         
         if(shifted_expected != shifted_actual) {
@@ -63,7 +59,7 @@ module assertEqualPoint(expected, actual) {
     }
 }
 
-module assertEqualPoints(expected, actual) {
+module assertEqualPoints(expected, actual, float_digits = 4) {
     leng_expected = len(expected);
     leng_actual = len(actual);
 
@@ -75,7 +71,7 @@ module assertEqualPoints(expected, actual) {
         );       
     } else {
         for(i = [0:len(actual) - 1]) {        
-            assertEqualPoint(expected[i], actual[i]);
+            assertEqualPoint(expected[i], actual[i], float_digits);
         }
     }
 }
