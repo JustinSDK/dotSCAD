@@ -39,6 +39,9 @@ module line3d(p1, p2, thickness, p1Style = "CAP_CIRCLE", p2Style = "CAP_CIRCLE")
         cap_with(p1)                 
             linear_extrude(length) 
                 circle(r, $fn = frags);
+        
+        // hook for testing
+        test_line3d_butt(p1, r, frags, length, angles);
     }
 
     module cap(p, style) {
@@ -47,14 +50,29 @@ module line3d(p1, p2, thickness, p1Style = "CAP_CIRCLE", p2Style = "CAP_CIRCLE")
             cap_with(p) 
                 linear_extrude(cap_leng * 2, center = true) 
                     circle(r, $fn = frags);
+
+            // hook for testing
+            test_line3d_cap(p, r, frags, cap_leng, angles);
         } else if(style == "CAP_SPHERE") { 
             cap_leng = r / cos(half_fa);
             cap_with(p)
                 sphere(cap_leng, $fn = frags);  
+            
+            // hook for testing
+            test_line3d_cap(p, r, frags, cap_leng, angles);
         }            
     }
 
     cap_butt();
     cap(p1, p1Style);
     cap(p2, p2Style);
+}
+
+// Override them to test
+module test_line3d_butt(p, r, frags, length, angles) {
+
+}
+
+module test_line3d_cap(p, r, frags, cap_leng, angles) {
+    
 }
