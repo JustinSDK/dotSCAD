@@ -20,9 +20,17 @@ module polyline3d(points, thickness, startingStyle = "CAP_CIRCLE", endingStyle =
                 "CAP_SPHERE", "CAP_BUTT"
             ]
         );
+
+        p1 = points[index - 1];
+        p2 = points[index];
+        p1Style = styles[0];
+        p2Style = styles[1];        
         
-        line3d(points[index - 1], points[index], thickness, 
-               p1Style = styles[0], p2Style = styles[1]);
+        line3d(p1, p2, thickness, 
+               p1Style = p1Style, p2Style = p2Style);
+
+        // hook for testing
+        test_line_segment(index, p1, p2, thickness, p1Style, p2Style);               
     }
 
     module polyline3d_inner(index) {
@@ -33,4 +41,9 @@ module polyline3d(points, thickness, startingStyle = "CAP_CIRCLE", endingStyle =
     }
 
     polyline3d_inner(1);
+}
+
+// override it to test
+module test_line3d_segment(index, point1, point2, thickness, p1Style, p2Style) {
+
 }
