@@ -30,7 +30,7 @@ module polyline3d(points, thickness, startingStyle = "CAP_CIRCLE", endingStyle =
                p1Style = p1Style, p2Style = p2Style);
 
         // hook for testing
-        test_line_segment(index, p1, p2, thickness, p1Style, p2Style);               
+        test_line3d_segment(index, p1, p2, thickness, p1Style, p2Style);               
     }
 
     module polyline3d_inner(index) {
