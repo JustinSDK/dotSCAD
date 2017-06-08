@@ -8,7 +8,7 @@ It depends on the `line3d`, `polyline3d`, `hull_polyline3d` modules so you have 
 
 - `points` : A set of points `[x, y, f(x, y)]`. See examples below.
 - `thickness` : The face or line thickness.
-- `style` : The style of the graph. It accepts `"FACES"`, `"LINES"`, `"HULL_FACES"` and `HULL_LINES`. The default value is `"FACES"` which simply takes `f(x, y) - thickness` for each point to build a bottom. It may cause thickness problems when slopes is high. The `"HULL_FACES"` value can solve the problem but is slow. When assigning `"LINES"`, it uses lines to connect points. The `HULL_LINES` is very very slow; however, the model might look smoother if you have a small `$fn`.
+- `style` : The style of the graph. It accepts `"FACES"`, `"LINES"`, `"HULL_FACES"` and `"HULL_LINES"`. The default value is `"FACES"` which simply takes `f(x, y) - thickness` for each point to build a bottom. It may cause thickness problems when slopes is high. The `"HULL_FACES"` value can solve the problem but is slow. When assigning `"LINES"`, it uses lines to connect points. The `"HULL_LINES"` is very very slow; however, the model might look smoother if you have a small `$fn`.
 - `slicing` : Given a rectangle, we have two ways to slice it into two triangles. Using this parameter to determine the way you want. It accepts `"SLASH"` (default) and `"BACK_SLASH"`.
 - `$fa`, `$fs`, `$fn` : Used by the `circle` or `sphere` module internally. It affects the speed of rending. For example, a large `$fn` may be very slow when rending. Check [the circle module](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Using_the_2D_Subsystem#circle) or [the sphere module](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Primitive_Solids#sphere) for more details. 
 
