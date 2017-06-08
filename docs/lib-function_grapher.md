@@ -16,6 +16,7 @@ It depends on the `line3d`, `polyline3d`, `hull_polyline3d` modules so you have 
 
 	include <line3d.scad>;
 	include <polyline3d.scad>;
+	include <hull_polyline3d.scad>;
 	include <function_grapher.scad>;
 	
 	points = [
@@ -33,6 +34,7 @@ It depends on the `line3d`, `polyline3d`, `hull_polyline3d` modules so you have 
 
 	include <line3d.scad>;
 	include <polyline3d.scad>;
+	include <hull_polyline3d.scad>;
 	include <function_grapher.scad>;
 	
 	function f(x, y) = 
@@ -60,6 +62,7 @@ It depends on the `line3d`, `polyline3d`, `hull_polyline3d` modules so you have 
 
 	include <line3d.scad>;
 	include <polyline3d.scad>;
+	include <hull_polyline3d.scad>;
 	include <function_grapher.scad>;
 
 	function f(x, y) = 
@@ -88,6 +91,7 @@ It depends on the `line3d`, `polyline3d`, `hull_polyline3d` modules so you have 
 
 	include <line3d.scad>;
 	include <polyline3d.scad>;
+	include <hull_polyline3d.scad>;
 	include <function_grapher.scad>;
 
 	function f(x, y) = 
