@@ -5,8 +5,8 @@
 * Given a set of points `[x, y, f(x, y)]` where `f(x, y)` is a 
 * mathematics function, the `function_grapher` module can 
 * create the graph of `f(x, y)`.
-* It depends on the line3d and polyline3d modules so you have 
-* to include "line3d.scad" and "polyline3d.scad".
+* It depends on the line3d, polyline3d, hull_polyline3d modules so you have 
+* to include "line3d.scad", "polyline3d.scad", "hull_polyline3d.scad".
 * 
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
