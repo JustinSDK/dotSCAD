@@ -11,6 +11,7 @@ include <test_rounded_cylinder.scad>;
 include <test_crystal_ball.scad>;
 include <test_line3d.scad>;
 include <test_polyline3d.scad>;
+include <test_hull_polyline3d.scad>;
 
 // Function
 include <test_paths2sections.scad>;
