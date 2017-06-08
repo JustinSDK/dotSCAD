@@ -17,10 +17,13 @@ module hull_polyline3d(points, thickness) {
     leng = len(points);
     
     module hull_line3d(index) {
+        point1 = points[index - 1];
+        point2 = points[index];
+
         hull() {
-            translate(points[index - 1]) 
+            translate(point1) 
                 sphere(half_thickness);
-            translate(points[index]) 
+            translate(point2) 
                 sphere(half_thickness);
         }
     }
