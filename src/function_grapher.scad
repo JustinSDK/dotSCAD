@@ -22,7 +22,7 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
     rows = len(points);
     columns = len(points[0]);
 
-    // Increasing $fn will be slow when you use "LINES" or "HULL_FACES".
+    // Increasing $fn will be slow when you use "LINES", "HULL_FACES" or "HULL_LINES".
     
     module faces() {
         function xy_to_index(x, y, columns) = y * columns + x; 
@@ -161,6 +161,11 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
        polyline3d(concat(tri1, [tri1[0]]), thickness);
        polyline3d(concat(tri2, [tri2[0]]), thickness);
     }
+
+    module tri_to_hull_lines(tri1, tri2) {
+       hull_polyline3d(concat(tri1, [tri1[0]]), thickness);
+       hull_polyline3d(concat(tri2, [tri2[0]]), thickness);
+    }    
     
     module hull_pts(tri) {
        half_thickness = thickness / 2;
@@ -179,14 +184,12 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
     module tri_to_graph(tri1, tri2) {
         if(style == "LINES") {
             tri_to_lines(tri1, tri2);
-        } else {  // Warning: May be very slow!!
+        } else if(style == "HULL_FACES") {  // Warning: May be very slow!!
             tri_to_hull_faces(tri1, tri2);
+        } else if(style == "HULL_LINES") {  // Warning: very very slow!!
+            tri_to_hull_lines(tri1, tri2);
         }
     }
-    
-    
-    
-
     
     if(style == "FACES") {
         faces();
