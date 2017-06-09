@@ -27,15 +27,15 @@ You can cut triangles by yourself. For example, the above shape can be cut into 
 The indexes of the above triangles is:
 
     [
-        [0, 4, 3],
-        [0, 1, 4],
-        [1, 5, 4],
-        [1, 2, 5],
-        [2, 3, 5],
-        [2, 0, 3]
-    ]
+		[0, 3, 1],
+		[1, 3, 4],
+		[1, 4, 2],
+		[2, 4, 5],
+		[2, 5, 0],
+		[0, 5, 3]
+	]
 
-In this module, triangles may be defined in any order. Of course, [following the preference of OpenSCAD](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Primitive_Solids#polyhedron) is ok.
+When defining triangles, clockwise indexes are prefered. 
 
 ## Parameters
 
