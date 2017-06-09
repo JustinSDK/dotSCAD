@@ -35,7 +35,7 @@ The indexes of the above triangles is:
 		[0, 5, 3]
 	]
 
-When defining triangles, clockwise indexes are prefered. 
+When defining triangles, clockwise indexes are preferred. 
 
 ## Parameters
 
