@@ -179,7 +179,7 @@ module polysections(sections, triangles = "SOLID") {
     
     module triangles_defined_sections() {
         module tri_sections(tri1, tri2) {
-            polyhedron(
+            hull() polyhedron(
                 points = concat(tri1, tri2),
                 faces = [
                     [0, 1, 2], 
