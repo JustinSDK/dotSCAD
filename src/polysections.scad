@@ -55,12 +55,12 @@ module polysections(sections, triangles = "SOLID") {
                 [for(i = [0:found_at_i - 1]) f_sect[i]]
             ); 
 
-        function to_v_pts(sects) = 
-             [
-                for(sect = sects) 
-                    for(pt = sect) 
-                        pt
-             ];                   
+    function to_v_pts(sects) = 
+            [
+            for(sect = sects) 
+                for(pt = sect) 
+                    pt
+            ];                   
 
     module solid_sections(sects) {
         
