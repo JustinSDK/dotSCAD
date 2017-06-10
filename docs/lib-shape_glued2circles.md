@@ -62,14 +62,15 @@ Dependencies: `rotate_p`, `bezier_curve`, `shape_pie`.
     centre_dist = 30;
 
     shape_pts = shape_glued2circles(radius, centre_dist);
+
     width = centre_dist + radius * 2;
 
-    rotate_extrude() translate([0.00001, 0, 0]) 
-        rotate(-90) difference() { 
-            polygon(shape_pts);    
+    rotate_extrude() 
+        intersection() { 
+            rotate(-90) polygon(shape_pts);    
 
-            translate([0, -radius / 2]) 
-                square([width, radius], center = true);
+            translate([radius / 2, 0]) 
+                square([radius, width], center = true);
         }
 
 ![shape_glued2circles](images/lib-shape_glued2circles-3.JPG)
