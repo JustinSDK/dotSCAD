@@ -53,7 +53,14 @@ module polysections(sections, triangles = "SOLID") {
             l_sect == concat(
                 [for(i = [found_at_i:leng_pts_sect-1]) f_sect[i]],
                 [for(i = [0:found_at_i - 1]) f_sect[i]]
-            );        
+            ); 
+
+        function to_v_pts(sects) = 
+             [
+                for(sect = sects) 
+                    for(pt = sect) 
+                        pt
+             ];                   
 
     module solid_sections(sects) {
         
@@ -130,13 +137,6 @@ module polysections(sections, triangles = "SOLID") {
 
         outer_sects = strip_sects(0, half_leng_sect - 1);
         inner_sects = strip_sects(half_leng_sect, leng_sect - 1);
-
-        function to_v_pts(sects) = 
-             [
-                for(sect = sects) 
-                    for(pt = sect) 
-                        pt
-             ];
 
         outer_v_pts =  to_v_pts(outer_sects);
         inner_v_pts = to_v_pts(inner_sects);
