@@ -144,17 +144,23 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
                 ]
         ];                  
         
-        polyhedron(
-            points = concat(top_pts, base_pts), 
-            faces = concat(
+        pts = concat(top_pts, base_pts);
+        face_idxs = concat(
                 top_tri_faces1, top_tri_faces2,
                 base_tri_faces1, base_tri_faces2, 
                 side_faces1, 
                 side_faces2, 
                 side_faces3, 
                 side_faces4
-            )
-        );    
+            );
+
+        polyhedron(
+            points = pts, 
+            faces = face_idxs
+        );
+
+        // hook for testing
+        test_function_grapher_faces(pts, face_idxs);
     }
 
     module tri_to_lines(tri1, tri2) {
@@ -220,4 +226,9 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
             }
         }
     }
+}
+
+// override it to test
+module test_function_grapher_faces(points, faces) {
+
 }
