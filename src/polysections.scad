@@ -86,6 +86,9 @@ module polysections(sections, triangles = "SOLID") {
                 v_pts, 
                 f_idxes
             ); 
+
+            // hook for testing
+            test_polysections_solid(v_pts, f_idxes);
         } else {
             first_idxes = [for(i = [0:leng_pts_sect - 1]) leng_pts_sect - 1 - i];  
             last_idxes = [
@@ -94,10 +97,14 @@ module polysections(sections, triangles = "SOLID") {
             ];    
 
             f_idxes = concat([first_idxes], side_indexes(sects), [last_idxes]);
+            
             polyhedron(
                 v_pts, 
                 f_idxes
-            );    
+            );   
+
+            // hook for testing
+            test_polysections_solid(v_pts, f_idxes);             
         }
     }
 
@@ -226,4 +233,10 @@ module polysections(sections, triangles = "SOLID") {
     else {
         triangles_defined_sections();
     }
+}
+
+// override it to test
+
+module test_polysections_solid(points, faces) {
+
 }
