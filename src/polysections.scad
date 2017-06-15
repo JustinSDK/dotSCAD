@@ -179,16 +179,23 @@ module polysections(sections, triangles = "SOLID") {
             polyhedron(
                 v_pts,
                 f_idxes
-            );             
+            );      
+
+            // hook for testing
+            test_polysections_solid(v_pts, f_idxes);                     
         } else {
             first_idxes = first_idxes();
             last_idxes = last_idxes(half_leng_v_pts - half_leng_sect);
 
             f_idxes = concat(first_idxes, outer_idxes, inner_idxes, last_idxes);
+            
             polyhedron(
                 v_pts,
                 f_idxes
             ); 
+
+            // hook for testing
+            test_polysections_solid(v_pts, f_idxes);              
         }
     }
     
