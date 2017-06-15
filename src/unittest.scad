@@ -112,3 +112,15 @@ module round_echo_pts(points, float_digits = 4) {
 module round_echo_n(number, float_digits = 4) {
     echo(round_n(number, float_digits)); 
 }
+
+function mul_round_vector(vector, n) = 
+    let(vt = vector * n)
+    [for(v = vt) round(v)]; 
+
+function round_vectors(vectors, float_digits = 4) = 
+    let(n = pow(10, float_digits))
+    [for(vt = vectors) mul_round_vector(vt, n) / n];
+
+module round_echo_vectors(vectors, float_digits = 4) {
+    echo(round_vectors(vectors, float_digits = 4));
+}    
