@@ -80,20 +80,23 @@ module polysections(sections, triangles = "SOLID") {
             the_same_after_twisting(first_sect, last_sect, leng_pts_sect);
 
         if(begin_end_the_same()) {
+            f_idxes = side_indexes(sects);
+
             polyhedron(
                 v_pts, 
-                side_indexes(sects)
+                f_idxes
             ); 
         } else {
             first_idxes = [for(i = [0:leng_pts_sect - 1]) leng_pts_sect - 1 - i];  
             last_idxes = [
                 for(i = [0:leng_pts_sect - 1]) 
                     i + leng_pts_sect * (leng_sects - 1)
-            ];       
+            ];    
 
+            f_idxes = concat([first_idxes], side_indexes(sects), [last_idxes]);
             polyhedron(
                 v_pts, 
-                concat([first_idxes], side_indexes(sects), [last_idxes])
+                f_idxes
             );    
         }
     }
