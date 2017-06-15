@@ -171,18 +171,23 @@ module polysections(sections, triangles = "SOLID") {
                the_same_after_twisting(first_inner_sect, last_inner_sect, leng_pts_sect)
            ); 
 
+        v_pts = concat(outer_v_pts, inner_v_pts);
+
         if(begin_end_the_same()) {
+            f_idxes = concat(outer_idxes, inner_idxes);
+
             polyhedron(
-                concat(outer_v_pts, inner_v_pts),
-                concat(outer_idxes, inner_idxes)
+                v_pts,
+                f_idxes
             );             
         } else {
             first_idxes = first_idxes();
             last_idxes = last_idxes(half_leng_v_pts - half_leng_sect);
-            
+
+            f_idxes = concat(first_idxes, outer_idxes, inner_idxes, last_idxes);
             polyhedron(
-                concat(outer_v_pts, inner_v_pts),
-                concat(first_idxes, outer_idxes, inner_idxes, last_idxes)
+                v_pts,
+                f_idxes
             ); 
         }
     }
