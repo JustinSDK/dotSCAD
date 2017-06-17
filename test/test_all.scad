@@ -15,6 +15,9 @@ include <test_hull_polyline3d.scad>;
 include <test_function_grapher.scad>;
 include <test_polysections.scad>;
 
+// Transformation
+include <test_along_with.scad>;
+
 // Function
 include <test_paths2sections.scad>;
 
