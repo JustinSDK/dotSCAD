@@ -13,6 +13,7 @@
 
 include <__private__/__angy_angz.scad>;
 include <__private__/__is_vector.scad>;
+include <__private__/__to3d.scad>;
 
 module along_with(points, angles, twist = 0, scale = 1.0) {
     leng_points = len(points);
@@ -30,16 +31,19 @@ module along_with(points, angles, twist = 0, scale = 1.0) {
             scale[2] == undef ? 0 : (scale[2] - 1) / leng_points_minus_one
         ] : scale_step(); 
 
-    function _path_angles(i = 0) = 
+    function _path_angles(pts, i = 0) = 
         i == leng_points_minus_one ?
                 [] : 
                 concat(
-                    [__angy_angz(points[i], points[i + 1])], 
-                    _path_angles(i + 1)
+                    [__angy_angz(pts[i], pts[i + 1])], 
+                    _path_angles(pts, i + 1)
                 );
             
     function path_angles() = 
-       let(angs = _path_angles())
+       let(
+           pts = len(points[0]) == 3 ? points : [for(pt = points) __to3d(pt)],
+           angs = _path_angles(pts)
+        )
        concat(
            [[0, -angs[0][0], angs[0][1]]], 
            [for(a = angs) [0, -a[0], a[1]]]
