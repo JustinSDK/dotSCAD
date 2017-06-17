@@ -66,4 +66,11 @@ module along_with(points, angles, twist = 0, scale = 1.0) {
             align(i) children(i);
         }
     }
+
+    // hook for testing
+    test_along_with_angles(angs);
+}
+
+module test_along_with_angles(angles) {
+    
 }
