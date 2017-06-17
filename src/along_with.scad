@@ -38,7 +38,7 @@ module along_with(points, angles, twist = 0, scale = 1.0) {
                     _path_angles(i + 1)
                 );
             
-    function path_angles(points) = 
+    function path_angles() = 
        let(angs = _path_angles())
        concat(
            [[0, -angs[0][0], angs[0][1]]], 
