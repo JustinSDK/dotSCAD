@@ -30,9 +30,11 @@ module along_with(points, angles, twist = 0, scale = 1.0) {
             (scale[1] - 1) / leng_points_minus_one,
             scale[2] == undef ? 0 : (scale[2] - 1) / leng_points_minus_one
         ] : scale_step(); 
+    
+    end_i = $children == 1 ? leng_points_minus_one : $children - 1;
 
     function _path_angles(pts, i = 0) = 
-        i == leng_points_minus_one ?
+        i == end_i ?
                 [] : 
                 concat(
                     [__angy_angz(pts[i], pts[i + 1])], 
