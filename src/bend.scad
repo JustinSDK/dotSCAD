@@ -22,17 +22,17 @@ module bend(size, angle, frags = 24) {
     r = half_frag_width / sin(half_frag_angle);
     h = r * cos(half_frag_angle);
     
+    tri_frag_pts = [
+        [0, 0], 
+        [half_frag_width, h], 
+        [frag_width, 0], 
+        [0, 0]
+    ];
+
     module triangle_frag() {
         translate([0, -z, 0]) 
             linear_extrude(y) 
-                polygon(
-                    [
-                        [0, 0], 
-                        [half_frag_width, h], 
-                        [frag_width, 0], 
-                        [0, 0]
-                    ]
-                );    
+                polygon(tri_frag_pts);    
     }
     
     module get_frag(i) {
