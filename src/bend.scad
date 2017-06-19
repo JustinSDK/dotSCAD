@@ -50,4 +50,12 @@ module bend(size, angle, frags = 24) {
             get_frag(i) 
                 children();  
     }
+
+    // hook for testing
+    test_bend_tri_frag(tri_frag_pts, frag_angle);
+}
+
+// override it to test
+module test_bend_tri_frag(points, angle) {
+
 }

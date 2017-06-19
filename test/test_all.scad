@@ -17,6 +17,7 @@ include <test_polysections.scad>;
 
 // Transformation
 include <test_along_with.scad>;
+include <test_bend.scad>;
 
 // Function
 include <test_paths2sections.scad>;
