@@ -20,6 +20,7 @@ include <test_along_with.scad>;
 include <test_bend.scad>;
 
 // Function
+include <test_rotate_p.scad>;
 include <test_paths2sections.scad>;
 
 // 2D Shape
