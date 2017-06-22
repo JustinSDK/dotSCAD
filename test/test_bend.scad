@@ -2,6 +2,10 @@ module test_bend() {
     include <unittest.scad>;
     include <bend.scad>;
 
+    x = 9.25;
+    y = 9.55;
+    z = 1;  
+
     module test_bend_tri_frag(points, angle) {
         echo("==== test_bend_tri_frag ====");
 
