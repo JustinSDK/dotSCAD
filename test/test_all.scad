@@ -23,6 +23,8 @@ include <test_bend.scad>;
 include <test_rotate_p.scad>;
 include <test_paths2sections.scad>;
 include <test_sub_str.scad>;
+include <test_split_str.scad>;
+include <test_parse_number.scad>;
 
 // 2D Shape
 include <test_shape_arc.scad>;
