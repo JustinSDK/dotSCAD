@@ -1,3 +1,5 @@
+echo("==== test_sub_str ====");
+
 include <unittest.scad>;
 include <sub_str.scad>;
 

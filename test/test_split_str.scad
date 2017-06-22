@@ -1,3 +1,5 @@
+echo("==== test_split_str ====");
+
 include <unittest.scad>;
 include <sub_str.scad>;
 include <split_str.scad>;

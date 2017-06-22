@@ -1,3 +1,5 @@
+echo("==== test_rotate_p ====");
+
 include <unittest.scad>;
 include <rotate_p.scad>;
 

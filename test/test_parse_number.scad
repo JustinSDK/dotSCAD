@@ -1,3 +1,5 @@
+echo("==== test_parse_number ====");
+
 include <unittest.scad>;
 include <sub_str.scad>;
 include <split_str.scad>;

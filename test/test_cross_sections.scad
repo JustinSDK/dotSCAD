@@ -1,3 +1,5 @@
+echo("==== test_cross_sections ====");
+
 include <unittest.scad>;
 include <polysections.scad>;
 include <cross_sections.scad>;
