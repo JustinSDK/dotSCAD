@@ -27,6 +27,9 @@ include <test_split_str.scad>;
 include <test_parse_number.scad>;
 include <test_cross_sections.scad>;
 
+// Path
+include <test_circle_path.scad>;
+
 // 2D Shape
 include <test_shape_arc.scad>;
 include <test_shape_cyclicpolygon.scad>;
