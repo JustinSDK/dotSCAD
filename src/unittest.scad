@@ -108,7 +108,7 @@ module assertTrue(truth) {
 }
 
 module round_echo_pts(points, float_digits = 4) {
-    echo(round_pts(points, float_digits = 4));
+    echo(round_pts(points, float_digits));
 }
 
 module round_echo_n(number, float_digits = 4) {
