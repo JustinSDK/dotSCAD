@@ -31,6 +31,7 @@ include <test_paths2sections.scad>;
 include <test_circle_path.scad>;
 include <test_bezier_curve.scad>;
 include <test_bezier_surface.scad>;
+include <test_bezier_smooth.scad>;
 
 // 2D Shape
 include <test_shape_arc.scad>;
