@@ -33,6 +33,7 @@ include <test_bezier_curve.scad>;
 include <test_bezier_surface.scad>;
 include <test_bezier_smooth.scad>;
 include <test_helix.scad>;
+include <test_golden_spiral.scad>;
 
 // 2D Shape
 include <test_shape_arc.scad>;
