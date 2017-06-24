@@ -15,7 +15,8 @@ An `init_angle` less than 180 degrees is not recommended because the function us
 - `rt_dir` : `"CT_CLK"` for counterclockwise. `"CLK"` for clockwise. The default value is `"CT_CLK"`.
 
 ## Examples
-    
+
+    include <line2d.scad>;
 	include <polyline2d.scad>;
     include <archimedean_spiral.scad>;
 	
