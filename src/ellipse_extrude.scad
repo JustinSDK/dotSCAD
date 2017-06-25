@@ -13,7 +13,7 @@
 
 module ellipse_extrude(semi_minor_axis, height, center = false, convexity = 10, twist = 0, slices = 20) {
     h = height == undef ? semi_minor_axis : (
-        // `semi_minor_axis` is always equal to or greater than than `height`.
+        // `semi_minor_axis` is always equal to or greater than `height`.
         height > semi_minor_axis ? semi_minor_axis : height
     );
     angle = asin(h / semi_minor_axis) / slices; 
