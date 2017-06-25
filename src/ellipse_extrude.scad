@@ -18,24 +18,51 @@ module ellipse_extrude(semi_minor_axis, height, center = false, convexity = 10, 
     );
     angle = asin(h / semi_minor_axis) / slices; 
 
-    module extrude(pre_z = 0, i = 1) {
-        if(i <= slices) {
-            f = cos(angle * i) / cos(angle * (i - 1));
-            z = semi_minor_axis * sin(angle * i);
+    function f_extrude(i = 1) = 
+        i <= slices ? 
+            concat(
+                [
+                    [
+                        cos(angle * i) / cos(angle * (i - 1)), 
+                        semi_minor_axis * sin(angle * i)
+                    ]
+                ],
+                f_extrude(i + 1)
+            ) : []; 
 
-            translate([0, 0, pre_z]) 
-                rotate(-twist / slices * (i - 1)) 
+    fzs = f_extrude(); 
+    len_fzs = len(fzs);
+
+    function accm_fs(pre_f = 1, i = 0) =
+        i < len_fzs ? 
+            concat(
+                [pre_f * fzs[i][0]],
+                accm_fs(pre_f * fzs[i][0], i + 1)
+            ) : [];
+    
+    child_fs = concat([1], accm_fs());
+    pre_zs = concat(
+        [0],
+        [
+            for(i = [0:len_fzs - 1])
+                fzs[i][1]
+        ]
+    );
+
+    module extrude() {
+        for(i = [0:len_fzs - 1]) {
+            f = fzs[i][0];
+            z = fzs[i][1];
+
+            translate([0, 0, pre_zs[i]]) 
+                rotate(-twist / slices * i) 
                     linear_extrude(
-                        z - pre_z, 
+                        z - pre_zs[i], 
                         convexity = convexity,
                         twist = twist / slices, 
                         slices = 1,
-                        scale = f
-                    ) children();
-
-            extrude(z, i + 1) 
-                scale(f) 
-                    children();
+                        scale = f 
+                    ) scale(child_fs[i]) children();
         }
     }
     
