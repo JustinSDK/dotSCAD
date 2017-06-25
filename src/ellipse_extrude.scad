@@ -66,7 +66,16 @@ module ellipse_extrude(semi_minor_axis, height, center = false, convexity = 10, 
         }
     }
     
-    translate([0, 0, center == true ? -h / 2 : 0]) 
+    center_offset = [0, 0, center == true ? -h / 2 : 0];
+    translate(center_offset) 
         extrude() 
             children();
+
+    // hook for testing
+    test_ellipse_extrude_fzc(child_fs, pre_zs, center_offset);
+}
+
+// override for testing
+module test_ellipse_extrude_fzc(child_fs, pre_zs, center_offset) {
+
 }
