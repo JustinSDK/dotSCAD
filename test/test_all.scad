@@ -37,6 +37,9 @@ include <test_golden_spiral.scad>;
 include <test_archimedean_spiral.scad>;
 include <test_sphere_spiral.scad>;
 
+// Extrude
+include <test_ellipse_extrude.scad>;
+
 // 2D Shape
 include <test_shape_arc.scad>;
 include <test_shape_cyclicpolygon.scad>;
