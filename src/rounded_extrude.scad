@@ -48,6 +48,8 @@ module rounded_extrude(size, round_r, angle = 90, twist = 0, convexity = 10) {
                     ) scale([wx / x, wy / y]) 
                           children();     
 
+            test_rounded_extrude_data(i, wx, wy, pre_h, sx, sy);
+
             layers(wx * sx, wy * sy, h + pre_h, i + 1)
                 children();   
                     
@@ -64,4 +66,8 @@ module rounded_extrude(size, round_r, angle = 90, twist = 0, convexity = 10) {
     
     layers(x, y) 
         children();
+}
+
+module test_rounded_extrude_data(i, wx, wy, pre_h, sx, sy) {
+
 }
