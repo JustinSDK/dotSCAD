@@ -32,4 +32,12 @@ module stereographic_extrude(shadow_side_leng) {
         linear_extrude(outer_sphere_r * 2, scale = 0.01) 
             children();
     }
+
+    // hook for testing
+    test_stereographic_extrude_rs(outer_sphere_r, inner_sphere_r);
+}
+
+// override for testing
+module test_stereographic_extrude_rs(outer_sphere_r, inner_sphere_r) {
+
 }
