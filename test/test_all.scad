@@ -40,6 +40,7 @@ include <test_sphere_spiral.scad>;
 // Extrude
 include <test_ellipse_extrude.scad>;
 include <test_stereographic_extrude.scad>;
+include <test_rounded_extrude.scad>;
 
 // 2D Shape
 include <test_shape_arc.scad>;
