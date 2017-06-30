@@ -88,10 +88,10 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
     );   
 
     // hook for testing
-    test_path_extude(sections);
+    test_path_extrude(sections);
 }
 
 // override to test
-module test_path_extude(sections) {
+module test_path_extrude(sections) {
 
 }
