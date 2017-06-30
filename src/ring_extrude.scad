@@ -54,10 +54,19 @@ module ring_extrude(shape_pts, radius, angle = 360, twist = 0, scale = 1.0, tria
             pts :
             concat(pts, [__ra_to_xy(end_r, angles[1])]);
 
+        sections = cross_sections(shape_pts, all_points, all_angles, twist, scale);
+
         polysections(
-            cross_sections(shape_pts, all_points, all_angles, twist, scale),
+            sections,
             triangles = triangles
         );
+
+        // hook for testing
+        test_ring_extrude(sections);
     }
-    
+}
+
+// Override it to test
+module test_ring_extrude(sections) {
+
 }
