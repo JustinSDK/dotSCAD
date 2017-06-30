@@ -54,3 +54,4 @@ include <test_shape_path_extend.scad>;
 
 // 2D Shape Extrusion
 include <test_path_extrude.scad>;
+include <test_ring_extrude.scad>;
