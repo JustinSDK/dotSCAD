@@ -49,8 +49,18 @@ module helix_extrude(shape_pts, radius, levels, level_dist,
     clk_a = r_dir == 1 ? 0 : 180;
     angles = [for(i = [0:len(path_points) - 1]) [90 + initial_angle, 0, clk_a + angle_step * i]];
     
+    sections = cross_sections(shape_pts, path_points, angles, twist, scale);
+
     polysections(
-        cross_sections(shape_pts, path_points, angles, twist, scale),
+        sections,
         triangles = triangles
     );
+    
+    // hook for testing
+    test_helix_extrude(sections);
+}
+
+// override it to test
+module test_helix_extrude(sections) {
+
 }
