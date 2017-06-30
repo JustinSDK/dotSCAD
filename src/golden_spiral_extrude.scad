@@ -26,13 +26,23 @@ module golden_spiral_extrude(shape_pts, from, to, point_distance,
             [90, 0, pt_angle[1] + (rt_dir == "CT_CLK" ? 0 : -90)]
     ];
 
+    sections = cross_sections(
+        shape_pts, 
+        pts, angles, 
+        twist = twist, 
+        scale = scale
+    );
+
     polysections(
-        cross_sections(
-            shape_pts, 
-            pts, angles, 
-            twist = twist, 
-            scale = scale
-        ),
+        sections,
         triangles = triangles
     );
+
+    // testing hook
+    test_golden_spiral_extrude(sections);
+}
+
+// override it to test
+module test_golden_spiral_extrude(sections) {
+
 }
