@@ -79,9 +79,19 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
         closed && pth_pts[0] == pth_pts[len_path_pts_minus_one] ?
             concat(sections, [sections[0]]) : // round-robin
             concat([first_section()], sessions);
+    
+    sessions = calculated_sections();
 
     polysections(
-        calculated_sections(),
+        sessions,
         triangles = triangles
     );   
+
+    // hook for testing
+    test_path_extude(sessions);
+}
+
+// override to test
+module test_path_extude(sessions) {
+
 }
