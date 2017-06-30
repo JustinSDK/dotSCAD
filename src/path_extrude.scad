@@ -74,17 +74,14 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
                path_extrude_inner(index + 1)
            );
 
-    if(closed && pth_pts[0] == pth_pts[len_path_pts_minus_one]) {
-        // round-robin
-        sections = path_extrude_inner(1);
-        polysections(
-            concat(sections, [sections[0]]),
-            triangles = triangles
-        );   
-    } else {
-        polysections(
-            concat([first_section()], path_extrude_inner(1)),
-            triangles = triangles
-        ); 
-    }
+    function calculated_sections() =
+        let(sessions = path_extrude_inner(1))
+        closed && pth_pts[0] == pth_pts[len_path_pts_minus_one] ?
+            concat(sections, [sections[0]]) : // round-robin
+            concat([first_section()], sessions);
+
+    polysections(
+        calculated_sections(),
+        triangles = triangles
+    );   
 }
