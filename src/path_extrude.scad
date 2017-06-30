@@ -75,23 +75,23 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
            );
 
     function calculated_sections() =
-        let(sessions = path_extrude_inner(1))
+        let(sections = path_extrude_inner(1))
         closed && pth_pts[0] == pth_pts[len_path_pts_minus_one] ?
             concat(sections, [sections[0]]) : // round-robin
-            concat([first_section()], sessions);
+            concat([first_section()], sections);
     
-    sessions = calculated_sections();
+    sections = calculated_sections();
 
     polysections(
-        sessions,
+        sections,
         triangles = triangles
     );   
 
     // hook for testing
-    test_path_extude(sessions);
+    test_path_extude(sections);
 }
 
 // override to test
-module test_path_extude(sessions) {
+module test_path_extude(sections) {
 
 }
