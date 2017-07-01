@@ -30,10 +30,20 @@ module sphere_spiral_extrude(shape_pts, radius, za_step,
     points = [for(pa = points_angles) pa[0]];
     angles = [for(pa = points_angles) [pa[1][0] + v_clk, pa[1][1], pa[1][2] + r_clk]];
 
+    sections = cross_sections(
+        shape_pts, points, angles, twist = twist, scale = scale
+    );
+
     polysections(
-        cross_sections(
-            shape_pts, points, angles, twist = twist, scale = scale
-        ), 
+        sections, 
         triangles = triangles
     );
+
+    // testing hook
+    test_sphere_spiral_extrude(sections);
+}
+
+// override it to test
+module test_sphere_spiral_extrude(sections) {
+
 }
