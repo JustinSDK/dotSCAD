@@ -57,3 +57,4 @@ include <test_path_extrude.scad>;
 include <test_ring_extrude.scad>;
 include <test_helix_extrude.scad>;
 include <test_golden_spiral_extrude.scad>;
+include <test_archimedean_spiral_extrude_slide.scad>;
