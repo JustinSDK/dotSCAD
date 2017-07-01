@@ -1,4 +1,4 @@
-# dotSCAD (Beta 2)
+# dotSCAD
 
 > These fundamental modules and functions are helpful when playing OpenSCAD.
 
