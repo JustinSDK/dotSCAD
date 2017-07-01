@@ -28,8 +28,18 @@ module archimedean_spiral_extrude(shape_pts, arm_distance, init_angle, point_dis
              [90, 0, pa[1] + clk_a]
     ];
 
+    sections = cross_sections(shape_pts, points, angles, twist, scale);
+
     polysections(
-        cross_sections(shape_pts, points, angles, twist, scale),
+        sections,
         triangles = triangles
-    ); 
+    );
+
+    // testing hook
+    test_archimedean_spiral_extrude(sections); 
 }   
+
+// override it to test
+module test_archimedean_spiral_extrude(sections) {
+
+}
