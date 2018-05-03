@@ -33,22 +33,6 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
     scale_step_y = scale_step_vt[1];
     twist_step = twist / len_path_pts_minus_one;
 
-    function first_section() = 
-        let(
-            p1 = pth_pts[0], 
-            p2 = pth_pts[1],
-            angy_angz = __angy_angz(p1, p2),
-            ay = -angy_angz[0],
-            az = angy_angz[1]
-        )
-        [
-            for(p = sh_pts) 
-                rotate_p(
-                    rotate_p(p, [90, 0, -90]), 
-                    [0, ay, az]
-                ) + p1
-        ];
-
     function section(p1, p2, i) = 
         let(
             length = __length_between(p1, p2),
@@ -62,7 +46,7 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
                 rotate_p(
                      rotate_p(
                          rotate_p(scaled_p, twist_step * i), [90, 0, -90]
-                     ) + [length, 0, 0], 
+                     ) + [i == 0 ? 0 : length, 0, 0], 
                      [0, ay, az]
                 ) + p1
         ];
@@ -78,9 +62,9 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
         let(sections = path_extrude_inner(1))
         closed && pth_pts[0] == pth_pts[len_path_pts_minus_one] ?
             concat(sections, [sections[0]]) : // round-robin
-            concat([first_section()], sections);
-    
-    sections = calculated_sections();
+            concat([section(pth_pts[0], pth_pts[1], 0)], sections);
+   
+   sections = calculated_sections();
 
     polysections(
         sections,
