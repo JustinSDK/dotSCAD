@@ -8,7 +8,7 @@
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *
-* @see https://openhome.cc/eGossip/OpenSCAD/lib-arc_shape.html
+* @see https://openhome.cc/eGossip/OpenSCAD/lib-arc_path.html
 *
 **/ 
 
