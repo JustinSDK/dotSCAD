@@ -63,7 +63,8 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 	- [paths2sections](https://openhome.cc/eGossip/OpenSCAD/lib-paths2sections.html)
 	
 - Path
-    - [circle_path](https://openhome.cc/eGossip/OpenSCAD/lib-circle_path.html)
+    - [arc_path](https://openhome.cc/eGossip/OpenSCAD/lib-arc_path.html)
+	- [circle_path](https://openhome.cc/eGossip/OpenSCAD/lib-circle_path.html)
     - [bezier_curve](https://openhome.cc/eGossip/OpenSCAD/lib-bezier_curve.html)
 	- [bezier_surface](https://openhome.cc/eGossip/OpenSCAD/lib-bezier_surface.html)
 	- [bezier_smooth](https://openhome.cc/eGossip/OpenSCAD/lib-bezier_smooth.html)
