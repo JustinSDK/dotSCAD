@@ -15,6 +15,7 @@
 include <__private__/__frags.scad>;
 include <__private__/__is_vector.scad>;
 include <__private__/__ra_to_xy.scad>;
+include <__private__/__edge_r.scad>;
 include <__private__/__shape_arc.scad>;
 
 module arc(radius, angle, width, width_mode = "LINE_CROSS") {

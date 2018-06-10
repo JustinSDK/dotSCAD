@@ -15,14 +15,7 @@
 include <__private__/__frags.scad>;
 include <__private__/__is_vector.scad>;
 include <__private__/__ra_to_xy.scad>;
-
-function __edge_r_begin(orig_r, a, a_step, m) =
-    let(leng = orig_r * cos(a_step / 2))
-    leng / cos((m - 0.5) * a_step - a);
-
-function __edge_r_end(orig_r, a, a_step, n) =      
-    let(leng = orig_r * cos(a_step / 2))    
-    leng / cos((n + 0.5) * a_step - a);
+include <__private__/__edge_r.scad>;
 
 function arc_path(radius, angle) =
     let(
@@ -35,5 +28,6 @@ function arc_path(radius, angle) =
             m > n ? [] : [
                 for(i = [m:n]) 
                     __ra_to_xy(radius, a_step * i)
-            ])
+            ],
+            angles[1] == a_step * n ? [] : [__ra_to_xy(__edge_r_end(radius, angles[1], a_step, n), angles[1])])
     ) points;
