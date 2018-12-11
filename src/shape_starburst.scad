@@ -12,20 +12,22 @@
 *
 **/
 
-function __outer_points(r1, r2, n) = 
+function __outer_points_shape_starburst(r1, r2, n) = 
     let(
         a = 360 / n
     )
     [for(i = [0:n-1]) [r1 * cos(a * i), r1 * sin(a * i)]];
-function __inner_points(r1, r2, n) = 
+function __inner_points_shape_starburst(r1, r2, n) = 
     let (
         a = 360 / n,
         half_a = a / 2
     )
     [for(i = [0:n-1]) [r2 * cos(a * i + half_a), r2 * sin(a * i + half_a)]];
     
-function __one_by_one(outer_points, inner_points, i = 0) =
+function __one_by_one_shape_starburst(outer_points, inner_points, i = 0) =
         len(outer_points) == i ? [] :
-        concat([outer_points[i], inner_points[i]], __one_by_one(outer_points, inner_points, i + 1));    
+        concat([outer_points[i], inner_points[i]], __one_by_one_shape_starburst(outer_points, inner_points, i + 1));    
 
-function shape_starburst(r1, r2, n) = __one_by_one(__outer_points(r1, r2, n), __inner_points(r1, r2, n));
+function shape_starburst(r1, r2, n) = __one_by_one_shape_starburst(
+    __outer_points_shape_starburst(r1, r2, n), __inner_points_shape_starburst(r1, r2, n)
+);
