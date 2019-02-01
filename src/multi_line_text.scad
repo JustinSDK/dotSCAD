@@ -9,7 +9,7 @@
 * @see https://openhome.cc/eGossip/OpenSCAD/lib-multi_line_text.html
 *
 **/ 
-module multi_line_text(lines, size = 10, font = "Arial", halign = "left", valign = "baseline", line_spacing = 15, direction = "ltr", language = "en", script = "latin"){
+module multi_line_text(lines, line_spacing = 15, size = 10, font = "Arial", halign = "left", valign = "baseline", direction = "ltr", language = "en", script = "latin"){
     to = len(lines) - 1;
     inc = line_spacing;
     offset_y = inc * to / 2;
