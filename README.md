@@ -38,6 +38,7 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 	- [hull_polyline2d](https://openhome.cc/eGossip/OpenSCAD/lib-hull_polyline2d.html)
 	- [hexagons](https://openhome.cc/eGossip/OpenSCAD/lib-hexagons.html)
 	- [polytransversals](https://openhome.cc/eGossip/OpenSCAD/lib-polytransversals.html)
+    - [multi_line_text](https://openhome.cc/eGossip/OpenSCAD/lib-multi_line_text.html)
 
 - 3D
 	- [rounded_cube](https://openhome.cc/eGossip/OpenSCAD/lib-rounded_cube.html)
