@@ -1,6 +1,6 @@
 # dotSCAD
 
-> These fundamental modules and functions are helpful when playing OpenSCAD.
+> Helpful modules and functions when playing OpenSCAD.
 
 ![dotSCAD](GoldenTaiwan.JPG)
 
