@@ -33,7 +33,7 @@ module line2d(p1, p2, width, p1Style = "CAP_SQUARE", p2Style =  "CAP_SQUARE") {
     module round_end(point) {
         translate(point) 
             rotate(atan_angle) 
-                circle(half_width, center = true, $fn = frags);    
+                circle(half_width, $fn = frags);    
 
         // hook for testing
         test_line2d_cap(point, "CAP_ROUND");                
