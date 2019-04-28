@@ -1,4 +1,4 @@
-function _m_multiply(ma, mb) = 
+function __m_multiply(ma, mb) = 
     let(
         c1 = [mb[0][0], mb[1][0], mb[2][0], mb[3][0]],
         c2 = [mb[0][1], mb[1][1], mb[2][1], mb[3][1]],

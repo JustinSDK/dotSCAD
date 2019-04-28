@@ -1,4 +1,4 @@
-include <__private__/_m_multiply.scad>;
+include <__private__/__m_multiply.scad>;
 
 function _q_rotation(a, v) = 
     let(
@@ -59,8 +59,8 @@ function _m_zRotation(a) =
 
 function m_rotation(a, v) = 
     v == undef ? 
-        _m_multiply(
-            _m_zRotation(a[2]), _m_multiply(
+        __m_multiply(
+            _m_zRotation(a[2]), __m_multiply(
                 _m_yRotation(a[1]), _m_xRotation(a[0])
             )
         ) :
