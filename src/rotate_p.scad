@@ -39,9 +39,9 @@ function _q_rotate_p_3d(p, a, v) =
         wz = w * z2        
     )
     [
-        (1 - yy - zz) * p[0] + (yx - wz) * p[1] + (zx + wy) * p[2],
-        (yx + wz) * p[0] + (1 - xx - zz) * p[1] + (zy - wx) * p[2],
-        (zx - wy) * p[0] + (zy + wx) * p[1] + (1 - xx - yy) * p[2]
+        [1 - yy - zz, yx - wz, zx + wy] * p,
+        [yx + wz, 1 - xx - zz, zy - wx] * p,
+        [zx - wy, zy + wx, 1 - xx - yy] * p
     ];
 
 function _rotx(pt, a) = 
