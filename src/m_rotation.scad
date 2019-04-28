@@ -2,12 +2,13 @@ include <__private__/__m_multiply.scad>;
 
 function _q_rotation(a, v) = 
     let(
+        half_a = a / 2,
         axis = v / norm(v),
-        s = sin(a / 2),
+        s = sin(half_a),
         x = s * axis[0],
         y = s * axis[1],
         z = s * axis[2],
-        w = cos(a / 2),
+        w = cos(half_a),
         
         x2 = x + x,
         y2 = y + y,
