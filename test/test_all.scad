@@ -39,10 +39,8 @@ include <test_sphere_spiral.scad>;
 // Extrude
 include <test_ellipse_extrude.scad>;
 include <test_stereographic_extrude.scad>;
-include <test_rounded_extrude.scad>;
 
 // 2D Shape
-include <test_shape_arc.scad>;
 include <test_shape_cyclicpolygon.scad>;
 include <test_shape_ellipse.scad>;
 include <test_shape_pie.scad>;
@@ -52,7 +50,6 @@ include <test_shape_superformula.scad>;
 include <test_shape_path_extend.scad>;
 
 // 2D Shape Extrusion
-include <test_path_extrude.scad>;
 include <test_ring_extrude.scad>;
 include <test_helix_extrude.scad>;
 include <test_golden_spiral_extrude.scad>;
