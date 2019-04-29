@@ -16,7 +16,6 @@ include <test_function_grapher.scad>;
 include <test_polysections.scad>;
 
 // Transformation
-include <test_along_with.scad>;
 include <test_bend.scad>;
 
 // Function
