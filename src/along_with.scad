@@ -31,52 +31,67 @@ module along_with(points, angles, twist = 0, scale = 1.0) {
             scale[2] == undef ? 0 : (scale[2] - 1) / leng_points_minus_one
         ] : scale_step(); 
     
-    end_i = $children == 1 ? leng_points_minus_one : $children - 1;
-
-    function _path_angles(pts, i = 0) = 
-        i == end_i ?
-                [] : 
-                concat(
-                    [__angy_angz(pts[i], pts[i + 1])], 
-                    _path_angles(pts, i + 1)
-                );
-            
-    function path_angles() = 
-       let(
-           pts = len(points[0]) == 3 ? points : [for(pt = points) __to3d(pt)],
-           angs = _path_angles(pts)
-        )
-       concat(
-           [[0, -angs[0][0], angs[0][1]]], 
-           [for(a = angs) [0, -a[0], a[1]]]
-       );
-       
-    angles_defined = angles != undef;
-    angs = angles_defined ? angles : path_angles(points);
-
-    module align(i) {
+    module align_with_pts_angles(i) {
         translate(points[i]) 
-            rotate(angs[i])
-                rotate(angles_defined ? [0, 0, 0] : [90, 0, -90])
-                    rotate(twist_step_a * i) 
-                         scale([1, 1, 1] + scale_step_vt * i) 
-                             children(0);
+            rotate(angles[i])
+                rotate(twist_step_a * i) 
+                        scale([1, 1, 1] + scale_step_vt * i) 
+                            children(0);
     }
 
-    if($children == 1) { 
-        for(i = [0:leng_points_minus_one]) {
-            align(i) children(0);
-        }
-    } else {
-        for(i = [0:min(leng_points, $children) - 1]) {
-            align(i) children(i);
-        }
+    module align_with_pts_init(a, s) {
+        angleyz = __angy_angz(points[0], points[1]);
+        rotate([0, -angleyz[0], angleyz[1]])
+            rotate([90, 0, -90])
+                rotate(a)
+                    scale(s) 
+                        children(0);
     }
-
-    // hook for testing
-    test_along_with_angles(angs);
-}
-
-module test_along_with_angles(angles) {
     
+    module align_with_pts_local_rotate(j, init_a, init_s) {
+        if(j == 0) {  // first child
+            align_with_pts_init(init_a, init_s) 
+                children(0);
+        }
+        else {
+            vt0 = points[j] - points[j - 1];
+            vt1 = points[j + 1] - points[j];
+            a = acos((vt0 * vt1) / (norm(vt0) * norm(vt1)));     
+            rotate(a, cross(vt0, vt1)) 
+                align_with_pts_local_rotate(j - 1, init_a, init_s) 
+                    children(0);
+        }
+    }
+
+    if(angles != undef) {
+        if($children == 1) { 
+            for(i = [0:leng_points_minus_one]) {
+                align_with_pts_angles(i) children(0);
+            }
+        } else {
+            for(i = [0:min(leng_points, $children) - 1]) {
+                align_with_pts_angles(i) children(i);
+            }
+        }
+    }
+    else {
+        translate(points[0])
+            align_with_pts_local_rotate(0, 0, [1, 1, 1])
+                children(0); 
+
+        if($children == 1) { 
+            for(i = [0:leng_points - 2]) {
+                translate(points[i + 1])
+                    align_with_pts_local_rotate(i, i * twist_step_a, [1, 1, 1] + scale_step_vt * i)
+                        children(0);          
+            }          
+        } else {
+            for(i = [0:min(leng_points, $children) - 2]) {
+                translate(points[i + 1])
+                    align_with_pts_local_rotate(i, i * twist_step_a, [1, 1, 1] + scale_step_vt * i)
+                        children(i + 1);   
+            }
+        }
+    }
+
 }
