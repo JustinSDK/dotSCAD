@@ -5,7 +5,7 @@ Puts children along the given path. If there's only one child, it will put the c
 ## Parameters
 
 - `points` : The points along the path. 
-- `angles` : Rotate before translate each child. If not given, `angles` will be calculated automatically according to `points`.
+- `angles` : Rotate before translate each child. If not given, rotate children automatically according to `points`.
 - `twist` : If given, each child will be twisted before applying each element of `points` and `angles`.
 - `scale` : If given, each child will be scaled before applying each element of `points` and `angles`. It accepts a single value, `[sx, sy]` or `[sx, sy, sz]`.
 
