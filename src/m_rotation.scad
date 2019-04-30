@@ -58,11 +58,13 @@ function _m_zRotation(a) =
         [0, 0, 0, 1]
     ];    
 
+function _xyz_rotation(a) =
+    let(ang = len(a) == 3 ? a : [0, 0, a])
+    __m_multiply(
+        _m_zRotation(ang[2]), __m_multiply(
+            _m_yRotation(ang[1]), _m_xRotation(ang[0])
+        )
+    );
+
 function m_rotation(a, v) = 
-    v == undef ? 
-        __m_multiply(
-            _m_zRotation(a[2]), __m_multiply(
-                _m_yRotation(a[1]), _m_xRotation(a[0])
-            )
-        ) :
-        _q_rotation(a, v);
+    v == undef ? _xyz_rotation(a) : _q_rotation(a, v);
