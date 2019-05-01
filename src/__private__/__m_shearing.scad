@@ -36,7 +36,7 @@ function __m_shearing_sz(sz) =
 
 function __m_shearing(sx, sy, sz) = 
     __m_multiply(
-        __m_shearing_sy(sz),
+        __m_shearing_sz(sz),
         __m_multiply(
             __m_shearing_sy(sy),
             __m_shearing_sx(sx)
