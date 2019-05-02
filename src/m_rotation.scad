@@ -58,8 +58,15 @@ function _m_zRotation(a) =
         [0, 0, 0, 1]
     ];    
 
+function _to_avect(a) =
+     len(a) == 3 ? a : (
+         len(a) == 2 ? [a[0], a[1], 0] : (
+             len(a) == 1 ? [a[0], 0, 0] : [0, 0, a]
+         ) 
+     );
+
 function _xyz_rotation(a) =
-    let(ang = len(a) == 3 ? a : [0, 0, a])
+    let(ang = _to_avect(a))
     __m_multiply(
         _m_zRotation(ang[2]), __m_multiply(
             _m_yRotation(ang[1]), _m_xRotation(ang[0])
