@@ -12,7 +12,7 @@ Generate a 4x4 transformation matrix which can pass into `multmatrix` to transla
 
 	cube(2, center = true); 
 	multmatrix(m_translation([5, 0, 0]))
-	sphere(1,center = true);
+	    sphere(1,center = true);
 
 ![m_translation](images/lib-m_translation-1.JPG)
 
