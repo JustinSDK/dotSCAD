@@ -1,4 +1,4 @@
-# dotSCAD
+# dotSCAD 1.1
 
 > Helpful modules and functions when playing OpenSCAD.
 
