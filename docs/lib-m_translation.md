@@ -2,6 +2,8 @@
 
 Generate a 4x4 transformation matrix which can pass into `multmatrix` to translates (moves) its child elements along the specified vector.
 
+**Since:** 1.1
+
 ## Parameters
 
 - `v` : Elements will be translated along the vector.

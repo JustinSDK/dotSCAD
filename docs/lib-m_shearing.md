@@ -2,6 +2,8 @@
 
 Generate a 4x4 transformation matrix which can pass into `multmatrix` to shear all child elements along the X-axis, Y-axis, or Z-axis in 3D.
 
+**Since:** 1.1
+
 ## Parameters
 
 - `sx` : An array `[SHy, SHz]`. The new coordinates of child elements are `(x + SHy * y + SHz * z, y, z)`.

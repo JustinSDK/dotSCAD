@@ -2,6 +2,8 @@
 
 Generate a 4x4 transformation matrix which can pass into `multmatrix` to mirror the child element on a plane through the origin. 
 
+**Since:** 1.1
+
 ## Parameters
 
 - `v` : The normal vector of a plane intersecting the origin through which to mirror the object.

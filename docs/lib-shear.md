@@ -2,6 +2,9 @@
 
 Shear all child elements along the X-axis, Y-axis, or Z-axis in 3D.
 
+**Since:** 1.1
+
+
 ## Parameters
 
 - `sx` : An array `[SHy, SHz]`. The new coordinates of child elements are `(x + SHy * y + SHz * z, y, z)`.

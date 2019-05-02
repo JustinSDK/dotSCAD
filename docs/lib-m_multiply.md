@@ -2,6 +2,8 @@
 
 Multiply two 4x4 transformation matrice.
 
+**Since:** 1.1
+
 ## Parameters
 
 - `ma`, `mb` : Two 4x4 transformation matrice.

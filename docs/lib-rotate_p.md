@@ -6,7 +6,7 @@ Rotates a point `a` degrees about the axis of the coordinate system or around an
 
 - `point` : A 3D point `[x, y, z]` or a 2D point `[x, y]`.
 - `a` : If it's `[deg_x, deg_y, deg_z]`, the rotation is applied in the order `x`, `y`, `z`. If it's `[deg_x, deg_y]`, the rotation is applied in the order `x`, `y`.  If it's`[deg_x]`, the rotation is only applied to the `x` axis. If it's an number, the rotation is only applied to the `z` axis or an arbitrary axis.
-- `v`: A vector allows you to set an arbitrary axis about which the object will be rotated. When `a` is an array, the `v` argument is ignored. 
+- `v`: A vector allows you to set an arbitrary axis about which the object will be rotated. When `a` is an array, the `v` argument is ignored. **Since:** 1.1.
 
 ## Examples
     
