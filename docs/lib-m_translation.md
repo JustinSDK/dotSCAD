@@ -4,7 +4,7 @@ Generate a 4x4 transformation matrix which can pass into `multmatrix` to transla
 
 ## Parameters
 
-- `v` : The normal vector of a plane intersecting the origin through which to mirror the object.
+- `v` : Elements will be translated along the vector.
 
 ## Examples
 
