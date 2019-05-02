@@ -1,3 +1,13 @@
+/**
+* m_scaling.scad
+*
+* @copyright Justin Lin, 2019
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib-m_scaling.html
+*
+**/
+
 function _to_vect(s) =
      len(s) == 3 ? s : (
          len(s) == 2 ? [s[0], s[1], 1] : (

@@ -1,3 +1,13 @@
+/**
+* m_translation.scad
+*
+* @copyright Justin Lin, 2019
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib-m_translation.html
+*
+**/
+
 function _to_vect(v) =
      len(v) == 3 ? v : (
          len(v) == 2 ? [v[0], v[1], 0] : (
