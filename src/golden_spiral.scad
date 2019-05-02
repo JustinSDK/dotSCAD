@@ -1,10 +1,6 @@
 /**
 * golden_spiral.scad
 *
-*  Gets all points and angles on the path of a golden spiral. The distance between two  points is almost constant. 
-* 
-*  It returns a vector of [[x, y], angle]. 
-* 
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *

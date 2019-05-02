@@ -1,7 +1,5 @@
 /**
 * bend.scad
-*
-* Bends a 3D object into an arc shape. 
 * 
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html

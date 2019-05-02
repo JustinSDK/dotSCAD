@@ -1,8 +1,6 @@
 /**
 * helix_extrude.scad
 *
-* Extrudes a 2D shape along a helix path.
-*
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *

@@ -1,9 +1,6 @@
 /**
 * ring_extrude.scad
 *
-* Rotational extrusion spins a 2D shape around the Z-axis.  
-* It's similar to the built-in `rotate_extrude`; however, it supports angle, twist and scale options.
-*
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *

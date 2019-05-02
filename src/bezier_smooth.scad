@@ -1,8 +1,6 @@
 /**
 * bezier_smooth.scad
 *
-* Given a path, the bezier_smooth function uses bazier curves to smooth all corners. 
-* 
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *

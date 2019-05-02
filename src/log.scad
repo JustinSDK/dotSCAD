@@ -1,8 +1,6 @@
 /**
 * log.scad
 *
-* A log module which supports simple level configurations and color titles.
-* 
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *

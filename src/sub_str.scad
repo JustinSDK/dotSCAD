@@ -1,8 +1,6 @@
 /**
 * sub_str.scad
 *
-* Returns a new string that is a substring of the given string.
-* 
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *

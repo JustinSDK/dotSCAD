@@ -1,8 +1,6 @@
 /**
 * turtle3d.scad
 *
-* An OpenSCAD implementation of 3D Turtle Graphics. 
-* 
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *

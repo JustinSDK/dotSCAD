@@ -1,8 +1,6 @@
 /**
 * crystal_ball.scad
 *
-* Uses Spherical coordinate system to create a crystal ball. 
-* 
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *

@@ -1,10 +1,6 @@
 /**
 * arc.scad
 *
-* Creates an arc. You can pass a 2 element vector to define the central angle. 
-* Its $fa, $fs and $fn parameters are consistent with the circle module.
-* It depends on the circular_sector module so you have to include circular_sector.scad.
-* 
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *

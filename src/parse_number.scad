@@ -1,10 +1,6 @@
 /**
 * parse_number.scad
 *
-* Parses the string argument as an number.
-* It depends on the split_str and the sub_str functions 
-* so remember to include split_str.scad and sub_str.scad.
-* 
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *

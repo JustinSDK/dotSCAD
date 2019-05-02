@@ -1,11 +1,6 @@
 /**
 * path_extrude.scad
 *
-* It extrudes a 2D shape along a path. 
-* This module is suitable for a path created by a continuous function.
-* It depends on the rotate_p function and the polysections module. 
-* Remember to include "rotate_p.scad" and "polysections.scad".
-*
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *

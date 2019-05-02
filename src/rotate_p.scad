@@ -1,9 +1,6 @@
 /**
 * rotate_p.scad
 *
-* Rotates a point 'a' degrees around an arbitrary axis. 
-* The rotation is applied in the following order: x, y, z. 
-* 
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *

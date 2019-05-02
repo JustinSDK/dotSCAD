@@ -1,11 +1,6 @@
 /**
 * shape_path_extend.scad
 *
-* It extends a 2D stroke along a path. 
-* This module is suitable for a path created by a continuous function.
-* It depends on the rotate_p function and the polytransversals module. 
-* Remember to include "rotate_p.scad" and "polytransversals.scad".
-*
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *
