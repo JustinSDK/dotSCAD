@@ -61,14 +61,15 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
         let(
             vt0 = pth_pts[j] - pth_pts[j - 1],
             vt1 = pth_pts[j + 1] - pth_pts[j],
-            a = acos((vt0 * vt1) / (norm(vt0) * norm(vt1)))      
+            a = acos((vt0 * vt1) / (norm(vt0) * norm(vt1))),
+            v = cross(vt0, vt1)
         )
         rotate_pts(
-                local_rotate_section(j - 1, init_a, init_s),
-                a,
-                cross(vt0, vt1)
+            local_rotate_section(j - 1, init_a, init_s),
+            a,
+            v
         );
-        
+
     function sections() =
         let(
             fst_section = 
