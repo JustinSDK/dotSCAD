@@ -8,7 +8,7 @@
 *
 **/
 
-function _to_vect(v) =
+function _to_tvect(v) =
      len(v) == 3 ? v : (
          len(v) == 2 ? [v[0], v[1], 0] : (
              len(v) == 1 ? [v[0], 0, 0] : [v, 0, 0]
@@ -16,7 +16,7 @@ function _to_vect(v) =
      );
 
 function m_translation(v) = 
-    let(vt = _to_vect(v))
+    let(vt = _to_tvect(v))
     [
         [1, 0, 0, vt[0]],
         [0, 1, 0, vt[1]],
