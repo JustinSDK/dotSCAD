@@ -105,6 +105,7 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 
 - Matrix
 	- [m_multiply](https://openhome.cc/eGossip/OpenSCAD/lib-m_multiply.html)
+	- [m_cumulate](https://openhome.cc/eGossip/OpenSCAD/lib-m_cumulate.html)	
 	- [m_translation](https://openhome.cc/eGossip/OpenSCAD/lib-m_translation.html)
 	- [m_rotation](https://openhome.cc/eGossip/OpenSCAD/lib-m_rotation.html)
 	- [m_scaling](https://openhome.cc/eGossip/OpenSCAD/lib-m_scaling.html)
