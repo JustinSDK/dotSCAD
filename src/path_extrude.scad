@@ -12,8 +12,11 @@ include <__private__/__is_vector.scad>;
 include <__private__/__to3d.scad>;
 include <__private__/__angy_angz.scad>;
 include <__private__/__length_between.scad>;
+include <__private__/__m_multiply.scad>;
+include <__private__/__m_multiply.scad>;
 
 module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale = 1.0, closed = false) {
+    // pre-process parameters
     function scale_pts(pts, s) = [
         for(p = pts) [p[0] * s[0], p[1] * s[1], p[2] * s[2]]
     ];
@@ -40,8 +43,51 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
             (scale[0] - 1) / len_path_pts_minus_one, 
             (scale[1] - 1) / len_path_pts_minus_one,
             scale[2] == undef ? 0 : (scale[2] - 1) / len_path_pts_minus_one
-        ] : scale_step();         
+        ] : scale_step();   
+
+    // get rotation matrice for sections
+
+    function local_ang_vects(j) = 
+        j == 0 ? [] : local_ang_vects_sub(j);
     
+    function local_ang_vects_sub(j) =
+        let(
+            vt0 = pth_pts[j] - pth_pts[j - 1],
+            vt1 = pth_pts[j + 1] - pth_pts[j],
+            a = acos((vt0 * vt1) / (norm(vt0) * norm(vt1))),
+            v = cross(vt0, vt1)
+        )
+        concat([[a, v]], local_ang_vects(j - 1));
+
+    rot_matrice = [
+        for(ang_vect = local_ang_vects(len_path_pts - 2)) 
+            m_rotation(ang_vect[0], ang_vect[1])
+    ];
+
+    leng_rot_matrice = len(rot_matrice);
+    leng_rot_matrice_minus_one = leng_rot_matrice - 1;
+    leng_rot_matrice_minus_two= leng_rot_matrice - 2;
+
+    function cumulated_rot_matrice(i) = 
+        i == leng_rot_matrice - 2 ? 
+               [
+                   rot_matrice[leng_rot_matrice_minus_one], 
+                   __m_multiply(rot_matrice[leng_rot_matrice_minus_two], rot_matrice[leng_rot_matrice_minus_one])
+               ] 
+               : cumulated_rot_matrice_sub(i);
+
+    function cumulated_rot_matrice_sub(i) = 
+        let(
+            matrice = cumulated_rot_matrice(i + 1),
+            curr_matrix = rot_matrice[i],
+            prev_matrix = matrice[len(matrice) - 1]
+        )
+        concat(matrice, [__m_multiply(curr_matrix, prev_matrix)]);
+
+    cumu_rot_matrice = cumulated_rot_matrice(0);
+
+    // get all sections
+
     function init_section(a, s) =
         let(angleyz = __angy_angz(pth_pts[0], pth_pts[1]))
         rotate_pts(
@@ -61,14 +107,16 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
         let(
             vt0 = pth_pts[j] - pth_pts[j - 1],
             vt1 = pth_pts[j + 1] - pth_pts[j],
-            a = acos((vt0 * vt1) / (norm(vt0) * norm(vt1))),
-            v = cross(vt0, vt1)
+            ms = cumu_rot_matrice[j - 1]
         )
-        rotate_pts(
-            local_rotate_section(j - 1, init_a, init_s),
-            a,
-            v
-        );
+        [
+            for(p = init_section(init_a, init_s)) 
+                [
+                    [ms[0][0], ms[0][1], ms[0][2]] * p,
+                    [ms[1][0], ms[1][1], ms[1][2]] * p,
+                    [ms[2][0], ms[2][1], ms[2][2]] * p
+                ]
+        ];        
 
     function sections() =
         let(
@@ -89,7 +137,7 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
     sects = sections();
 
     function calculated_sections() =
-        closed && pth_pts[0] == pth_pts[len_path_pts - 1] ?
+        closed && pth_pts[0] == pth_pts[len_path_pts_minus_one] ?
             concat(sects, [sects[0]]) : // round-robin
             sects;
      
