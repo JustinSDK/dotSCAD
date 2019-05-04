@@ -97,7 +97,7 @@ module along_with(points, angles, twist = 0, scale = 1.0) {
                 align_with_pts_init(init_a, init_s) 
                     children(0);
         }
-    }
+    } 
 
     if(angles != undef) {
         if($children == 1) { 
@@ -123,13 +123,13 @@ module along_with(points, angles, twist = 0, scale = 1.0) {
         if($children == 1) { 
             for(i = [0:leng_points - 2]) {
                 translate(points[i + 1])
-                    align_with_pts_local_rotate(i, i * twist_step_a, [1, 1, 1] + scale_step_vt * i)
+                    align_with_pts_local_rotate(i, i * twist_step_a, [1, 1, 1] + scale_step_vt * i, cumu_rot_matrice)
                         children(0);          
             }          
         } else {
             for(i = [0:min(leng_points, $children) - 2]) {
                 translate(points[i + 1])
-                    align_with_pts_local_rotate(i, i * twist_step_a, [1, 1, 1] + scale_step_vt * i)
+                    align_with_pts_local_rotate(i, i * twist_step_a, [1, 1, 1] + scale_step_vt * i, cumu_rot_matrice)
                         children(i + 1);   
             }
         }
