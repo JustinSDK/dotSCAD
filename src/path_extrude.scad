@@ -13,7 +13,7 @@ include <__private__/__to3d.scad>;
 include <__private__/__angy_angz.scad>;
 include <__private__/__m_multiply.scad>;
 
-// Becuase of improving the performance, this module requires m_rotation.scad. 
+// Becuase of improving the performance, this module requires m_rotation.scad which doesn't require in dotSCAD 1.0. 
 // For backward compatibility, I directly include m_rotation here.
 include <m_rotation.scad>;
 
