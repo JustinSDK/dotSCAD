@@ -9,7 +9,6 @@
 **/
 
 include <__private__/__to3d.scad>;
-include <__private__/__length_between.scad>;
 include <__private__/__polytransversals.scad>;
 include <__private__/__reverse.scad>;
 
@@ -34,7 +33,7 @@ function _shape_path_first_stroke(stroke_pts, path_pts) =
 
 function _shape_path_extend_stroke(stroke_pts, p1, p2, scale_step, i) =
     let(
-        leng = __length_between(__to3d(p1), __to3d(p2)),
+        leng = norm(__to3d(p2) - __to3d(p1)),
         a = _shape_path_extend_az(p1, p2)
     )
     [
