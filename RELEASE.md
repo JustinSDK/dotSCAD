@@ -8,6 +8,8 @@
   - [m_mirror](https://openhome.cc/eGossip/OpenSCAD/lib-m_mirror.html)
   - [m_shearing](https://openhome.cc/eGossip/OpenSCAD/lib-m_shearing.html)
 
+- New modules:
+  - [shear](https://openhome.cc/eGossip/OpenSCAD/lib-shear.html)
 
 - New Parameters:
   - added `v` parameter to [rotate_p](https://openhome.cc/eGossip/OpenSCAD/lib-rotate_p.html)
