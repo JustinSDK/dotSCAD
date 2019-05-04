@@ -13,6 +13,10 @@ include <__private__/__to3d.scad>;
 include <__private__/__angy_angz.scad>;
 include <__private__/__m_multiply.scad>;
 
+// Becuase of improving the performance, this module requires m_rotation.scad. 
+// For backward compatibility, I directly include m_rotation here.
+include <m_rotation.scad>;
+
 module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale = 1.0, closed = false) {
     // pre-process parameters
     function scale_pts(pts, s) = [
