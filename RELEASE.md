@@ -1,3 +1,22 @@
+# v1.1
+- New matrix functions:
+  - [m_multiply](https://openhome.cc/eGossip/OpenSCAD/lib-m_multiply.html)
+  - [m_cumulate](https://openhome.cc/eGossip/OpenSCAD/lib-m_cumulate.html)
+  - [m_translation](https://openhome.cc/eGossip/OpenSCAD/lib-m_translation.html)
+  - [m_rotation](https://openhome.cc/eGossip/OpenSCAD/lib-m_rotation.html)
+  - [m_scaling](https://openhome.cc/eGossip/OpenSCAD/lib-m_scaling.html)
+  - [m_mirror](https://openhome.cc/eGossip/OpenSCAD/lib-m_mirror.html)
+  - [m_shearing](https://openhome.cc/eGossip/OpenSCAD/lib-m_shearing.html)
+
+
+- New Parameters:
+  - added `v` parameter to [rotate_p](https://openhome.cc/eGossip/OpenSCAD/lib-rotate_p.html)
+
+
+- Improved Performance:
+    - [path_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-path_extrude.html)
+    - [align_with](https://openhome.cc/eGossip/OpenSCAD/lib-along_with.html)  
+
 # v1.0.1
 - Fixed `path_extrude` crossing problem. See [issue 3](https://github.com/JustinSDK/dotSCAD/issues/3).
 - Fixed `along_with` crossing problems (similar to `path_extrude`.)
