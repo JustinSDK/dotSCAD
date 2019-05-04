@@ -11,8 +11,6 @@
 include <__private__/__is_vector.scad>;
 include <__private__/__to3d.scad>;
 include <__private__/__angy_angz.scad>;
-include <__private__/__length_between.scad>;
-include <__private__/__m_multiply.scad>;
 include <__private__/__m_multiply.scad>;
 
 module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale = 1.0, closed = false) {
