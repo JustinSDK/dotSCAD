@@ -1,11 +1,6 @@
 /**
 * stereographic_extrude.scad
 *
-* Takes a 2D polygon as input and extends it onto a sphere. 
-* If you light up a lamp on the north pole of the sphere, the 
-* shadow will return to the original 2D polygon. For more 
-* information, take a look at [Stereographic projection](https://en.wikipedia.org/wiki/Stereographic_projection).
-*
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *

@@ -1,9 +1,6 @@
 /**
 * ellipse_extrude.scad
 *
-* Extrudes a 2D object along the path of an ellipse from 0 to 180 degrees.
-* The semi-major axis is not necessary because it's eliminated while calculating.
-* 
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *

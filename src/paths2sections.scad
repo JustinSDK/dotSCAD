@@ -1,8 +1,6 @@
 /**
 * paths2sections.scad
 *
-* Given a list of paths, this function will return all cross-sections described by those paths.
-*
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *

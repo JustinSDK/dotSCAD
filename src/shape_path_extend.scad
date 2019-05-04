@@ -1,11 +1,6 @@
 /**
 * shape_path_extend.scad
 *
-* It extends a 2D stroke along a path. 
-* This module is suitable for a path created by a continuous function.
-* It depends on the rotate_p function and the polytransversals module. 
-* Remember to include "rotate_p.scad" and "polytransversals.scad".
-*
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *
@@ -14,7 +9,6 @@
 **/
 
 include <__private__/__to3d.scad>;
-include <__private__/__length_between.scad>;
 include <__private__/__polytransversals.scad>;
 include <__private__/__reverse.scad>;
 
@@ -39,7 +33,7 @@ function _shape_path_first_stroke(stroke_pts, path_pts) =
 
 function _shape_path_extend_stroke(stroke_pts, p1, p2, scale_step, i) =
     let(
-        leng = __length_between(__to3d(p1), __to3d(p2)),
+        leng = norm(__to3d(p2) - __to3d(p1)),
         a = _shape_path_extend_az(p1, p2)
     )
     [

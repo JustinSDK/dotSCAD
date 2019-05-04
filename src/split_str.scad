@@ -1,9 +1,6 @@
 /**
 * split_str.scad
 *
-* Splits the given string around matches of the given delimiting character.
-* It depends on the sub_str function so remember to include sub_str.scad.
-*
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *

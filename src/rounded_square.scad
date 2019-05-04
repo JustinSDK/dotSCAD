@@ -1,9 +1,6 @@
 /**
 * rounded_square.scad
 *
-* Creates a rounded square or rectangle in the first quadrant. 
-* When center is true the square is centered on the origin.
-* 
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *

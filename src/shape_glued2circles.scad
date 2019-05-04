@@ -2,10 +2,6 @@
 /**
 * shape_glued2circles.scad
 *
-* Returns shape points of two glued circles. 
-* They can be used with xxx_extrude modules of dotSCAD.
-* The shape points can be also used with the built-in polygon module. 
-* 
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *

@@ -1,9 +1,6 @@
 /**
 * turtle2d.scad
 *
-* An OpenSCAD implementation of Turtle Graphics. 
-* It moves on the xy plane. 
-* 
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *

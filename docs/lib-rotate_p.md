@@ -1,11 +1,12 @@
 # rotate_p
 
-Rotates a point `a` degrees around an arbitrary axis. It behaves as the built-in `rotate` module
+Rotates a point `a` degrees about the axis of the coordinate system or around an arbitrary axis. It behaves as the built-in `rotate` module
 
 ## Parameters
 
 - `point` : A 3D point `[x, y, z]` or a 2D point `[x, y]`.
-- `a` : If it's `[deg_x, deg_y, deg_z]`, the rotation is applied in the order `x`, `y`, `z`. If it's `[deg_x, deg_y]`, the rotation is applied in the order `x`, `y`.  If it's`[deg_x]`, the rotation is only applied to the `x` axis. If it's an number, the rotation is only applied to the `z` axis.
+- `a` : If it's `[deg_x, deg_y, deg_z]`, the rotation is applied in the order `x`, `y`, `z`. If it's `[deg_x, deg_y]`, the rotation is applied in the order `x`, `y`.  If it's`[deg_x]`, the rotation is only applied to the `x` axis. If it's an number, the rotation is only applied to the `z` axis or an arbitrary axis.
+- `v`: A vector allows you to set an arbitrary axis about which the object will be rotated. When `a` is an array, the `v` argument is ignored. **Since:** 1.1.
 
 ## Examples
     
@@ -61,3 +62,21 @@ The `rotate_p` function is useful in some situations. For example, you probably 
 	%sphere(radius);
 
 ![rotate_p](images/lib-rotate_p-2.JPG)
+
+	include <rotate_p.scad>;
+
+	v = [10, 10, 10];
+
+	hull() {
+		sphere(1);
+		translate(v)
+		sphere(1);   
+	}
+
+	p = [10, 10, 0];
+	for(i = [0:20:340]) {
+		translate(rotate_p(p, a = i, v = v)) 
+			sphere(1);  
+	}
+	
+![rotate_p](images/lib-rotate_p-3.JPG)

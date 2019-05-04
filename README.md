@@ -1,4 +1,4 @@
-# dotSCAD
+# dotSCAD 1.1
 
 > Helpful modules and functions when playing OpenSCAD.
 
@@ -54,6 +54,7 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
     - [along_with](https://openhome.cc/eGossip/OpenSCAD/lib-along_with.html)
 	- [hollow_out](https://openhome.cc/eGossip/OpenSCAD/lib-hollow_out.html)
 	- [bend](https://openhome.cc/eGossip/OpenSCAD/lib-bend.html)
+	- [shear](https://openhome.cc/eGossip/OpenSCAD/lib-shear.html)
 
 - Functon
 	- [rotate_p](https://openhome.cc/eGossip/OpenSCAD/lib-rotate_p.html)
@@ -101,6 +102,15 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 	- [golden_spiral_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-golden_spiral_extrude.html)
 	- [archimedean_spiral_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-archimedean_spiral_extrude.html)
 	- [sphere_spiral_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-sphere_spiral_extrude.html)
+
+- Matrix
+	- [m_multiply](https://openhome.cc/eGossip/OpenSCAD/lib-m_multiply.html)
+	- [m_cumulate](https://openhome.cc/eGossip/OpenSCAD/lib-m_cumulate.html)	
+	- [m_translation](https://openhome.cc/eGossip/OpenSCAD/lib-m_translation.html)
+	- [m_rotation](https://openhome.cc/eGossip/OpenSCAD/lib-m_rotation.html)
+	- [m_scaling](https://openhome.cc/eGossip/OpenSCAD/lib-m_scaling.html)
+	- [m_mirror](https://openhome.cc/eGossip/OpenSCAD/lib-m_mirror.html)
+	- [m_shearing](https://openhome.cc/eGossip/OpenSCAD/lib-m_shearing.html)
 
 - Other
     - [turtle2d](https://openhome.cc/eGossip/OpenSCAD/lib-turtle2d.html)

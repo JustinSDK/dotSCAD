@@ -1,10 +1,6 @@
 /**
 * bezier_curve.scad
 *
-* Given a set of control points, the bezier_curve function returns points of the Bézier path. 
-* Combined with the polyline, polyline3d or hull_polyline3d module defined in my lib-openscad, 
-* you can create a Bézier curve.
-* 
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *

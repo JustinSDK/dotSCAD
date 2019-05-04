@@ -1,9 +1,6 @@
 /**
 * polysections.scad
 *
-* Crosscutting a tube-like shape at different points gets several cross-sections.
-* This module can operate reversely. It uses cross-sections to construct a tube-like shape.
-* 
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *

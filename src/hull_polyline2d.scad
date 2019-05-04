@@ -1,10 +1,6 @@
 /**
 * hull_polyline2d.scad
 *
-* Creates a 2D polyline from a list of `[x, y]` coordinates. 
-* As the name says, it uses the built-in hull operation for each pair of points (created by the circle module). 
-* It's slow. However, it can be used to create metallic effects for a small $fn, large $fa or $fs.
-* 
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *

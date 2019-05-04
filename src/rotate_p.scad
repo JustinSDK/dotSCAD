@@ -1,9 +1,6 @@
 /**
 * rotate_p.scad
 *
-* Rotates a point 'a' degrees around an arbitrary axis. 
-* The rotation is applied in the following order: x, y, z. 
-* 
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *
@@ -72,7 +69,7 @@ function _rotz(pt, a) =
 function _rotate_p_3d(point, a) =
     _rotz(_roty(_rotx(point, a[0]), a[1]), a[2]);
 
-function to_avect(a) =
+function _to_avect(a) =
      len(a) == 3 ? a : (
          len(a) == 2 ? [a[0], a[1], 0] : (
              len(a) == 1 ? [a[0], 0, 0] : [0, 0, a]
@@ -80,7 +77,7 @@ function to_avect(a) =
      );
 
 function _rotate_p(p, a) =
-    let(angle = to_avect(a))
+    let(angle = _to_avect(a))
     len(p) == 3 ? 
         _rotate_p_3d(p, angle) :
         __to2d(

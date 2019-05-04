@@ -1,10 +1,6 @@
 /**
 * helix.scad
 *
-* Gets all points on the path of a spiral around a cylinder. 
-* Its $fa, $fs and $fn parameters are consistent with the cylinder module.
-* It depends on the circle_path module so you have to include circle_path.scad.
-* 
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *

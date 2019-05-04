@@ -1,8 +1,6 @@
 /**
 * multi_line_text.scad
 *
-* Creates multi-line text from a list of strings. 
-*
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *

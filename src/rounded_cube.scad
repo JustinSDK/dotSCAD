@@ -1,9 +1,6 @@
 /**
 * rounded_cube.scad
 *
-* Creates a rounded cube in the first octant. 
-* When center is true, the cube is centered on the origin.
-* 
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *

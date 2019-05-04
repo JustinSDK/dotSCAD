@@ -1,9 +1,6 @@
 /**
 * hexagons.scad
 *
-* A hexagonal structure is useful in many situations. 
-* This module creates hexagons in a hexagon.
-* 
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *
