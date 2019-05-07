@@ -8,8 +8,6 @@
 *
 **/
 
-include <__private__/__m_multiply.scad>;
-
 function _q_rotation(a, v) = 
     let(
         half_a = a / 2,
@@ -77,11 +75,7 @@ function _to_avect(a) =
 
 function _xyz_rotation(a) =
     let(ang = _to_avect(a))
-    __m_multiply(
-        _m_zRotation(ang[2]), __m_multiply(
-            _m_yRotation(ang[1]), _m_xRotation(ang[0])
-        )
-    );
+    _m_zRotation(ang[2]) * _m_yRotation(ang[1]) * _m_xRotation(ang[0]);
 
 function m_rotation(a, v) = 
     v == undef ? _xyz_rotation(a) : _q_rotation(a, v);

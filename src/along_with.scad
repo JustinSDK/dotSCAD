@@ -7,11 +7,10 @@
 * @see https://openhome.cc/eGossip/OpenSCAD/lib-along_with.html
 *
 **/ 
-
+ 
 include <__private__/__angy_angz.scad>;
 include <__private__/__is_vector.scad>;
 include <__private__/__to3d.scad>;
-include <__private__/__m_multiply.scad>;
 
 // Becuase of improving the performance, this module requires m_rotation.scad which doesn't require in dotSCAD 1.0. 
 // For backward compatibility, I directly include m_rotation here.
@@ -56,7 +55,7 @@ module along_with(points, angles, twist = 0, scale = 1.0) {
         i == leng_rot_matrice - 2 ? 
                [
                    rot_matrice[leng_rot_matrice_minus_one], 
-                   __m_multiply(rot_matrice[leng_rot_matrice_minus_two], rot_matrice[leng_rot_matrice_minus_one])
+                   rot_matrice[leng_rot_matrice_minus_two] * rot_matrice[leng_rot_matrice_minus_one]
                ] 
                : cumulated_rot_matrice_sub(i, rot_matrice);
 
@@ -66,7 +65,7 @@ module along_with(points, angles, twist = 0, scale = 1.0) {
             curr_matrix = rot_matrice[i],
             prev_matrix = matrice[len(matrice) - 1]
         )
-        concat(matrice, [__m_multiply(curr_matrix, prev_matrix)]);
+        concat(matrice, [curr_matrix * prev_matrix]);
 
     // align modules
 
