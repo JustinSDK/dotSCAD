@@ -104,7 +104,6 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 	- [sphere_spiral_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-sphere_spiral_extrude.html)
 
 - Matrix
-	- [m_multiply](https://openhome.cc/eGossip/OpenSCAD/lib-m_multiply.html)
 	- [m_cumulate](https://openhome.cc/eGossip/OpenSCAD/lib-m_cumulate.html)	
 	- [m_translation](https://openhome.cc/eGossip/OpenSCAD/lib-m_translation.html)
 	- [m_rotation](https://openhome.cc/eGossip/OpenSCAD/lib-m_rotation.html)
