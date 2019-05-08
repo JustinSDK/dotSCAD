@@ -6,6 +6,7 @@ Returns shape points of a regular cyclic polygon. They can be used with xxx_extr
 
 - `sides` : The radius of the circle.
 - `circle_r` : The radius of the circumcircle.
+- `corner_r` : The radius of the circle at a corner.
 - `$fa`, `$fs`, `$fn` : Check [the circle module](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Using_the_2D_Subsystem#circle) for more details.
 
 ## Examples
