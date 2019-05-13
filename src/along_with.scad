@@ -34,6 +34,13 @@ module along_with(points, angles, twist = 0, scale = 1.0) {
 
     // get rotation matrice for sections
 
+    identity_matrix = [
+        [1, 0, 0, 0],
+        [0, 1, 0, 0],
+        [0, 0, 1, 0],
+        [0, 0, 0, 1]
+    ];    
+
     function local_ang_vects(j) = 
         j == 0 ? [] : local_ang_vects_sub(j);
     
@@ -52,12 +59,16 @@ module along_with(points, angles, twist = 0, scale = 1.0) {
             leng_rot_matrice_minus_one = leng_rot_matrice - 1,
             leng_rot_matrice_minus_two = leng_rot_matrice - 2
         )
-        i == leng_rot_matrice - 2 ? 
+        leng_rot_matrice == 0 ? [identity_matrix] : (
+            leng_rot_matrice == 1 ? [rot_matrice[0], identity_matrix] : (
+                i == leng_rot_matrice_minus_two ? 
                [
                    rot_matrice[leng_rot_matrice_minus_one], 
                    rot_matrice[leng_rot_matrice_minus_two] * rot_matrice[leng_rot_matrice_minus_one]
                ] 
-               : cumulated_rot_matrice_sub(i, rot_matrice);
+               : cumulated_rot_matrice_sub(i, rot_matrice)
+            )
+        );
 
     function cumulated_rot_matrice_sub(i, rot_matrice) = 
         let(
