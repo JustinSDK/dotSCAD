@@ -65,17 +65,30 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
             m_rotation(ang_vect[0], ang_vect[1])
     ];
 
+    echo(rot_matrice);
+
     leng_rot_matrice = len(rot_matrice);
     leng_rot_matrice_minus_one = leng_rot_matrice - 1;
     leng_rot_matrice_minus_two= leng_rot_matrice - 2;
 
+    identity_matrix = [
+        [1, 0, 0, 0],
+        [0, 1, 0, 0],
+        [0, 0, 1, 0],
+        [0, 0, 0, 1]
+    ];
+
     function cumulated_rot_matrice(i) = 
-        i == leng_rot_matrice - 2 ? 
-               [
-                   rot_matrice[leng_rot_matrice_minus_one], 
-                   rot_matrice[leng_rot_matrice_minus_two] * rot_matrice[leng_rot_matrice_minus_one]
-               ] 
-               : cumulated_rot_matrice_sub(i);
+        leng_rot_matrice == 0 ? [identity_matrix] : (
+             leng_rot_matrice == 1 ? [rot_matrice[0], identity_matrix] : 
+                (
+                    i == leng_rot_matrice_minus_two ? 
+                    [
+                        rot_matrice[leng_rot_matrice_minus_one], 
+                        rot_matrice[leng_rot_matrice_minus_two] * rot_matrice[leng_rot_matrice_minus_one]
+                    ] 
+                    : cumulated_rot_matrice_sub(i))
+        );
 
     function cumulated_rot_matrice_sub(i) = 
         let(
