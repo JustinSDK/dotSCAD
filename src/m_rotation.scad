@@ -78,7 +78,7 @@ function _xyz_rotation(a) =
     _m_zRotation(ang[2]) * _m_yRotation(ang[1]) * _m_xRotation(ang[0]);
 
 function m_rotation(a, v) = 
-    a == 0 ? [
+    (a == 0 || a == [0, 0, 0] || a == [0] || a == [0, 0]) ? [
         [1, 0, 0, 0],
         [0, 1, 0, 0],
         [0, 0, 1, 0],
