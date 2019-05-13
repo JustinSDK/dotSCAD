@@ -1,6 +1,8 @@
 # v1.1.1
 - Bugfixes
   - `m_rotation` returns an identity matrix if `a` is 0.
+  - The `path_pts` parameter of `path_extrude` accepts two or three points. 
+  - The `points` parameter of `along_with` accepts two or three points. 
 
 - Others
   -  OpenSCAD has built-in matrix multiplication so `m_multiply` is not necessary.
