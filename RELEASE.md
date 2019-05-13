@@ -1,6 +1,6 @@
 # v1.1.1
 - Bugfixes
-  - `m_rotation` returns a identity matrix if `a` is 0.
+  - `m_rotation` returns an identity matrix if `a` is 0.
 
 - Others
   -  OpenSCAD has built-in matrix multiplication so `m_multiply` is not necessary.
