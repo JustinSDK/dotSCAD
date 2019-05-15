@@ -6,7 +6,7 @@ function __shape_arc(radius, angle, width, width_mode = "LINE_CROSS") =
         frags = __frags(radius),
         a_step = 360 / frags,
         half_a_step = a_step / 2,
-        angles = __is_vector(angle) ? angle : [0, angle],
+        angles = __is_float(angle) ? [0, angle] : angle,
         m = floor(angles[0] / a_step) + 1,
         n = floor(angles[1] / a_step),
         r_outer = radius + w_offset[0],
