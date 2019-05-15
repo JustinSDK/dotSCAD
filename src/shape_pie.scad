@@ -9,7 +9,7 @@
 **/
 
 include <__private__/__frags.scad>;
-include <__private__/__is_vector.scad>;
+include <__private__/__is_float.scad>;
 include <__private__/__ra_to_xy.scad>;
 include <__private__/__shape_pie.scad>;
 
