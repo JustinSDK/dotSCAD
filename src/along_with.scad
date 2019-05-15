@@ -9,7 +9,7 @@
 **/ 
  
 include <__private__/__angy_angz.scad>;
-include <__private__/__is_vector.scad>;
+include <__private__/__is_float.scad>;
 include <__private__/__to3d.scad>;
 
 // Becuase of improving the performance, this module requires m_rotation.scad which doesn't require in dotSCAD 1.0. 
@@ -25,12 +25,13 @@ module along_with(points, angles, twist = 0, scale = 1.0) {
         let(s =  (scale - 1) / leng_points_minus_one)
         [s, s, s];
 
-    scale_step_vt = __is_vector(scale) ? 
+    scale_step_vt = __is_float(scale) ? 
+        scale_step() :
         [
             (scale[0] - 1) / leng_points_minus_one, 
             (scale[1] - 1) / leng_points_minus_one,
             scale[2] == undef ? 0 : (scale[2] - 1) / leng_points_minus_one
-        ] : scale_step(); 
+        ]; 
 
     // get rotation matrice for sections
 
