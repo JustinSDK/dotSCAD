@@ -68,14 +68,16 @@ function _m_zRotation(a) =
         [0, 0, 0, 1]
     ];    
 
-function _to_avect(a) =
+function _to_3_elems_vect(a) =
      let(leng = len(a))
      leng == 3 ? a : (
          leng == 2 ? [a[0], a[1], 0] :  [a[0], 0, 0]
      );
 
+function _to_ang_vect(a) = __is_float(a) ? [0, 0, a] :  _to_3_elems_vect(a);
+
 function _xyz_rotation(a) =
-    let(ang = __is_float(a) ? [0, 0, a] :  _to_avect(a))
+    let(ang = _to_ang_vect(a))
     _m_zRotation(ang[2]) * _m_yRotation(ang[1]) * _m_xRotation(ang[0]);
 
 function m_rotation(a, v) = 
