@@ -1,6 +1,6 @@
 # dotSCAD 1.1
 
-> Helpful modules and functions when playing OpenSCAD.
+> Helpful modules and functions when playing OpenSCAD. Based on OpenSCAD 2015.03.
 
 ![dotSCAD](GoldenTaiwan.JPG)
 
