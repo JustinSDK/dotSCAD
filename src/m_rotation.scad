@@ -8,6 +8,8 @@
 *
 **/
 
+include <__private__/__is_vector.scad>;
+
 function _q_rotation(a, v) = 
     let(
         half_a = a / 2,
@@ -67,14 +69,13 @@ function _m_zRotation(a) =
     ];    
 
 function _to_avect(a) =
-     len(a) == 3 ? a : (
-         len(a) == 2 ? [a[0], a[1], 0] : (
-             len(a) == 1 ? [a[0], 0, 0] : [0, 0, a]
-         ) 
+     let(leng = len(a))
+     leng == 3 ? a : (
+         leng == 2 ? [a[0], a[1], 0] :  [a[0], 0, 0]
      );
 
 function _xyz_rotation(a) =
-    let(ang = _to_avect(a))
+    let(ang = __is_vector(a) ? _to_avect(a) : [0, 0, a])
     _m_zRotation(ang[2]) * _m_yRotation(ang[1]) * _m_xRotation(ang[0]);
 
 function m_rotation(a, v) = 
