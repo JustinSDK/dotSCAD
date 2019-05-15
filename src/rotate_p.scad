@@ -10,6 +10,7 @@
 
 include <__private__/__to2d.scad>;
 include <__private__/__to3d.scad>;
+include <__private__/__is_vector.scad>;
 
 
 function _q_rotate_p_3d(p, a, v) = 
@@ -70,14 +71,13 @@ function _rotate_p_3d(point, a) =
     _rotz(_roty(_rotx(point, a[0]), a[1]), a[2]);
 
 function _to_avect(a) =
-     len(a) == 3 ? a : (
-         len(a) == 2 ? [a[0], a[1], 0] : (
-             len(a) == 1 ? [a[0], 0, 0] : [0, 0, a]
-         ) 
+     let(leng = len(a))
+     leng == 3 ? a : (
+         leng == 2 ? [a[0], a[1], 0] :  [a[0], 0, 0]
      );
 
 function _rotate_p(p, a) =
-    let(angle = _to_avect(a))
+    let(angle = __is_vector(a) ? _to_avect(a) : [0, 0, a])
     len(p) == 3 ? 
         _rotate_p_3d(p, angle) :
         __to2d(
