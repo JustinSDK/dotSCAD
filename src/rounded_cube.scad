@@ -8,15 +8,15 @@
 *
 **/
 
-include <__private__/__is_vector.scad>;
+include <__private__/__is_float.scad>;
 include <__private__/__frags.scad>;
 include <__private__/__nearest_multiple_of_4.scad>;
 
 module rounded_cube(size, corner_r, center = false) {
-    is_vt = __is_vector(size);
-    x = is_vt ? size[0] : size;
-    y = is_vt ? size[1] : size;
-    z = is_vt ? size[2] : size;
+    is_flt = __is_float(size);
+    x = is_flt ? size : size[0];
+    y = is_flt ? size : size[1];
+    z = is_flt ? size : size[2];
 
     corner_frags = __nearest_multiple_of_4(__frags(corner_r));
     edge_d = corner_r * cos(180 / corner_frags);

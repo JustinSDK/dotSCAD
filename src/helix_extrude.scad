@@ -8,7 +8,7 @@
 *
 **/
 
-include <__private__/__is_vector.scad>;
+include <__private__/__is_float.scad>;
 include <__private__/__frags.scad>;
 
 module helix_extrude(shape_pts, radius, levels, level_dist, 
@@ -22,9 +22,9 @@ module helix_extrude(shape_pts, radius, levels, level_dist,
                 vt[leng - 1 - i]
         ];                         
                          
-    is_vt = __is_vector(radius);
-    r1 = is_vt ? radius[0] : radius;
-    r2 = is_vt ? radius[1] : radius;
+    is_flt = __is_float(radius);
+    r1 = is_flt ? radius : radius[0];
+    r2 = is_flt ? radius : radius[1];
     
     init_r = vt_dir == "SPI_DOWN" ? r2 : r1;
 

@@ -9,16 +9,17 @@
 **/
 
 include <__private__/__to3d.scad>;
-include <__private__/__is_vector.scad>;
+include <__private__/__is_float.scad>;
 
 function cross_sections(shape_pts, path_pts, angles, twist = 0, scale = 1.0) =
     let(
         len_path_pts_minus_one = len(path_pts) - 1,
         sh_pts = len(shape_pts[0]) == 3 ? shape_pts : [for(p = shape_pts) __to3d(p)],
         pth_pts = len(path_pts[0]) == 3 ? path_pts : [for(p = path_pts) __to3d(p)],
-        scale_step_vt = __is_vector(scale) ? 
-            [(scale[0] - 1) / len_path_pts_minus_one, (scale[1] - 1) / len_path_pts_minus_one] :
-            [(scale - 1) / len_path_pts_minus_one, (scale - 1) / len_path_pts_minus_one],
+        scale_step_vt = __is_float(scale) ? 
+            [(scale - 1) / len_path_pts_minus_one, (scale - 1) / len_path_pts_minus_one] :
+            [(scale[0] - 1) / len_path_pts_minus_one, (scale[1] - 1) / len_path_pts_minus_one]
+            ,
         scale_step_x = scale_step_vt[0],
         scale_step_y = scale_step_vt[1],
         twist_step = twist / len_path_pts_minus_one

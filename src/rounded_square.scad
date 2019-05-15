@@ -8,16 +8,16 @@
 *
 **/
 
-include <__private__/__is_vector.scad>;
+include <__private__/__is_float.scad>;
 include <__private__/__frags.scad>;
 include <__private__/__pie_for_rounding.scad>;
 include <__private__/__half_trapezium.scad>;
 include <__private__/__trapezium.scad>;
 
 module rounded_square(size, corner_r, center = false) {
-    is_vt = __is_vector(size);
-    x = is_vt ? size[0] : size;
-    y = is_vt ? size[1] : size;       
+    is_flt = __is_float(size);
+    x = is_flt ? size : size[0];
+    y = is_flt ? size : size[1];       
     
     position = center ? [0, 0] : [x / 2, y / 2];
     points = __trapezium(

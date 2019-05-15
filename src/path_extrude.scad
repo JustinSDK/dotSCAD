@@ -8,7 +8,7 @@
 *
 **/
 
-include <__private__/__is_vector.scad>;
+include <__private__/__is_float.scad>;
 include <__private__/__to3d.scad>;
 include <__private__/__angy_angz.scad>;
 
@@ -39,12 +39,13 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
         let(s =  (scale - 1) / len_path_pts_minus_one)
         [s, s, s];  
 
-    scale_step_vt = __is_vector(scale) ? 
+    scale_step_vt = __is_float(scale) ? 
+        scale_step() : 
         [
             (scale[0] - 1) / len_path_pts_minus_one, 
             (scale[1] - 1) / len_path_pts_minus_one,
             scale[2] == undef ? 0 : (scale[2] - 1) / len_path_pts_minus_one
-        ] : scale_step();   
+        ];   
 
     // get rotation matrice for sections
 
