@@ -8,7 +8,7 @@
 *
 **/
 
-include <__private__/__is_vector.scad>;
+include <__private__/__is_float.scad>;
 
 function _q_rotation(a, v) = 
     let(
@@ -75,7 +75,7 @@ function _to_avect(a) =
      );
 
 function _xyz_rotation(a) =
-    let(ang = __is_vector(a) ? _to_avect(a) : [0, 0, a])
+    let(ang = __is_float(a) ? [0, 0, a] :  _to_avect(a))
     _m_zRotation(ang[2]) * _m_yRotation(ang[1]) * _m_xRotation(ang[0]);
 
 function m_rotation(a, v) = 
