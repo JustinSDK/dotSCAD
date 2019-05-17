@@ -1,4 +1,4 @@
-function edge_aligned_sections(shape_pts, edge_path) = 
+function path_scaling_sections(shape_pts, edge_path) = 
     let(
         start_point = edge_path[0],
         base_leng = norm(start_point),
