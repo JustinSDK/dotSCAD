@@ -5,7 +5,6 @@ function _bijection_edges_from(pts) =
         [[pts[len(pts) - 1], pts[0]]]
     );
     
-// 往內的法向量
 function _bijection_inward_edge_normal(edge) =  
     let(
         pt1 = edge[0],
@@ -16,7 +15,6 @@ function _bijection_inward_edge_normal(edge) =
     )
     [-dy / edge_leng, dx / edge_leng];
 
-// 往外的法向量   
 function _bijection_outward_edge_normal(edge) = -1 * _bijection_inward_edge_normal(edge);
 
 function _bijection_offset_edge(edge, dx, dy) = 
