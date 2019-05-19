@@ -1,3 +1,5 @@
+> Version numbers are based on [Semantic Versioning](https://semver.org/).
+
 # v1.1.1
 - Bugfixes
   - `m_rotation` returns an identity matrix if `a` is 0.
