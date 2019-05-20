@@ -1,4 +1,4 @@
-# dotSCAD 1.1
+# dotSCAD 1.2
 
 > Helpful modules and functions when playing OpenSCAD. Based on OpenSCAD 2015.03.
 
