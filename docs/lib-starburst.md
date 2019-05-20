@@ -1,6 +1,6 @@
 # starburst 
 
-A 3D version of [shape_starburst](https://openhome.cc/eGossip/OpenSCAD/lib-shape_starburst.html). 
+A 3D version of `shape_starburst`. 
 
 **Since:** 1.2.
 
