@@ -1,7 +1,7 @@
 > Version numbers are based on [Semantic Versioning](https://semver.org/).
 
 # v1.2
-- New functions:
+- New modules and functions:
   - [starburst](https://openhome.cc/eGossip/OpenSCAD/lib-starburst.html)
   - [torus_knot](https://openhome.cc/eGossip/OpenSCAD/lib-torus_knot.html)
   - [bijection_offset](https://openhome.cc/eGossip/OpenSCAD/lib-bijection_offset.html)
