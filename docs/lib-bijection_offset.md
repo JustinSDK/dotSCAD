@@ -2,7 +2,7 @@
 
 Move 2D outlines outward or inward by a given amount. Each point of the offsetted shape is paired with exactly one point of the original shape.
 
-
+**Since:** 1.2.
 
 ## Parameters
 
