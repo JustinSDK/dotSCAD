@@ -2,6 +2,8 @@
 
 A 3D version of [shape_starburst](https://openhome.cc/eGossip/OpenSCAD/lib-shape_starburst.html). 
 
+**Since:** 1.1.
+
 ## Parameters
 
 - `r1` : The outer radius of the starburst. 
