@@ -9,7 +9,7 @@
 **/
 
 include <__private__/__is_float.scad>;
-include <__private__/__to_ang_vector.scad>;
+include <__private__/__to_ang_vect.scad>;
 
 function _q_rotation(a, v) = 
     let(
