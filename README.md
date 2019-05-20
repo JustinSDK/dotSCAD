@@ -49,6 +49,7 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 	- [hull_polyline3d](https://openhome.cc/eGossip/OpenSCAD/lib-hull_polyline3d.html)
 	- [function_grapher](https://openhome.cc/eGossip/OpenSCAD/lib-function_grapher.html)
 	- [polysections](https://openhome.cc/eGossip/OpenSCAD/lib-polysections.html)
+	- [starburst](https://openhome.cc/eGossip/OpenSCAD/lib-starburst.html)
 	
 - Transformation
     - [along_with](https://openhome.cc/eGossip/OpenSCAD/lib-along_with.html)
@@ -63,6 +64,8 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 	- [parse_number](https://openhome.cc/eGossip/OpenSCAD/lib-parse_number.html)
 	- [cross_sections](https://openhome.cc/eGossip/OpenSCAD/lib-cross_sections.html)
 	- [paths2sections](https://openhome.cc/eGossip/OpenSCAD/lib-paths2sections.html)
+	- [path_scaling_sections](https://openhome.cc/eGossip/OpenSCAD/lib-path_scaling_sections.html)
+	- [bijection_offset](https://openhome.cc/eGossip/OpenSCAD/lib-bijection_offset.html)
 	
 - Path
     - [arc_path](https://openhome.cc/eGossip/OpenSCAD/lib-arc_path.html)
@@ -74,6 +77,7 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
     - [golden_spiral](https://openhome.cc/eGossip/OpenSCAD/lib-golden_spiral.html)
     - [archimedean_spiral](https://openhome.cc/eGossip/OpenSCAD/lib-archimedean_spiral.html)
     - [sphere_spiral](https://openhome.cc/eGossip/OpenSCAD/lib-sphere_spiral.html)
+	- [torus_knot](https://openhome.cc/eGossip/OpenSCAD/lib-torus_knot.html)
 
 - Extrusion
     - [box_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-box_extrude.html)
