@@ -6,7 +6,7 @@ Returns shape points of a star. They can be used with xxx_extrude modules of dot
 
 - `r1` : The outer radius of the starburst. 
 - `r2` : The inner radius of the starburst.
-- `n`  : The number of vertices. 
+- `n`  : The burst number. 
 
 
 ## Examples
