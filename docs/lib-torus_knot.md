@@ -2,7 +2,7 @@
 
 Generate a path of [The (p,q)-torus knot](https://en.wikipedia.org/wiki/Torus_knot).
 
-**Since:** 1.1.
+**Since:** 1.2.
 
 ![torus_knot](images/lib-torus_knot-1.JPG)
 

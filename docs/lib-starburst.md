@@ -2,7 +2,7 @@
 
 A 3D version of [shape_starburst](https://openhome.cc/eGossip/OpenSCAD/lib-shape_starburst.html). 
 
-**Since:** 1.1.
+**Since:** 1.2.
 
 ## Parameters
 
