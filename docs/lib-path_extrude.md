@@ -13,7 +13,7 @@ When using this module, you should use points to represent the 2D shape. If your
 - `triangles` : `"SOLID"` (default), `"HOLLOW"` or user-defined indexes. See example below.
 - `twist` : The number of degrees of through which the shape is extruded.
 - `scale` : Scales the 2D shape by this value over the length of the extrusion. Scale can be a scalar or a vector.
-- `closed` : If the first point and the last point of `path_pts` has the same coordinate, setting `closed` to `true` will connect them automatically.
+- `closed` : If the first point and the last point of `path_pts` has the same coordinate, setting `closed` to `true` will connect them automatically. You might have to set `twist` for connecting naturally. 
 
 ## Examples
 
