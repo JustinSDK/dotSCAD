@@ -1,6 +1,10 @@
 # path_scaling_sections
 
-Given a edge path with the first point [x, 0, 0] or [0, y, 0] at the outline of a shape. This function use the path to calculate scaling factors and returns all scaled sections. Combined with the `polysections` module, you can create a extrusion with the path as an edge.
+Given an edge path with the first point at the outline of a shape. This function uses the path to calculate scaling factors and returns all scaled sections. Combined with the `polysections` module, you can create an extrusion with the path as an edge.
+
+In order to control scaling factors easily, I suggest using `[x, 0, 0]` as the first point and keeping y = 0 while building the edge path.
+
+ You can use any point as the first point of the edge path. Just remember that your edge path radiates from the origin.
 
 **Since:** 1.2.
 
@@ -97,3 +101,33 @@ Given a edge path with the first point [x, 0, 0] or [0, y, 0] at the outline of 
 	polysections(rotated_sections);
 
 ![path_scaling_sections](images/lib-path_scaling_sections-3.JPG)	
+
+	include <hull_polyline3d.scad>;
+	include <shape_taiwan.scad>;
+	include <path_scaling_sections.scad>;
+	include <m_scaling.scad>;
+	include <polysections.scad>;
+    include <rotate_p.scad>;
+
+	taiwan = shape_taiwan(100);
+
+    /* 
+	    You can use any point as the first point of the edge path.
+		Just remember that your edge path radiates from the origin.
+	*/
+	fst_pt = [taiwan[0][0], taiwan[0][1], 0];//[13, 0, 0];
+    a = atan2(fst_pt[1], fst_pt[0]);
+	edge_path = [
+		fst_pt,
+		fst_pt + rotate_p([0, 0, 10], a),
+		fst_pt + rotate_p([10, 0, 20], a),
+		fst_pt + rotate_p([8, 0, 30], a),
+		fst_pt + rotate_p([10, 0, 40], a),
+		fst_pt + rotate_p([0, 0, 50], a),
+		fst_pt + rotate_p([0, 0, 60], a)
+	];
+
+	#hull_polyline3d(edge_path);
+	polysections(path_scaling_sections(taiwan, edge_path));
+
+![path_scaling_sections](images/lib-path_scaling_sections-4.JPG)
