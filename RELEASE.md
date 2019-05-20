@@ -1,5 +1,15 @@
 > Version numbers are based on [Semantic Versioning](https://semver.org/).
 
+# v1.2
+- New functions:
+  - [starburst](https://openhome.cc/eGossip/OpenSCAD/lib-starburst.html)
+  - [torus_knot](https://openhome.cc/eGossip/OpenSCAD/lib-torus_knot.html)
+  - [bijection_offset](https://openhome.cc/eGossip/OpenSCAD/lib-bijection_offset.html)
+  - [path_scaling_sections](https://openhome.cc/eGossip/OpenSCAD/lib-path_scaling_sections.html)
+
+- Others
+  - Avoid warnings when using newer versions of OpenSCAD after 2015.03.
+
 # v1.1.1
 - Bugfixes
   - `m_rotation` returns an identity matrix if `a` is 0.
