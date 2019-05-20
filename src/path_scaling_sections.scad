@@ -1,3 +1,13 @@
+/**
+* path_scaling_sections.scad
+*
+* @copyright Justin Lin, 2019
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib-path_scaling_sections.html
+*
+**/
+
 function path_scaling_sections(shape_pts, edge_path) = 
     let(
         start_point = edge_path[0],

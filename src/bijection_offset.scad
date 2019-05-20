@@ -1,3 +1,13 @@
+/**
+* bijection_offset.scad
+*
+* @copyright Justin Lin, 2019
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib-bijection_offset.html
+*
+**/
+
 function _bijection_edges_from(pts) = 
     let(leng = len(pts))
     concat(

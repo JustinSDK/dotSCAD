@@ -1,3 +1,13 @@
+/**
+* starburst.scad
+*
+* @copyright Justin Lin, 2019
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib-starburst.html
+*
+**/
+
 module starburst(r1, r2, n, height) {
     a = 180 / n;
 

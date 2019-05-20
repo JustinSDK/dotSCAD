@@ -1,3 +1,13 @@
+/**
+* torus_knot.scad
+*
+* @copyright Justin Lin, 2019
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib-torus_knot.html
+*
+**/
+
 function torus_knot(p, q, phi_step) = [
     for(phi = [0:phi_step:6.28318])
     let(
