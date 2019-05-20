@@ -2,7 +2,7 @@
 
 > Helpful modules and functions when playing OpenSCAD. Based on OpenSCAD 2015.03.
 
-![dotSCAD](GoldenTaiwan.JPG)
+![dotSCAD](WhirlingTaiwan.JPG)
 
 [![license/LGPL](https://img.shields.io/badge/license-LGPL-blue.svg)](https://github.com/JustinSDK/lib-openscad/blob/master/LICENSE)
 
