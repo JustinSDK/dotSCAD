@@ -60,8 +60,8 @@ Move 2D outlines outward or inward by a given amount. Each point of the offsette
 		[p0, p1, p2, p3, p4]
 	);
 
-	path_extrude(concat(shape, offsetted), path_pts, "HOLLOW");
-	path_extrude(concat(offsetted2, offsetted3), path_pts, "HOLLOW");
+	path_extrude(concat(offsetted, shape), path_pts, "HOLLOW");
+	path_extrude(concat(offsetted3, offsetted2), path_pts, "HOLLOW");
 
 ![bijection_offset](images/lib-bijection_offset-2.JPG)
 
