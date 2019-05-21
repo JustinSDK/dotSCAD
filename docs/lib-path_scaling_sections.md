@@ -1,10 +1,10 @@
 # path_scaling_sections
 
-Given an edge path with the first point at the outline of a shape. This function uses the path to calculate scaling factors and returns all scaled sections. Combined with the `polysections` module, you can create an extrusion with the path as an edge.
+Given an edge path with the first point at the outline of a shape. This function uses the path to calculate scaling factors and returns all scaled sections in the reversed order of the edge path. Combined with the `polysections` module, you can create an extrusion with the path as an edge. 
 
 In order to control scaling factors easily, I suggest using `[x, 0, 0]` as the first point and keeping y = 0 while building the edge path.
 
- You can use any point as the first point of the edge path. Just remember that your edge path radiates from the origin.
+You can use any point as the first point of the edge path. Just remember that your edge path radiates from the origin.
 
 **Since:** 1.2.
 
@@ -86,7 +86,7 @@ In order to control scaling factors easily, I suggest using `[x, 0, 0]` as the f
 	]);
 
 	leng = len(edge_path);
-	twist = 90;
+	twist = -90;
 	twist_step = twist / leng;
 	sections = path_scaling_sections(taiwan, edge_path);
 
