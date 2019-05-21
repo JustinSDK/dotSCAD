@@ -14,8 +14,6 @@ module test_hull_polyline2d() {
         assertEqualPoint(points[index], point2);
         assertEqual(line_width, radius * 2);    
     } 
-    
-    $fn = 4;
 
     hull_polyline2d(
         points = [[1, 2], [-5, -4], [-5, 3], [5, 5]], 
