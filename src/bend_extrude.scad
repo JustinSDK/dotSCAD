@@ -22,7 +22,7 @@ module bend_extrude(size, angle, frags = 24) {
 
     offsetY = -r * cos(half_frag_angle) ;
     for(i = [0 : frags - 1]) {
-       rotate(i * frag_angle + half_frag_angle) 
+       rotate(i * frag_angle) 
             translate([0, offsetY, 0])
                 rotate([-90, 0, 0]) 
                     get_frag(i) 
