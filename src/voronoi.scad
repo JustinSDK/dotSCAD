@@ -13,7 +13,7 @@ module voronoi(points, spacing = 1, r = 0, delta = 0, chamfer = false, region_ty
             if(pt != p) {
                 v = p - pt;
                 translate((pt + p) / 2 - normalize(v) * offset_leng)
-                    rotate(90 + atan2(v[1], v[0])) 
+                    rotate(atan2(v[1], v[0])) 
                     if(region_type == "square") {
                         square(region_size, center = true);
                     }
