@@ -1,4 +1,4 @@
-module voronoi(points, spacing = 1, r = 0, delta = 0, chamfer = false) {
+module voronoi(points, spacing = 1, r = 0, delta = 0, chamfer = false, region_type = "square") {
     xs = [for(p = points) p[0]];
     ys = [for(p = points) abs(p[1])];
 
@@ -13,8 +13,14 @@ module voronoi(points, spacing = 1, r = 0, delta = 0, chamfer = false) {
             if(pt != p) {
                 v = p - pt;
                 translate((pt + p) / 2 - normalize(v) * offset_leng)
-                    rotate(90 + atan2(v[1], v[0]))
+                    rotate(90 + atan2(v[1], v[0])) 
+                    if(region_type == "square") {
                         square(region_size, center = true);
+                    }
+                    else if(region_type == "circle") {
+                        circle(region_size / 2);
+                    }
+                    
             }
         }
     }    
