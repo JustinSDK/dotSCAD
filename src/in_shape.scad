@@ -12,13 +12,10 @@ function _in_shape_in_line_equation(edge, pt) =
     (pt[1] == a * pt[0] + b);
     
 function _in_shape_in_edge(edge, pt) =
-    let(
-        maxx = max([edge[0][0], edge[1][0]]),
-        minx = min([edge[0][0], edge[1][0]]),
-        maxy = max([edge[0][1], edge[1][1]]),
-        miny = min([edge[0][1], edge[1][1]])
-    )
-    pt[0] >= minx && pt[0] <= maxx && pt[1] >= miny && pt[1] <= maxy &&
+    pt[0] >= min([edge[0][0], edge[1][0]]) && 
+    pt[0] <= max([edge[0][0], edge[1][0]]) && 
+    pt[1] >= min([edge[0][1], edge[1][1]]) &&
+    pt[1] <= max([edge[0][1], edge[1][1]]) &&
     ((edge[1] - edge[0])[0] == 0 ? (pt[0] == edge[0][0]) : _in_shape_in_line_equation(edge, pt));
 
 function _in_shape_in_any_edges_sub(edges, leng, pt, i) = 
