@@ -8,12 +8,7 @@
 *
 **/
 
-function _bijection_edges_from(pts) = 
-    let(leng = len(pts))
-    concat(
-        [for(i = [0:leng - 2]) [pts[i], pts[i + 1]]], 
-        [[pts[len(pts) - 1], pts[0]]]
-    );
+include <__private__/__edges_from.scad>;
     
 function _bijection_inward_edge_normal(edge) =  
     let(
@@ -65,7 +60,7 @@ function _bijection_offset__bijection__bijection__bijection_offset_edges_interse
 
 function bijection_offset(pts, d) = 
     let(
-        es = _bijection_edges_from(pts), 
+        es = __edges_from(pts), 
         offset_es = _bijection__bijection_offset_edges(es, d),
         leng = len(offset_es),
         last_p = _bijection__bijection__bijection_offset_edges_intersection(offset_es[leng - 1], offset_es[0])
