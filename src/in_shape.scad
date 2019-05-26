@@ -16,11 +16,10 @@ function _in_shape_in_edge(edge, pt) =
         maxx = max([edge[0][0], edge[1][0]]),
         minx = min([edge[0][0], edge[1][0]]),
         maxy = max([edge[0][1], edge[1][1]]),
-        miny = min([edge[0][1], edge[1][1]]),
-        vt = edge[1] - edge[0]
+        miny = min([edge[0][1], edge[1][1]])
     )
     pt[0] >= minx && pt[0] <= maxx && pt[1] >= miny && pt[1] <= maxy &&
-    (vt[0] == 0 ? (pt[0] == edge[0][0]) : _in_shape_in_line_equation(edge, pt));
+    ((edge[1] - edge[0])[0] == 0 ? (pt[0] == edge[0][0]) : _in_shape_in_line_equation(edge, pt));
 
 function _in_shape_in_any_edges_sub(edges, leng, pt, i) = 
     leng == i ? false : (
