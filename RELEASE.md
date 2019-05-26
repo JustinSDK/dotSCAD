@@ -1,9 +1,5 @@
 > Version numbers are based on [Semantic Versioning](https://semver.org/).
 
-# v1.2.1
-- Bugfixes
-   - Fixed CCW faces when using `path_scaling_sections`.
-
 # v1.2
 - New modules and functions:
   - [starburst](https://openhome.cc/eGossip/OpenSCAD/lib-starburst.html)
