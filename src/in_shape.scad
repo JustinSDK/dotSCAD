@@ -1,4 +1,5 @@
 include <__private__/__edges_from.scad>;
+include <__private__/__in_line.scad>;
 
 function _in_shape_in_line_equation(edge, pt) = 
     let(
@@ -10,17 +11,10 @@ function _in_shape_in_line_equation(edge, pt) =
         b = y1 - a * x1
     )
     (pt[1] == a * pt[0] + b);
-    
-function _in_shape_in_edge(edge, pt) =
-    let(
-        v1 = edge[0] - pt, 
-        v2 = edge[1] - pt
-    )
-    (cross(v1, v2) == 0) && ((v1 * v2) <= 0);
 
 function _in_shape_in_any_edges_sub(edges, leng, pt, i) = 
     leng == i ? false : (
-        _in_shape_in_edge(edges[i], pt) ? true : _in_shape_in_any_edges_sub(edges, leng, pt, i + 1)
+        __in_line(edges[i], pt) ? true : _in_shape_in_any_edges_sub(edges, leng, pt, i + 1)
     );
 
 function _in_shape_in_any_edges(edges, pt) = _in_shape_in_any_edges_sub(edges, len(edges), pt, 0);
