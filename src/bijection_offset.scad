@@ -40,23 +40,19 @@ function _bijection__bijection_offset_edges(edges, d) =
         )
         _bijection_offset_edge(edge, dx, dy)
     ];
-    
 
 function _bijection__bijection__bijection_offset_edges_intersection(edge1, edge2) = 
     let(
-        den = (edge2[1][1] - edge2[0][1]) * (edge1[1][0] - edge1[0][0]) - (edge2[1][0] - edge2[0][0]) * (edge1[1][1] - edge1[0][1])
+        a1 = edge1[0],
+        a2 = edge1[1],
+        b1 = edge2[0],
+        b2 = edge2[1],
+        a = a2 - a1, 
+        b = b2 - b1, 
+        s = b1 - a1
     )
-    // when den is 0, they are parallel or conincident edges
-    den == 0 ? [] : _bijection_offset__bijection__bijection__bijection_offset_edges_intersection_sub(edge1, edge2, den);
-
-function _bijection_offset__bijection__bijection__bijection_offset_edges_intersection_sub(edge1, edge2, den) = 
-    let(
-        ua = ((edge2[1][0] - edge2[0][0]) * (edge1[0][1] - edge2[0][1]) - (edge2[1][1] - edge2[0][1]) * (edge1[0][0] - edge2[0][0])) / den
-    ) 
-    [
-        edge1[0][0] + ua * (edge1[1][0] - edge1[0][0]),
-        edge1[0][1] + ua * (edge1[1][1] - edge1[0][1])
-    ];
+    cross(a, b) == 0 ? [] : // they are parallel or conincident edges
+        a1 + a * cross(s, b) / cross(a, b);
 
 function bijection_offset(pts, d) = 
     let(
