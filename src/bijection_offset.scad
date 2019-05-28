@@ -9,6 +9,7 @@
 **/
 
 include <__private__/__edges_from.scad>;
+include <__private__/__line_intersection.scad>;
     
 function _bijection_inward_edge_normal(edge) =  
     let(
@@ -41,25 +42,12 @@ function _bijection__bijection_offset_edges(edges, d) =
         _bijection_offset_edge(edge, dx, dy)
     ];
 
-function _bijection__bijection__bijection_offset_edges_intersection(edge1, edge2) = 
-    let(
-        a1 = edge1[0],
-        a2 = edge1[1],
-        b1 = edge2[0],
-        b2 = edge2[1],
-        a = a2 - a1, 
-        b = b2 - b1, 
-        s = b1 - a1
-    )
-    cross(a, b) == 0 ? [] : // they are parallel or conincident edges
-        a1 + a * cross(s, b) / cross(a, b);
-
 function bijection_offset(pts, d) = 
     let(
         es = __edges_from(pts), 
         offset_es = _bijection__bijection_offset_edges(es, d),
         leng = len(offset_es),
-        last_p = _bijection__bijection__bijection_offset_edges_intersection(offset_es[leng - 1], offset_es[0])
+        last_p = __line_intersection(offset_es[leng - 1], offset_es[0])
     )
     concat(
         [
@@ -67,7 +55,7 @@ function bijection_offset(pts, d) =
             let(
                 this_edge = offset_es[i],
                 next_edge = offset_es[i + 1],
-                p = _bijection__bijection__bijection_offset_edges_intersection(this_edge, next_edge)
+                p = __line_intersection(this_edge, next_edge)
             )
             // p == p to avoid [nan, nan], because [nan, nan] != [nan, nan]
             if(p != [] && p == p) p
