@@ -1,4 +1,4 @@
-function __edges_from(pts, closed = false) = 
+function __lines_from(pts, closed = false) = 
     let(leng = len(pts))
     concat(
         [for(i = [0:leng - 2]) [pts[i], pts[i + 1]]], 
