@@ -44,7 +44,7 @@ function _bijection__bijection_offset_edges(edges, d) =
 
 function bijection_offset(pts, d) = 
     let(
-        es = __edges_from(pts), 
+        es = __edges_from(pts, true), 
         offset_es = _bijection__bijection_offset_edges(es, d),
         leng = len(offset_es),
         last_p = __line_intersection(offset_es[leng - 1], offset_es[0])
