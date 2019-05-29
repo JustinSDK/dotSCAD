@@ -8,5 +8,5 @@ function __line_intersection(line_pts1, line_pts2, epsilon = 0.0001) =
         b = b2 - b1, 
         s = b1 - a1
     )
-    abs(cross(a, b)) == epsilon ? [] :  // they are parallel or conincident edges
+    abs(cross(a, b)) < epsilon ? [] :  // they are parallel or conincident edges
         a1 + a * cross(s, b) / cross(a, b);
