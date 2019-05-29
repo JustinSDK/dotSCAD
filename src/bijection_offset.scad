@@ -42,12 +42,12 @@ function _bijection__bijection_offset_edges(edges, d) =
         _bijection_offset_edge(edge, dx, dy)
     ];
 
-function bijection_offset(pts, d) = 
+function bijection_offset(pts, d, epsilon = 0.0001) = 
     let(
         es = __lines_from(pts, true), 
         offset_es = _bijection__bijection_offset_edges(es, d),
         leng = len(offset_es),
-        last_p = __line_intersection(offset_es[leng - 1], offset_es[0])
+        last_p = __line_intersection(offset_es[leng - 1], offset_es[0], epsilon)
     )
     concat(
         [
@@ -55,7 +55,7 @@ function bijection_offset(pts, d) =
             let(
                 this_edge = offset_es[i],
                 next_edge = offset_es[i + 1],
-                p = __line_intersection(this_edge, next_edge)
+                p = __line_intersection(this_edge, next_edge, epsilon)
             )
             // p == p to avoid [nan, nan], because [nan, nan] != [nan, nan]
             if(p != [] && p == p) p
