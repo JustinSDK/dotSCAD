@@ -36,8 +36,15 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
         let(s =  (scale - 1) / leng_points_minus_one)
         [s, s, s];
 
-    // get rotation matrice for sections
 
+    /* 
+         Sadly, children(n) cannot be used with inner modules 
+         so I have to do things in the first level. Ugly!!
+    */
+
+    // >>> begin: modules and functions for "AXIS-ANGLE"
+
+    // get rotation matrice for sections
     identity_matrix = [
         [1, 0, 0, 0],
         [0, 1, 0, 0],
@@ -113,10 +120,41 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
         }
     } 
 
-    /* 
-         Sadly, children(n) cannot be used with inner modules 
-         so I have to do things in the first level. Ugly!!
-    */
+    // <<< end: modules and functions for "AXIS-ANGLE"
+
+
+    // >>> begin: modules and functions for "EULER-ANGLE"
+
+    function _euler_angle_path_angles(pts, end_i, i = 0) = 
+        i == end_i ?
+                [] : 
+                concat(
+                    [__angy_angz(pts[i], pts[i + 1])], 
+                    _euler_angle_path_angles(pts, end_i, i + 1)
+                );
+            
+    function euler_angle_path_angles(children) = 
+       let(
+           pts = len(points[0]) == 3 ? points : [for(pt = points) __to3d(pt)],
+           end_i = children == 1 ? leng_points_minus_one : children - 1,
+           angs = _euler_angle_path_angles(pts, end_i)
+        )
+       concat(
+           [[0, -angs[0][0], angs[0][1]]], 
+           [for(a = angs) [0, -a[0], a[1]]]
+       );
+
+    module euler_angle_align(i, angs) {
+        translate(points[i]) 
+            rotate(angs[i])
+                rotate(angles_defined ? [0, 0, 0] : [90, 0, -90])
+                    rotate(twist_step_a * i) 
+                         scale([1, 1, 1] + scale_step_vt * i) 
+                             children(0);
+    }
+
+    // <<< end: modules and functions for "EULER-ANGLE"
+
     if(method == "AXIS_ANGLE") {
         if(angles_defined) {
             if($children == 1) { 
@@ -153,6 +191,21 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
                 }
             }
         }
+    }
+    else if(method == "EULER_ANGLE") {
+        if($children == 1) { 
+            angs = angles_defined ? angles : euler_angle_path_angles($children);
+            
+            for(i = [0:leng_points_minus_one]) {
+                euler_angle_align(i, angs) children(0);
+            }
+            
+        } else {
+            for(i = [0:min(leng_points, $children) - 1]) {
+                euler_angle_align(i, angs) children(i);
+            }
+            
+        }         
     }
     
 }
