@@ -13,6 +13,9 @@ midpt_smooth
 trim_shape
     trim_shape_demo.scad
 
+triangulate
+    triangulate_demo.scad    
+
 shape_taiwan: new `dt` parameter
 
 bijection_offset: new `epsilon` parameter
