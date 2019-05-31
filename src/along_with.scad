@@ -20,10 +20,8 @@ module along_with(points, angles, twist = 0, scale = 1.0) {
     leng_points = len(points);
     leng_points_minus_one = leng_points - 1;
     twist_step_a = twist / leng_points;
-        
-    function scale_step() =
-        let(s =  (scale - 1) / leng_points_minus_one)
-        [s, s, s];
+
+    angles_defined = angles != undef;
 
     scale_step_vt = __is_float(scale) ? 
         scale_step() :
@@ -32,6 +30,11 @@ module along_with(points, angles, twist = 0, scale = 1.0) {
             (scale[1] - 1) / leng_points_minus_one,
             scale[2] == undef ? 0 : (scale[2] - 1) / leng_points_minus_one
         ]; 
+
+
+    function scale_step() =
+        let(s =  (scale - 1) / leng_points_minus_one)
+        [s, s, s];
 
     // get rotation matrice for sections
 
@@ -110,7 +113,7 @@ module along_with(points, angles, twist = 0, scale = 1.0) {
         }
     } 
 
-    if(angles != undef) {
+    if(angles_defined) {
         if($children == 1) { 
             for(i = [0:leng_points_minus_one]) {
                 align_with_pts_angles(i) children(0);
