@@ -16,7 +16,7 @@ include <__private__/__to3d.scad>;
 // For backward compatibility, I directly include m_rotation here.
 include <m_rotation.scad>;
 
-module along_with(points, angles, twist = 0, scale = 1.0) {
+module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE") {
     leng_points = len(points);
     leng_points_minus_one = leng_points - 1;
     twist_step_a = twist / leng_points;
@@ -113,39 +113,46 @@ module along_with(points, angles, twist = 0, scale = 1.0) {
         }
     } 
 
-    if(angles_defined) {
-        if($children == 1) { 
-            for(i = [0:leng_points_minus_one]) {
-                axis_angle_align_with_pts_angles(i) children(0);
+    /* 
+         Sadly, children(n) cannot be used with inner modules 
+         so I have to do things in the first level. Ugly!!
+    */
+    if(method == "AXIS_ANGLE") {
+        if(angles_defined) {
+            if($children == 1) { 
+                for(i = [0:leng_points_minus_one]) {
+                    axis_angle_align_with_pts_angles(i) children(0);
+                }
+            } else {
+                for(i = [0:min(leng_points, $children) - 1]) {
+                    axis_angle_align_with_pts_angles(i) children(i);
+                }
             }
-        } else {
-            for(i = [0:min(leng_points, $children) - 1]) {
-                axis_angle_align_with_pts_angles(i) children(i);
+        }
+        else {
+            cumu_rot_matrice = axis_angle_cumulated_rot_matrice(0, [
+                for(ang_vect = axis_angle_local_ang_vects(leng_points - 2)) 
+                    m_rotation(ang_vect[0], ang_vect[1])
+            ]);
+
+            translate(points[0])
+                axis_angle_align_with_pts_local_rotate(0, 0, [1, 1, 1], cumu_rot_matrice)
+                    children(0); 
+
+            if($children == 1) { 
+                for(i = [0:leng_points - 2]) {
+                    translate(points[i + 1])
+                        axis_angle_align_with_pts_local_rotate(i, i * twist_step_a, [1, 1, 1] + scale_step_vt * i, cumu_rot_matrice)
+                            children(0);          
+                }          
+            } else {
+                for(i = [0:min(leng_points, $children) - 2]) {
+                    translate(points[i + 1])
+                        axis_angle_align_with_pts_local_rotate(i, i * twist_step_a, [1, 1, 1] + scale_step_vt * i, cumu_rot_matrice)
+                            children(i + 1);   
+                }
             }
         }
     }
-    else {
-        cumu_rot_matrice = axis_angle_cumulated_rot_matrice(0, [
-            for(ang_vect = axis_angle_local_ang_vects(leng_points - 2)) 
-                m_rotation(ang_vect[0], ang_vect[1])
-        ]);
-
-        translate(points[0])
-            axis_angle_align_with_pts_local_rotate(0, 0, [1, 1, 1], cumu_rot_matrice)
-                children(0); 
-
-        if($children == 1) { 
-            for(i = [0:leng_points - 2]) {
-                translate(points[i + 1])
-                    axis_angle_align_with_pts_local_rotate(i, i * twist_step_a, [1, 1, 1] + scale_step_vt * i, cumu_rot_matrice)
-                        children(0);          
-            }          
-        } else {
-            for(i = [0:min(leng_points, $children) - 2]) {
-                translate(points[i + 1])
-                    axis_angle_align_with_pts_local_rotate(i, i * twist_step_a, [1, 1, 1] + scale_step_vt * i, cumu_rot_matrice)
-                        children(i + 1);   
-            }
-        }
-    }
+    
 }
