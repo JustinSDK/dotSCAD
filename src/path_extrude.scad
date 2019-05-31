@@ -165,7 +165,7 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
         test_path_extrude(sects);        
     }
 
-    module euler_angles_path_extrude() {
+    module euler_angle_path_extrude() {
         scale_step_vt = __is_float(scale) ? 
             [(scale - 1) / len_path_pts_minus_one, (scale - 1) / len_path_pts_minus_one] : 
             [(scale[0] - 1) / len_path_pts_minus_one, (scale[1] - 1) / len_path_pts_minus_one];
@@ -220,7 +220,7 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
         axis_angle_path_extrude();
     }
     else if(method == "EULER_ANGLE") {
-        euler_angles_path_extrude();
+        euler_angle_path_extrude();
     } 
 }
 
