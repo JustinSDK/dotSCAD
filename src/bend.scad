@@ -43,7 +43,7 @@ module bend(size, angle, frags = 24) {
             }
     }
 
-    for(i = [0 : frags - 1]) {
+    rotate(90) for(i = [0 : frags - 1]) {
         rotate(i * frag_angle + half_frag_angle) 
             get_frag(i) 
                 children();  
