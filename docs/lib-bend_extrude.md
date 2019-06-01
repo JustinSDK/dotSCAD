@@ -2,7 +2,7 @@
 
 The purpose of `bend_extrude` is to replace `bend` when you have a 2D shape. `bend_extrude` is faster and doesn't produce jagged edges.
 
-**Since 1.3**
+**Since:** 1.3.
 
 ## Parameters
 
