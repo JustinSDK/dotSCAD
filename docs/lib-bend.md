@@ -52,6 +52,4 @@ The arc shape is smoother if the `frags` value is larger.
 
 ![bend](images/lib-bend-3.JPG)
 
-This module is especially useful when you want to create things such as [zentangle bracelet](https://www.thingiverse.com/thing:1569263).
-
-[![zentangle bracelet](http://thingiverse-production-new.s3.amazonaws.com/renders/eb/93/4f/62/1f/3bd1f628e1e566dcb5313035e4f3345b_preview_featured.JPG)](https://www.thingiverse.com/thing:1569263)
+This module is especially useful when you want to create things such as [PNG to pen holder](https://www.thingiverse.com/thing:1589493).
