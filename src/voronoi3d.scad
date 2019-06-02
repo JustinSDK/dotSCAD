@@ -25,7 +25,7 @@ module voronoi3d(points, spacing = 1, space_type = "cube") {
                         cube(space_size, center = true); 
                     }
                     else if(space_type == "sphere") {
-                        cube(half_space_size); 
+                        sphere(half_space_size); 
                     }
             }
         }
