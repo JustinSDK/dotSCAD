@@ -1,4 +1,4 @@
-# voronoi
+# voronoi3d
 
 Creats a 3D version of [Voronoi diagram](https://en.wikipedia.org/wiki/Voronoi_diagram). The initial space for each cell is calculated automatically from the given points by the following code: 
 
@@ -39,7 +39,7 @@ The preview or rendering of 3D Voronoi is slow. If you want to use this module, 
         translate(pt) cube(1);
     }
 
-![voronoi](images/lib-voronoi3d-1.JPG)
+![voronoi3d](images/lib-voronoi3d-1.JPG)
 
     If you render, export and save the previous model as `voronoi3d.stl`, the following code will generate a Voronoi sphere.
 
@@ -52,4 +52,4 @@ The preview or rendering of 3D Voronoi is slow. If you want to use this module, 
         sphere(r - thickness);
     }
     
-![voronoi](images/lib-voronoi3d-2.JPG)
+![voronoi3d](images/lib-voronoi3d-2.JPG)
