@@ -1,4 +1,4 @@
-include <__private__/__edges_from.scad>;
+include <__private__/__lines_from.scad>;
 include <__private__/__in_line.scad>;
 
 function _in_shape_in_line_equation(edge, pt) = 
@@ -39,7 +39,7 @@ function _in_shape_sub(shapt_pts, leng, pt, cond, i, j) =
 function in_shape(shapt_pts, pt, include_edge = false, epsilon = 0.0001) = 
     let(
         leng = len(shapt_pts),
-        edges = __edges_from(points, true)
+        edges = __lines_from(points, true)
     )
     _in_shape_in_any_edges(edges, pt, epsilon) ? include_edge : 
     _in_shape_sub(shapt_pts, leng, pt, false, leng - 1, 0);
