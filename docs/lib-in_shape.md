@@ -2,6 +2,8 @@
 
 Checks wether a point is inside a shape.
 
+**Since:** 1.3
+
 ## Parameters
 
 - `shapt_pts` : The shape points.
