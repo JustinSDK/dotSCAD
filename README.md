@@ -1,6 +1,6 @@
 # dotSCAD 1.2
 
-> Reduce the burden of 3D modeling in mathematics. Based on OpenSCAD 2015.03.
+> Reduce the burden of 3D modeling in mathematics. Require OpenSCAD 2015.03 or laters.
 
 ![dotSCAD](WhirlingTaiwan.JPG)
 
