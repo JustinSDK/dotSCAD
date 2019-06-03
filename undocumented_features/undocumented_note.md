@@ -1,6 +1,3 @@
-midpt_smooth
-    midpt_smooth.scad
-
 trim_shape
     trim_shape_demo.scad
 
