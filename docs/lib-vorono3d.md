@@ -39,6 +39,8 @@ The preview or rendering of 3D Voronoi is slow. If you want to use this module, 
         translate(pt) cube(1);
     }
 
+    voronoi3d(points);
+
 ![voronoi3d](images/lib-voronoi3d-1.JPG)
 
     If you render, export and save the previous model as `voronoi3d.stl`, the following code will generate a Voronoi sphere.
