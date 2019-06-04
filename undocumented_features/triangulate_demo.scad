@@ -15,6 +15,7 @@ shape = [
 tris = triangulate(shape);
 
 polygon(shape);
+
 for(tri = tris) {
     #offset(-.1) 
         polygon([for(idx = tri) shape[idx]]);

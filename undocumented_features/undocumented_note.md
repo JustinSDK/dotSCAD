@@ -1,6 +1,3 @@
-trim_shape
-    trim_shape_demo.scad
-
 triangulate
     triangulate_demo.scad    
 
