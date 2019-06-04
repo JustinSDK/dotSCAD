@@ -39,7 +39,10 @@ The preview or rendering of 3D Voronoi is slow. If you want to use this module, 
         translate(pt) cube(1);
     }
 
-    voronoi3d(points);
+    intersection() {
+        sphere(r);
+        voronoi3d(points);
+    }
 
 ![voronoi3d](images/lib-voronoi3d-1.JPG)
 
