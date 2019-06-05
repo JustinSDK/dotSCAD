@@ -6,7 +6,7 @@ Creats a 3D version of [Voronoi diagram](https://en.wikipedia.org/wiki/Voronoi_d
     ys = [for(p = points) abs(p[1])];
     zs = [for(p = points) abs(p[2])];
     space_size = max([(max(xs) -  min(xs) / 2), (max(ys) -  min(ys)) / 2, (max(zs) -  min(zs)) / 2]);
-    // cube([space_size, space_size * 2, space_size * 3]);
+    // cube([space_size, space_size * 2, space_size * 2]);
 
 The preview or rendering of 3D Voronoi is slow. If you want to use this module, render and export the 3D Voronoi model first. Then, `import` the model to do what you want.
 

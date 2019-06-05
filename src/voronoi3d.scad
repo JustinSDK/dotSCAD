@@ -7,7 +7,7 @@ module voronoi3d(points, space_size = "auto", spacing = 1) {
     ys = [for(p = points) abs(p[1])];
     zs = [for(p = points) abs(p[2])];
 
-    space_size = max([(max(xs) -  min(xs) / 2), (max(ys) -  min(ys)) / 2, (max(zs) -  min(zs)) / 2]);    
+    space_size = max([max(xs) -  min(xs), max(ys) -  min(ys), max(zs) -  min(zs)]);    
     half_space_size = 0.5 * space_size; 
     offset_leng = spacing * 0.5 + half_space_size;
 
@@ -21,7 +21,7 @@ module voronoi3d(points, space_size = "auto", spacing = 1) {
 
                 translate((pt + p) / 2 - normalize(v) * offset_leng)
                     rotate([0, -ryz[0], ryz[1]]) 
-                    cube([space_size, space_size * 2, space_size * 3], center = true); 
+                    cube([space_size, space_size * 2, space_size * 2], center = true); 
             }
         }
     }    
