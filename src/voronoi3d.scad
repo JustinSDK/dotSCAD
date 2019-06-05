@@ -2,7 +2,7 @@ include <__private__/__angy_angz.scad>;
 
 // slow but workable
 
-module voronoi3d(points, spacing = 1, space_type = "cube") {
+module voronoi3d(points, space_size = "auto", spacing = 1) {
     xs = [for(p = points) p[0]];
     ys = [for(p = points) abs(p[1])];
     zs = [for(p = points) abs(p[2])];
@@ -21,12 +21,7 @@ module voronoi3d(points, spacing = 1, space_type = "cube") {
 
                 translate((pt + p) / 2 - normalize(v) * offset_leng)
                     rotate([0, -ryz[0], ryz[1]]) 
-                    if(space_type == "cube") {
-                        cube(space_size, center = true); 
-                    }
-                    else if(space_type == "sphere") {
-                        sphere(half_space_size); 
-                    }
+                    cube([space_size, space_size * 2, space_size * 3], center = true); 
             }
         }
     }    
