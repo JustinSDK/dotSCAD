@@ -5,6 +5,7 @@ Returns shape points of [Taiwan](https://www.google.com.tw/maps?q=taiwan&um=1&ie
 ## Parameters
 
 - `h` : The height of Taiwan.
+- `distance` : Used for simplifying the shape. If the distance between a point and its previous points is not greater than `distance`, the point will be kept. Default to 0. **Since:** 1.3.
 
 ## Examples
 
