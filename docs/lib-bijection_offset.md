@@ -8,6 +8,7 @@ Move 2D outlines outward or inward by a given amount. Each point of the offsette
 
 - `pts` : Points of a shape.
 - `d` : Amount to offset the shape. When negative, the shape is offset inwards. 
+- `epsilon` : An upper bound on the relative error due to rounding in floating point arithmetic. Default to 0.0001. **Since:** 1.3.
 
 ## Examples
 
