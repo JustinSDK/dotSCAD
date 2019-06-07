@@ -1,4 +1,4 @@
-function __in_line(line_pts, pt, epsilon = 0.0001) =
+function __in_line2d(line_pts, pt, epsilon = 0.0001) =
     let(
         v1 = line_pts[0] - pt, 
         v2 = line_pts[1] - pt

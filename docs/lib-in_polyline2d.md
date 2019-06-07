@@ -1,4 +1,4 @@
-# in_line
+# in_polyline2d
 
 Checks wether a point is on a line.
 
@@ -12,7 +12,7 @@ Checks wether a point is on a line.
 
 ## Examples
 
-    include <in_line.scad>;
+    include <in_polyline2d.scad>;
 
     pts = [
         [0, 0],
@@ -20,7 +20,7 @@ Checks wether a point is on a line.
         [10, 10]
     ];
 
-    echo(in_line(pts, [-2, -3]));  // false
-    echo(in_line(pts, [5, 0]));    // true
-    echo(in_line(pts, [10, 5]));   // true
-    echo(in_line(pts, [10, 15]));  // false
+    echo(in_polyline2d(pts, [-2, -3]));  // false
+    echo(in_polyline2d(pts, [5, 0]));    // true
+    echo(in_polyline2d(pts, [10, 5]));   // true
+    echo(in_polyline2d(pts, [10, 15]));  // false
