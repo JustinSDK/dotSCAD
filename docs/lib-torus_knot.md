@@ -10,7 +10,7 @@ Generate a path of [The (p,q)-torus knot](https://en.wikipedia.org/wiki/Torus_kn
 
 - `p` : The p parameter of The (p,q)-torus knot. 
 - `q` : The q parameter of The (p,q)-torus knot. 
-- `phi_step`  : The amount when increasing phi. 
+- `phi_step` : The amount when increasing phi. 
 
 ## Examples
 
