@@ -33,7 +33,7 @@ Generate a path of [The (p,q)-torus knot](https://en.wikipedia.org/wiki/Torus_kn
 		shape_pentagram_pts, 
 		concat(pts, [pts[0]]), 
 		closed = true,
-		twist = 188
+		method = "EULER_ANGLE"
 	);
 
 ![torus_knot](images/lib-torus_knot-2.JPG)
