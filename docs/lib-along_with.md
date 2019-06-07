@@ -5,9 +5,10 @@ Puts children along the given path. If there's only one child, it will put the c
 ## Parameters
 
 - `points` : The points along the path. 
-- `angles` : Rotate before translate each child. If not given, rotate children automatically according to `points`.
+- `angles` : Rotate before translate each child. If not given, rotate children automatically according to `points` and `method`.
 - `twist` : If given, each child will be twisted before applying each element of `points` and `angles`.
 - `scale` : If given, each child will be scaled before applying each element of `points` and `angles`. It accepts a single value, `[sx, sy]` or `[sx, sy, sz]`.
+- `method` : Which method does `along_with` take to **guess** how to rotate children if `angles` is not specified? It accepts two value, `"AXIS_ANGLE"` (default) and `"EULER_ANGLE"`. See `path_extrude` for more information. **Since:** 1.3.
 
 ## Examples
 
