@@ -1,4 +1,4 @@
-# voronoi
+# voronoi2d
 
 Creats a [Voronoi diagram](https://en.wikipedia.org/wiki/Voronoi_diagram). The initial region for each cell is calculated automatically from the given points by the following code: 
 
@@ -17,20 +17,20 @@ Creats a [Voronoi diagram](https://en.wikipedia.org/wiki/Voronoi_diagram). The i
 
 ## Examples
 
-    include <voronoi.scad>;
+    include <voronoi2d.scad>;
 
     xs = rands(-20, 20, 50);
     ys = rands(-20, 20, 50);
 
     points = [for(i = [0:len(xs) - 1]) [xs[i], ys[i]]];
 
-    voronoi(points);
+    voronoi2d(points);
     translate([60, 0, 0]) 
         voronoi(points, region_type = "circle");
 
-![voronoi](images/lib-voronoi-1.JPG)
+![voronoi2d](images/lib-voronoi2d-1.JPG)
 
-    include <voronoi.scad>;
+    include <voronoi2d.scad>;
     include <hollow_out.scad>;
 
     xs = rands(0, 40, 50);
@@ -40,8 +40,8 @@ Creats a [Voronoi diagram](https://en.wikipedia.org/wiki/Voronoi_diagram). The i
 
     difference() {
         square([40, 20]);
-        voronoi(points);
+        voronoi2d(points);
     }
     hollow_out(shell_thickness = 1) square([40, 20]);
     
-![voronoi](images/lib-voronoi-2.JPG)
+![voronoi2d](images/lib-voronoi2d-2.JPG)

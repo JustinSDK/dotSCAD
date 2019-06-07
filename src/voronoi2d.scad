@@ -1,4 +1,4 @@
-module voronoi(points, spacing = 1, r = 0, delta = 0, chamfer = false, region_type = "square") {
+module voronoi2d(points, spacing = 1, r = 0, delta = 0, chamfer = false, region_type = "square") {
     xs = [for(p = points) p[0]];
     ys = [for(p = points) abs(p[1])];
 
