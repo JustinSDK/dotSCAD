@@ -126,7 +126,7 @@ When using this module, you should use points to represent the 2D shape. If your
 
 ## About `path_extrude` (Important!!)
 
-**path_extrude is actually a workaround when you have/provide only path points.**
+**`path_extrude` is actually a workaround when you have/provide only path points.**
 
 If you want to extrude a shape along a path precisely, providing enough information about how to rotate sections is necessary. If you want to extrude a shape along a helix, `helix_extrude` is more suitable because it knows how to dig out necessary data for rotating sections precisely.
 
