@@ -1,5 +1,6 @@
+include <__private__/__to3d.scad>;
 include <__private__/__lines_from.scad>;
-include <__private__/__in_line2d.scad>;
+include <__private__/__in_line.scad>;
 
 function _in_shape_in_line_equation(edge, pt) = 
     let(
@@ -14,7 +15,7 @@ function _in_shape_in_line_equation(edge, pt) =
 
 function _in_shape_in_any_edges_sub(edges, leng, pt, i, epsilon) = 
     leng == i ? false : (
-        __in_line2d(edges[i], pt, epsilon) ? true : _in_shape_in_any_edges_sub(edges, leng, pt, i + 1, epsilon)
+        __in_line(edges[i], pt, epsilon) ? true : _in_shape_in_any_edges_sub(edges, leng, pt, i + 1, epsilon)
     );
 
 function _in_shape_in_any_edges(edges, pt, epsilon) = _in_shape_in_any_edges_sub(edges, len(edges), pt, 0, epsilon);
