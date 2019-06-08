@@ -1,12 +1,13 @@
+include <__private__/__to3d.scad>;
 include <__private__/__line_intersection.scad>;
-include <__private__/__in_line2d.scad>;
+include <__private__/__in_line.scad>;
 include <__private__/__lines_from.scad>;
 
 function _trim_shape_any_intersection_sub(lines, line, lines_leng, i, epsilon) =
     let(
         p = __line_intersection(lines[i], line, epsilon)
     )
-    (p != [] && __in_line2d(line, p, epsilon) && __in_line2d(lines[i], p, epsilon)) ? [i, p] : _trim_shape_any_intersection(lines, line, lines_leng, i + 1, epsilon);
+    (p != [] && __in_line(line, p, epsilon) && __in_line(lines[i], p, epsilon)) ? [i, p] : _trim_shape_any_intersection(lines, line, lines_leng, i + 1, epsilon);
 
 // return [idx, [x, y]] or []
 function _trim_shape_any_intersection(lines, line, lines_leng, i, epsilon) =
