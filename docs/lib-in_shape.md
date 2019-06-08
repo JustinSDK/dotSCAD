@@ -25,7 +25,7 @@ Checks wether a point is inside a shape.
     ys = rands(-16, 16, n);
 
     pts = [
-        for(i = [0:n]) 
+        for(i = [0:n - 1]) 
             let(p = [xs[i], ys[i]]) 
             if(in_shape(points, p, true))
             p
