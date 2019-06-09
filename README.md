@@ -39,6 +39,7 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 	- [hexagons](https://openhome.cc/eGossip/OpenSCAD/lib-hexagons.html)
 	- [polytransversals](https://openhome.cc/eGossip/OpenSCAD/lib-polytransversals.html)
     - [multi_line_text](https://openhome.cc/eGossip/OpenSCAD/lib-multi_line_text.html)
+	- [voronoi2d](https://openhome.cc/eGossip/OpenSCAD/lib-voronoi2d.html)
 
 - 3D
 	- [rounded_cube](https://openhome.cc/eGossip/OpenSCAD/lib-rounded_cube.html)
@@ -50,6 +51,7 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 	- [function_grapher](https://openhome.cc/eGossip/OpenSCAD/lib-function_grapher.html)
 	- [polysections](https://openhome.cc/eGossip/OpenSCAD/lib-polysections.html)
 	- [starburst](https://openhome.cc/eGossip/OpenSCAD/lib-starburst.html)
+	- [voronoi3d](https://openhome.cc/eGossip/OpenSCAD/lib-voronoi3d.html)
 	
 - Transformation
     - [along_with](https://openhome.cc/eGossip/OpenSCAD/lib-along_with.html)
@@ -66,6 +68,11 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 	- [paths2sections](https://openhome.cc/eGossip/OpenSCAD/lib-paths2sections.html)
 	- [path_scaling_sections](https://openhome.cc/eGossip/OpenSCAD/lib-path_scaling_sections.html)
 	- [bijection_offset](https://openhome.cc/eGossip/OpenSCAD/lib-bijection_offset.html)
+	- [in_polyline](https://openhome.cc/eGossip/OpenSCAD/lib-in_polyline.html)
+	- [in_shape](https://openhome.cc/eGossip/OpenSCAD/lib-in_shape.html)
+	- [midpt_smooth](https://openhome.cc/eGossip/OpenSCAD/lib-midpt_smooth.html)
+	- [trim_shape](https://openhome.cc/eGossip/OpenSCAD/lib-trim_shape.html)
+	- [triangulate](https://openhome.cc/eGossip/OpenSCAD/lib-triangulate.html)
 	
 - Path
     - [arc_path](https://openhome.cc/eGossip/OpenSCAD/lib-arc_path.html)
@@ -100,6 +107,7 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 	- [shape_path_extend](https://openhome.cc/eGossip/OpenSCAD/lib-shape_path_extend.html)		
 
 - 2D Shape Extrusion
+	- [bend_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-bend_extrude.html)
 	- [path_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-path_extrude.html)
 	- [ring_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-ring_extrude.html)
 	- [helix_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-helix_extrude.html)
