@@ -1,3 +1,13 @@
+/**
+* voronoi3d.scad
+*
+* @copyright Justin Lin, 2019
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib-voronoi3d.html
+*
+**/
+
 include <__private__/__angy_angz.scad>;
 
 // slow but workable

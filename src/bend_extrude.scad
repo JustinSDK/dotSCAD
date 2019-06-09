@@ -1,3 +1,13 @@
+/**
+* bend_extrude.scad
+*
+* @copyright Justin Lin, 2019
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib-bend_extrude.html
+*
+**/
+
 module bend_extrude(size, thickness, angle, frags = 24) {
     x = size[0];
     y = size[1];

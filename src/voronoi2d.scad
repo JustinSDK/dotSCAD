@@ -1,3 +1,13 @@
+/**
+* voronoi2d.scad
+*
+* @copyright Justin Lin, 2019
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib-voronoi2d.html
+*
+**/
+
 module voronoi2d(points, spacing = 1, r = 0, delta = 0, chamfer = false, region_type = "square") {
     xs = [for(p = points) p[0]];
     ys = [for(p = points) abs(p[1])];

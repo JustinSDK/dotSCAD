@@ -1,3 +1,13 @@
+/**
+* midpt_smooth.scad
+*
+* @copyright Justin Lin, 2019
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib-midpt_smooth.html
+*
+**/
+
 function _midpt_smooth_sub(points, iend, i, closed = false) = 
     i == iend ? (
         closed ? [(points[i] + points[0]) / 2]

@@ -1,3 +1,12 @@
+/**
+* triangulate.scad
+*
+* @copyright Justin Lin, 2019
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib-triangulate.html
+*
+**/
 
 function _triangulate_in_triangle(p0, p1, p2, p) =
     let(

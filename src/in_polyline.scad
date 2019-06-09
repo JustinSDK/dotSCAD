@@ -1,3 +1,13 @@
+/**
+* in_polyline.scad
+*
+* @copyright Justin Lin, 2019
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib-in_polyline.html
+*
+**/
+
 include <__private__/__to3d.scad>;
 include <__private__/__in_line.scad>;
 

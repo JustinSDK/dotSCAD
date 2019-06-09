@@ -1,4 +1,13 @@
-include <__private__/__to3d.scad>;
+/**
+* in_shape.scad
+*
+* @copyright Justin Lin, 2019
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib-in_shape.html
+*
+**/
+
 include <__private__/__lines_from.scad>;
 include <__private__/__in_line.scad>;
 
