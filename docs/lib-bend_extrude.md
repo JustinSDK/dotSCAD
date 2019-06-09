@@ -15,8 +15,6 @@ The purpose of `bend_extrude` is to replace `bend` when you have a 2D shape. `be
 
 The containing square of the target shape should be laid down on the x-y plane. For example.
 
-	include <bend_extrude.scad>;
-
 	x = 9.25;
 	y = 9.55;
 
@@ -27,31 +25,12 @@ The containing square of the target shape should be laid down on the x-y plane. 
 
 Once you have the size of the containing square, you can use it as the `size` argument of the `bend_extrude` module.
 
-    include <bend.scad>;
+	include <bend_extrude.scad>;
 
 	x = 9.25;
 	y = 9.55;
-	z = 1;  
-	       
-	*cube(size = [x, y, z]);
-	
-	bend(size = [x, y, z], angle = 270)
-	    linear_extrude(z) text("A");
+
+	bend_extrude(size = [x, y], thickness = 1, angle = 270) 
+		text("A");
 
 ![bend_extrude](images/lib-bend_extrude-2.JPG)
-
-The arc shape is smoother if the `frags` value is larger. 
-
-    include <bend.scad>;
-	
-	x = 9.25;
-	y = 9.55;
-	z = 1;  
-	
-	bend(size = [x, y, z], angle = 270, frags = 360)
-	    linear_extrude(z) 
-	        text("A");
-
-![bend](images/lib-bend-3.JPG)
-
-This module is especially useful when you want to create things such as [Voronoi bracelet](https://www.thingiverse.com/thing:3650115).
