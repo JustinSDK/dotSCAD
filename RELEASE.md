@@ -1,5 +1,24 @@
 > Version numbers are based on [Semantic Versioning](https://semver.org/).
 
+# v1.3
+- New modules:
+  - [bend_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-bend_extrude.html)
+  - [voronoi2d](https://openhome.cc/eGossip/OpenSCAD/lib-voronoi2d.html)
+  - [voronoi3d](https://openhome.cc/eGossip/OpenSCAD/lib-voronoi3d.html)
+
+- New functions:
+  - [in_shape](https://openhome.cc/eGossip/OpenSCAD/lib-in_shape.html)
+  - [in_polyline](https://openhome.cc/eGossip/OpenSCAD/lib-in_polyline.html)
+  - [midpt_smooth](https://openhome.cc/eGossip/OpenSCAD/lib-midpt_smooth.html)
+  - [trim_shape](https://openhome.cc/eGossip/OpenSCAD/lib-trim_shape.html)
+  - [triangulate](https://openhome.cc/eGossip/OpenSCAD/lib-triangulate.html)
+
+- New parameters:
+  - `distance` of [shape_taiwan](https://openhome.cc/eGossip/OpenSCAD/lib-shape_taiwan.html)
+  - `epsilon` of [bijection_offset](https://openhome.cc/eGossip/OpenSCAD/lib-bijection_offset.html)
+  - `method` of [path_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-path_extrude.html)
+  - `method` of [along_with](https://openhome.cc/eGossip/OpenSCAD/lib-along_with.html)
+   
 # v1.2
 - New modules and functions:
   - [starburst](https://openhome.cc/eGossip/OpenSCAD/lib-starburst.html)
