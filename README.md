@@ -1,4 +1,4 @@
-# dotSCAD 1.2
+# dotSCAD 1.3
 
 > Reduce the burden of 3D modeling in mathematics. Compatible with OpenSCAD 2015.03 or laters.
 
