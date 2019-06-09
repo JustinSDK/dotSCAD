@@ -54,7 +54,6 @@
 - New Parameters:
   - added `v` parameter to [rotate_p](https://openhome.cc/eGossip/OpenSCAD/lib-rotate_p.html)
 
-
 - Improved Performance:
     - [path_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-path_extrude.html)
     - [align_with](https://openhome.cc/eGossip/OpenSCAD/lib-along_with.html)  
