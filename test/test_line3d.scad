@@ -20,7 +20,7 @@ module test_line3d() {
         }
 
         module test_line3d_cap(p, r, frags, cap_leng, angles) {
-            assertTrue(p == p1 || p == p2);
+            assert(p == p1 || p == p2);
             assertEqual(thickness / 2, r);
             assertEqual(fn, frags); 
             assertEqual(0.3536, cap_leng);
@@ -77,7 +77,7 @@ module test_line3d() {
         }
 
         module test_line3d_cap(p, r, frags, cap_leng, angles) {
-            assertTrue(p == p1 || p == p2);
+            assert(p == p1 || p == p2);
             assertEqual(thickness / 2, r);
             assertEqual(fn, frags); 
             assertEqual(0.5043, cap_leng);

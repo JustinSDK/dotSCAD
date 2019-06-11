@@ -12,7 +12,7 @@ module test_line2d() {
         include <line2d.scad>;
         
         module test_line2d_cap(point, style) {
-            assertTrue(
+            assert(
                 (point == p1 && style == "CAP_SQUARE") ||
                 (point == p2 && style == "CAP_SQUARE")
             );
@@ -34,7 +34,7 @@ module test_line2d() {
         include <line2d.scad>;
         
         module test_line2d_cap(point, style) {
-            assertTrue(
+            assert(
                 (point == p1 && style == "CAP_ROUND") ||
                 (point == p2 && style == "CAP_ROUND")
             );
@@ -57,7 +57,7 @@ module test_line2d() {
         include <line2d.scad>;
         
         module test_line2d_cap(point, style) {
-            assertTrue(
+            assert(
                 (point == p1 && style == "CAP_BUTT") ||
                 (point == p2 && style == "CAP_BUTT")
             );

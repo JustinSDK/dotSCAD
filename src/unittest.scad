@@ -96,15 +96,6 @@ module assertEqual(expected, actual, float_digits = 4) {
     }
 }
 
-module assertTrue(truth) {        
-    if(!truth) {
-        fail(
-            "Truth",
-             "expected: true, but: false"
-        );
-    }
-}
-
 module round_echo_pts(points, float_digits = 4) {
     echo(round_pts(points, float_digits));
 }
