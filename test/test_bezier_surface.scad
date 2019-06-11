@@ -20,9 +20,8 @@ module test_bezier_surface() {
     actual = bezier_surface(t_step, ctrl_pts);
 
     for(i = [0:len(expected) - 1]) {
-        assertEqualPoints(expected[i], actual[i]);
+        assertEqualPoints(expected[i], actual[i], 0.0006);
     }
-
 }
 
 test_bezier_surface();
