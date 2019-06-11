@@ -1,26 +1,3 @@
-module fail(title, message) {
-    echo(
-        str( 
-            "<b>",
-                "<span style='color: red'>", 
-                    "FAIL: ",  title,
-                "</span>", 
-            "</b>"
-        )
-    );
-    if(message != undef) {
-        echo(
-            str( 
-                "<b>",
-                    "<span style='color: red'>　",
-                        message, 
-                    "</span>", 
-                "</b>"
-            )
-        );
-    }
-}
-
 function round_n(number, float_digits = 4) =
     let(n = pow(10, float_digits)) 
     round(number * n) / n;
@@ -39,52 +16,39 @@ module assertEqualPoint(expected, actual, epsilon = 0.0001) {
     leng_expected = len(expected);
     leng_actual = len(actual);
 
-    if(leng_expected != leng_actual) {
-         fail(
-            "Point", 
-            str("expected length: ", leng_expected,
-            ", but: ", leng_actual)
-        );       
-    } else {
-        v_diff = expected - actual;
-        v3d = len(v_diff) == 2 ? [v_diff[0], v_diff[1], 0] : v_diff; 
-        
-        if(abs(v3d[0]) > epsilon && abs(v3d[1]) > epsilon && abs(v3d[2]) > epsilon) {
-            fail(
-                "Point", 
-                str("expected: ", expected,
-                ", but: ", actual)
-            );
-        }
-        
-    }
+    assert(
+        leng_expected == leng_actual,
+        str("Point: expected length: ", leng_expected, ", but: ", leng_actual)
+    );
+
+    v_diff = expected - actual;
+    v3d = len(v_diff) == 2 ? [v_diff[0], v_diff[1], 0] : v_diff; 
+
+    assert(
+        abs(v3d[0]) <= epsilon && abs(v3d[1]) <= epsilon && abs(v3d[2]) <= epsilon,
+        str("Point: expected: ", expected, ", but: ", actual)
+    );
 }
 
 module assertEqualPoints(expected, actual, epsilon = 0.0001) {
     leng_expected = len(expected);
     leng_actual = len(actual);
 
-    if(leng_expected != leng_actual) {
-         fail(
-            "Points", 
-            str("expected length: ", leng_expected,
-            ", but: ", leng_actual)
-        );       
-    } else {
-        for(i = [0:len(actual) - 1]) {        
-            assertEqualPoint(expected[i], actual[i], epsilon);
-        }
+    assert(
+        leng_expected == leng_actual, 
+        str("Points: expected length: ", leng_expected, ", but: ", leng_actual)
+    );
+
+    for(i = [0:len(actual) - 1]) {        
+        assertEqualPoint(expected[i], actual[i], epsilon);
     }
 }
 
 module assertEqualNum(expected, actual, epsilon = 0.0001) {
-    if(abs(expected - actual) > epsilon) {
-        fail(
-            "Equality", 
-            str("expected: ", expected,
-            ", but: ", actual)
-        );
-    }
+    assert(
+        abs(expected - actual) <= epsilon, 
+        str("expected: ", expected, ", but: ", actual)
+    );
 }
 
 function mul_round_vector(vector, n) = 
