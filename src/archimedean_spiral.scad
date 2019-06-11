@@ -10,7 +10,7 @@
 
 function _radian_step(b, theta, l) =
     let(r_square = pow(b * theta, 2))
-    acos((2 * r_square - pow(l, 2)) / (2 * r_square)) / 180 * 3.14159;
+    acos((2 * r_square - pow(l, 2)) / (2 * r_square)) / 180 * PI;
 
 function _find_radians(b, point_distance, radians, n, count = 1) =
     let(pre_radians = radians[count - 1])
@@ -27,7 +27,7 @@ function _find_radians(b, point_distance, radians, n, count = 1) =
     );
 
 function archimedean_spiral(arm_distance, init_angle, point_distance, num_of_points, rt_dir = "CT_CLK") =
-    let(b = arm_distance / 6.28318, init_radian = init_angle *3.14159 / 180)
+    let(b = arm_distance / (2 * PI), init_radian = init_angle * PI / 180)
     [
         for(theta = _find_radians(b, point_distance, [init_radian], num_of_points)) 
            let(r = b * theta, a = (rt_dir == "CT_CLK" ? 1 : -1) * theta * 57.2958)

@@ -9,9 +9,9 @@
 **/
 
 function torus_knot(p, q, phi_step) = [
-    for(phi = [0:phi_step:6.28318])
+    for(phi = [0:phi_step:PI * 2])
     let(
-        degree = phi * 180 / 3.14159,
+        degree = phi * 180 / PI,
         r = cos(q * degree) + 2,
         x = r * cos(p * degree),
         y = r * sin(p * degree),
