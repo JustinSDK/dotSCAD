@@ -95,6 +95,7 @@ module test_ring_extrude_not_closed() {
         [-2, -10]
     ];
 
+    ring_extrude(shape_pts, radius = 50, angle = 180);
     ring_extrude(shape_pts, radius = 50, angle = 180, scale = 2);
 }
 
