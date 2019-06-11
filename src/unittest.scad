@@ -46,15 +46,17 @@ module assertEqualPoint(expected, actual, epsilon = 0.0001) {
             ", but: ", leng_actual)
         );       
     } else {
-        for(elem = (expected - actual)) {
-            if(abs(elem) > epsilon) {
-                fail(
-                    "Point", 
-                    str("expected: ", expected,
-                    ", but: ", actual)
-                );
-            }
+        v_diff = expected - actual;
+        v3d = len(v_diff) == 2 ? [v_diff[0], v_diff[1], 0] : v_diff; 
+        
+        if(abs(v3d[0]) > epsilon && abs(v3d[1]) > epsilon && abs(v3d[2]) > epsilon) {
+            fail(
+                "Point", 
+                str("expected: ", expected,
+                ", but: ", actual)
+            );
         }
+        
     }
 }
 
