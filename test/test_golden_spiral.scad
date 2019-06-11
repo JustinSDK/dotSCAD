@@ -23,7 +23,7 @@ module test_golden_spiral() {
     assertEqualPoints(expected_pts, actual_pts);
     
     for(i = [0:len(expected_angles) - 1]) {
-        assertEqual(
+        assertEqualNum(
            expected_angles[i], 
            actual_angles[i]
         );

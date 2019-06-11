@@ -19,10 +19,10 @@ module test_line2d() {
         }
         
         module test_line2d_line(angle, length, width, frags) {
-            assertEqual(0, angle);
-            assertEqual(5, length);
-            assertEqual(1, width);
-            assertEqual(24, frags);
+            assertEqualNum(0, angle);
+            assertEqualNum(5, length);
+            assertEqualNum(1, width);
+            assertEqualNum(24, frags);
         }     
         
         line2d(p1 = p1, p2 = p2, width = width); 
@@ -41,10 +41,10 @@ module test_line2d() {
         }    
         
         module test_line2d_line(angle, length, width, frags) {
-            assertEqual(0, angle);
-            assertEqual(5, length);
-            assertEqual(1, width);
-            assertEqual(24, frags);
+            assertEqualNum(0, angle);
+            assertEqualNum(5, length);
+            assertEqualNum(1, width);
+            assertEqualNum(24, frags);
         }     
         
         line2d(p1 = p1, p2 = p2, width = width, 
@@ -64,10 +64,10 @@ module test_line2d() {
         }    
         
         module test_line2d_line(angle, length, width, frags) {
-            assertEqual(0, angle);
-            assertEqual(5, length);
-            assertEqual(1, width);
-            assertEqual(24, frags);
+            assertEqualNum(0, angle);
+            assertEqualNum(5, length);
+            assertEqualNum(1, width);
+            assertEqualNum(24, frags);
         }     
         
         line2d(p1 = p1, p2 = p2, width = width, 

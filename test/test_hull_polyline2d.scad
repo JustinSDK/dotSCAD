@@ -12,7 +12,7 @@ module test_hull_polyline2d() {
     module test_line_segment(index, point1, point2, radius) {
         assertEqualPoint(points[index - 1], point1);
         assertEqualPoint(points[index], point2);
-        assertEqual(line_width, radius * 2);    
+        assertEqualNum(line_width, radius * 2);    
     } 
 
     hull_polyline2d(

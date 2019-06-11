@@ -35,7 +35,7 @@ function round_pts(points, float_digits = 4) =
     let(n = pow(10, float_digits))
     [for(pt = points) mul_round_pt(pt, n) / n];
 
-module assertEqualPoint(expected, actual, float_digits = 4) {
+module assertEqualPoint(expected, actual, epsilon = 0.0001) {
     leng_expected = len(expected);
     leng_actual = len(actual);
 
@@ -46,27 +46,19 @@ module assertEqualPoint(expected, actual, float_digits = 4) {
             ", but: ", leng_actual)
         );       
     } else {
-        n = pow(10, float_digits);
-
-        shifted_expected = mul_round_pt(
-            expected, n
-        );
-
-        shifted_actual = mul_round_pt(
-            actual, n
-        );
-        
-        if(shifted_expected != shifted_actual) {
-            fail(
-                "Point", 
-                str("expected: ", shifted_expected / n,
-                ", but: ", shifted_actual / n)
-            );
+        for(elem = (expected - actual)) {
+            if(abs(elem) > epsilon) {
+                fail(
+                    "Point", 
+                    str("expected: ", expected,
+                    ", but: ", actual)
+                );
+            }
         }
     }
 }
 
-module assertEqualPoints(expected, actual, float_digits = 4) {
+module assertEqualPoints(expected, actual, epsilon = 0.0001) {
     leng_expected = len(expected);
     leng_actual = len(actual);
 
@@ -78,20 +70,17 @@ module assertEqualPoints(expected, actual, float_digits = 4) {
         );       
     } else {
         for(i = [0:len(actual) - 1]) {        
-            assertEqualPoint(expected[i], actual[i], float_digits);
+            assertEqualPoint(expected[i], actual[i], epsilon);
         }
     }
 }
 
-module assertEqual(expected, actual, float_digits = 4) {
-    r_expected = is_num(expected) ? round_n(expected, float_digits) : expected;  
-    r_actual = is_num(actual) ? round_n(actual, float_digits) : actual;  
-
-    if(r_expected != r_actual) {
+module assertEqualNum(expected, actual, epsilon = 0.0001) {
+    if(abs(expected - actual) > epsilon) {
         fail(
             "Equality", 
-            str("expected: ", r_expected,
-            ", but: ", r_actual)
+            str("expected: ", expected,
+            ", but: ", actual)
         );
     }
 }

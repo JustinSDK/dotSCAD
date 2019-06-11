@@ -13,7 +13,7 @@ module test_bend() {
         expected_angle = 11.25;
         
         assertEqualPoints(expected_points, points);
-        assertEqual(expected_angle, angle);
+        assertEqualNum(expected_angle, angle);
     }
 
     bend(size = [x, y, z], angle = 270)

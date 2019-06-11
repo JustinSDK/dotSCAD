@@ -10,7 +10,7 @@ module test_hexagons_lv2() {
     include <hexagons.scad>;
     
     module test_each_hexagon(hex_r, pts_all_lines) {
-        assertEqual(19, hex_r);
+        assertEqualNum(19, hex_r);
         
         expects = [
              [[-34.641, 0], [0, 0], [34.641, 0]],
@@ -40,7 +40,7 @@ module test_hexagons_lv3() {
     include <hexagons.scad>;
     
     module test_each_hexagon(hex_r, pts_all_lines) {
-        assertEqual(19, hex_r);
+        assertEqualNum(19, hex_r);
         
         expects = [
               [[-69.282, 0], [-34.641, 0], [0, 0], [34.641, 0], [69.282, 0]],

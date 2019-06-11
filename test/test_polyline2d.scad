@@ -11,7 +11,7 @@ module test_polyline2d() {
     module assertCorrectSegment(index, point1, point2, width) {
         assertEqualPoint(points[index - 1], point1);
         assertEqualPoint(points[index], point2);
-        assertEqual(line_width, width);    
+        assertEqualNum(line_width, width);    
     }
     
     module assertCorrectCaps(startStyle, endStyle, index, p1Style, p2Style) {

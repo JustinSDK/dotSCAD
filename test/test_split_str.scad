@@ -5,7 +5,7 @@ module test_split_str() {
     include <sub_str.scad>;
     include <split_str.scad>;
 
-    assertEqual(["hello", "world"], split_str("hello,world", ","));  
+    assert(["hello", "world"] == split_str("hello,world", ","));  
 }
 
 test_split_str();
