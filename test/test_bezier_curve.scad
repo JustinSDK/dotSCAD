@@ -17,11 +17,8 @@ module test_bezier_curve() {
     actual = bezier_curve(t_step, 
         [p0, p1, p2, p3]
     );
-
-   // round_echo_pts(actual, float_digits = 3);
     
-    assertEqualPoints(expected, actual, float_digits = 3);
-
+    assertEqualPoints(expected, actual);
 }
 
 test_bezier_curve();
