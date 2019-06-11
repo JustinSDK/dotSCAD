@@ -8,12 +8,11 @@
 *
 **/ 
 
-include <__private__/__is_float.scad>;
 include <__private__/__frags.scad>;
 
 function helix(radius, levels, level_dist, vt_dir = "SPI_DOWN", rt_dir = "CT_CLK") = 
     let(
-        is_flt = __is_float(radius),
+        is_flt = is_num(radius),
         r1 = is_flt ? radius : radius[0],
         r2 = is_flt ? radius : radius[1],
         init_r = vt_dir == "SPI_DOWN" ? r2 : r1,

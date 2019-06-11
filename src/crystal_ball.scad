@@ -9,10 +9,9 @@
 **/ 
 
 include <__private__/__nearest_multiple_of_4.scad>;
-include <__private__/__is_float.scad>;
 
 module crystal_ball(radius, theta = 360, phi = 180) {
-    phis = __is_float(phi) ? [0, phi] : phi;
+    phis = is_num(phi) ? [0, phi] : phi;
     
     frags = __frags(radius);
 

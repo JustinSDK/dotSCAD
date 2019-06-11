@@ -4,4 +4,4 @@ function __to_3_elems_ang_vect(a) =
          leng == 2 ? [a[0], a[1], 0] :  [a[0], 0, 0]
      );
 
-function __to_ang_vect(a) = __is_float(a) ? [0, 0, a] : __to_3_elems_ang_vect(a);
+function __to_ang_vect(a) = is_num(a) ? [0, 0, a] : __to_3_elems_ang_vect(a);

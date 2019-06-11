@@ -8,7 +8,6 @@
 *
 **/
 
-include <__private__/__is_float.scad>;
 include <__private__/__frags.scad>;
 include <__private__/__pie_for_rounding.scad>;
 include <__private__/__half_trapezium.scad>;

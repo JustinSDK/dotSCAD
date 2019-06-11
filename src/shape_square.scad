@@ -8,7 +8,6 @@
 *
 **/
 
-include <__private__/__is_float.scad>;
 include <__private__/__frags.scad>;
 include <__private__/__pie_for_rounding.scad>;
 include <__private__/__half_trapezium.scad>;
@@ -16,7 +15,7 @@ include <__private__/__trapezium.scad>;
  
 function shape_square(size, corner_r = 0) = 
     let(
-        is_flt = __is_float(size),
+        is_flt = is_num(size),
         x = is_flt ? size : size[0],
         y = is_flt ? size : size[1]        
     )

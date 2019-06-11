@@ -9,11 +9,10 @@
 **/
 
 include <__private__/__frags.scad>;
-include <__private__/__is_float.scad>;
 
 module rounded_extrude(size, round_r, angle = 90, twist = 0, convexity = 10) {
 
-    is_flt = __is_float(size);
+    is_flt = is_num(size);
     x = is_flt ? size : size[0];
     y = is_flt ? size : size[1];
     

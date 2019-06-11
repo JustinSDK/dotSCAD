@@ -8,12 +8,11 @@
 *
 **/
 
-include <__private__/__is_float.scad>;
 include <__private__/__frags.scad>;
 include <__private__/__nearest_multiple_of_4.scad>;
 
 module rounded_cube(size, corner_r, center = false) {
-    is_flt = __is_float(size);
+    is_flt = is_num(size);
     x = is_flt ? size : size[0];
     y = is_flt ? size : size[1];
     z = is_flt ? size : size[2];

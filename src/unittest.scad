@@ -1,5 +1,3 @@
-include <__private__/__is_float.scad>;
-
 module fail(title, message) {
     echo(
         str( 
@@ -86,8 +84,8 @@ module assertEqualPoints(expected, actual, float_digits = 4) {
 }
 
 module assertEqual(expected, actual, float_digits = 4) {
-    r_expected = __is_float(expected) ? round_n(expected, float_digits) : expected;  
-    r_actual = __is_float(actual) ? round_n(actual, float_digits) : actual;  
+    r_expected = is_num(expected) ? round_n(expected, float_digits) : expected;  
+    r_actual = is_num(actual) ? round_n(actual, float_digits) : actual;  
 
     if(r_expected != r_actual) {
         fail(

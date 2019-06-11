@@ -8,7 +8,6 @@
 *
 **/
 
-include <__private__/__is_float.scad>;
 include <__private__/__frags.scad>;
 
 module helix_extrude(shape_pts, radius, levels, level_dist, 
@@ -22,7 +21,7 @@ module helix_extrude(shape_pts, radius, levels, level_dist,
                 vt[leng - 1 - i]
         ];                         
                          
-    is_flt = __is_float(radius);
+    is_flt = is_num(radius);
     r1 = is_flt ? radius : radius[0];
     r2 = is_flt ? radius : radius[1];
     

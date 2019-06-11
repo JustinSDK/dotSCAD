@@ -44,7 +44,7 @@ function __br_corner(frags, b_ang, l1, l2, h, round_r) =
 
 function __half_trapezium(length, h, round_r) =
     let(
-        is_flt = __is_float(length),
+        is_flt = is_num(length),
         l1 = is_flt ? length : length[0],
         l2 = is_flt ? length : length[1],
         frags = __frags(round_r),
