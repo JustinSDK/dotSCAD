@@ -1,1 +1,1 @@
-function __is_float(value) = value + 0 != undef;
+function __is_float(value) = is_num(value);
