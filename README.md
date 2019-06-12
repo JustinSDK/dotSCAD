@@ -1,6 +1,6 @@
 # dotSCAD 2 (beta)
 
-> Reduce the burden of 3D modeling in mathematics. Based on OpenSCAD 2019.05.
+> **Reduce the burden of 3D modeling in mathematics. Based on OpenSCAD 2019.05.**
 
 ![dotSCAD](WhirlingTaiwan.JPG)
 
