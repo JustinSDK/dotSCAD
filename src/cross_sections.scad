@@ -24,7 +24,7 @@ function cross_sections(shape_pts, path_pts, angles, twist = 0, scale = 1.0) =
         twist_step = twist / len_path_pts_minus_one
     )
     [
-        for(i = [0:len_path_pts_minus_one])
+        for(i = 0; i <= len_path_pts_minus_one; i = i + 1)
             [
                 for(p = sh_pts) 
                 let(scaled_p = [p[0] * (1 + scale_step_x * i), p[1] * (1 + scale_step_y * i), p[2]])
