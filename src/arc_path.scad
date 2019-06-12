@@ -21,7 +21,7 @@ function arc_path(radius, angle) =
         n = floor(angles[1] / a_step),
         points = concat([__ra_to_xy(__edge_r_begin(radius, angles[0], a_step, m), angles[0])],
             m > n ? [] : [
-                for(i = [m:n]) 
+                for(i = m; i <= n; i = i + 1)
                     __ra_to_xy(radius, a_step * i)
             ],
             angles[1] == a_step * n ? [] : [__ra_to_xy(__edge_r_end(radius, angles[1], a_step, n), angles[1])])
