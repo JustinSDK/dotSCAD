@@ -126,7 +126,6 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 - Other
     - [turtle2d](https://openhome.cc/eGossip/OpenSCAD/lib-turtle2d.html)
     - [turtle3d](https://openhome.cc/eGossip/OpenSCAD/lib-turtle3d.html)
-	- [log](https://openhome.cc/eGossip/OpenSCAD/lib-log.html)
 
 ## Bugs and Feedback
 
