@@ -51,7 +51,7 @@ function bijection_offset(pts, d, epsilon = 0.0001) =
     )
     concat(
         [
-            for(i = [0:leng - 2]) 
+            for(i = 0; i < leng - 1; i = i + 1)
             let(
                 this_edge = offset_es[i],
                 next_edge = offset_es[i + 1],
