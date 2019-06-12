@@ -51,7 +51,7 @@ function _bezier_curve_point(t, points) =
 function bezier_curve(t_step, points) = 
     let(
         pts = concat([
-            for(t = [0: ceil(1 / t_step) - 1])
+            for(t = 0; t < ceil(1 / t_step); t = t + 1)
                 _bezier_curve_point(t * t_step, points)
         ], [_bezier_curve_point(1, points)])
     ) 
