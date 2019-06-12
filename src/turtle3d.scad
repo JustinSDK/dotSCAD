@@ -122,8 +122,8 @@ function _turtle3d_zu_turn(turtle, a) =
     );
 
 function _turtle3d_create_cmd(arg1, arg2) = 
-    (arg1 == undef && arg2 == undef) ? _turtle3d_create_default() : (
-        (arg1 != undef && arg2 != undef) ? _turtle3d_create(arg1, arg2) : undef
+    (is_undef(arg1) && is_undef(arg2)) ? _turtle3d_create_default() : (
+        (!is_undef(arg1) && !is_undef(arg2)) ? _turtle3d_create(arg1, arg2) : undef
     );
     
 function _turtle3d_chain_move(cmd, arg1, arg2) =

@@ -14,7 +14,7 @@ function circle_path(radius, n) =
     let(
         _frags = __frags(radius),
         step_a = 360 / _frags,
-        end_a = 360 - step_a * ((n == undef || n > _frags) ? 1 : _frags - n + 1)
+        end_a = 360 - step_a * ((is_undef(n) || n > _frags) ? 1 : _frags - n + 1)
     )
     [
         for(a = [0 : step_a : end_a]) 

@@ -20,14 +20,14 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
     leng_points_minus_one = leng_points - 1;
     twist_step_a = twist / leng_points;
 
-    angles_defined = angles != undef;
+    angles_defined = !is_undef(angles);
 
     scale_step_vt = is_num(scale) ? 
         scale_step() :
         [
             (scale[0] - 1) / leng_points_minus_one, 
             (scale[1] - 1) / leng_points_minus_one,
-            scale[2] == undef ? 0 : (scale[2] - 1) / leng_points_minus_one
+            is_undef(scale[2]) ? 0 : (scale[2] - 1) / leng_points_minus_one
         ]; 
 
 

@@ -9,7 +9,7 @@
 **/ 
 
 function sub_str(t, begin, end, result = "") =
-    end == undef ? sub_str(t, begin, len(t)) : (
+    is_undef(end) ? sub_str(t, begin, len(t)) : (
         begin == end ? result : sub_str(t, begin + 1, end, str(result, t[begin]))
     );
     

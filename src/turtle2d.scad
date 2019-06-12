@@ -34,7 +34,7 @@ function _turtle2d_three_args_command(cmd, arg1, arg2, arg3) =
     cmd == "create" ? _turtle2d_turtle(arg1, arg2, arg3) : _turtle2d_two_args_command(cmd, arg1, arg2);
 
 function _turtle2d_two_args_command(cmd, arg1, arg2) =
-    arg2 == undef ? _turtle2d_one_arg_command(cmd, arg1) : (
+    is_undef(arg2) ? _turtle2d_one_arg_command(cmd, arg1) : (
         cmd == "pt" ? _turtle2d_set_point(arg1, arg2) : (
             cmd == "x" ? _turtle2d_set_x(arg1, arg2) : (
                 cmd == "y" ? _turtle2d_set_y(arg1, arg2) : (

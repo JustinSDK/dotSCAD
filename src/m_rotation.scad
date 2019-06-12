@@ -78,4 +78,4 @@ function m_rotation(a, v) =
         [0, 1, 0, 0],
         [0, 0, 1, 0],
         [0, 0, 0, 1]
-    ] : (v == undef ? _xyz_rotation(a) : _q_rotation(a, v));
+    ] : (is_undef(v) ? _xyz_rotation(a) : _q_rotation(a, v));
