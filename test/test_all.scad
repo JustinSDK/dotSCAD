@@ -41,6 +41,7 @@ include <test_ellipse_extrude.scad>;
 include <test_stereographic_extrude.scad>;
 
 // 2D Shape
+include <test_shape_arc.scad>;
 include <test_shape_cyclicpolygon.scad>;
 include <test_shape_ellipse.scad>;
 include <test_shape_pie.scad>;
