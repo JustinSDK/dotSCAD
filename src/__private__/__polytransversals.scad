@@ -3,12 +3,12 @@ function __polytransversals(transversals) =
         leng_trs = len(transversals),
         leng_tr = len(transversals[0]),
         lefts = [
-            for(i = [1:leng_trs - 2]) 
+            for(i = 1; i < leng_trs - 1; i = i + 1)
                 let(tr = transversals[leng_trs - i])
                     tr[0]
         ],
         rights = [
-            for(i = [1:leng_trs - 2]) 
+            for(i = 1; i < leng_trs - 1; i = i + 1)
                 let(tr = transversals[i])
                     tr[leng_tr - 1]
         ]

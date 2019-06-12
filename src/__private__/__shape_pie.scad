@@ -11,7 +11,7 @@ function __shape_pie(radius, angle) =
         shape_pts = concat(
             [[0, 0], __ra_to_xy(edge_r_begin, angles[0])],
             m > n ? [] : [
-                for(i = [m:n]) 
+                for(i = m; i <= n; i = i + 1)
                     let(a = a_step * i) 
                     __ra_to_xy(radius, a)
             ],
