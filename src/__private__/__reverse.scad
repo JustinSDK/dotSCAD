@@ -1,6 +1,6 @@
 function __reverse(vt) = 
-    let(leng = len(vt))
+    let(to = len(vt) - 1)
     [
-        for(i = [0:leng - 1])
-            vt[leng - 1 - i]
+        for(i = [0:to])
+            vt[to - i]
     ];
