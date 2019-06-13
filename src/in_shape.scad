@@ -23,20 +23,12 @@ function _in_shape_in_line_equation(edge, pt) =
     )
     (pt[1] == a * pt[0] + b);
 
-function _in_shape_in_any_edges_sub(edges, leng, pt, i, epsilon) = 
-    leng == i ? false : (
-        __in_line(edges[i], pt, epsilon) ? true : _in_shape_in_any_edges_sub(edges, leng, pt, i + 1, epsilon)
-    );
-
-function _in_shape_in_any_edges(edges, pt, epsilon) = _in_shape_in_any_edges_sub(edges, len(edges), pt, 0, epsilon);
-
-// function _in_shape_in_any_edges(edges, pt, epsilon) = 
-//     let(
-//         leng = len(edges),
-//         last = [for(i = 0; i < leng && !__in_line(edges[i], pt, epsilon); i = i + 1) i][leng - 1] 
-//     )
-//     is_undef(last);
-    
+function _in_shape_in_any_edges(edges, pt, epsilon) = 
+    let(
+        leng = len(edges),
+        maybe_last = [for(i = 0; i < leng && !__in_line(edges[i], pt, epsilon); i = i + 1) i][leng - 1] 
+    )
+    is_undef(maybe_last);
 
 function _in_shape_interpolate_x(y, p1, p2) = 
     p1[1] == p2[1] ? p1[0] : (
