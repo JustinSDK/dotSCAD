@@ -17,7 +17,7 @@ module helix_extrude(shape_pts, radius, levels, level_dist,
     function reverse(vt) = 
         let(leng = len(vt))
         [
-            for(i = [0:leng - 1])
+            for(i = 0; i < leng; i = i + 1)
                 vt[leng - 1 - i]
         ];                         
                          
@@ -44,7 +44,7 @@ module helix_extrude(shape_pts, radius, levels, level_dist,
     );
 
     clk_a = r_dir == 1 ? 0 : 180;
-    angles = [for(i = [0:len(path_points) - 1]) [90 + initial_angle, 0, clk_a + angle_step * i]];
+    angles = [for(i = 0; i < len(path_points); i = i + 1) [90 + initial_angle, 0, clk_a + angle_step * i]];
     
     sections = cross_sections(shape_pts, path_points, angles, twist, scale);
 
