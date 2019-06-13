@@ -15,12 +15,14 @@ module polysections(sections, triangles = "SOLID") {
     function side_indexes(sects, begin_idx = 0) = 
         let(       
             leng_sects = len(sects),
-            leng_pts_sect = len(sects[0])
+            leng_pts_sect = len(sects[0]),
+            range_j = [begin_idx:leng_pts_sect:begin_idx + (leng_sects - 2) * leng_pts_sect],
+            range_i = [0:leng_pts_sect - 1]
         ) 
         concat(
             [
-                for(j = [begin_idx:leng_pts_sect:begin_idx + (leng_sects - 2) * leng_pts_sect])
-                    for(i = [0:leng_pts_sect - 1]) 
+                for(j = range_j)
+                    for(i = range_i) 
                         [
                             j + i, 
                             j + (i + 1) % leng_pts_sect, 
@@ -28,8 +30,8 @@ module polysections(sections, triangles = "SOLID") {
                         ]
             ],
             [
-                for(j = [begin_idx:leng_pts_sect:begin_idx + (leng_sects - 2) * leng_pts_sect])
-                    for(i = [0:leng_pts_sect - 1]) 
+                for(j = range_j)
+                    for(i = range_i) 
                         [
                             j + i, 
                             j + (i + 1) % leng_pts_sect + leng_pts_sect , 
@@ -48,8 +50,8 @@ module polysections(sections, triangles = "SOLID") {
         )
         found_at_i <= 0 ? false : 
             l_sect == concat(
-                [for(i = [found_at_i:leng_pts_sect-1]) f_sect[i]],
-                [for(i = [0:found_at_i - 1]) f_sect[i]]
+                [for(i = found_at_i; i < leng_pts_sect; i = i + 1) f_sect[i]],
+                [for(i = 0; i < found_at_i; i = i + 1) f_sect[i]]
             ); 
 
     function to_v_pts(sects) = 
@@ -87,9 +89,10 @@ module polysections(sections, triangles = "SOLID") {
             // hook for testing
             test_polysections_solid(v_pts, f_idxes);
         } else {
-            first_idxes = [for(i = [0:leng_pts_sect - 1]) leng_pts_sect - 1 - i];  
+            range_i = [0:leng_pts_sect - 1];
+            first_idxes = [for(i = range_i) leng_pts_sect - 1 - i];  
             last_idxes = [
-                for(i = [0:leng_pts_sect - 1]) 
+                for(i = range_i) 
                     i + leng_pts_sect * (leng_sects - 1)
             ];    
 
@@ -113,16 +116,16 @@ module polysections(sections, triangles = "SOLID") {
 
         function strip_sects(begin_idx, end_idx) = 
             [
-                for(i = [0:leng_sects - 1]) 
+                for(i = 0; i < leng_sects; i = i + 1) 
                     [
-                        for(j = [begin_idx:end_idx])
+                        for(j = begin_idx; j <= end_idx; j = j + 1)
                             sects[i][j]
                     ]
             ]; 
 
         function first_idxes() = 
             [
-                for(i =  [0:half_leng_sect - 1]) 
+                for(i = 0; i < half_leng_sect; i = i + 1) 
                     [
                        i,
                        i + half_leng_v_pts,
@@ -133,7 +136,7 @@ module polysections(sections, triangles = "SOLID") {
 
         function last_idxes(begin_idx) = 
             [
-                for(i =  [0:half_leng_sect - 1]) 
+                for(i = 0; i < half_leng_sect; i = i + 1) 
                     [
                        begin_idx + i,
                        begin_idx + (i + 1) % half_leng_sect,
