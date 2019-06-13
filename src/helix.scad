@@ -25,10 +25,11 @@ function helix(radius, levels, level_dist, vt_dir = "SPI_DOWN", rt_dir = "CT_CLK
         r_step = r_diff / (levels * _frags),
         a_step = 360 / _frags * rt_d,
         begin_r = vt_dir == "SPI_DOWN" ? r2 : r1,
-        begin_h = vt_dir == "SPI_DOWN" ? h : 0
+        begin_h = vt_dir == "SPI_DOWN" ? h : 0,
+        end_i = _frags * levels
     )
     [
-        for(i = [0:_frags * levels]) 
+        for(i = 0; i <= end_i; i = i + 1) 
             let(r = begin_r + r_step * i, a = a_step * i)
                 [r * cos(a), r * sin(a), begin_h - h_step * i]
     ];
