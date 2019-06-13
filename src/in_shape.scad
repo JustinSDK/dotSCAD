@@ -8,6 +8,7 @@
 *
 **/
 
+include <__private__/__to3d.scad>;
 include <__private__/__lines_from.scad>;
 include <__private__/__in_line.scad>;
 
