@@ -18,10 +18,11 @@ function path_scaling_sections(shape_pts, edge_path) =
             for(p = edge_path) 
             let(s = norm([p[0], p[1], 0]) / base_leng)
             m_scaling([s, s, 1])
-        ]
+        ],
+        leng_edge_path = len(edge_path)
     )
     __reverse([
-        for(i = [0:len(edge_path) - 1])
+        for(i = 0; i < leng_edge_path; i = i + 1)
         [
             for(p = shape_pts) 
             let(scaled_p = scaling_matrice[i] * [p[0], p[1], edge_path[i][2], 1])
