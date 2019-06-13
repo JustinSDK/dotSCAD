@@ -26,7 +26,7 @@ function _fast_fibonacci(nth) =
     
 function _remove_same_pts(pts1, pts2) = 
     pts1[len(pts1) - 1] == pts2[0] ? 
-        concat(pts1, [for(i = [1:len(pts2) - 1]) pts2[i]]) : 
+        concat(pts1, [for(i = 1; i < len(pts2); i = i + 1) pts2[i]]) : 
         concat(pts1, pts2);    
 
 function _golden_spiral_from_ls_or_eql_to(from, to, point_distance, rt_dir) = 
@@ -38,11 +38,12 @@ function _golden_spiral_from_ls_or_eql_to(from, to, point_distance, rt_dir) =
         circle_pts = circle_path(radius = f1, n = $fn / 4 + 1),
         len_pts = len(circle_pts),
         a_step = 360 / $fn * rt_dir,
+        range_i = [0:len_pts - 1],
         arc_points_angles = (rt_dir == 1 ? [
-            for(i = [0:len_pts - 1])
+            for(i = range_i)
                 [circle_pts[i], a_step * i] 
         ] : [
-            for(i = [0:len_pts - 1]) let(idx = len_pts - i - 1)
+            for(i = range_i) let(idx = len_pts - i - 1)
                 [circle_pts[idx], a_step * i] 
         ]),
         offset = f2 - f1
