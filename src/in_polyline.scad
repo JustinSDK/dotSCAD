@@ -18,5 +18,5 @@ function _in_polyline_sub(pts, pt, epsilon, iend, i = 0) =
     );
 
 function in_polyline(line_pts, pt, epsilon = 0.0001) = 
-    _in_polyline_sub(line_pts, pt, epsilon, len(pts) - 1);
+    _in_polyline_sub(line_pts, pt, epsilon, len(line_pts) - 1);
     
