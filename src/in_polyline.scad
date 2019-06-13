@@ -11,12 +11,11 @@
 include <__private__/__to3d.scad>;
 include <__private__/__in_line.scad>;
 
-function _in_polyline_sub(pts, pt, epsilon, iend, i = 0) = 
-    i == iend ? false : (
-        __in_line([pts[i], pts[i + 1]], pt, epsilon) ? true :
-            _in_polyline_sub(pts, pt, epsilon, iend, i + 1)
-    );
-
 function in_polyline(line_pts, pt, epsilon = 0.0001) = 
-    _in_polyline_sub(line_pts, pt, epsilon, len(line_pts) - 1);
+    let(
+        leng = len(line_pts),
+        iend = leng - 1,
+        maybe_last = [for(i = 0; i < iend && !__in_line([line_pts[i], line_pts[i + 1]], pt, epsilon); i = i + 1) i][leng - 2]
+    )
+    is_undef(maybe_last);
     
