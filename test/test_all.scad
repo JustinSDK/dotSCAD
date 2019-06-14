@@ -26,6 +26,7 @@ include <test_parse_number.scad>;
 include <test_cross_sections.scad>;
 include <test_paths2sections.scad>;
 include <test_in_polyline.scad>;
+include <test_triangulate.scad>;
 
 // Path
 include <test_circle_path.scad>;
