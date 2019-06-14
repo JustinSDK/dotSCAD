@@ -34,7 +34,7 @@ function shape_cyclicpolygon(sides, circle_r, corner_r) =
     concat(
         first_corner, 
         [
-            for(side = [1:sides - 1])
+            for(side = 1; side < sides; side = side + 1)
                 for(pt = first_corner)
                     let(
                         a = frag_a * side,
