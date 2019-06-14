@@ -9,8 +9,11 @@
 **/ 
 
 function sphere_spiral(radius, za_step, z_circles = 1, begin_angle = 0, end_angle = 0, vt_dir = "SPI_DOWN", rt_dir = "CT_CLK") = 
+    let(
+        a_end = 90 * z_circles - end_angle
+    )
     [
-        for(a = [begin_angle:za_step:90 * z_circles - end_angle]) 
+        for(a = begin_angle; a <= a_end; a = a + za_step) 
             let(
                 ya = vt_dir == "SPI_DOWN" ? (-90 + 2 * a / z_circles) : (90 + 2 * a / z_circles),
                 za = (rt_dir == "CT_CLK" ? 1 : -1) * a,
