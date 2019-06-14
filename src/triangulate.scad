@@ -47,16 +47,15 @@ function _triangulate_remove_v(indices, v, num_of_vertices) =
     let(
         nv_minuns_one = num_of_vertices - 1
     )
-    v == 0 ? [for(i = [1:nv_minuns_one]) indices[i]] : (
-        v == nv_minuns_one ? [for(i = [0:v - 1]) indices[i]] : concat(
-            [for(i = [0:v - 1]) indices[i]], 
-            [for(i = [v + 1:nv_minuns_one]) indices[i]]
+    v == 0 ? [for(i = 1; i <= nv_minuns_one; i = i + 1) indices[i]] : (
+        v == nv_minuns_one ? [for(i = 0; i < v; i = i + 1) indices[i]] : concat(
+            [for(i = 0; i < v; i = i + 1) indices[i]], 
+            [for(i = v + 1; i <= nv_minuns_one; i = i + 1) indices[i]]
         )
     );
     
 function _triangulate_zero_or_value(num_of_vertices, value) = 
     num_of_vertices <= value ? 0 : value;
-
 
 function _triangulate_real_triangulate_sub(shape_pts, collector, indices, v, num_of_vertices, count, epsilon) = 
     let(
@@ -96,7 +95,7 @@ function triangulate(shape_pts,  epsilon = 0.0001) =
     let(
         num_of_vertices = len(shape_pts),
         v = num_of_vertices - 1,
-        indices = [for(vi = [0:v]) vi],
+        indices = [for(vi = 0; vi <= v; vi = vi + 1) vi],
         count = 2 * num_of_vertices        
     )
     num_of_vertices < 3 ? [] : _triangulate_real_triangulate(shape_pts, [], indices, v, num_of_vertices, count, epsilon);
