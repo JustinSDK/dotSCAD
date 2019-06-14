@@ -36,6 +36,7 @@ include <test_helix.scad>;
 include <test_golden_spiral.scad>;
 include <test_archimedean_spiral.scad>;
 include <test_sphere_spiral.scad>;
+include <test_torus_knot.scad>;
 
 // Extrude
 include <test_ellipse_extrude.scad>;
