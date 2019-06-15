@@ -11,10 +11,6 @@
 include <__private__/__to3d.scad>;
 include <__private__/__angy_angz.scad>;
 
-// Becuase of improving the performance, this module requires m_rotation.scad which doesn't require in dotSCAD 1.0. 
-// For backward compatibility, I directly include m_rotation here.
-include <m_rotation.scad>;
-
 module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale = 1.0, closed = false, method = "AXIS_ANGLE") {
     sh_pts = len(shape_pts[0]) == 3 ? shape_pts : [for(p = shape_pts) __to3d(p)];
     pth_pts = len(path_pts[0]) == 3 ? path_pts : [for(p = path_pts) __to3d(p)];
