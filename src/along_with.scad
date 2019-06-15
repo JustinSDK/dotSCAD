@@ -120,13 +120,8 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
 
     // >>> begin: modules and functions for "EULER-ANGLE"
 
-    function _euler_angle_path_angles(pts, end_i, i = 0) = 
-        i == end_i ?
-                [] : 
-                concat(
-                    [__angy_angz(pts[i], pts[i + 1])], 
-                    _euler_angle_path_angles(pts, end_i, i + 1)
-                );
+    function _euler_angle_path_angles(pts, end_i) = 
+        [for(i = 0; i < end_i; i = i + 1) [__angy_angz(pts[i], pts[i + 1])]];
             
     function euler_angle_path_angles(children) = 
        let(
