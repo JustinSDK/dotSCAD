@@ -2,8 +2,9 @@
 
 # v1.3.1
 - Bugfixes
-  - `in_polyline`: wrong parameter name.
-  - `in_shape`: missing dependency.
+  - `in_polyline`: Wrong parameter name.
+  - `in_shape`: Missing dependency.
+  - `along_with`: Avoid warning when using 2D points.
   
 # v1.3
 - New modules:
