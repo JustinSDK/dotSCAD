@@ -20,7 +20,7 @@ Puts children along the given path. If there's only one child, it will put the c
 	points = circle_path(radius = 50);
 	
 	along_with(points) 
-	    sphere(5, center = true);
+	    sphere(5);
 
 ![along_with](images/lib-along_with-1.JPG)
 
