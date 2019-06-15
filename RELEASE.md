@@ -1,5 +1,10 @@
 > Version numbers are based on [Semantic Versioning](https://semver.org/).
 
+# v1.3.1
+- Bugfixes
+  - `in_polyline`: wrong parameter name.
+  - `in_shape`: missing dependency.
+  
 # v1.3
 - New modules:
   - [bend_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-bend_extrude.html)
