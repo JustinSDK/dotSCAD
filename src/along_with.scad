@@ -48,16 +48,16 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
     ];    
 
     function axis_angle_local_ang_vects(j) = 
-        j == 0 ? [] : axis_angle_local_ang_vects_sub(j);
-    
-    function axis_angle_local_ang_vects_sub(j) =
-        let(
-            vt0 = points[j] - points[j - 1],
-            vt1 = points[j + 1] - points[j],
-            a = acos((vt0 * vt1) / (norm(vt0) * norm(vt1))),
-            v = cross(vt0, vt1)
-        )
-        concat([[a, v]], axis_angle_local_ang_vects(j - 1));
+        [
+            for(i = j; i > 0; i = i - 1) 
+            let(
+                vt0 = points[i] - points[i - 1],
+                vt1 = points[i + 1] - points[i],
+                a = acos((vt0 * vt1) / (norm(vt0) * norm(vt1))),
+                v = cross(vt0, vt1)
+            )
+            [a, v]
+        ];
 
     function axis_angle_cumulated_rot_matrice(i, rot_matrice) = 
         let(
