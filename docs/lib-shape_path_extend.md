@@ -52,6 +52,7 @@ It depends on the `rotate_p` function. Remember to include "rotate_p.scad".
 	include <shape_path_extend.scad>;
 
 	include <polysections.scad>;
+    include <m_rotation.scad>;
 	include <path_extrude.scad>;
 		
 		

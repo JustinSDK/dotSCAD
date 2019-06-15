@@ -35,6 +35,7 @@ Move 2D outlines outward or inward by a given amount. Each point of the offsette
 	include <bijection_offset.scad>;
 	include <rotate_p.scad>;
 	include <polysections.scad>;
+    include <m_rotation.scad>;
 	include <path_extrude.scad>;
 	include <bezier_curve.scad>;
 

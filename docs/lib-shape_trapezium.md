@@ -24,6 +24,7 @@ Returns shape points of an isosceles trapezoid. They can be used with xxx_extrud
 	include <shape_trapezium.scad>;
 	include <rotate_p.scad>;
 	include <polysections.scad>;
+    include <m_rotation.scad>;
 	include <path_extrude.scad>;
 	include <bezier_curve.scad>;
 

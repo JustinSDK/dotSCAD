@@ -20,6 +20,7 @@ When using this module, you should use points to represent the 2D shape. If your
 
 	include <rotate_p.scad>;
 	include <polysections.scad>;
+    include <m_rotation.scad>;
 	include <path_extrude.scad>;
 	include <bezier_curve.scad>;
 
@@ -83,6 +84,7 @@ When using this module, you should use points to represent the 2D shape. If your
 
 	include <rotate_p.scad>;
 	include <polysections.scad>;
+    include <m_rotation.scad>;
 	include <path_extrude.scad>;
 	include <bezier_curve.scad>;
 	
@@ -157,6 +159,7 @@ If you have only points, what `path_extrude` can do is to **guess** data about r
 	include <rotate_p.scad>;
 	include <polysections.scad>;
 	include <helix.scad>;
+    include <m_rotation.scad>;
 	include <path_extrude.scad>;
 
 	shape_pts = [
@@ -183,6 +186,7 @@ You might think this is wrong. Actually, it's not. It's the correct/default beha
 	include <rotate_p.scad>;
 	include <polysections.scad>;
 	include <helix.scad>;
+    include <m_rotation.scad>;
 	include <path_extrude.scad>;
 
 	shape_pts = [
@@ -208,6 +212,7 @@ You might think this is wrong. Actually, it's not. It's the correct/default beha
 
 	include <rotate_p.scad>;
 	include <polysections.scad>;
+    include <m_rotation.scad>;
 	include <path_extrude.scad>;
 
 	shape_pts = [[5, -5], [5, 5], [-5, 5], [-5, -5]];
@@ -234,6 +239,7 @@ The problem doesn't happen when `method` is `"AXIS_ANGLE"`.
 
 	include <rotate_p.scad>;
 	include <polysections.scad>;
+    include <m_rotation.scad>;
 	include <path_extrude.scad>;
 
 	shape_pts = [[5, -5], [5, 5], [-5, 5], [-5, -5]];
@@ -265,6 +271,7 @@ So, which is the correct method? Both methods are correct when you provide only 
 	include <shape_pentagram.scad>;
 	include <rotate_p.scad>;
 	include <polysections.scad>;
+    include <m_rotation.scad>;
 	include <path_extrude.scad>;
 	include <torus_knot.scad>;
 
