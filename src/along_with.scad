@@ -100,7 +100,8 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
     }
 
     module axis_angle_align_with_pts_init(a, s) {
-        angleyz = __angy_angz(points[0], points[1]);
+        angleyz = __angy_angz(__to3d(points[0]), __to3d(points[1]));
+
         rotate([0, -angleyz[0], angleyz[1]])
             rotate([90, 0, -90])
                 rotate(a)
