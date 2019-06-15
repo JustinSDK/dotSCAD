@@ -11,10 +11,6 @@
 include <__private__/__angy_angz.scad>;
 include <__private__/__to3d.scad>;
 
-// Becuase of improving the performance, this module requires m_rotation.scad which doesn't require in dotSCAD 1.0. 
-// For backward compatibility, I directly include m_rotation here.
-include <m_rotation.scad>;
-
 module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE") {
     leng_points = len(points);
     leng_points_minus_one = leng_points - 1;
