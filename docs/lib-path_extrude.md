@@ -50,6 +50,7 @@ When using this module, you should use points to represent the 2D shape. If your
 
 	include <rotate_p.scad>;
 	include <polysections.scad>;
+    include <m_rotation.scad>;
 	include <path_extrude.scad>;
 	include <bezier_curve.scad>;
 

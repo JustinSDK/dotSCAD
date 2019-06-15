@@ -12,6 +12,7 @@ Puts children along the given path. If there's only one child, it will put the c
 
 ## Examples
 
+    include <m_rotation.scad>;
 	include <along_with.scad>;
 	include <circle_path.scad>;
 	
@@ -24,6 +25,7 @@ Puts children along the given path. If there's only one child, it will put the c
 
 ![along_with](images/lib-along_with-1.JPG)
 
+    include <m_rotation.scad>;
 	include <along_with.scad>;
 	include <circle_path.scad>;
 
@@ -44,6 +46,7 @@ Puts children along the given path. If there's only one child, it will put the c
 
 ![along_with](images/lib-along_with-2.JPG)
 
+    include <m_rotation.scad>;
 	include <along_with.scad>;
 	include <circle_path.scad>;
 	include <rotate_p.scad>;
@@ -65,6 +68,7 @@ Puts children along the given path. If there's only one child, it will put the c
 
 ![along_with](images/lib-along_with-3.JPG)
 
+    include <m_rotation.scad>;
 	include <bezier_curve.scad>;
 	include <along_with.scad>;
 
