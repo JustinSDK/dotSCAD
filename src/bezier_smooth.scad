@@ -37,7 +37,7 @@ function _corner_ctrl_pts(round_d, p1, p2, p3) =
 function _bezier_corner(round_d, t_step, p1, p2, p3) =
     bezier_curve(t_step, _corner_ctrl_pts(round_d, p1, p2, p3));
 
-function _recursive_bezier_smooth(pts, round_d, t_step, leng, i = 0) =
+function _recursive_bezier_smooth(pts, round_d, t_step, leng) =
     let(end_i = leng - 2)
     [
         for(i = 0; i < end_i; i = i + 1) 
