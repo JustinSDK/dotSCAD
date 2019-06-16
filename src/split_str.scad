@@ -9,14 +9,13 @@
 **/ 
    
 function _split_t_by(idxs, t) =
-    let(end_i = len(idxs) - 1)
+    let(leng = len(idxs))
     concat(
         [sub_str(t, 0, idxs[0])],
         [
-            for(i = 0; i < end_i; i = i + 1)
+            for(i = 0; i < leng; i = i + 1)
                 sub_str(t, idxs[i] + 1, idxs[i + 1])
-        ],
-        sub_str(t, idxs[end_i] + 1)
+        ]
     );
              
 function split_str(t, delimiter) = 
