@@ -30,13 +30,9 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
         ];
             
         function rotate_pts(pts, a, v) = [for(p = pts) rotate_p(p, a, v)];
-        
-        function scale_step() =
-            let(s =  (scale - 1) / len_path_pts_minus_one)
-            [s, s, s];  
 
         scale_step_vt = is_num(scale) ? 
-            scale_step() : 
+            let(s =  (scale - 1) / len_path_pts_minus_one) [s, s, s] : 
             [
                 (scale[0] - 1) / len_path_pts_minus_one, 
                 (scale[1] - 1) / len_path_pts_minus_one,
@@ -127,7 +123,7 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
                     ]
             ];        
 
-        function sections() =
+        sections =
             let(
                 fst_section = 
                     translate_pts(local_rotate_section(0, 0, [1, 1, 1]), pth_pts[0]),
@@ -140,13 +136,11 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
                         )
                 ]
             ) concat([fst_section], remain_sections);
-        
-        sects = sections();
 
         calculated_sections =
             closed && pth_pts[0] == pth_pts[len_path_pts_minus_one] ?
-                concat(sects, [sects[0]]) : // round-robin
-                sects;
+                concat(sections, [sections[0]]) : // round-robin
+                sections;
         
         polysections(
             calculated_sections,
@@ -154,7 +148,7 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
         );   
 
         // hook for testing
-        test_path_extrude(sects);        
+        test_path_extrude(sections);        
     }
 
     module euler_angle_path_extrude() {
