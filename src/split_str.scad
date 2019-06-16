@@ -8,12 +8,17 @@
 *
 **/ 
    
-function _split_t_by(idxs, t, ts = [], i = -1) = 
-    i == -1 ? _split_t_by(idxs, t, [sub_str(t, 0, idxs[0])], i + 1) : (
-        i == len(idxs) - 1 ? concat(ts, sub_str(t, idxs[i] + 1)) : 
-            _split_t_by(idxs, t, concat(ts, sub_str(t, idxs[i] + 1, idxs[i + 1])), i + 1)
-    );        
-
+function _split_t_by(idxs, t) =
+    let(end_i = len(idxs) - 1)
+    concat(
+        [sub_str(t, 0, idxs[0])],
+        [
+            for(i = 0; i < end_i; i = i + 1)
+                sub_str(t, idxs[i] + 1, idxs[i + 1])
+        ],
+        sub_str(t, idxs[end_i] + 1)
+    );
+             
 function split_str(t, delimiter) = 
     len(search(delimiter, t)) == 0 ? 
         [t] : _split_t_by(search(delimiter, t, 0)[0], t);  
