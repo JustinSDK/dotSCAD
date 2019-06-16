@@ -28,6 +28,7 @@ include <test_paths2sections.scad>;
 include <test_in_polyline.scad>;
 include <test_triangulate.scad>;
 include <test_trim_shape.scad>;
+include <test_midpt_smooth.scad>;
 
 // Path
 include <test_circle_path.scad>;
