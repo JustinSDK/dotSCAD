@@ -37,15 +37,12 @@ function _glued2circles_bezier(radius, centre_dist, tangent_angle, t_step, ctrl_
         ]
     );    
 
-function _glued2circles_lower_half_curve(curve_pts, leng, i = 0) =
-    i < leng ? (
-        curve_pts[leng - 1 - i][0] >= 0 ? 
-            concat(
-                [curve_pts[leng - 1 - i]], 
-                _glued2circles_lower_half_curve(curve_pts, leng, i + 1)
-            ) : 
-            _glued2circles_lower_half_curve(curve_pts, leng, i + 1)
-    ) : [];    
+function _glued2circles_lower_half_curve(curve_pts, leng) =
+    [
+        for(i = 0; i < leng; i = i + 1)
+        let(p = curve_pts[leng - 1 - i])
+        if(p[0] >= 0) p
+    ]; 
     
 function _glued2circles_half_glued_circle(radius, centre_dist, tangent_angle, t_step) =
     let(
