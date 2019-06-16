@@ -40,7 +40,7 @@ module polysections(sections, triangles = "SOLID") {
             ]      
         );
 
-    function search_at(f_sect, p, leng_pts_sect, i = 0) =
+    function search_at(f_sect, p, leng_pts_sect, i = 0) =  
         i < leng_pts_sect ?
             (p == f_sect[i] ? i : search_at(f_sect, p, leng_pts_sect, i + 1)) : -1;
     
@@ -74,11 +74,11 @@ module polysections(sections, triangles = "SOLID") {
                     pt
         ];
 
-        function begin_end_the_same() =
+        begin_end_the_same =
             first_sect == last_sect || 
             the_same_after_twisting(first_sect, last_sect, leng_pts_sect);
 
-        if(begin_end_the_same()) {
+        if(begin_end_the_same) {
             f_idxes = side_indexes(sects);
 
             polyhedron(
@@ -164,7 +164,7 @@ module polysections(sections, triangles = "SOLID") {
         
         leng_pts_sect = len(first_outer_sect);
 
-        function begin_end_the_same() = 
+        begin_end_the_same = 
            (first_outer_sect == last_outer_sect && first_inner_sect == last_inner_sect) ||
            (
                the_same_after_twisting(first_outer_sect, last_outer_sect, leng_pts_sect) && 
@@ -173,7 +173,7 @@ module polysections(sections, triangles = "SOLID") {
 
         v_pts = concat(outer_v_pts, inner_v_pts);
 
-        if(begin_end_the_same()) {
+        if(begin_end_the_same) {
             f_idxes = concat(outer_idxes, inner_idxes);
 
             polyhedron(
