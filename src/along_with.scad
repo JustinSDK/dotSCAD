@@ -19,18 +19,12 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
     angles_defined = !is_undef(angles);
 
     scale_step_vt = is_num(scale) ? 
-        scale_step() :
+        let(s =  (scale - 1) / leng_points_minus_one) [s, s, s] :
         [
             (scale[0] - 1) / leng_points_minus_one, 
             (scale[1] - 1) / leng_points_minus_one,
             is_undef(scale[2]) ? 0 : (scale[2] - 1) / leng_points_minus_one
         ]; 
-
-
-    function scale_step() =
-        let(s =  (scale - 1) / leng_points_minus_one)
-        [s, s, s];
-
 
     /* 
          Sadly, children(n) cannot be used with inner modules 
