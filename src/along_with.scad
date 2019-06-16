@@ -135,6 +135,7 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
                     rotate(twist_step_a * i) 
                          scale([1, 1, 1] + scale_step_vt * i) 
                              children(0);
+        test_along_with_angles(angs);
     }
 
     // <<< end: modules and functions for "EULER-ANGLE"
@@ -192,4 +193,8 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
         }         
     }
     
+}
+
+module test_along_with_angles(angles) {
+
 }
