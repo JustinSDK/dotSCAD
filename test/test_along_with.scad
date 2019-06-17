@@ -15,10 +15,9 @@ module test_along_with_default_angles() {
         expected_angles = [[0, 0, 97.5], [0, 0, 97.5], [0, 0, 112.5], [0, 0, 127.5], [0, 0, 142.5], [0, 0, 157.5], [0, 0, 172.5], [0, 0, -172.5], [0, 0, -157.5], [0, 0, -142.5], [0, 0, -127.5], [0, 0, -112.5], [0, 0, -97.5], [0, 0, -82.5], [0, 0, -67.5], [0, 0, -52.5], [0, 0, -37.5], [0, 0, -22.5], [0, 0, -7.5], [0, 0, 7.5], [0, 0, 22.5], [0, 0, 37.5], [0, 0, 52.5], [0, 0, 67.5]];
         assert($fn == len(angles));
         assertEqualPoints(expected_angles, angles);
-        
     }
 
-    along_with(points) 
+    along_with(points, method = "EULER_ANGLE") 
         sphere(5);
 
 }
@@ -37,12 +36,11 @@ module test_along_with_children() {
     module test_along_with_angles(angles) {
         expected_angles = [[0, 0, 97.5], [0, 0, 97.5], [0, 0, 112.5], [0, 0, 127.5], [0, 0, 142.5], [0, 0, 157.5], [0, 0, 172.5], [0, 0, -172.5]];
         
-        assertEqual(8, len(angles)); 
+        assert(8 == len(angles)); 
         assertEqualPoints(expected_angles, angles);
-
     }
 
-    along_with(points) {
+    along_with(points, method = "EULER_ANGLE") {
         linear_extrude(10, center = true) text("A", valign = "center", halign = "center");
         linear_extrude(5, center = true) circle(2);
         sphere(1);
