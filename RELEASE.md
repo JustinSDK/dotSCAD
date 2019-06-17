@@ -1,5 +1,18 @@
 > Version numbers are based on [Semantic Versioning](https://semver.org/).
 
+# v1.3.2
+- All-in-one source file.
+  - You can use `include <dotSCAD.scad>;` or `use <dotSCAD.scad>;` if you really don't want to care about dependencies.
+
+- Bugfixes
+  - `along_with`: Wrong variable scope.
+  
+# v1.3.1
+- Bugfixes
+  - `in_polyline`: Wrong parameter name.
+  - `in_shape`: Missing dependency.
+  - `along_with`: Avoid warning when using 2D points.
+  
 # v1.3
 - New modules:
   - [bend_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-bend_extrude.html)
