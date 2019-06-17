@@ -194,9 +194,9 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
         }
     }
     else if(method == "EULER_ANGLE") {
+        angs = angles_defined ? angles : euler_angle_path_angles($children);
+
         if($children == 1) { 
-            angs = angles_defined ? angles : euler_angle_path_angles($children);
-            
             for(i = [0:leng_points_minus_one]) {
                 euler_angle_align(i, angs) children(0);
             }
@@ -205,8 +205,6 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
             for(i = [0:min(leng_points, $children) - 1]) {
                 euler_angle_align(i, angs) children(i);
             }
-            
         }         
     }
-    
 }
