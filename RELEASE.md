@@ -2,7 +2,7 @@
 
 # v1.3.2
 - All-in-one source file.
-  - You can use `include <dotSCAD.scad>;` or `use <dotSCAD.scad>;` if you don't want to care about dependencies.
+  - You can use `include <dotSCAD.scad>;` or `use <dotSCAD.scad>;` if you really don't want to care about dependencies.
 
 - Bugfixes
   - `along_with`: Wrong variable scope.
