@@ -2,8 +2,6 @@
 
 Given a path, the `bezier_smooth` function uses bazier curves to smooth all corners. You can use it to create smooth lines or rounded shapes.
 
-Dependencies: the `bezier_curve` function.
-
 ## Parameters
 
 - `path_pts` : A list of points represent the path.

@@ -1,6 +1,6 @@
 # polyline2d
 
-Creates a polyline from a list of `x`, `y` coordinates. When the end points are `CAP_ROUND`, you can use `$fa`, `$fs` or `$fn` to controll the circle module used internally. It depends on the `line2d` module so you have to `include` line2d.scad.
+Creates a polyline from a list of `x`, `y` coordinates. When the end points are `CAP_ROUND`, you can use `$fa`, `$fs` or `$fn` to controll the circle module used internally.
 
 ## Parameters
 

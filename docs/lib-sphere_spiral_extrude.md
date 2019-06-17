@@ -4,8 +4,6 @@ Extrudes a 2D shape along the path of a sphere spiral.
 
 When using this module, you should use points to represent the 2D shape. If your 2D shape is not solid, indexes of triangles are required. See [polysections](https://openhome.cc/eGossip/OpenSCAD/lib-polysections.html) for details.
 
-Dependencies: `rotate_p`, `sphere_spiral`, `cross_sections`, `polysections`.
-
 ## Parameters
 
 - `shape_pts` : A list of points represent a shape. See the example below.

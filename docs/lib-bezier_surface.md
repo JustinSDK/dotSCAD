@@ -2,8 +2,6 @@
 
 Given a set of control points, the `bezier_surface` function returns points of the Bézier surface. Combined with the `function_grapher` module defined in my library, you can create a Bézier surface.
 
-It depends on the `bezier_curve` function so remember to include bezier_curve.scad.
-
 ## Parameters
 
 - `t_step` : The distance between two points of the Bézier path.

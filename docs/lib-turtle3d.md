@@ -4,8 +4,6 @@ An OpenSCAD implementation of 3D Turtle Graphics. When using the function, imagi
 
 For more details, please see [3D turtle graphics](https://openhome.cc/eGossip/OpenSCAD/3DTurtleGraphics.html). 
 
-
-
 ## Parameters
 
 - `cmd` : A string command. Different commands use different numbers of arguments. 

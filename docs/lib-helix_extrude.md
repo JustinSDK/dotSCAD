@@ -6,8 +6,6 @@ When using this module, you should use points to represent the 2D shape. If your
 
 Its `$fa`, `$fs` and `$fn` parameters are consistent with the `cylinder` module. 
 
-Dependencies: `helix`, `rotate_p`, `cross_sections`, `polysections`.
-
 ## Parameters
 
 - `shape_pts` : A list of points represent a shape. See the example below.

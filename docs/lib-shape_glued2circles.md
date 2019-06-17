@@ -2,8 +2,6 @@
 
 Returns shape points of two glued circles. They can be used with xxx_extrude modules of dotSCAD. The shape points can be also used with the built-in polygon module. 
 
-Dependencies: `rotate_p`, `bezier_curve`, `shape_pie`.
-
 ## Parameters
 
 - `radius` : The radius of two circles.

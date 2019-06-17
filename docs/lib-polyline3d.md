@@ -1,6 +1,6 @@
 # polyline3d
 
-Creates a polyline from a list of `[x, y, z]` coordinates. It depends on the `line3d` module so you have to `include` line3d.scad.
+Creates a polyline from a list of `[x, y, z]` coordinates. 
 
 ## Parameters
 

@@ -4,8 +4,6 @@ Rotational extrusion spins a 2D shape around the Z-axis. It's similar to the bui
 
 Because we cannot retrieve the shape points of built-in 2D modules, it's necessary to provide `shapt_pts` and `triangles`. 
 
-This module depends on `rotate_p`, `cross_section` and `polysections`. Remember to include corresponding ".scad".
-
 If your 2D shape is not solid, indexes of triangles are required. See [polysections](https://openhome.cc/eGossip/OpenSCAD/lib-polysections.html) for details.
 
 ## Parameters

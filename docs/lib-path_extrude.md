@@ -2,8 +2,6 @@
 
 It extrudes a 2D shape along a path. This module is suitable for a path created by a continuous function.
 
-It depends on the `rotate_p` function and the `polysections` module. Remember to include "rotate_p.scad" and "polysections.scad".
-
 When using this module, you should use points to represent the 2D shape. If your 2D shape is not solid, indexes of triangles are required. See [polysections](https://openhome.cc/eGossip/OpenSCAD/lib-polysections.html) for details.
 
 ## Parameters

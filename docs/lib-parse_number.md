@@ -1,6 +1,6 @@
 # parse_number
 
-Parses the string argument as an number. It depends on the `split_str` and the `sub_str` functions so remember to include split_str.scad and sub_str.scad.
+Parses the string argument as an number. 
 
 ## Parameters
 

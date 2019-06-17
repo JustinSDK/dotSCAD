@@ -1,6 +1,6 @@
 # split_str
 
-Splits the given string around matches of the given delimiting character. It depeneds on the `sub_str` function so remember to `include <sub_str.scad>`.
+Splits the given string around matches of the given delimiting character. 
 
 ## Parameters
 
