@@ -115,7 +115,7 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
     // >>> begin: modules and functions for "EULER-ANGLE"
 
     function _euler_angle_path_angles(pts, end_i) = 
-        [for(i = 0; i < end_i; i = i + 1) [__angy_angz(pts[i], pts[i + 1])]];
+        [for(i = 0; i < end_i; i = i + 1) __angy_angz(pts[i], pts[i + 1])];
             
     function euler_angle_path_angles(children) = 
        let(
@@ -135,7 +135,6 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
                     rotate(twist_step_a * i) 
                          scale([1, 1, 1] + scale_step_vt * i) 
                              children(0);
-        test_along_with_angles(angs);
     }
 
     // <<< end: modules and functions for "EULER-ANGLE"
@@ -178,21 +177,20 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
         }
     }
     else if(method == "EULER_ANGLE") {
+        angs = angles_defined ? angles : euler_angle_path_angles($children);
+        
         if($children == 1) { 
-            angs = angles_defined ? angles : euler_angle_path_angles($children);
-            
             for(i = [0:leng_points_minus_one]) {
                 euler_angle_align(i, angs) children(0);
             }
-            
         } else {
             for(i = [0:min(leng_points, $children) - 1]) {
                 euler_angle_align(i, angs) children(i);
             }
-            
-        }         
+        }    
+
+        test_along_with_angles(angs);    
     }
-    
 }
 
 module test_along_with_angles(angles) {
