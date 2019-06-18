@@ -65,3 +65,6 @@ include <test_golden_spiral_extrude.scad>;
 include <test_archimedean_spiral_extrude.scad>;
 include <test_sphere_spiral_extrude.scad>;
 include <test_path_extrude.scad>;
+
+// Pixel
+include <test_px_line.scad>;
