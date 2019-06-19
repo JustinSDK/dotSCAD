@@ -68,3 +68,4 @@ include <test_path_extrude.scad>;
 
 // Pixel
 include <test_px_line.scad>;
+include <test_px_polyline.scad>;
