@@ -125,6 +125,10 @@ If you really don't want to care about dependencies, `include <dotSCAD.scad>;` o
 	- [m_mirror](https://openhome.cc/eGossip/OpenSCAD/lib-m_mirror.html)
 	- [m_shearing](https://openhome.cc/eGossip/OpenSCAD/lib-m_shearing.html)
 
+- Pixel
+    - px_line
+	- px_polyline
+
 - Other
     - [turtle2d](https://openhome.cc/eGossip/OpenSCAD/lib-turtle2d.html)
     - [turtle3d](https://openhome.cc/eGossip/OpenSCAD/lib-turtle3d.html)
