@@ -65,7 +65,6 @@ function _px_line_xdominant_sub(x, y, z, endx, a, s, yd, zd) =
 // y-dominant
 function _px_line_ydominant_x(x, xd, sx) = xd >= 0 ? x + sx : x;
 function _px_line_ydominant_xd(xd, ax, ay) = (xd >= 0 ? xd - ay : xd) + ax;
-
 function _px_line_ydominant_z(z, zd, sz) = zd >= 0 ? z + sz : z;
 function _px_line_ydominant_zd(zd, ay, az) = (zd >= 0 ? zd - ay : zd) + az;
         
@@ -83,7 +82,7 @@ function _px_line_ydominant(start, end, a, s) =
         shry = floor(ay / 2),
         xd = ax - shry,
         zd = az - shry,
-        endx = end[0]
+        endy = end[1]
     )
     concat(
         [start], 
@@ -91,7 +90,7 @@ function _px_line_ydominant(start, end, a, s) =
             _px_line_ydominant_x(x, xd, sx), 
             y + sy,
             _px_line_ydominant_z(z, zd, sz), 
-            endx, 
+            endy, 
             a, 
             s, 
             _px_line_ydominant_xd(xd, ax, ay), 
@@ -99,7 +98,7 @@ function _px_line_ydominant(start, end, a, s) =
         )
     );
 
-function _px_line_ydominant_sub(x, y, z, endx, a, s, xd, zd) = 
+function _px_line_ydominant_sub(x, y, z, endy, a, s, xd, zd) = 
     let(
         ax = a[0],
         ay = a[1],
@@ -108,13 +107,13 @@ function _px_line_ydominant_sub(x, y, z, endx, a, s, xd, zd) =
         sy = s[1],
         sz = s[2]
     )
-    x == endx ? [] : 
+    y == endy ? [] : 
         concat([[x, y, z]], 
             _px_line_ydominant_sub(
                 _px_line_ydominant_x(x, xd, sx), 
                 y + sy,
                 _px_line_ydominant_z(z, zd, sz), 
-                endx, 
+                endy, 
                 a, 
                 s, 
                 _px_line_ydominant_xd(xd, ax, ay), 
@@ -143,7 +142,7 @@ function _px_line_zdominant(start, end, a, s) =
         shrz = floor(az / 2),
         xd = ax - shrz,
         yd = ay - shrz,
-        endx = end[0]
+        endz = end[2]
     )
     concat(
         [start], 
@@ -151,7 +150,7 @@ function _px_line_zdominant(start, end, a, s) =
             _px_line_zdominant_x(x, xd, sx), 
             _px_line_zdominant_y(y, yd, sy), 
             z + sz,
-            endx, 
+            endz, 
             a, 
             s, 
             _px_line_zdominant_xd(xd, ax, az), 
@@ -159,7 +158,7 @@ function _px_line_zdominant(start, end, a, s) =
         )
     );
 
-function _px_line_zdominant_sub(x, y, z, endx, a, s, xd, yd) = 
+function _px_line_zdominant_sub(x, y, z, endz, a, s, xd, yd) = 
     let(
         ax = a[0],
         ay = a[1],
@@ -168,13 +167,13 @@ function _px_line_zdominant_sub(x, y, z, endx, a, s, xd, yd) =
         sy = s[1],
         sz = s[2]
     )
-    x == endx ? [] : 
+    z == endz ? [] : 
         concat([[x, y, z]], 
             _px_line_zdominant_sub(
                 _px_line_zdominant_x(x, xd, sx), 
                 _px_line_zdominant_y(y, yd, sy), 
                 z + sz,
-                endx, 
+                endz, 
                 a, 
                 s, 
                 _px_line_zdominant_xd(xd, ax, az), 
