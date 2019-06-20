@@ -136,14 +136,14 @@ If you really don't want to care about dependencies, `include <dotSCAD.scad>;` o
 	- [m_shearing](https://openhome.cc/eGossip/OpenSCAD/lib-m_shearing.html)
 
 - Turtle
-    - [turtle2d](https://openhome.cc/eGossip/OpenSCAD/lib2-turtle2d.html)
-    - [turtle3d](https://openhome.cc/eGossip/OpenSCAD/lib2-turtle3d.html)
+    - [turtle/turtle2d](https://openhome.cc/eGossip/OpenSCAD/lib2-turtle2d.html)
+    - [turtle/turtle3d](https://openhome.cc/eGossip/OpenSCAD/lib2-turtle3d.html)
 
 - Pixel
-    - px_line
-	- px_polyline
-	- px_circle
-	- px_cylinder
+    - pixel/px_line
+	- pixel/px_polyline
+	- pixel/px_circle
+	- pixel/px_cylinder
 	
 ## Bugs and Feedback
 
