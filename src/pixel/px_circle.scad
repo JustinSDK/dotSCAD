@@ -39,7 +39,7 @@ function _px_circle_sub(center, f, ddf_x, ddf_y, x, y, filled) =
 function _px_circle(center, f, ddf_x, ddf_y, x, y, filled) = 
     x >= y ? [] : _px_circle_sub(center, f, ddf_x, ddf_y, x, y, filled);
     
-function px_circle(center, radius, filled = false) =
+function px_circle(radius, center = [0, 0], filled = false) =
     let(
         x0 = center[0],
         y0 = center[1],
