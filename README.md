@@ -21,7 +21,7 @@ Some module files are organized in a directory. For example, px_circle.scad exis
     include <pixel/px_circle.scad>;
 	points = px_circle(center = [-0.5, -0.5], radius = 10);
 	for(pt = points) {
-		translate(pt) square(1);
+        translate(pt) square(1);
 	}
 
 ## Dependencies
