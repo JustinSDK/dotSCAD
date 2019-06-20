@@ -125,15 +125,15 @@ If you really don't want to care about dependencies, `include <dotSCAD.scad>;` o
 	- [m_mirror](https://openhome.cc/eGossip/OpenSCAD/lib-m_mirror.html)
 	- [m_shearing](https://openhome.cc/eGossip/OpenSCAD/lib-m_shearing.html)
 
-- Pixel
-    - px_line
-	- px_polyline
-	- px_circle
-
 - Turtle
     - [turtle2d](https://openhome.cc/eGossip/OpenSCAD/lib2-turtle2d.html)
     - [turtle3d](https://openhome.cc/eGossip/OpenSCAD/lib2-turtle3d.html)
 
+- Pixel
+    - px_line
+	- px_polyline
+	- px_circle
+	
 ## Bugs and Feedback
 
 For bugs, questions and discussions please use the [Github Issues](https://github.com/JustinSDK/dotSCAD/issues).
