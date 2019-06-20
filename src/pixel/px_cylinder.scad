@@ -23,7 +23,7 @@ function _px_cylinder_same_r(r, h, center, filled) =
         ]
     ]; 
 
-function px_cylinder(r, h, center, filled = false) =
+function px_cylinder(r, h, center, filled = true) =
     is_num(r) ? 
         _px_cylinder_same_r(r, h, center, filled) :
         _px_cylinder_diff_r(r, h, center, filled); 
