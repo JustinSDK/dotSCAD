@@ -16,6 +16,16 @@ Every module or function is located in the file which has the same name as the m
 
 	line2d(p1 = [0, 0], p2 = [5, 0], width = 1);
 
+Some module files are organized in a directory. For example, px_circle.scad exists in `pixel` directory. You have to prefix the directory name when including `px_circle`.
+
+    include <pixel/px_circle.scad>;
+	points = px_circle(center = [-0.5, -0.5], radius = 10);
+	for(pt = points) {
+		translate(pt) square(1);
+	}
+
+## Dependencies
+
 Some modules depend on other modules. For example, the `polyline2d` module depends on the `line2d` module, so you also have to `include <line2d.scad>;` besides `include <polyline3d.scad>;`. 
 
 	include <line2d.scad>;
@@ -23,7 +33,7 @@ Some modules depend on other modules. For example, the `polyline2d` module depen
 
 	polyline2d(points = [[1, 2], [-5, -4], [-5, 3], [5, 5]], width = 1);
 
-If OpenSCAD generates "WARNING: Ignoring unknown xxx function" or "WARNING: Ignoring unknown xxx module" when using one module of dotSCAD. Just try to `include <xxx.scad>;`.
+If OpenSCAD generates "WARNING: Ignoring unknown xxx function" or "WARNING: Ignoring unknown xxx module" when using one module of dotSCAD. Just try to `include <xxx.scad>;` or `include <dir/xxx.scad>` if xxx.scad exists in `dir` directory.
 
 Too many dependencies? Because OpenSCAD doesn't provide namespace management, I personally think that exposing dependencies is better than hiding them. In this way, users can have their own way to manage dependencies. How to categorize dependencies is up to you. For example, you can include your commonly-used modules and functions in "commonly_used.scad" and then `include <commonly_used.scad>;` in the ".scad" file of your project.
 
