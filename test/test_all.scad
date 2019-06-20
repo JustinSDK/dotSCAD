@@ -70,3 +70,4 @@ include <test_path_extrude.scad>;
 include <pixel/test_px_line.scad>;
 include <pixel/test_px_polyline.scad>;
 include <pixel/test_px_circle.scad>;
+include <pixel/test_px_cylinder.scad>;
