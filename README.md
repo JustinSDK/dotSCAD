@@ -128,6 +128,7 @@ If you really don't want to care about dependencies, `include <dotSCAD.scad>;` o
 - Pixel
     - px_line
 	- px_polyline
+	- px_circle
 
 - Other
     - [turtle2d](https://openhome.cc/eGossip/OpenSCAD/lib-turtle2d.html)
