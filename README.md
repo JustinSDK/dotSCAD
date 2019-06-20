@@ -37,7 +37,7 @@ If OpenSCAD generates "WARNING: Ignoring unknown xxx function" or "WARNING: Igno
 
 Too many dependencies? Because OpenSCAD doesn't provide namespace management, I personally think that exposing dependencies is better than hiding them. In this way, users can have their own way to manage dependencies. How to categorize dependencies is up to you. For example, you can include your commonly-used modules and functions in "commonly_used.scad" and then `include <commonly_used.scad>;` in the ".scad" file of your project.
 
-If you really don't want to care about dependencies, `include <dotSCAD.scad>;` or `use <dotSCAD.scad>;` come to save you. 
+**If you really don't want to care about dependencies, `include <dotSCAD.scad>;` or `use <dotSCAD.scad>;` come to save you.**
 
 ## Documentation
 
