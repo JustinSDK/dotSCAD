@@ -15,7 +15,7 @@ For more details, please see [3D turtle graphics](https://openhome.cc/eGossip/Op
 
 ## Examples
 	    
-	include <turtle3d.scad>;
+	include <turtle/turtle3d.scad>;
 	include <hull_polyline3d.scad>;
 	
 	leng = 10;
@@ -45,7 +45,7 @@ For more details, please see [3D turtle graphics](https://openhome.cc/eGossip/Op
 
 ![turtle3d](images/lib-turtle3d-1.JPG)
 	
-	include <turtle3d.scad>;
+	include <turtle/turtle3d.scad>;
 	include <hull_polyline3d.scad>;
 	
 	module tree(t, leng, leng_scale1, leng_scale2, leng_limit, 

@@ -131,8 +131,8 @@ If you really don't want to care about dependencies, `include <dotSCAD.scad>;` o
 	- px_circle
 
 - Turtle
-    - [turtle2d](https://openhome.cc/eGossip/OpenSCAD/lib-turtle2d.html)
-    - [turtle3d](https://openhome.cc/eGossip/OpenSCAD/lib-turtle3d.html)
+    - [turtle2d](https://openhome.cc/eGossip/OpenSCAD/lib2-turtle2d.html)
+    - [turtle3d](https://openhome.cc/eGossip/OpenSCAD/lib2-turtle3d.html)
 
 ## Bugs and Feedback
 

@@ -16,7 +16,7 @@ An OpenSCAD implementation of Turtle Graphics. It moves on the xy plane. You can
 ## Examples
 	    
 	include <line2d.scad>;
-	include <turtle2d.scad>;
+	include <turtle/turtle2d.scad>;
 	
 	module turtle_spiral(t_before, times, side_leng, angle, width) {
 	    $fn = 24;
@@ -47,7 +47,7 @@ An OpenSCAD implementation of Turtle Graphics. It moves on the xy plane. You can
 ![turtle2d](images/lib-turtle2d-1.JPG)
 	
 	include <line2d.scad>;
-    include <turtle2d.scad>;
+    include <turtle/turtle2d.scad>;
 
 	module turtle_spiral(t_before, side_leng, d_step, min_leng, angle, width) {
 	    $fn = 24;
