@@ -79,3 +79,4 @@ include <turtle/turtle3d.scad>;
 include <pixel/px_line.scad>;
 include <pixel/px_polyline.scad>;
 include <pixel/px_circle.scad>;
+include <pixel/px_cylinder.scad>;
