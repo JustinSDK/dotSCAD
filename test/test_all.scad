@@ -67,6 +67,6 @@ include <test_sphere_spiral_extrude.scad>;
 include <test_path_extrude.scad>;
 
 // Pixel
-include <test_px_line.scad>;
-include <test_px_polyline.scad>;
-include <test_px_circle.scad>;
+include <pixel/test_px_line.scad>;
+include <pixel/test_px_polyline.scad>;
+include <pixel/test_px_circle.scad>;
