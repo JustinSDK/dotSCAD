@@ -143,6 +143,7 @@ If you really don't want to care about dependencies, `include <dotSCAD.scad>;` o
     - px_line
 	- px_polyline
 	- px_circle
+	- px_cylinder
 	
 ## Bugs and Feedback
 
