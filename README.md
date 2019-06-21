@@ -144,6 +144,7 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 	- pixel/px_polyline
 	- pixel/px_circle
 	- pixel/px_cylinder
+	- pixel/px_sphere
 	
 ## Bugs and Feedback
 
