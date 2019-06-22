@@ -78,7 +78,7 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 	- [parse_number](https://openhome.cc/eGossip/OpenSCAD/lib-parse_number.html)
 	- [cross_sections](https://openhome.cc/eGossip/OpenSCAD/lib-cross_sections.html)
 	- [paths2sections](https://openhome.cc/eGossip/OpenSCAD/lib-paths2sections.html)
-	- [path_scaling_sections](https://openhome.cc/eGossip/OpenSCAD/lib-path_scaling_sections.html)
+	- [path_scaling_sections](https://openhome.cc/eGossip/OpenSCAD/lib2-path_scaling_sections.html)
 	- [bijection_offset](https://openhome.cc/eGossip/OpenSCAD/lib-bijection_offset.html)
 	- [in_polyline](https://openhome.cc/eGossip/OpenSCAD/lib-in_polyline.html)
 	- [in_shape](https://openhome.cc/eGossip/OpenSCAD/lib-in_shape.html)
