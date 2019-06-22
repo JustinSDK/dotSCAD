@@ -10,6 +10,7 @@
  
 include <__private__/__angy_angz.scad>;
 include <__private__/__to3d.scad>;
+include <__private__/__m_rotation.scad>;
 
 module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE") {
     leng_points = len(points);
@@ -154,7 +155,7 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
         else {
             cumu_rot_matrice = axis_angle_cumulated_rot_matrice(0, [
                 for(ang_vect = axis_angle_local_ang_vects(leng_points - 2)) 
-                    m_rotation(ang_vect[0], ang_vect[1])
+                    __m_rotation(ang_vect[0], ang_vect[1])
             ]);
 
             translate(points[0])
