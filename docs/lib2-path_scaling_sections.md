@@ -18,7 +18,6 @@ You can use any point as the first point of the edge path. Just remember that yo
 	include <hull_polyline3d.scad>;
 	include <shape_taiwan.scad>;
 	include <path_scaling_sections.scad>;
-	include <m_scaling.scad>;
 	include <polysections.scad>;
 
 	taiwan = shape_taiwan(100);
@@ -42,7 +41,6 @@ You can use any point as the first point of the edge path. Just remember that yo
 	include <hull_polyline3d.scad>;
 	include <shape_taiwan.scad>;
 	include <path_scaling_sections.scad>;
-	include <m_scaling.scad>;
 	include <polysections.scad>;
 	include <bezier_curve.scad>;
 
@@ -67,7 +65,6 @@ You can use any point as the first point of the edge path. Just remember that yo
 
 	include <shape_taiwan.scad>;
 	include <path_scaling_sections.scad>;
-	include <m_scaling.scad>;
 	include <polysections.scad>;
 	include <bezier_curve.scad>;
 	include <rotate_p.scad>;
@@ -105,7 +102,6 @@ You can use any point as the first point of the edge path. Just remember that yo
 	include <hull_polyline3d.scad>;
 	include <shape_taiwan.scad>;
 	include <path_scaling_sections.scad>;
-	include <m_scaling.scad>;
 	include <polysections.scad>;
     include <rotate_p.scad>;
 
