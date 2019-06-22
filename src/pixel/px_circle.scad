@@ -2,7 +2,8 @@ function _px_circle_y(f, y) = f >= 0 ? y - 1 : y;
 function _px_circle_ddf_y(f, ddf_y) = f >= 0 ? ddf_y + 2 : ddf_y;
 function _px_circle_f(f, ddf_y) = f >= 0 ? f + ddf_y : f;
 
-function _px_circle_sub(f, ddf_x, ddf_y, x, y, filled) = 
+function _px_circle(f, ddf_x, ddf_y, x, y, filled) = 
+    x >= y ? [] : 
     let(
         ny = _px_circle_y(f, y),
         nddf_y = _px_circle_ddf_y(f, ddf_y),
@@ -32,10 +33,6 @@ function _px_circle_sub(f, ddf_x, ddf_y, x, y, filled) =
             ],
         _px_circle(nf, nddf_x, nddf_y, nx, ny, filled)
     );
-    
-
-function _px_circle(, f, ddf_x, ddf_y, x, y, filled) = 
-    x >= y ? [] : _px_circle_sub(f, ddf_x, ddf_y, x, y, filled);
     
 function px_circle(radius, filled = true) =
     let(
