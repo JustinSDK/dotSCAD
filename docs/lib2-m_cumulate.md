@@ -10,10 +10,10 @@ The power of using transformation matrice is that you can cumulate all transform
 
 ## Examples
 
-	include <m_rotation.scad>;
-	include <m_scaling.scad>;
-	include <m_translation.scad>;
-	include <m_cumulate.scad>
+	include <matrix/m_rotation.scad>;
+	include <matrix/m_scaling.scad>;
+	include <matrix/m_translation.scad>;
+	include <matrix/m_cumulate.scad>
 
 	m = m_cumulate([
 		m_translation([10, 20, 10]), m_scaling(2), m_rotation(60)]

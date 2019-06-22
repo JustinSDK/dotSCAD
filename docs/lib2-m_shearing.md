@@ -12,7 +12,7 @@ Generate a 4x4 transformation matrix which can pass into `multmatrix` to shear a
 
 ## Examples
 
-	include <m_shearing.scad>;
+	include <matrix/m_shearing.scad>;
 
 	color("red") {
 		multmatrix(m_shearing(sx = [1, 0]))

@@ -11,7 +11,7 @@ Generate a 4x4 transformation matrix which can pass into `multmatrix` to rotate 
 
 ## Examples
 
-	include <m_rotation.scad>;
+	include <matrix/m_rotation.scad>;
 
 	point = [20, 0, 0];
 	a = [0, -45, 45];
