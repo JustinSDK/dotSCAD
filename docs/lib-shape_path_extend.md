@@ -50,7 +50,6 @@ When using this function, you should use points to represent the 2D stroke.
 	include <shape_path_extend.scad>;
 
 	include <polysections.scad>;
-    include <m_rotation.scad>;
 	include <path_extrude.scad>;
 		
 		

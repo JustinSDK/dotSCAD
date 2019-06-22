@@ -21,7 +21,6 @@ Returns shape points of an arc shape. They can be used with xxx_extrude modules 
     include <shape_arc.scad>;
     include <rotate_p.scad>;
     include <polysections.scad>;
-    include <m_rotation.scad>;
     include <path_extrude.scad>;
     include <bezier_curve.scad>;
 
