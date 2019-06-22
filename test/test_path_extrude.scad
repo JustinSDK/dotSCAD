@@ -3,7 +3,6 @@ include <unittest.scad>;
 include <shape_pentagram.scad>;
 include <rotate_p.scad>;
 include <polysections.scad>;
-include <m_rotation.scad>;
 include <torus_knot.scad>;
 
 module test_path_extrude_euler_angle() {
