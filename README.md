@@ -128,12 +128,12 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 	- [sphere_spiral_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-sphere_spiral_extrude.html)
 
 - Matrix
-	- [m_cumulate](https://openhome.cc/eGossip/OpenSCAD/lib-m_cumulate.html)	
-	- [m_translation](https://openhome.cc/eGossip/OpenSCAD/lib-m_translation.html)
-	- [m_rotation](https://openhome.cc/eGossip/OpenSCAD/lib-m_rotation.html)
-	- [m_scaling](https://openhome.cc/eGossip/OpenSCAD/lib-m_scaling.html)
-	- [m_mirror](https://openhome.cc/eGossip/OpenSCAD/lib-m_mirror.html)
-	- [m_shearing](https://openhome.cc/eGossip/OpenSCAD/lib-m_shearing.html)
+	- [matrix/m_cumulate](https://openhome.cc/eGossip/OpenSCAD/lib2-m_cumulate.html)	
+	- [matrix/m_translation](https://openhome.cc/eGossip/OpenSCAD/lib2-m_translation.html)
+	- [matrix/m_rotation](https://openhome.cc/eGossip/OpenSCAD/lib2-m_rotation.html)
+	- [matrix/m_scaling](https://openhome.cc/eGossip/OpenSCAD/lib2-m_scaling.html)
+	- [matrix/m_mirror](https://openhome.cc/eGossip/OpenSCAD/lib2-m_mirror.html)
+	- [matrix/m_shearing](https://openhome.cc/eGossip/OpenSCAD/lib2-m_shearing.html)
 
 - Turtle
     - [turtle/turtle2d](https://openhome.cc/eGossip/OpenSCAD/lib2-turtle2d.html)
