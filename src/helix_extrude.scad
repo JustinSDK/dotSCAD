@@ -8,7 +8,7 @@
 *
 **/
 
-include <__private__/__frags.scad>;
+include <__comm__/__frags.scad>;
 
 module helix_extrude(shape_pts, radius, levels, level_dist, 
                      vt_dir = "SPI_DOWN", rt_dir = "CT_CLK", 

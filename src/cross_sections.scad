@@ -8,7 +8,7 @@
 *
 **/
 
-include <__private__/__to3d.scad>;
+include <__comm__/__to3d.scad>;
 
 function cross_sections(shape_pts, path_pts, angles, twist = 0, scale = 1.0) =
     let(

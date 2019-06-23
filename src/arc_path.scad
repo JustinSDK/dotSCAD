@@ -8,9 +8,9 @@
 *
 **/ 
 
-include <__private__/__frags.scad>;
-include <__private__/__ra_to_xy.scad>;
-include <__private__/__edge_r.scad>;
+include <__comm__/__frags.scad>;
+include <__comm__/__ra_to_xy.scad>;
+include <__comm__/__edge_r.scad>;
 
 function arc_path(radius, angle) =
     let(

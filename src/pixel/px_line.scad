@@ -1,5 +1,5 @@
-include <__private__/__to3d.scad>;
-include <__private__/__to2d.scad>;
+include <__comm__/__to3d.scad>;
+include <__comm__/__to2d.scad>;
 
 function _px_line_zsgn(a) = a == 0 ? a : a / abs(a);
     

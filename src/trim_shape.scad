@@ -8,10 +8,10 @@
 *
 **/
 
-include <__private__/__to3d.scad>;
-include <__private__/__line_intersection.scad>;
-include <__private__/__in_line.scad>;
-include <__private__/__lines_from.scad>;
+include <__comm__/__to3d.scad>;
+include <__comm__/__line_intersection.scad>;
+include <__comm__/__in_line.scad>;
+include <__comm__/__lines_from.scad>;
 
 function _trim_shape_any_intersection_sub(lines, line, lines_leng, i, epsilon) =
     let(

@@ -8,8 +8,8 @@
 *
 **/
 
-include <__private__/__to3d.scad>;
-include <__private__/__in_line.scad>;
+include <__comm__/__to3d.scad>;
+include <__comm__/__in_line.scad>;
 
 function in_polyline(line_pts, pt, epsilon = 0.0001) = 
     let(

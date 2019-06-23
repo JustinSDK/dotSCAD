@@ -8,6 +8,6 @@
 *
 **/
 
-include <__private__/__m_scaling.scad>;
+include <__comm__/__m_scaling.scad>;
 
 function m_scaling(s) = __m_scaling(s);

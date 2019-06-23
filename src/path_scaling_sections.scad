@@ -8,7 +8,7 @@
 *
 **/
 
-include <__private__/__reverse.scad>;
+include <__comm__/__reverse.scad>;
 include <matrix/__comm__/__m_scaling.scad>;
 
 function path_scaling_sections(shape_pts, edge_path) = 

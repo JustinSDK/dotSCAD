@@ -8,8 +8,8 @@
 *
 **/
 
-include <__private__/__to3d.scad>;
-include <__private__/__angy_angz.scad>;
+include <__comm__/__to3d.scad>;
+include <__comm__/__angy_angz.scad>;
 include <matrix/__comm__/__m_rotation.scad>;
 
 module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale = 1.0, closed = false, method = "AXIS_ANGLE") {

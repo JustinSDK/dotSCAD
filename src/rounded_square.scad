@@ -8,10 +8,10 @@
 *
 **/
 
-include <__private__/__frags.scad>;
-include <__private__/__pie_for_rounding.scad>;
-include <__private__/__half_trapezium.scad>;
-include <__private__/__trapezium.scad>;
+include <__comm__/__frags.scad>;
+include <__comm__/__pie_for_rounding.scad>;
+include <__comm__/__half_trapezium.scad>;
+include <__comm__/__trapezium.scad>;
 
 module rounded_square(size, corner_r, center = false) {
     is_flt = is_num(size);

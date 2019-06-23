@@ -1,6 +1,6 @@
-include <__private__/__to3d.scad>;
-include <__private__/__to2d.scad>;
-include <__private__/__lines_from.scad>;
+include <__comm__/__to3d.scad>;
+include <__comm__/__to2d.scad>;
+include <__comm__/__lines_from.scad>;
 
 function px_polyline(points) =
     let(

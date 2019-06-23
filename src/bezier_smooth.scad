@@ -8,9 +8,9 @@
 *
 **/ 
 
-include <__private__/__to3d.scad>;
-include <__private__/__to2d.scad>;
-include <__private__/__angy_angz.scad>;
+include <__comm__/__to3d.scad>;
+include <__comm__/__to2d.scad>;
+include <__comm__/__angy_angz.scad>;
 
 function _corner_ctrl_pts(round_d, p1, p2, p3) =
     let(

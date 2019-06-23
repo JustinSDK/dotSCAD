@@ -8,8 +8,8 @@
 *
 **/
 
-include <__private__/__lines_from.scad>;
-include <__private__/__line_intersection.scad>;
+include <__comm__/__lines_from.scad>;
+include <__comm__/__line_intersection.scad>;
     
 function _bijection_inward_edge_normal(edge) =  
     let(

@@ -8,7 +8,7 @@
 *
 **/
 
-include <__private__/__frags.scad>;
+include <__comm__/__frags.scad>;
 
 function shape_ellipse(axes) =
     let(

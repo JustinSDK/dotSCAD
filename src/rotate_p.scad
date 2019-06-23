@@ -8,9 +8,9 @@
 *
 **/ 
 
-include <__private__/__to2d.scad>;
-include <__private__/__to3d.scad>;
-include <__private__/__to_ang_vect.scad>;
+include <__comm__/__to2d.scad>;
+include <__comm__/__to3d.scad>;
+include <__comm__/__to_ang_vect.scad>;
 
 function _q_rotate_p_3d(p, a, v) = 
     let(

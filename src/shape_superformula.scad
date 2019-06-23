@@ -8,8 +8,8 @@
 *
 **/ 
 
-include <__private__/__ra_to_xy.scad>;
-include <__private__/__to_degree.scad>;
+include <__comm__/__ra_to_xy.scad>;
+include <__comm__/__to_degree.scad>;
 
 function _superformula_r(angle, m1, m2, n1, n2 = 1, n3 = 1, a = 1, b = 1) = 
     pow(

@@ -8,8 +8,8 @@
 *
 **/
 
-include <__private__/__frags.scad>;
-include <__private__/__ra_to_xy.scad>;
+include <__comm__/__frags.scad>;
+include <__comm__/__ra_to_xy.scad>;
 
 module ring_extrude(shape_pts, radius, angle = 360, twist = 0, scale = 1.0, triangles = "SOLID") {
     if(twist == 0 && scale == 1.0) {

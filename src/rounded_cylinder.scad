@@ -8,9 +8,9 @@
 *
 **/
 
-include <__private__/__frags.scad>;
-include <__private__/__pie_for_rounding.scad>;
-include <__private__/__half_trapezium.scad>;
+include <__comm__/__frags.scad>;
+include <__comm__/__pie_for_rounding.scad>;
+include <__comm__/__half_trapezium.scad>;
 
 module rounded_cylinder(radius, h, round_r, convexity = 2, center = false) {  
     r_corners = __half_trapezium(radius, h, round_r);

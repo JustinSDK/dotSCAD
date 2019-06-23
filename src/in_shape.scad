@@ -8,9 +8,9 @@
 *
 **/
 
-include <__private__/__to3d.scad>;
-include <__private__/__lines_from.scad>;
-include <__private__/__in_line.scad>;
+include <__comm__/__to3d.scad>;
+include <__comm__/__lines_from.scad>;
+include <__comm__/__in_line.scad>;
 
 function _in_shape_in_line_equation(edge, pt) = 
     let(

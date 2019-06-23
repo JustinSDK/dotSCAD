@@ -8,7 +8,7 @@
 *
 **/ 
 
-include <__private__/__to2d.scad>;
+include <__comm__/__to2d.scad>;
 
 function _combi(n, k) =
     let(  

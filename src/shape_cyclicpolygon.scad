@@ -8,8 +8,8 @@
 *
 **/
 
-include <__private__/__frags.scad>;
-include <__private__/__pie_for_rounding.scad>;
+include <__comm__/__frags.scad>;
+include <__comm__/__pie_for_rounding.scad>;
 
 function shape_cyclicpolygon(sides, circle_r, corner_r) =
     let(
