@@ -10,7 +10,7 @@ Returns a new string that is a substring of the given string.
 
 ## Examples
 
-    include <sub_str.scad>;
+    include <util/sub_str.scad>;
     
 	echo(sub_str("helloworld", 0, 5)); // ECHO: "hello"
 	echo(sub_str("helloworld", 5));    // ECHO: "world"
