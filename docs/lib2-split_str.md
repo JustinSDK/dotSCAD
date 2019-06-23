@@ -9,8 +9,8 @@ Splits the given string around matches of the given delimiting character.
 
 ## Examples
     
-	include <sub_str.scad>;
-	include <split_str.scad>;
+	include <util/sub_str.scad>;
+	include <util/split_str.scad>;
 	
 	echo(split_str("hello,world", ","));  // ECHO: ["hello", "world"]
 
