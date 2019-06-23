@@ -127,6 +127,9 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 	- [archimedean_spiral_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-archimedean_spiral_extrude.html)
 	- [sphere_spiral_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-sphere_spiral_extrude.html)
 
+- Utilities
+    - util/reverse
+
 - Matrix
 	- [matrix/m_cumulate](https://openhome.cc/eGossip/OpenSCAD/lib2-m_cumulate.html)	
 	- [matrix/m_translation](https://openhome.cc/eGossip/OpenSCAD/lib2-m_translation.html)
