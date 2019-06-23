@@ -3,7 +3,7 @@ module test_parse_number() {
 
     include <unittest.scad>;
     include <util/sub_str.scad>;
-    include <split_str.scad>;
+    include <util/split_str.scad>;
     include <parse_number.scad>;
 
     assertEqualNum(11, parse_number("10") + 1);   
