@@ -73,9 +73,6 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 
 - Functon
 	- [rotate_p](https://openhome.cc/eGossip/OpenSCAD/lib-rotate_p.html)
-	- [sub_str](https://openhome.cc/eGossip/OpenSCAD/lib-sub_str.html)
-	- [split_str](https://openhome.cc/eGossip/OpenSCAD/lib-split_str.html)
-	- [parse_number](https://openhome.cc/eGossip/OpenSCAD/lib-parse_number.html)
 	- [cross_sections](https://openhome.cc/eGossip/OpenSCAD/lib-cross_sections.html)
 	- [paths2sections](https://openhome.cc/eGossip/OpenSCAD/lib-paths2sections.html)
 	- [path_scaling_sections](https://openhome.cc/eGossip/OpenSCAD/lib2-path_scaling_sections.html)
@@ -128,6 +125,9 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 	- [sphere_spiral_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-sphere_spiral_extrude.html)
 
 - Utilities
+	- [util/sub_str](https://openhome.cc/eGossip/OpenSCAD/lib2-sub_str.html)
+	- [util/split_str](https://openhome.cc/eGossip/OpenSCAD/lib2-split_str.html)
+	- [util/parse_number](https://openhome.cc/eGossip/OpenSCAD/lib2-parse_number.html)
     - util/reverse
 
 - Matrix
