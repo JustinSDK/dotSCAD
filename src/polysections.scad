@@ -8,7 +8,7 @@
 *
 **/
 
-include <__comm__/__reverse.scad>;
+include <util/__comm__/__reverse.scad>;
 
 module polysections(sections, triangles = "SOLID") {
 

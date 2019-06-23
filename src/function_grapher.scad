@@ -8,7 +8,7 @@
 *
 **/ 
 
-include <__comm__/__reverse.scad>;
+include <util/__comm__/__reverse.scad>;
 
 module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
 

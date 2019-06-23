@@ -10,7 +10,7 @@
 
 include <__comm__/__to3d.scad>;
 include <__comm__/__polytransversals.scad>;
-include <__comm__/__reverse.scad>;
+include <util/__comm__/__reverse.scad>;
 
 function _shape_path_extend_az(p1, p2) = 
     let(

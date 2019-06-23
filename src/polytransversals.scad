@@ -8,7 +8,7 @@
 *
 **/
 
-include <__comm__/__reverse.scad>;
+include <util/__comm__/__reverse.scad>;
 include <__comm__/__polytransversals.scad>;
 
 module polytransversals(transversals) {
