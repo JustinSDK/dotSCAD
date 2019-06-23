@@ -2,7 +2,7 @@ module test_parse_number() {
     echo("==== test_parse_number ====");
 
     include <unittest.scad>;
-    include <sub_str.scad>;
+    include <util/sub_str.scad>;
     include <split_str.scad>;
     include <parse_number.scad>;
 

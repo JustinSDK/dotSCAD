@@ -21,7 +21,6 @@ include <test_along_with.scad>;
 
 // Function
 include <test_rotate_p.scad>;
-include <test_sub_str.scad>;
 include <test_split_str.scad>;
 include <test_parse_number.scad>;
 include <test_cross_sections.scad>;
@@ -65,6 +64,9 @@ include <test_golden_spiral_extrude.scad>;
 include <test_archimedean_spiral_extrude.scad>;
 include <test_sphere_spiral_extrude.scad>;
 include <test_path_extrude.scad>;
+
+// Utilities
+include <util/test_sub_str.scad>;
 
 // Pixel
 include <pixel/test_px_line.scad>;
