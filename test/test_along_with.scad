@@ -25,7 +25,6 @@ module test_along_with_children() {
     echo("==== test_along_with_children ====");
 
     include <along_with.scad>;
-    include <m_rotation.scad>;
 
     $fn = 24;
 

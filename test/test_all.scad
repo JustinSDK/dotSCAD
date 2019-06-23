@@ -74,4 +74,4 @@ include <pixel/test_px_cylinder.scad>;
 include <pixel/test_px_sphere.scad>;
 
 // Matrix
-include <matrix/test_m_cumulate>;
+include <matrix/test_m_cumulate.scad>;
