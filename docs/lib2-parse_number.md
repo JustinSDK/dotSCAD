@@ -8,9 +8,9 @@ Parses the string argument as an number.
 
 ## Examples
 
-	include <sub_str.scad>;
-	include <split_str.scad>;
-    include <parse_number.scad>;
+	include <util/sub_str.scad>;
+	include <util/split_str.scad>;
+    include <util/parse_number.scad>;
     
 	echo(parse_number("10") + 1);    // ECHO: 11
 	echo(parse_number("-1.1") + 1);  // ECHO: -0.1
