@@ -25,7 +25,8 @@ module test_along_with_children() {
     echo("==== test_along_with_children ====");
 
     include <along_with.scad>;
-
+    include <circle_path.scad>;
+    
     $fn = 24;
 
     points = circle_path(radius = 50);
