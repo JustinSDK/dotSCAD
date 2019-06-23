@@ -10,7 +10,7 @@
 
 include <__private__/__to3d.scad>;
 include <__private__/__angy_angz.scad>;
-include <__private__/__m_rotation.scad>;
+include <matrix/__comm__/__m_rotation.scad>;
 
 module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale = 1.0, closed = false, method = "AXIS_ANGLE") {
     sh_pts = len(shape_pts[0]) == 3 ? shape_pts : [for(p = shape_pts) __to3d(p)];

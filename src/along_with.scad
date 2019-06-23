@@ -10,7 +10,7 @@
  
 include <__private__/__angy_angz.scad>;
 include <__private__/__to3d.scad>;
-include <__private__/__m_rotation.scad>;
+include <matrix/__comm__/__m_rotation.scad>;
 
 module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE") {
     leng_points = len(points);
