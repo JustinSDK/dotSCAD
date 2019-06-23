@@ -1,5 +1,7 @@
 # turtle2d
 
+The dir changed since 2.0. 
+
 An OpenSCAD implementation of Turtle Graphics. It moves on the xy plane. You can get the cooridinate `[x, y]` or `angle` of its current position.
 
 ## Parameters

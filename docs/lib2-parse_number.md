@@ -1,5 +1,7 @@
 # parse_number
 
+The dir changed since 2.0. 
+
 Parses the string argument as an number. 
 
 ## Parameters

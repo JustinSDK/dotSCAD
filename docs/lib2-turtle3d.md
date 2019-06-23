@@ -1,5 +1,7 @@
 # turtle3d
 
+The dir changed since 2.0. 
+
 An OpenSCAD implementation of 3D Turtle Graphics. When using the function, imagine that you are sitting on the turtle. You move or turn the turtle from the your viewpoint, not the viewpoint of OpenSCAD coordinates.
 
 For more details, please see [3D turtle graphics](https://openhome.cc/eGossip/OpenSCAD/3DTurtleGraphics.html). 

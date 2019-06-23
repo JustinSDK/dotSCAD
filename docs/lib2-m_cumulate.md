@@ -6,6 +6,8 @@ The power of using transformation matrice is that you can cumulate all transform
 
 ## Parameters
 
+The dir changed since 2.0. 
+
 - `matrice` : A list of 4x4 transformation matrice.
 
 ## Examples

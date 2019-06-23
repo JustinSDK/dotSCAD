@@ -1,5 +1,7 @@
 # m_scaling
 
+The dir changed since 2.0. 
+
 Generate a 4x4 transformation matrix which can pass into `multmatrix` to scale its child elements using the specified vector.
 
 **Since:** 1.1

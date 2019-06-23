@@ -1,5 +1,7 @@
 # m_shearing
 
+The dir changed since 2.0. 
+
 Generate a 4x4 transformation matrix which can pass into `multmatrix` to shear all child elements along the X-axis, Y-axis, or Z-axis in 3D.
 
 **Since:** 1.1

@@ -1,5 +1,7 @@
 # sub_str
 
+The dir changed since 2.0. 
+
 Returns a new string that is a substring of the given string.
 
 ## Parameters
