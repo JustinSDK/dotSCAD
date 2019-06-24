@@ -8,8 +8,8 @@
 *
 **/ 
 
-function sub_str(t, begin, end, result = "") =
-    is_undef(end) ? sub_str(t, begin, len(t)) : (
-        begin == end ? result : sub_str(t, begin + 1, end, str(result, t[begin]))
-    );
+function _sub_str(t, begin, end) = 
+    begin == end ? "" : str(t[begin], sub_str(t, begin + 1, end));
     
+function sub_str(t, begin, end) = 
+    is_undef(end) ? _sub_str(t, begin, len(t)) : _sub_str(t, begin, end);
