@@ -75,6 +75,7 @@ include <pixel/test_px_polyline.scad>;
 include <pixel/test_px_circle.scad>;
 include <pixel/test_px_cylinder.scad>;
 include <pixel/test_px_sphere.scad>;
+include <pixel/test_px_polygon.scad>;
 
 // Matrix
 include <matrix/test_m_cumulate.scad>;
