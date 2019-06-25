@@ -1,6 +1,3 @@
-include <in_shape.scad>;
-include <pixel/px_polyline.scad>;
-
 function px_polygon(points, filled = true) =
     filled ?
     let(

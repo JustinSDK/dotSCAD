@@ -3,6 +3,7 @@ module test_px_polygon() {
     echo("==== test_px_polygon ====");
 
     include <unittest.scad>;
+    include <in_shape.scad>;
     include <pixel/px_line.scad>;
     include <pixel/px_polyline.scad>;
     include <pixel/px_polygon.scad>;
