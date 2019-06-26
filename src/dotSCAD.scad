@@ -4410,7 +4410,7 @@ function _in_shape_sub(shapt_pts, leng, pt, cond, i, j) =
 function in_shape(shapt_pts, pt, include_edge = false, epsilon = 0.0001) = 
     let(
         leng = len(shapt_pts),
-        edges = __lines_from(points, true)
+        edges = __lines_from(shapt_pts, true)
     )
     _in_shape_in_any_edges(edges, pt, epsilon) ? include_edge : 
     _in_shape_sub(shapt_pts, leng, pt, false, leng - 1, 0);
