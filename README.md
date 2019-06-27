@@ -130,6 +130,7 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 	- [util/parse_number](https://openhome.cc/eGossip/OpenSCAD/lib2-parse_number.html)
     - util/reverse
 	- util/slice
+	- util/sort
 
 - Matrix
 	- [matrix/m_cumulate](https://openhome.cc/eGossip/OpenSCAD/lib2-m_cumulate.html)	
