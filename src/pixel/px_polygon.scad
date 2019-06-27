@@ -9,8 +9,8 @@ function px_polygon(points, filled = true) =
         min_y = min(ys)
     )
     [
-        for(x = min_x; x <= max_x; x = x + 1)
-            for(y = min_y; y <= max_y; y = y + 1)
+        for(y = min_y; y <= max_y; y = y + 1)
+            for(x = min_x; x <= max_x; x = x + 1)
                 let(pt = [x, y])
                 if(in_shape(points, pt, true)) pt
     ]
