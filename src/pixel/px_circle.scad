@@ -14,22 +14,17 @@ function _px_circle(f, ddf_x, ddf_y, x, y, filled) =
     concat(
         filled ? 
             concat(
-               [for(xi = -nx; xi <= nx; xi = xi + 1) [-xi, ny]],
-               [for(xi = -ny; xi <= ny; xi = xi + 1) [-xi, nx]],
-               [for(xi = -ny; xi <= ny; xi = xi + 1) [-xi, -nx]],
-               [for(xi = -nx; xi <= nx; xi = xi + 1) [-xi, -ny]]
+               [for(xi = -nx; xi <= nx; xi = xi + 1) [xi, -ny]],
+               [for(xi = -ny; xi <= ny; xi = xi + 1) [xi, -nx]],
+               [for(xi = -ny; xi <= ny; xi = xi + 1) [xi, nx]],
+               [for(xi = -nx; xi <= nx; xi = xi + 1) [xi, ny]]              
             )
             :
-            [
-                [-nx, ny],
-                [nx, ny],
-                [-ny, nx],
-                [ny, nx],
-
-                [-ny, -nx],            
-                [ny, -nx],
-                [-nx, -ny],
-                [nx, -ny]        
+            [  
+                [-nx, -ny], [nx, -ny],                 
+                [-ny, -nx], [ny, -nx],
+                [-ny, nx], [ny, nx],
+                [-nx, ny], [nx, ny]
             ],
         _px_circle(nf, nddf_x, nddf_y, nx, ny, filled)
     );
@@ -50,10 +45,10 @@ function px_circle(radius, filled = true) =
             )
             : 
             [
-                [0, radius], 
-                [0, -radius], 
-                [radius, 0], 
-                [-radius, 0]
+                [0, -radius],                
+                [-radius, 0], 
+                [radius, 0],
+                [0, radius]
             ],
         _px_circle(f, ddf_x, ddf_y, x, y, filled)
     );
