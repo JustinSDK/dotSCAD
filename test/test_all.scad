@@ -68,6 +68,7 @@ include <util/test_sub_str.scad>;
 include <util/test_split_str.scad>;
 include <util/test_parse_number.scad>;
 include <util/test_slice.scad>;
+include <util/test_sort.scad>;
 
 // Pixel
 include <pixel/test_px_line.scad>;

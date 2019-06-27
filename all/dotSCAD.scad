@@ -70,6 +70,7 @@ include <util/split_str.scad>;
 include <util/sub_str.scad>;
 include <util/reverse.scad>;
 include <util/slice.scad>;
+include <util/sort.scad>;
 include <matrix/m_cumulate.scad>;
 include <matrix/m_mirror.scad>;
 include <matrix/m_rotation.scad>;
