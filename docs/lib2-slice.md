@@ -2,7 +2,7 @@
 
 Returns a list selected from `begin` to `end`, or to the `end` of the list (`end` not included).
 
-**Since: ** 2.0
+**Since:** 2.0
 
 ## Parameters
 

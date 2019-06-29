@@ -2,7 +2,7 @@
 
 Sorts the elements of a list in ascending order. The list is a list-of-list construct, such as `[[a0, a1, a2...], [b0, b1, b2,...], [c0, c1, c2,...],...]`. When sorting, the function looks only at one index position of each sublist. 
 
-**Since: ** 2.0
+**Since:** 2.0
 
 ## Parameters
 
