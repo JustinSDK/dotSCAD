@@ -1,4 +1,4 @@
-function px_polygon(points, filled = true) =
+function px_polygon(points, filled = false) =
     filled ?
     let(
         xs = [for(pt = points) pt[0]],

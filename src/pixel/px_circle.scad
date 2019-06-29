@@ -29,7 +29,7 @@ function _px_circle(f, ddf_x, ddf_y, x, y, filled) =
         _px_circle(nf, nddf_x, nddf_y, nx, ny, filled)
     );
     
-function px_circle(radius, filled = true) =
+function px_circle(radius, filled = false) =
     let(
         f = 1 - radius,
         ddf_x = 1,

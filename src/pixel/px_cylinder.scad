@@ -43,7 +43,7 @@ function _px_cylinder_same_r(r, h, filled, thickness) =
         ]
     ]; 
 
-function px_cylinder(r, h, filled = true, thickness = 1) =
+function px_cylinder(r, h, filled = false, thickness = 1) =
     is_num(r) ? 
         _px_cylinder_same_r(r, h, filled, thickness) :
         _px_cylinder_diff_r(r, h, filled, thickness); 

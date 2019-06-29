@@ -1,4 +1,4 @@
-function px_sphere(radius, filled = true, thickness = 1) = 
+function px_sphere(radius, filled = false, thickness = 1) = 
     let(range = [-radius: radius - 1])
     filled ? [
         for(z = range)
