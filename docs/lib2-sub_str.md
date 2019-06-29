@@ -2,7 +2,7 @@
 
 The dir changed since 2.0. 
 
-Returns a new string that is a substring of the given string.
+Returns the part of the string from `begin` to `end`, or to the `end` of the string (`end` not included).
 
 ## Parameters
 
