@@ -3,7 +3,6 @@ module test_px_cylinder() {
     echo("==== test_px_cylinder ====");
 
     include <unittest.scad>;
-    include <pixel/px_circle.scad>;
     include <pixel/px_cylinder.scad>;
 
     r1 = 10;
