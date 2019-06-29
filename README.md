@@ -128,9 +128,9 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 	- [util/sub_str](https://openhome.cc/eGossip/OpenSCAD/lib2-sub_str.html)
 	- [util/split_str](https://openhome.cc/eGossip/OpenSCAD/lib2-split_str.html)
 	- [util/parse_number](https://openhome.cc/eGossip/OpenSCAD/lib2-parse_number.html)
-    - util/reverse
-	- util/slice
-	- util/sort
+    - [util/reverse](https://openhome.cc/eGossip/OpenSCAD/lib2-reverse.html)
+	- [util/slice](https://openhome.cc/eGossip/OpenSCAD/lib2-slice.html)
+	- [util/sort](https://openhome.cc/eGossip/OpenSCAD/lib2-sort.html)
 
 - Matrix
 	- [matrix/m_cumulate](https://openhome.cc/eGossip/OpenSCAD/lib2-m_cumulate.html)	
