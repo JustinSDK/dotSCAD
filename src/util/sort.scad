@@ -8,7 +8,7 @@ function _sort(lt, i) =
         )
         concat(_sort(before, i), [pivot], _sort(after, i));
 
-function sort(lt, by, idx = -1) =
+function sort(lt, by = "idx", idx = 0) =
     let(
         dict = [["x", 0], ["y", 1], ["z", 0], ["idx", idx]],
         i = dict[search(by, dict)[0]][1]
