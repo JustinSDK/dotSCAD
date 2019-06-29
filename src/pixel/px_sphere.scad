@@ -1,9 +1,9 @@
 function px_sphere(radius, filled = true) = 
     let(range = [-radius: radius - 1])
     filled ? [
-        for(x = range)
+        for(z = range)
             for(y = range)        
-               for(z = range)
+               for(x = range)
                    let(v = [x, y, z])
                    if(norm(v) < radius) v
     ] :
