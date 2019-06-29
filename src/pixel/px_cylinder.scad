@@ -1,3 +1,22 @@
+function _px_cylinder_px_circle(radius, filled = true) = 
+    let(range = [-radius: radius - 1])
+    filled ? [
+        for(y = range)        
+           for(x = range)
+               let(v = [x, y])
+               if(norm(v) < radius) v
+    ] :
+    let(ishell = radius * radius - 2 * radius)
+    [
+        for(y = range)        
+           for(x = range)
+               let(
+                   v = [x, y],
+                   leng = norm(v)
+               )
+               if(leng < radius && (leng * leng) > ishell) v    
+    ];
+
 function _px_cylinder_diff_r(r, h, filled) =
     let(
         r1 = r[0],
@@ -8,13 +27,13 @@ function _px_cylinder_diff_r(r, h, filled) =
         for(i = 0; i < h; i = i + 1)
         let(r = round(r1 + dr * i))
         each [
-            for(pt = px_circle(r, filled))
+            for(pt = _px_cylinder_px_circle(r, filled))
             [pt[0], pt[1], i]
         ]
     ]; 
 
 function _px_cylinder_same_r(r, h, filled) =
-    let(c = px_circle(r, filled))
+    let(c = _px_cylinder_px_circle(r, filled))
     [
         for(i = 0; i < h; i = i + 1)
         each [
