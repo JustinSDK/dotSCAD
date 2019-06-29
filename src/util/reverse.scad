@@ -1,3 +1,3 @@
 include <util/__comm__/__reverse.scad>;
 
-function reverse(vt) = __reverse(vt);
+function reverse(lt) = __reverse(lt);
