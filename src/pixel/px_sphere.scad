@@ -1,4 +1,4 @@
-function px_sphere(radius, filled = true) = 
+function px_sphere(radius, filled = true, width = 1) = 
     let(range = [-radius: radius - 1])
     filled ? [
         for(z = range)
@@ -7,7 +7,7 @@ function px_sphere(radius, filled = true) =
                    let(v = [x, y, z])
                    if(norm(v) < radius) v
     ] :
-    let(ishell = radius * radius - 2 * radius)
+    let(ishell = radius * radius - 2 * width * radius)
     [
         for(z = range)
             for(y = range)        
