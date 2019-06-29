@@ -8,7 +8,7 @@ Returns a list selected from `begin` to `end`, or to the `end` of the list (`end
 
 - `lt` : The original list.
 - `begin` : The beginning index, inclusive. 
-- `end` : The ending index, exclusive. If it's omitted, the substring begins with the character at the specified `begin` and extends to the end of the original string.
+- `end` : The ending index, exclusive. If it's omitted, the list begins with the character at the specified `begin` and extends to the end of the original list.
 
 ## Examples
 
