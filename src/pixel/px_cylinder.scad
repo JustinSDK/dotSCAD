@@ -1,4 +1,4 @@
-function _px_cylinder_px_circle(radius, filled = true) = 
+function _px_cylinder_px_circle(radius, filled, width) = 
     let(range = [-radius: radius - 1])
     filled ? [
         for(y = range)        
@@ -6,7 +6,7 @@ function _px_cylinder_px_circle(radius, filled = true) =
                let(v = [x, y])
                if(norm(v) < radius) v
     ] :
-    let(ishell = radius * radius - 2 * radius)
+    let(ishell = radius * radius - 2 * width * radius)
     [
         for(y = range)        
            for(x = range)
@@ -17,23 +17,24 @@ function _px_cylinder_px_circle(radius, filled = true) =
                if(leng < radius && (leng * leng) > ishell) v    
     ];
 
-function _px_cylinder_diff_r(r, h, filled) =
+function _px_cylinder_diff_r(r, h, filled, width) =
     let(
         r1 = r[0],
-        r2 = r[1],
-        dr = (r2 - r1) / (h - 1)
+        r2 = r[1]
     )
+    r1 == r2 ? _px_cylinder_same_r(r1, h, filled, width) :
+    let(dr = (r2 - r1) / (h - 1))
     [
         for(i = 0; i < h; i = i + 1)
         let(r = round(r1 + dr * i))
         each [
-            for(pt = _px_cylinder_px_circle(r, filled))
+            for(pt = _px_cylinder_px_circle(r, filled, width))
             [pt[0], pt[1], i]
         ]
     ]; 
 
-function _px_cylinder_same_r(r, h, filled) =
-    let(c = _px_cylinder_px_circle(r, filled))
+function _px_cylinder_same_r(r, h, filled, width) =
+    let(c = _px_cylinder_px_circle(r, filled, width))
     [
         for(i = 0; i < h; i = i + 1)
         each [
@@ -42,7 +43,7 @@ function _px_cylinder_same_r(r, h, filled) =
         ]
     ]; 
 
-function px_cylinder(r, h, filled = true) =
+function px_cylinder(r, h, filled = true, width = 1) =
     is_num(r) ? 
-        _px_cylinder_same_r(r, h, filled) :
-        _px_cylinder_diff_r(r, h, filled); 
+        _px_cylinder_same_r(r, h, filled, width) :
+        _px_cylinder_diff_r(r, h, filled, width); 
