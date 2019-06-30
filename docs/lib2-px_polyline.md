@@ -6,8 +6,6 @@ Given a list of points. `px_line` returns points that can be used to draw a pixe
 
 ## Parameters
 
-The dir changed since 2.0. 
-
 - `points` : A list of points. Each point can be `[x, y]` or `[x, y, z]`. x, y, z must be integer.
 
 ## Examples
