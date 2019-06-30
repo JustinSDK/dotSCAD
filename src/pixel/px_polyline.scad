@@ -1,3 +1,13 @@
+/**
+* px_polyline.scad
+*
+* @copyright Justin Lin, 2019
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2-px_polyline.html
+*
+**/ 
+
 include <__comm__/__to3d.scad>;
 include <__comm__/__to2d.scad>;
 include <__comm__/__lines_from.scad>;
