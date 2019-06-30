@@ -8,8 +8,8 @@ Given two points. `px_line` returns points that can be used to draw a pixel-styl
 
 The dir changed since 2.0. 
 
-- `p1` : The start point `[x, y]` or `[x, y, z]`.
-- `p2` : The end point `[x, y]` or `[x, y, z]`.
+- `p1` : The start point `[x, y]` or `[x, y, z]`. x, y, z must be integer.
+- `p2` : The end point `[x, y]` or `[x, y, z]`. x, y, z must be integer.
 
 ## Examples
 
