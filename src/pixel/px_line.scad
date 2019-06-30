@@ -181,11 +181,11 @@ function _px_line_zdominant_sub(x, y, z, endz, a, s, xd, yd) =
             )
         );
         
-function px_line(start, end) = 
+function px_line(p1, p2) = 
     let(
-        is_2d = len(start) == 2,
-        start_pt = is_2d ? __to3d(start) : start,
-        end_pt = is_2d ? __to3d(end) : end,
+        is_2d = len(p1) == 2,
+        start_pt = is_2d ? __to3d(p1) : p1,
+        end_pt = is_2d ? __to3d(p2) : p2,
         dt = end_pt - start_pt,
         ax = floor(abs(dt[0]) * 2),
         ay = floor(abs(dt[1]) * 2),
