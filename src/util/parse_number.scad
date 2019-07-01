@@ -8,10 +8,11 @@
 *
 **/ 
     
-function _str_to_int(t, i = 0, mapper = [["0", 0], ["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5], ["6", 6], ["7", 7], ["8", 8], ["9", 9]]) =  
-    i == len(mapper) ? -1 : (
-        mapper[i][0] == t ? mapper[i][1] : _str_to_int(t, i + 1)
-    );
+function _str_to_int(t) =  
+    let(
+        dict = [["0", 0], ["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5], ["6", 6], ["7", 7], ["8", 8], ["9", 9]],
+        n = dict[search(t, dict)[0]][1]
+    ) n;
     
 function _parse_positive_int(t, value = 0, i = 0) =
     i == len(t) ? value : _parse_positive_int(t, value * pow(10, i) + _str_to_int(t[i]), i + 1);
