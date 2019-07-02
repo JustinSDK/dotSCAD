@@ -1,3 +1,13 @@
+/**
+* px_circle.scad
+*
+* @copyright Justin Lin, 2019
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2-px_circle.html
+*
+**/ 
+
 function _px_circle_y(f, y) = f >= 0 ? y - 1 : y;
 function _px_circle_ddf_y(f, ddf_y) = f >= 0 ? ddf_y + 2 : ddf_y;
 function _px_circle_f(f, ddf_y) = f >= 0 ? f + ddf_y : f;
