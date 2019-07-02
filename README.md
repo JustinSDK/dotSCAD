@@ -147,8 +147,8 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 - Pixel
     - [pixel/px_line](https://openhome.cc/eGossip/OpenSCAD/lib2-px_line.html)
 	- [pixel/px_polyline](https://openhome.cc/eGossip/OpenSCAD/lib2-px_polyline.html)
-	- pixel/px_circle
-	- pixel/px_cylinder
+	- [pixel/px_circle](https://openhome.cc/eGossip/OpenSCAD/lib2-px_circle.html)
+	- [pixel/px_cylinder](https://openhome.cc/eGossip/OpenSCAD/lib2-px_cylinder.html)
 	- pixel/px_sphere
 	- pixel/px_polygon
 	
