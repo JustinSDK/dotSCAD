@@ -1,6 +1,6 @@
 # px_polyline
 
-Given a list of points. `px_line` returns points that can be used to draw a pixel-style polyline.
+Given a list of points. `px_polyline` returns points that can be used to draw a pixel-style polyline.
 
 **Since:** 2.0
 
