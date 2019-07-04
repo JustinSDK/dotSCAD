@@ -8,7 +8,6 @@
 *
 **/ 
 
-
 function px_sphere(radius, filled = false, thickness = 1) = 
     let(range = [-radius: radius - 1])
     filled ? [
