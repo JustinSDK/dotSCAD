@@ -6,7 +6,7 @@ Returns points that can be used to draw a pixel-style circle.
 
 ## Parameters
 
-- `radius` : The circle radius.
+- `radius` : The circle radius. The value must be an integer.
 - `filled` : Default to `false`. Set it `true` if you want a filled circle.
 
 ## Examples

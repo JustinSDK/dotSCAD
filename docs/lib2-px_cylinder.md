@@ -6,10 +6,10 @@ Returns points that can be used to draw a pixel-style cylinder.
 
 ## Parameters
 
-- `radius` : The radius of the cylinder. It also accepts a vector `[r1, r2]`. `r1` is the bottom radius and `r2` is the top radius of a cone.
+- `radius` : The radius of the cylinder. It also accepts a vector `[r1, r2]`. `r1` is the bottom radius and `r2` is the top radius of a cone. Values must be an integer.
 - `h` : The height of the cylinder or cone. 
 - `filled` : Default to `false`. Set it `true` if you want a filled cylinder.
-- `thickness`: Default to 1. The thickness when `filled` is `false`.
+- `thickness`: Default to 1. The thickness when `filled` is `false`. The value must be an integer.
 
 ## Examples
 
