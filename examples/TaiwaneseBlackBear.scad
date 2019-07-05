@@ -6,6 +6,13 @@ include <pixel/px_sphere.scad>;
 include <pixel/px_cylinder.scad>;
 include <pixel/px_polygon.scad>;
 
+module blocks(points) {
+    for(pt = points) {
+        translate(pt)
+            cube(1, center = true);
+    }
+}
+
 // Well, quick and dirty!!
 color("MediumSeaGreen") 
     translate([3, -5, -27]) 
@@ -15,79 +22,26 @@ color("MediumSeaGreen")
                     square(1, center = true);
         }
 
-
 color(c = [0.3, 0.3, 0.3]) {
-    for(pt = px_sphere(10)) {
-        translate(pt)
-            cube(1, center = true);
-    }
-    translate([7, 0, 9]) for(pt = px_sphere(3)) {
-        translate(pt)
-            cube(1, center = true);
-    }
-    translate([-7, 0, 9]) for(pt = px_sphere(3)) {
-        translate(pt)
-            cube(1, center = true);
-    }
-    
-    translate([0, 0, -13]) for(pt = px_sphere(12)) {
-        translate(pt)
-            cube(1, center = true);
-    }  
-    
-    translate([6, 0, -26]) for(pt = px_cylinder([3, 4], 6)) {
-        translate(pt)
-            cube(1, center = true);
-    }
-    
-    translate([-6, 0, -26]) for(pt = px_cylinder([3, 4], 6)) {
-        translate(pt)
-            cube(1, center = true);
-    }
-
+    blocks(px_sphere(10));
+    translate([7, 0, 9]) blocks(px_sphere(3));
+    translate([-7, 0, 9]) blocks(px_sphere(3));
+    translate([0, 0, -13]) blocks(px_sphere(12));
+    translate([6, 0, -26]) blocks(px_cylinder([3, 4], 6));
+    translate([-6, 0, -26]) blocks(px_cylinder([3, 4], 6))
     translate([10, 0, -13]) cube([6, 5, 10], center = true);
     translate([-10, 0, -13]) cube([6, 5, 10], center = true);
 }
 color("white") {
-    translate([3, -7, 2]) for(pt = px_sphere(2)) {
-        translate(pt)
-            cube(1, center = true);
-    }
-    translate([-3, -7, 2]) for(pt = px_sphere(2)) {
-        translate(pt)
-            cube(1, center = true);
-    }
-    translate([0, -7, 0]) for(pt = px_sphere(3)) {
-        translate(pt)
-            cube(1, center = true);
-    }
-    translate([0, -9, -4]) for(pt = px_sphere(1)) {
-        translate(pt)
-            cube(1, center = true);
-    }    
-    for(pt = px_polyline([[0, -12, -10], [5, -9, -7], [8, -6, -6]])) {
-        translate(pt)
-            cube(1, center = true);
-    }
-    for(pt = px_polyline([[0, -12, -10], [5, -9, -8], [8, -6, -7]])) {
-        translate(pt)
-            cube(1, center = true);
-    }
-    for(pt = px_polyline([[0, -12, -10], [5, -9, -9], [8, -6, -8]])) {
-        translate(pt)
-            cube(1, center = true);
-    }    
-    
-    for(pt = px_polyline([[0, -12, -10], [-5, -9, -7], [-8, -6, -6]])) {
-        translate(pt)
-            cube(1, center = true);
-    }
-    for(pt = px_polyline([[0, -12, -10], [-5, -9, -8], [-8, -6, -7]])) {
-        translate(pt)
-            cube(1, center = true);
-    }
-    for(pt = px_polyline([[0, -12, -10], [-5, -9, -9], [-8, -6, -8]])) {
-        translate(pt)
-            cube(1, center = true);
-    }    
+    translate([3, -7, 2]) blocks(px_sphere(2));
+    translate([-3, -7, 2]) blocks(px_sphere(2));
+    translate([0, -7, 0]) blocks(px_sphere(3));
+    translate([0, -9, -4]) blocks(px_sphere(1));
+    blocks(px_polyline([[0, -12, -10], [5, -9, -7], [8, -6, -6]]));
+    blocks(px_polyline([[0, -12, -10], [5, -9, -8], [8, -6, -7]]));
+    blocks(px_polyline([[0, -12, -10], [5, -9, -9], [8, -6, -8]]));
+    blocks(px_polyline([[0, -12, -10], [5, -9, -9], [8, -6, -8]]));
+    blocks(px_polyline([[0, -12, -10], [-5, -9, -7], [-8, -6, -6]]));
+    blocks(px_polyline([[0, -12, -10], [-5, -9, -8], [-8, -6, -7]]));
+    blocks(px_polyline([[0, -12, -10], [-5, -9, -9], [-8, -6, -8]]));
 }
