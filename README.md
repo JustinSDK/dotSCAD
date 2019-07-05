@@ -2,7 +2,7 @@
 
 > **Reduce the burden of 3D modeling in mathematics. Based on OpenSCAD 2019.05.**
 
-![dotSCAD](WhirlingTaiwan.JPG)
+![dotSCAD](TaiwaneseBlackBear.JPG)
 
 [![license/LGPL](https://img.shields.io/badge/license-LGPL-blue.svg)](https://github.com/JustinSDK/lib-openscad/blob/master/LICENSE)
 
