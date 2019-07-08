@@ -1,4 +1,4 @@
-# dotSCAD 2 (beta)
+# dotSCAD 2 (RC)
 
 > **Reduce the burden of 3D modeling in mathematics. Based on OpenSCAD 2019.05.**
 
