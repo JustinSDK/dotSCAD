@@ -6,8 +6,8 @@ module tree(t, leng, leng_scale1, leng_scale2, leng_limit,
     if(leng > leng_limit) {
         t2 = turtle3d("xu_move", t, leng);
 
-        polyline3d(
-            [turtle3d("pt", t), turtle3d("pt", t2)], 
+        line3d(
+            turtle3d("pt", t), turtle3d("pt", t2), 
             width);
 
         tree(
