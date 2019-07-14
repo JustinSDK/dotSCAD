@@ -47,11 +47,11 @@ module dancing_formosan(x1, x2, x3, y1, y2, y3, twist, t_step) {
 
     offseted = bijection_offset(taiwan, -2);
 
-    edge_paty2 = [for(p = edge_path) p + [-2, 0, 0]];
+    edge_path2 = [for(p = edge_path) p + [-2, 0, 0]];
     taiwan2 = trim_shape(offseted, 1, len(offseted) - 4);
 
     sections = cal_sections(taiwan, edge_path, twist);
-    sections2 = cal_sections(taiwan2, edge_paty2, twist);
+    sections2 = cal_sections(taiwan2, edge_path2, twist);
 
     difference() {
         polysections(sections);
