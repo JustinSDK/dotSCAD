@@ -1,5 +1,23 @@
 > Version numbers are based on [Semantic Versioning](https://semver.org/).
 
+# v2.0
+- Use new features of OpenSCAD-2019.05 to refactor internal implementation.
+- Delete the `log` module which is never used.
+- Directory changed.
+  - `m_cumulate`, `m_mirror`, `m_rotation`, `m_scaling`, `m_shearing` and `m_translation` are moved into the `matrix` directory.
+  - `turtle2d` and `turtle3d` are moved into the `turtle` directory.
+  - `parse_number`, `split_str` and `sub_str` are moved into the `util` directory.
+- New modules and functions.
+  - [pixel/px_line](https://openhome.cc/eGossip/OpenSCAD/lib2-px_line.html)
+  - [pixel/px_polyline](https://openhome.cc/eGossip/OpenSCAD/lib2-px_polyline.html)
+  - [pixel/px_circle](https://openhome.cc/eGossip/OpenSCAD/lib2-px_circle.html)
+  - [pixel/px_cylinder](https://openhome.cc/eGossip/OpenSCAD/lib2-px_cylinder.html)
+  - [pixel/px_sphere](https://openhome.cc/eGossip/OpenSCAD/lib2-px_sphere.html)
+  - [pixel/px_polygon](https://openhome.cc/eGossip/OpenSCAD/lib2-px_polygon.html)
+  - [util/reverse](https://openhome.cc/eGossip/OpenSCAD/lib2-reverse.html)
+  - [util/slice](https://openhome.cc/eGossip/OpenSCAD/lib2-slice.html)
+  - [util/sort](https://openhome.cc/eGossip/OpenSCAD/lib2-sort.html)  
+
 # v1.3.3
 - Bugfixes
   - `in_shape`: Wrong variable name.
