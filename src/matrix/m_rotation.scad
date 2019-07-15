@@ -9,6 +9,6 @@
 **/
 
 include <__comm__/__to_ang_vect.scad>;
-include <__comm__/__m_rotation.scad>;
+include <matrix/__comm__/__m_rotation.scad>;
 
 function m_rotation(a, v) = __m_rotation(a, v);
