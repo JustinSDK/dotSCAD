@@ -8,13 +8,9 @@
 *
 **/
 
-include <__private__/__is_float.scad>;
-include <__private__/__to3d.scad>;
-include <__private__/__angy_angz.scad>;
-
-// Becuase of improving the performance, this module requires m_rotation.scad which doesn't require in dotSCAD 1.0. 
-// For backward compatibility, I directly include m_rotation here.
-include <m_rotation.scad>;
+include <__comm__/__to3d.scad>;
+include <__comm__/__angy_angz.scad>;
+include <matrix/__comm__/__m_rotation.scad>;
 
 module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale = 1.0, closed = false, method = "AXIS_ANGLE") {
     sh_pts = len(shape_pts[0]) == 3 ? shape_pts : [for(p = shape_pts) __to3d(p)];
@@ -23,7 +19,6 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
     len_path_pts = len(pth_pts);
     len_path_pts_minus_one = len_path_pts - 1;
     
-
     module axis_angle_path_extrude() {
         twist_step_a = twist / len_path_pts;
 
@@ -36,36 +31,32 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
         ];
             
         function rotate_pts(pts, a, v) = [for(p = pts) rotate_p(p, a, v)];
-        
-        function scale_step() =
-            let(s =  (scale - 1) / len_path_pts_minus_one)
-            [s, s, s];  
 
-        scale_step_vt = __is_float(scale) ? 
-            scale_step() : 
+        scale_step_vt = is_num(scale) ? 
+            let(s =  (scale - 1) / len_path_pts_minus_one) [s, s, s] : 
             [
                 (scale[0] - 1) / len_path_pts_minus_one, 
                 (scale[1] - 1) / len_path_pts_minus_one,
-                scale[2] == undef ? 0 : (scale[2] - 1) / len_path_pts_minus_one
+                is_undef(scale[2]) ? 0 : (scale[2] - 1) / len_path_pts_minus_one
             ];   
 
         // get rotation matrice for sections
 
         function local_ang_vects(j) = 
-            j == 0 ? [] : local_ang_vects_sub(j);
-        
-        function local_ang_vects_sub(j) =
-            let(
-                vt0 = pth_pts[j] - pth_pts[j - 1],
-                vt1 = pth_pts[j + 1] - pth_pts[j],
-                a = acos((vt0 * vt1) / (norm(vt0) * norm(vt1))),
-                v = cross(vt0, vt1)
-            )
-            concat([[a, v]], local_ang_vects(j - 1));
+            [
+                for(i = j; i > 0; i = i - 1) 
+                let(
+                    vt0 = pth_pts[i] - pth_pts[i - 1],
+                    vt1 = pth_pts[i + 1] - pth_pts[i],
+                    a = acos((vt0 * vt1) / (norm(vt0) * norm(vt1))),
+                    v = cross(vt0, vt1)
+                )
+                [a, v]
+            ];
 
         rot_matrice = [
             for(ang_vect = local_ang_vects(len_path_pts - 2)) 
-                m_rotation(ang_vect[0], ang_vect[1])
+                __m_rotation(ang_vect[0], ang_vect[1])
         ];
 
         leng_rot_matrice = len(rot_matrice);
@@ -133,40 +124,36 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
                     ]
             ];        
 
-        function sections() =
+        sections =
             let(
                 fst_section = 
                     translate_pts(local_rotate_section(0, 0, [1, 1, 1]), pth_pts[0]),
+                end_i = len_path_pts - 1,
                 remain_sections = [
-                    for(i = [0:len_path_pts - 2]) 
-                    
+                    for(i = 0; i < end_i; i = i + 1) 
                         translate_pts(
                             local_rotate_section(i, i * twist_step_a, [1, 1, 1] + scale_step_vt * i),
                             pth_pts[i + 1]
                         )
-                    
-                        
                 ]
             ) concat([fst_section], remain_sections);
-        
-        sects = sections();
 
-        function calculated_sections() =
+        calculated_sections =
             closed && pth_pts[0] == pth_pts[len_path_pts_minus_one] ?
-                concat(sects, [sects[0]]) : // round-robin
-                sects;
+                concat(sections, [sections[0]]) : // round-robin
+                sections;
         
         polysections(
-            calculated_sections(),
+            calculated_sections,
             triangles = triangles
         );   
 
         // hook for testing
-        test_path_extrude(sects);        
+        test_path_extrude(sections);        
     }
 
     module euler_angle_path_extrude() {
-        scale_step_vt = __is_float(scale) ? 
+        scale_step_vt = is_num(scale) ? 
             [(scale - 1) / len_path_pts_minus_one, (scale - 1) / len_path_pts_minus_one] : 
             [(scale[0] - 1) / len_path_pts_minus_one, (scale[1] - 1) / len_path_pts_minus_one];
 
@@ -192,28 +179,24 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
                     ) + p1
             ];
         
-        function path_extrude_inner(index) =
-        index == len_path_pts ? [] :
-            concat(
-                [section(pth_pts[index - 1], pth_pts[index],  index)],
-                path_extrude_inner(index + 1)
-            );
+        path_extrude_inner =
+            [
+                for(i = 1; i < len_path_pts; i = i + 1)
+                    section(pth_pts[i - 1], pth_pts[i],  i)
+            ];
 
-        function calculated_sections() =
-            let(sections = path_extrude_inner(1))
+        calculated_sections =
             closed && pth_pts[0] == pth_pts[len_path_pts_minus_one] ?
-                concat(sections, [sections[0]]) : // round-robin
-                concat([section(pth_pts[0], pth_pts[1], 0)], sections);
-    
-    sections = calculated_sections();
+                concat(path_extrude_inner, [path_extrude_inner[0]]) : // round-robin
+                concat([section(pth_pts[0], pth_pts[1], 0)], path_extrude_inner);
 
         polysections(
-            sections,
+            calculated_sections,
             triangles = triangles
         );   
 
         // hook for testing
-        test_path_extrude(sections);
+        test_path_extrude(calculated_sections);
     }
 
     if(method == "AXIS_ANGLE") {
@@ -223,7 +206,6 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
         euler_angle_path_extrude();
     } 
 }
-
 
 // override to test
 module test_path_extrude(sections) {

@@ -11,7 +11,7 @@ module test_rounded_cube_size_corner() {
     module test_rounded_edge_corner_center(corner_frags, corners, center_pts) {
         half_size = size / 2;
         
-        assertTrue(corner_frags % 4 == 0);
+        assert(corner_frags % 4 == 0);
         
         expected_corners = [[5.0961, 5.0961, 5.0961], [-5.0961, 5.0961, 5.0961], [5.0961, -5.0961, 5.0961], [-5.0961, -5.0961, 5.0961], [5.0961, 5.0961, -5.0961], [-5.0961, 5.0961, -5.0961], [5.0961, -5.0961, -5.0961], [-5.0961, -5.0961, -5.0961]];
         
@@ -36,7 +36,7 @@ module test_rounded_cube_size_center() {
             
     module test_rounded_edge_corner_center(corner_frags, corners, center_pts) {
         
-        assertTrue(corner_frags % 4 == 0);
+        assert(corner_frags % 4 == 0);
         
         expected_corners = [[20.0961, 7.5961, 2.5961], [-20.0961, 7.5961, 2.5961], [20.0961, -7.5961, 2.5961], [-20.0961, -7.5961, 2.5961], [20.0961, 7.5961, -2.5961], [-20.0961, 7.5961, -2.5961], [20.0961, -7.5961, -2.5961], [-20.0961, -7.5961, -2.5961]];
         
@@ -63,7 +63,7 @@ module test_rounded_cube_size_center_fn() {
             
     module test_rounded_edge_corner_center(corner_frags, corners, center_pts) {
         
-        assertTrue(corner_frags == $fn);
+        assert(corner_frags == $fn);
         
         expected_corners = [[20.3806, 7.8806, 2.8806], [-20.3806, 7.8806, 2.8806], [20.3806, -7.8806, 2.8806], [-20.3806, -7.8806, 2.8806], [20.3806, 7.8806, -2.8806], [-20.3806, 7.8806, -2.8806], [20.3806, -7.8806, -2.8806], [-20.3806, -7.8806, -2.8806]];
         

@@ -8,8 +8,8 @@
 *
 **/ 
 
-include <__private__/__ra_to_xy.scad>;
-include <__private__/__to_degree.scad>;
+include <__comm__/__ra_to_xy.scad>;
+include <__comm__/__to_degree.scad>;
 
 function _superformula_r(angle, m1, m2, n1, n2 = 1, n3 = 1, a = 1, b = 1) = 
     pow(
@@ -19,12 +19,12 @@ function _superformula_r(angle, m1, m2, n1, n2 = 1, n3 = 1, a = 1, b = 1) =
     );
 
 function shape_superformula(phi_step, m1, m2, n1, n2 = 1, n3 = 1, a = 1, b = 1) = 
+   let(tau = PI * 2)
    [
-        for(phi = [0:phi_step:6.28318]) 
+        for(phi = 0; phi <= tau; phi = phi + phi_step) 
             let(
                 angle = __to_degree(phi),
                 r = _superformula_r(angle, m1, m2, n1, n2, n3, a, b)
-                
             )
             __ra_to_xy(r, angle)
    ];

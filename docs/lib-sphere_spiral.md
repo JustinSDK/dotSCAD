@@ -1,6 +1,6 @@
 # sphere_spiral
 
-Creates all points and angles on the path of a spiral around a sphere. It returns a vector of `[[x, y, z], [ax, ay, az]]`. `[x, y, z]` is actually obtained from rotating `[radius, 0, 0]` by `[ax, ay, az]`. It depends on the `rotate_p` function. Remember to include rotate_p.scad first.
+Creates all points and angles on the path of a spiral around a sphere. It returns a vector of `[[x, y, z], [ax, ay, az]]`. `[x, y, z]` is actually obtained from rotating `[radius, 0, 0]` by `[ax, ay, az]`.
 
 ## Parameters
 

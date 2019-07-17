@@ -17,7 +17,7 @@ module test_hull_polyline3d() {
     module test_line_segment(index, point1, point2, radius) {
         assertEqualPoint(points[index - 1], point1);
         assertEqualPoint(points[index], point2);
-        assertEqual(thickness, radius * 2);    
+        assertEqualNum(thickness, radius * 2);    
     } 
     
     hull_polyline3d(
@@ -47,7 +47,7 @@ module test_hull_polyline3d_helix() {
     module test_line_segment(index, point1, point2, radius) {
         assertEqualPoint(points[index - 1], point1);
         assertEqualPoint(points[index], point2);
-        assertEqual(thickness, radius * 2);    
+        assertEqualNum(thickness, radius * 2);    
     } 
     
     for(i = [0:7]) {

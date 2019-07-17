@@ -8,10 +8,9 @@
 *
 **/ 
 
-include <__private__/__to2d.scad>;
-include <__private__/__to3d.scad>;
-include <__private__/__is_float.scad>;
-include <__private__/__to_ang_vect.scad>;
+include <__comm__/__to2d.scad>;
+include <__comm__/__to3d.scad>;
+include <__comm__/__to_ang_vect.scad>;
 
 function _q_rotate_p_3d(p, a, v) = 
     let(
@@ -87,4 +86,4 @@ function _q_rotate_p(p, a, v) =
         );
 
 function rotate_p(point, a, v) =
-    v == undef ? _rotate_p(point, a) : _q_rotate_p(point, a, v);
+    is_undef(v) ? _rotate_p(point, a) : _q_rotate_p(point, a, v);

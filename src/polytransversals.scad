@@ -8,8 +8,8 @@
 *
 **/
 
-include <__private__/__reverse.scad>;
-include <__private__/__polytransversals.scad>;
+include <util/__comm__/__reverse.scad>;
+include <__comm__/__polytransversals.scad>;
 
 module polytransversals(transversals) {
     polygon(

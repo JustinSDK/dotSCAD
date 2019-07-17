@@ -8,8 +8,8 @@
 *
 **/
 
-include <__private__/__frags.scad>;
-include <__private__/__nearest_multiple_of_4.scad>;
+include <__comm__/__frags.scad>;
+include <__comm__/__nearest_multiple_of_4.scad>;
 
 module line2d(p1, p2, width, p1Style = "CAP_SQUARE", p2Style =  "CAP_SQUARE") {
     half_width = 0.5 * width;    

@@ -26,7 +26,7 @@ module hexagons(radius, spacing, levels) {
             tx = hex_datum[0][0],
             ty = hex_datum[0][1],
             n = hex_datum[1],
-            offset_xs = [for(i = [0:n - 1]) i * offset_step + center_offset] 
+            offset_xs = [for(i = 0; i < n; i = i + 1) i * offset_step + center_offset] 
         )
         [
             for(x = offset_xs) [x + tx, ty]
@@ -37,7 +37,7 @@ module hexagons(radius, spacing, levels) {
         ty = hex_datum[0][1];
         n = hex_datum[1]; 
 
-        offset_xs = [for(i = [0:n - 1]) i * offset_step + center_offset];
+        offset_xs = [for(i = 0; i < n; i = i + 1) i * offset_step + center_offset];
         for(x = offset_xs) {
             p = [x + tx, ty, 0];
             translate(p) 

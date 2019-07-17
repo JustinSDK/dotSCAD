@@ -8,10 +8,9 @@
 *
 **/
 
-include <__private__/__frags.scad>;
-include <__private__/__is_float.scad>;
-include <__private__/__ra_to_xy.scad>;
-include <__private__/__shape_pie.scad>;
+include <__comm__/__frags.scad>;
+include <__comm__/__ra_to_xy.scad>;
+include <__comm__/__shape_pie.scad>;
 
 function shape_pie(radius, angle) =
     __shape_pie(radius, angle);

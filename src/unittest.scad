@@ -1,128 +1,38 @@
-include <__private__/__is_float.scad>;
+module assertEqualPoint(expected, actual, epsilon = 0.0001) {
+    leng_expected = len(expected);
+    leng_actual = len(actual);
 
-module fail(title, message) {
-    echo(
-        str( 
-            "<b>",
-                "<span style='color: red'>", 
-                    "FAIL: ",  title,
-                "</span>", 
-            "</b>"
-        )
+    assert(
+        leng_expected == leng_actual,
+        str("expected length: ", leng_expected, ", but: ", leng_actual)
     );
-    if(message != undef) {
-        echo(
-            str( 
-                "<b>",
-                    "<span style='color: red'>　",
-                        message, 
-                    "</span>", 
-                "</b>"
-            )
-        );
-    }
+
+    v_diff = expected - actual;
+    v3d = len(v_diff) == 2 ? [v_diff[0], v_diff[1], 0] : v_diff; 
+
+    assert(
+        abs(v3d[0]) <= epsilon && abs(v3d[1]) <= epsilon && abs(v3d[2]) <= epsilon,
+        str("expected: ", expected, ", but: ", actual)
+    );
 }
 
-function round_n(number, float_digits = 4) =
-    let(n = pow(10, float_digits)) 
-    round(number * n) / n;
-
-function mul_round_pt(point, n) = 
-    let(pt = point * n)
-    len(pt) == 2 ? 
-        [round(pt[0]), round(pt[1])] :
-        [round(pt[0]), round(pt[1]), round(pt[2])];
-
-function round_pts(points, float_digits = 4) = 
-    let(n = pow(10, float_digits))
-    [for(pt = points) mul_round_pt(pt, n) / n];
-
-module assertEqualPoint(expected, actual, float_digits = 4) {
+module assertEqualPoints(expected, actual, epsilon = 0.0001) {
     leng_expected = len(expected);
     leng_actual = len(actual);
 
-    if(leng_expected != leng_actual) {
-         fail(
-            "Point", 
-            str("expected length: ", leng_expected,
-            ", but: ", leng_actual)
-        );       
-    } else {
-        n = pow(10, float_digits);
+    assert(
+        leng_expected == leng_actual, 
+        str("expected length: ", leng_expected, ", but: ", leng_actual)
+    );
 
-        shifted_expected = mul_round_pt(
-            expected, n
-        );
-
-        shifted_actual = mul_round_pt(
-            actual, n
-        );
-        
-        if(shifted_expected != shifted_actual) {
-            fail(
-                "Point", 
-                str("expected: ", shifted_expected / n,
-                ", but: ", shifted_actual / n)
-            );
-        }
+    for(i = [0:len(actual) - 1]) {        
+        assertEqualPoint(expected[i], actual[i], epsilon);
     }
 }
 
-module assertEqualPoints(expected, actual, float_digits = 4) {
-    leng_expected = len(expected);
-    leng_actual = len(actual);
-
-    if(leng_expected != leng_actual) {
-         fail(
-            "Points", 
-            str("expected length: ", leng_expected,
-            ", but: ", leng_actual)
-        );       
-    } else {
-        for(i = [0:len(actual) - 1]) {        
-            assertEqualPoint(expected[i], actual[i], float_digits);
-        }
-    }
+module assertEqualNum(expected, actual, epsilon = 0.0001) {
+    assert(
+        abs(expected - actual) <= epsilon, 
+        str("expected: ", expected, ", but: ", actual)
+    );
 }
-
-module assertEqual(expected, actual, float_digits = 4) {
-    r_expected = __is_float(expected) ? round_n(expected, float_digits) : expected;  
-    r_actual = __is_float(actual) ? round_n(actual, float_digits) : actual;  
-
-    if(r_expected != r_actual) {
-        fail(
-            "Equality", 
-            str("expected: ", r_expected,
-            ", but: ", r_actual)
-        );
-    }
-}
-
-module assertTrue(truth) {        
-    if(!truth) {
-        fail(
-            "Truth",
-             "expected: true, but: false"
-        );
-    }
-}
-
-module round_echo_pts(points, float_digits = 4) {
-    echo(round_pts(points, float_digits));
-}
-
-module round_echo_n(number, float_digits = 4) {
-    echo(round_n(number, float_digits)); 
-}
-
-function mul_round_vector(vector, n) = 
-    let(vt = vector * n)
-    [for(v = vt) round(v)]; 
-
-function round_vectors(vectors, float_digits = 4) = 
-    let(n = pow(10, float_digits))
-    [for(vt = vectors) mul_round_vector(vt, n) / n];
-
-module round_echo_vectors(vectors, float_digits = 4) {
-    echo(round_vectors(vectors, float_digits = 4));
-}    

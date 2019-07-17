@@ -1,8 +1,8 @@
-# dotSCAD 1.3
+# dotSCAD 2 (RC)
 
-> Reduce the burden of 3D modeling in mathematics. Compatible with OpenSCAD 2015.03 or laters.
+> **Reduce the burden of 3D modeling in mathematics. Based on OpenSCAD 2019.05.**
 
-![dotSCAD](WhirlingTaiwan.JPG)
+![dotSCAD](TaiwaneseBlackBear.JPG)
 
 [![license/LGPL](https://img.shields.io/badge/license-LGPL-blue.svg)](https://github.com/JustinSDK/lib-openscad/blob/master/LICENSE)
 
@@ -16,6 +16,16 @@ Every module or function is located in the file which has the same name as the m
 
 	line2d(p1 = [0, 0], p2 = [5, 0], width = 1);
 
+Some module files are organized in a directory. For example, px_circle.scad exists in `pixel` directory. You have to prefix the directory name when including `px_circle`.
+
+    include <pixel/px_circle.scad>;
+	points = px_circle(radius = 10);
+	for(pt = points) {
+        translate(pt) square(1);
+	}
+
+## Dependencies
+
 Some modules depend on other modules. For example, the `polyline2d` module depends on the `line2d` module, so you also have to `include <line2d.scad>;` besides `include <polyline3d.scad>;`. 
 
 	include <line2d.scad>;
@@ -23,11 +33,11 @@ Some modules depend on other modules. For example, the `polyline2d` module depen
 
 	polyline2d(points = [[1, 2], [-5, -4], [-5, 3], [5, 5]], width = 1);
 
-If OpenSCAD generates "WARNING: Ignoring unknown xxx function" or "WARNING: Ignoring unknown xxx module" when using one module of dotSCAD. Just try to `include <xxx.scad>;`.
+If OpenSCAD generates "WARNING: Ignoring unknown xxx function" or "WARNING: Ignoring unknown xxx module" when using one module of dotSCAD. Just try to `include <xxx.scad>;` or `include <dir/xxx.scad>` if xxx.scad exists in `dir` directory.
 
 Too many dependencies? Because OpenSCAD doesn't provide namespace management, I personally think that exposing dependencies is better than hiding them. In this way, users can have their own way to manage dependencies. How to categorize dependencies is up to you. For example, you can include your commonly-used modules and functions in "commonly_used.scad" and then `include <commonly_used.scad>;` in the ".scad" file of your project.
 
-If you really don't want to care about dependencies, `include <dotSCAD.scad>;` or `use <dotSCAD.scad>;` come to save you. 
+**If you really don't want to care about dependencies, `include <dotSCAD.scad>;` or `use <dotSCAD.scad>;` come to save you.**
 
 ## Documentation
 
@@ -63,12 +73,9 @@ If you really don't want to care about dependencies, `include <dotSCAD.scad>;` o
 
 - Functon
 	- [rotate_p](https://openhome.cc/eGossip/OpenSCAD/lib-rotate_p.html)
-	- [sub_str](https://openhome.cc/eGossip/OpenSCAD/lib-sub_str.html)
-	- [split_str](https://openhome.cc/eGossip/OpenSCAD/lib-split_str.html)
-	- [parse_number](https://openhome.cc/eGossip/OpenSCAD/lib-parse_number.html)
 	- [cross_sections](https://openhome.cc/eGossip/OpenSCAD/lib-cross_sections.html)
 	- [paths2sections](https://openhome.cc/eGossip/OpenSCAD/lib-paths2sections.html)
-	- [path_scaling_sections](https://openhome.cc/eGossip/OpenSCAD/lib-path_scaling_sections.html)
+	- [path_scaling_sections](https://openhome.cc/eGossip/OpenSCAD/lib2-path_scaling_sections.html)
 	- [bijection_offset](https://openhome.cc/eGossip/OpenSCAD/lib-bijection_offset.html)
 	- [in_polyline](https://openhome.cc/eGossip/OpenSCAD/lib-in_polyline.html)
 	- [in_shape](https://openhome.cc/eGossip/OpenSCAD/lib-in_shape.html)
@@ -117,19 +124,34 @@ If you really don't want to care about dependencies, `include <dotSCAD.scad>;` o
 	- [archimedean_spiral_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-archimedean_spiral_extrude.html)
 	- [sphere_spiral_extrude](https://openhome.cc/eGossip/OpenSCAD/lib-sphere_spiral_extrude.html)
 
+- Utilities
+	- [util/sub_str](https://openhome.cc/eGossip/OpenSCAD/lib2-sub_str.html)
+	- [util/split_str](https://openhome.cc/eGossip/OpenSCAD/lib2-split_str.html)
+	- [util/parse_number](https://openhome.cc/eGossip/OpenSCAD/lib2-parse_number.html)
+    - [util/reverse](https://openhome.cc/eGossip/OpenSCAD/lib2-reverse.html)
+	- [util/slice](https://openhome.cc/eGossip/OpenSCAD/lib2-slice.html)
+	- [util/sort](https://openhome.cc/eGossip/OpenSCAD/lib2-sort.html)
+
 - Matrix
-	- [m_cumulate](https://openhome.cc/eGossip/OpenSCAD/lib-m_cumulate.html)	
-	- [m_translation](https://openhome.cc/eGossip/OpenSCAD/lib-m_translation.html)
-	- [m_rotation](https://openhome.cc/eGossip/OpenSCAD/lib-m_rotation.html)
-	- [m_scaling](https://openhome.cc/eGossip/OpenSCAD/lib-m_scaling.html)
-	- [m_mirror](https://openhome.cc/eGossip/OpenSCAD/lib-m_mirror.html)
-	- [m_shearing](https://openhome.cc/eGossip/OpenSCAD/lib-m_shearing.html)
+	- [matrix/m_cumulate](https://openhome.cc/eGossip/OpenSCAD/lib2-m_cumulate.html)	
+	- [matrix/m_translation](https://openhome.cc/eGossip/OpenSCAD/lib2-m_translation.html)
+	- [matrix/m_rotation](https://openhome.cc/eGossip/OpenSCAD/lib2-m_rotation.html)
+	- [matrix/m_scaling](https://openhome.cc/eGossip/OpenSCAD/lib2-m_scaling.html)
+	- [matrix/m_mirror](https://openhome.cc/eGossip/OpenSCAD/lib2-m_mirror.html)
+	- [matrix/m_shearing](https://openhome.cc/eGossip/OpenSCAD/lib2-m_shearing.html)
 
-- Other
-    - [turtle2d](https://openhome.cc/eGossip/OpenSCAD/lib-turtle2d.html)
-    - [turtle3d](https://openhome.cc/eGossip/OpenSCAD/lib-turtle3d.html)
-	- [log](https://openhome.cc/eGossip/OpenSCAD/lib-log.html)
+- Turtle
+    - [turtle/turtle2d](https://openhome.cc/eGossip/OpenSCAD/lib2-turtle2d.html)
+    - [turtle/turtle3d](https://openhome.cc/eGossip/OpenSCAD/lib2-turtle3d.html)
 
+- Pixel
+    - [pixel/px_line](https://openhome.cc/eGossip/OpenSCAD/lib2-px_line.html)
+	- [pixel/px_polyline](https://openhome.cc/eGossip/OpenSCAD/lib2-px_polyline.html)
+	- [pixel/px_circle](https://openhome.cc/eGossip/OpenSCAD/lib2-px_circle.html)
+	- [pixel/px_cylinder](https://openhome.cc/eGossip/OpenSCAD/lib2-px_cylinder.html)
+	- [pixel/px_sphere](https://openhome.cc/eGossip/OpenSCAD/lib2-px_sphere.html)
+	- [pixel/px_polygon](https://openhome.cc/eGossip/OpenSCAD/lib2-px_polygon.html)
+	
 ## Bugs and Feedback
 
 For bugs, questions and discussions please use the [Github Issues](https://github.com/JustinSDK/dotSCAD/issues).

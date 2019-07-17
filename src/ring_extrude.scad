@@ -8,18 +8,18 @@
 *
 **/
 
-include <__private__/__frags.scad>;
-include <__private__/__ra_to_xy.scad>;
+include <__comm__/__frags.scad>;
+include <__comm__/__ra_to_xy.scad>;
 
 module ring_extrude(shape_pts, radius, angle = 360, twist = 0, scale = 1.0, triangles = "SOLID") {
-    if(angle == 360 && twist == 0 && scale == 1.0) {
-        rotate_extrude() 
+    if(twist == 0 && scale == 1.0) {
+        rotate_extrude(angle = angle) 
             translate([radius, 0, 0]) 
                 polygon(shape_pts);
     } else {
         a_step = 360 / __frags(radius);
 
-        angles = __is_float(angle) ? [0, angle] : angle;
+        angles = is_num(angle) ? [0, angle] : angle;
 
         m = floor(angles[0] / a_step) + 1;
         n = floor(angles[1] / a_step);

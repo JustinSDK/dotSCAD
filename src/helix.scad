@@ -8,12 +8,11 @@
 *
 **/ 
 
-include <__private__/__is_float.scad>;
-include <__private__/__frags.scad>;
+include <__comm__/__frags.scad>;
 
 function helix(radius, levels, level_dist, vt_dir = "SPI_DOWN", rt_dir = "CT_CLK") = 
     let(
-        is_flt = __is_float(radius),
+        is_flt = is_num(radius),
         r1 = is_flt ? radius : radius[0],
         r2 = is_flt ? radius : radius[1],
         init_r = vt_dir == "SPI_DOWN" ? r2 : r1,
@@ -26,10 +25,11 @@ function helix(radius, levels, level_dist, vt_dir = "SPI_DOWN", rt_dir = "CT_CLK
         r_step = r_diff / (levels * _frags),
         a_step = 360 / _frags * rt_d,
         begin_r = vt_dir == "SPI_DOWN" ? r2 : r1,
-        begin_h = vt_dir == "SPI_DOWN" ? h : 0
+        begin_h = vt_dir == "SPI_DOWN" ? h : 0,
+        end_i = _frags * levels
     )
     [
-        for(i = [0:_frags * levels]) 
+        for(i = 0; i <= end_i; i = i + 1) 
             let(r = begin_r + r_step * i, a = a_step * i)
                 [r * cos(a), r * sin(a), begin_h - h_step * i]
     ];

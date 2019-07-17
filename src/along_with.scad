@@ -8,34 +8,24 @@
 *
 **/ 
  
-include <__private__/__angy_angz.scad>;
-include <__private__/__is_float.scad>;
-include <__private__/__to3d.scad>;
-
-// Becuase of improving the performance, this module requires m_rotation.scad which doesn't require in dotSCAD 1.0. 
-// For backward compatibility, I directly include m_rotation here.
-include <m_rotation.scad>;
+include <__comm__/__angy_angz.scad>;
+include <__comm__/__to3d.scad>;
+include <matrix/__comm__/__m_rotation.scad>;
 
 module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE") {
     leng_points = len(points);
     leng_points_minus_one = leng_points - 1;
     twist_step_a = twist / leng_points;
 
-    angles_defined = angles != undef;
+    angles_defined = !is_undef(angles);
 
-    scale_step_vt = __is_float(scale) ? 
-        scale_step() :
+    scale_step_vt = is_num(scale) ? 
+        let(s =  (scale - 1) / leng_points_minus_one) [s, s, s] :
         [
             (scale[0] - 1) / leng_points_minus_one, 
             (scale[1] - 1) / leng_points_minus_one,
-            scale[2] == undef ? 0 : (scale[2] - 1) / leng_points_minus_one
+            is_undef(scale[2]) ? 0 : (scale[2] - 1) / leng_points_minus_one
         ]; 
-
-
-    function scale_step() =
-        let(s =  (scale - 1) / leng_points_minus_one)
-        [s, s, s];
-
 
     /* 
          Sadly, children(n) cannot be used with inner modules 
@@ -53,16 +43,16 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
     ];    
 
     function axis_angle_local_ang_vects(j) = 
-        j == 0 ? [] : axis_angle_local_ang_vects_sub(j);
-    
-    function axis_angle_local_ang_vects_sub(j) =
-        let(
-            vt0 = points[j] - points[j - 1],
-            vt1 = points[j + 1] - points[j],
-            a = acos((vt0 * vt1) / (norm(vt0) * norm(vt1))),
-            v = cross(vt0, vt1)
-        )
-        concat([[a, v]], axis_angle_local_ang_vects(j - 1));
+        [
+            for(i = j; i > 0; i = i - 1) 
+            let(
+                vt0 = points[i] - points[i - 1],
+                vt1 = points[i + 1] - points[i],
+                a = acos((vt0 * vt1) / (norm(vt0) * norm(vt1))),
+                v = cross(vt0, vt1)
+            )
+            [a, v]
+        ];
 
     function axis_angle_cumulated_rot_matrice(i, rot_matrice) = 
         let(
@@ -101,7 +91,6 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
 
     module axis_angle_align_with_pts_init(a, s) {
         angleyz = __angy_angz(__to3d(points[0]), __to3d(points[1]));
-
         rotate([0, -angleyz[0], angleyz[1]])
             rotate([90, 0, -90])
                 rotate(a)
@@ -126,13 +115,8 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
 
     // >>> begin: modules and functions for "EULER-ANGLE"
 
-    function _euler_angle_path_angles(pts, end_i, i = 0) = 
-        i == end_i ?
-                [] : 
-                concat(
-                    [__angy_angz(pts[i], pts[i + 1])], 
-                    _euler_angle_path_angles(pts, end_i, i + 1)
-                );
+    function _euler_angle_path_angles(pts, end_i) = 
+        [for(i = 0; i < end_i; i = i + 1) __angy_angz(pts[i], pts[i + 1])];
             
     function euler_angle_path_angles(children) = 
        let(
@@ -171,7 +155,7 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
         else {
             cumu_rot_matrice = axis_angle_cumulated_rot_matrice(0, [
                 for(ang_vect = axis_angle_local_ang_vects(leng_points - 2)) 
-                    m_rotation(ang_vect[0], ang_vect[1])
+                    __m_rotation(ang_vect[0], ang_vect[1])
             ]);
 
             translate(points[0])
@@ -195,16 +179,21 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
     }
     else if(method == "EULER_ANGLE") {
         angs = angles_defined ? angles : euler_angle_path_angles($children);
-
+        
         if($children == 1) { 
             for(i = [0:leng_points_minus_one]) {
                 euler_angle_align(i, angs) children(0);
             }
-            
         } else {
             for(i = [0:min(leng_points, $children) - 1]) {
                 euler_angle_align(i, angs) children(i);
             }
-        }         
+        }    
+
+        test_along_with_angles(angs);    
     }
+}
+
+module test_along_with_angles(angles) {
+
 }

@@ -27,6 +27,7 @@ include <in_polyline.scad>;
 include <in_shape.scad>;
 include <line2d.scad>;
 include <line3d.scad>;
+<<<<<<< HEAD
 include <log.scad>;
 include <m_cumulate.scad>;
 include <m_mirror.scad>;
@@ -37,6 +38,10 @@ include <m_translation.scad>;
 include <midpt_smooth.scad>;
 include <multi_line_text.scad>;
 include <parse_number.scad>;
+=======
+include <midpt_smooth.scad>;
+include <multi_line_text.scad>;
+>>>>>>> v2
 include <path_extrude.scad>;
 include <path_scaling_sections.scad>;
 include <paths2sections.scad>;
@@ -66,6 +71,7 @@ include <shape_trapezium.scad>;
 include <shear.scad>;
 include <sphere_spiral.scad>;
 include <sphere_spiral_extrude.scad>;
+<<<<<<< HEAD
 include <split_str.scad>;
 include <starburst.scad>;
 include <stereographic_extrude.scad>;
@@ -77,3 +83,32 @@ include <turtle2d.scad>;
 include <turtle3d.scad>;
 include <voronoi2d.scad>;
 include <voronoi3d.scad>;
+=======
+include <starburst.scad>;
+include <stereographic_extrude.scad>;
+include <torus_knot.scad>;
+include <triangulate.scad>;
+include <trim_shape.scad>;
+include <voronoi2d.scad>;
+include <voronoi3d.scad>;
+include <util/parse_number.scad>;
+include <util/split_str.scad>;
+include <util/sub_str.scad>;
+include <util/reverse.scad>;
+include <util/slice.scad>;
+include <util/sort.scad>;
+include <matrix/m_cumulate.scad>;
+include <matrix/m_mirror.scad>;
+include <matrix/m_rotation.scad>;
+include <matrix/m_scaling.scad>;
+include <matrix/m_shearing.scad>;
+include <matrix/m_translation.scad>;
+include <turtle/turtle2d.scad>;
+include <turtle/turtle3d.scad>;
+include <pixel/px_line.scad>;
+include <pixel/px_polyline.scad>;
+include <pixel/px_circle.scad>;
+include <pixel/px_cylinder.scad>;
+include <pixel/px_sphere.scad>;
+include <pixel/px_polygon.scad>;
+>>>>>>> v2

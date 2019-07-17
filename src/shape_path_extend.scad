@@ -8,9 +8,9 @@
 *
 **/
 
-include <__private__/__to3d.scad>;
-include <__private__/__polytransversals.scad>;
-include <__private__/__reverse.scad>;
+include <__comm__/__to3d.scad>;
+include <__comm__/__polytransversals.scad>;
+include <util/__comm__/__reverse.scad>;
 
 function _shape_path_extend_az(p1, p2) = 
     let(
@@ -41,32 +41,23 @@ function _shape_path_extend_stroke(stroke_pts, p1, p2, scale_step, i) =
             rotate_p(p * (1 + scale_step * i) + [0, leng], a) + p1
     ];
     
-function _shape_path_extend_inner(stroke_pts, path_pts, leng_path_pts, scale_step, index) =
-    index == leng_path_pts ? [] :
-        concat(
-            [
-                _shape_path_extend_stroke(
-                    stroke_pts, 
-                    path_pts[index - 1], 
-                    path_pts[index], 
-                    scale_step, 
-                    index
-                )
-            ],
-            _shape_path_extend_inner(
+function _shape_path_extend_inner(stroke_pts, path_pts, leng_path_pts, scale_step) =
+    [
+        for(i = 1; i < leng_path_pts; i = i + 1)
+            _shape_path_extend_stroke(
                 stroke_pts, 
-                path_pts, 
-                leng_path_pts, 
+                path_pts[i - 1], 
+                path_pts[i ], 
                 scale_step, 
-                index + 1
+                i 
             )
-        );
+    ];
 
 function shape_path_extend(stroke_pts, path_pts, scale = 1.0, closed = false) =
     let(
         leng_path_pts = len(path_pts),
         scale_step = (scale - 1) / (leng_path_pts - 1),
-        strokes = _shape_path_extend_inner(stroke_pts, path_pts, leng_path_pts, scale_step, 1)        
+        strokes = _shape_path_extend_inner(stroke_pts, path_pts, leng_path_pts, scale_step)        
     )
     closed && path_pts[0] == path_pts[leng_path_pts - 1] ? 
         __polytransversals(concat(strokes, [strokes[0]])) : 

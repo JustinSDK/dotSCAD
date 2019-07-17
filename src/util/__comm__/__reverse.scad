@@ -1,0 +1,1 @@
+function __reverse(vt) = [for(i = len(vt) - 1; i >= 0; i = i - 1) vt[i]];

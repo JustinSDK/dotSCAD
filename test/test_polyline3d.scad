@@ -17,7 +17,7 @@ module test_polyline3d() {
     module assertCorrectSegment(expected, actual, thickness) {
         assertEqualPoint(expected[0], actual[0]);
         assertEqualPoint(expected[1], actual[1]);
-        assertEqual(line_thickness, thickness);    
+        assertEqualNum(line_thickness, thickness);    
     }
     
     module assertCorrectCaps(leng_pts, startStyle, endStyle, index, p1Style, p2Style) {

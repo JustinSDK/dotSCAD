@@ -4,8 +4,6 @@ Uses spherical coordinate system to create a crystal ball.
 
 ![Spherical coordinates (r, θ, φ) often used in mathematics](https://upload.wikimedia.org/wikipedia/commons/d/dc/3D_Spherical_2.svg)
 
-Dependencies: `rotate_p`, `cross_sections`, `polysections`, `ring_extrude`, `shape_pie`.
-
 ## Parameters
 
 - `radius` : The radial distance r. 

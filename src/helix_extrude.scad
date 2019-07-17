@@ -8,8 +8,7 @@
 *
 **/
 
-include <__private__/__is_float.scad>;
-include <__private__/__frags.scad>;
+include <__comm__/__frags.scad>;
 
 module helix_extrude(shape_pts, radius, levels, level_dist, 
                      vt_dir = "SPI_DOWN", rt_dir = "CT_CLK", 
@@ -18,11 +17,11 @@ module helix_extrude(shape_pts, radius, levels, level_dist,
     function reverse(vt) = 
         let(leng = len(vt))
         [
-            for(i = [0:leng - 1])
+            for(i = 0; i < leng; i = i + 1)
                 vt[leng - 1 - i]
         ];                         
                          
-    is_flt = __is_float(radius);
+    is_flt = is_num(radius);
     r1 = is_flt ? radius : radius[0];
     r2 = is_flt ? radius : radius[1];
     
@@ -34,7 +33,7 @@ module helix_extrude(shape_pts, radius, levels, level_dist,
     r_dir = rt_dir == "CT_CLK" ? 1 : -1;
             
     angle_step = 360 / frags * r_dir;
-    initial_angle = atan2(level_dist / frags, 6.28318 * init_r / frags) * v_dir * r_dir;
+    initial_angle = atan2(level_dist / frags, PI * 2 * init_r / frags) * v_dir * r_dir;
 
     path_points = helix(
         radius = radius, 
@@ -45,7 +44,7 @@ module helix_extrude(shape_pts, radius, levels, level_dist,
     );
 
     clk_a = r_dir == 1 ? 0 : 180;
-    angles = [for(i = [0:len(path_points) - 1]) [90 + initial_angle, 0, clk_a + angle_step * i]];
+    angles = [for(i = 0; i < len(path_points); i = i + 1) [90 + initial_angle, 0, clk_a + angle_step * i]];
     
     sections = cross_sections(shape_pts, path_points, angles, twist, scale);
 

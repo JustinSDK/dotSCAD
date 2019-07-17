@@ -35,7 +35,7 @@ module test_polysections_solid_sections() {
         assertEqualPoints(expected_pts, points);
         
         for(i = [0:len(expected_faces) - 1]) {
-            assertTrue(expected_faces[i] == faces[i]);
+            assert(expected_faces[i] == faces[i]);
         }
     }
 
@@ -78,7 +78,7 @@ module test_polysections_hollow_sections() {
         assertEqualPoints(expected_pts, points);
         
         for(i = [0:len(expected_faces) - 1]) {
-            assertTrue(expected_faces[i] == faces[i]);
+            assert(expected_faces[i] == faces[i]);
         }
     }
 

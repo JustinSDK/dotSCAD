@@ -4,8 +4,6 @@ Gets all points and angles on the path of a golden spiral based on Fibonacci num
 
 It returns a vector of `[[x, y], angle]`. 
 
-Because of depending on `circle_path` and `rotate_p`, remember to include "circle_path.scad" and "rotate_p.scad".
-
 ## Parameters
 
 - `from` : The nth Fibonacci number you wanna start from.

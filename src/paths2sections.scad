@@ -14,9 +14,9 @@ function paths2sections(paths) =
         leng_paths = len(paths)
     )
     [
-        for(i = [0:leng_path - 1])
+        for(i = 0; i < leng_path; i = i + 1)
             [
-                for(j = [0:leng_paths - 1])
+                for(j = 0; j < leng_paths; j = j + 1)
                     paths[j][i]
             ] 
     ];

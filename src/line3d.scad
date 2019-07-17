@@ -8,8 +8,8 @@
 *
 **/
 
-include <__private__/__frags.scad>;
-include <__private__/__nearest_multiple_of_4.scad>;
+include <__comm__/__frags.scad>;
+include <__comm__/__nearest_multiple_of_4.scad>;
 
 module line3d(p1, p2, thickness, p1Style = "CAP_CIRCLE", p2Style = "CAP_CIRCLE") {
     r = thickness / 2;

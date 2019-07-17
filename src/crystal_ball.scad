@@ -8,11 +8,10 @@
 *
 **/ 
 
-include <__private__/__nearest_multiple_of_4.scad>;
-include <__private__/__is_float.scad>;
+include <__comm__/__nearest_multiple_of_4.scad>;
 
 module crystal_ball(radius, theta = 360, phi = 180) {
-    phis = __is_float(phi) ? [0, phi] : phi;
+    phis = is_num(phi) ? [0, phi] : phi;
     
     frags = __frags(radius);
 
@@ -22,13 +21,10 @@ module crystal_ball(radius, theta = 360, phi = 180) {
         $fn = __nearest_multiple_of_4(frags)
     );
 
-    // _hole_r = 0.0005 for avoiding warnings when using 2015.03
-    // I downloaded 2017.01.20 and found that the problem is solved.
-    _hole_r = version_num() >= 20170120 ? 0 : 0.0005;
     ring_extrude(
         shape_pts, 
         angle = theta, 
-        radius = _hole_r, 
+        radius = 0, 
         $fn = frags
     );
 

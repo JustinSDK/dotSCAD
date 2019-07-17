@@ -8,9 +8,9 @@
 *
 **/ 
 
-include <__private__/__to3d.scad>;
-include <__private__/__to2d.scad>;
-include <__private__/__angy_angz.scad>;
+include <__comm__/__to3d.scad>;
+include <__comm__/__to2d.scad>;
+include <__comm__/__angy_angz.scad>;
 
 function _corner_ctrl_pts(round_d, p1, p2, p3) =
     let(
@@ -37,13 +37,13 @@ function _corner_ctrl_pts(round_d, p1, p2, p3) =
 function _bezier_corner(round_d, t_step, p1, p2, p3) =
     bezier_curve(t_step, _corner_ctrl_pts(round_d, p1, p2, p3));
 
-function _recursive_bezier_smooth(pts, round_d, t_step, leng, i = 0) =
-    i <= leng - 3 ? 
-        concat(
-            _bezier_corner(round_d, t_step, pts[i], pts[i + 1], pts[i + 2]), 
-            _recursive_bezier_smooth(pts, round_d, t_step, leng, i + 1)
-        )
-        : [];    
+function _recursive_bezier_smooth(pts, round_d, t_step, leng) =
+    let(end_i = leng - 2)
+    [
+        for(i = 0; i < end_i; i = i + 1) 
+            each _bezier_corner(round_d, t_step, pts[i], pts[i + 1], pts[i + 2])
+    ];
+
     
 function bezier_smooth(path_pts, round_d, t_step = 0.1, closed = false) =
     let(

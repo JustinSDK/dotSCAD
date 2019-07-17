@@ -8,12 +8,15 @@
 *
 **/ 
 
-include <__private__/__reverse.scad>;
+include <util/__comm__/__reverse.scad>;
 
 module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
 
     rows = len(points);
     columns = len(points[0]);
+
+    yi_range = [0:rows - 2];
+    xi_range =  [0:columns - 2];
 
     // Increasing $fn will be slow when you use "LINES", "HULL_FACES" or "HULL_LINES".
     
@@ -34,16 +37,16 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
         leng_pts = len(top_pts);
                 
         top_tri_faces1 = slicing == "SLASH" ? [
-            for(yi = [0:rows - 2]) 
-                for(xi = [0:columns - 2])
+            for(yi = yi_range) 
+                for(xi = xi_range)
                     [
                         xy_to_index(xi, yi, columns),
                         xy_to_index(xi + 1, yi + 1, columns),
                         xy_to_index(xi + 1, yi, columns)
                     ]    
         ] : [
-            for(yi = [0:rows - 2]) 
-                for(xi = [0:columns - 2])
+            for(yi = yi_range)
+                for(xi = xi_range)
                     [
                         xy_to_index(xi, yi, columns),
                         xy_to_index(xi, yi + 1, columns),
@@ -52,16 +55,16 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
         ];
 
         top_tri_faces2 = slicing == "SLASH" ? [
-            for(yi = [0:rows - 2]) 
-                for(xi = [0:columns - 2])
+            for(yi = yi_range) 
+                for(xi = xi_range)
                     [
                         xy_to_index(xi, yi, columns),
                         xy_to_index(xi, yi + 1, columns),
                         xy_to_index(xi + 1, yi + 1, columns)
                     ]    
         ] : [
-            for(yi = [0:rows - 2]) 
-                for(xi = [0:columns - 2])
+            for(yi = yi_range) 
+                for(xi = xi_range)
                     [
                         xy_to_index(xi, yi + 1, columns),
                         xy_to_index(xi + 1, yi + 1, columns),
@@ -80,7 +83,7 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
         ];
         
         side_faces1 = [
-            for(xi = [0:columns - 2])
+            for(xi = xi_range)
                 let(
                     idx1 = xy_to_index(xi, 0, columns),
                     idx2 = xy_to_index(xi + 1, 0, columns)
@@ -94,7 +97,7 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
         ];
 
         side_faces2 = [
-            for(yi = [0:rows - 2])
+            for(yi = yi_range)
                 let(
                     xi = columns - 1,
                     idx1 = xy_to_index(xi, yi, columns),
@@ -109,7 +112,7 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
         ];                  
       
         side_faces3 = [
-            for(xi = [0:columns - 2])
+            for(xi = xi_range)
                 let(
                     yi = rows - 1,
                     idx1 = xy_to_index(xi, yi, columns), 
@@ -124,7 +127,7 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
         ];
         
         side_faces4 = [
-            for(yi = [0:rows - 2])
+            for(yi = yi_range)
                 let(
                     idx1 = xy_to_index(0, yi, columns),
                     idx2 = xy_to_index(0, yi + 1, columns)
@@ -193,8 +196,8 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
     if(style == "FACES") {
         faces();
     } else {
-        for(yi = [0:rows - 2]) {
-            for(xi = [0:columns - 2]) {
+        for(yi = yi_range) {
+            for(xi = xi_range) {
                 if(slicing == "SLASH") {
                     tri_to_graph([
                         points[yi][xi], 
