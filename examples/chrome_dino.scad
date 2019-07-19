@@ -128,48 +128,53 @@ module chrome_dino(w, merged = false) {
     }
 }
 
+module blocks(points) {
+    for(pt = points) {
+        translate(pt) square(1);
+    };
+}
+
 module cactus(w) {
     linear_extrude(w * 3) {
-        translate([2 * w, w * 7]) scale(w) 
-        for(pt = px_polygon([
-            [0, 2],
-            [3, 2],
-            [5, 4],
-            [5, 10],
-            [5, 10],
-            [3, 10],
-            [3, 6],
-            [0, 4],
-            
-        ], filled = true)) {
-            translate(pt) square(1);
-        }
-        translate([-2 * w, w * 5]) scale(w) 
-        for(pt = px_polygon([
-            [-1, 0],
-            [-3, 0],
-            [-6, 2],
-            [-6, 6],
-            [-6, 6],
-            [-4, 6],
-            [-4, 4],
-            [-1, 2],
-            
-        ], filled = true)) {
-            translate(pt) square(1);
-        }
-        scale(w) 
-        for(pt = px_polygon([
-            [-2, 0],
-            [2, 0],
-            [2, 20],
-            [1, 22],
-            [0, 22],
-            [-1, 22],
-            [-2, 20]
-        ], filled = true)) {
-            translate(pt) square(1);
-        }
+        translate([2 * w, w * 7]) scale(w) blocks(
+            px_polygon([
+                [0, 2],
+                [3, 2],
+                [5, 4],
+                [5, 10],
+                [5, 10],
+                [3, 10],
+                [3, 6],
+                [0, 4],
+                
+            ], filled = true)
+        );
+
+        translate([-2 * w, w * 5]) scale(w) blocks(
+            px_polygon([
+                [-1, 0],
+                [-3, 0],
+                [-6, 2],
+                [-6, 6],
+                [-6, 6],
+                [-4, 6],
+                [-4, 4],
+                [-1, 2],
+                
+            ], filled = true)
+        );       
+        
+        scale(w) blocks(
+            px_polygon([
+                [-2, 0],
+                [2, 0],
+                [2, 20],
+                [1, 22],
+                [0, 22],
+                [-1, 22],
+                [-2, 20]
+            ], filled = true)        
+        ); 
     }
 }
 
@@ -177,16 +182,14 @@ module base(w, base_x_blocks, base_y_blocks) {
    linear_extrude(w) {
        translate([0, -w]) 
            square([base_x_blocks * w, base_y_blocks * w + 2 * w]);
-       translate([0, base_y_blocks * w / 2]) scale(w)
-       for(p = px_circle(base_y_blocks / 2, filled = true)) {
-           translate(p)
-               square(1, center = true);
-       }
-       translate([base_x_blocks * w, base_y_blocks * w / 2]) scale(w)
-       for(p = px_circle(base_y_blocks / 2, filled = true)) {
-           translate(p)
-               square(1, center = true);
-       }
+       translate([0, base_y_blocks * w / 2]) scale(w) blocks(
+           px_circle(base_y_blocks / 2, filled = true)       
+       );
+
+       translate([base_x_blocks * w, base_y_blocks * w / 2]) 
+           scale(w) blocks(
+               px_circle(base_y_blocks / 2, filled = true)       
+           );
    }   
 }
 
