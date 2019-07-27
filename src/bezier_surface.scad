@@ -14,7 +14,8 @@ function bezier_surface(t_step, ctrl_pts) =
             bezier_curve(t_step, ctrl_pts[i])
     ]) 
     [for(x = 0; x < len(pts[0]); x = x + 1)
-        bezier_curve(t_step,  
-                [for(y = [0:len(pts) - 1]) pts[y][x]]
+        bezier_curve(
+            t_step,  
+            [for(y = [0:len(pts) - 1]) pts[y][x]]
         ) 
     ];
