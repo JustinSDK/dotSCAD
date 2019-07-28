@@ -46,20 +46,21 @@ function _bspline_curve_v(v, s, t, degree, knots, l = 1) =
         
 function _bspline_curve_interpolate(t, degree, points, knots, weights) =
     let(
+        d = len(points[0]),
         n = len(points),
         kts = is_undef(knots) ? _bspline_curve_knots(n, degree) : knots,
         wts = is_undef(weights) ? _bspline_curve_weights(n) : weights,
         v = [
             for(i = 0; i < n; i = i + 1) 
             let(p = points[i] * wts[i])
-            [p[0], p[1], p[2], wts[i]]
+            concat([for(j = 0; j < d; j = j + 1) p[j]], [wts[i]])
         ],
         ts = _bspline_curve_ts(t, degree, kts),
         nt = ts[0],
         s = ts[1],
         nv = _bspline_curve_v(v, s, nt, degree, kts)
     )
-    [for(i = 0; i < 3; i = i + 1) nv[s][i] / nv[s][3]];
+    [for(i = 0; i < d; i = i + 1) nv[s][i] / nv[s][d]];
     
 function bspline_curve(t_step, degree, points, knots, weights) = 
     [
