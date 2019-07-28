@@ -56,9 +56,8 @@ function _bspline_curve_interpolate(t, degree, points, knots, weights) =
             concat([for(j = 0; j < d; j = j + 1) p[j]], [wts[i]])
         ],
         ts = _bspline_curve_ts(t, degree, kts),
-        nt = ts[0],
         s = ts[1],
-        nv = _bspline_curve_v(v, s, nt, degree, kts)
+        nv = _bspline_curve_v(v, s, ts[0], degree, kts)
     )
     [for(i = 0; i < d; i = i + 1) nv[s][i] / nv[s][d]];
     
