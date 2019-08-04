@@ -5,9 +5,6 @@ number_of_circles = 15;
 minimum_radius = 3;
 gap_distance = 3;
 line_width = 1.5;
-line_height = 2;
-bottom = "NO";       // [YES, NO]
-bottom_height = 1;
 
 module euler_maze(n, r, d, width = 1) {
     function angle(r, d) = acos(
