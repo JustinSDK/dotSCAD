@@ -65,7 +65,7 @@ function bspline_curve(t_step, degree, points, knots, weights) =
     let(n = len(points))
     assert(degree >= 1, "degree cannot be less than 1 (linear)")
     assert(degree <= n - 1, "degree must be less than or equal to len(points) - 1")
-    assert(len(knots) == n + degree + 1, "len(knots) must be equals to len(points) + degree + 1")
+    assert(is_undef(knots) || (len(knots) == n + degree + 1), "len(knots) must be equals to len(points) + degree + 1")
     [
         for(t = 0; t < 1; t = t + t_step) 
         _bspline_curve_interpolate(t, degree, points, knots, weights)
