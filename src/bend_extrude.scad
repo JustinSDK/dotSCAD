@@ -30,12 +30,15 @@ module bend_extrude(size, thickness, angle, frags = 24) {
     }
 
     offsetY = -r * cos(half_frag_angle) ;
-    rotate([180, 0, 180]) for(i = [0 : frags - 1]) {
-       rotate(i * frag_angle + half_frag_angle) 
-            translate([0, offsetY, 0])
-                rotate([-90, 0, 0]) 
-                    get_frag(i) 
-                        children();  
-    }
 
+    rotate(angle - 90)
+        mirror([0, 1, 0])
+            mirror([0, 0, 1])
+                for(i = [0 : frags - 1]) {
+                rotate(i * frag_angle + half_frag_angle) 
+                        translate([0, offsetY, 0])
+                            rotate([-90, 0, 0]) 
+                                get_frag(i) 
+                                    children();  
+                }
 }
