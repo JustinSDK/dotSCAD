@@ -44,7 +44,7 @@ module hypnotic_squares(x_grids, y_grids, grid_size, final_size, line_width) {
 
     rand_lt = [for(x = 0; x < x_grids; x = x + 1) 
                   [for(y = 0; y < y_grids; y = y + 1) 
-                      [random(), random()]
+                      rands(0, 1, 2)
                   ]
               ];
               
