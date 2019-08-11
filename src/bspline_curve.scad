@@ -1,3 +1,13 @@
+/**
+* bspline_curve.scad
+*
+* @copyright Justin Lin, 2019
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2-bspline_curve.html
+*
+**/
+
 function _bspline_curve_knots(n, degree) = 
     let(end = n + degree + 1)
     [for(i = 0; i < end; i = i + 1) i];
