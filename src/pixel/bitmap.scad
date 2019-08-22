@@ -12,7 +12,7 @@ function bitmap(raw_data, center = false, invert = false) =
         to = dimension - 1,
         range = [0:to],
         rows = [
-            for(row = to; row > 0; row = row - 1)
+            for(row = to; row > -1; row = row - 1)
                 [for(column = range)
                     raw_data[row * dimension + column]]
         ],
