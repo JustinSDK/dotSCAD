@@ -1,25 +1,28 @@
-function _bitmap_row(r_count, row_bits, dimension, range, center, invert) =
+function _bitmap_row(r_count, row_bits, width, height, center, invert) =
     let(
-        half_d = dimension / 2,
-        offset_p = center ? 0 : half_d,
+        half_w = width / 2,
+        half_h = height / 2,
+        offset_x = center ? 0 : half_w,
+        offset_y = center ? 0 : half_h,
         bit = invert ? 0 : 1
     ) 
-    [for(i = range) if(row_bits[i] == bit) [i - half_d + offset_p, r_count + offset_p]];
+    [for(i = 0; i < width; i = i + 1) if(row_bits[i] == bit) [i - half_w + offset_x, r_count + offset_y]];
 
-function bitmap(raw_data, center = false, invert = false) = 
+function bitmap(raw_data, size, center = false, invert = false) = 
     let(
-        dimension = sqrt(len(raw_data)),
-        to = dimension - 1,
-        range = [0:to],
+        squar = sqrt(len(raw_data)),
+        siz = is_undef(size) ? [squar, squar] : size,
+        width = siz[0],
+        height = siz[1],
         rows = [
-            for(row = to; row > -1; row = row - 1)
-                [for(column = range)
-                    raw_data[row * dimension + column]]
+            for(row = height - 1; row > -1; row = row - 1)
+                [for(column = 0; column < width; column = column + 1)
+                    raw_data[row * width + column]]
         ],
-        offset_i = dimension / 2
+        offset_i = height / 2
     )
     [
-        for(i = range) 
-        let(row = _bitmap_row(i - offset_i, rows[i], dimension, range, center, invert))
+        for(i = 0; i < width; i = i + 1) 
+        let(row = _bitmap_row(i - offset_i, rows[i], width, height, center, invert))
         if(row != []) each row
     ];
