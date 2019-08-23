@@ -22,7 +22,7 @@ function bitmap(raw_data, size, center = false, invert = false) =
         offset_i = height / 2
     )
     [
-        for(i = 0; i < width; i = i + 1) 
+        for(i = 0; i < height; i = i + 1) 
         let(row = _bitmap_row(i - offset_i, rows[i], width, height, center, invert))
         if(row != []) each row
     ];
