@@ -87,3 +87,5 @@ include <pixel/px_circle.scad>;
 include <pixel/px_cylinder.scad>;
 include <pixel/px_sphere.scad>;
 include <pixel/px_polygon.scad>;
+include <pixel/bitmap.scad>;
+include <pixel/8x8char.scad>;
