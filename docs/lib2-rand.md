@@ -2,6 +2,8 @@
 
 Random number generator. Generates a pseudo random number.
 
+**Since:** 2.1
+
 ## Parameters
 
 - `min_value` : Minimum value of random number range. Default to 0.

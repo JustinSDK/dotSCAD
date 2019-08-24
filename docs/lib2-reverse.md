@@ -2,7 +2,7 @@
 
 Reverse a list.
 
-**Since: **: 2.0
+**Since:**: 2.0
 
 ## Parameters
 
