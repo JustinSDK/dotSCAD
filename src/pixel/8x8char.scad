@@ -1,4 +1,4 @@
-function 8x8char(char, center = false, invert = false) = 
+function px_ascii(char, center = false, invert = false) = 
     let(
         map_vect = [
             [" ", [
