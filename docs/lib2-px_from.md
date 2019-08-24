@@ -1,6 +1,6 @@
 # px_from
 
-Given a list of 0s and 1s that represents a black-and-white image. This function translates them into pixel points. You can use these points to build pixel-style models.
+Given a list of 0s and 1s that represent a black-and-white image. This function translates them into pixel points. You can use these points to build pixel-style models.
 
 **Since:** 2.1
 
