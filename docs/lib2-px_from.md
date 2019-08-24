@@ -106,4 +106,4 @@ The tool converts it into binaries. Combined with the `pixel_from`, you can buil
         translate(pt) sphere(.5, $fn = 24);
     }
 
-![px_line](images/lib2-px_line-3.JPG)
+![px_from](images/lib2-px_from-3.JPG)
