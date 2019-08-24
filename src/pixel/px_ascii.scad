@@ -1,3 +1,13 @@
+/**
+* px_ascii.scad
+*
+* @copyright Justin Lin, 2019
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2-px_ascii.html
+*
+**/ 
+
 function px_ascii(char, center = false, invert = false) = 
     let(
         map_vect = [
