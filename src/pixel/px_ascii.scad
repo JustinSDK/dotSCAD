@@ -975,4 +975,4 @@ function px_ascii(char, center = false, invert = false) =
         idx = search(char, map_vect)[0]
     )
     assert(!is_undef(idx), "Unsupported character")
-    bitmap(map_vect[idx][1], center = center, invert = invert);
+    px_from(map_vect[idx][1], center = center, invert = invert);
