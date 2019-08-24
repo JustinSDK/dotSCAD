@@ -1,3 +1,13 @@
+/**
+* px_from.scad
+*
+* @copyright Justin Lin, 2019
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2-px_from.html
+*
+**/ 
+
 function _px_from_row(r_count, row_bits, width, height, center, invert) =
     let(
         half_w = width / 2,
