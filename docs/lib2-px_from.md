@@ -36,7 +36,7 @@ Given a list of 0s and 1s that represents a black-and-white image. This function
 
 ![px_from](images/lib2-px_from-1.JPG)
 
-	I provide a tool [img2binary](https://github.com/JustinSDK/img2binary) for converting an image into 0 and 1. A black and white picture is suggested. 0 is for black and 1 is for white. Given an image like this:
+I provide a tool [img2binary](https://github.com/JustinSDK/img2binary) for converting an image into 0 and 1. A black and white picture is suggested. 0 is for black and 1 is for white. Given an image like this:
 
 ![px_from](images/lib2-px_from-2.JPG)
 
