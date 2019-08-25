@@ -25,7 +25,7 @@ function px_from(binaries, center = false, invert = false) =
         offset_i = height / 2
     )
     [
-        for(i = height - 1; i > 0; i = i - 1) 
+        for(i = height - 1; i > -1; i = i - 1) 
         let(row = _px_from_row(height - i - 1, binaries[i], width, height, center, invert))
         if(row != []) each row
     ];
