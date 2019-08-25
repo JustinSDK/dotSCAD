@@ -7,7 +7,6 @@ Given a list of 0s and 1s that represent a black-and-white image. This function 
 ## Parameters
 
 - `binaries` : A list of 0s and 1s.
-- `size` : The size `[width, height]` of the image represented by the `binaries`. If it's ignored, default to `[sqrt(len(binaries)), sqrt(len(binaries))]`.
 - `center`: . If `true`, object is centered in X- and Y-axis. Otherwise, the object is placed in the positive quadrant. Defaults to `false`.
 - `invert`: Inverts how binaries are translated into points. Default to `false`. 1s are translated into points. Otherwise, 0s are translated into points.
 
