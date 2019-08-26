@@ -106,7 +106,7 @@ levels = [
     [255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255] 
 ];
 
-module caterpillar(levels, px_width) {
+module shadow(levels, px_width) {
     dots = px_gray(levels, center = true);
     difference() {
         square(len(levels), center = true);
@@ -120,9 +120,9 @@ module caterpillar(levels, px_width) {
 }
 
 stereographic_extrude(shadow_side_leng = len(levels), $fn = 48) 
-    caterpillar(levels, px_width);
+    shadow(levels, px_width);
     
 if($preview) {
     color("gray") 
-        caterpillar(levels, px_width);
+        shadow(levels, px_width);
 }
