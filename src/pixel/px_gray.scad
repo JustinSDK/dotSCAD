@@ -16,7 +16,7 @@ function _px_gray_row(r_count, row_bits, width, height, center, invert, normaliz
                 ]
     ];
 
-function px_gray(levels, center = false, invert = false, normalize = true) = 
+function px_gray(levels, center = false, invert = false, normalize = false) = 
     let(
         width = len(levels[0]),
         height = len(levels),
