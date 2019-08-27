@@ -107,7 +107,7 @@ levels = [
 ];
 
 module shadow(levels, px_width) {
-    dots = px_gray(levels, center = true);
+    dots = px_gray(levels, center = true, normalize = true);
     difference() {
         square(len(levels), center = true);
         render() union() {
