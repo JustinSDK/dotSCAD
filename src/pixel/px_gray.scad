@@ -1,3 +1,13 @@
+/**
+* px_gray.scad
+*
+* @copyright Justin Lin, 2019
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2-px_gray.html
+*
+**/ 
+
 function _px_gray_row(r_count, row_bits, width, height, center, invert, normalize) =
     let(
         half_w = width / 2,
