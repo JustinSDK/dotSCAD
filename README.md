@@ -8,7 +8,7 @@
 
 ## Introduction
 
-**dotSCAD 2.0 is based on OpenSCAD 2019.05.** For old versions, please use dotSCAD 1.3. You can download all versions from the [releases](https://github.com/JustinSDK/dotSCAD/releases).
+**Based on OpenSCAD 2019.05.** For old OpenSCAD versions, please use dotSCAD 1.3. You can download all versions from the [releases](https://github.com/JustinSDK/dotSCAD/releases).
 
 OpenSCAD uses three library locations, the installation library, built-in library, and user defined libraries. It's convenient to set `OPENSCADPATH`. Check [Setting OPENSCADPATH](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries#Setting_OPENSCADPATH) in [OpenSCAD User Manual/Libraries](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries) for details.
 
