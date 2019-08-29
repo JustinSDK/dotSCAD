@@ -89,3 +89,4 @@ include <pixel/px_sphere.scad>;
 include <pixel/px_polygon.scad>;
 include <pixel/px_from.scad>;
 include <pixel/px_ascii.scad>;
+include <pixel/px_gray.scad>;
