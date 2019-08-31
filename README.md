@@ -4,7 +4,7 @@
 
 ![dotSCAD](featured_img/TaiwaneseBlackBear.JPG)
 
-[![license/LGPL](https://img.shields.io/badge/license-LGPL-blue.svg)](https://github.com/JustinSDK/lib-openscad/blob/master/LICENSE)
+[![license/LGPL](LICENSE.svg)](https://github.com/JustinSDK/lib-openscad/blob/master/LICENSE)
 
 ## Introduction
 
