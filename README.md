@@ -2,7 +2,7 @@
 
 > **Reduce the burden of 3D modeling in mathematics.**
 
-![dotSCAD](TaiwaneseBlackBear.JPG)
+![dotSCAD](featured_img/TaiwaneseBlackBear.JPG)
 
 [![license/LGPL](https://img.shields.io/badge/license-LGPL-blue.svg)](https://github.com/JustinSDK/lib-openscad/blob/master/LICENSE)
 
