@@ -135,12 +135,12 @@ module hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness) {
 		cord = maze_vector[i];
 		x = (cord[0] - 1) ;
 		y = (cord[1] - 1);
-		v = cord[2];
+		wall_type = cord[2];
 
-		if(v == 1 || v == 3) {
+		if(wall_type == 1 || wall_type == 3) {
 			cell(x, y, "upper");
 		}
-		if(v == 2 || v == 3) {
+		if(wall_type == 2 || wall_type == 3) {
 			cell(x, y, "right");
 		}  
 		
