@@ -3,7 +3,7 @@ include <polyline2d.scad>;
 include <stereographic_extrude.scad>;
 include <square_maze.scad>;
 
-x_cells = 5;
+x_cells = 10;
 cell_radius = 20;
 wall_thickness = 12;
 fn = 24;
@@ -15,58 +15,37 @@ module hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness) {
 
 	// style : upper/rights/right
 	module cell(x_cell, y_cell, style) {
-		module upper_wall() {
+		module hex_seg(begin, end) {
 			polyline2d(
-				[for(a = [60:60:120]) 
+				[for(a = [begin:60:end]) 
 					[cell_radius * cos(a), cell_radius * sin(a)]], 
 				wall_thickness,
                 startingStyle = "CAP_ROUND", endingStyle = "CAP_ROUND"
 			);
-		}
-		
-		module down_wall() {
-			polyline2d(
-				[for(a = [240:60:300]) 
-					[cell_radius * cos(a), cell_radius * sin(a)]], 
-				wall_thickness,
-                startingStyle = "CAP_ROUND", endingStyle = "CAP_ROUND"
-			);
-		}
-		
-		module up_left_wall() {
-			polyline2d( 
-				[for(a = [120:60:180]) 
-					[cell_radius * cos(a), cell_radius * sin(a)]], 
-				wall_thickness,
-                startingStyle = "CAP_ROUND", endingStyle = "CAP_ROUND"
-			); 
-		}
-		
-		module down_left_wall() {
-			polyline2d( 
-				[for(a = [180:60:240]) 
-					[cell_radius * cos(a), cell_radius * sin(a)]], 
-				wall_thickness,
-                startingStyle = "CAP_ROUND", endingStyle = "CAP_ROUND"
-			);  
-		}
+	    }
 		
 		module up_right_wall() {
-			polyline2d(
-				[for(a = [0:60:60]) 
-					[cell_radius * cos(a), cell_radius * sin(a)]], 
-				wall_thickness,
-                startingStyle = "CAP_ROUND", endingStyle = "CAP_ROUND"
-			); 
+			hex_seg(0, 60);
+		}
+
+		module upper_wall() {
+			hex_seg(60, 120);
+		}
+
+		module up_left_wall() {
+			hex_seg(120, 180);	
+		}
+				
+		module down_left_wall() {
+			hex_seg(180, 240);
+		}
+
+		module down_wall() {
+			hex_seg(240, 300);
 		}
 		
 		module down_right_wall() {
-			polyline2d( 
-				[for(a = [300:60:360]) 
-					[cell_radius * cos(a), cell_radius * sin(a)]], 
-				wall_thickness,
-                startingStyle = "CAP_ROUND", endingStyle = "CAP_ROUND"
-			);
+			hex_seg(300, 360);
 		}
 		
 		module right_walls() {
@@ -81,7 +60,7 @@ module hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness) {
 			}
 
 			if(x_cell == x_cells - 1 && y_cell == y_cells - 1) {
-				up_right_wall();
+				right_walls();
 			}
 
             if(y_cell == 0) {
@@ -108,11 +87,11 @@ module hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness) {
 			} else if(style == "right") {
 				right_walls();
 			} else {
-				if(x_cell % 2 == 0) {
-				 	down_right_wall();
+				if(x_cell % 2 != 0) {
+					up_right_wall();
 				}
 				else {
-					up_right_wall();
+				 	down_right_wall();
 				}
 			}
 		}
@@ -137,10 +116,10 @@ module hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness) {
 		y = (cord[1] - 1);
 		wall_type = cord[2];
 
-		if(wall_type == 1 || wall_type == 3) {
+		if(wall_type == UPPER_WALL || wall_type == UPPER_RIGHT_WALL) {
 			cell(x, y, "upper");
 		}
-		if(wall_type == 2 || wall_type == 3) {
+		if(wall_type == RIGHT_WALL || wall_type == UPPER_RIGHT_WALL) {
 			cell(x, y, "right");
 		}  
 		
