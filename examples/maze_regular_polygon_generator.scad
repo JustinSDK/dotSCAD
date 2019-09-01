@@ -10,11 +10,6 @@ levels = 3;
 sides = 6; // [3:24]
 bottom = "NO"; // [YES,NO]
 
-// give a [x, y] point and length. draw a line in the x direction
-module x_line(point, length, thickness = 1) {
-    line2d(point, point + [0, length], width = thickness);
-}
-
 /*
  * constants, for clearness
  *
@@ -151,28 +146,6 @@ function build_wall(i, j, n, rows, columns, maze_vector) =
         )
     ); 
 
-module ring_regular_polygon_sector(radius, angle, thickness, width, sides) {
-	intersection() {
-        arc(
-            radius = radius - 0.1, 
-            angle = [0, 360], 
-            width = thickness + 0.2, 
-            width_mode = "LINE_OUTWARD",
-            $fn = sides
-        );
-
-		rotate([0, 0, angle]) x_line([0, 0], radius * 3, width);
-	}
-}
-
-module regular_polygon_to_polygon_wall(radius, length, angle, thickness, sides) {
-    intersection() {
-        hollow_out(shell_thickness = length) 
-            circle(r = radius + length, $fn = sides);
-	    rotate([0, 0, angle]) 
-		    x_line([0, 0], (radius + length) * 2, thickness);
-	}
-}
 
 module regular_polygon_maze(radius, cblocks, levels, thickness = 1, sides) {
     full_circle_angle = 360;
@@ -180,7 +153,34 @@ module regular_polygon_maze(radius, cblocks, levels, thickness = 1, sides) {
 	r = radius / (levels + 1);
 	
 	maze = go_maze(1, 1, cblocks, levels, replace([levels, cblocks - 1, 0, UP_RIGHT_WALL()], [levels, cblocks - 1, 0, UP_WALL()], init_maze(cblocks, levels)));
-	
+
+    // give a [x, y] point and length. draw a line in the x direction
+    module x_line(point, length, thickness = 1) {
+        line2d(point, point + [0, length], width = thickness);
+    }
+
+    module ring_regular_polygon_sector(radius, angle, thickness, width, sides) {
+        intersection() {
+            arc(
+                radius = radius - 0.1, 
+                angle = [0, 360], 
+                width = thickness + 0.2, 
+                width_mode = "LINE_OUTWARD",
+                $fn = sides
+            );
+
+            rotate([0, 0, angle]) x_line([0, 0], radius * 3, width);
+        }
+    }
+
+    module regular_polygon_to_polygon_wall(radius, length, angle, thickness, sides) {
+        intersection() {
+            hollow_out(shell_thickness = length) 
+                circle(r = radius + length, $fn = sides);
+            rotate([0, 0, angle]) 
+                x_line([0, 0], (radius + length) * 2, thickness);
+        }
+    }
 	
 	difference() {
 		 union() {
