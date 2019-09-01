@@ -58,8 +58,7 @@ module hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness) {
 				up_left_wall();
 				down_left_wall();
 			}
-
-			if(x_cell == x_cells - 1 && y_cell == y_cells - 1) {
+			else if(x_cell == x_cells - 1 && y_cell == y_cells - 1) {
 				right_walls();
 			}
 
@@ -71,9 +70,8 @@ module hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness) {
 					}
 					down_right_wall();
 				}
-			}
-		
-			if(y_cell == y_cells - 1 && x_cell % 2 != 0) {
+			} 
+			else if(y_cell == y_cells - 1 && x_cell % 2 != 0) {
 				up_left_wall();
 			}
 		}
@@ -86,13 +84,11 @@ module hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness) {
 				}
 			} else if(style == "right") {
 				right_walls();
-			} else {
-				if(x_cell % 2 != 0) {
-					up_right_wall();
-				}
-				else {
-				 	down_right_wall();
-				}
+			} else if(x_cell % 2 != 0) {
+				up_right_wall();
+			}
+			else {
+				down_right_wall();
 			}
 		}
 		
