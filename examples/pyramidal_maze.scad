@@ -8,7 +8,7 @@ stairs_width = 5;
 module pyramid_with_stairs(base_width, stairs_width, rows) {
     height = base_width * sqrt(2) / 2;
 
-    module floor(i) {
+    module layer(i) {
         base_w = base_width - (base_width / rows) * (i - 1) + stairs_width;
         floor_h = height / rows * 2;
                 
@@ -26,7 +26,7 @@ module pyramid_with_stairs(base_width, stairs_width, rows) {
     }
     
     for(i = [1:2:rows - 1]) {
-        floor(i);
+        layer(i);
     }
 }
 
