@@ -10,7 +10,6 @@ wall_thickness = 5;
 wall_height = 5;
 wall_top_scale = 0.25;
 
-shell_thickness = 2;
 fn = 24;
 
 module draw_ramp_maze(rows, columns, blocks, block_width, wall_thickness, wall_height, wall_top_scale) {
@@ -64,7 +63,6 @@ module draw_ramp_maze(rows, columns, blocks, block_width, wall_thickness, wall_h
     );
 } 
 
-   
 module maze_cylinder() {
     maze_rows = round(height / block_width);
     maze_columns = round(2 * 3.14159 * radius / block_width);
@@ -78,8 +76,7 @@ module maze_cylinder() {
     
     leng_circumference = block_width * maze_columns + wall_thickness;
 
-    union() {
-        bend(size = [leng_circumference, block_width * maze_rows + wall_thickness, wall_height], angle = 360 + 360 * wall_thickness / leng_circumference, frags = fn) 
+    bend(size = [leng_circumference, block_width * maze_rows + wall_thickness, wall_height], angle = 360 + 360 * wall_thickness / leng_circumference, frags = fn) 
         translate([0, wall_thickness / 2, 0]) draw_ramp_maze(
             maze_rows, 
             maze_columns, 
@@ -89,12 +86,6 @@ module maze_cylinder() {
             wall_height,
             wall_top_scale
         );
-
-        linear_extrude(maze_rows * block_width + wall_thickness) 
-            hollow_out(shell_thickness = shell_thickness) 
-                circle(radius - wall_height + 0.5, $fn = fn);
-
-    }
 }
 
 maze_cylinder();
