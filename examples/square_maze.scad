@@ -74,10 +74,25 @@ function rand_dirs() =
     ][round(rands(0, 24, 1)[0])]; 
 
 // get x value by dir
-function next_x(x, dir) = x + [1, 0, -1, 0][dir];
+function next_x(x, dir, columns, circular) = 
+    let(nx = x + [1, 0, -1, 0][dir])
+    circular ? 
+        nx < 1 ? nx + columns : (
+            nx > columns ? nx % columns : nx
+        )
+        :
+        nx;
+    
 // get y value by dir
-function next_y(y, dir) = y + [0, 1, 0, -1][dir];
-
+function next_y(y, dir, rows, circular) = 
+    let(ny = y + [0, 1, 0, -1][dir])
+    circular ? 
+        ny < 1 ? ny + rows : (
+            ny > rows ? ny % rows : ny
+        )
+        :
+        ny;
+    
 // go right and carve the right wall
 function go_right_from(x, y, maze) = [
     for(b = maze) [get_x(b), get_y(b)] == [x, y] ? (
@@ -99,20 +114,29 @@ function go_up_from(x, y, maze) = [
 ]; 
 
 // go left and carve the right wall of the left block
-function go_left_from(x, y, maze) = [
-    for(b = maze) [get_x(b), get_y(b)] == [x - 1, y] ? (
-        get_wall_type(b) == UPPER_RIGHT_WALL ? 
-            [x - 1, y, UPPER_WALL, visited(x - 1, y, maze)] : 
-            [x - 1, y, NO_WALL, visited(x - 1, y, maze)]
-    ) : b
-]; 
+function go_left_from(x, y, maze, rows) = 
+    let(
+        x_minus_one = x - 1,
+        nx = x_minus_one < 1 ? x_minus_one + rows : x_minus_one
+    )
+    [
+        for(b = maze) [get_x(b), get_y(b)] == [nx, y] ? (
+            get_wall_type(b) == UPPER_RIGHT_WALL ? 
+                [nx, y, UPPER_WALL, visited(nx, y, maze)] : 
+                [nx, y, NO_WALL, visited(nx, y, maze)]
+        ) : b
+    ]; 
 
 // go down and carve the upper wall of the down block
-function go_down_from(x, y, maze) = [
-    for(b = maze) [get_x(b), get_y(b)] == [x, y - 1] ? (
+function go_down_from(x, y, maze, rows) = [
+    let(
+        y_minus_one = y - 1,
+        ny = y_minus_one < 1 ? y_minus_one + rows : y_minus_one
+    )
+    for(b = maze) [get_x(b), get_y(b)] == [x, ny] ? (
         get_wall_type(b) == UPPER_RIGHT_WALL ? 
-            [x, y - 1, RIGHT_WALL, visited(x, y - 1, maze)] : 
-            [x, y - 1, NO_WALL, visited(x, y - 1, maze)]
+            [x, ny, RIGHT_WALL, visited(x, ny, maze)] : 
+            [x, ny, NO_WALL, visited(x, ny, maze)]
     ) : b
 ]; 
 
@@ -120,52 +144,55 @@ function go_down_from(x, y, maze) = [
 function try_block(dir, x, y, maze, rows, columns) =
     dir == 0 ? go_right_from(x, y, maze) : (
         dir == 1 ? go_up_from(x, y, maze) : (
-            dir == 2 ? go_left_from(x, y, maze) : 
-                 go_down_from(x, y, maze)   // dir is 3
+            dir == 2 ? go_left_from(x, y, maze, rows) : 
+                 go_down_from(x, y, maze, rows)   // dir is 3
             
         ) 
     );
 
 
 // find out visitable dirs from (x, y)
-function visitable_dirs_from(x, y, maze, rows, columns) = [
+function visitable_dirs_from(x, y, maze, rows, columns, x_circular, y_circular) = [
     for(dir = [0, 1, 2, 3]) 
-        if(visitable(next_x(x, dir), next_y(y, dir), maze, rows, columns)) 
+        if(visitable(next_x(x, dir, columns, x_circular), next_y(y, dir, rows, y_circular), maze, rows, columns)) 
             dir
 ];  
     
 // go maze from (x, y)
-function go_maze(x, y, maze, rows, columns) = 
+function go_maze(x, y, maze, rows, columns, x_circular = false, y_circular = false) = 
     //  have visitable dirs?
-    len(visitable_dirs_from(x, y, maze, rows, columns)) == 0 ? 
+    len(visitable_dirs_from(x, y, maze, rows, columns, x_circular, y_circular)) == 0 ? 
         set_visited(x, y, maze)      // road closed
         : walk_around_from(          
             x, y, 
             rand_dirs(),             
             set_visited(x, y, maze), 
-            rows, columns
+            rows, columns,
+            x_circular, y_circular
         );
 
 // try four directions
-function walk_around_from(x, y, dirs, maze, rows, columns, i = 4) =
+function walk_around_from(x, y, dirs, maze, rows, columns, x_circular, y_circular, i = 4) =
     // all done?
     i > 0 ? 
         // not yet
         walk_around_from(x, y, dirs, 
             // try one direction
-            try_routes_from(x, y, dirs[4 - i], maze, rows, columns),  
-            , rows, columns, 
+            try_routes_from(x, y, dirs[4 - i], maze, rows, columns, x_circular, y_circular),  
+            rows, columns, 
+            x_circular, y_circular,
             i - 1) 
         : maze;
         
-function try_routes_from(x, y, dir, maze, rows, columns) = 
+function try_routes_from(x, y, dir, maze, rows, columns, x_circular, y_circular) = 
     // is the dir visitable?
-    visitable(next_x(x, dir), next_y(y, dir), maze, rows, columns) ?     
+    visitable(next_x(x, dir, columns, x_circular), next_y(y, dir, rows, y_circular), maze, rows, columns) ?     
         // try the block 
         go_maze(
-            next_x(x, dir), next_y(y, dir), 
+            next_x(x, dir, columns, x_circular), next_y(y, dir, rows, y_circular), 
             try_block(dir, x, y, maze, rows, columns),
-            rows, columns
+            rows, columns,
+            x_circular, y_circular
         ) 
         // road closed so return maze directly
         : maze;   
@@ -187,7 +214,7 @@ module draw_block(wall_type, block_width, wall_thickness) {
     }
 }
 
-module draw_maze(rows, columns, blocks, block_width, wall_thickness) {
+module draw_maze(rows, columns, blocks, block_width, wall_thickness, x_circular = false, y_circular = false) {
     for(block = blocks) {
         // move a block to a right position.
         translate([get_x(block) - 1, get_y(block) - 1] * block_width) 
@@ -198,8 +225,12 @@ module draw_maze(rows, columns, blocks, block_width, wall_thickness) {
             );
     }
 
-    // the lowermost wall
-    line2d([0, 0], [block_width * columns, 0], wall_thickness);
     // the leftmost wall
-    line2d([0, 0], [0, block_width * rows], wall_thickness);
+    if(!x_circular) {
+        line2d([0, 0], [0, block_width * rows], wall_thickness);
+    }
+    // the lowermost wall
+    if(!y_circular) {
+        line2d([0, 0], [block_width * columns, 0], wall_thickness);
+    }
 }         
