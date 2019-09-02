@@ -114,10 +114,10 @@ function go_up_from(x, y, maze) = [
 ]; 
 
 // go left and carve the right wall of the left block
-function go_left_from(x, y, maze, rows) = 
+function go_left_from(x, y, maze, columns) = 
     let(
         x_minus_one = x - 1,
-        nx = x_minus_one < 1 ? x_minus_one + rows : x_minus_one
+        nx = x_minus_one < 1 ? x_minus_one + columns : x_minus_one
     )
     [
         for(b = maze) [get_x(b), get_y(b)] == [nx, y] ? (
@@ -144,7 +144,7 @@ function go_down_from(x, y, maze, rows) = [
 function try_block(dir, x, y, maze, rows, columns) =
     dir == 0 ? go_right_from(x, y, maze) : (
         dir == 1 ? go_up_from(x, y, maze) : (
-            dir == 2 ? go_left_from(x, y, maze, rows) : 
+            dir == 2 ? go_left_from(x, y, maze, columns) : 
                  go_down_from(x, y, maze, rows)   // dir is 3
             
         ) 
