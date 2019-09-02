@@ -14,8 +14,8 @@ function starting_maze(rows, columns) =  [
         for(x = [1:columns]) 
             block_data(
                 x, y, 
-                // all blocks have upper and right walls except the exit
-                y == rows && x == columns ? UPPER_WALL : UPPER_RIGHT_WALL, 
+                // all blocks have upper and right walls
+                UPPER_RIGHT_WALL, 
                 // unvisited
                 false 
             )
