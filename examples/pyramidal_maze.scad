@@ -55,8 +55,11 @@ module pyramidal_staircase_maze(maze_rows, block_width, stairs_width) {
                         stairs_width
                     );
 
+                    // entry
                     translate([0, stairs_width]) 
                         square(stairs_width, center = true);
+
+                    // exit
                     translate([maze_rows * block_width, maze_rows * block_width - stairs_width]) 
                         square(stairs_width, center = true);
                 }
