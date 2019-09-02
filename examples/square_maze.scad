@@ -121,7 +121,7 @@ function try_block(dir, x, y, maze, rows, columns) =
     dir == 0 ? go_right_from(x, y, maze) : (
         dir == 1 ? go_up_from(x, y, maze) : (
             dir == 2 ? go_left_from(x, y, maze) : 
-                 go_down_from(x, y, maze)   // 這時 dir 一定是 3
+                 go_down_from(x, y, maze)   // dir is 3
             
         ) 
     );
