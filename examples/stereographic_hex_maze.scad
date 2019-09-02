@@ -10,9 +10,8 @@ fn = 24;
 shadow = "YES"; // [YES, NO]
 wall_height = 1;
 
-// create a maze
+// draw a hex maze
 module hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness) {
-
 	// style : upper/rights/right
 	module cell(x_cell, y_cell, style) {
 		module hex_seg(begin, end) {
@@ -58,16 +57,11 @@ module hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness) {
 				up_left_wall();
 				down_left_wall();
 			}
-			else if(x_cell == x_cells - 1 && y_cell == y_cells - 1) {
-				right_walls();
-			}
 
             if(y_cell == 0) {
 				down_wall();
 				if(x_cell % 2 == 0) {
-					if(x_cell != 0) {
-					    down_left_wall();
-					}
+					down_left_wall();
 					down_right_wall();
 				}
 			} 
