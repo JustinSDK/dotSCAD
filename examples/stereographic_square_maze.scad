@@ -46,11 +46,9 @@ module stereographic_projection_maze2(maze_rows, block_width, wall_thickness, fn
         }
 
         // the lowermost wall
-        line2d([0, 0], [block_width * columns, 0], 
-             wall_thickness);
+        line2d([0, 0], [block_width * columns, 0], wall_thickness);
         // the leftmost wall
-        line2d([0, block_width], [0, block_width * rows], 
-             wall_thickness);
+        line2d([0, 0], [0, block_width * rows], wall_thickness);
     } 
     
     module maze() {
@@ -60,20 +58,6 @@ module stereographic_projection_maze2(maze_rows, block_width, wall_thickness, fn
                 maze_rows, 
                 maze_blocks, 
                 block_width, 
-                wall_thickness
-            );
-            
-            line2d([0, wall_thickness], [0, wall_thickness], wall_thickness);
-            
-            line2d(
-                [
-                    block_width * maze_rows, 
-                    block_width * (maze_rows - 1) + wall_thickness
-                ], 
-                [
-                    block_width * maze_rows, 
-                    block_width * (maze_rows - 1) + wall_thickness
-                ], 
                 wall_thickness
             );
         }
