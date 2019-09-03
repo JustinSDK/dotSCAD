@@ -20,7 +20,7 @@ module stereographic_projection_maze2(maze_rows, block_width, wall_thickness, fn
     
     module maze() {
         translate([-block_width * maze_rows / 2, -block_width * maze_rows / 2, 0]) 
-            draw_maze(
+            build_square_maze(
                 maze_rows, 
                 maze_rows, 
                 maze_blocks, 

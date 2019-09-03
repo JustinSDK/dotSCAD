@@ -47,7 +47,7 @@ module pyramidal_staircase_maze(maze_rows, block_width, stairs_width) {
             
             translate([-(maze_rows * block_width) / 2, -(maze_rows * block_width) / 2, 0]) 
                 difference() {
-                    draw_maze(
+                    build_square_maze(
                         maze_rows, 
                         maze_rows, 
                         maze_blocks, 
