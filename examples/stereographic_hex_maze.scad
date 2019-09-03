@@ -73,11 +73,11 @@ module build_hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness
 		module cell_inner_wall() {
 			if(style == "upper") {
 			    upper_wall();
-				if(x_cell % 2 != 0) {
-					up_right_wall();
-				}
 			} else if(style == "right") {
-				right_walls();
+				up_right_wall();
+				if(x_cell % 2 != 0) {
+                    down_right_wall();
+				}
 			} else if(x_cell % 2 != 0) {
 				up_right_wall();
 			}
@@ -138,8 +138,8 @@ module hex_maze_stereographic_projection(x_cells, cell_radius, wall_thickness, f
 		    build_hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness);
 
 	if(shadow == "YES") {
-		color("black") 
-		linear_extrude(wall_height) 
+		//color("black") 
+		//linear_extrude(wall_height) 
 		    translate([grid_w - square_w / 2, grid_h - square_w / 2, 0]) 
 			    build_hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness);
     }
