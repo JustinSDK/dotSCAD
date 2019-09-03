@@ -199,7 +199,7 @@ function try_routes_from(x, y, dir, maze, rows, columns, x_circular, y_circular)
 
 
 module draw_maze(rows, columns, blocks, block_width, wall_thickness, x_circular = false, y_circular = false) {
-    module draw_block(wall_type, block_width, wall_thickness) {
+    module build_block(wall_type, block_width, wall_thickness) {
         if(wall_type == UPPER_WALL || wall_type == UPPER_RIGHT_WALL) {
             // draw a upper wall
             line2d(
@@ -218,7 +218,7 @@ module draw_maze(rows, columns, blocks, block_width, wall_thickness, x_circular 
     for(block = blocks) {
         // move a block to a right position.
         translate([get_x(block) - 1, get_y(block) - 1] * block_width) 
-            draw_block(
+            build_block(
                 get_wall_type(block), 
                 block_width, 
                 wall_thickness
