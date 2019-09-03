@@ -12,108 +12,81 @@ wall_height = 1;
 
 // build a hex maze
 module build_hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness) {
-	// style : upper/rights/right
-	module build_cell(x_cell, y_cell, style) {
-		module hex_seg(begin, end) {
-			polyline2d(
-				[for(a = [begin:60:end]) 
-					[cell_radius * cos(a), cell_radius * sin(a)]], 
-				wall_thickness,
-                startingStyle = "CAP_ROUND", endingStyle = "CAP_ROUND"
-			);
-	    }
-		
-		module up_right_wall() {
-			hex_seg(0, 60);
-		}
+	module hex_seg(begin, end) {
+		polyline2d(
+			[for(a = [begin:60:end]) 
+				[cell_radius * cos(a), cell_radius * sin(a)]], 
+			wall_thickness,
+			startingStyle = "CAP_ROUND", endingStyle = "CAP_ROUND"
+		);
+	}
 
-		module upper_wall() {
-			hex_seg(60, 120);
-		}
+	module up_right_wall() { hex_seg(0, 60); }
+	module upper_wall() { hex_seg(60, 120); }
+	module up_left_wall() { hex_seg(120, 180);	}		
+	module down_left_wall() { hex_seg(180, 240); }
+	module down_wall() { hex_seg(240, 300); }
+	module down_right_wall() { hex_seg(300, 360); }	
 
-		module up_left_wall() {
-			hex_seg(120, 180);	
-		}
-				
-		module down_left_wall() {
-			hex_seg(180, 240);
-		}
+    function cell_position(x_cell, y_cell) =
+	     let(
+			grid_h = 2 * cell_radius * sin(60),
+    		grid_w = cell_radius + cell_radius * cos(60)
+		 )
+		 [grid_w * x_cell, grid_h * y_cell + (x_cell % 2 == 0 ? 0 : grid_h / 2), 0];
 
-		module down_wall() {
-			hex_seg(240, 300);
-		}
-		
-		module down_right_wall() {
-			hex_seg(300, 360);
-		}
-		
-		module right_walls() {
-			up_right_wall();
+	module build_cell_right_wall(x_cell) {
+		up_right_wall();
+		if(x_cell % 2 != 0) {
 			down_right_wall();
 		}
-		
-		module cell_border_wall() {
-			if(x_cell == 0) {
-				up_left_wall();
-				down_left_wall();
-			}
+	}
 
-            if(y_cell == 0) {
-				down_wall();
-				if(x_cell % 2 == 0) {
-					down_left_wall();
-					down_right_wall();
-				}
-			} 
-			else if(y_cell == y_cells - 1 && x_cell % 2 != 0) {
-				up_left_wall();
-			}
+	module build_cell_row_wall(x_cell) {
+		if(x_cell % 2 != 0) {
+			up_right_wall();
 		}
-		
-		module cell_inner_wall() {
-			if(style == "upper") {
-			    upper_wall();
-			} else if(style == "right") {
-				up_right_wall();
-				if(x_cell % 2 != 0) {
-                    down_right_wall();
-				}
-			} else if(x_cell % 2 != 0) {
-				up_right_wall();
-			}
-			else {
+		else {
+			down_right_wall();
+		}
+	}
+
+	module build_cell_border_if_necessary(x_cell, y_cell) {
+		if(x_cell == 0) {
+			up_left_wall();
+			down_left_wall();
+		}
+
+		if(y_cell == 0) {
+			down_wall();
+			if(x_cell % 2 == 0) {
+				down_left_wall();
 				down_right_wall();
 			}
+		} 
+		else if(y_cell == y_cells - 1 && x_cell % 2 != 0) {
+			up_left_wall();
 		}
-		
-		module cell_wall() {
-			cell_inner_wall();
-			cell_border_wall();
-		}
-
-		grid_h = 2 * cell_radius * sin(60);
-		grid_w = cell_radius + cell_radius * cos(60);
-
-		translate([grid_w * x_cell, grid_h * y_cell + (x_cell % 2 == 0 ? 0 : grid_h / 2), 0]) 
-			cell_wall();
 	}
 	
 	// create the wall of maze
-
 	for(i = [0:len(maze_vector) - 1]) {
 		cord = maze_vector[i];
-		x = (cord[0] - 1) ;
-		y = (cord[1] - 1);
+		x = cord[0] - 1;
+		y = cord[1] - 1;
 		wall_type = cord[2];
 
-		if(wall_type == UPPER_WALL || wall_type == UPPER_RIGHT_WALL) {
-			build_cell(x, y, "upper");
+        translate(cell_position(x, y)) {
+			if(wall_type == UPPER_WALL || wall_type == UPPER_RIGHT_WALL) {
+				upper_wall();
+			}
+			if(wall_type == RIGHT_WALL || wall_type == UPPER_RIGHT_WALL) {
+				build_cell_right_wall(x);
+			}  
+			
+			build_cell_row_wall(x); 
+			build_cell_border_if_necessary(x, y);
 		}
-		if(wall_type == RIGHT_WALL || wall_type == UPPER_RIGHT_WALL) {
-			build_cell(x, y, "right");
-		}  
-		
-		build_cell(x, y); 
 	}  
 }
 
@@ -138,8 +111,8 @@ module hex_maze_stereographic_projection(x_cells, cell_radius, wall_thickness, f
 		    build_hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness);
 
 	if(shadow == "YES") {
-		//color("black") 
-		//linear_extrude(wall_height) 
+		color("black") 
+		linear_extrude(wall_height) 
 		    translate([grid_w - square_w / 2, grid_h - square_w / 2, 0]) 
 			    build_hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness);
     }
