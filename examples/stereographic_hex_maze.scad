@@ -10,10 +10,10 @@ fn = 24;
 shadow = "YES"; // [YES, NO]
 wall_height = 1;
 
-// draw a hex maze
-module hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness) {
+// build a hex maze
+module build_hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness) {
 	// style : upper/rights/right
-	module cell(x_cell, y_cell, style) {
+	module build_cell(x_cell, y_cell, style) {
 		module hex_seg(begin, end) {
 			polyline2d(
 				[for(a = [begin:60:end]) 
@@ -107,13 +107,13 @@ module hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness) {
 		wall_type = cord[2];
 
 		if(wall_type == UPPER_WALL || wall_type == UPPER_RIGHT_WALL) {
-			cell(x, y, "upper");
+			build_cell(x, y, "upper");
 		}
 		if(wall_type == RIGHT_WALL || wall_type == UPPER_RIGHT_WALL) {
-			cell(x, y, "right");
+			build_cell(x, y, "right");
 		}  
 		
-		cell(x, y); 
+		build_cell(x, y); 
 	}  
 }
 
@@ -135,15 +135,14 @@ module hex_maze_stereographic_projection(x_cells, cell_radius, wall_thickness, f
 
     stereographic_extrude(square_w, $fn = fn) 
 	    translate([grid_w - square_w / 2, grid_h - square_w / 2, 0]) 
-		    hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness);
+		    build_hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness);
 
 	if(shadow == "YES") {
 		color("black") 
 		linear_extrude(wall_height) 
 		    translate([grid_w - square_w / 2, grid_h - square_w / 2, 0]) 
-			    hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness);
+			    build_hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness);
     }
-        
 }
 
 hex_maze_stereographic_projection(x_cells, cell_radius, wall_thickness, fn, wall_height, shadow);
