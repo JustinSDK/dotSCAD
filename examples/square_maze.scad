@@ -197,7 +197,7 @@ function try_routes_from(x, y, dir, maze, rows, columns, x_circular, y_circular)
         // road closed so return maze directly
         : maze;   
 
-module build_square_maze(rows, columns, blocks, block_width, wall_thickness, x_circular = false, y_circular = false) {
+module build_square_maze(rows, columns, blocks, block_width, wall_thickness, left_border = true, bottom_border = true) {
     module build_block(wall_type, block_width, wall_thickness) {
         if(wall_type == UPPER_WALL || wall_type == UPPER_RIGHT_WALL) {
             // draw a upper wall
@@ -224,12 +224,11 @@ module build_square_maze(rows, columns, blocks, block_width, wall_thickness, x_c
             );
     }
 
-    // the leftmost wall
-    if(!x_circular) {
+    if(left_border) {
         line2d([0, 0], [0, block_width * rows], wall_thickness);
     }
-    // the lowermost wall
-    if(!y_circular) {
+
+    if(bottom_border) {
         line2d([0, 0], [block_width * columns, 0], wall_thickness);
     }
 }         
