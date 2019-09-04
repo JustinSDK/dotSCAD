@@ -37,18 +37,18 @@ module build_hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness
 
 	module build_cell(x, y, wall_type) {
 		module build_right_wall(x_cell) {
-			up_right_wall();
 			if(x_cell % 2 != 0) {
 				down_right_wall();
+			}
+			else {
+				up_right_wall();
 			}
 		}
 
 		module build_row_wall(x_cell, y_cell) {
 			if(x_cell % 2 != 0) {
 				up_right_wall();
-				if(y_cell == y_cells - 1) {
-					up_left_wall();
-				}
+				up_left_wall();
 			}
 			else {
 				down_right_wall();
