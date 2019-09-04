@@ -12,7 +12,7 @@ wall_top_scale = 0.25;
 
 fn = 24;
 
-module draw_ramp_maze(rows, columns, blocks, block_width, wall_thickness, wall_height, wall_top_scale) {
+module build_ramp_maze(rows, columns, blocks, block_width, wall_thickness, wall_height, wall_top_scale) {
 
     module ramp_line(point1, point2, width = 1, height = 1, top_scale = 0.25) {
         angle = 90 - atan((point2[1] - point1[1]) / (point2[0] - point1[0]));
@@ -77,7 +77,7 @@ module maze_cylinder() {
     leng_circumference = block_width * maze_columns + wall_thickness;
 
     bend(size = [leng_circumference, block_width * maze_rows + wall_thickness, wall_height], angle = 360 + 360 * wall_thickness / leng_circumference, frags = fn) 
-        translate([0, wall_thickness / 2, 0]) draw_ramp_maze(
+        translate([0, wall_thickness / 2, 0]) build_ramp_maze(
             maze_rows, 
             maze_columns, 
             maze_blocks, 
