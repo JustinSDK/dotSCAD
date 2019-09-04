@@ -11,7 +11,7 @@ shadow = "YES"; // [YES, NO]
 wall_height = 1;
 
 // build a hex maze
-module build_hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness) {
+module build_hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness, left_border = true, bottom_border = true) {
 	function cell_position(x_cell, y_cell) =
 		let(
 			grid_h = 2 * cell_radius * sin(60),
@@ -75,24 +75,26 @@ module build_hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness
 		}
 	}  
 
-    // build left border
-    for(y = [0:y_cells - 1]) {
-        translate(cell_position(0, y)) {
-		    up_left_wall();
-		    down_left_wall();
+    if(left_border) {
+		for(y = [0:y_cells - 1]) {
+			translate(cell_position(0, y)) {
+				up_left_wall();
+				down_left_wall();
+			}
 		}
 	}
 
-    // build bottom border
-    for(x = [0:x_cells - 1]) {
-        translate(cell_position(x, 0)) {
-			down_wall();
-			if(x % 2 == 0) {
-				down_left_wall();
-				down_right_wall();
+    if(bottom_border) {
+		for(x = [0:x_cells - 1]) {
+			translate(cell_position(x, 0)) {
+				down_wall();
+				if(x % 2 == 0) {
+					down_left_wall();
+					down_right_wall();
+				}
 			}
-		}
-	}	
+		}	
+	}
 }
 
 module hex_maze_stereographic_projection(x_cells, cell_radius, wall_thickness, fn, wall_height, shadow) {
