@@ -19,20 +19,7 @@ module cube_maze(maze_rows, block_width, wall_thickness, inner_cube, travel_all)
     origin = half_wall_thickness - half_maze_size;
     
     module two_mazes() {
-        translate([origin, origin, half_cube_size]) 
-            linear_extrude(wall_thickness) build_square_maze(
-                maze_rows, 
-                maze_rows, 
-                go_maze(
-                    1, 1,   // starting point
-                    starting_maze(maze_rows, maze_rows),  
-                    maze_rows, maze_rows
-                ), 
-                block_width, 
-                wall_thickness
-            );
-            
-        rotate([180, 0, 0]) 
+        module one_maze() {
             translate([origin, origin, half_cube_size]) 
                 linear_extrude(wall_thickness) build_square_maze(
                     maze_rows, 
@@ -44,7 +31,12 @@ module cube_maze(maze_rows, block_width, wall_thickness, inner_cube, travel_all)
                     ), 
                     block_width, 
                     wall_thickness
-                );       
+                );
+        }
+
+        one_maze();  
+        rotate([180, 0, 0]) 
+            one_maze();      
     }
     
     if(inner_cube) {
