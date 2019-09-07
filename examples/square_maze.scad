@@ -44,7 +44,7 @@ function set_visited(x, y, maze) = [
             [x, y, get_wall_type(b), true] : b
 ];
     
-// 0（right）、1（upper）、2（left）、3（down）
+// 0(right)、1(upper)、2(left)、3(down)
 function rand_dirs() =
     [
         [0, 1, 2, 3],
@@ -140,7 +140,7 @@ function go_down_from(x, y, maze, rows) = [
     ) : b
 ]; 
 
-// 0（right）、1（upper）、2（left）、3（down）
+// 0(right)、1(upper)、2(left)、3(down)
 function try_block(dir, x, y, maze, rows, columns) =
     dir == 0 ? go_right_from(x, y, maze) : (
         dir == 1 ? go_up_from(x, y, maze) : (
