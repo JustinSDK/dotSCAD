@@ -267,7 +267,7 @@ function y_twist(walls, angle, rows, columns, block_width) =
             for(wall_pts = walls) 
                 [for(pt = wall_pts) [pt[0], pt[1], 0] + [-x_offset, 0, 0]]
         ],
-        a_step = angle / rows
+        a_step = angle / (rows * block_width)
     )
     [
         for(wall_pts = x_centered)    
