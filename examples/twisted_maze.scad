@@ -4,9 +4,9 @@ include <square_maze.scad>;
 
 rows = 16;
 columns = 8;
-block_width = 2;
+block_width = 4;
 wall_thickness = 1;   
-angle = 90;
+angle = 180;
 // $fn = 24;
 
 blocks = go_maze( 
