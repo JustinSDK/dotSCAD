@@ -30,7 +30,7 @@ module pyramid_with_stairs(base_width, stairs_width, rows) {
     }
 }
 
-module pyramidal_staircase_maze(maze_rows, block_width, stairs_width) {
+module step_pyramid_maze(maze_rows, block_width, stairs_width) {
     maze_blocks = go_maze(
         1, 1,   // starting point
         starting_maze(maze_rows, maze_rows),  
@@ -67,4 +67,4 @@ module pyramidal_staircase_maze(maze_rows, block_width, stairs_width) {
     }
 }
 
-pyramidal_staircase_maze(maze_rows, block_width, stairs_width);
+step_pyramid_maze(maze_rows, block_width, stairs_width);
