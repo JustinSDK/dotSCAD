@@ -53,8 +53,8 @@ module regular_polygon_maze(radius, cblocks, levels, thickness = 1, sides) {
 		  
 			for(i = [0:len(maze) - 1]) { 
 				block = maze[i];
-				cr = block[0]; 
-				cc = block[1] - 1;    
+				cr = get_x(block); 
+				cc = get_y(block) - 1;    
 				
 				angle = cc * arc_angle;
 				 
@@ -71,8 +71,8 @@ module regular_polygon_maze(radius, cblocks, levels, thickness = 1, sides) {
 	        // road to the next level
 			for(i = [0:len(maze) - 1]) { 
 				block = maze[i];
-				cr = block[0]; 
-				cc = block[1] - 1;   
+				cr = get_x(block); 
+				cc = get_y(block) - 1;   
 				
 				if(no_wall(block) || upper_wall(block)) { 
 				    ring_regular_polygon_sector(r * (cr + 1), (cc + 0.5) * arc_angle , thickness, r / 3 , sides);
