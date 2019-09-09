@@ -1,7 +1,12 @@
-NO_WALL = 0;       
-UPPER_WALL = 1;    
-RIGHT_WALL = 2;    
-UPPER_RIGHT_WALL = 3; 
+// NO_WALL = 0;       
+// UPPER_WALL = 1;    
+// RIGHT_WALL = 2;    
+// UPPER_RIGHT_WALL = 3; 
+
+function no_wall(block_data) = get_wall_type(block_data) == 0;
+function upper_wall(block_data) = get_wall_type(block_data) == 1;
+function right_wall(block_data) = get_wall_type(block_data) == 2;
+function upper_right_wall(block_data) = get_wall_type(block_data) == 3;
 
 function block_data(x, y, wall_type, visited) = [x, y, wall_type, visited];
 function get_x(block_data) = block_data[0];
@@ -15,7 +20,7 @@ function starting_maze(rows, columns) =  [
             block_data(
                 x, y, 
                 // all blocks have upper and right walls
-                UPPER_RIGHT_WALL, 
+                3, 
                 // unvisited
                 false 
             )
@@ -96,9 +101,9 @@ function next_y(y, dir, rows, circular) =
 // go right and carve the right wall
 function go_right_from(x, y, maze) = [
     for(b = maze) [get_x(b), get_y(b)] == [x, y] ? (
-        get_wall_type(b) == UPPER_RIGHT_WALL ? 
-            [x, y, UPPER_WALL, visited(x, y, maze)] : 
-            [x, y, NO_WALL, visited(x, y, maze)]
+        upper_right_wall(b) ? 
+            [x, y, 1, visited(x, y, maze)] : 
+            [x, y, 0, visited(x, y, maze)]
         
     ) : b
 ]; 
@@ -106,9 +111,9 @@ function go_right_from(x, y, maze) = [
 // go up and carve the upper wall
 function go_up_from(x, y, maze) = [
     for(b = maze) [get_x(b), get_y(b)] == [x, y] ? (
-        get_wall_type(b) == UPPER_RIGHT_WALL ? 
-            [x, y, RIGHT_WALL, visited(x, y, maze)] :  
-            [x, y, NO_WALL, visited(x, y, maze)]
+        upper_right_wall(b) ? 
+            [x, y, 2, visited(x, y, maze)] :  
+            [x, y, 0, visited(x, y, maze)]
         
     ) : b
 ]; 
@@ -121,9 +126,9 @@ function go_left_from(x, y, maze, columns) =
     )
     [
         for(b = maze) [get_x(b), get_y(b)] == [nx, y] ? (
-            get_wall_type(b) == UPPER_RIGHT_WALL ? 
-                [nx, y, UPPER_WALL, visited(nx, y, maze)] : 
-                [nx, y, NO_WALL, visited(nx, y, maze)]
+            upper_right_wall(b) ? 
+                [nx, y, 1, visited(nx, y, maze)] : 
+                [nx, y, 0, visited(nx, y, maze)]
         ) : b
     ]; 
 
@@ -134,9 +139,9 @@ function go_down_from(x, y, maze, rows) = [
         ny = y_minus_one < 1 ? y_minus_one + rows : y_minus_one
     )
     for(b = maze) [get_x(b), get_y(b)] == [x, ny] ? (
-        get_wall_type(b) == UPPER_RIGHT_WALL ? 
-            [x, ny, RIGHT_WALL, visited(x, ny, maze)] : 
-            [x, ny, NO_WALL, visited(x, ny, maze)]
+        upper_right_wall(b) ? 
+            [x, ny, 2, visited(x, ny, maze)] : 
+            [x, ny, 0, visited(x, ny, maze)]
     ) : b
 ]; 
 
@@ -198,30 +203,30 @@ function try_routes_from(x, y, dir, maze, rows, columns, x_circular, y_circular)
         : maze;   
 
 module build_square_maze(rows, columns, blocks, block_width, wall_thickness, left_border = true, bottom_border = true) {
-    module build_block(wall_type, block_width, wall_thickness) {
-        if(wall_type == UPPER_WALL || wall_type == UPPER_RIGHT_WALL) {
-            // draw a upper wall
-            line2d(
-                [0, block_width], [block_width, block_width], wall_thickness
-            ); 
-        }
-        
-        if(wall_type == RIGHT_WALL || wall_type == UPPER_RIGHT_WALL) {
-            // draw a right wall
-            line2d(
-                [block_width, block_width], [block_width, 0], wall_thickness
-            ); 
+    module build_block(block, block_width, wall_thickness) {
+        translate([get_x(block) - 1, get_y(block) - 1] * block_width) {
+            if(upper_wall(block) || upper_right_wall(block)) {
+                // draw a upper wall
+                line2d(
+                    [0, block_width], [block_width, block_width], wall_thickness
+                ); 
+            }
+            
+            if(right_wall(block) || upper_right_wall(block)) {
+                // draw a right wall
+                line2d(
+                    [block_width, block_width], [block_width, 0], wall_thickness
+                ); 
+            }
         }
     }
     
     for(block = blocks) {
-        // move a block to a right position.
-        translate([get_x(block) - 1, get_y(block) - 1] * block_width) 
-            build_block(
-                get_wall_type(block), 
-                block_width, 
-                wall_thickness
-            );
+        build_block(
+            block, 
+            block_width, 
+            wall_thickness
+        );
     }
 
     if(left_border) {
@@ -233,18 +238,13 @@ module build_square_maze(rows, columns, blocks, block_width, wall_thickness, lef
     }
 }         
 
-
 function block_walls(block, block_width) = 
     let(
         loc = [get_x(block) - 1, get_y(block) - 1] * block_width,
-        wall_type = get_wall_type(block),
-        upper_wall = wall_type == UPPER_WALL || wall_type == UPPER_RIGHT_WALL ? [[0, block_width] + loc, [block_width, block_width] + loc] : [],
-        right_wall = wall_type == RIGHT_WALL || wall_type == UPPER_RIGHT_WALL ? [[block_width, block_width] + loc, [block_width, 0] + loc] : []
+        upper = upper_wall(block) || upper_right_wall(block) ? [[0, block_width] + loc, [block_width, block_width] + loc] : [],
+        right = right_wall(block) || upper_right_wall(block) ? [[block_width, block_width] + loc, [block_width, 0] + loc] : []
     )
-    concat(
-        upper_wall, 
-        right_wall
-    ); 
+    concat(upper, right); 
   
 function maze_walls(blocks, rows, columns, block_width, left_border = true, bottom_border = true) = 
     let(
