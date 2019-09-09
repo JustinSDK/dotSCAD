@@ -36,17 +36,11 @@ module regular_polygon_to_polygon_wall(radius, length, angle, thickness, sides) 
 }
 
 module regular_polygon_maze(radius, cblocks, levels, thickness = 1, sides) {    
-    function replace(v1, v2, vs) =
-        [for(i = [0:len(vs) - 1]) vs[i] == v1 ? v2 : vs[i]];
-
     arc_angle = 360 / cblocks;
 	r = radius / (levels + 1);
 	
 	maze = go_maze(1, 1, 
-        replace(
-            [levels, cblocks - 1, 0, UPPER_RIGHT_WALL], [levels, cblocks - 1, 0, UPPER_WALL], 
-            starting_maze(cblocks, levels)
-        ),
+        starting_maze(cblocks, levels),
         cblocks, levels, y_circular = true
     );
 	
@@ -58,14 +52,13 @@ module regular_polygon_maze(radius, cblocks, levels, thickness = 1, sides) {
 		  
 		  
 			for(i = [0:len(maze) - 1]) { 
-				cord = maze[i];
-				cr = cord[0]; 
-				cc = cord[1] - 1;    
-				v = cord[2];
+				block = maze[i];
+				cr = block[0]; 
+				cc = block[1] - 1;    
 				
 				angle = cc * arc_angle;
 				 
-				if(v == 1 || v == 3) { 
+				if(upper_wall(block) || upper_right_wall(block)) { 
 				    regular_polygon_to_polygon_wall(r * cr, r, cc * arc_angle , thickness, sides);
 				} 
 			}
@@ -77,12 +70,11 @@ module regular_polygon_maze(radius, cblocks, levels, thickness = 1, sides) {
 
 	        // road to the next level
 			for(i = [0:len(maze) - 1]) { 
-				cord = maze[i];
-				cr = cord[0]; 
-				cc = cord[1] - 1;    
-				v = cord[2];
+				block = maze[i];
+				cr = block[0]; 
+				cc = block[1] - 1;   
 				
-				if(v == 0 || v == 1) { 
+				if(no_wall(block) || upper_wall(block)) { 
 				    ring_regular_polygon_sector(r * (cr + 1), (cc + 0.5) * arc_angle , thickness, r / 3 , sides);
 				}  
 			}
