@@ -202,6 +202,7 @@ function try_routes_from(x, y, dir, maze, rows, columns, x_circular, y_circular)
         // road closed so return maze directly
         : maze;   
 
+// ==========
 module build_square_maze(rows, columns, blocks, block_width, wall_thickness, left_border = true, bottom_border = true) {
     module build_block(block, block_width, wall_thickness) {
         translate([get_x(block) - 1, get_y(block) - 1] * block_width) {
@@ -237,6 +238,97 @@ module build_square_maze(rows, columns, blocks, block_width, wall_thickness, lef
         line2d([0, 0], [block_width * columns, 0], wall_thickness);
     }
 }         
+
+// ==========
+
+module build_hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness, left_border = true, bottom_border = true) {
+	function cell_position(x_cell, y_cell) =
+		let(
+			grid_h = 2 * cell_radius * sin(60),
+			grid_w = cell_radius + cell_radius * cos(60)
+		)
+		[grid_w * x_cell, grid_h * y_cell + (x_cell % 2 == 0 ? 0 : grid_h / 2), 0];
+
+    module hex_seg(begin, end) {
+		polyline2d(
+			[for(a = [begin:60:end]) 
+				[cell_radius * cos(a), cell_radius * sin(a)]], 
+			wall_thickness,
+			startingStyle = "CAP_ROUND", endingStyle = "CAP_ROUND"
+		);
+	}
+
+	module build_upper_right() { hex_seg(0, 60); }
+	module build_upper() { hex_seg(60, 120); }
+	module build_upper_left() { hex_seg(120, 180);	}		
+	module build_down_left() { hex_seg(180, 240); }
+	module build_down() { hex_seg(240, 300); }
+	module build_down_right() { hex_seg(300, 360); }	
+
+	module build_cell(block) {
+		module build_right_wall(x_cell) {
+			if(x_cell % 2 != 0) {
+				build_down_right();
+			}
+			else {
+				build_upper_right();
+			}
+		}
+
+		module build_row_wall(x_cell, y_cell) {
+			if(x_cell % 2 != 0) {
+				build_upper_right();
+				build_upper_left();
+			}
+			else {
+				build_down_right();
+			}
+		}
+
+		x = get_x(block) - 1;
+		y = get_y(block) - 1;
+
+		translate(cell_position(x, y)) {
+			build_row_wall(x, y); 
+
+			if(upper_wall(block) || upper_right_wall(block)) {
+				build_upper();
+			}
+			if(right_wall(block) || upper_right_wall(block)) {
+				build_right_wall(x);
+			}  
+		}
+		
+	}
+	
+	// create the wall of maze
+	for(block = maze_vector) {
+		build_cell(block);
+	}  
+
+    if(left_border) {
+		for(y = [0:y_cells - 1]) {
+			translate(cell_position(0, y)) {
+				build_upper_left();
+				build_down_left();
+			}
+		}
+	}
+
+    if(bottom_border) {
+		for(x = [0:x_cells - 1]) {
+			translate(cell_position(x, 0)) {
+				build_down();
+				if(x % 2 == 0) {
+					build_down_left();
+					build_down_right();
+				}
+			}
+		}	
+	}
+}
+
+// ==========
 
 function block_walls(block, block_width) = 
     let(
@@ -276,3 +368,5 @@ function y_twist(walls, angle, rows, columns, block_width) =
                    rotate_p(pt, [0, pt[1] * a_step, 0]) + [x_offset, 0, 0]
            ]
     ];
+
+// ==========
