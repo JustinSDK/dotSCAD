@@ -1,6 +1,7 @@
 include <hull_polyline3d.scad>;
 include <rotate_p.scad>;
 include <square_maze.scad>;
+use <twisted_maze.scad>;
 
 rows = 48;
 columns = 8;
