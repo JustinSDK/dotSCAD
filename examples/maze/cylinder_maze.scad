@@ -32,29 +32,30 @@ module build_ramp_maze(rows, columns, blocks, block_width, wall_thickness, wall_
         }
     }
 
-    module draw_ramp_block(wall_type, block_width, wall_thickness, wall_height, wall_top_scale) {
-        if(wall_type == UPPER_WALL || wall_type == UPPER_RIGHT_WALL) {
-            ramp_line(
-                [0, block_width], [block_width, block_width], wall_thickness, wall_height, wall_top_scale
-            ); 
-        }
+    module draw_ramp_block(block, block_width, wall_thickness, wall_height, wall_top_scale) {
+        translate([get_x(block) - 1, get_y(block) - 1] * block_width) {
+            if(upper_wall(block) || upper_right_wall(block)) {
+                ramp_line(
+                    [0, block_width], [block_width, block_width], wall_thickness, wall_height, wall_top_scale
+                ); 
+            }
 
-        if(wall_type == RIGHT_WALL || wall_type == UPPER_RIGHT_WALL) {
-            ramp_line(
-                [block_width, block_width], [block_width, 0], wall_thickness, wall_height, wall_top_scale
-            ); 
+            if(right_wall(block) || upper_right_wall(block)) {
+                ramp_line(
+                    [block_width, block_width], [block_width, 0], wall_thickness, wall_height, wall_top_scale
+                ); 
+            }
         }
     }
 
-    for(block = blocks) {
-        translate([get_x(block) - 1, get_y(block) - 1] * block_width) 
-            draw_ramp_block(
-                get_wall_type(block), 
-                block_width, 
-                wall_thickness,
-                wall_height,
-                wall_top_scale
-            );
+    for(block = blocks) {        
+        draw_ramp_block(
+            block, 
+            block_width, 
+            wall_thickness,
+            wall_height,
+            wall_top_scale
+        );
     }
 
     ramp_line(
