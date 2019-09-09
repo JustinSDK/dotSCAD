@@ -28,58 +28,59 @@ module build_hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness
 		);
 	}
 
-	module up_right_wall() { hex_seg(0, 60); }
-	module upper_wall() { hex_seg(60, 120); }
-	module up_left_wall() { hex_seg(120, 180);	}		
-	module down_left_wall() { hex_seg(180, 240); }
-	module down_wall() { hex_seg(240, 300); }
-	module down_right_wall() { hex_seg(300, 360); }	
+	module build_upper_right() { hex_seg(0, 60); }
+	module build_upper() { hex_seg(60, 120); }
+	module build_upper_left() { hex_seg(120, 180);	}		
+	module build_down_left() { hex_seg(180, 240); }
+	module build_down() { hex_seg(240, 300); }
+	module build_down_right() { hex_seg(300, 360); }	
 
-	module build_cell(x, y, wall_type) {
+	module build_cell(block) {
 		module build_right_wall(x_cell) {
 			if(x_cell % 2 != 0) {
-				down_right_wall();
+				build_down_right();
 			}
 			else {
-				up_right_wall();
+				build_upper_right();
 			}
 		}
 
 		module build_row_wall(x_cell, y_cell) {
 			if(x_cell % 2 != 0) {
-				up_right_wall();
-				up_left_wall();
+				build_upper_right();
+				build_upper_left();
 			}
 			else {
-				down_right_wall();
+				build_down_right();
 			}
 		}
 
-		build_row_wall(x, y); 
+		x = get_x(block) - 1;
+		y = get_y(block) - 1;
 
-		if(wall_type == UPPER_WALL || wall_type == UPPER_RIGHT_WALL) {
-			upper_wall();
+		translate(cell_position(x, y)) {
+			build_row_wall(x, y); 
+
+			if(upper_wall(block) || upper_right_wall(block)) {
+				build_upper();
+			}
+			if(right_wall(block) || upper_right_wall(block)) {
+				build_right_wall(x);
+			}  
 		}
-		if(wall_type == RIGHT_WALL || wall_type == UPPER_RIGHT_WALL) {
-			build_right_wall(x);
-		}  
+		
 	}
 	
 	// create the wall of maze
-	for(cell = maze_vector) {
-		x = cell[0] - 1;
-		y = cell[1] - 1;
-		wall_type = cell[2];
-        translate(cell_position(x, y)) {
-			build_cell(x, y, wall_type);
-		}
+	for(block = maze_vector) {
+		build_cell(block);
 	}  
 
     if(left_border) {
 		for(y = [0:y_cells - 1]) {
 			translate(cell_position(0, y)) {
-				up_left_wall();
-				down_left_wall();
+				build_upper_left();
+				build_down_left();
 			}
 		}
 	}
@@ -87,10 +88,10 @@ module build_hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness
     if(bottom_border) {
 		for(x = [0:x_cells - 1]) {
 			translate(cell_position(x, 0)) {
-				down_wall();
+				build_down();
 				if(x % 2 == 0) {
-					down_left_wall();
-					down_right_wall();
+					build_down_left();
+					build_down_right();
 				}
 			}
 		}	
