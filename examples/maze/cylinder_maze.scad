@@ -64,7 +64,7 @@ module build_ramp_maze(rows, columns, blocks, block_width, wall_thickness, wall_
     );
 } 
 
-module maze_cylinder() {
+module cylinder_maze() {
     maze_rows = round(height / block_width);
     maze_columns = round(2 * 3.14159 * radius / block_width);
 
@@ -89,4 +89,4 @@ module maze_cylinder() {
         );
 }
 
-maze_cylinder();
+cylinder_maze();
