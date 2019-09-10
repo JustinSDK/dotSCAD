@@ -8,7 +8,8 @@ wall_thickness = 1;
 module pyramid_maze(maze_rows, block_width, wall_thickness) {
     module pyramid(leng) {
         height = leng / 1.4142135623730950488016887242097;
-        linear_extrude(height, scale = 0) square(leng, center = true);
+        linear_extrude(height, scale = 0) 
+            square(leng, center = true);
     }
 
     maze_blocks = go_maze(
@@ -18,11 +19,10 @@ module pyramid_maze(maze_rows, block_width, wall_thickness) {
     ); 
    
     leng = maze_rows * block_width ;
-    height = (leng + wall_thickness) / 1.4142135623730950488016887242097;
     half_leng = leng / 2;
-
+    
     intersection() {
-        linear_extrude(height) 
+        linear_extrude(leng * 2) 
             translate([-half_leng, -half_leng]) build_square_maze(
                 maze_rows, 
                 maze_rows, 
