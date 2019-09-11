@@ -37,7 +37,7 @@ module floor_stand(width, height, thickness, joint_spacing) {
                 joint_top();
     } 
 
-    module board1() {
+    module board_U() {
         difference() {
             union() {
                 linear_extrude(thickness, center = true) 
@@ -58,7 +58,7 @@ module floor_stand(width, height, thickness, joint_spacing) {
         }
     }
 
-    module board2() {
+    module board_T() {
         linear_extrude(thickness, center = true) 
             union() {
                 difference() {
@@ -118,11 +118,13 @@ module floor_stand(width, height, thickness, joint_spacing) {
         stick();
 
     translate([0, 0, half_th]) 
-        decorate() board1();
+        decorate() 
+            board_U();
 
     translate([0, 0, half_th]) 
         rotate(180)
-            decorate() board2();
+            decorate() 
+                board_T();
     
     children();
     rotate(180) 
