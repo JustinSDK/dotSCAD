@@ -114,29 +114,27 @@ module floor_stand(width, height, thickness, joint_spacing) {
                 square(width, center = true);
     }
 
+    module carve_slot_foot() {
+        rotate([-80, 0, 0]) 
+            difference() {
+                rotate([80, 0, 0]) union() {
+                    color("yellow") children();
+                    translate([0, -height / 1.8, 0]) border();
+                }
+                ground_df();
+            }
+    }
+
     // stick
     translate([width, 0, 0]) 
         stick();
 
     translate([0, 0, thickness / 2]) 
-    rotate([-80, 0, 0]) 
-    difference() {
-        rotate([80, 0, 0]) union() {
-            color("yellow") board1();
-            translate([0, -height / 1.8, 0]) border();
-        }
-        ground_df();
-    }
+        carve_slot_foot() board1();
 
     translate([0, 0, thickness / 2]) 
-    rotate([80, 0, 0]) 
-    difference() {
-        rotate([-80, 0, 0]) rotate(180) union() {
-            color("yellow") board2();
-            translate([0, -height / 1.8, 0]) border();
-        }
-        ground_df();
-    }
+        rotate(180)
+            carve_slot_foot() board2();
     
     children();
     rotate(180) 
