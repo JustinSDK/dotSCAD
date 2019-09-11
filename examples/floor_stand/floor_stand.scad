@@ -93,7 +93,7 @@ module floor_stand(width, height, thickness, joint_spacing) {
             square([width / 12, half_w], center = true);    
     }
 
-    module decorate_board() {
+    module decorate() {
         rotate([-80, 0, 0]) 
             difference() {
                 rotate([80, 0, 0]) 
@@ -118,11 +118,11 @@ module floor_stand(width, height, thickness, joint_spacing) {
         stick();
 
     translate([0, 0, half_th]) 
-        decorate_board() board1();
+        decorate() board1();
 
     translate([0, 0, half_th]) 
         rotate(180)
-            decorate_board() board2();
+            decorate() board2();
     
     children();
     rotate(180) 
