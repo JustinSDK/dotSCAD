@@ -114,7 +114,7 @@ module floor_stand(width, height, thickness, joint_spacing) {
                 square(width, center = true);
     }
 
-    module carve_slot_foot() {
+    module carve_board() {
         rotate([-80, 0, 0]) 
             difference() {
                 rotate([80, 0, 0]) union() {
@@ -130,11 +130,11 @@ module floor_stand(width, height, thickness, joint_spacing) {
         stick();
 
     translate([0, 0, thickness / 2]) 
-        carve_slot_foot() board1();
+        carve_board() board1();
 
     translate([0, 0, thickness / 2]) 
         rotate(180)
-            carve_slot_foot() board2();
+            carve_board() board2();
     
     children();
     rotate(180) 
