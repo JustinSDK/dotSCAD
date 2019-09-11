@@ -31,5 +31,5 @@ module words(text, font, font_size, height, thickness, line_spacing) {
         }
 }
 
-floor_stand(stand_width, stand_height, stand_thickness, joint_spacing, line_spacing) 
+floor_stand(stand_width, stand_height, stand_thickness, joint_spacing) 
     words(text, font, font_size, stand_height, stand_thickness, line_spacing);

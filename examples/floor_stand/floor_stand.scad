@@ -1,4 +1,4 @@
-module floor_stand(width, height, thickness, joint_spacing, line_spacing) {
+module floor_stand(width, height, thickness, joint_spacing) {
     half_w = width / 2;
     half_h = height / 2;
     half_th = thickness / 2;
