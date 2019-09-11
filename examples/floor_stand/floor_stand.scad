@@ -25,6 +25,17 @@ module floor_stand(width, height, thickness, joint_spacing) {
             circle(thickness / 4 + half_sc);
     }
 
+    module joint_tops(dist) {
+        half_d = dist / 2;
+        translate([-half_d, 0, 0]) 
+            rotate([0, -90, 0]) 
+                joint_top();     
+
+        translate([half_d, 0, 0]) 
+            rotate([0, 90, 0]) 
+                joint_top();
+    }
+
     module stick() {
         linear_extrude(thickness * 0.75) 
             square([width / 12, half_w], center = true);    
@@ -57,18 +68,12 @@ module floor_stand(width, height, thickness, joint_spacing) {
                     linear_extrude(width / 2.25 * 2, center = true) 
                         circle(thickness / 2);
             }
+
             rotate([0, 90, 0]) 
                 linear_extrude(width / 1.5, center = true) 
                     circle(thickness, $fn = 24);
-                
-            // joint            
-            translate([half_w / 1.5 , 0, 0])         
-                rotate([0, 90, 0]) 
-                    joint_top();
-
-            translate([-half_w / 1.5 , 0, 0])  
-                rotate([0, -90, 0]) 
-                    joint_top();
+                   
+            joint_tops(half_w / 1.5 * 2);
                         
             slot_df();        
         }
@@ -90,18 +95,12 @@ module floor_stand(width, height, thickness, joint_spacing) {
                                 square([width / 1.5 - thickness * 2, height / 6], center = true);
                             }
                     }
+
                 rotate([0, 90, 0]) 
                     linear_extrude(width / 1.5 - joint_spacing, center = true) 
                         circle(half_th, $fn = 24);
 
-                // joint
-                translate([half_w / 1.5 - half_sc, 0, 0]) 
-                    rotate([0, 90, 0]) 
-                        joint_top();
-
-                translate([-half_w / 1.5 + half_sc, 0, 0]) 
-                    rotate([0, -90, 0]) 
-                        joint_top();                
+                joint_tops(half_w / 1.5 * 2 - joint_spacing);              
             }
             
             slot_df();
@@ -124,7 +123,6 @@ module floor_stand(width, height, thickness, joint_spacing) {
                 ground_df();
             }
     }
-
     // stick
     translate([width, 0, 0]) 
         stick();
