@@ -12,20 +12,21 @@ module floor_stand(width, height, thickness, joint_spacing) {
     ];
 
     module board_base() {
-        difference() {
-            polygon(points);
-            translate([0, -half_h, 0]) 
-                scale([0.6, 0.1]) 
-                    polygon(points);
-        }
-    }
-
-    module joint_top() {
-        linear_extrude(thickness / 4 + half_sc, scale = 0.1) 
-            circle(thickness / 4 + half_sc);
+        translate([0, -half_h, 0]) 
+            difference() {
+                polygon(points);
+                translate([0, -half_h, 0]) 
+                    scale([0.6, 0.1]) 
+                        polygon(points);
+            }
     }
 
     module joint_tops(dist) {
+        module joint_top() {
+            linear_extrude(thickness / 4 + half_sc, scale = 0.1) 
+                circle(thickness / 4 + half_sc);
+        }
+
         half_d = dist / 2;
         translate([-half_d, 0, 0]) 
             rotate([0, -90, 0]) 
@@ -34,34 +35,14 @@ module floor_stand(width, height, thickness, joint_spacing) {
         translate([half_d, 0, 0]) 
             rotate([0, 90, 0]) 
                 joint_top();
-    }
-
-    module stick() {
-        linear_extrude(thickness * 0.75) 
-            square([width / 12, half_w], center = true);    
-    }
-    
-    module slot_df() {
-        translate([0, -half_h - thickness, -half_th]) 
-            stick();    
-    }
-    
-    module border() {
-        translate([0, 0, half_th]) 
-            color("black") linear_extrude(half_th / 2) 
-                hollow_out(shell_thickness = font_size / 4) 
-                    offset(half_w / 10) 
-                        scale([0.75, 0.675]) 
-                            polygon(points);
-    }    
+    } 
 
     module board1() {
         difference() {
             union() {
                 linear_extrude(thickness, center = true) 
                     difference() {
-                        translate([0, -half_h, 0]) 
-                            board_base();
+                        board_base();
                         square([width / 1.5, height / 3], center = true);
                     } 
                 rotate([0, 90, 0]) 
@@ -73,66 +54,75 @@ module floor_stand(width, height, thickness, joint_spacing) {
                 linear_extrude(width / 1.5, center = true) 
                     circle(thickness, $fn = 24);
                    
-            joint_tops(half_w / 1.5 * 2);
-                        
-            slot_df();        
+            joint_tops(half_w / 1.5 * 2);          
         }
     }
 
     module board2() {
-        difference() {
+        linear_extrude(thickness, center = true) 
             union() {
-                linear_extrude(thickness, center = true) 
-                    union() {
-                        difference() {
-                            translate([0, -half_h, 0]) 
-                                board_base();
-                            square([width, height / 3], center = true);
-                        }
-                        translate([0, -height / 12 - joint_spacing / 4, 0]) 
-                            difference() {
-                                square([width / 1.5 - joint_spacing, height / 6 + joint_spacing / 2], center = true);
-                                square([width / 1.5 - thickness * 2, height / 6], center = true);
-                            }
+                difference() {
+                    board_base();
+                    square([width, height / 3], center = true);
+                }
+                translate([0, -height / 12 - joint_spacing / 4, 0]) 
+                    difference() {
+                        square([width / 1.5 - joint_spacing, height / 6 + joint_spacing / 2], center = true);
+                        square([width / 1.5 - thickness * 2, height / 6], center = true);
                     }
-
-                rotate([0, 90, 0]) 
-                    linear_extrude(width / 1.5 - joint_spacing, center = true) 
-                        circle(half_th, $fn = 24);
-
-                joint_tops(half_w / 1.5 * 2 - joint_spacing);              
             }
-            
-            slot_df();
-        }
+
+        rotate([0, 90, 0]) 
+            linear_extrude(width / 1.5 - joint_spacing, center = true) 
+                circle(half_th, $fn = 24);
+
+        joint_tops(half_w / 1.5 * 2 - joint_spacing);              
     }
 
-    module ground_df() {
-        translate([0, 0, -height - half_th]) 
-            linear_extrude(thickness) 
-                square(width, center = true);
+    module border() {
+        translate([0, 0, half_th]) 
+            color("black") linear_extrude(half_th / 2) 
+                hollow_out(shell_thickness = font_size / 4) 
+                    offset(half_w / 10) 
+                        scale([0.75, 0.675]) 
+                            polygon(points);
+    }  
+
+    module stick() {
+        linear_extrude(thickness * 0.75) 
+            square([width / 12, half_w], center = true);    
     }
 
-    module carve_board() {
+    module decorate_board() {
         rotate([-80, 0, 0]) 
             difference() {
-                rotate([80, 0, 0]) union() {
-                    color("yellow") children();
-                    translate([0, -height / 1.8, 0]) border();
-                }
-                ground_df();
+                rotate([80, 0, 0]) 
+                    difference() {
+                        union() {
+                            color("yellow") children();
+                            translate([0, -height / 1.8, 0]) 
+                                 border();
+                        }
+                        // slot
+                        translate([0, -half_h - thickness, -half_th]) 
+                            stick();    
+                    }
+
+                translate([0, 0, -height - half_th]) 
+                    linear_extrude(thickness) 
+                        square(width, center = true);
             }
     }
     // stick
     translate([width, 0, 0]) 
         stick();
 
-    translate([0, 0, thickness / 2]) 
-        carve_board() board1();
+    translate([0, 0, half_th]) 
+        decorate_board() board1();
 
-    translate([0, 0, thickness / 2]) 
+    translate([0, 0, half_th]) 
         rotate(180)
-            carve_board() board2();
+            decorate_board() board2();
     
     children();
     rotate(180) 
