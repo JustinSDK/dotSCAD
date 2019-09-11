@@ -71,4 +71,5 @@ module content(text, font, font_size, symbol_png, symbol_unicode, symbol_font, s
     }
 }
         
-floor_stand(stand_width, stand_height, stand_thickness, joint_spacing, line_spacing) content(text, font, font_size, symbol_png, symbol_unicode, symbol_font, symbol_font_size, stand_height, stand_thickness, line_spacing);;
+floor_stand(stand_width, stand_height, stand_thickness, joint_spacing, line_spacing) 
+    content(text, font, font_size, symbol_png, symbol_unicode, symbol_font, symbol_font_size, stand_height, stand_thickness, line_spacing);
