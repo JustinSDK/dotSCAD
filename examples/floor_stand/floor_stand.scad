@@ -125,14 +125,13 @@ module floor_stand(width, height, thickness, joint_spacing) {
         rotate(180)
             decorate() 
                 board_T();
-                
+
+    children(0);
     if($children == 1) {
-        children();
         rotate(180) 
-            children();    
+            children(0);    
     }
     else {
-        children(0);
         children(1);
     }
 }
