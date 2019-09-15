@@ -4,15 +4,14 @@ min_leng = 2;
 model = "Cube"; // [Cube, Base, Both]
 
 module spiral_cube(leng, leng_diff, min_leng) {
-    
-    thickness = leng_diff / 4.25;
+    thickness = leng_diff / 3;
     starting_leng = leng + leng_diff * 2 + thickness * 2.5;
     half_leng = leng / 2;
     pow_leng_diff = pow(leng_diff, 2);
     module spiral_stack(current_leng, pre_height = 0, i = 0) {
         factor = current_leng / starting_leng;
         
-        if(current_leng > min_leng && current_leng > leng_diff) {
+        if(current_leng > min_leng && current_leng > leng_diff && half_leng > pre_height) {
             translate([0, 0, pre_height]) 
                 scale([factor, factor, 1]) 
                     children();
@@ -24,7 +23,7 @@ module spiral_cube(leng, leng_diff, min_leng) {
                     i + 1
                 ) children();
         }
-        else {
+        else if(half_leng > pre_height) {
             translate([0, 0, pre_height]) 
                 scale([factor, factor, (half_leng - pre_height) / thickness]) 
                     children();
@@ -32,17 +31,21 @@ module spiral_cube(leng, leng_diff, min_leng) {
     }
     
     module spiral_squares() {
-        translate([0, 0, -half_leng]) 
-            spiral_stack(leng)
-                translate([0, 0, thickness / 2]) 
-                    cube([leng , leng, thickness], center = true);
+        difference() {
+            translate([0, 0, -half_leng]) 
+                spiral_stack(leng)
+                    translate([0, 0, thickness / 2]) 
+                        cube([leng , leng, thickness], center = true);
+            translate([0, 0, 0.001]) 
+                linear_extrude(leng) 
+                    square(leng, center = true);    
+        }
     }
-    
 
     module pair_spiral_squares() {
         spiral_squares();
-        mirror([0, 0, 1])
-        //rotate([180, 0, 0])
+       // mirror([0, 0, 1])
+        rotate([180, 0, 0])
             spiral_squares();
     }
 
@@ -54,8 +57,6 @@ module spiral_cube(leng, leng_diff, min_leng) {
             rotate([90, 0, 0]) pair_spiral_squares();
             rotate([0, 90, 0]) pair_spiral_squares();
         }
-
-         
     }
 }
 
