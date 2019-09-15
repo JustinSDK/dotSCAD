@@ -1,7 +1,7 @@
 leng = 30;
 leng_diff = 3;
 min_leng = 2;
-model = "Cube"; // [Cube, Base, Both]
+model = "Both"; // [Cube, Base, Both]
 
 module spiral_cube(leng, leng_diff, min_leng) {
     thickness = leng_diff / 3;
@@ -81,11 +81,10 @@ if(model == "Cube") {
 } else if(model == "Base") {
     base(leng);
 } else {
-    // Because of float precision problems, I roate the base instead of the cube.
-    spiral_cube(leng, leng_diff, min_leng);
-    rotate([-45, 0, 0]) 
-        rotate([0, -atan2(1, sqrt(2)), 0]) 
-            translate([0, 0, -half_leng * sqrt(3) - leng / 15]) 
-                base(leng);
+    half_leng = leng / 2;
+    rotate([45, atan2(1, sqrt(2)), 0]) 
+        spiral_cube(leng, leng_diff, min_leng);
+    translate([0, 0, -half_leng * sqrt(3) - leng / 15]) 
+        base(leng);
 }
 
