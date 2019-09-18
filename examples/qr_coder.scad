@@ -1,10 +1,10 @@
+include <part/connector_peg.scad>;
+
 t = "1000 followers"; 
 head_size = 30;
 qr_thickness = 1.5;  
 
 shaft_r = 2.5;
-lip_r = 3;
-pin_height = 6; 
 spacing = 0.5;  
 
 min_error_correction_level = "medium"; // [low, medium, quartile, high]
@@ -26,43 +26,6 @@ module qr_coder() {
 module cube_character(head_size) {
     $fn = 48;
     
-    module pin(type, shaft_r = 2.5, lip_r = 3, height = 6, spacing = 0.5, lip_fn = 4) {
-        r_diff = lip_r - shaft_r;
-        
-        module pin_base(shaft_r, lip_r, height) {        
-            linear_extrude(height) 
-                circle(shaft_r);
-                
-            translate([0, 0, height - r_diff]) 
-                rotate_extrude() 
-                    translate([lip_r - r_diff, 0, 0]) 
-                        circle(r_diff, $fn = lip_fn);
-        }
-
-        module pinpeg() {
-            difference() {
-                pin_base(shaft_r, lip_r, height);
-                
-                translate([0, 0, r_diff * 2])  
-                    linear_extrude(height - r_diff * 2) 
-                        square([r_diff * 2, lip_r * 2], center = true);
-            }
-        }
-
-        module pinheightole() {
-            pin_base(shaft_r + spacing, lip_r + spacing, height);
-            translate([0, 0, height]) 
-                linear_extrude(spacing) 
-                    circle(lip_r);
-        }
-
-        if(type == "peg") {
-            pinpeg();
-        } else if(type == "hole") {
-            pinheightole();
-        }
-    }    
-    
     module head() {
         half_head_size = head_size / 2;
         difference() {
@@ -71,7 +34,7 @@ module cube_character(head_size) {
             
             translate([0, -half_head_size, half_head_size])
                 rotate([-90, 0, 0]) 
-                    pin("hole", shaft_r, lip_r, pin_height, spacing);                
+                    connector_peg(shaft_r, spacing, void = true);         
         }            
     }
     
@@ -79,10 +42,10 @@ module cube_character(head_size) {
         body_size = head_size * 0.75;
         half_body_size = body_size / 2;
         
-        module pin_hole_df() {
+        module peg_void() {
             translate([half_body_size + 1, head_size * 0.2, half_body_size])
                 rotate([0, -90, 0]) 
-                    pin("hole", shaft_r, lip_r, pin_height, spacing);
+                    connector_peg(shaft_r, spacing, void = true);   
         }
         
         difference() {
@@ -96,13 +59,13 @@ module cube_character(head_size) {
                     }
             }                        
                 
-            // pin holes
+            // holes
             translate([0, half_body_size + 1, half_body_size])
                 rotate([90, 0, 0]) 
-                    pin("hole", shaft_r, lip_r, pin_height, spacing);
+                    connector_peg(shaft_r, spacing, void = true);   
                     
-            pin_hole_df();   
-            mirror([1, 0, 0]) pin_hole_df();                               
+            peg_void();   
+            mirror([1, 0, 0]) peg_void();                               
         }
          
         // hands
@@ -118,7 +81,7 @@ module cube_character(head_size) {
                     
                 translate([head_size * 0.1375, head_size * 0.1375, half_body_size / 2]) 
                     rotate([0, 90, 0]) 
-                        pin("peg", shaft_r, lip_r, pin_height, spacing);
+                        connector_peg(shaft_r, spacing);   
             }
         }
                  
@@ -131,12 +94,8 @@ module cube_character(head_size) {
    translate([0, -head_size, 0]) 
         body();
         
-    translate([0, head_size * 0.75, pin_height]) {
-        pin("peg", shaft_r, lip_r, pin_height, spacing);
-        mirror([0, 0, 1]) 
-            pin("peg", shaft_r, lip_r, pin_height, spacing);
-    }
-
+    translate([0, head_size * 0.75]) 
+        connector_peg(shaft_r, spacing, heads = true);   
 }
 
 // refactored from https://www.thingiverse.com/thing:258542
