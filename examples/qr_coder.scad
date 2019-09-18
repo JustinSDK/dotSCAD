@@ -46,7 +46,6 @@ module cube_character(head_size) {
                 translate([0, 0, r_diff * 2])  
                     linear_extrude(height - r_diff * 2) 
                         square([r_diff * 2, lip_r * 2], center = true);
-            
             }
         }
 
@@ -55,7 +54,6 @@ module cube_character(head_size) {
             translate([0, 0, height]) 
                 linear_extrude(spacing) 
                     circle(lip_r);
-            
         }
 
         if(type == "peg") {
