@@ -18,7 +18,7 @@ module qr_coder() {
     rotate([0, 180, 0]) 
         translate([0, 0, -qr_thickness - head_size]) 
             linear_extrude(qr_thickness) 
-                qrcode(t, head_size * 0.9, encoding, min_error_correction_level, mask, center = true); 
+                mirror([1, 0, 0]) qrcode(t, head_size * 0.9, encoding, min_error_correction_level, mask, center = true); 
 
     cube_character(head_size);
 }
