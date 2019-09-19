@@ -4,7 +4,7 @@ t = "1000 followers";
 head_size = 30;
 qr_thickness = 1.5;  
 
-shaft_r = 2.5;
+peg_radius = 2.5;
 spacing = 0.5;  
 
 min_error_correction_level = "medium"; // [low, medium, quartile, high]
@@ -34,7 +34,7 @@ module cube_character(head_size) {
             
             translate([0, -half_head_size, half_head_size])
                 rotate([-90, 0, 0]) 
-                    connector_peg(shaft_r, spacing, void = true);         
+                    connector_peg(peg_radius, spacing, void = true);         
         }            
     }
     
@@ -45,7 +45,7 @@ module cube_character(head_size) {
         module peg_void() {
             translate([half_body_size + 1, head_size * 0.2, half_body_size])
                 rotate([0, -90, 0]) 
-                    connector_peg(shaft_r, spacing, void = true);   
+                    connector_peg(peg_radius, spacing, void = true);   
         }
         
         difference() {
@@ -62,7 +62,7 @@ module cube_character(head_size) {
             // holes
             translate([0, half_body_size + 1, half_body_size])
                 rotate([90, 0, 0]) 
-                    connector_peg(shaft_r, spacing, void = true);   
+                    connector_peg(peg_radius, spacing, void = true);   
                     
             peg_void();   
             mirror([1, 0, 0]) peg_void();                               
@@ -81,7 +81,7 @@ module cube_character(head_size) {
                     
                 translate([head_size * 0.1375, head_size * 0.1375, half_body_size / 2]) 
                     rotate([0, 90, 0]) 
-                        connector_peg(shaft_r, spacing);   
+                        connector_peg(peg_radius, spacing);   
             }
         }
                  
@@ -95,7 +95,7 @@ module cube_character(head_size) {
         body();
         
     translate([0, head_size * 0.75]) 
-        connector_peg(shaft_r, spacing, heads = true);   
+        connector_peg(peg_radius, spacing, heads = true);   
 }
 
 // refactored from https://www.thingiverse.com/thing:258542

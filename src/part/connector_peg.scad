@@ -1,25 +1,25 @@
-module connector_peg(shaft_r = 2.5, spacing = 0.5, void = false, heads = false) {
-    lip_r = shaft_r * 1.2;
-    height = shaft_r * 2.6; 
-    r_diff = lip_r - shaft_r;
+module connector_peg(radius = 2.5, spacing = 0.5, void = false, heads = false) {
+    lip_r = radius * 1.2;
+    height = radius * 2.6; 
+    r_diff = lip_r - radius;
     h_unit = height / 7;
     d_h_unit = h_unit * 2;
     half_h_unit = h_unit / 2;
     
-    module base(shaft_r, lip_r) {   
+    module base(radius, lip_r) {   
         rotate_extrude() {
             translate([0, -d_h_unit + height]) hull() {
                 square([lip_r - r_diff, d_h_unit]); 
                 translate([0, half_h_unit]) 
                     square([lip_r, half_h_unit]);
             }
-            square([shaft_r, height - d_h_unit]);                        
+            square([radius, height - d_h_unit]);                        
         }
     }
 
     module peg() {
         difference() {
-            base(shaft_r, lip_r);
+            base(radius, lip_r);
             
             translate([0, 0, d_h_unit])  
                 linear_extrude(height - r_diff * 2) 
@@ -28,7 +28,7 @@ module connector_peg(shaft_r = 2.5, spacing = 0.5, void = false, heads = false) 
     }
 
     module peg_void() {
-        base(shaft_r + spacing, lip_r + spacing);
+        base(radius + spacing, lip_r + spacing);
         translate([0, 0, height]) 
             linear_extrude(spacing) 
                 circle(lip_r);

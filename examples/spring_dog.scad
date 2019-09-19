@@ -20,7 +20,7 @@ spring_levels = 20;
 line_thickness = 4;
 line_distance = 1.5;
 
-shaft_r = 2.5;
+peg_radius = 2.5;
 plate_h = 6;
 spacing = 0.4;
 
@@ -50,7 +50,7 @@ module toy_spring(radius, levels, sides, line_thickness, line_distance) {
 }
 
 
-module dog_back(head_r, shaft_r) {
+module dog_back(head_r, peg_radius) {
     $fn = 36;    
 
     module foot() {
@@ -105,10 +105,10 @@ module dog_back(head_r, shaft_r) {
         
     color("Goldenrod")  translate([0, -head_r * 0.2, 0]) 
         rotate([90, 0, 0]) 
-            connector_peg(shaft_r, spacing); 
+            connector_peg(peg_radius, spacing); 
 }
 
-module spring_dog_spring(head_r, spring_levels, line_thickness, line_distance, shaft_r, plate_h, spacing) {
+module spring_dog_spring(head_r, spring_levels, line_thickness, line_distance, peg_radius, plate_h, spacing) {
     spring_sides = 36;
     h = spring_levels * line_thickness;
 
@@ -116,7 +116,7 @@ module spring_dog_spring(head_r, spring_levels, line_thickness, line_distance, s
         difference() {
             linear_extrude(plate_h + spacing) 
                 circle(head_r);  
-            connector_peg(shaft_r, spacing, void = true, $fn = spring_sides);
+            connector_peg(peg_radius, spacing, void = true, $fn = spring_sides);
         }         
     }
 
@@ -125,7 +125,7 @@ module spring_dog_spring(head_r, spring_levels, line_thickness, line_distance, s
             circle(head_r);  
         
         translate([0, 0, plate_h + spacing]) 
-            connector_peg(shaft_r, spacing, $fn = spring_sides);  
+            connector_peg(peg_radius, spacing, $fn = spring_sides);  
     }    
     
     color("yellow") {
@@ -144,7 +144,7 @@ module spring_dog_spring(head_r, spring_levels, line_thickness, line_distance, s
     }
 }
 
-module dog_front(head_r, shaft_r, spacing) {
+module dog_front(head_r, peg_radius, spacing) {
     $fn = 36;
     
     module head() {
@@ -303,24 +303,24 @@ module dog_front(head_r, shaft_r, spacing) {
     difference() {
         front();
         translate([0, head_r * 0.209, 0]) rotate([90, 0, 0])
-            connector_peg(shaft_r, spacing, void = true, $fn = 36); 
+            connector_peg(peg_radius, spacing, void = true, $fn = 36); 
     }
 }
 
 if(part == "FRONT") {
-    dog_front(head_radius, shaft_r, spacing);
+    dog_front(head_radius, peg_radius, spacing);
 } else if(part == "SPRING") {
-    spring_dog_spring(head_radius, spring_levels, line_thickness, line_distance, shaft_r, plate_h, spacing);
+    spring_dog_spring(head_radius, spring_levels, line_thickness, line_distance, peg_radius, plate_h, spacing);
 } else if(part == "BACK") {
-    dog_back(head_radius, shaft_r);
+    dog_back(head_radius, peg_radius);
 }
 else {
-    dog_front(head_radius, shaft_r, spacing);
+    dog_front(head_radius, peg_radius, spacing);
     translate([0, spring_levels * (line_thickness + line_distance) + plate_h + spacing, 0]) {
         rotate([90, 0, 0]) 
-            spring_dog_spring(head_radius, spring_levels, line_thickness, line_distance, shaft_r, plate_h, spacing);
+            spring_dog_spring(head_radius, spring_levels, line_thickness, line_distance, peg_radius, plate_h, spacing);
             
-        translate([0, 3.25, 0]) dog_back(head_radius, shaft_r);
+        translate([0, 3.25, 0]) dog_back(head_radius, peg_radius);
     }
 }
 
