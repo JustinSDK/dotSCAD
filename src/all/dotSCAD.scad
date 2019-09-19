@@ -91,3 +91,4 @@ include <pixel/px_from.scad>;
 include <pixel/px_ascii.scad>;
 include <pixel/px_gray.scad>;
 include <part/connector_peg.scad>;
+include <part/cone.scad>;
