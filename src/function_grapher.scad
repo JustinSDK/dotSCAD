@@ -24,9 +24,9 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
         function xy_to_index(x, y, columns) = y * columns + x; 
 
         top_pts = [
-                for(row_pts = points)
-                    for(pt = row_pts)
-                        pt
+            for(row_pts = points)
+                for(pt = row_pts)
+                    pt
         ];
             
         base_pts = [
@@ -72,14 +72,15 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
                     ]    
         ];        
 
+        offset_v = [leng_pts, leng_pts, leng_pts];
         base_tri_faces1 = [
             for(face = top_tri_faces1)
-                __reverse(face) + [leng_pts, leng_pts, leng_pts]
+                __reverse(face) + offset_v
         ];
 
         base_tri_faces2 = [
             for(face = top_tri_faces2)
-                __reverse(face) + [leng_pts, leng_pts, leng_pts]
+                __reverse(face) + offset_v
         ];
         
         side_faces1 = [
