@@ -1,4 +1,4 @@
-module connector_peg(radius = 2.5, spacing = 0.5, void = false, heads = false) {
+module connector_peg(radius, spacing = 0.5, void = false, heads = false) {
     lip_r = radius * 1.2;
     height = radius * 2.6; 
     r_diff = lip_r - radius;
