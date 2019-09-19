@@ -1,8 +1,9 @@
-module floor_stand(width, height, thickness, joint_spacing) {
+module floor_stand(width, height, thickness, spacing) {
     half_w = width / 2;
     half_h = height / 2;
     half_th = thickness / 2;
-    half_sc = joint_spacing / 2;
+
+    double_spacing = spacing * 2;
 
     $fn = 24;
 
@@ -21,23 +22,8 @@ module floor_stand(width, height, thickness, joint_spacing) {
             }
     }
 
-    module joint_tops(dist) {
-        module joint_top() {
-            linear_extrude(thickness / 4 + half_sc, scale = 0.1) 
-                circle(thickness / 4 + half_sc);
-        }
-
-        half_d = dist / 2;
-        translate([-half_d, 0, 0]) 
-            rotate([0, -90, 0]) 
-                joint_top();     
-
-        translate([half_d, 0, 0]) 
-            rotate([0, 90, 0]) 
-                joint_top();
-    } 
-
     module board_U() {
+        angles = [0, 90, 0];
         difference() {
             union() {
                 linear_extrude(thickness, center = true) 
@@ -45,38 +31,39 @@ module floor_stand(width, height, thickness, joint_spacing) {
                         board_base();
                         square([width / 1.5, height / 3], center = true);
                     } 
-                rotate([0, 90, 0]) 
+                rotate(angles) 
                     linear_extrude(width / 2.25 * 2, center = true) 
-                        circle(thickness / 2);
+                        circle(half_th);
             }
 
-            rotate([0, 90, 0]) 
+            rotate(angles) {
                 linear_extrude(width / 1.5, center = true) 
                     circle(thickness, $fn = 24);
-                   
-            joint_tops(half_w / 1.5 * 2);          
+
+                cone(half_th - spacing, length = half_w / 1.5 - spacing, spacing = spacing, heads = true, void = true);
+            }      
         }
     }
 
     module board_T() {
         linear_extrude(thickness, center = true) 
-            union() {
+            union() { 
                 difference() {
                     board_base();
                     square([width, height / 3], center = true);
                 }
-                translate([0, -height / 12 - joint_spacing / 4, 0]) 
+                translate([0, -height / 12 - spacing / 2, 0]) 
                     difference() {
-                        square([width / 1.5 - joint_spacing, height / 6 + joint_spacing / 2], center = true);
+                        square([width / 1.5 - double_spacing, height / 6 + spacing], center = true);
                         square([width / 1.5 - thickness * 2, height / 6], center = true);
                     }
             }
 
-        rotate([0, 90, 0]) 
-            linear_extrude(width / 1.5 - joint_spacing, center = true) 
+        rotate([0, 90, 0]) {
+            linear_extrude(width / 1.5 - double_spacing, center = true) 
                 circle(half_th, $fn = 24);
-
-        joint_tops(half_w / 1.5 * 2 - joint_spacing);              
+            cone(half_th - spacing, length = half_w / 1.5 - spacing, spacing = spacing, heads = true);           
+        }
     }
 
     module border() {

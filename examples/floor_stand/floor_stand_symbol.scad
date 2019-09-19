@@ -4,6 +4,7 @@ include <multi_line_text.scad>;
 include <shape_taiwan.scad>;
 include <hollow_out.scad>;
 include <floor_stand.scad>;
+include <part/cone.scad>;
 
 text = " Taiwan";
 font = "Arial Black";
@@ -13,7 +14,7 @@ line_spacing = 7;
 stand_width = 40;
 stand_height = 80;
 stand_thickness = 4;
-joint_spacing = 1;
+stand_spacing = 0.5;
 
 symbol_source = "DEFAULT"; // [DEFAULT, PNG, UNICODE]
 
@@ -71,5 +72,5 @@ module content(text, font, font_size, symbol_png, symbol_unicode, symbol_font, s
     }
 }
         
-floor_stand(stand_width, stand_height, stand_thickness, joint_spacing) 
+floor_stand(stand_width, stand_height, stand_thickness, stand_spacing) 
     content(text, font, font_size, symbol_png, symbol_unicode, symbol_font, symbol_font_size, stand_height, stand_thickness, line_spacing);

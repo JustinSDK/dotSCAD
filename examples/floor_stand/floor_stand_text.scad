@@ -3,6 +3,7 @@ include <util/split_str.scad>;
 include <hollow_out.scad>;
 include <floor_stand.scad>;
 include <multi_line_text.scad>;
+include <part/cone.scad>;
 
 text = "Coder at Work";
 font = "Arial Black";
@@ -12,7 +13,7 @@ line_spacing = 10;
 stand_width = 40;
 stand_height = 80;
 stand_thickness = 4;
-joint_spacing = 1;
+stand_spacing = 0.5;
 
 module words(text, font, font_size, height, thickness, line_spacing) {
     half_th = thickness / 2;
@@ -31,5 +32,5 @@ module words(text, font, font_size, height, thickness, line_spacing) {
         }
 }
 
-floor_stand(stand_width, stand_height, stand_thickness, joint_spacing) 
+floor_stand(stand_width, stand_height, stand_thickness, stand_spacing) 
     words(text, font, font_size, stand_height, stand_thickness, line_spacing);
