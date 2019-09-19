@@ -26,11 +26,8 @@ module ring_extrude(shape_pts, radius, angle = 360, twist = 0, scale = 1.0, tria
 
         leng = radius * cos(a_step / 2);
 
-        begin_r =
-            leng / cos((m - 0.5) * a_step - angles[0]);
-
-        end_r =      
-            leng / cos((n + 0.5) * a_step - angles[1]);
+        begin_r = leng / cos((m - 0.5) * a_step - angles[0]);
+        end_r =  leng / cos((n + 0.5) * a_step - angles[1]);
 
         angs = concat(
             [[90, 0, angles[0]]], 
