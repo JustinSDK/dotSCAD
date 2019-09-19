@@ -30,11 +30,12 @@ module rounded_cube(size, corner_r, center = false) {
     
     half_cube_leng = size / 2;
     half_leng = half_cube_leng - edge_d;
-    
+        
+    pair = [1, -1];
     corners = [
-        for(z = [1, -1]) 
-            for(y = [1, -1]) 
-                for(x = [1, -1]) 
+        for(z = pair) 
+            for(y = pair) 
+                for(x = pair) 
                     [half_l * x, half_w * y, half_h * z]
     ];
 
@@ -47,14 +48,14 @@ module rounded_cube(size, corner_r, center = false) {
     
     // Don't use `hull() for(...) {...}` because it's slow.
     translate(center_pts) hull() {
-            corner(0);
-            corner(1);
-            corner(2);
-            corner(3);
-            corner(4);
-            corner(5);
-            corner(6);
-            corner(7);      
+        corner(0);
+        corner(1);
+        corner(2);
+        corner(3);
+        corner(4);
+        corner(5);
+        corner(6);
+        corner(7);      
     }
 
     // hook for testing
