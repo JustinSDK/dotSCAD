@@ -11,7 +11,6 @@
 include <__comm__/__frags.scad>;
 
 module rounded_extrude(size, round_r, angle = 90, twist = 0, convexity = 10) {
-
     is_flt = is_num(size);
     x = is_flt ? size : size[0];
     y = is_flt ? size : size[1];
@@ -28,8 +27,7 @@ module rounded_extrude(size, round_r, angle = 90, twist = 0, convexity = 10) {
             
             h = (round_r - pre_h) - round_r * cos(current_a);
             
-            d_leng = 
-                round_r * (sin(current_a) - sin(step_a * (i - 1)));
+            d_leng = round_r * (sin(current_a) - sin(step_a * (i - 1)));
             
             sx = (d_leng * 2 + wx) / wx;
             sy = (d_leng * 2 + wy) / wy;
