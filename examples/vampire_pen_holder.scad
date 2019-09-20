@@ -11,7 +11,7 @@ holder_height = 80;
 holder_round_r = 5;
 feet_height = 15;
 
-module vampire_holder() {
+module vampire_pen_holder() {
     $fn = 48;
         
     module feet() {
@@ -83,4 +83,4 @@ module vampire_holder() {
             cloak();
 }
 
-vampire_holder();
+vampire_pen_holder();
