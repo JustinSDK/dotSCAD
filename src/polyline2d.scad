@@ -11,12 +11,14 @@
 module polyline2d(points, width, startingStyle = "CAP_SQUARE", endingStyle = "CAP_SQUARE") {
     leng_pts = len(points);
 
+    s_styles = [startingStyle, "CAP_ROUND"];
+    e_styles = ["CAP_BUTT", endingStyle];
+    default_styles = ["CAP_BUTT", "CAP_ROUND"];
+
     module line_segment(index) {
-        styles = index == 1 ? [startingStyle, "CAP_ROUND"] : (
-            index == leng_pts - 1 ? ["CAP_BUTT", endingStyle] : [
-                "CAP_BUTT", "CAP_ROUND"
-            ]
-        );
+        styles = index == 1 ? s_styles : 
+                 index == leng_pts - 1 ? e_styles : 
+                 default_styles;
 
         p1 = points[index - 1];
         p2 = points[index];
