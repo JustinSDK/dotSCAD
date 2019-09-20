@@ -7,7 +7,7 @@ An OpenSCAD implementation of Turtle Graphics. It moves on the xy plane. You can
 ## Parameters
 
 - `cmd` : A string command. Different commands use different numbers of arguments. 
-    - `"create"` : Creates a turtle data. The command needs three arguments `x`, `y` and `angle`. For example, use `turtle2d("create", 5, 10, 30)` to create a turtle located at `[0, 0]` with an angle `30` degrees.
+    - `"create"` : Creates a turtle data. The command needs three arguments `x`, `y` and `angle`. For example, use `turtle2d("create", 5, 10, 30)` to create a turtle located at `[5, 10]` with an angle `30` degrees.
     - `"x"` : Sets or gets the `x` coordinate of a turtle. If you provide a turtle data and the `x` coordinate, such as `turtle2d("x", turtle, 20)`, it will sets the `x` coordinate. Giving a turtle data only will return the `x` coordinate.
     - `"y"` : Sets or gets the `y` coordinate of a turtle. If you provide a turtle data and   the `y` coordinate, such as `turtle2d("y", turtle, 20)`, it will sets the `y` coordinate. Giving a turtle data only will return the `y` coordinate.
     - `"angle"` : Sets or gets the angle of a turtle. If you provide a turtle data and the angle, such as `turtle2d("angle", turtle, 45)`, it will sets the angle. Giving a turtle data only will return the angle.
