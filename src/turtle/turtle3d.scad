@@ -122,28 +122,22 @@ function _turtle3d_zu_turn(turtle, a) =
     );
 
 function _turtle3d_create_cmd(arg1, arg2) = 
-    (is_undef(arg1) && is_undef(arg2)) ? _turtle3d_create_default() : (
-        (!is_undef(arg1) && !is_undef(arg2)) ? _turtle3d_create(arg1, arg2) : undef
-    );
+    is_undef(arg1) && is_undef(arg2) ? _turtle3d_create_default() : 
+    !is_undef(arg1) && !is_undef(arg2) ? _turtle3d_create(arg1, arg2) : undef;
     
 function _turtle3d_chain_move(cmd, arg1, arg2) =
-    cmd == "xu_move" ? _turtle3d_xu_move(arg1, arg2) : (
-        cmd == "yu_move" ? _turtle3d_yu_move(arg1, arg2) : (
-            cmd == "zu_move" ? _turtle3d_zu_move(arg1, arg2) : _turtle3d_chain_turn(cmd, arg1, arg2)
-        )
-    );
+    cmd == "xu_move" ? _turtle3d_xu_move(arg1, arg2) : 
+    cmd == "yu_move" ? _turtle3d_yu_move(arg1, arg2) : 
+    cmd == "zu_move" ? _turtle3d_zu_move(arg1, arg2) : _turtle3d_chain_turn(cmd, arg1, arg2);
     
 function _turtle3d_chain_turn(cmd, arg1, arg2) = 
-    cmd == "xu_turn" ? _turtle3d_xu_turn(arg1, arg2) : (
-        cmd == "yu_turn" ? _turtle3d_yu_turn(arg1, arg2) : (
-            cmd == "zu_turn" ? _turtle3d_zu_turn(arg1, arg2) : _turtle3d_chain_one_arg(cmd, arg1)
-        )
-    );    
+    cmd == "xu_turn" ? _turtle3d_xu_turn(arg1, arg2) : 
+    cmd == "yu_turn" ? _turtle3d_yu_turn(arg1, arg2) : 
+    cmd == "zu_turn" ? _turtle3d_zu_turn(arg1, arg2) : _turtle3d_chain_one_arg(cmd, arg1);    
 
 function _turtle3d_chain_one_arg(cmd, arg) = 
-    cmd == "pt" ? _turtle3d_pt(arg) : (
-        cmd == "unit_vts" ? _turtle3d_unit_vts(arg) : undef
-    );
+    cmd == "pt" ? _turtle3d_pt(arg) : 
+    cmd == "unit_vts" ? _turtle3d_unit_vts(arg) : undef;
     
 function turtle3d(cmd, arg1, arg2) =
     cmd == "create" ? 
