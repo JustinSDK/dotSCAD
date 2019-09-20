@@ -3,21 +3,21 @@
 // RIGHT_WALL = 2;    
 // UPPER_RIGHT_WALL = 3; 
 
-function no_wall(block_data) = get_wall_type(block_data) == 0;
-function upper_wall(block_data) = get_wall_type(block_data) == 1;
-function right_wall(block_data) = get_wall_type(block_data) == 2;
-function upper_right_wall(block_data) = get_wall_type(block_data) == 3;
+function no_wall(block) = get_wall_type(block) == 0;
+function upper_wall(block) = get_wall_type(block) == 1;
+function right_wall(block) = get_wall_type(block) == 2;
+function upper_right_wall(block) = get_wall_type(block) == 3;
 
-function block_data(x, y, wall_type, visited) = [x, y, wall_type, visited];
-function get_x(block_data) = block_data[0];
-function get_y(block_data) = block_data[1];
-function get_wall_type(block_data) = block_data[2];
+function block(x, y, wall_type, visited) = [x, y, wall_type, visited];
+function get_x(block) = block[0];
+function get_y(block) = block[1];
+function get_wall_type(block) = block[2];
 
 // create a starting maze for being visited later.
 function starting_maze(rows, columns) =  [
     for(y = [1:rows]) 
         for(x = [1:columns]) 
-            block_data(
+            block(
                 x, y, 
                 // all blocks have upper and right walls
                 3, 
