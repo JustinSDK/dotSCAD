@@ -147,13 +147,10 @@ function go_down_from(x, y, maze, rows) = [
 
 // 0(right)、1(upper)、2(left)、3(down)
 function try_block(dir, x, y, maze, rows, columns) =
-    dir == 0 ? go_right_from(x, y, maze) : (
-        dir == 1 ? go_up_from(x, y, maze) : (
-            dir == 2 ? go_left_from(x, y, maze, columns) : 
-                 go_down_from(x, y, maze, rows)   // dir is 3
-            
-        ) 
-    );
+    dir == 0 ? go_right_from(x, y, maze) : 
+    dir == 1 ? go_up_from(x, y, maze) : 
+    dir == 2 ? go_left_from(x, y, maze, columns) : 
+    /*dir 3*/  go_down_from(x, y, maze, rows);
 
 
 // find out visitable dirs from (x, y)
