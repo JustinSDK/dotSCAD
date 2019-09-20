@@ -34,28 +34,19 @@ function _turtle2d_three_args_command(cmd, arg1, arg2, arg3) =
     cmd == "create" ? _turtle2d_turtle(arg1, arg2, arg3) : _turtle2d_two_args_command(cmd, arg1, arg2);
 
 function _turtle2d_two_args_command(cmd, arg1, arg2) =
-    is_undef(arg2) ? _turtle2d_one_arg_command(cmd, arg1) : (
-        cmd == "pt" ? _turtle2d_set_point(arg1, arg2) : (
-            cmd == "x" ? _turtle2d_set_x(arg1, arg2) : (
-                cmd == "y" ? _turtle2d_set_y(arg1, arg2) : (
-                    cmd == "angle" ? _turtle2d_set_angle(arg1, arg2) : (
-                        cmd == "forward" ? _turtle2d_forward(arg1, arg2) : (
-                            cmd == "turn" ? _turtle2d_turn(arg1, arg2) : undef
-                        )
-                    )
-                )
-            )
-        )
-    );
+    is_undef(arg2) ? _turtle2d_one_arg_command(cmd, arg1) : 
+    cmd == "pt" ? _turtle2d_set_point(arg1, arg2) : 
+    cmd == "x" ? _turtle2d_set_x(arg1, arg2) : 
+    cmd == "y" ? _turtle2d_set_y(arg1, arg2) : 
+    cmd == "angle" ? _turtle2d_set_angle(arg1, arg2) : 
+    cmd == "forward" ? _turtle2d_forward(arg1, arg2) : 
+    cmd == "turn" ? _turtle2d_turn(arg1, arg2) : undef;
     
 function _turtle2d_one_arg_command(cmd, arg) =
-    cmd == "x" ? _turtle2d_get_x(arg) : (
-        cmd == "y" ? _turtle2d_get_y(arg) : (
-            cmd == "angle" ? _turtle2d_get_angle(arg) : (
-                cmd == "pt" ? _turtle2d_get_pt(arg) : undef
-            )
-        )
-    );
+    cmd == "x" ? _turtle2d_get_x(arg) : 
+    cmd == "y" ? _turtle2d_get_y(arg) : 
+    cmd == "angle" ? _turtle2d_get_angle(arg) : 
+    cmd == "pt" ? _turtle2d_get_pt(arg) : undef;
 
 function turtle2d(cmd, arg1, arg2, arg3) = 
     _turtle2d_three_args_command(cmd, arg1, arg2, arg3);
