@@ -10,6 +10,7 @@ Create a connector peg.
 ## Parameters
 
 - `radius` : The shaft radius of the peg.
+- `height` : The height of the pag. Default to `2.5 * radius`.
 - `spacing` : The spacing between the peg and void component. Default to `0.5`.
 - `void` : The void component for differencing. It's used to create a cavity for a peg. Default to `false`.
 - `ends` : Default to `false`. To create a double-ended peg, set it to `true`.
