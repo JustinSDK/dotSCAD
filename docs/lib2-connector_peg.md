@@ -2,6 +2,8 @@
 
 Create a connector peg.
 
+![connector_peg](images/lib2-connector_peg-3.JPG)
+
 **Since:** 2.1
 
 
