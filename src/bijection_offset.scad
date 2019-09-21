@@ -47,11 +47,12 @@ function bijection_offset(pts, d, epsilon = 0.0001) =
         es = __lines_from(pts, true), 
         offset_es = _bijection__bijection_offset_edges(es, d),
         leng = len(offset_es),
-        last_p = __line_intersection(offset_es[leng - 1], offset_es[0], epsilon)
+        leng_minus_one = leng - 1,
+        last_p = __line_intersection(offset_es[leng_minus_one], offset_es[0], epsilon)
     )
     concat(
         [
-            for(i = 0; i < leng - 1; i = i + 1)
+            for(i = 0; i < leng_minus_one; i = i + 1)
             let(
                 this_edge = offset_es[i],
                 next_edge = offset_es[i + 1],
