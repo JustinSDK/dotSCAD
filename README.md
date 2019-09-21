@@ -2,7 +2,7 @@
 
 > **Reduce the burden of 3D modeling in mathematics.**
 
-![dotSCAD](featured_img/TaiwaneseBlackBear.JPG)
+![dotSCAD](featured_img/LeopardCatTaiwan.JPG)
 
 [![license/LGPL](LICENSE.svg)](https://github.com/JustinSDK/lib-openscad/blob/master/LICENSE)
 
@@ -88,7 +88,8 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 - Path
     - [arc_path](https://openhome.cc/eGossip/OpenSCAD/lib-arc_path.html)
 	- [circle_path](https://openhome.cc/eGossip/OpenSCAD/lib-circle_path.html)
-    - [bezier_curve](https://openhome.cc/eGossip/OpenSCAD/lib-bezier_curve.html)
+    - [bspline_curve](https://openhome.cc/eGossip/OpenSCAD/lib2-bspline_curve.html) (2.1 preview)
+	- [bezier_curve](https://openhome.cc/eGossip/OpenSCAD/lib-bezier_curve.html)
 	- [bezier_surface](https://openhome.cc/eGossip/OpenSCAD/lib-bezier_surface.html)
 	- [bezier_smooth](https://openhome.cc/eGossip/OpenSCAD/lib-bezier_smooth.html)
     - [helix](https://openhome.cc/eGossip/OpenSCAD/lib-helix.html)
@@ -133,6 +134,7 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
     - [util/reverse](https://openhome.cc/eGossip/OpenSCAD/lib2-reverse.html)
 	- [util/slice](https://openhome.cc/eGossip/OpenSCAD/lib2-slice.html)
 	- [util/sort](https://openhome.cc/eGossip/OpenSCAD/lib2-sort.html)
+	- [util/rand](https://openhome.cc/eGossip/OpenSCAD/lib2-rand.html) (2.1 preview)
 
 - Matrix
 	- [matrix/m_cumulate](https://openhome.cc/eGossip/OpenSCAD/lib2-m_cumulate.html)	
@@ -153,7 +155,14 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 	- [pixel/px_cylinder](https://openhome.cc/eGossip/OpenSCAD/lib2-px_cylinder.html)
 	- [pixel/px_sphere](https://openhome.cc/eGossip/OpenSCAD/lib2-px_sphere.html)
 	- [pixel/px_polygon](https://openhome.cc/eGossip/OpenSCAD/lib2-px_polygon.html)
-	
+	- [pixel/px_from](https://openhome.cc/eGossip/OpenSCAD/lib2-px_from.html) (2.1 preview)
+    - [pixel/px_ascii](https://openhome.cc/eGossip/OpenSCAD/lib2-px_ascii.html) (2.1 preview)
+	- [pixel/px_gray](https://openhome.cc/eGossip/OpenSCAD/lib2-px_gray.html) (2.1 preview)
+
+- Part
+    - [part/connector_peg](https://openhome.cc/eGossip/OpenSCAD/lib2-connector_peg.html) (2.1 preview)
+	- [part/corn](https://openhome.cc/eGossip/OpenSCAD/lib2-corn.html) (2.1 preview)
+
 ## Bugs and Feedback
 
 For bugs, questions and discussions please use the [Github Issues](https://github.com/JustinSDK/dotSCAD/issues).
