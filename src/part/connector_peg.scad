@@ -1,4 +1,4 @@
-module connector_peg(radius, height, spacing = 0.5, void = false, heads = false) {
+module connector_peg(radius, height, spacing = 0.5, void = false, ends = false) {
     lip_r = radius * 1.2;
     r_diff = lip_r - radius;
 
@@ -46,7 +46,7 @@ module connector_peg(radius, height, spacing = 0.5, void = false, heads = false)
         }
     } 
 
-    if(heads) {
+    if(ends) {
         translate([0, 0, h]) {
             head();
             mirror([0, 0, 1]) head();

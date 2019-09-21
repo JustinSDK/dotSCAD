@@ -95,7 +95,7 @@ module cube_character(head_size) {
         body();
         
     translate([0, head_size * 0.75]) 
-        connector_peg(peg_radius, spacing = spacing, heads = true);   
+        connector_peg(peg_radius, spacing = spacing, ends = true);   
 }
 
 // refactored from https://www.thingiverse.com/thing:258542
