@@ -161,7 +161,7 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 
 - Part
     - [part/connector_peg](https://openhome.cc/eGossip/OpenSCAD/lib2-connector_peg.html) (2.1 preview)
-	- [part/corn](https://openhome.cc/eGossip/OpenSCAD/lib2-corn.html) (2.1 preview)
+	- [part/cone](https://openhome.cc/eGossip/OpenSCAD/lib2-cone.html) (2.1 preview)
 
 ## Bugs and Feedback
 
