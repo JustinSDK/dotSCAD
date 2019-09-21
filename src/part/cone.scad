@@ -1,3 +1,13 @@
+/**
+* cone.scad
+*
+* @copyright Justin Lin, 2019
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2-cone.html
+*
+**/ 
+
 module cone(radius, length = 0, spacing = 0.5, angle = 50, void = false, ends = false) {
     module base(r) {
         rotate_extrude() {

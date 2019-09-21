@@ -1,3 +1,13 @@
+/**
+* connector_peg.scad
+*
+* @copyright Justin Lin, 2019
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2-connector_peg.html
+*
+**/ 
+
 module connector_peg(radius, height, spacing = 0.5, void = false, ends = false) {
     lip_r = radius * 1.2;
     r_diff = lip_r - radius;
