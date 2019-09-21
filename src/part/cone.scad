@@ -1,4 +1,4 @@
-module cone(radius, length = 0, spacing = 0.5, angle = 50, void = false, heads = false) {
+module cone(radius, length = 0, spacing = 0.5, angle = 50, void = false, ends = false) {
     module base(r) {
         rotate_extrude() {
             if(length != 0) {
@@ -20,7 +20,7 @@ module cone(radius, length = 0, spacing = 0.5, angle = 50, void = false, heads =
         }
     }
     
-    if(heads) {
+    if(ends) {
         head();
         mirror([0, 0, 1]) head();
     }
