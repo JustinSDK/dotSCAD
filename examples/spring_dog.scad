@@ -105,7 +105,7 @@ module dog_back(head_r, peg_radius) {
         
     color("Goldenrod")  translate([0, -head_r * 0.2, 0]) 
         rotate([90, 0, 0]) 
-            connector_peg(peg_radius, spacing); 
+            connector_peg(peg_radius, spacing = spacing); 
 }
 
 module spring_dog_spring(head_r, spring_levels, line_thickness, line_distance, peg_radius, plate_h, spacing) {
@@ -116,7 +116,7 @@ module spring_dog_spring(head_r, spring_levels, line_thickness, line_distance, p
         difference() {
             linear_extrude(plate_h + spacing) 
                 circle(head_r);  
-            connector_peg(peg_radius, spacing, void = true, $fn = spring_sides);
+            connector_peg(peg_radius, spacing = spacing, void = true, $fn = spring_sides);
         }         
     }
 
@@ -125,7 +125,7 @@ module spring_dog_spring(head_r, spring_levels, line_thickness, line_distance, p
             circle(head_r);  
         
         translate([0, 0, plate_h + spacing]) 
-            connector_peg(peg_radius, spacing, $fn = spring_sides);  
+            connector_peg(peg_radius, spacing = spacing, $fn = spring_sides);  
     }    
     
     color("yellow") {
@@ -303,7 +303,7 @@ module dog_front(head_r, peg_radius, spacing) {
     difference() {
         front();
         translate([0, head_r * 0.209, 0]) rotate([90, 0, 0])
-            connector_peg(peg_radius, spacing, void = true, $fn = 36); 
+            connector_peg(peg_radius, spacing = spacing, void = true, $fn = 36); 
     }
 }
 
