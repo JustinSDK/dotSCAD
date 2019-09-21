@@ -40,11 +40,12 @@ function _bspline_curve_nvi(v, i, l, t, degree, knots) =
 function _bspline_curve_nvl(v, l, s, t, degree, knots, i) = 
     i == (s - degree - 1 + l) ? v :
     let(
+        leng_v = len(v),
         nvi = _bspline_curve_nvi(v, i, l, t, degree, knots),
         nv = concat(
             [for(j = 0; j < i; j = j + 1) v[j]],
             nvi,
-            [for(j = i + 1; j < len(v); j = j + 1) v[j]]
+            [for(j = i + 1; j < leng_v; j = j + 1) v[j]]
         )
     )
     _bspline_curve_nvl(nv, l, s, t, degree, knots, i - 1);
