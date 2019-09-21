@@ -9,13 +9,18 @@
 **/ 
 
 function bezier_surface(t_step, ctrl_pts) =
-    let(pts =  [
-        for(i = 0; i < len(ctrl_pts); i = i + 1)
+    let(
+        leng_ctrl_pts = len(ctrl_pts),
+        pts =  [
+        for(i = 0; i < leng_ctrl_pts; i = i + 1)
             bezier_curve(t_step, ctrl_pts[i])
-    ]) 
-    [for(x = 0; x < len(pts[0]); x = x + 1)
+        ],
+        leng_pts0 = len(pts[0]),
+        leng_pts = len(pts)
+    ) 
+    [for(x = 0; x < leng_pts0; x = x + 1)
         bezier_curve(
             t_step,  
-            [for(y = [0:len(pts) - 1]) pts[y][x]]
+            [for(y = 0; y < leng_pts; y = y + 1) pts[y][x]]
         ) 
     ];
