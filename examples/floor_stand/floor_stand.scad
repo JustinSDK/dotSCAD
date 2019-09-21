@@ -40,7 +40,7 @@ module floor_stand(width, height, thickness, spacing) {
                 linear_extrude(width / 1.5, center = true) 
                     circle(thickness, $fn = 24);
 
-                cone(half_th - spacing, length = half_w / 1.5 - spacing, spacing = spacing, heads = true, void = true);
+                cone(half_th - spacing, length = half_w / 1.5 - spacing, spacing = spacing, ends = true, void = true);
             }      
         }
     }
@@ -62,7 +62,7 @@ module floor_stand(width, height, thickness, spacing) {
         rotate([0, 90, 0]) {
             linear_extrude(width / 1.5 - double_spacing, center = true) 
                 circle(half_th, $fn = 24);
-            cone(half_th - spacing, length = half_w / 1.5 - spacing, spacing = spacing, heads = true);           
+            cone(half_th - spacing, length = half_w / 1.5 - spacing, spacing = spacing, ends = true);           
         }
     }
 
