@@ -43,6 +43,7 @@ function _q_rotate_p_3d(p, a, v) =
     ];
 
 function _rotx(pt, a) = 
+    a == 0 ? pt :
     let(cosa = cos(a), sina = sin(a))
     [
         pt[0], 
@@ -51,6 +52,7 @@ function _rotx(pt, a) =
     ];
 
 function _roty(pt, a) = 
+    a == 0 ? pt :
     let(cosa = cos(a), sina = sin(a))
     [
         pt[0] * cosa + pt[2] * sina, 
@@ -59,6 +61,7 @@ function _roty(pt, a) =
     ];
 
 function _rotz(pt, a) = 
+    a == 0 ? pt :
     let(cosa = cos(a), sina = sin(a))
     [
         pt[0] * cosa - pt[1] * sina,
