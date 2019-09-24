@@ -62,31 +62,29 @@ module triangle2square(tri_side_leng, height, spacing, ring_width, shaft_r) {
 
     offsetd = -spacing / 2;
     tri_sq = triangle_square(tri_side_leng);
-    linear_extrude(height) difference() {
-        union() {
-            difference() {
-                offset(offsetd) polygon(tri_sq[0][0]);
-                translate(tri_sq[1][2]) circle(joint_r_outermost);
-            }
-            difference() {
-                offset(offsetd) polygon(tri_sq[0][1]);
-                translate(tri_sq[1][0]) circle(joint_ring_inner);
-            }
-            
-            difference() {
-                offset(offsetd) polygon(tri_sq[0][2]);
-                translate(tri_sq[1][0]) circle(joint_r_outermost);
-                translate(tri_sq[1][1]) circle(joint_ring_inner);
-            }
-            
-            difference() {
-                offset(offsetd) polygon(tri_sq[0][3]);
-                translate(tri_sq[1][2]) circle(joint_ring_inner);
-                translate(tri_sq[1][1]) circle(joint_r_outermost);
-            }
-            
+    linear_extrude(height) {
+        difference() {
+            offset(offsetd) polygon(tri_sq[0][0]);
+            translate(tri_sq[1][2]) circle(joint_r_outermost);
         }
-    } 
+        difference() {
+            offset(offsetd) polygon(tri_sq[0][1]);
+            translate(tri_sq[1][0]) circle(joint_ring_inner);
+        }
+        
+        difference() {
+            offset(offsetd) polygon(tri_sq[0][2]);
+            translate(tri_sq[1][0]) circle(joint_r_outermost);
+            translate(tri_sq[1][1]) circle(joint_ring_inner);
+        }
+        
+        difference() {
+            offset(offsetd) polygon(tri_sq[0][3]);
+            translate(tri_sq[1][2]) circle(joint_ring_inner);
+            translate(tri_sq[1][1]) circle(joint_r_outermost);
+        }
+    }
+    
     
 	translate(tri_sq[1][0]) rotate(65) joint();
 	translate(tri_sq[1][1]) rotate(170) joint();
