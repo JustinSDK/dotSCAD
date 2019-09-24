@@ -10,7 +10,7 @@ chain_hole = "YES";  // [YES, NO]
 chain_hole_width = 2.5;
 
 // https://www.cs.purdue.edu/homes/gnf/book2/trisqu.html
-function triangle_square(tri_side_leng) = 
+function triangle2square(tri_side_leng) = 
     let(
         p0 = [0, 0],
         p1 = tri_side_leng * [0.25, 0.4330125],
@@ -31,7 +31,7 @@ function triangle_square(tri_side_leng) =
     )
     [pieces, hinged_pts];
     
-module triangle2square(tri_side_leng, height, spacing, ring_width, shaft_r) {
+module triangle2square_pendant(tri_side_leng, height, spacing, ring_width, shaft_r) {
 	
 	half_tri_side_leng = tri_side_leng / 2;
     half_h = height / 2;
@@ -61,7 +61,7 @@ module triangle2square(tri_side_leng, height, spacing, ring_width, shaft_r) {
 
 
     offsetd = -spacing / 2;
-    tri_sq = triangle_square(tri_side_leng);
+    tri_sq = triangle2square(tri_side_leng);
     linear_extrude(height) {
         difference() {
             offset(offsetd) polygon(tri_sq[0][0]);
@@ -94,7 +94,7 @@ module triangle2square(tri_side_leng, height, spacing, ring_width, shaft_r) {
 
 $fn = 36;
 difference() {
-	triangle2square(tri_side_leng, height, spacing, ring_width, shaft_r);
+	triangle2square_pendant(tri_side_leng, height, spacing, ring_width, shaft_r);
 	if(chain_hole == "YES") {
 		translate([spacing * 1.5, spacing, height / 2]) 
         linear_extrude(chain_hole_width, center = true)
