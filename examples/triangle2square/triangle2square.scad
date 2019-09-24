@@ -1,7 +1,7 @@
 include <line2d.scad>;
 include <hollow_out.scad>;
 
-side = 45;
+tri_side_leng = 45;
 height = 6;
 spacing = 0.4;
 ring_width = 1.5;  
@@ -9,18 +9,18 @@ shaft_r = 1;
 chain_hole = "YES";  // [YES, NO]
 chain_hole_width = 2.5;
 
-function triangle_square(side) = 
+// https://www.cs.purdue.edu/homes/gnf/book2/trisqu.html
+function triangle_square(tri_side_leng) = 
     let(
-        half_side = side / 2,
         p0 = [0, 0],
-        p1 = half_side * [0.5, 0.866025],
-        p2 = half_side * [1, 1.732051],
-        p4 = half_side * [2, 0],
-        p3 = half_side * [1.5, 0.866025],
-        p6 = half_side * [0.509016, 0],
-        p5 = half_side * [1.509016, 0],
-        p8 = half_side * [1.076003, 0.49549],
-        p7 = half_side * [0.933013, 0.370533],
+        p1 = tri_side_leng * [0.25, 0.4330125],
+        p2 = tri_side_leng * [0.5, 0.8660255],
+        p4 = tri_side_leng * [1, 0],
+        p3 = tri_side_leng * [0.75, 0.4330125],
+        p6 = tri_side_leng * [0.254508, 0],
+        p5 = tri_side_leng * [0.754508, 0],
+        p8 = tri_side_leng * [0.5380015, 0.247745],
+        p7 = tri_side_leng * [0.4665065, 0.1852665],
         pieces = [
             [p0, p6, p7, p1],
             [p6, p5, p8],
@@ -31,9 +31,9 @@ function triangle_square(side) =
     )
     [pieces, hinged_pts];
     
-module triangle2square(side, height, spacing, ring_width, shaft_r) {
+module triangle2square(tri_side_leng, height, spacing, ring_width, shaft_r) {
 	
-	half_side = side / 2;
+	half_tri_side_leng = tri_side_leng / 2;
     half_h = height / 2;
 
     joint_ring_inner = shaft_r + spacing;
@@ -61,7 +61,7 @@ module triangle2square(side, height, spacing, ring_width, shaft_r) {
 
 
     offsetd = -spacing / 2;
-    tri_sq = triangle_square(side);
+    tri_sq = triangle_square(tri_side_leng);
     linear_extrude(height) difference() {
         union() {
             difference() {
@@ -96,7 +96,7 @@ module triangle2square(side, height, spacing, ring_width, shaft_r) {
 
 $fn = 36;
 difference() {
-	triangle2square(side, height, spacing, ring_width, shaft_r);
+	triangle2square(tri_side_leng, height, spacing, ring_width, shaft_r);
 	if(chain_hole == "YES") {
 		translate([spacing * 1.5, spacing, height / 2]) 
         linear_extrude(chain_hole_width, center = true)
