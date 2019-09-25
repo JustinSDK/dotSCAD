@@ -7,7 +7,7 @@ include <hollow_out.scad>;
 thickness = 4;
 height = 15;
 torus_radius = 60;
-wall_radius = 71.49125;
+wall_radius = 71.49;
 
 walk_torus83_fort(torus_radius, thickness, height, $fn = 36);
 wall(wall_radius, height, thickness, $fn = 36);
