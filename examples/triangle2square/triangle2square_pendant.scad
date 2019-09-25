@@ -1,5 +1,6 @@
 include <line2d.scad>;
 include <hollow_out.scad>;
+include <part/joint_T.scad>;
 include <triangle2square.scad>;
 
 tri_side_leng = 45;
@@ -16,28 +17,7 @@ module triangle2square_pendant(tri_side_leng, height, spacing, ring_width, shaft
     half_h = height / 2;
 
     joint_ring_inner = shaft_r + spacing;
-    joint_ring_outer = joint_ring_inner + ring_width;
-	joint_r_outermost = joint_ring_outer + spacing;
-
-	module joint() {
-		module joint_ring() {
-            hollow_out(ring_width)
-                circle(joint_ring_outer);
-		}
-
-		ring_height = height / 3 - spacing;
-        linear_extrude(ring_height) joint_ring();
-        translate([0, 0, height - ring_height]) 
-            linear_extrude(ring_height) joint_ring();
-			
-		translate([0, 0, half_h]) 
-			linear_extrude(height / 3, center = true) 
-				line2d([0, 0], [joint_r_outermost, 0], shaft_r * 2, p1Style = "CAP_BUTT", p2Style = "CAP_BUTT");
-		
-		// pillar
-		linear_extrude(height) circle(shaft_r);
-	}
-
+	joint_r_outermost = joint_ring_inner + ring_width + spacing;
 
     offsetd = -spacing / 2;
     tri_sq = triangle2square(tri_side_leng);
@@ -65,9 +45,9 @@ module triangle2square_pendant(tri_side_leng, height, spacing, ring_width, shaft
     }
     
     
-	translate(tri_sq[1][0]) rotate(65) joint();
-	translate(tri_sq[1][1]) rotate(170) joint();
-	translate(tri_sq[1][2]) rotate(275) joint();
+    translate(tri_sq[1][0]) rotate(65) joint_T(shaft_r, height, joint_r_outermost, ring_width, spacing);
+    translate(tri_sq[1][1]) rotate(170) joint_T(shaft_r, height, joint_r_outermost, ring_width, spacing);
+    translate(tri_sq[1][2]) rotate(275) joint_T(shaft_r, height, joint_r_outermost, ring_width, spacing);   
 }
 
 
