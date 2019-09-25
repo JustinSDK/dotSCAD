@@ -10,7 +10,7 @@ height = 15;
 radius = 75;
 
 walk_torus83_fort(radius, thickness, height, $fn = 36);
-*wall(radius, height, thickness, $fn = 36);
+wall(radius, height, thickness, $fn = 36);
 
 module wall(radius, height, thickness) {
     bk_number = 8;
@@ -80,18 +80,18 @@ module walk_torus83_fort(radius, thickness, height) {
     module walkway(leng, thickness, height, wall_thickness, stair_number) {
         half_leng = leng / 2;
         half_h = height / 2;
-        r = thickness * 1.25;
-        door_w = thickness * 3.5;
-        p = [0, 0, -thickness * 2];
+        
         module door_df() {
+            r = height / 4;
+            door_w = height / 3 * 2;
             circle(r);
-            translate([0, -thickness * 2]) 
-                square(door_w, center = true);
+            translate([0, -height / 3]) 
+               square(door_w, center = true);
         }
 
         module half_door_df() {
             door_w = thickness;
-            door_h = thickness * 3.5 - door_w;
+            door_h = height / 3 * 2.5 - door_w;
             half_dw = door_w / 2;
             translate([-thickness * 1.75, -half_h]) {
                 square([door_w, door_h]);
@@ -101,7 +101,7 @@ module walk_torus83_fort(radius, thickness, height) {
         }
         
         tri_points = [[0, 0], [0, height], [-height, 0]];
-        leng2 = leng * 0.75;
+        leng2 = leng * 0.5;
         half_leng2 = leng2 / 2;
         
         rotate([90, 0, 0]) 
@@ -124,7 +124,7 @@ module walk_torus83_fort(radius, thickness, height) {
                     stairs(height, stair_number);
                     
                  // walkway without doors    
-               translate([-leng * 1.75, 0]) 
+               translate([-leng * 2, 0]) 
                 rotate([180, 0, 180]) {
                     translate([half_leng2, 0]) 
                         square([leng2, height], center = true);
@@ -133,7 +133,7 @@ module walk_torus83_fort(radius, thickness, height) {
                     translate([-height, -half_h]) 
                         stairs(height, stair_number);
                     
-                    walk_bottom_leng = 1.75 * leng - height * 2 - half_leng;
+                    walk_bottom_leng = 2 * leng - height * 2 - half_leng;
                     translate([-walk_bottom_leng - height, -half_h]) 
                         square([walk_bottom_leng, height / stair_number]);
                 }                    
