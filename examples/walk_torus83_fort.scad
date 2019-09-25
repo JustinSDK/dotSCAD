@@ -6,11 +6,10 @@ include <hollow_out.scad>;
 
 thickness = 4;
 height = 15;
-radius = 80;
+torus_radius = 60;
+wall_radius = 71.49125;
 
-// wall_radius still requires some math.
-wall_radius = radius + thickness * 3.39375;
-walk_torus83_fort(radius, thickness, height, $fn = 36);
+walk_torus83_fort(torus_radius, thickness, height, $fn = 36);
 wall(wall_radius, height, thickness, $fn = 36);
 
 module wall(radius, height, thickness) {
@@ -24,7 +23,7 @@ module wall(radius, height, thickness) {
     module bk() {
         for(i = [0:bk_number + 2]) {
             translate([(2 * i + 1) * bk_w, 0]) 
-                square(bk_w, center = true);
+                square([bk_w, bk_w * 2], center = true);
         }
     }    
 
