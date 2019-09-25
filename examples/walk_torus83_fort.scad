@@ -3,25 +3,26 @@ include <hollow_out.scad>;
 
 // The idea is from Walk Torus83 Fort.
 // https://sketchfab.com/3d-models/walk-torus83-fort-44dc701f676d40f7aa1bee874db6fde9
-// The code works but still requires some math.
 
 thickness = 4;
 height = 15;
-radius = 75;
+radius = 80;
 
+// wall_radius still requires some math.
+wall_radius = radius + thickness * 3.39375;
 walk_torus83_fort(radius, thickness, height, $fn = 36);
-wall(radius, height, thickness, $fn = 36);
+wall(wall_radius, height, thickness, $fn = 36);
 
 module wall(radius, height, thickness) {
     bk_number = 8;
     half_thickness = thickness / 2;
-    ro = radius - half_thickness;
+    ro = radius;
     ri = ro * 0.541196;
-    leng = radius * 0.458804;
+    leng = ro / 2.3;
     
     bk_w = leng / bk_number / 2;   
     module bk() {
-        for(i = [0:bk_number]) {
+        for(i = [0:bk_number + 2]) {
             translate([(2 * i + 1) * bk_w, 0]) 
                 square(bk_w, center = true);
         }
@@ -32,7 +33,7 @@ module wall(radius, height, thickness) {
             intersection() {
                 rotate(22.5) 
                     polygon(shape_starburst(ro, ri, 8));
-                circle(r);
+                circle(ro * 0.9);
             }
     }
 
@@ -58,9 +59,9 @@ module wall(radius, height, thickness) {
 
 module walk_torus83_fort(radius, thickness, height) {
     stair_number = 13;
-    leng = radius * 0.458804;
+    leng = radius * 0.56;
 
-    module tower(leng, radius, height) {
+    module tower(radius, height) {
         linear_extrude(height) 
             circle(radius);
         translate([0, 0, height]) 
@@ -145,9 +146,6 @@ module walk_torus83_fort(radius, thickness, height) {
         offset = leng / 2 + half_thickness;
 
         half_h = height / 2;
-
-        translate([leng, - thickness / 4]) 
-            tower(leng, thickness, height * 1.125); 
             
         road_width = thickness / 1.5;
         translate([0, -half_thickness - road_width / 2, half_h - half_h / stair_number])
@@ -159,5 +157,9 @@ module walk_torus83_fort(radius, thickness, height) {
         rotate(45 * i) 
            translate([offset, offset, 0]) 
                one_burst(leng, thickness, height, stair_number);
+        
+        rotate(45 * i + 22.5) 
+            translate([radius + thickness / 1.75, 0])
+                tower(thickness * 1.25, height * 1.125);
     }
 }
