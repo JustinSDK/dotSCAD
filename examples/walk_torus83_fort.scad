@@ -1,14 +1,14 @@
 include <shape_starburst.scad>;
 include <hollow_out.scad>;
 
-// It works but some math is still required.
+// The idea is from Walk Torus83 Fort.
+// https://sketchfab.com/3d-models/walk-torus83-fort-44dc701f676d40f7aa1bee874db6fde9
+// The code works but still requires some math.
 
 thickness = 4;
 height = 20;
 radius = 75;
 
-// The idea is from Walk Torus83 Fort.
-// https://sketchfab.com/3d-models/walk-torus83-fort-44dc701f676d40f7aa1bee874db6fde9
 walk_torus83_fort(radius, thickness, height, $fn = 36);
 wall(radius, height, thickness, $fn = 36);
 
