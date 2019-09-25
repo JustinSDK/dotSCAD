@@ -10,9 +10,9 @@ module joint_T(shaft_r, shaft_h, t_leng, ring_thickness, spacing) {
     translate([0, 0, shaft_h - ring_height]) 
         linear_extrude(ring_height) joint_ring();
         
-    translate([0, 0, shaft_h / 2]) 
-        linear_extrude(shaft_h / 3, center = true) 
-            line2d([0, 0], [t_leng, 0], shaft_r * 2, p1Style = "CAP_BUTT", p2Style = "CAP_BUTT");
+    translate([t_leng / 2, 0, shaft_h / 2]) 
+        linear_extrude(shaft_h / 3, center = true)
+            square([t_leng, shaft_r * 2], center = true);
 
     linear_extrude(shaft_h) circle(shaft_r);
 }
