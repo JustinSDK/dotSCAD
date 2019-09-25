@@ -10,7 +10,7 @@ height = 15;
 radius = 75;
 
 walk_torus83_fort(radius, thickness, height, $fn = 36);
-wall(radius, height, thickness, $fn = 36);
+*wall(radius, height, thickness, $fn = 36);
 
 module wall(radius, height, thickness) {
     bk_number = 8;
@@ -105,7 +105,7 @@ module walk_torus83_fort(radius, thickness, height) {
         half_leng2 = leng2 / 2;
         
         rotate([90, 0, 0]) 
-            linear_extrude(thickness, center = true) {
+           linear_extrude(thickness, center = true) {
                 // walkway with doors
                 difference() {
                     hull() {   
@@ -124,17 +124,18 @@ module walk_torus83_fort(radius, thickness, height) {
                     stairs(height, stair_number);
                     
                  // walkway without doors    
-                translate([-leng * 1.75, 0]) rotate([180, 0, 180]) {
+               translate([-leng * 1.75, 0]) 
+                rotate([180, 0, 180]) {
                     translate([half_leng2, 0]) 
                         square([leng2, height], center = true);
                     translate([0, -half_h]) 
                         polygon(tri_points);
-                            
-                    translate([-leng * 0.625, -half_h + half_h / stair_number]) 
-                        square([leng / 2, height / stair_number], center = true);
-                    
                     translate([-height, -half_h]) 
                         stairs(height, stair_number);
+                    
+                    walk_bottom_leng = 1.75 * leng - height * 2 - half_leng;
+                    translate([-walk_bottom_leng - height, -half_h]) 
+                        square([walk_bottom_leng, height / stair_number]);
                 }                    
             }
     }
