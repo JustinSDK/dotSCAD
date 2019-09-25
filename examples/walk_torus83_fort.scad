@@ -6,7 +6,7 @@ include <hollow_out.scad>;
 // The code works but still requires some math.
 
 thickness = 4;
-height = 20;
+height = 15;
 radius = 75;
 
 walk_torus83_fort(radius, thickness, height, $fn = 36);
