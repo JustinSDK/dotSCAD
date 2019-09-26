@@ -34,9 +34,7 @@ module starburst(r1, r2, n, height) {
         }
     }
 
-    union() {
-        for(i = [0 : n - 1]) {
-            rotate(2 * a * i) burst();
-        }
-    }
+    for(i = [0 : n - 1]) {
+        rotate(2 * a * i) burst();
+    }    
 }
