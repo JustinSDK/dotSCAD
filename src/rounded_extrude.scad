@@ -33,15 +33,16 @@ module rounded_extrude(size, round_r, angle = 90, twist = 0, convexity = 10) {
             sy = (d_leng * 2 + wy) / wy;
 
             translate([0, 0, pre_h]) 
-                rotate(-twist_step * (i - 1)) 
-                    linear_extrude(
-                        h, 
-                        slices = 1, 
-                        scale = [sx, sy], 
-                        convexity = convexity, 
-                        twist = twist_step
-                    ) scale([wx / x, wy / y]) 
-                          children();     
+            rotate(-twist_step * (i - 1)) 
+            linear_extrude(
+                h, 
+                slices = 1, 
+                scale = [sx, sy], 
+                convexity = convexity, 
+                twist = twist_step
+            ) 
+            scale([wx / x, wy / y]) 
+                children();     
 
             test_rounded_extrude_data(i, wx, wy, pre_h, sx, sy);
 
