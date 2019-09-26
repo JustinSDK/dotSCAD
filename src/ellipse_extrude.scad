@@ -45,21 +45,23 @@ module ellipse_extrude(semi_minor_axis, height, center = false, convexity = 10, 
             z = f_extrude[i][1];
 
             translate([0, 0, pre_zs[i]]) 
-                rotate(-twist / slices * i) 
-                    linear_extrude(
-                        z - pre_zs[i], 
-                        convexity = convexity,
-                        twist = twist / slices, 
-                        slices = 1,
-                        scale = f 
-                    ) scale(child_fs[i]) children();
+            rotate(-twist / slices * i) 
+            linear_extrude(
+                z - pre_zs[i], 
+                convexity = convexity,
+                twist = twist / slices, 
+                slices = 1,
+                scale = f 
+            ) 
+            scale(child_fs[i]) 
+                children();
         }
     }
     
     center_offset = [0, 0, center == true ? -h / 2 : 0];
     translate(center_offset) 
-        extrude() 
-            children();
+    extrude() 
+        children();
 
     // hook for testing
     test_ellipse_extrude_fzc(child_fs, pre_zs, center_offset);
