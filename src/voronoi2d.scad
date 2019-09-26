@@ -23,14 +23,13 @@ module voronoi2d(points, spacing = 1, r = 0, delta = 0, chamfer = false, region_
             if(pt != p) {
                 v = p - pt;
                 translate((pt + p) / 2 - normalize(v) * offset_leng)
-                    rotate(atan2(v[1], v[0])) 
-                    if(region_type == "square") {
-                        square(region_size, center = true);
-                    }
-                    else if(region_type == "circle") {
-                        circle(region_size / 2);
-                    }
-                    
+                rotate(atan2(v[1], v[0])) 
+                if(region_type == "square") {
+                    square(region_size, center = true);
+                }
+                else if(region_type == "circle") {
+                    circle(region_size / 2);
+                }       
             }
         }
     }    
