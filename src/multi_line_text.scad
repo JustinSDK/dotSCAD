@@ -11,10 +11,9 @@ module multi_line_text(lines, line_spacing = 15, size = 10, font = "Arial", hali
     to = len(lines) - 1;
     inc = line_spacing;
     offset_y = inc * to / 2;
-    union() {
-        for (i = [0 : to]) {
-            translate([0 , -i * inc + offset_y, 0]) 
-                text(lines[i], size, font = font, valign = valign, halign = halign, direction = direction, language = language, script = script);
-        }
+
+    for (i = [0 : to]) {
+        translate([0 , -i * inc + offset_y, 0]) 
+            text(lines[i], size, font = font, valign = valign, halign = halign, direction = direction, language = language, script = script);
     }
 }
