@@ -1,8 +1,10 @@
 module joint_T(shaft_r, shaft_h, t_leng, ring_thickness, spacing = 0.5, center = false) {
     ring_r = shaft_r + spacing + ring_thickness;
     module joint_ring() {
-        hollow_out(ring_thickness)
+        difference() {
             circle(ring_r);
+            circle(ring_r - ring_thickness);
+        }
     }
 
     half_h = shaft_h / 2;
