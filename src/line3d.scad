@@ -29,8 +29,8 @@ module line3d(p1, p2, thickness, p1Style = "CAP_CIRCLE", p2Style = "CAP_CIRCLE")
 
     module cap_with(p) { 
         translate(p) 
-            rotate(angles) 
-                children();  
+        rotate(angles) 
+            children();  
     } 
 
     module cap_butt() {
@@ -46,8 +46,8 @@ module line3d(p1, p2, thickness, p1Style = "CAP_CIRCLE", p2Style = "CAP_CIRCLE")
         if(style == "CAP_CIRCLE") {
             cap_leng = r / 1.414;
             cap_with(p) 
-                linear_extrude(cap_leng * 2, center = true) 
-                    circle(r, $fn = frags);
+            linear_extrude(cap_leng * 2, center = true) 
+                circle(r, $fn = frags);
 
             // hook for testing
             test_line3d_cap(p, r, frags, cap_leng, angles);
