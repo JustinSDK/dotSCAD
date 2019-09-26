@@ -5,8 +5,11 @@ module joint_T(shaft_r, shaft_h, t_leng, ring_thickness, spacing = 0.5, center =
             circle(ring_r);
     }
 
-    ring_height = shaft_h / 3 - spacing;
     half_h = shaft_h / 2;
+    one_third_h = shaft_h / 3;
+
+    ring_height = one_third_h - spacing;
+
     translate(center ? [0, 0, -half_h] : [0, 0, 0]) {
         linear_extrude(ring_height) 
             joint_ring();
@@ -16,7 +19,7 @@ module joint_T(shaft_r, shaft_h, t_leng, ring_thickness, spacing = 0.5, center =
             joint_ring();
             
         translate([t_leng / 2, 0, half_h]) 
-        linear_extrude(shaft_h / 3, center = true)
+        linear_extrude(one_third_h, center = true)
             square([t_leng, shaft_r * 2], center = true);
 
         linear_extrude(shaft_h) 
