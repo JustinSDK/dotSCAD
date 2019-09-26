@@ -21,10 +21,10 @@ module connector_peg(radius, height, spacing = 0.5, void = false, ends = false) 
     
     module base(radius, lip_r) {   
         rotate_extrude() {
-            translate([0, total_height - h_head]) hull() {
+            translate([0, total_height - h_head]) 
+            hull() {
                 square([lip_r - r_diff, h_head]); 
-                translate([0, half_h_unit]) 
-                    square([lip_r, half_h_unit]);
+                translate([0, half_h_unit]) square([lip_r, half_h_unit]);
             }
             square([radius, total_height - h_head]);                        
         }
@@ -35,16 +35,16 @@ module connector_peg(radius, height, spacing = 0.5, void = false, ends = false) 
             base(radius, lip_r);
             
             translate([0, 0, h_head])  
-                linear_extrude(total_height) 
-                    square([r_diff * 2, lip_r * 2], center = true);
+            linear_extrude(total_height) 
+                square([r_diff * 2, lip_r * 2], center = true);
         }
     }
 
     module peg_void() {
         base(radius + spacing, lip_r + spacing);
         translate([0, 0, total_height]) 
-            linear_extrude(spacing) 
-                circle(lip_r);
+        linear_extrude(spacing) 
+            circle(lip_r);
     }
  
     module head() {
