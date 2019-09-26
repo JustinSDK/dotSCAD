@@ -30,7 +30,7 @@ module voronoi3d(points, space_size = "auto", spacing = 1) {
                 ryz = __angy_angz(p, pt);
 
                 translate((pt + p) / 2 - normalize(v) * offset_leng)
-                    rotate([0, -ryz[0], ryz[1]]) 
+                rotate([0, -ryz[0], ryz[1]]) 
                     cube([space_size, space_size * 2, space_size * 2], center = true); 
             }
         }
