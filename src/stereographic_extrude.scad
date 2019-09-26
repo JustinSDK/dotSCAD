@@ -15,13 +15,14 @@ module stereographic_extrude(shadow_side_leng) {
     inner_sphere_r = outer_sphere_r * sin(a);
     
     intersection() { 
-        translate([0, 0, outer_sphere_r]) difference() {
+        translate([0, 0, outer_sphere_r]) 
+        difference() {
             sphere(outer_sphere_r);
             sphere(outer_sphere_r / 2 + inner_sphere_r / 2);
             
             translate([0, 0, outer_sphere_r / 2]) 
-                linear_extrude(outer_sphere_r) 
-                    circle(inner_sphere_r * cos(a));
+            linear_extrude(outer_sphere_r) 
+                circle(inner_sphere_r * cos(a));
         }
      
         linear_extrude(outer_sphere_r * 2, scale = 0.01) 
