@@ -1,9 +1,9 @@
-module joint_T(shaft_r, shaft_h, t_leng, ring_thickness, spacing = 0.5, center = false) {
-    ring_r = shaft_r + spacing + ring_thickness;
+module joint_T(shaft_r, shaft_h, t_leng, thickness, spacing = 0.5, center = false) {
+    ring_r = shaft_r + spacing + thickness;
     module joint_ring() {
         difference() {
             circle(ring_r);
-            circle(ring_r - ring_thickness);
+            circle(ring_r - thickness);
         }
     }
 
