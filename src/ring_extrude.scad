@@ -14,8 +14,8 @@ include <__comm__/__ra_to_xy.scad>;
 module ring_extrude(shape_pts, radius, angle = 360, twist = 0, scale = 1.0, triangles = "SOLID") {
     if(twist == 0 && scale == 1.0) {
         rotate_extrude(angle = angle) 
-            translate([radius, 0, 0]) 
-                polygon(shape_pts);
+        translate([radius, 0, 0]) 
+            polygon(shape_pts);
     } else {
         a_step = 360 / __frags(radius);
 
