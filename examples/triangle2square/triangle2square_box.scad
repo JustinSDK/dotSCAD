@@ -52,9 +52,12 @@ module triangle2square_box(type, tri_side_leng, height, spacing, ring_width, sha
     }
     else if(type == "COVER") {
         box_extrude(height = ring_width * 2, shell_thickness = ring_width)  
-            mirror([1, 0, 0]) 
-                offset(-ring_width - spacing) 2d_tri_square();
-        linear_extrude(ring_width) mirror([1, 0, 0]) 2d_tri_square();
+        mirror([1, 0, 0]) 
+            offset(-ring_width - spacing) 2d_tri_square();
+
+        linear_extrude(ring_width) 
+        mirror([1, 0, 0]) 
+            2d_tri_square();
     }
 }
 

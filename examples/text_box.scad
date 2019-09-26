@@ -21,20 +21,22 @@ module text_container(t, font_size, font_name, r_round_edge, container_height, t
     difference() {
         linear_extrude(container_height) 
             minkowski_text(t, font_size, font_name, r_round_edge);
+
         translate([0, 0, thickness]) 
-            linear_extrude(container_height - thickness) 
-                offset(r = -thickness) 
-                    minkowski_text(t, font_size, font_name, r_round_edge);
+        linear_extrude(container_height - thickness) 
+        offset(r = -thickness) 
+            minkowski_text(t, font_size, font_name, r_round_edge);
     }
 }
 
 module text_lid(t, font_size, font_name, r_round_edge, container_height, lid_height, thickness, spacing) {
     translate([0, 0, lid_height - thickness]) 
-        linear_extrude(thickness) 
-            offset(r = spacing + thickness) 
-                minkowski_text(t, font_size, font_name, r_round_edge);
+    linear_extrude(thickness) 
+    offset(r = spacing + thickness) 
+        minkowski_text(t, font_size, font_name, r_round_edge); 
 
-    linear_extrude(lid_height) difference() {
+    linear_extrude(lid_height)
+    difference() {
         offset(r = spacing + thickness) 
             minkowski_text(t, font_size, font_name, r_round_edge);    
         offset(r = spacing) 

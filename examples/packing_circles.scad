@@ -52,13 +52,15 @@ function packing_circles(size, min_radius, max_radius, total_circles, attempts =
     
 circles = packing_circles(size, min_radius, max_radius, total_circles);
 mr = max([for(c = circles) c[2]]);
-translate([0, 0, mr]) for(c = circles) {
-    translate([c[0], c[1]])
-        sphere(c[2], $fn = 48);
-}
+translate([0, 0, mr]) 
+    for(c = circles) {
+        translate([c[0], c[1]])
+            sphere(c[2], $fn = 48);
+    }
+
 for(c = circles) {
     translate([c[0], c[1]])
-        linear_extrude(mr) 
-           circle(c[2]/ 3, $fn = 48);
+    linear_extrude(mr) 
+        circle(c[2]/ 3, $fn = 48);
 }
 linear_extrude(1) square(size);

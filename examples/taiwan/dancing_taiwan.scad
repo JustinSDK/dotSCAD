@@ -59,9 +59,9 @@ module dancing_formosan(x1, x2, x3, y1, y2, y3, twist, t_step) {
     }
 
     translate([0, 0, -2]) 
-        linear_extrude(2) 
-            rotate(twist - twist / len(sections)) 
-                polygon(taiwan);
+    linear_extrude(2) 
+    rotate(twist - twist / len(sections)) 
+        polygon(taiwan);
 
 }
 

@@ -40,20 +40,21 @@ module wall(radius, height, thickness) {
         eight_pts_star(ro - thickness, thickness);
 
     translate([0, 0, height]) 
-        linear_extrude(half_thickness) 
-            difference() {
-                eight_pts_star(ro - thickness, thickness / 4);
-             
-                union() {
-                    for(i = [0:7]) {
-                        rotate(22.5 + i * 45) 
-                            translate([-ro, 0]) rotate(-22.5) {
-                                bk();
-                                rotate(45) bk();
-                            }
-                    }
+    linear_extrude(half_thickness) 
+    difference() {
+        eight_pts_star(ro - thickness, thickness / 4);
+        
+        union() {
+            for(i = [0:7]) {
+                rotate(22.5 + i * 45) 
+                translate([-ro, 0]) 
+                rotate(-22.5) {
+                    bk();
+                    rotate(45) bk();
                 }
             }
+        }
+    }
 }
 
 module walk_torus83_fort(radius, thickness, height) {
@@ -124,7 +125,7 @@ module walk_torus83_fort(radius, thickness, height) {
                     stairs(height, stair_number);
                     
                  // walkway without doors    
-               translate([-leng * 2, 0]) 
+                translate([-leng * 2, 0]) 
                 rotate([180, 0, 180]) {
                     translate([half_leng2, 0]) 
                         square([leng2, height], center = true);
@@ -154,11 +155,11 @@ module walk_torus83_fort(radius, thickness, height) {
     offset = leng / 1.325;
     for(i = [0:7]) {
         rotate(45 * i) 
-           translate([offset, offset, 0]) 
-               one_burst(leng, thickness, height, stair_number);
+        translate([offset, offset, 0]) 
+            one_burst(leng, thickness, height, stair_number);
         
         rotate(45 * i + 22.5) 
-            translate([radius + thickness / 1.75, 0])
-                tower(thickness * 1.25, height * 1.125);
+        translate([radius + thickness / 1.75, 0])
+            tower(thickness * 1.25, height * 1.125);
     }
 }

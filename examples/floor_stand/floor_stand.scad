@@ -14,12 +14,13 @@ module floor_stand(width, height, thickness, spacing) {
 
     module board_base() {
         translate([0, -half_h, 0]) 
-            difference() {
+        difference() {
+            polygon(points);
+
+            translate([0, -half_h, 0]) 
+            scale([0.6, 0.1]) 
                 polygon(points);
-                translate([0, -half_h, 0]) 
-                    scale([0.6, 0.1]) 
-                        polygon(points);
-            }
+        }
     }
 
     module board_U() {
@@ -27,13 +28,13 @@ module floor_stand(width, height, thickness, spacing) {
         difference() {
             union() {
                 linear_extrude(thickness, center = true) 
-                    difference() {
-                        board_base();
-                        square([width / 1.5, height / 3], center = true);
-                    } 
+                difference() {
+                    board_base();
+                    square([width / 1.5, height / 3], center = true);
+                } 
                 rotate(angles) 
-                    linear_extrude(width / 2.25 * 2, center = true) 
-                        circle(half_th);
+                linear_extrude(width / 2.25 * 2, center = true) 
+                    circle(half_th);
             }
 
             rotate(angles) {
@@ -52,11 +53,12 @@ module floor_stand(width, height, thickness, spacing) {
                     board_base();
                     square([width, height / 3], center = true);
                 }
+                
                 translate([0, -height / 12 - spacing / 2, 0]) 
-                    difference() {
-                        square([width / 1.5 - double_spacing, height / 6 + spacing], center = true);
-                        square([width / 1.5 - thickness * 2, height / 6], center = true);
-                    }
+                difference() {
+                    square([width / 1.5 - double_spacing, height / 6 + spacing], center = true);
+                    square([width / 1.5 - thickness * 2, height / 6], center = true);
+                }
             }
 
         rotate([0, 90, 0]) {
@@ -68,11 +70,12 @@ module floor_stand(width, height, thickness, spacing) {
 
     module border() {
         translate([0, 0, half_th]) 
-            color("black") linear_extrude(half_th / 2) 
-                hollow_out(shell_thickness = font_size / 4) 
-                    offset(half_w / 10) 
-                        scale([0.75, 0.675]) 
-                            polygon(points);
+        color("black") 
+        linear_extrude(half_th / 2) 
+        hollow_out(shell_thickness = font_size / 4) 
+        offset(half_w / 10) 
+        scale([0.75, 0.675]) 
+            polygon(points);
     }  
 
     module stick() {
@@ -82,36 +85,35 @@ module floor_stand(width, height, thickness, spacing) {
 
     module decorate() {
         rotate([-80, 0, 0]) 
+        difference() {
+            rotate([80, 0, 0]) 
             difference() {
-                rotate([80, 0, 0]) 
-                    difference() {
-                        union() {
-                            color("yellow") children();
-                            translate([0, -height / 1.8, 0]) 
-                                 border();
-                        }
-                        // slot
-                        translate([0, -half_h - thickness, -half_th]) 
-                            stick();    
-                    }
-
-                translate([0, 0, -height - half_th]) 
-                    linear_extrude(thickness) 
-                        square(width, center = true);
+                union() {
+                    color("yellow") children();
+                    translate([0, -height / 1.8, 0]) border();
+                }
+                // slot
+                translate([0, -half_h - thickness, -half_th]) 
+                    stick();    
             }
+
+            translate([0, 0, -height - half_th]) 
+            linear_extrude(thickness) 
+                square(width, center = true);
+        }
     }
     // stick
     translate([width, 0, 0]) 
         stick();
 
     translate([0, 0, half_th]) 
-        decorate() 
-            board_U();
+    decorate() 
+        board_U();
 
     translate([0, 0, half_th]) 
-        rotate(180)
-            decorate() 
-                board_T();
+    rotate(180)
+    decorate() 
+        board_T();
 
     children(0);
     if($children == 1) {

@@ -24,11 +24,12 @@ module build_ramp_maze(rows, columns, blocks, block_width, wall_thickness, wall_
 
         hull() {
             translate(point1) 
-                linear_extrude(height, scale = top_scale) 
-                    square(width, center = true);
+            linear_extrude(height, scale = top_scale) 
+                square(width, center = true);
+                
             translate(point2) 
-                linear_extrude(height, scale = top_scale) 
-                    square(width, center = true);
+            linear_extrude(height, scale = top_scale) 
+                square(width, center = true);
         }
     }
 

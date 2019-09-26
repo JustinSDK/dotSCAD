@@ -61,22 +61,22 @@ module base(leng, thickness, line_fn) {
         sphere(r, $fn = 48);
         
         translate([0, 0, -r])
-            linear_extrude(r) 
-                square(r * 2, center = true);
+        linear_extrude(r) 
+            square(r * 2, center = true);
         
         translate([0, 0, height(leng) + half_th])
-             rotate([0, 180, 0]) 
-                 translate([0, -leng / 2 * tan(30), 0]) 
-                     hull() {
-                        translate(vts[0])
-                            sphere(half_th, $fn = line_fn);
-                        translate(vts[1])
-                            sphere(half_th, $fn = line_fn);
-                        translate(vts[2])
-                            sphere(half_th, $fn = line_fn);
-                        translate(vts[3])
-                            sphere(half_th, $fn = line_fn);     
-                     }
+        rotate([0, 180, 0]) 
+        translate([0, -leng / 2 * tan(30), 0]) 
+        hull() {
+            translate(vts[0])
+                sphere(half_th, $fn = line_fn);
+            translate(vts[1])
+                sphere(half_th, $fn = line_fn);
+            translate(vts[2])
+                sphere(half_th, $fn = line_fn);
+            translate(vts[3])
+                sphere(half_th, $fn = line_fn);     
+        }
     }
 }
 
@@ -86,9 +86,10 @@ if(model == "Tetrahedron") {
     base(leng, thickness, line_fn);
 } else {
     translate([0, 0, height(leng) + half_th])
-         rotate([0, 180, 0]) 
-             translate([0, -leng / 2 * tan(30), 0]) 
-                 string_tetrahedron(leng, thickness, segs_per_side, line_fn);
+    rotate([0, 180, 0]) 
+    translate([0, -leng / 2 * tan(30), 0]) 
+        string_tetrahedron(leng, thickness, segs_per_side, line_fn);
+        
     base(leng, thickness, line_fn);
 }
 

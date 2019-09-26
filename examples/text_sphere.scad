@@ -26,7 +26,8 @@ module text_sphere(tx, font_name, thickness) {
         end_angle = end_angle
     );
 
-    rotate(-180 / $fn) sphere_spiral_extrude(
+    rotate(-180 / $fn) 
+    sphere_spiral_extrude(
         [
             [thickness, half_thickness],
             [-half_thickness, half_thickness], 
@@ -43,16 +44,17 @@ module text_sphere(tx, font_name, thickness) {
 
     for(i = [0:len(points_angles) - 1]) {
         pa = points_angles[i];
-        translate(pa[0]) rotate(pa[1] + [0, 8, 0])
-            rotate([90, 0, 90]) 
-                linear_extrude(half_thickness) 
-                     translate([0, -10, 0]) 
-                         text(tx[i], font = font_name, halign = "center");
+        translate(pa[0]) 
+        rotate(pa[1] + [0, 8, 0])
+        rotate([90, 0, 90]) 
+        linear_extrude(half_thickness) 
+        translate([0, -10, 0]) 
+            text(tx[i], font = font_name, halign = "center");
     }
     
     translate([0, 0, -radius]) 
-        linear_extrude(thickness * 2.5) 
-            circle(radius / 2);
+    linear_extrude(thickness * 2.5) 
+        circle(radius / 2);
 }
 
  text_sphere(tx, font_name, thickness);

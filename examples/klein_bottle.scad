@@ -17,11 +17,11 @@ cut = false; // [true,false]
 
 module klein_bottle(radius1, radius2, bottom_height, thickness, t_step, fn) {
     $fn = fn;
+    half_thickness = thickness / 2;
 
     module bottom() {
-        rotate(180) rotate_extrude() {
-
-
+        rotate(180) 
+        rotate_extrude() {
             translate([radius1 + radius2, 0, 0]) 
                 polyline2d(
                      arc_path(radius = radius2, angle = [180, 360])
@@ -54,7 +54,7 @@ module klein_bottle(radius1, radius2, bottom_height, thickness, t_step, fn) {
             [0, radius1 * 4, bottom_height], 
             [0, radius1 * 3, bottom_height - radius1], 
             [0, radius1 * 2, bottom_height - radius1 * 2], 
-            [0, radius1, bottom_height + thickness / 2 - radius1 * 3], 
+            [0, radius1, bottom_height + half_thickness - radius1 * 3], 
             [0, 0, bottom_height - radius1 * 4],
             [0, 0, bottom_height - radius1 * 5]
         ];
@@ -80,13 +80,13 @@ module klein_bottle(radius1, radius2, bottom_height, thickness, t_step, fn) {
                 bottom(); 
 
                 path_extrude(
-                    circle_path(radius1 + thickness / 2),
+                    circle_path(radius1 + half_thickness),
                     tube_path
                 );
             }
 
             path_extrude(
-                circle_path(radius1 - thickness / 2),
+                circle_path(radius1 - half_thickness),
                 tube_path2
             );
         }

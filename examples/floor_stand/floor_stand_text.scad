@@ -20,16 +20,16 @@ module words(text, font, font_size, height, thickness, line_spacing) {
 
     color("black")
     translate([0, -height / 1.8, thickness])
-        linear_extrude(half_th / 2) {
-            multi_line_text(
-                split_str(text, " "),
-                font = font,
-                size = font_size,
-                line_spacing = line_spacing,    
-                valign = "center", 
-                halign = "center"
-            );
-        }
+    linear_extrude(half_th / 2) {
+        multi_line_text(
+            split_str(text, " "),
+            font = font,
+            size = font_size,
+            line_spacing = line_spacing,    
+            valign = "center", 
+            halign = "center"
+        );
+    }
 }
 
 floor_stand(stand_width, stand_height, stand_thickness, stand_spacing) 

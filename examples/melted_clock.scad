@@ -23,7 +23,8 @@ module clock(r, thickness, hour, minute) {
         line2d([0, 0], [0, r - thickness * 3], thickness * 0.75, p1Style = "CAP_ROUND", p2Style = "CAP_ROUND", $fn = 4);  
  
     for(i = [0: 11]) {
-        rotate(i * 30) translate([0, r - thickness * 4, 0]) 
+        rotate(i * 30) 
+        translate([0, r - thickness * 4, 0]) 
             square([thickness / 2, thickness * 2]);
     }
 }
@@ -34,12 +35,12 @@ module melt(r, thickness, angle, frags, xscale = 1) {
     rz = r * 180 / (angle * 3.14159);
 
     mirror([0, 1, 0]) 
-        scale([xscale, 1, 1]) 
-            translate([0, r, rz])
-                rotate([0, 90, -90]) 
-                    bend_extrude([r, double_r], thickness, angle, frags) 
-                        translate([0, r, 0]) 
-                            children(); 
+    scale([xscale, 1, 1]) 
+    translate([0, r, rz])
+    rotate([0, 90, -90]) 
+    bend_extrude([r, double_r], thickness, angle, frags) 
+    translate([0, r, 0]) 
+        children(); 
 
     linear_extrude(thickness) 
         intersection() {
@@ -55,15 +56,16 @@ module melted_clock() {
     $fn = 48;
     sa = r * angle / (r + thickness);
     rotate([0, 180, 0]) 
-        mirror([1, 0, 0]) {
-            color("Gold") 
-            translate([0, 0, thickness]) 
-            melt(r, thickness, angle, frags, xscale) circle(r);
-            
-            color("Gainsboro") melt(r, thickness, sa, frags, xscale) 
+    mirror([1, 0, 0]) {
+        color("Gold") 
+        translate([0, 0, thickness]) 
+        melt(r, thickness, angle, frags, xscale) 
+            circle(r);
+        
+        color("Gainsboro") 
+        melt(r, thickness, sa, frags, xscale) 
             clock(r - thickness * 2, thickness, hour, minute);
-            ;
-        }
+    }
 }
 
 melted_clock();

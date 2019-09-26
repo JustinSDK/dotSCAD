@@ -58,12 +58,9 @@ module voronoi_vase(r, h, thickness, num_of_pts, fn, profile_step) {
             polygon([for(pt = sections[0]) [pt[0], pt[1]]]); 
             
         translate([0, 0, h]) 
-            linear_extrude(thickness) 
-                hollow_out(thickness) 
-                    polygon([for(pt = sections[last_section_i]) [pt[0], pt[1]]]);            
-    
-
-
+        linear_extrude(thickness) 
+        hollow_out(thickness) 
+            polygon([for(pt = sections[last_section_i]) [pt[0], pt[1]]]); 
 }
 voronoi_vase(r, h, thickness, num_of_pts, fn, profile_step);
    

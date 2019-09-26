@@ -64,8 +64,8 @@ module superformula_vase(phi_step, m, n, n3, d, r1, r2, h1, h2, t_step, twist) {
     }
 
     linear_extrude(d) 
-        rotate(twist - twist / len(sections)) 
-            polygon(superformula2);    
+    rotate(twist - twist / len(sections)) 
+        polygon(superformula2);    
 }
 
 superformula_vase(phi_step, m, n, n3, d, r1, r2, h1, h2, t_step, twist);

@@ -10,11 +10,11 @@ module heart(radius, center = false) {
     
     module heart_sub_component() {
         translate([-radius * cos(rotated_angle), 0, 0]) 
-            rotate(-rotated_angle) union() {
-                circle(radius);
-                translate([0, -radius, 0]) 
-                    square(diameter);
-            }
+        rotate(-rotated_angle) union() {
+            circle(radius);
+            translate([0, -radius, 0]) 
+                square(diameter);
+        }
     }
     
     offsetX = center ? 0 : radius + radius * cos(45);
@@ -33,8 +33,8 @@ module heart_with_ears(heart_width, thickness, spacing) {
             arc(radius, [0, 240], width, "LINE_OUTWARD");
             
         translate([0, 0, thickness + spacing]) 
-            linear_extrude(thickness) 	
-                arc(radius, [240, 360], width, "LINE_OUTWARD");
+        linear_extrude(thickness) 	
+            arc(radius, [240, 360], width, "LINE_OUTWARD");
             
         linear_extrude(thickness * 2 + spacing) 
             arc(radius, [0, 20], width, "LINE_OUTWARD");
@@ -50,12 +50,12 @@ module heart_with_ears(heart_width, thickness, spacing) {
 	    heart(heart_radius, center = true);
 
 	translate([ring_x, ring_y, 0]) 
-		rotate(-40) 
-		    ear(ring_radius, ring_thickness, spacing); 
+    rotate(-40) 
+        ear(ring_radius, ring_thickness, spacing); 
 
 	translate([-ring_x, ring_y, 0]) 
-	    rotate(125) 
-		    ear(ring_radius, ring_thickness, spacing);
+    rotate(125) 
+        ear(ring_radius, ring_thickness, spacing);
 }
 
 module text_heart(char, width, thickness, spacing) {
@@ -64,13 +64,13 @@ module text_heart(char, width, thickness, spacing) {
 	difference() {
 		heart_with_ears(width, thickness, spacing);
 		translate([0, 0, half_thickness])
-			linear_extrude(half_thickness) 
-                offset(-half_thickness) 
-                    heart(radius, center = true);
+        linear_extrude(half_thickness) 
+        offset(-half_thickness) 
+            heart(radius, center = true);
 	}
 	translate([0, radius / 4, half_thickness])
-		linear_extrude(half_thickness)  
-		    text(char, font = "Arial Black", size = radius * 1.2, valign = "center", halign="center");
+    linear_extrude(half_thickness)  
+        text(char, font = "Arial Black", size = radius * 1.2, valign = "center", halign="center");
 }
 
 module heart_chain(chars) {
@@ -91,8 +91,8 @@ module heart_chain(chars) {
         pt = points_angles[i][0];
         angle = points_angles[i][1];
         translate(pt)
-            rotate(angle + 90) 
-                text_heart(chars[i], heart_width, heart_thickness, spacing);       
+        rotate(angle + 90) 
+            text_heart(chars[i], heart_width, heart_thickness, spacing);       
     }
 }
 

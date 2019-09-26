@@ -56,8 +56,8 @@ difference() {
 	if(chain_hole == "YES") {
 		translate([spacing * 1.5, spacing, height / 2]) 
         linear_extrude(chain_hole_width, center = true)
-            hollow_out(chain_hole_width) 
-                circle(shaft_r + spacing + chain_hole_width);
+        hollow_out(chain_hole_width) 
+            circle(shaft_r + spacing + chain_hole_width);
 	}
 }
 

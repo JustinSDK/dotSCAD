@@ -54,9 +54,8 @@ module puzzle_piece_with_text(side_length, text, spacing) {
     difference() {
 		puzzle_piece(side_length, spacing);
 		translate([half_side_length, half_side_length]) 
-			rotate(-45) 
-			     text(text, size = side_length / 3, 
-					 halign = "center", valign = "center");
+        rotate(-45) 
+            text(text, size = side_length / 3, halign = "center", valign = "center");
 	}
 }
 
@@ -95,8 +94,8 @@ module multiplication_puzzle(n, piece_side_length, spacing) {
 					}
 				}
                 linear_extrude(r - 0.6) 
-					translate(pos) 
-					    puzzle_piece(piece_side_length, spacing);
+                translate(pos) 
+                    puzzle_piece(piece_side_length, spacing);
 			}
 		}
 		

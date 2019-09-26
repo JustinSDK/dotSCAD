@@ -54,21 +54,24 @@ module dog_back(head_r, peg_radius) {
     $fn = 36;    
 
     module foot() {
-        translate([head_r, 0, 0]) union() {
+        translate([head_r, 0, 0]) 
+        union() {
             color("PapayaWhip") 
-            ellipse_extrude(head_r / 3) polygon(
-                shape_ellipse([head_r / 3, head_r / 2])
-            );
+            ellipse_extrude(head_r / 3) 
+                polygon(shape_ellipse([head_r / 3, head_r / 2]));
             
             color("Maroon")  
-            linear_extrude(head_r) circle(head_r / 8);
+            linear_extrude(head_r) 
+                circle(head_r / 8);
             
-            color("Goldenrod") translate([head_r / 45, 0, head_r / 2]) 
-            rotate([0, -15, 0]) rounded_cylinder(
-                radius = [head_r / 5, head_r / 3.5], 
-                h = head_r * 1.25, 
-                round_r = 2
-            );            
+            color("Goldenrod") 
+            translate([head_r / 45, 0, head_r / 2]) 
+            rotate([0, -15, 0]) 
+                rounded_cylinder(
+                    radius = [head_r / 5, head_r / 3.5], 
+                    h = head_r * 1.25, 
+                    round_r = 2
+                );            
         }    
     }
 
@@ -96,16 +99,17 @@ module dog_back(head_r, peg_radius) {
             body_feet();
 
         rotate([-36.5, 0, 0]) 
-            color("Goldenrod") 
-                linear_extrude(head_r * 2, scale = 0.5) 
-                    circle(head_r / 6);
+        color("Goldenrod") 
+        linear_extrude(head_r * 2, scale = 0.5) 
+            circle(head_r / 6);
     }
 
     back();
         
-    color("Goldenrod")  translate([0, -head_r * 0.2, 0]) 
-        rotate([90, 0, 0]) 
-            connector_peg(peg_radius, spacing = spacing); 
+    color("Goldenrod")  
+    translate([0, -head_r * 0.2, 0]) 
+    rotate([90, 0, 0]) 
+        connector_peg(peg_radius, spacing = spacing); 
 }
 
 module spring_dog_spring(head_r, spring_levels, line_thickness, line_distance, peg_radius, plate_h, spacing) {
@@ -150,45 +154,44 @@ module dog_front(head_r, peg_radius, spacing) {
     module head() {
         module head_nose() {
             color("Goldenrod") 
-                rotate([-15, 0, 0]) 
-                    scale([1, 0.9, 0.9]) 
-                        sphere(head_r);
+            rotate([-15, 0, 0]) 
+            scale([1, 0.9, 0.9]) 
+                sphere(head_r);
 
             // nose
             color("PapayaWhip") 
-                translate([0, -head_r * 0.45, -head_r / 5]) 
-                    rotate([85, 0, 0]) 
-                        scale([1.25, 0.8, 1]) 
-                            rounded_cylinder(
-                                radius = [head_r / 2, head_r / 6], 
-                                h = head_r * 1.25, 
-                                round_r = 4
-                            );    
+            translate([0, -head_r * 0.45, -head_r / 5]) 
+            rotate([85, 0, 0]) 
+            scale([1.25, 0.8, 1]) 
+                rounded_cylinder(
+                    radius = [head_r / 2, head_r / 6], 
+                    h = head_r * 1.25, 
+                    round_r = 4
+                );    
 
             color("black") 
-                translate([0, -head_r * 1.6, 0]) 
-                    rotate([15, 0, 0]) 
-                        scale([1.25, 1, 1]) 
-                            sphere(head_r / 7);    
+            translate([0, -head_r * 1.6, 0]) 
+            rotate([15, 0, 0]) 
+            scale([1.25, 1, 1]) 
+                sphere(head_r / 7);    
         }
         
         module eye() {
             translate([head_r / 2, -head_r / 1.75, head_r / 3]) 
-                rotate([-20, 5, 30]) 
-                    scale([1.2, 0.5, 1]) {
-                        color("Goldenrod") 
-                        sphere(head_r / 3);
+            rotate([-20, 5, 30]) 
+            scale([1.2, 0.5, 1]) {
+                color("Goldenrod") sphere(head_r / 3);
 
-                        color("white") 
-                        translate([0, 0, -head_r / 15]) 
-                            rotate([-25, -10, 0]) 
-                                scale([1.1, 1.25, 1.2]) 
-                                    sphere(head_r / 3.5);
-                     
-                        color("black") 
-                        translate([-head_r / 15, -head_r / 4, -head_r / 12]) 
-                            sphere(head_r / 7);
-                }    
+                color("white") 
+                translate([0, 0, -head_r / 15]) 
+                rotate([-25, -10, 0]) 
+                scale([1.1, 1.25, 1.2]) 
+                    sphere(head_r / 3.5);
+                
+                color("black") 
+                translate([-head_r / 15, -head_r / 4, -head_r / 12]) 
+                    sphere(head_r / 7);
+           }    
         }
         
         module eyes() {
@@ -199,9 +202,9 @@ module dog_front(head_r, peg_radius, spacing) {
         module eyebrow() {
             color("black") 
             translate([head_r / 2.5, -head_r / 2.5, head_r / 3]) 
-                rotate([60, 15, 30]) 
-                    linear_extrude(head_r / 2, center = true) scale([1.5, 1, 1]) 
-                        arc(radius = head_r / 3, angle = 120, width = head_r / 20);
+            rotate([60, 15, 30]) 
+            linear_extrude(head_r / 2, center = true) scale([1.5, 1, 1]) 
+                arc(radius = head_r / 3, angle = 120, width = head_r / 20);
             
         }
         
@@ -215,18 +218,18 @@ module dog_front(head_r, peg_radius, spacing) {
         module ear() {
             color("Maroon") 
             rotate([-15, 0, -10]) 
-                translate([-head_r / 2.75, head_r / 15, -head_r / 2.75]) 
-                    rotate([0, -60, 0]) 
-                        scale([1.25, 1, 1]) intersection() {
-                            translate([head_r, 0, 0]) 
-                                linear_extrude(head_r) 
-                                    polygon(shape_pts); 
+            translate([-head_r / 2.75, head_r / 15, -head_r / 2.75]) 
+            rotate([0, -60, 0]) 
+            scale([1.25, 1, 1]) intersection() {
+                translate([head_r, 0, 0]) 
+                linear_extrude(head_r) 
+                    polygon(shape_pts); 
 
-                            difference() {
-                                sphere(head_r);
-                                sphere(head_r - head_r / 10);
-                            }
-                        }    
+                difference() {
+                    sphere(head_r);
+                    sphere(head_r - head_r / 10);
+                }
+            }    
         }   
 
         module ears() {
@@ -242,21 +245,25 @@ module dog_front(head_r, peg_radius, spacing) {
 
 
     module foot() {
-        translate([head_r, -head_r / 11, 0]) union() {
+        translate([head_r, -head_r / 11, 0]) {
             color("PapayaWhip") 
-            ellipse_extrude(head_r / 3) polygon(
-                shape_ellipse([head_r / 3, head_r / 2])
-            );
+            ellipse_extrude(head_r / 3) 
+                polygon(
+                    shape_ellipse([head_r / 3, head_r / 2])
+                );
             
             color("Maroon")  
-            linear_extrude(head_r) circle(head_r / 8);
+            linear_extrude(head_r) 
+                circle(head_r / 8);
             
             color("Goldenrod") 
-            translate([head_r / 45, 0, head_r / 2]) rotate([0, -15, 0]) rounded_cylinder(
-                radius = [head_r / 5, head_r / 3.5], 
-                h = head_r * 1.25, 
-                round_r = 2
-            );            
+            translate([head_r / 45, 0, head_r / 2]) 
+            rotate([0, -15, 0]) 
+                rounded_cylinder(
+                    radius = [head_r / 5, head_r / 3.5], 
+                    h = head_r * 1.25, 
+                    round_r = 2
+                );            
         }    
     }
 
@@ -271,7 +278,8 @@ module dog_front(head_r, peg_radius, spacing) {
             feet();
 
         color("Goldenrod") 
-        scale([1, 1.25, 1]) difference() {
+        scale([1, 1.25, 1]) 
+        difference() {
             sphere(head_r);
             
             translate([-head_r, head_r / 6, -head_r]) 
@@ -287,13 +295,13 @@ module dog_front(head_r, peg_radius, spacing) {
             color("Goldenrod") 
             linear_extrude(head_r * 2) 
                 circle(head_r / 4);
-            
+                
             color("green") 
             translate([0, 0, head_r * 1.1]) 
-                rotate([-10, 0, 0]) 
-                    rotate_extrude() 
-                        translate([head_r / 4, 0, 0]) 
-                            circle(head_r / 10);
+            rotate([-10, 0, 0]) 
+            rotate_extrude() 
+            translate([head_r / 4, 0, 0]) 
+                circle(head_r / 10);
         }
     }
     

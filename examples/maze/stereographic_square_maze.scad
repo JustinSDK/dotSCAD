@@ -34,8 +34,8 @@ module stereographic_projection_maze2(maze_rows, block_width, wall_thickness, fn
     
     if(shadow == "YES") {
         color("black") 
-            linear_extrude(wall_height) 
-                maze();
+        linear_extrude(wall_height) 
+            maze();
     }
 }
 

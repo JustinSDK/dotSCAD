@@ -136,68 +136,73 @@ module blocks(points) {
 
 module cactus(w) {
     linear_extrude(w * 3) {
-        translate([2 * w, w * 7]) scale(w) blocks(
-            px_polygon([
-                [0, 2],
-                [3, 2],
-                [5, 4],
-                [5, 10],
-                [5, 10],
-                [3, 10],
-                [3, 6],
-                [0, 4],
-                
-            ], filled = true)
-        );
+        translate([2 * w, w * 7]) 
+        scale(w) 
+            blocks(
+                px_polygon([
+                    [0, 2],
+                    [3, 2],
+                    [5, 4],
+                    [5, 10],
+                    [5, 10],
+                    [3, 10],
+                    [3, 6],
+                    [0, 4],
+                    
+                ], filled = true)
+            );
 
-        translate([-2 * w, w * 5]) scale(w) blocks(
-            px_polygon([
-                [-1, 0],
-                [-3, 0],
-                [-6, 2],
-                [-6, 6],
-                [-6, 6],
-                [-4, 6],
-                [-4, 4],
-                [-1, 2],
-                
-            ], filled = true)
-        );       
+        translate([-2 * w, w * 5]) 
+        scale(w)
+            blocks(
+                px_polygon([
+                    [-1, 0],
+                    [-3, 0],
+                    [-6, 2],
+                    [-6, 6],
+                    [-6, 6],
+                    [-4, 6],
+                    [-4, 4],
+                    [-1, 2],
+                    
+                ], filled = true)
+            );       
         
-        scale(w) blocks(
-            px_polygon([
-                [-2, 0],
-                [2, 0],
-                [2, 20],
-                [1, 22],
-                [0, 22],
-                [-1, 22],
-                [-2, 20]
-            ], filled = true)        
-        ); 
+        scale(w) 
+            blocks(
+                px_polygon([
+                    [-2, 0],
+                    [2, 0],
+                    [2, 20],
+                    [1, 22],
+                    [0, 22],
+                    [-1, 22],
+                    [-2, 20]
+                ], filled = true)        
+            ); 
     }
 }
 
 module base(w, base_x_blocks, base_y_blocks) {
    linear_extrude(w) {
-       translate([0, -w]) 
-           square([base_x_blocks * w, base_y_blocks * w + 2 * w]);
-       translate([0, base_y_blocks * w / 2]) scale(w) blocks(
-           px_circle(base_y_blocks / 2, filled = true)       
-       );
+        translate([0, -w]) 
+            square([base_x_blocks * w, base_y_blocks * w + 2 * w]);
 
-       translate([base_x_blocks * w, base_y_blocks * w / 2]) 
-           scale(w) blocks(
-               px_circle(base_y_blocks / 2, filled = true)       
-           );
+        translate([0, base_y_blocks * w / 2]) 
+        scale(w) 
+        blocks(px_circle(base_y_blocks / 2, filled = true));
+
+        translate([base_x_blocks * w, base_y_blocks * w / 2]) 
+        scale(w) 
+            blocks(px_circle(base_y_blocks / 2, filled = true));
    }   
 }
 
 module eye(w, eye_spacing) {
     translate([0, 0, -eye_spacing]) 
-        rotate([0, -90, 0]) 
-            linear_extrude(w * 5) 
-                offset(delta = -eye_spacing) square(w);
+    rotate([0, -90, 0]) 
+    linear_extrude(w * 5) 
+        offset(delta = -eye_spacing) square(w);
 }
 
 if(part == "DINO") {
@@ -214,28 +219,35 @@ else if(part == "BASE") {
 }
 else if(part == "DEMO") {
     wd = 5;
-    translate([0, wd * 5.5, wd * 5]) rotate([90, 0, 0])  {
+    translate([0, wd * 5.5, wd * 5]) 
+    rotate([90, 0, 0]) {
         color("DimGray") chrome_dino(wd, true);
         color("white") 
-            linear_extrude(wd * 5)
-                translate([7 * wd, 14 * wd]) square(wd, center = true);
+        linear_extrude(wd * 5)
+            translate([7 * wd, 14 * wd]) square(wd, center = true);
     }
     color("white") base(wd, 10, 6);
     
     translate([wd * 25, wd * 10, 0]) {
-        translate([wd * 4.25, wd * 4.25, 0]) color("SlateGray") rotate([90, 0, 0])  
+        translate([wd * 4.25, wd * 4.25, 0]) 
+        color("SlateGray") 
+        rotate([90, 0, 0])  
             cactus(wd);
+
         color("white") base(wd, 10, 6);
     }
     
     translate([-wd * 35, wd * 10, 0]) {
         color("SlateGray") {
-            translate([wd * 4.25, wd * 4, 0]) rotate([90, 0, 0])  
-                mirror([1, 0, 0]) cactus(wd);
+            translate([wd * 4.25, wd * 4, 0]) 
+            rotate([90, 0, 0])  
+            mirror([1, 0, 0]) 
+                cactus(wd);
                 
-             scale(0.75)
-                 translate([wd * 30, wd * 5, 0]) rotate([90, 0, 0])  
-                    cactus(wd);       
+            scale(0.75)
+            translate([wd * 30, wd * 5, 0]) 
+            rotate([90, 0, 0])  
+                cactus(wd);       
         }
          color("white") base(wd, 30, 6);                
     }

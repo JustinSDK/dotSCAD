@@ -13,32 +13,33 @@ module spiral_cube(leng, leng_diff, min_leng) {
         
         if(current_leng > min_leng && current_leng > leng_diff && half_leng > pre_height) {
             translate([0, 0, pre_height]) 
-                scale([factor, factor, 1]) 
-                    children();
+            scale([factor, factor, 1]) 
+                children();
            
             rotate(atan2(leng_diff, current_leng - leng_diff))
-                spiral_stack(
-                    sqrt(pow_leng_diff + pow(current_leng - leng_diff, 2)),           
-                    thickness + pre_height,
-                    i + 1
-                ) children();
+            spiral_stack(
+                sqrt(pow_leng_diff + pow(current_leng - leng_diff, 2)),           
+                thickness + pre_height,
+                i + 1
+            ) children();
         }
         else if(half_leng > pre_height) {
             translate([0, 0, pre_height]) 
-                scale([factor, factor, (half_leng - pre_height) / thickness]) 
-                    children();
+            scale([factor, factor, (half_leng - pre_height) / thickness]) 
+                children();
         }
     }
     
     module spiral_squares() {
         difference() {
             translate([0, 0, -half_leng]) 
-                spiral_stack(leng)
-                    translate([0, 0, thickness / 2]) 
-                        cube([leng , leng, thickness], center = true);
+            spiral_stack(leng)
+            translate([0, 0, thickness / 2]) 
+                cube([leng , leng, thickness], center = true);
+
             translate([0, 0, 0.001]) 
-                linear_extrude(leng) 
-                    square(leng, center = true);    
+            linear_extrude(leng) 
+                square(leng, center = true);    
         }
     }
 
@@ -66,13 +67,14 @@ module base(leng) {
     difference() {
         difference() {
             sphere(r);
+
             translate([0, 0, -r]) 
-                linear_extrude(r) 
-                    square(r * 2, center = true);
+            linear_extrude(r) 
+                square(r * 2, center = true);
         }
         translate([0, 0, leng * sqrt(3) / 2 + leng / 15]) 
-            rotate([45, atan2(1, sqrt(2)), 0]) 
-                cube(leng * 0.99, center = true);
+        rotate([45, atan2(1, sqrt(2)), 0]) 
+            cube(leng * 0.99, center = true);
     }
 }
 

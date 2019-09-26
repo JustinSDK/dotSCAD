@@ -32,8 +32,9 @@ module cargo_container_landmark() {
     
     module cargoL1() {        
         translate([cargo_height, 0, -cargo20ft_len]) 
-            rotate([0, -90, 0]) 
-                cargo20ft();
+        rotate([0, -90, 0]) 
+            cargo20ft();
+
         cargo40ft();
     }
 
@@ -41,8 +42,9 @@ module cargo_container_landmark() {
     translate([-40, -10, 38.75]) 
     rotate([18.315, 17.75, 0]) {
         translate([cargo40ft_len + cargo_width, cargo_width - cargo20ft_len, 0]) 
-            rotate(90) 
-                cargo20ft();
+        rotate(90) 
+            cargo20ft();
+
         translate([cargo20ft_len + cargo_width, -cargo20ft_len, 0]) 
             cargo20ft();
 
@@ -52,21 +54,22 @@ module cargo_container_landmark() {
     
         translate([cargo_width, cargo20ft_len, -cargo20ft_len]) {
             translate([cargo20ft_len, 0, cargo_height]) 
-                rotate([0, -90, 0]) 
-                    cargo40ft();
+            rotate([0, -90, 0]) 
+                cargo40ft();
+
             cargo20ft();
         }    
     
         cargoL1();
         translate([cargo_width, cargo_width, -cargo20ft_len]) 
-            rotate([0, 0, 90]) 
-                cargo20ft();
+        rotate([0, 0, 90]) 
+            cargo20ft();
     }
     
     if(platform == "YES") {
         color("black") 
-            box_extrude(height = 2, shell_thickness = 1)  
-                circle(75, $fn = 96);
+        box_extrude(height = 2, shell_thickness = 1)  
+            circle(75, $fn = 96);
     }    
 }
 
@@ -86,10 +89,11 @@ module cargo_container(leng, width, height) {
         step_x = leng / nums;
         half_step_x = step_x * 0.5;
         points = [for(i = [0:nums - 1]) [-half_leng + i * step_x + half_step_x, 0]];
+
         along_with(points) 
-            rotate([-90, 90, 0]) 
-                linear_extrude(thickness, scale = [0.7, 0.9], center = true) 
-                     square([half_step_x, height - edge], center = true);
+        rotate([-90, 90, 0]) 
+        linear_extrude(thickness, scale = [0.7, 0.9], center = true) 
+            square([half_step_x, height - edge], center = true);
     }         
     
     module door() {
@@ -99,8 +103,8 @@ module cargo_container(leng, width, height) {
             
             for(i = [-1:1]) {
                 translate([-height / 4.25 * i, 0, z]) 
-                    linear_extrude(h, scale = 0.95) 
-                        square(size, center = true);
+                linear_extrude(h, scale = 0.95) 
+                    square(size, center = true);
             }
         }
     }    
@@ -112,8 +116,8 @@ module cargo_container(leng, width, height) {
 
     module side() {
         translate([half_leng, half_w - half_thickness + d_offset, half_h]) 
-            rotate([90, 0, 0]) 
-                railing(rails, leng, thickness);  
+        rotate([90, 0, 0]) 
+            railing(rails, leng, thickness);  
                         
     }   
     
@@ -125,9 +129,9 @@ module cargo_container(leng, width, height) {
             union() {
                 // front
                 translate([-d_offset, 0, half_h]) 
-                  rotate([0, 90, 0]) 
-                      linear_extrude(thickness, scale = 0.95) 
-                          square([height * 0.95, width * 0.95], center = true);
+                rotate([0, 90, 0]) 
+                linear_extrude(thickness, scale = 0.95) 
+                    square([height * 0.95, width * 0.95], center = true);
                           
                 // back
                 translate([leng - half_thickness + d_offset, 0, half_h]) 
@@ -136,9 +140,9 @@ module cargo_container(leng, width, height) {
 
                 // top
                 translate([half_leng, 0, height - half_thickness + d_offset]) 
-                    rotate([180, 0, 0]) 
-                        scale([1, (width - edge) / height, 1]) 
-                            railing(rails, leng, thickness);
+                rotate([180, 0, 0]) 
+                scale([1, (width - edge) / height, 1]) 
+                    railing(rails, leng, thickness);
                             
                 side();
                 mirror([0, 1, 0]) 
@@ -147,8 +151,8 @@ module cargo_container(leng, width, height) {
 
             // bottom
             translate([half_leng, half_w, -height / 400]) 
-                linear_extrude(height / 80, scale = 0.95) 
-                    square([leng * 0.975, width  * 0.9], center = true);
+            linear_extrude(height / 80, scale = 0.95) 
+                square([leng * 0.975, width  * 0.9], center = true);
         }
         
         translate([0, 0, half_h]) 

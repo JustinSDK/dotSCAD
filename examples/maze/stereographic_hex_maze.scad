@@ -27,14 +27,14 @@ module hex_maze_stereographic_projection(x_cells, cell_radius, wall_thickness, f
     maze_vector = go_maze(1, 1, starting_maze(y_cells, x_cells), y_cells, x_cells);
 
     stereographic_extrude(square_w, $fn = fn) 
-	    translate([grid_w - square_w / 2, grid_h - square_w / 2, 0]) 
-		    build_hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness);
+    translate([grid_w - square_w / 2, grid_h - square_w / 2, 0]) 
+        build_hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness);
 
 	if(shadow == "YES") {
 		color("black") 
 		linear_extrude(wall_height) 
-		    translate([grid_w - square_w / 2, grid_h - square_w / 2, 0]) 
-			    build_hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness);
+        translate([grid_w - square_w / 2, grid_h - square_w / 2, 0]) 
+            build_hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness);
     }
 }
 

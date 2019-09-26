@@ -31,8 +31,8 @@ module vampire_pen_holder() {
             circle(radius);
                 
         translate([0, 0, holder_round_r])
-            linear_extrude(holder_height) 
-                hollow_out(shell_thickness = 4) circle(30 + 5);
+        linear_extrude(holder_height) 
+            hollow_out(shell_thickness = 4) circle(30 + 5);
     }
 
     module sun_glasses() {
@@ -40,14 +40,11 @@ module vampire_pen_holder() {
         thickness = 4;
         
         rotate(-135) 
-            bend_extrude(size = [80, 20], thickness = thickness, angle = 90) 
-                translate([40, 10]) 
-                
-                    union() {
-                        polygon(glasses_path);
-                        mirror([1, 0, 0]) polygon(glasses_path);
-                    }
-
+        bend_extrude(size = [80, 20], thickness = thickness, angle = 90) 
+        translate([40, 10]) {
+            polygon(glasses_path);
+            mirror([1, 0, 0]) polygon(glasses_path);
+        }
     }
 
     module cloak() {
@@ -71,16 +68,16 @@ module vampire_pen_holder() {
         feet();
 
     color("white") 
-        translate([0, 0, feet_height - holder_round_r]) 
-            holder();
+    translate([0, 0, feet_height - holder_round_r]) 
+        holder();
 
     color("black")  
-        translate([0, 12.5, holder_height * 5 / 6]) 
-            sun_glasses(); 
+    translate([0, 12.5, holder_height * 5 / 6]) 
+        sun_glasses(); 
 
     color("red") 
-        translate([-80, holder_round_r + 0.5, holder_height + feet_height - holder_round_r])
-            cloak();
+    translate([-80, holder_round_r + 0.5, holder_height + feet_height - holder_round_r])
+        cloak();
 }
 
 vampire_pen_holder();

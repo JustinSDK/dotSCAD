@@ -26,14 +26,14 @@ module text_tower(tx, font_name, radius, height, thickness) {
         );
         for(i = [0:len(points) - 1]) {
             translate(points[i])
-                rotate([90, 0, 90 + angle_step * i]) 
-                    linear_extrude(thickness, center = true) 
-                        text(
-                            tx[i], 
-                            font = font_name, 
-                            size = font_size, 
-                            halign = "center"
-                        );
+            rotate([90, 0, 90 + angle_step * i]) 
+            linear_extrude(thickness, center = true) 
+                text(
+                    tx[i], 
+                    font = font_name, 
+                    size = font_size, 
+                    halign = "center"
+                );
         }
 
         rotate(-half_angle_step) 
@@ -53,9 +53,10 @@ module text_tower(tx, font_name, radius, height, thickness) {
 
     translate([0, 0, -font_size - half_thickness]) 
         body();
+
     rotate(-half_angle_step) 
-        translate([0, 0, -font_size - thickness]) 
-            cylinder(h = font_size, r = radius + thickness);
+    translate([0, 0, -font_size - thickness]) 
+        cylinder(h = font_size, r = radius + thickness);
 }
 
 text_tower(tx, font_name, radius, height, thickness, $fn = 24);

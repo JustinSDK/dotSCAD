@@ -7,7 +7,8 @@ tx = "3.141592653589793238462643383279502884197169399375105820974944592307816406
 pts = [for(p = px_spiral(1, floor(sqrt(len(tx))) + 1)) p * 8];
 linear_extrude(2) 
     for(i = [0:len(tx) - 1]) {
-        translate(pts[i]) difference() {
+        translate(pts[i]) 
+        difference() {
             square(7, center = true);
             render() for(p = px_ascii(tx[i], center = true)) {
                 translate(p) square(.8);

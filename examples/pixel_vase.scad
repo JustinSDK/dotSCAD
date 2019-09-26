@@ -23,20 +23,18 @@ module pixel_vase(x1, x2, x3, thickness) {
     leng = len(px_path);
 
     for(p = px_cylinder(px_path[0][0], 1, true)) { 
-        linear_extrude(1) union() {
-            translate([p[0], p[1]])
-                square(1.1, center = true);
-        }
+        linear_extrude(1)
+        translate([p[0], p[1]])
+            square(1.1, center = true);
     }
 
     for(i = [0:leng - 1]) {
         r = px_path[i][0];
         for(p = px_cylinder(r, 1, thickness = thickness)) { 
             translate([0, 0, i]) 
-                linear_extrude(1) union() {
-                    translate([p[0], p[1]])
-                        square(1.1, center = true);
-                }
+            linear_extrude(1) 
+            translate([p[0], p[1]])
+                square(1.1, center = true);
         }
     }  
 }    

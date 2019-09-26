@@ -39,8 +39,8 @@ module stick_square(inner_square_leng, stick_leng, stick_thickness, cap_style) {
 
     sticks();
     translate([0, 0, stick_thickness]) 
-        rotate(90) 
-            sticks();
+    rotate(90) 
+        sticks();
 }
     
 module spiral_stack(orig_leng, orig_height, current_leng, leng_diff, min_leng, angle_offset, pre_height = 0, i = 0) {
@@ -50,8 +50,8 @@ module spiral_stack(orig_leng, orig_height, current_leng, leng_diff, min_leng, a
         factor = current_leng / orig_leng;
         
         translate([0, 0, pre_height]) 
-            scale(factor) 
-                children();
+        scale(factor) 
+            children();
          
         next_square_leng = sqrt(pow(leng_diff, 2) + pow(current_leng - leng_diff, 2));
         

@@ -20,8 +20,8 @@ module pyramid_with_stairs(base_width, stairs_width, rows) {
             for(j = [1:stairsteps]) {
                 square_w = base_w - j * staircase_w;
                 translate([0, 0, staircase_h * (j - 1)])  
-                    linear_extrude(staircase_h) 
-                        square([square_w, square_w], center = true);
+                linear_extrude(staircase_h) 
+                    square([square_w, square_w], center = true);
             }
     }
     
@@ -46,23 +46,23 @@ module step_pyramid_maze(maze_rows, block_width, stairs_width) {
             square([block_width * maze_rows + stairs_width, block_width * maze_rows + stairs_width], center = true);
             
             translate([-(maze_rows * block_width) / 2, -(maze_rows * block_width) / 2, 0]) 
-                difference() {
-                    build_square_maze(
-                        maze_rows, 
-                        maze_rows, 
-                        maze_blocks, 
-                        block_width, 
-                        stairs_width
-                    );
+            difference() {
+                build_square_maze(
+                    maze_rows, 
+                    maze_rows, 
+                    maze_blocks, 
+                    block_width, 
+                    stairs_width
+                );
 
-                    // entry
-                    translate([0, stairs_width]) 
-                        square(stairs_width, center = true);
+                // entry
+                translate([0, stairs_width]) 
+                    square(stairs_width, center = true);
 
-                    // exit
-                    translate([maze_rows * block_width, maze_rows * block_width - stairs_width]) 
-                        square(stairs_width, center = true);
-                }
+                // exit
+                translate([maze_rows * block_width, maze_rows * block_width - stairs_width]) 
+                    square(stairs_width, center = true);
+            }
         }
     }
 }

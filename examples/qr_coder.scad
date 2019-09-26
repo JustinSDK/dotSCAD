@@ -16,9 +16,10 @@ qr_coder();
 module qr_coder() {
     color("black") 
     rotate([0, 180, 0]) 
-        translate([0, 0, -qr_thickness - head_size]) 
-            linear_extrude(qr_thickness) 
-                mirror([1, 0, 0]) qrcode(t, head_size * 0.9, encoding, min_error_correction_level, mask, center = true); 
+    translate([0, 0, -qr_thickness - head_size]) 
+    linear_extrude(qr_thickness) 
+    mirror([1, 0, 0]) 
+        qrcode(t, head_size * 0.9, encoding, min_error_correction_level, mask, center = true); 
 
     cube_character(head_size);
 }
@@ -33,8 +34,8 @@ module cube_character(head_size) {
                 square(head_size, center = true);
             
             translate([0, -half_head_size, half_head_size])
-                rotate([-90, 0, 0]) 
-                    connector_peg(peg_radius, spacing = spacing, void = true);         
+            rotate([-90, 0, 0]) 
+                connector_peg(peg_radius, spacing = spacing, void = true);         
         }            
     }
     
@@ -44,25 +45,26 @@ module cube_character(head_size) {
         
         module peg_void() {
             translate([half_body_size + 1, head_size * 0.2, half_body_size])
-                rotate([0, -90, 0]) 
-                    connector_peg(peg_radius, spacing = spacing, void = true);   
+            rotate([0, -90, 0]) 
+                connector_peg(peg_radius, spacing = spacing, void = true);   
         }
         
         difference() {
-             linear_extrude(body_size) union() {
+             linear_extrude(body_size) 
+             union() {
                 square(body_size, center = true);
                 // feet
                 translate([0, -head_size * 0.4, 0]) 
-                    difference() {
-                        square(head_size * 0.65, center = true);
-                        square([head_size * 0.05, head_size * 0.65], center = true);
-                    }
+                difference() {
+                    square(head_size * 0.65, center = true);
+                    square([head_size * 0.05, head_size * 0.65], center = true);
+                }
             }                        
                 
             // holes
             translate([0, half_body_size + 1, half_body_size])
-                rotate([90, 0, 0]) 
-                    connector_peg(peg_radius, spacing = spacing, void = true);   
+            rotate([90, 0, 0]) 
+                connector_peg(peg_radius, spacing = spacing, void = true);   
                     
             peg_void();   
             mirror([1, 0, 0]) peg_void();                               
@@ -80,8 +82,8 @@ module cube_character(head_size) {
                     square(hand_size, center = true);
                     
                 translate([head_size * 0.1375, head_size * 0.1375, half_body_size / 2]) 
-                    rotate([0, 90, 0]) 
-                        connector_peg(peg_radius, spacing = spacing);   
+                rotate([0, 90, 0]) 
+                    connector_peg(peg_radius, spacing = spacing);   
             }
         }
                  

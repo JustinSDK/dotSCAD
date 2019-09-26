@@ -20,10 +20,14 @@ module bearing_captured_in_mobius_cut(ball_radius, mobius_radius, ring_radius, s
     circle_points = [for(p = circle_path(ball_track_radius)) p + trans_pt];
 
     difference() {
-        rotate_extrude() translate([ring_radius, 0, 0]) circle(mobius_radius);
+        rotate_extrude() 
+        translate([ring_radius, 0, 0]) 
+            circle(mobius_radius);
+            
         ring_extrude(circle_points, radius = ring_radius, twist = 180);
+        
         rotate([180, 0, 0]) 
-        ring_extrude(circle_points, radius = ring_radius, twist = 180);        
+            ring_extrude(circle_points, radius = ring_radius, twist = 180);        
     }
     
     if(with_ball == "YES") {

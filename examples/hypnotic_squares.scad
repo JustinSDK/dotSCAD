@@ -19,8 +19,8 @@ module hypnotic_squares(x_grids, y_grids, grid_size, final_size, line_width) {
     
     module hollow_square(x, y, size) {
         translate([x - half_lw, y - half_lw])  
-            hollow_out(line_width) 
-                square(size + line_width);
+        hollow_out(line_width) 
+            square(size + line_width);
     }
 
     module draw(x, y, size, xMovement, yMovement, steps) {

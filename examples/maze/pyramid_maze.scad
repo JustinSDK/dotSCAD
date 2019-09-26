@@ -23,13 +23,14 @@ module pyramid_maze(maze_rows, block_width, wall_thickness) {
     
     intersection() {
         linear_extrude(leng * 2) 
-            translate([-half_leng, -half_leng]) build_square_maze(
-                maze_rows, 
-                maze_rows, 
-                maze_blocks, 
-                block_width, 
-                wall_thickness
-            );
+        translate([-half_leng, -half_leng]) build_square_maze(
+            maze_rows, 
+            maze_rows, 
+            maze_blocks, 
+            block_width, 
+            wall_thickness
+        );
+        
         pyramid(leng + wall_thickness);
     }
 }
