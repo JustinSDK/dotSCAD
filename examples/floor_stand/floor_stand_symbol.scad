@@ -31,42 +31,47 @@ module content(text, font, font_size, symbol_png, symbol_unicode, symbol_font, s
     half_th = thickness / 2;
 
     translate([0, -height / 1.8, thickness]) {
-        color("black") linear_extrude(half_th / 2) 
-            union() {
-                translate([0, -half_h / 3, 0]) 
-                    multi_line_text(
-                        split_str(text, " "),
-                        font = font,
-                        size = font_size,
-                        line_spacing = line_spacing,    
-                        valign = "center", 
-                        halign = "center"
-                    );
-            } 
+        color("black") 
+        linear_extrude(half_th / 2) 
+        union() {
+            translate([0, -half_h / 3, 0]) 
+                multi_line_text(
+                    split_str(text, " "),
+                    font = font,
+                    size = font_size,
+                    line_spacing = line_spacing,    
+                    valign = "center", 
+                    halign = "center"
+                );
+        } 
         
         if(symbol_source == "DEFAULT") {
-            color("green") translate([0, half_h / 5, 0]) 
-                scale([0.6, 0.6, 1]) 
-                    linear_extrude(half_th / 2) polygon(shape_taiwan(half_h * 1.5));
+            color("green") 
+            translate([0, half_h / 5, 0]) 
+            scale([0.6, 0.6, 1]) 
+            linear_extrude(half_th / 2) 
+                polygon(shape_taiwan(half_h * 1.5));
         }
         else if(symbol_source == "UNICODE") {                
-            color("black") linear_extrude(half_th / 2)             
-                translate([0, half_h / 5, 0]) 
-                            text(symbol_unicode, font = symbol_font, size = symbol_font_size, valign = "center", halign = "center");
+            color("black") 
+            linear_extrude(half_th / 2)             
+            translate([0, half_h / 5, 0]) 
+                text(symbol_unicode, font = symbol_font, size = symbol_font_size, valign = "center", halign = "center");
         } 
         else {
             symbol_png_size = 100;
             symbol_png_scale = 0.25; 
   
-            color("black") translate([0, half_h / 5, half_th / 4]) 
-                scale([symbol_png_scale, symbol_png_scale, 1])
-                    difference() {       
-                        cube([symbol_png_size * 0.99, symbol_png_size  * 0.99, stand_thickness / 4], center = true);                        
-                        translate([0, 0, -50])
-                            scale([1, 1, 100]) 
-                                surface(symbol_png, center = true); 
-
-                    }
+            color("black") 
+            translate([0, half_h / 5, half_th / 4]) 
+            scale([symbol_png_scale, symbol_png_scale, 1])
+                difference() {       
+                    cube([symbol_png_size * 0.99, symbol_png_size  * 0.99, stand_thickness / 4], center = true);                        
+                    
+                    translate([0, 0, -50])
+                    scale([1, 1, 100]) 
+                        surface(symbol_png, center = true); 
+                }
             
         }
     }
