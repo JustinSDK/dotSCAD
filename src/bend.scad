@@ -29,24 +29,24 @@ module bend(size, angle, frags = 24) {
 
     module triangle_frag() {
         translate([0, -z, 0]) 
-            linear_extrude(y) 
-                polygon(tri_frag_pts);    
+        linear_extrude(y) 
+            polygon(tri_frag_pts);    
     }
     
     module get_frag(i) {
         translate([-frag_width * i - half_frag_width, -h + z, 0]) 
-            intersection() {
-                translate([frag_width * i, 0, 0]) 
-                    triangle_frag();
-                rotate([90, 0, 0]) 
-                    children();
-            }
+        intersection() {
+            translate([frag_width * i, 0, 0]) 
+                triangle_frag();
+            rotate([90, 0, 0]) 
+                children();
+        }
     }
 
     rotate(90) for(i = [0 : frags - 1]) {
         rotate(i * frag_angle + half_frag_angle) 
-            get_frag(i) 
-                children();  
+        get_frag(i) 
+            children();  
     }
 
     // hook for testing
