@@ -16,7 +16,8 @@ module stereographic_projection_chars(txt, square_size, font_name, font_size) {
         offset_y = square_size * 0.8 * (i == 0 || i == 1 ? 1 : -1) +
                    frame_width / 2 * (i == 0 || i == 1 ? -1 : 1);
         
-        translate([offset_x, offset_y, 0]) intersection() {
+        translate([offset_x, offset_y, 0]) 
+        intersection() {
             union() {
                 rotate(-135 - 90 * i) scale([1.15, 1, 1]) 
                     text(txt[i], size = font_size, font = font_name, valign = "center", halign = "center");   
