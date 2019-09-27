@@ -7,7 +7,7 @@ fn = 24;
 shadow = "YES"; // [YES, NO]
 base_height = 2;
 
-module stereographic_projection_chars(txt, square_size, font_name, font_size) {
+module four_chars(txt, square_size, font_name, font_size) {
     frame_width = 0.225 * square_size;
 
     for(i = [0:3]) {
@@ -33,10 +33,10 @@ module stereographic_projection_chars(txt, square_size, font_name, font_size) {
 }
 
 stereographic_extrude(square_size * 2.975) 
-    stereographic_projection_chars(txt, square_size, font_name, font_size);
+    four_chars(txt, square_size, font_name, font_size);
 
 if(shadow == "YES") {
     color("red") 
     linear_extrude(base_height) 
-        stereographic_projection_chars(txt, square_size, font_name, font_size);
+        four_chars(txt, square_size, font_name, font_size);
 }
