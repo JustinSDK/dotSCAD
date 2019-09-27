@@ -38,5 +38,5 @@ stereographic_extrude(square_size * 2.975)
 if(shadow == "YES") {
     color("red") 
     linear_extrude(base_height) 
-    stereographic_projection_chars(txt, square_size, font_name, font_size);
+        stereographic_projection_chars(txt, square_size, font_name, font_size);
 }
