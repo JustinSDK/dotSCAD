@@ -33,30 +33,29 @@ function _t2d_get_y(t) = t[0][1];
 function _t2d_get_pt(t) = t[0];
 function _t2d_get_angle(t) = t[1];
 
-function _t2d_two_args_command(cmd, t, arg) =
-    is_undef(arg) ? _t2d_one_arg_command(cmd, t) : 
-    cmd == "point" ? _t2d_set_point(t, arg) : 
-    cmd == "angle" ? _t2d_set_angle(t, arg) : 
-    cmd == "forward" ? _t2d_forward(t, arg) : 
-    cmd == "turn" ? _t2d_turn(t, arg) : assert(false, "unknown command");
-    
-function _t2d_one_arg_command(cmd, t) =
+function _t2d_get(cmd, t) =
     cmd == "angle" ? _t2d_get_angle(t) : 
     cmd == "point" ? _t2d_get_pt(t) : assert(false, "unknown command");
-
-function _t2d_cmdline(cmd, t, arg) = 
-     _t2d_two_args_command(cmd, t, arg);
 
 function _t2d_set(t, point, angle) =
     !is_undef(point) ? _t2d_set_point(t, point) :
     !is_undef(angle) ? _t2d_set_angle(t, angle) :
     assert(false, "no target to set");
 
+function _t2d_cmdline(cmd, t, arg) = 
+    is_undef(arg) ? _t2d_get(cmd, t) : 
+    cmd == "forward" ? _t2d_forward(t, arg) : 
+    cmd == "turn" ? _t2d_turn(t, arg) :
+    cmd == "point" ? _t2d_set_point(t, arg) : 
+    cmd == "angle" ? _t2d_set_angle(t, arg) :  
+    assert(false, "unknown command");
+
 function _t2d_cmd(t, cmd, point, angle, leng) = 
     cmd == "forward" ? _t2d_forward(t, leng) :
     cmd == "turn" ? _t2d_turn(t, angle) :
     cmd == "point" ? _t2d_get_pt(t) :
-    cmd == "angle" ? _t2d_get_angle(t) : assert(false, "unknown command");
+    cmd == "angle" ? _t2d_get_angle(t) : 
+    assert(false, "unknown command");
 
 function _t2d_cmds(t, cmds, i = 0) = 
     i == len(cmds) ? t :
