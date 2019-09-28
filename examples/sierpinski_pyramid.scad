@@ -1,24 +1,24 @@
 include <hull_polyline3d.scad>;
 
 side_leng = 100;
-min_len = 5;
+min_leng = 5;
 thickness = 2.5;
 
-sierpinski_pyramid(side_leng, min_len, thickness, $fn = 4);
+sierpinski_pyramid(side_leng, min_leng, thickness, $fn = 4);
 
-module sierpinski_pyramid(side_leng, min_len, thickness) {
+module sierpinski_pyramid(side_leng, min_leng, thickness) {
     pyramid_frame(side_leng, thickness);    
-    if(side_leng > min_len){
+    if(side_leng > min_leng){
         half_len = side_leng / 2;
         h = half_len * 0.707107;
         pt = [side_leng / 4, side_leng / 4, 0];
         for(i=[0:3]) {
             rotate([0, 0, i * 90])
             translate(pt)
-                sierpinski_pyramid(half_len, min_len, thickness);
+                sierpinski_pyramid(half_len, min_leng, thickness);
         }
         translate([0, 0, h]) 
-            sierpinski_pyramid(half_len, min_len, thickness);
+            sierpinski_pyramid(half_len, min_leng, thickness);
     }
 }
 
