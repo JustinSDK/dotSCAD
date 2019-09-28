@@ -1,6 +1,5 @@
 include <line2d.scad>;
 include <polyline2d.scad>;
-include <turtle/turtle2d.scad>;
 include <turtle/t2d.scad>;
 
 side_leng = 100;
@@ -14,7 +13,7 @@ sierpinski_triangle(
 
 module triangle(t, side_leng, thickness) {    
     t2 = t2d(t, "forward", leng = side_leng);
-    t3 = t2d(t2, cmds = [
+    t3 = t2d(t2, [
         ["turn", 120],
         ["forward", side_leng]
     ]);
@@ -33,7 +32,7 @@ module sierpinski_triangle(t, side_leng, min_leng, thickness) {
     if(side_leng >= min_leng) { 
         half_leng = side_leng / 2;
         t2 = t2d(t, "forward", leng = half_leng); 
-        t3 = t2d(t, cmds = [
+        t3 = t2d(t, [
             ["turn", 60],
             ["forward", half_leng],
             ["turn", -60]
