@@ -43,7 +43,7 @@ module forest(trunk_angle, max_trunk_length, min_trunk_length, style = "TREES", 
 			
 			if(style == "MIRROR") {
 				 mirror([0, 1, 0]) 
-				 inverted_trunk(t, length);
+				     inverted_trunk(t, length);
 			} 
 
 			leng = k * k1 * length;
