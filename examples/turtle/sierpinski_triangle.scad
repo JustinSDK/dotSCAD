@@ -18,7 +18,7 @@ module triangle(t, side_leng, thickness) {
     ]);
 
     hull_polyline2d(
-        [for(tu = [t, t2, t3, t]) t2d(tu, "point")], 
+        [for(turtle = [t, t2, t3, t]) t2d(turtle, "point")], 
         thickness
     );
 }
