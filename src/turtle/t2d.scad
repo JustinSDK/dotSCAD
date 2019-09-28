@@ -8,7 +8,8 @@
 *
 **/ 
 
-function _t2d_turtle(point, angle) = [point, angle];
+function _t2d_turtle(point, angle) = 
+    [is_undef(point) ? [0, 0] : point, is_undef(angle) ? 0 : angle];
 
 function _t2d_set_point(t, point) = [point, _t2d_get_angle(t)];
 
@@ -35,36 +36,27 @@ function _t2d_get_angle(t) = t[1];
 function _t2d_two_args_command(cmd, t, arg) =
     is_undef(arg) ? _t2d_one_arg_command(cmd, t) : 
     cmd == "point" ? _t2d_set_point(t, arg) : 
-    cmd == "x" ? _t2d_set_x(t, arg) : 
-    cmd == "y" ? _t2d_set_y(t, arg) : 
     cmd == "angle" ? _t2d_set_angle(t, arg) : 
     cmd == "forward" ? _t2d_forward(t, arg) : 
     cmd == "turn" ? _t2d_turn(t, arg) : assert(false, "unknown command");
     
 function _t2d_one_arg_command(cmd, t) =
-    cmd == "x" ? _t2d_get_x(t) : 
-    cmd == "y" ? _t2d_get_y(t) : 
     cmd == "angle" ? _t2d_get_angle(t) : 
     cmd == "point" ? _t2d_get_pt(t) : assert(false, "unknown command");
 
 function _t2d_cmdline(cmd, t, arg) = 
      _t2d_two_args_command(cmd, t, arg);
 
-function _t2d_set(t, point, angle, x, y) =
+function _t2d_set(t, point, angle) =
     !is_undef(point) ? _t2d_set_point(t, point) :
     !is_undef(angle) ? _t2d_set_angle(t, angle) :
-    !is_undef(x) ? _t2d_set_x(t, x) :
-    !is_undef(y) ? _t2d_set_y(t, y) : 
     assert(false, "no target to set");
 
-function _t2d_cmd(t, cmd, point, angle, x, y, leng) = 
-    cmd == "set" ? _t2d_set(t, point, angle, x, y) :
+function _t2d_cmd(t, cmd, point, angle, leng) = 
     cmd == "forward" ? _t2d_forward(t, leng) :
     cmd == "turn" ? _t2d_turn(t, angle) :
     cmd == "point" ? _t2d_get_pt(t) :
-    cmd == "angle" ? _t2d_get_angle(t) :
-    cmd == "x" ? _t2d_get_x(t) :
-    cmd == "y" ? _t2d_get_y(t) : assert(false, "unknown command");
+    cmd == "angle" ? _t2d_get_angle(t) : assert(false, "unknown command");
 
 function _t2d_cmds(t, cmds, i = 0) = 
     i == len(cmds) ? t :
@@ -74,7 +66,8 @@ function _t2d_cmds(t, cmds, i = 0) =
     )
     _t2d_cmds(_t2d_cmdline(cmd, t, arg), cmds, i + 1);
 
-function t2d(t, cmd, point, angle, x, y, leng) =
+function t2d(t, cmd, point, angle, leng) =
     is_undef(t) ? _t2d_turtle(point, angle) : 
-    is_string(cmd) ? _t2d_cmd(t, cmd, point, angle, x, y, leng) :
+    is_undef(cmd) ? _t2d_set(t, point, angle) :
+    is_string(cmd) ? _t2d_cmd(t, cmd, point, angle, leng) :
                      _t2d_cmds(t, cmd) ;
