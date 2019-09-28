@@ -1,5 +1,4 @@
-include <line2d.scad>;
-include <polyline2d.scad>;
+include <hull_polyline2d.scad>;
 include <turtle/t2d.scad>;
 
 side_leng = 100;
@@ -8,7 +7,7 @@ thickness = 0.5;
 
 sierpinski_triangle(
     t2d(point = [0, 0], angle = 0),
-    side_leng, min_leng, thickness, $fn = 12
+    side_leng, min_leng, thickness, $fn = 3
 );
 
 module triangle(t, side_leng, thickness) {    
@@ -18,12 +17,10 @@ module triangle(t, side_leng, thickness) {
         ["forward", side_leng]
     ]);
 
-    polyline2d([
-        t2d(t, "point"),
-        t2d(t2, "point"),
-        t2d(t3, "point"),
-        t2d(t, "point")
-    ], thickness, startingStyle = "CAP_ROUND", endingStyle =  "CAP_ROUND");
+    hull_polyline2d(
+        [for(tu = [t, t2, t3, t]) t2d(tu, "point")], 
+        thickness
+    );
 }
 
 module sierpinski_triangle(t, side_leng, min_leng, thickness) {
