@@ -1,56 +1,38 @@
 include <line2d.scad>;
+include <polyline2d.scad>;
 include <turtle/turtle2d.scad>;
 
-module triangle(t, side_leng, width) {    
-    $fn = 48;
-    angle = 120; 
-    t_p1 = turtle2d("forward", t, side_leng);          
-    line2d(
-        turtle2d("pt", t), turtle2d("pt", t_p1), 
-        width, p1Style = "CAP_ROUND", p2Style =  "CAP_ROUND"
-    );    
+side_len = 100;
+min_len = 4;
+thickness = 0.5; 
 
-    t_p2 = turtle2d("forward", turtle2d("turn", t_p1, angle), side_leng);  
-    line2d(
-        turtle2d("pt", t_p1), turtle2d("pt", t_p2), 
-        width, p1Style = "CAP_ROUND", p2Style =  "CAP_ROUND"
-    ); 
+sierpinski_triangle(
+    turtle2d("create", 0, 0, 0), 
+    side_len, min_len, thickness, $fn = 12
+);
 
-    t_p3 = turtle2d("forward", turtle2d("turn", t_p2, angle), side_leng);   
-    line2d(
-        turtle2d("pt", t_p2), turtle2d("pt", t_p3), 
-        width, p1Style = "CAP_ROUND", p2Style =  "CAP_ROUND"
-    );  
+module triangle(t, side_leng, thickness) {    
+    t2 = turtle2d("forward", t, side_leng);   
+    t3 = turtle2d("forward", turtle2d("turn", t2, 120), side_leng);  
+
+    polyline2d([
+        turtle2d("pt", t),
+        turtle2d("pt", t2),
+        turtle2d("pt", t3),
+        turtle2d("pt", t)
+    ], thickness, startingStyle = "CAP_ROUND", endingStyle =  "CAP_ROUND");
 }
 
-module two_triangles(t, side_len, len_limit, width) {
-    angle = 60;
-    triangle(t, side_len, width);
-    next_t = turtle2d("turn", turtle2d("forward", t, side_len / 2), angle); 
-    triangle(next_t, side_len / 2, width);
-}
+module sierpinski_triangle(t, side_len, min_len, thickness) {
+    triangle(t, side_len, thickness);
 
-module sierpinski_triangle(t, side_len, len_limit, width) {
-    if(side_len >= len_limit) {
-        two_triangles(t, side_len, len_limit, width);
-
-        sierpinski_triangle(t, side_len / 2, len_limit, width);
-
-        sierpinski_triangle(
-            turtle2d("forward", t, side_len / 2), 
-            side_len / 2, len_limit, width
-        );
-
-        sierpinski_triangle(
-            turtle2d("turn", turtle2d("forward", turtle2d("turn", t, 60), side_len / 2), -60), 
-            side_len / 2, len_limit, width
-        );
+    if(side_len >= min_len) {
+        half_len = side_len / 2;
+        t2 = turtle2d("forward", t, half_len);
+        t3 = turtle2d("turn", turtle2d("forward", turtle2d("turn", t, 60), half_len), -60);
+        for(turtle = [t, t2, t3]) {
+            sierpinski_triangle(turtle, half_len, min_len, thickness);
+        }
+        sierpinski_triangle(t3, half_len, min_len, thickness);
     }
 }
-
-side_len = 150;
-len_limit = 4;
-width = 0.5;
-t = turtle2d("create", 0, 0, 0);
-
-sierpinski_triangle(t, side_len, len_limit, width);
