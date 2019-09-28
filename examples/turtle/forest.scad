@@ -29,11 +29,14 @@ module forest(trunk_angle, max_trunk_length, min_trunk_length, style = "TREES", 
         if (length > min_trunk_length) {
 		    // baseline
 			if(style != "INVERTED") {
-				p = t2d(t, [
-					["forward", length],
-					["point"]
-				]);
-			    line2d(t[0], p, width);
+			    line2d(
+					t[0], 
+					t2d(t, [
+						["forward", length],
+						["point"]
+					]), 
+					width
+				);
 			} else {
 			    inverted_trunk(t, length);
 			}
