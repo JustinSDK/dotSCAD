@@ -26,13 +26,12 @@ module triangle(t, side_leng, thickness) {
 module sierpinski_triangle(t, side_len, min_len, thickness) {
     triangle(t, side_len, thickness);
 
-    if(side_len >= min_len) {
+    if(side_len >= min_len) { 
         half_len = side_len / 2;
         t2 = turtle2d("forward", t, half_len);
         t3 = turtle2d("turn", turtle2d("forward", turtle2d("turn", t, 60), half_len), -60);
         for(turtle = [t, t2, t3]) {
             sierpinski_triangle(turtle, half_len, min_len, thickness);
         }
-        sierpinski_triangle(t3, half_len, min_len, thickness);
     }
 }
