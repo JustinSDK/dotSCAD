@@ -44,6 +44,39 @@ An implementation of Turtle Graphics with Fluent API. It moves on the xy plane. 
 	    width = 1
 	);
 
+	The code below creates the same drawing.
+
+	include <line2d.scad>;
+	include <turtle/t2d.scad>;
+
+	module turtle_spiral(t, times, side_leng, angle, width) {
+		$fn = 24;
+		if(times != 0) {
+			t1 = t2d(t, [
+				["turn", angle],
+				["forward", side_leng]
+			]);
+			
+			line2d(
+				t2d(t, "point"),
+				t2d(t1, "point"),
+				width,
+				p1Style = "CAP_ROUND", 
+				p2Style =  "CAP_ROUND"
+			);
+
+			turtle_spiral(t1, times - 1, side_leng, angle, width);
+		}
+	}
+
+	turtle_spiral(
+		t2d(point = [0, 0], angle = 0), 
+		times = 5, 
+		side_leng = 10, 
+		angle = 144, 
+		width = 1
+	);	 
+
 ![t2d](images/lib2-t2d-1.JPG)
 	
 	include <hull_polyline2d.scad>;
