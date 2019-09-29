@@ -13,8 +13,8 @@ k2 = 0.3;
 
 module fern_leaf(t, leng, min_leng, k1, k2, width) {
     t1 = t2d(t, "forward", leng = leng);
-    
     hull_polyline2d([t2d(t, "point"), t2d(t1, "point")], width);
+    
     if(leng > min_leng) {
         fern_leaf(
             t2d(t1, "turn", angle = 70), 
