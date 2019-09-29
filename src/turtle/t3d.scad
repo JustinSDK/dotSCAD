@@ -38,7 +38,6 @@ function _t3d_ptPlus(pt1, pt2) =
         _t3d_z(pt1) + _t3d_z(pt2)
     );
 
-
 function _t3d_pt(turtle) = turtle[0];
 function _t3d_unit_vts(turtle) = turtle[1];
 
