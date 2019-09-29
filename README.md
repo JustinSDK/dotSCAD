@@ -147,6 +147,8 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 - Turtle
     - [turtle/turtle2d](https://openhome.cc/eGossip/OpenSCAD/lib2-turtle2d.html)
     - [turtle/turtle3d](https://openhome.cc/eGossip/OpenSCAD/lib2-turtle3d.html)
+    - [turtle/t2d](https://openhome.cc/eGossip/OpenSCAD/lib2-t2d.html) (2.1 preview)
+    - [turtle/t3d](https://openhome.cc/eGossip/OpenSCAD/lib2-t3d.html) (2.1 preview)
 
 - Pixel
     - [pixel/px_line](https://openhome.cc/eGossip/OpenSCAD/lib2-px_line.html)
@@ -162,6 +164,7 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 - Part
     - [part/connector_peg](https://openhome.cc/eGossip/OpenSCAD/lib2-connector_peg.html) (2.1 preview)
 	- [part/cone](https://openhome.cc/eGossip/OpenSCAD/lib2-cone.html) (2.1 preview)
+	- [part/joint_T](https://openhome.cc/eGossip/OpenSCAD/lib2-joint_T.html) (2.1 preview)
 
 ## Bugs and Feedback
 
