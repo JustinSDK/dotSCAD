@@ -1,30 +1,31 @@
-include <turtle/turtle3d.scad>;
 include <line3d.scad>;
+
+include <turtle/t3d.scad>;
 
 module tree(t, leng, leng_scale1, leng_scale2, leng_limit, 
             angleZ, angleX, width) {
     if(leng > leng_limit) {
-        t2 = turtle3d("xu_move", t, leng);
+        t2 = t3d(t, "xforward", leng = leng);
 
         line3d(
-            turtle3d("pt", t), turtle3d("pt", t2), 
+            t3d(t, "point"), t3d(t2, "point"), 
             width);
 
         tree(
-            turtle3d("zu_turn", t2, angleZ),
+            t3d(t2, "zturn", angle = angleZ),
             leng * leng_scale1, leng_scale1, leng_scale2, leng_limit, 
             angleZ, angleX, 
             width);
 
         tree(
-            turtle3d("xu_turn", t2, angleX), 
+            t3d(t2, "xturn", angle = angleX), 
             leng * leng_scale2, leng_scale1, leng_scale2, leng_limit, 
             angleZ, angleX, 
             width);
     }    
 }
 
-leng = 100;
+leng = 20;
 leng_limit = 1;
 leng_scale1 = 0.4;
 leng_scale2 = 0.9;
@@ -32,7 +33,7 @@ angleZ = 60;
 angleX = 135;
 width = 2;
 
-t = turtle3d("create");
+t = t3d();
 
 tree(t, leng, leng_scale1, leng_scale2, leng_limit, 
      angleZ, angleX, width);
