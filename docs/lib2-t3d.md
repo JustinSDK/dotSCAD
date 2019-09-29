@@ -12,8 +12,8 @@ For more details, please see [3D turtle graphics](https://openhome.cc/eGossip/Op
     - Given a list: `[[cmd1, value], [cmd2, value2], ...]`. For example, `[["xforward", 10], ["zturn", 120]]` will forward a turtle 10mm along the x axis and turn it 120 degrees around the z axis from your viewpoint. 
 - `point` : Set the position of a turtle.
 - `unit_vectors` : Set the unit vectors of a turtle.
-- `angle` : Set the angle of a turtle if `cmd` is not provided. Turn a turtle if `cmd` is `"turn"`. 
-- `leng` : Forward a turtle if `cmd` is `"forward"`.
+- `angle` : Set the angle of a turtle if `cmd` is not provided. Turn a turtle if `cmd` is `"xturn"`, `"yturn"` or `"zturn"`. 
+- `leng` : Forward a turtle if `cmd` is `"xforward"`, `"yforward"` or `"zforward"`.
 
 ## Examples
 	    
