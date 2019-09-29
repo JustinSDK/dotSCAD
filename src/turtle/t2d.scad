@@ -68,4 +68,4 @@ function t2d(t, cmd, point, angle, leng) =
     is_undef(t) ? _t2d_turtle(point, angle) : 
     is_undef(cmd) ? _t2d_set(t, point, angle) :
     is_string(cmd) ? _t2d_cmd(t, cmd, point, angle, leng) :
-                     _t2d_cmds(t, cmd) ;
+                     _t2d_cmds(t, cmd);
