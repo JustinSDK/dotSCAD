@@ -1,3 +1,13 @@
+/**
+* joint_T.scad
+*
+* @copyright Justin Lin, 2019
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2-joint_T.html
+*
+**/ 
+
 module joint_T(shaft_r, shaft_h, t_leng, thickness, spacing = 0.5, center = false) {
     ring_r = shaft_r + spacing + thickness;
     module joint_ring() {
