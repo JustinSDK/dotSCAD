@@ -81,6 +81,8 @@ include <matrix/m_shearing.scad>;
 include <matrix/m_translation.scad>;
 include <turtle/turtle2d.scad>;
 include <turtle/turtle3d.scad>;
+include <turtle/t2d.scad>;
+include <turtle/t3d.scad>;
 include <pixel/px_line.scad>;
 include <pixel/px_polyline.scad>;
 include <pixel/px_circle.scad>;
