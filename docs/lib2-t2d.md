@@ -1,14 +1,14 @@
 # t2d
 
-An implementation of Turtle Graphics with Fluent API. It moves on the xy plane. You can get the cooridinate `[x, y]` or `angle` of its current position.
+An implementation of Turtle Graphics with Fluent API. It moves on the xy plane. You can get the cooridinate `[x, y]` or `angle` of its current position. 
 
 ## Parameters
 
-- `t` : The data of a turtle. If it's ignored, `t2d` creates a new turtle.
+- `t` : The data of a turtle. `t2d()` with no arguments will return a turtle with the point `[0, 0]` and the angle `0`.
 - `cmd` : It accepts a string or a list of commands. 
     - Given a string: `"turn"`, `"forward"`, `"point"` or `"angle"`. If `"turn"` is provided, the `angle` parameter is required. If `"forward"` is provided, `leng` is required. `"point"` and `"angle"` are used to get respective data from a turtle.
     - Given a list: `[[cmd1, value], [cmd2, value2], ...]`. For example, `[["forward", 10], ["turn", 120]]` will forward a turtle 10mm and turn it 120 degrees. 
-- `point` : Set the position of a turtle.
+- `point` : Set the position of a turtle. 
 - `angle` : Set the angle of a turtle if `cmd` is not provided. Turn a turtle if `cmd` is `"turn"`. 
 - `leng` : Forward a turtle if `cmd` is `"forward"`.
 
