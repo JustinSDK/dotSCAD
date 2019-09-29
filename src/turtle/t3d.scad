@@ -169,8 +169,4 @@ function t3d(t, cmd, point, unit_vectors, leng, angle) =
     is_undef(t) ? _t3d_create(point, unit_vectors) :
     is_undef(cmd) ? _t3d_set(t, point, unit_vectors) :
     is_string(cmd) ? _t3d_cmd(t, cmd, point, unit_vectors, leng, angle) :
-                     _t2d_cmds(t, cmd);
-    // is_undef(t) ? _t3d_create(point, angle) : 
-    // is_undef(cmd) ? _t2d_set(t, point, angle) :
-    // is_string(cmd) ? _t2d_cmd(t, cmd, point, angle, leng) :
-    //                  _t2d_cmds(t, cmd) ;
+                     _t3d_cmds(t, cmd);
