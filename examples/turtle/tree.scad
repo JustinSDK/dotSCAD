@@ -32,7 +32,7 @@ angleZ = 60;
 angleX = 135;
 width = 2;
 
-t = t3d();
+t = t3d(point = [0, 0, 0]);
 
 tree(t, leng, leng_scale1, leng_scale2, leng_limit, 
      angleZ, angleX, width);
