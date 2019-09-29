@@ -44,7 +44,7 @@ An implementation of Turtle Graphics with Fluent API. It moves on the xy plane. 
 	    width = 1
 	);
 
-	The code below creates the same drawing.
+The code below creates the same drawing.
 
 	include <line2d.scad>;
 	include <turtle/t2d.scad>;
