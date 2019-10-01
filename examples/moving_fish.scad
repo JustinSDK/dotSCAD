@@ -2,7 +2,7 @@ include <hollow_out.scad>;
 include <archimedean_spiral.scad>;
 
 head_size = 26;
-segments = 3; 
+segments = 99; 
 thickness = 3; 
 spacing = 0.65;
 
