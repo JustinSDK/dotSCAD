@@ -1,6 +1,6 @@
 # Dogfooding Examples
 
-These examples incubate dotSCAD and dotSCAD refactors them.
+These examples incubate dotSCAD and dotSCAD refactors these examples.
 
 - [Gallery](https://www.myminifactory.com/users/JustinSDK)
 
