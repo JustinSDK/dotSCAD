@@ -2,7 +2,7 @@
 
 An implementation of Turtle Graphics with Fluent API. It moves on the xy plane. You can get the cooridinate `[x, y]` or `angle` of its current position. 
 
-**Since: 2.1**
+**Since:** 2.1
 
 ## Parameters
 
