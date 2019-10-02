@@ -5921,11 +5921,16 @@ function __edge_r_end(orig_r, a, a_step, n) =
 *
 **/
 
-module box_extrude(height, shell_thickness, offset_mode = "delta", chamfer = false) {
-    linear_extrude(shell_thickness)
+module box_extrude(height, shell_thickness, 
+                   offset_mode = "delta", chamfer = false, 
+                   twist, slices, scale) {
+                       
+    linear_extrude(shell_thickness, scale = scale / height * shell_thickness)
+    offset(delta = -shell_thickness * 0.99999, chamfer = chamfer) 
         children();
-        
-    linear_extrude(height) 
+   
+
+    linear_extrude(height, twist = twist, slices = slices, scale = scale) 
         difference() {
             children();
             if(offset_mode == "delta") {
@@ -5936,9 +5941,7 @@ module box_extrude(height, shell_thickness, offset_mode = "delta", chamfer = fal
                     children(); 
             } 
         }    
-}
-
-    
+}   
 
 /**
 * archimedean_spiral_extrude.scad
