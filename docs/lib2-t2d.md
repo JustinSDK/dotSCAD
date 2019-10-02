@@ -2,6 +2,8 @@
 
 An implementation of Turtle Graphics with Fluent API. It moves on the xy plane. You can get the cooridinate `[x, y]` or `angle` of its current position. 
 
+**Since: 2.1**
+
 ## Parameters
 
 - `t` : The data of a turtle. `t2d()` with no arguments will return a turtle with the point `[0, 0]` and the angle `0`.

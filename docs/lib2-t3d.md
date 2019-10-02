@@ -4,6 +4,8 @@ An implementation of 3D Turtle Graphics with Fluent API. When using the function
 
 For more details, please see [3D turtle graphics](https://openhome.cc/eGossip/OpenSCAD/3DTurtleGraphics.html). 
 
+**Since: 2.1**
+
 ## Parameters
 
 - `t` : The data of a turtle. `t3d()` with no arguments will return a turtle with the point `[0, 0, 0]` and the unit vectors `[[1, 0, 0], [0, 1, 0], [0, 0, 1]]`.
