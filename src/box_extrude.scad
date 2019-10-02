@@ -13,7 +13,7 @@ module box_extrude(height, shell_thickness,
                    twist, slices, scale) {
                        
     linear_extrude(shell_thickness, scale = scale / height * shell_thickness)
-    offset(delta = -shell_thickness * 1.00001, chamfer = chamfer) 
+    offset(delta = -shell_thickness * 0.99999, chamfer = chamfer) 
         children();
    
 
