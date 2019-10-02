@@ -8,11 +8,16 @@
 *
 **/
 
-module box_extrude(height, shell_thickness, offset_mode = "delta", chamfer = false) {
+module box_extrude(height, shell_thickness, 
+                   offset_mode = "delta", chamfer = false, 
+                   twist, slices, scale) {
+                       
     linear_extrude(shell_thickness)
+    offset(delta = -shell_thickness, chamfer = chamfer) 
         children();
-        
-    linear_extrude(height) 
+   
+
+    linear_extrude(height, twist = twist, slices = slices, scale = scale) 
         difference() {
             children();
             if(offset_mode == "delta") {
