@@ -1,4 +1,4 @@
-include <hollow_out.scad>;
+include <box_extrude.scad>;
 
 /* [Basic] */
 
@@ -15,38 +15,29 @@ twist = 180;
 
 slices = 200;
    
-module twist_bottle(model, height, thickness, twist, spacing, convexity, slices) {
+module twist_bottle(model, height, thickness, twist, spacing, slices) {
     $fn = 48;
     
-    module outer_container() {
-        translate([0, 0, thickness])
-        linear_extrude(height = height, twist = twist, slices = slices) 
-            hollow_out(thickness) children();
-                
-        linear_extrude(thickness) 
-            children();    
+    module bottle() {
+        box_extrude(height = height + thickness, shell_thickness = thickness, twist = twist, slices = slices)
+            children(); 
     }
     
     module inner_container() {
-        linear_extrude(height = height, twist = twist, slices = slices) 
-            hollow_out(thickness) 
-                offset(r = -thickness - spacing) 
-                    children();                
-        
-        translate([0, 0, height]) 
-        rotate(twist) 
+        bottle()
+        offset(r = -thickness - spacing)     
+            children();
+
         linear_extrude(thickness) 
-            children();      
+            children();          
     }
     
     if(model == "Outer") {
-        outer_container() 
+        bottle() 
             children();
     } else if(model == "Inner") {
-        translate([0, 0, height + thickness])
-        rotate([180, 0, 0]) 
         inner_container() 
-            children();
+            children();      
     }
 } 
 
@@ -77,7 +68,8 @@ module heart(radius, center = false) {
 }
 
 if(shape == "Flower") {
-    twist_bottle(model, height, thickness, twist, spacing, slices) union() {
+    twist_bottle(model, height, thickness, twist, spacing, slices) 
+    union() {
         for(i = [0:3]) {
             rotate(90 * i) 
             translate([radius * 0.5, 0, 0]) 
