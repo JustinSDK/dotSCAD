@@ -73,6 +73,7 @@ include <util/reverse.scad>;
 include <util/slice.scad>;
 include <util/sort.scad>;
 include <util/rand.scad>;
+include <util/fibseq.scad>;
 include <matrix/m_cumulate.scad>;
 include <matrix/m_mirror.scad>;
 include <matrix/m_rotation.scad>;
