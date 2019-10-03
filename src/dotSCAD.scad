@@ -1361,6 +1361,7 @@ function bijection_offset(pts, d, epsilon = 0.0001) =
         last_p = __line_intersection(offset_es[leng_minus_one], offset_es[0], epsilon)
     )
     concat(
+        last_p != [] && last_p == last_p ? [last_p] : [],
         [
             for(i = 0; i < leng_minus_one; i = i + 1)
             let(
@@ -1370,8 +1371,7 @@ function bijection_offset(pts, d, epsilon = 0.0001) =
             )
             // p == p to avoid [nan, nan], because [nan, nan] != [nan, nan]
             if(p != [] && p == p) p
-        ],
-        last_p != [] && last_p == last_p ? [last_p] : []
+        ]
     );
     
 
