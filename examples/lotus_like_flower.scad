@@ -38,7 +38,7 @@ module petals(fibseq, i = 0) {
 module lotus_like_flower(spirals, petals_per_spiral) {
     step_angle = 360 / spirals;
 
-    fibseq = fibonacci_sequence(1, petals_per_spiral + 1);
+    fibseq = fibseq(1, petals_per_spiral + 1);
     
     for(i = [0:spirals - 1]) { 
         rotate(i * step_angle)

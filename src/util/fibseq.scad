@@ -8,7 +8,7 @@ function _fibonacci_sequence(seq, n, i = 2) =
         i + 1
     );   
 
-function fibonacci_sequence(from, to) =
+function fibseq(from, to) =
     let(f = __fast_fibonacci(from))
     from == to ? [f] : 
     _fibonacci_sequence(
