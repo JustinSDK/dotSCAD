@@ -8,6 +8,8 @@
 *
 **/ 
 
+include <__comm__/__fast_fibonacci.scad>;
+
 function _fast_fibonacci_sub(nth) = 
     let(
         _f = _fast_fibonacci_2_elems(floor(nth / 2)),
@@ -31,8 +33,8 @@ function _remove_same_pts(pts1, pts2) =
 
 function _golden_spiral_from_ls_or_eql_to(from, to, point_distance, rt_dir) = 
     let(
-        f1 = _fast_fibonacci(from),
-        f2 = _fast_fibonacci(from + 1),
+        f1 = __fast_fibonacci(from),
+        f2 = __fast_fibonacci(from + 1),
         fn = floor(f1 * 6.28312 / point_distance), 
         $fn = fn + 4 - (fn % 4),
         circle_pts = circle_path(radius = f1, n = $fn / 4 + 1),
