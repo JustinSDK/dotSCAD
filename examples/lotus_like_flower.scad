@@ -1,3 +1,8 @@
+include <rotate_p.scad>;
+include <cross_sections.scad>;
+include <polysections.scad>;
+include <ring_extrude.scad>;
+include <crystal_ball.scad>;
 include <util/fibseq.scad>;
 
 spirals = 10;
@@ -7,10 +12,12 @@ module petal(radius, thickness) {
 	translate([-radius * 1.5, 0, radius * 2]) 
     rotate([90, 120, 90]) 
     intersection() {
-		difference() {
-			sphere(radius * 2);
-			sphere(radius * 2 - thickness);
-		}
+        crystal_ball(
+            radius = radius * 2, 
+            theta = 360,
+            phi = 90,
+            thickness = thickness
+        );
 
 		linear_extrude(radius * 5) hull() {
 			translate([radius * 1.25, 0, 0]) circle(radius / 3);
@@ -52,11 +59,11 @@ module lotus_like_flower(spirals, petals_per_spiral) {
         sphere(1);
 	
     translate([0, 0, -fib_diff * 2.25]) 
-    difference() {
-		sphere(fib_diff);
-		translate([-fib_diff, -fib_diff, -fib_diff * 2]) 
-            cube(fib_diff * 2);
-	}
+    crystal_ball(
+        radius = fib_diff, 
+        theta = 360,
+        phi = 90
+    );    
 }
 
 lotus_like_flower(spirals, petals_per_spiral + 1, $fn = 24);
