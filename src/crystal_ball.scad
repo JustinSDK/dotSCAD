@@ -9,6 +9,11 @@
 **/ 
 
 include <__comm__/__nearest_multiple_of_4.scad>;
+include <__comm__/__frags.scad>;
+include <__comm__/__ra_to_xy.scad>;
+include <__comm__/__edge_r.scad>;
+include <__comm__/__shape_pie.scad>;
+include <__comm__/__shape_arc.scad>;
 
 module crystal_ball(radius, theta = 360, phi = 180, thickness) {
     phis = is_num(phi) ? [0, phi] : phi;
@@ -18,12 +23,12 @@ module crystal_ball(radius, theta = 360, phi = 180, thickness) {
     angle  = [90 - phis[1], 90 - phis[0]];
 
     shape_pts = is_undef(thickness) ? 
-        shape_pie(
+        __shape_pie(
             radius, 
             angle , 
             $fn = __nearest_multiple_of_4(frags)
         ) :
-        shape_arc(
+        __shape_arc(
             radius, 
             angle, 
             width = thickness,
