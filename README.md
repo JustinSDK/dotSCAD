@@ -135,6 +135,7 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 	- [util/slice](https://openhome.cc/eGossip/OpenSCAD/lib2-slice.html)
 	- [util/sort](https://openhome.cc/eGossip/OpenSCAD/lib2-sort.html)
 	- [util/rand](https://openhome.cc/eGossip/OpenSCAD/lib2-rand.html) (2.1 preview)
+	- [util/fibseq](https://openhome.cc/eGossip/OpenSCAD/lib2-fibseq.html) (2.1 preview)	
 
 - Matrix
 	- [matrix/m_cumulate](https://openhome.cc/eGossip/OpenSCAD/lib2-m_cumulate.html)	
