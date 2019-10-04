@@ -1,3 +1,13 @@
+/**
+* fibseq.scad
+*
+* @copyright Justin Lin, 2019
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2-fibseq.html
+*
+**/ 
+
 include <__comm__/__fast_fibonacci.scad>;
 
 function _fibonacci_sequence(seq, n, i = 2) =
