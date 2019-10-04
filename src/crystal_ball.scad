@@ -10,16 +10,26 @@
 
 include <__comm__/__nearest_multiple_of_4.scad>;
 
-module crystal_ball(radius, theta = 360, phi = 180) {
+module crystal_ball(radius, theta = 360, phi = 180, thickness) {
     phis = is_num(phi) ? [0, phi] : phi;
     
     frags = __frags(radius);
 
-    shape_pts = shape_pie(
-        radius, 
-        [90 - phis[1], 90 - phis[0]], 
-        $fn = __nearest_multiple_of_4(frags)
-    );
+    angle  = [90 - phis[1], 90 - phis[0]];
+
+    shape_pts = is_undef(thickness) ? 
+        shape_pie(
+            radius, 
+            angle , 
+            $fn = __nearest_multiple_of_4(frags)
+        ) :
+        shape_arc(
+            radius, 
+            angle, 
+            width = thickness,
+            width_mode = "LINE_INWARD",
+            $fn = __nearest_multiple_of_4(frags)
+        );
 
     ring_extrude(
         shape_pts, 
