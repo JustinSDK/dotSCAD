@@ -17,7 +17,6 @@ Uses spherical coordinate system to create a crystal ball.
 	include <cross_sections.scad>;
 	include <polysections.scad>;
 	include <ring_extrude.scad>;
-	include <shape_pie.scad>;
 	include <crystal_ball.scad>;
 	
 	crystal_ball(radius = 6);
