@@ -6337,3 +6337,13 @@ function torus_knot(p, q, phi_step) =
         [x, y, z]
     ];
 
+
+    
+/**
+ * The dotSCAD library
+ * @copyright Justin Lin, 2017
+ * @license https://opensource.org/licenses/lgpl-3.0.html
+ *
+ * @see https://github.com/JustinSDK/dotSCAD
+*/
+
