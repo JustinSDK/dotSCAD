@@ -12,8 +12,13 @@ module cat_corner_protector(radius) {
         rotate([45, -90, 0]) 
         translate([0, 0, -radius]) 
         intersection() {
-            crystal_ball(radius = radius, thickness = 1);
-            
+			crystal_ball(
+				radius = radius, 
+				theta = 360,
+				phi = 90,
+				thickness = 1
+			);
+
 			linear_extrude(radius * 1.5) 
             hull() {
 		        translate([radius * 0.4, 0, 0]) 
