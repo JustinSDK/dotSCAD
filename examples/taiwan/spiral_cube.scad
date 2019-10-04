@@ -1,7 +1,13 @@
+include <rotate_p.scad>;
+include <cross_sections.scad>;
+include <polysections.scad>;
+include <ring_extrude.scad>;
+include <crystal_ball.scad>;
+
 leng = 30;
 leng_diff = 3;
 min_leng = 2;
-model = "Cube"; // [Cube, Base]
+model = "Base"; // [Cube, Base]
 
 module spiral_cube(leng, leng_diff, min_leng) {
     thickness = leng_diff / 3;
@@ -65,13 +71,11 @@ module base(leng) {
     $fn = 96;
     r = leng / 3;
     difference() {
-        difference() {
-            sphere(r);
-
-            translate([0, 0, -r]) 
-            linear_extrude(r) 
-                square(r * 2, center = true);
-        }
+        crystal_ball(
+            radius = r, 
+            theta = 360,
+            phi = 90
+        ); 
         translate([0, 0, leng * sqrt(3) / 2 + leng / 15]) 
         rotate([45, atan2(1, sqrt(2)), 0]) 
             cube(leng * 0.99, center = true);
