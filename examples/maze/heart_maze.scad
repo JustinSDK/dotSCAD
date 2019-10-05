@@ -2,15 +2,16 @@ include <line2d.scad>;
 include <hollow_out.scad>;
 include <square_maze.scad>;
 include <ellipse_extrude.scad>;
-
-// only for creating a small maze
+include <arc.scad>;
 
 radius_of_heart = 15;
+height_of_heart = 25;
+tip_r_of_heart = 5;
 wall_thickness = 2;
-wall_height = 1;
 cblocks = 6;
 levels = 3;
-semi_minor_axis = 15;
+
+$fn = 36;
 
 module heart(radius, tip_r) {
     offset_h = 0.410927 * radius;
@@ -48,17 +49,22 @@ module ring_heart_sector(radius, angle, thickness, width) {
 module heart_to_heart_wall(radius, length, angle, thickness) {
     intersection() {
         difference() {
-            heart(radius + 1 + length , 5);
-            heart(radius + 1, 5);
+            heart(radius + thickness / 2 + length , 5);
+            heart(radius + thickness / 2, 5);
 	    }
 	    rotate([0, 0, angle]) 
             line2d([0, 0], [0, (radius + length) * 2 + thickness], thickness);
 	}
 }
 
-module heart_maze(maze, radius, cblocks, levels, thickness = 1) {    
+module heart_maze(radius, cblocks, levels, thickness = 1) {    
     arc_angle = 360 / cblocks;
 	r = radius / (levels + 1);
+
+	maze = go_maze(1, 1, 
+		starting_maze(cblocks, levels),
+		cblocks, levels, y_circular = true
+	);
 
 	difference() {
 		render() union() {
@@ -81,9 +87,6 @@ module heart_maze(maze, radius, cblocks, levels, thickness = 1) {
 	    }
 		
 		render() union() {
-		    // maze entry
-			// ring_heart_sector(r, arc_angle / 1.975 , thickness, r / 3);   
-
 	        // road to the next level
 			for(i = [0:len(maze) - 1]) { 
 				block = maze[i];
@@ -98,14 +101,20 @@ module heart_maze(maze, radius, cblocks, levels, thickness = 1) {
 	}
 }
 
-maze = go_maze(1, 1, 
-	starting_maze(cblocks, levels),
-	cblocks, levels, y_circular = true
-);
+intersection() {
+	union() {
+		ellipse_extrude(height_of_heart / 2) 
+			heart(radius_of_heart + wall_thickness , tip_r_of_heart);		
 
-ellipse_extrude(semi_minor_axis, 10) 
-    heart_maze(maze, radius_of_heart, cblocks, levels, wall_thickness); 			
+		mirror([0, 0, 1]) 
+		ellipse_extrude(height_of_heart / 2) 
+			heart(radius_of_heart + wall_thickness, tip_r_of_heart); 
+	}
 
-mirror([0, 0, 1]) 
-ellipse_extrude(semi_minor_axis, semi_minor_axis / 3 * 2) 
-    heart_maze(maze, radius_of_heart, cblocks, levels, wall_thickness); 
+	linear_extrude(height_of_heart, center = true) 
+	    heart_maze(radius_of_heart, cblocks, levels, wall_thickness); 	
+}
+
+linear_extrude(wall_thickness * 2, center = true) 
+translate([0, radius_of_heart * 1.25])
+   arc(radius = radius_of_heart / 3, angle = [25, 145], width = wall_thickness);
