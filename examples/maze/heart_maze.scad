@@ -1,6 +1,7 @@
 include <line2d.scad>;
 include <hollow_out.scad>;
 include <square_maze.scad>;
+include <ellipse_extrude.scad>;
 
 // only for creating a small maze
 
@@ -9,6 +10,7 @@ wall_thickness = 2;
 wall_height = 1;
 cblocks = 6;
 levels = 3;
+semi_minor_axis = 15;
 
 module heart(radius, tip_r) {
     offset_h = 0.410927 * radius;
@@ -54,14 +56,9 @@ module heart_to_heart_wall(radius, length, angle, thickness) {
 	}
 }
 
-module heart_maze(radius, cblocks, levels, thickness = 1) {    
+module heart_maze(maze, radius, cblocks, levels, thickness = 1) {    
     arc_angle = 360 / cblocks;
 	r = radius / (levels + 1);
-	
-	maze = go_maze(1, 1, 
-        starting_maze(cblocks, levels),
-        cblocks, levels, y_circular = true
-    );
 
 	difference() {
 		render() union() {
@@ -101,5 +98,14 @@ module heart_maze(radius, cblocks, levels, thickness = 1) {
 	}
 }
 
-linear_extrude(wall_height) 
-    heart_maze(radius_of_heart, cblocks, levels, wall_thickness); 			
+maze = go_maze(1, 1, 
+	starting_maze(cblocks, levels),
+	cblocks, levels, y_circular = true
+);
+
+ellipse_extrude(semi_minor_axis, 10) 
+    heart_maze(maze, radius_of_heart, cblocks, levels, wall_thickness); 			
+
+mirror([0, 0, 1]) 
+ellipse_extrude(semi_minor_axis, semi_minor_axis / 3 * 2) 
+    heart_maze(maze, radius_of_heart, cblocks, levels, wall_thickness); 
