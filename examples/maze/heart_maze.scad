@@ -40,9 +40,9 @@ module ring_heart(radius, thickness) {
 
 module ring_heart_sector(radius, angle, thickness, width) {
 	intersection() {
-		ring_heart(radius - 0.1, thickness + 0.2);
+		ring_heart(radius, thickness + 0.2);
 		rotate([0, 0, angle]) 
-            line2d([0, 0], [0, radius * 3 + width], width);
+            line2d([0, 0], [0, radius * 3 + width + thickness], width);
 	}
 }
 
