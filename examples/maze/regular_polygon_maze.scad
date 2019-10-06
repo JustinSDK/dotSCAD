@@ -75,7 +75,7 @@ module regular_polygon_maze(radius, cblocks, levels, thickness = 1, sides) {
 				cc = get_y(block) - 1;   
 				
 				if(no_wall(block) || upper_wall(block)) { 
-				    ring_regular_polygon_sector(r * (cr + 1), (cc + 0.5) * arc_angle , thickness, r / 3 , sides);
+				    ring_regular_polygon_sector(r * (cr + 1), (cc + 0.5) * arc_angle , thickness, thickness * 0.75 , sides);
 				}  
 			}
 		}
