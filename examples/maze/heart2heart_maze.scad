@@ -1,6 +1,6 @@
 use <heart_maze.scad>;
 
-names = ["", ""];
+names = ["Justin", "Monica"];
 font_name = "Arial Black";
 font_size = 8;
 
