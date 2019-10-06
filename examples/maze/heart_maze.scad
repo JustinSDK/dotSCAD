@@ -102,7 +102,7 @@ maze = go_maze(1, 1,
 );
 
 intersection() {
-	*union() {
+	union() {
 		ellipse_extrude(height_of_heart / 2) 
 			heart(radius_of_heart + wall_thickness , tip_r_of_heart);		
 
