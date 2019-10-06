@@ -35,7 +35,7 @@ module heart(radius, tip_r) {
     
 module ring_heart(radius, thickness) {
     hollow_out(thickness) 
-        heart(radius + thickness, 5);
+        heart(radius + thickness / 2, 5);
 }
 
 module ring_heart_sector(radius, angle, thickness, width) {
@@ -117,4 +117,4 @@ intersection() {
 
 linear_extrude(wall_thickness * 2, center = true) 
 translate([0, radius_of_heart * 1.25])
-   arc(radius = radius_of_heart / 3, angle = [25, 145], width = wall_thickness);
+   arc(radius = radius_of_heart / 3, angle = [25, 155], width = wall_thickness);
