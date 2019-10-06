@@ -4,7 +4,7 @@ include <square_maze.scad>;
 include <ellipse_extrude.scad>;
 include <arc.scad>;
 
-radius_of_heart = 15;
+radius_of_heart = 12;
 height_of_heart = 25;
 tip_r_of_heart = 5;
 wall_thickness = 2;
@@ -89,7 +89,7 @@ module heart_maze(maze, radius, cblocks, levels, thickness = 1) {
 				cc = get_y(block) - 1;   
 				
 				if(no_wall(block) || upper_wall(block)) { 
-				    ring_heart_sector(r * (cr + 1), (cc + 0.5) * arc_angle , thickness, r / 3);
+				    ring_heart_sector(r * (cr + 1), (cc + 0.5) * arc_angle , thickness, thickness * 0.75);
 				}  
 			}
 		}
@@ -102,7 +102,7 @@ maze = go_maze(1, 1,
 );
 
 intersection() {
-	union() {
+	*union() {
 		ellipse_extrude(height_of_heart / 2) 
 			heart(radius_of_heart + wall_thickness , tip_r_of_heart);		
 
