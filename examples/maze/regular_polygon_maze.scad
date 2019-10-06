@@ -13,12 +13,12 @@ sides = 3;
     
 module ring_regular_polygon(radius, thickness, sides) {
     hollow_out(thickness) 
-        circle(radius + thickness, $fn = sides);
+        circle(radius + thickness / 2, $fn = sides);
 }
 
 module ring_regular_polygon_sector(radius, angle, thickness, width, sides) {
 	intersection() {
-		ring_regular_polygon(radius - 0.1, thickness + 0.2, sides);
+		ring_regular_polygon(radius, thickness + 0.2, sides);
 		rotate([0, 0, angle]) 
             line2d([0, 0], [0, radius * 3 + width], width);
 	}
