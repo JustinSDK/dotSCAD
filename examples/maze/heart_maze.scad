@@ -57,14 +57,9 @@ module heart_to_heart_wall(radius, length, angle, thickness) {
 	}
 }
 
-module heart_maze(radius, cblocks, levels, thickness = 1) {    
+module heart_maze(maze, radius, cblocks, levels, thickness = 1) {    
     arc_angle = 360 / cblocks;
 	r = radius / (levels + 1);
-
-	maze = go_maze(1, 1, 
-		starting_maze(cblocks, levels),
-		cblocks, levels, y_circular = true
-	);
 
 	difference() {
 		render() union() {
@@ -101,6 +96,11 @@ module heart_maze(radius, cblocks, levels, thickness = 1) {
 	}
 }
 
+maze = go_maze(1, 1, 
+	starting_maze(cblocks, levels),
+	cblocks, levels, y_circular = true
+);
+
 intersection() {
 	union() {
 		ellipse_extrude(height_of_heart / 2) 
@@ -112,7 +112,7 @@ intersection() {
 	}
 
 	linear_extrude(height_of_heart, center = true) 
-	    heart_maze(radius_of_heart, cblocks, levels, wall_thickness); 	
+	    heart_maze(maze, radius_of_heart, cblocks, levels, wall_thickness); 	
 }
 
 linear_extrude(wall_thickness * 2, center = true) 
