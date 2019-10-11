@@ -6,6 +6,7 @@ include <bezier_curve.scad>;
 include <polyline2d.scad>;
 include <line2d.scad>;
 include <rotate_p.scad>;
+include <bspline_curve.scad>;
 
 radius1 = 10;
 radius2 = 20;
@@ -46,36 +47,46 @@ module klein_bottle(radius1, radius2, bottom_height, thickness, t_step, fn) {
         mid_pts = [
             [0, 0, bottom_height + radius1],
             [0, 0, bottom_height + radius1 * 2], 
-            [0, radius1, bottom_height + radius1 * 3],
-            [0, radius1 * 2, bottom_height + radius1 * 3],
-            [0, radius1 * 3, bottom_height + radius1 * 3],
-            [0, radius1 * 4, bottom_height + radius1 * 2],  
-            [0, radius1 * 4, bottom_height + radius1],
-            [0, radius1 * 4, bottom_height], 
-            [0, radius1 * 3, bottom_height - radius1], 
-            [0, radius1 * 2, bottom_height - radius1 * 2], 
-            [0, radius1, bottom_height + half_thickness - radius1 * 3], 
+            [0, radius1, bottom_height + radius1 * 3.5],
+            [0, radius1 * 2.5, bottom_height + radius1 * 3.75],
+            [0, radius1 * 3.5, bottom_height + radius1 * 3.5],
+            [0, radius1 * 4.5, bottom_height + radius1 * 2.5],  
+            [0, radius1 * 4.5, bottom_height + radius1],
+            [0, radius1 * 4.5, bottom_height], 
+            [0, radius1 * 3.5, bottom_height - radius1], 
+            [0, radius1 * 1, bottom_height - radius1 * 2], 
+            [0, radius1 * 0.15, bottom_height + half_thickness - radius1 * 3], 
             [0, 0, bottom_height - radius1 * 4],
             [0, 0, bottom_height - radius1 * 5]
         ];
+        
+        degree = 2;
+        pts_leng = 15;
+        knot_leng = 18;
 
-        tube_path = bezier_curve(
+        knots = concat(
+            [0, 0, 0],
+            [for(i = [1:12]) i / 13],
+            [2, 2, 2]
+        );
+
+        tube_path = bspline_curve(
             t_step, 
+            degree, 
             concat(
                 concat([[0, 0, bottom_height]], mid_pts), 
-                [[0, 0, 0]]
-            )
-        );
+                [[0, 0, -thickness]]
+            ), knots);
 
-        tube_path2 = bezier_curve(
+        tube_path2 = bspline_curve(
             t_step, 
+            degree, 
             concat(
                 concat([[0, 0, bottom_height - thickness]], mid_pts), 
-                [[0, 0, -thickness] ]
-            )
-        );
+                [[0, 0, -thickness * 1.5]]
+            ), knots);
 
-        difference() { 
+    difference() { 
             union() {
                 bottom(); 
 
