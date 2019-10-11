@@ -70,7 +70,7 @@
 		[ 10, 0]
 	];
 
-	// For a clamped B-spline curve, the first knot and the last knot must be of multiplicity degree + 1. 
+	// For a clamped B-spline curve, the first `degree + 1` and the last `degree + 1` knots must be identical.
 	knots = [0, 0, 0, 1, 2, 2, 2];
 
 	color("red") for(p = points) {
