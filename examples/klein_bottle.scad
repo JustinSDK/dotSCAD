@@ -100,9 +100,11 @@ module cutted_klein_bottle(radius1, radius2, bottom_height, thickness, t_step, f
     difference() {
             union() {
                 translate([radius2 + thickness, 0, 0]) 
-                    rotate([0, 90, 0]) klein_bottle(radius1, radius2, bottom_height, thickness, t_step, fn);
+                rotate([0, 90, 0]) 
+                    klein_bottle(radius1, radius2, bottom_height, thickness, t_step, fn);
                 translate([-radius2 - thickness, 0, 0]) 
-                    rotate([0, -90, 0]) klein_bottle(radius1, radius2, bottom_height, thickness, t_step, fn);
+                rotate([0, -90, 0]) 
+                    klein_bottle(radius1, radius2, bottom_height, thickness, t_step, fn);
 
                 
             }
@@ -111,7 +113,7 @@ module cutted_klein_bottle(radius1, radius2, bottom_height, thickness, t_step, f
             w = 2 * h;
             l = bottom_height * 4;
             translate([0, 0, h / 2]) 
-                    cube([l, w, h], center = true);
+                cube([l, w, h], center = true);
         }
 }
 
@@ -120,7 +122,3 @@ if(cut) {
 } else {
     klein_bottle(radius1, radius2, bottom_height, thickness, t_step, fn);
 }
-
-
-
-
