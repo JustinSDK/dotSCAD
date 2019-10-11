@@ -43,8 +43,8 @@ module klein_bottle(radius1, radius2, bottom_height, thickness, t_step, fn) {
     }
 
     module tube() {
-
         mid_pts = [
+            [0, 0, bottom_height + radius1 / 2],
             [0, 0, bottom_height + radius1],
             [0, 0, bottom_height + radius1 * 2], 
             [0, radius1, bottom_height + radius1 * 3.5],
@@ -57,34 +57,24 @@ module klein_bottle(radius1, radius2, bottom_height, thickness, t_step, fn) {
             [0, radius1 * 1, bottom_height - radius1 * 2], 
             [0, radius1 * 0.15, bottom_height + half_thickness - radius1 * 3], 
             [0, 0, bottom_height - radius1 * 4],
-            [0, 0, bottom_height - radius1 * 5]
+            [0, 0, bottom_height - radius1 * 5],
+            [0, 0, bottom_height - radius1 * 6]
         ];
         
         degree = 2;
-        pts_leng = 15;
-        knot_leng = 18;
+        bs_curve = bspline_curve(t_step, degree, mid_pts);
 
-        knots = concat(
-            [0, 0, 0],
-            [for(i = [1:12]) i / 13],
-            [2, 2, 2]
+        tube_path = concat(
+            [[0, 0, bottom_height]],
+            bs_curve,
+            [[0, 0, 0]]
         );
 
-        tube_path = bspline_curve(
-            t_step, 
-            degree, 
-            concat(
-                concat([[0, 0, bottom_height]], mid_pts), 
-                [[0, 0, -thickness]]
-            ), knots);
-
-        tube_path2 = bspline_curve(
-            t_step, 
-            degree, 
-            concat(
-                concat([[0, 0, bottom_height - thickness]], mid_pts), 
-                [[0, 0, -thickness * 1.5]]
-            ), knots);
+        tube_path2 = concat(
+            [[0, 0, bottom_height - thickness]],
+            bs_curve,
+            [[0, 0, -thickness]]
+        );
 
     difference() { 
             union() {
@@ -101,7 +91,6 @@ module klein_bottle(radius1, radius2, bottom_height, thickness, t_step, fn) {
                 tube_path2
             );
         }
-
     }
 
     tube();
