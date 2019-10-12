@@ -8,6 +8,7 @@ module soccer_polyhedron(circumradius, r_offset = 0) {
         pentagon_r = 1.701302;
         pentagon_h = 4.654877;
 
+        color("black")
         translate([0, 0, -pentagon_h - r_off])
         linear_extrude(pentagon_h, scale = 0.01) 
         rotate(-36)
@@ -17,10 +18,12 @@ module soccer_polyhedron(circumradius, r_offset = 0) {
     module hexagonal_pyramid() {
         hexagon_r = 2;
         hexagon_h = 4.534568;
+
+        color("white")
         translate([0, 0, -hexagon_h - r_off])
-                linear_extrude(hexagon_h, scale = 0.001) 
-                rotate(-30)
-                    circle(hexagon_r, $fn = 6);  
+        linear_extrude(hexagon_h, scale = 0.001) 
+        rotate(-30)
+            circle(hexagon_r, $fn = 6);  
     }
 
     module one_component_around_pentagonal_pyramid() {
