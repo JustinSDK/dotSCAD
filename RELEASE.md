@@ -15,8 +15,8 @@
   - [pixel/px_ascii](https://openhome.cc/eGossip/OpenSCAD/lib2-px_ascii.html)
   - [pixel/px_gray](https://openhome.cc/eGossip/OpenSCAD/lib2-px_gray.html)
   - [part/connector_peg](https://openhome.cc/eGossip/OpenSCAD/lib2-connector_peg.html)
-  - [part/corn](https://openhome.cc/eGossip/OpenSCAD/lib2-corn.html)
-  - [part/corn](https://openhome.cc/eGossip/OpenSCAD/lib2-corn.html)
+  - [part/corn](https://openhome.cc/eGossip/OpenSCAD/lib2-cone.html)
+  - [part/joint_T](https://openhome.cc/eGossip/OpenSCAD/lib2-joint_T.html)
   - [turtle/t2d](https://openhome.cc/eGossip/OpenSCAD/lib2-t2d.html)
   - [turtle/t3d](https://openhome.cc/eGossip/OpenSCAD/lib2-t3d.html)  
 
