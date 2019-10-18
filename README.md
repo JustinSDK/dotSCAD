@@ -158,15 +158,15 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 	- [pixel/px_cylinder](https://openhome.cc/eGossip/OpenSCAD/lib2-px_cylinder.html)
 	- [pixel/px_sphere](https://openhome.cc/eGossip/OpenSCAD/lib2-px_sphere.html)
 	- [pixel/px_polygon](https://openhome.cc/eGossip/OpenSCAD/lib2-px_polygon.html)
-	- [pixel/px_from](https://openhome.cc/eGossip/OpenSCAD/lib2-px_from.html) (2.1 preview)
-    - [pixel/px_ascii](https://openhome.cc/eGossip/OpenSCAD/lib2-px_ascii.html) (2.1 preview)
-	- [pixel/px_gray](https://openhome.cc/eGossip/OpenSCAD/lib2-px_gray.html) (2.1 preview)
+	- [pixel/px_from](https://openhome.cc/eGossip/OpenSCAD/lib2-px_from.html)
+    - [pixel/px_ascii](https://openhome.cc/eGossip/OpenSCAD/lib2-px_ascii.html)
+	- [pixel/px_gray](https://openhome.cc/eGossip/OpenSCAD/lib2-px_gray.html)
 
 - Part
-    - [part/connector_peg](https://openhome.cc/eGossip/OpenSCAD/lib2-connector_peg.html) (2.1 preview)
-	- [part/cone](https://openhome.cc/eGossip/OpenSCAD/lib2-cone.html) (2.1 preview)
-	- [part/joint_T](https://openhome.cc/eGossip/OpenSCAD/lib2-joint_T.html) (2.1 preview)
-
+    - [part/connector_peg](https://openhome.cc/eGossip/OpenSCAD/lib2-connector_peg.html)
+	- [part/cone](https://openhome.cc/eGossip/OpenSCAD/lib2-cone.html)
+	- [part/joint_T](https://openhome.cc/eGossip/OpenSCAD/lib2-joint_T.html)
+	
 ## Bugs and Feedback
 
 For bugs, questions and discussions please use the [Github Issues](https://github.com/JustinSDK/dotSCAD/issues).
