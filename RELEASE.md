@@ -1,5 +1,25 @@
 > Version numbers are based on [Semantic Versioning](https://semver.org/).
 
+# v2.1
+- Bugfixes
+  - `bend_extrude`: fix wrong rotation.
+  - `bijection_offset`: fix point order.
+- New parameters.
+  - `box_extrude`: new `twist` parameter.
+  - `crystall_ball`: new `thickness` parameter.
+- New modules and functions.
+  - [bspline_curve](https://openhome.cc/eGossip/OpenSCAD/lib2-bspline_curve.html)
+  - [util/rand](https://openhome.cc/eGossip/OpenSCAD/lib2-rand.html)
+  - [util/fibseq](https://openhome.cc/eGossip/OpenSCAD/lib2-fibseq.html)
+  - [pixel/px_from](https://openhome.cc/eGossip/OpenSCAD/lib2-px_from.html)
+  - [pixel/px_ascii](https://openhome.cc/eGossip/OpenSCAD/lib2-px_ascii.html)
+  - [pixel/px_gray](https://openhome.cc/eGossip/OpenSCAD/lib2-px_gray.html)
+  - [part/connector_peg](https://openhome.cc/eGossip/OpenSCAD/lib2-connector_peg.html)
+  - [part/corn](https://openhome.cc/eGossip/OpenSCAD/lib2-corn.html)
+  - [part/corn](https://openhome.cc/eGossip/OpenSCAD/lib2-corn.html)
+  - [turtle/t2d](https://openhome.cc/eGossip/OpenSCAD/lib2-t2d.html)
+  - [turtle/t3d](https://openhome.cc/eGossip/OpenSCAD/lib2-t3d.html)  
+
 # v2.0
 - Use new features of OpenSCAD-2019.05 to refactor internal implementation.
 - Delete the `log` module which is never used.
