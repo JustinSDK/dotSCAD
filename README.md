@@ -1,4 +1,4 @@
-# dotSCAD 2.0
+# dotSCAD 2.1
 
 > **Reduce the burden of 3D modeling in mathematics.**
 
@@ -88,7 +88,7 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 - Path
     - [arc_path](https://openhome.cc/eGossip/OpenSCAD/lib-arc_path.html)
 	- [circle_path](https://openhome.cc/eGossip/OpenSCAD/lib-circle_path.html)
-    - [bspline_curve](https://openhome.cc/eGossip/OpenSCAD/lib2-bspline_curve.html) (2.1 preview)
+    - [bspline_curve](https://openhome.cc/eGossip/OpenSCAD/lib2-bspline_curve.html)
 	- [bezier_curve](https://openhome.cc/eGossip/OpenSCAD/lib-bezier_curve.html)
 	- [bezier_surface](https://openhome.cc/eGossip/OpenSCAD/lib-bezier_surface.html)
 	- [bezier_smooth](https://openhome.cc/eGossip/OpenSCAD/lib-bezier_smooth.html)
@@ -134,8 +134,8 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
     - [util/reverse](https://openhome.cc/eGossip/OpenSCAD/lib2-reverse.html)
 	- [util/slice](https://openhome.cc/eGossip/OpenSCAD/lib2-slice.html)
 	- [util/sort](https://openhome.cc/eGossip/OpenSCAD/lib2-sort.html)
-	- [util/rand](https://openhome.cc/eGossip/OpenSCAD/lib2-rand.html) (2.1 preview)
-	- [util/fibseq](https://openhome.cc/eGossip/OpenSCAD/lib2-fibseq.html) (2.1 preview)	
+	- [util/rand](https://openhome.cc/eGossip/OpenSCAD/lib2-rand.html)
+	- [util/fibseq](https://openhome.cc/eGossip/OpenSCAD/lib2-fibseq.html)	
 
 - Matrix
 	- [matrix/m_cumulate](https://openhome.cc/eGossip/OpenSCAD/lib2-m_cumulate.html)	
@@ -148,8 +148,8 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 - Turtle
     - [turtle/turtle2d](https://openhome.cc/eGossip/OpenSCAD/lib2-turtle2d.html)
     - [turtle/turtle3d](https://openhome.cc/eGossip/OpenSCAD/lib2-turtle3d.html)
-    - [turtle/t2d](https://openhome.cc/eGossip/OpenSCAD/lib2-t2d.html) (2.1 preview)
-    - [turtle/t3d](https://openhome.cc/eGossip/OpenSCAD/lib2-t3d.html) (2.1 preview)
+    - [turtle/t2d](https://openhome.cc/eGossip/OpenSCAD/lib2-t2d.html)
+    - [turtle/t3d](https://openhome.cc/eGossip/OpenSCAD/lib2-t3d.html)
 
 - Pixel
     - [pixel/px_line](https://openhome.cc/eGossip/OpenSCAD/lib2-px_line.html)
