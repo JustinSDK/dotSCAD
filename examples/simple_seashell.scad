@@ -2,13 +2,15 @@ include <circle_path.scad>;
 include <rotate_p.scad>;
 include <polysections.scad>;
 
-r1 = 15;
+r1 = 0.1;
 r2 = 50;
 
 a1 = 1;
 a2 = 450;
 
 steps = 40;
+
+$fn = 48;
 
 module simple_seashell(r1, r2, a1, a2, steps) {
     rd = (r2 - r1) / steps;
@@ -20,8 +22,10 @@ module simple_seashell(r1, r2, a1, a2, steps) {
             r = r1 + rd * i,
             a = a1 + i * ad
         )
-            [for(p = concat(circle_path(r), circle_path(r * 0.9))) 
-                rotate_p([p[0], p[1], 0] + [r, 0, 0], [0, a, 0])]    
+        [
+            for(p = concat(circle_path(r), circle_path(r * 0.9))) 
+                rotate_p([p[0], p[1], 0] + [r, 0, 0], [0, a, 0])
+        ]    
             
     ];
 
