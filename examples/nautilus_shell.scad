@@ -1,11 +1,7 @@
-include <line2d.scad>;
 include <rotate_p.scad>;
 include <hull_polyline2d.scad>;
 include <bezier_curve.scad>;
 include <ellipse_extrude.scad>;
-
-
-$fn = 24;
 
 chambered_section_max_angle = 300;
 steps = 25;
