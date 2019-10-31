@@ -1,3 +1,17 @@
+include <polysections.scad>;
+include <util/reverse.scad>;
+
+thickness = 0.05;
+
+theta_from = PI * 1.75;
+theta_to = PI * 15;
+theta_step = 0.05;
+
+rf_to = 1;
+rf_step = 0.025;
+
+color("red") rose();
+
 module rose() {
     function phi(theta) =
         (PI / 2) * exp(-theta / (8 * PI));
@@ -40,4 +54,3 @@ module rose() {
     
     polysections(sections);
 }
-
