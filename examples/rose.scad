@@ -27,6 +27,7 @@ module rose() {
         let(angle = phi(theta) * 180 / PI)
         wave(theta) * (rf * sin(angle) + g(rf, theta) * cos(angle));
 
+    sf = 1 + thickness;
     sections = [
         for(theta = [theta_from:theta_step:theta_to])
         let(
@@ -46,7 +47,7 @@ module rose() {
         concat(
             [
                 for(p = path)
-                [p[0] * 1.05, p[1] * 1.05, p[2]] - [0, 0, thickness]
+                [p[0] * sf, p[1] * sf, p[2]] - [0, 0, thickness]
             ],
             reverse(path)
         )
