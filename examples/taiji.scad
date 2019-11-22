@@ -7,7 +7,7 @@ spacing = 0.4;
 fn = 48;
 style = "SOLID"; // [SOLID, HOLLOW]
 
-module half_tai_chi(radius, thickness, spacing, fn, style) {
+module half_taiji(radius, thickness, spacing, fn, style) {
     $fn = fn;
     
     half_spacing = spacing / 2;
@@ -80,6 +80,6 @@ module half_tai_chi(radius, thickness, spacing, fn, style) {
 } 
 
 rotate([0, 90, 180])
-    half_tai_chi(radius, thickness, spacing, fn, style);
+    half_taiji(radius, thickness, spacing, fn, style);
 
-half_tai_chi(radius, thickness, spacing, fn, style);
+half_taiji(radius, thickness, spacing, fn, style);
