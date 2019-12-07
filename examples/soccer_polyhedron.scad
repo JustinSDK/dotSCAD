@@ -10,8 +10,9 @@ module soccer_polyhedron(circumradius, spacing, jigsaw_base = false) {
         pentagon_h = 4.654877;
         
         convex_r = pentagon_r / 5 - s / 2;
-        r_off = s / sin(atan(pentagon_h / pentagon_r)) / cos(36);
-        h_off = s / cos(atan(pentagon_h / pentagon_r));
+
+        r_off = s / 0.759856;
+        h_off = s / 0.343279;
 
         color("black")
         translate([0, 0, -pentagon_h])
@@ -34,8 +35,8 @@ module soccer_polyhedron(circumradius, spacing, jigsaw_base = false) {
         pentagon_r = 1.701302;
         concave_r = pentagon_r / 5 + s / 2;
 
-        r_off = s / sin(atan(hexagon_h / hexagon_r)) / cos(30);
-        h_off = s / cos(atan(hexagon_h / hexagon_r));
+        r_off = s / 0.792377;
+        h_off = s /  0.403548;
 
         color("white")
         translate([0, 0, -hexagon_h])
