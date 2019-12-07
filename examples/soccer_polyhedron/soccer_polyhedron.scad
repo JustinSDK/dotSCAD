@@ -19,6 +19,8 @@ module soccer_polyhedron(circumradius, spacing, jigsaw_base = false, half = fals
         linear_extrude(pentagon_h - h_off, scale = 0.001) 
         rotate(-36) {
             circle(pentagon_r - r_off, $fn = 5);
+
+            // rewrite here if you want to make different convex parts
             if(jigsaw_base) {
                 for(i = [0:4]) {
                     rotate(36 + i * 72)
@@ -44,6 +46,8 @@ module soccer_polyhedron(circumradius, spacing, jigsaw_base = false, half = fals
         rotate(-30) {
             difference() {
                 circle(hexagon_r - r_off, $fn = 6); 
+
+                // rewrite here if you want to make different concave parts
                 if(jigsaw_base) {
                     for(i = [0:2]) {
                         rotate(90 + i * 120)
