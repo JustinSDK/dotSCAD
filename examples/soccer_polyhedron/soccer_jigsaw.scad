@@ -1,15 +1,22 @@
 use <soccer_polyhedron.scad>;
 
+style = "POLYHEDRON"; // [SPHERE, POLYHEDRON]
 r = 30;
 thickness = 2.5;
-spacing = 0.4;
+spacing = 0.3;
 half = true; 
 flat_inner = true;
 
 color("gold")
 intersection() {
     difference() {
-        sphere(r);
+        if(style == "SPHERE") {
+            sphere(r);
+        }
+        else {
+            soccer_polyhedron(r, spacing = 0);
+        }
+
         if(flat_inner) {
             soccer_polyhedron(r - thickness, spacing = 0);
         }
