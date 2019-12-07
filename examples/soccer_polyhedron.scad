@@ -3,7 +3,7 @@ module soccer_polyhedron(circumradius, spacing) {
     a = -37.377368;
     scale_f = 0.201774;
     
-    s = scale_f * spacing * 2;
+    s = scale_f * spacing / 2;
     
     module pentagonal_pyramid() {
         pentagon_r = 1.701302;
@@ -54,6 +54,6 @@ module soccer_polyhedron(circumradius, spacing) {
     }
 }
 
-soccer_polyhedron(10, 0);
+soccer_polyhedron(30, 1);
 %sphere(10, $fn = 48);
   
