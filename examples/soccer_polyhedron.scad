@@ -56,4 +56,3 @@ module soccer_polyhedron(circumradius, spacing) {
 
 soccer_polyhedron(30, 1);
 %sphere(10, $fn = 48);
-  
