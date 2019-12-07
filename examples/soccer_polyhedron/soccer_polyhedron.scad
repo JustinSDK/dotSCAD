@@ -1,4 +1,4 @@
-module soccer_polyhedron(circumradius, spacing, jigsaw_base = false, part = "ALL") {
+module soccer_polyhedron(circumradius, spacing, jigsaw_base = false, half = false) {
     tau = 1.618034;
     a = -37.377368;
     scale_f = 0.201774;
@@ -76,7 +76,7 @@ module soccer_polyhedron(circumradius, spacing, jigsaw_base = false, part = "ALL
 
     scale(scale_f * circumradius) {
         half_soccer_polyhedron();
-        if(part == "ALL") {
+        if(!half) {
             rotate(36)
             mirror([0, 0, 1])
                 half_soccer_polyhedron();    
