@@ -2,8 +2,8 @@ use <soccer_polyhedron.scad>;
 
 style = "POLYHEDRON"; // [SPHERE, POLYHEDRON]
 r = 30;
-thickness = 2.5;
-spacing = 0.3;
+thickness = 4;
+spacing = 0.4;
 half = true; 
 flat_inner = true;
 
