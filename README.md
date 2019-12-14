@@ -41,6 +41,12 @@ Too many dependencies? Because OpenSCAD doesn't provide namespace management, I 
 
 **If you really don't want to care about dependencies, `include <dotSCAD.scad>;` or `use <dotSCAD.scad>;` come to save you.**
 
+## Examples
+
+See [examples](examples).
+
+![examples](examples/images/gallery.JPG)
+
 ## Documentation
 
 - 2D
