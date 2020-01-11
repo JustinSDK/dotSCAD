@@ -14,8 +14,7 @@ include <__comm__/__edge_r.scad>;
 
 function arc_path(radius, angle) =
     let(
-        frags = __frags(radius),
-        a_step = 360 / frags,
+        a_step = 360 / __frags(radius),
         angles = is_num(angle) ? [0, angle] : angle,
         m = floor(angles[0] / a_step) + 1,
         n = floor(angles[1] / a_step),
