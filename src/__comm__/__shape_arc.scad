@@ -1,10 +1,8 @@
 function __shape_arc(radius, angle, width, width_mode = "LINE_CROSS") =
     let(
-        w_offset = width_mode == "LINE_CROSS" ? [width / 2, -width / 2] : (
-            width_mode == "LINE_INWARD" ? [0, -width] : [width, 0]
-        ),
-        frags = __frags(radius),
-        a_step = 360 / frags,
+        w_offset = width_mode == "LINE_CROSS"  ? [width / 2, -width / 2] : 
+                   width_mode == "LINE_INWARD" ? [0, -width] : [width, 0],
+        a_step = 360 / __frags(radius),
         half_a_step = a_step / 2,
         angles = is_num(angle) ? [0, angle] : angle,
         m = floor(angles[0] / a_step) + 1,
