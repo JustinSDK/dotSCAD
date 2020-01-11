@@ -1,7 +1,6 @@
 function __shape_pie(radius, angle) =
     let(
-        frags = __frags(radius),
-        a_step = 360 / frags,
+        a_step = 360 / __frags(radius),
         leng = radius * cos(a_step / 2),
         angles = is_num(angle) ? [0:angle] : angle,
         m = floor(angles[0] / a_step) + 1,
