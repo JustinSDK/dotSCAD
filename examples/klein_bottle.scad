@@ -78,13 +78,15 @@ module klein_bottle(radius1, radius2, bottom_height, thickness, t_step, fn) {
             union() {
                 bottom(); 
 
-                rotate(-90) path_extrude(
+                rotate(-90) 
+                path_extrude(
                     circle_path(radius1 + half_thickness),
                     tube_path
                 );
             }
 
-            rotate(-90) path_extrude(
+            rotate(-90) 
+            path_extrude(
                 circle_path(radius1 - half_thickness),
                 tube_path2
             );
