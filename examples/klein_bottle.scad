@@ -3,8 +3,7 @@ include <arc_path.scad>;
 include <circle_path.scad>;
 include <path_extrude.scad>;
 include <bezier_curve.scad>;
-include <polyline2d.scad>;
-include <line2d.scad>;
+include <hull_polyline2d.scad>;
 include <rotate_p.scad>;
 include <bspline_curve.scad>;
 
@@ -20,23 +19,22 @@ module klein_bottle(radius1, radius2, bottom_height, thickness, t_step, fn) {
     $fn = fn;
     half_thickness = thickness / 2;
 
-    module bottom() {
+    module bottom() { 
         rotate(180) 
         rotate_extrude() {
-            translate([radius1 + radius2, 0, 0]) 
-                polyline2d(
-                     arc_path(radius = radius2, angle = [180, 360])
-                     ,thickness
-                );
+            ph1 = arc_path(radius = radius2, angle = [180, 360]);
+            ph2 = bezier_curve(t_step, [
+                        [radius1 + radius2 * 2, 0, 0],
+                        [radius1 + radius2 * 2, bottom_height * 0.25, 0],
+                        [radius1 + radius2 * 0.5, bottom_height * 0.5, 0],
+                        [radius1, bottom_height * 0.75, 0],
+                        [radius1, bottom_height, 0]            
+                    ]);
                 
-            polyline2d(
-                bezier_curve(t_step, [
-                    [radius1 + radius2 * 2, 0, 0],
-                    [radius1 + radius2 * 2, bottom_height * 0.25, 0],
-                    [radius1 + radius2 * 0.5, bottom_height * 0.5, 0],
-                    [radius1, bottom_height * 0.75, 0],
-                    [radius1, bottom_height, 0]            
-                ]), 
+            path = concat([for(p = ph1) p + [radius1 + radius2, 0, 0]], ph2);
+                
+            hull_polyline2d(
+                path, 
                 thickness
             );      
         }
@@ -80,13 +78,13 @@ module klein_bottle(radius1, radius2, bottom_height, thickness, t_step, fn) {
             union() {
                 bottom(); 
 
-                path_extrude(
+                rotate(-90) path_extrude(
                     circle_path(radius1 + half_thickness),
                     tube_path
                 );
             }
 
-            path_extrude(
+            rotate(-90) path_extrude(
                 circle_path(radius1 - half_thickness),
                 tube_path2
             );
