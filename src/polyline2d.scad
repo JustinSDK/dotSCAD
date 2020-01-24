@@ -29,7 +29,7 @@ module polyline2d(points, width, startingStyle = "CAP_SQUARE", endingStyle = "CA
                p1Style = p1Style, p2Style = p2Style);
 
         // hook for testing
-        test_line_segment(index, p1, p2, width, p1Style, p2Style);
+        test_polyline2d_line_segment(index, p1, p2, width, p1Style, p2Style);
     }
 
     module polyline2d_inner(index) {
@@ -43,6 +43,6 @@ module polyline2d(points, width, startingStyle = "CAP_SQUARE", endingStyle = "CA
 }
 
 // override it to test
-module test_line_segment(index, point1, point2, width, p1Style, p2Style) {
+module test_polyline2d_line_segment(index, point1, point2, width, p1Style, p2Style) {
 
 }

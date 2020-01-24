@@ -57,7 +57,7 @@ module test_polyline2d() {
     
         include <polyline2d.scad>;
         
-        module test_line_segment(index, point1, point2, width, p1Style, p2Style) {
+        module test_polyline2d_line_segment(index, point1, point2, width, p1Style, p2Style) {
         
             assertCorrectSegment(index, point1, point2, width);
             assertCorrectCaps(
@@ -74,7 +74,7 @@ module test_polyline2d() {
     
         include <polyline2d.scad>;
         
-        module test_line_segment(index, point1, point2, width, p1Style, p2Style) {
+        module test_polyline2d_line_segment(index, point1, point2, width, p1Style, p2Style) {
         
             assertCorrectSegment(index, point1, point2, width);
             assertCorrectCaps(
@@ -95,7 +95,7 @@ module test_polyline2d() {
     
         include <polyline2d.scad>;
         
-        module test_line_segment(index, point1, point2, width, p1Style, p2Style) {
+        module test_polyline2d_line_segment(index, point1, point2, width, p1Style, p2Style) {
         
             assertCorrectSegment(index, point1, point2, width);
             assertCorrectCaps(
