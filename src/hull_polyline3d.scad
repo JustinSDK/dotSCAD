@@ -24,7 +24,7 @@ module hull_polyline3d(points, thickness) {
         }
 
         // hook for testing
-        test_line_segment(index, point1, point2, half_thickness);        
+        test_hull_polyline3d_line_segment(index, point1, point2, half_thickness);        
     }
 
     module polyline3d_inner(index) {
@@ -38,6 +38,6 @@ module hull_polyline3d(points, thickness) {
 }
 
 // override it to test
-module test_line_segment(index, point1, point2, radius) {
+module test_hull_polyline3d_line_segment(index, point1, point2, radius) {
 
 }
