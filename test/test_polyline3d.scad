@@ -63,7 +63,7 @@ module test_polyline3d() {
     
         include <polyline3d.scad>;
         
-        module test_line3d_segment(index, point1, point2, thickness, p1Style, p2Style) {
+        module test_polyline3d_line3d_segment(index, point1, point2, thickness, p1Style, p2Style) {
         
             assertCorrectSegment(
                 [points[index - 1], points[index]],
@@ -89,7 +89,7 @@ module test_polyline3d() {
     
         include <polyline3d.scad>;
         
-        module test_line3d_segment(index, point1, point2, thickness, p1Style, p2Style) {
+        module test_polyline3d_line3d_segment(index, point1, point2, thickness, p1Style, p2Style) {
         
             assertCorrectSegment(
                 [points[index - 1], points[index]],
@@ -116,7 +116,7 @@ module test_polyline3d() {
     
         include <polyline3d.scad>;
         
-        module test_line3d_segment(index, point1, point2, thickness, p1Style, p2Style) {
+        module test_polyline3d_line3d_segment(index, point1, point2, thickness, p1Style, p2Style) {
         
             assertCorrectSegment(
                 [points[index - 1], points[index]],
@@ -154,7 +154,7 @@ module test_polyline3d() {
     
         include <polyline3d.scad>;
         
-        module test_line3d_segment(index, point1, point2, thickness, p1Style, p2Style) {
+        module test_polyline3d_line3d_segment(index, point1, point2, thickness, p1Style, p2Style) {
         
             assertCorrectSegment(
                 [points[index - 1], points[index]],
