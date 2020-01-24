@@ -9,7 +9,7 @@ module test_hull_polyline2d() {
             
     include <hull_polyline2d.scad>;
     
-    module test_line_segment(index, point1, point2, radius) {
+    module test_hull_polyline2d_line_segment(index, point1, point2, radius) {
         assertEqualPoint(points[index - 1], point1);
         assertEqualPoint(points[index], point2);
         assertEqualNum(line_width, radius * 2);    

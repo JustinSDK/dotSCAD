@@ -24,7 +24,7 @@ module hull_polyline2d(points, width) {
         }
 
         // hook for testing
-        test_line_segment(index, point1, point2, half_width);
+        test_hull_polyline2d_line_segment(index, point1, point2, half_width);
     }
 
     module polyline2d_inner(index) {
@@ -38,6 +38,6 @@ module hull_polyline2d(points, width) {
 }
 
 // override it to test
-module test_line_segment(index, point1, point2, radius) {
+module test_hull_polyline2d_line_segment(index, point1, point2, radius) {
 
 }
