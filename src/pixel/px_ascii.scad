@@ -8,6 +8,8 @@
 *
 **/ 
 
+use <pixel/px_from.scad>;
+
 function px_ascii(char, center = false, invert = false) = 
     let(code = ord(char))
     assert(code > 31 && code < 127, "not printable character")
