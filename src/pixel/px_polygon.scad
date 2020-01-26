@@ -8,6 +8,9 @@
 *
 **/ 
 
+use <in_shape.scad>;
+use <pixel/px_polyline.scad>;
+
 function px_polygon(points, filled = false) =
     filled ?
     let(
