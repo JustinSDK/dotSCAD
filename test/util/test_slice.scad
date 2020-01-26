@@ -1,5 +1,5 @@
-include <unittest.scad>;
-include <util/slice.scad>;
+use <unittest.scad>;
+use <util/slice.scad>;
 
 module test_slice() {
     echo("==== test_slice ====");
