@@ -1,5 +1,5 @@
-include <unittest.scad>;
-include <pixel/px_cylinder.scad>;
+use <unittest.scad>;
+use <pixel/px_cylinder.scad>;
 
 module test_px_cylinder() {
     echo("==== test_px_cylinder ====");
