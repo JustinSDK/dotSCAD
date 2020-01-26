@@ -1,7 +1,5 @@
-include <unittest.scad>;
-include <util/sub_str.scad>;
-include <util/split_str.scad>;
-include <util/parse_number.scad>;
+use <unittest.scad>;
+use <util/parse_number.scad>;
 
 module test_parse_number() {
     echo("==== test_parse_number ====");
