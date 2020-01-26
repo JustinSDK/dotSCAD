@@ -1,11 +1,10 @@
+include <unittest.scad>;
+include <cross_sections.scad>;
+include <archimedean_spiral.scad>;
+include <rotate_p.scad>;
+
 module test_cross_sections() {
     echo("==== test_cross_sections ====");
-
-    include <unittest.scad>;
-    include <polysections.scad>;
-    include <cross_sections.scad>;
-    include <archimedean_spiral.scad>;
-    include <rotate_p.scad>;
 
     shape_pts = [
         [-2, -10],

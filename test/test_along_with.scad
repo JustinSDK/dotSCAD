@@ -1,10 +1,10 @@
 include <unittest.scad>;
+include <circle_path.scad>;
 
 module test_along_with_default_angles() {
     echo("==== test_along_with_default_angles  ====");
 
     include <along_with.scad>;
-    include <circle_path.scad>;
     
     $fn = 24;
 
@@ -25,7 +25,6 @@ module test_along_with_children() {
     echo("==== test_along_with_children ====");
 
     include <along_with.scad>;
-    include <circle_path.scad>;
     
     $fn = 24;
 

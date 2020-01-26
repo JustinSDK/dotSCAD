@@ -1,9 +1,9 @@
+include <unittest.scad>;
+include <bezier_curve.scad>;
+include <bezier_surface.scad>; 
+
 module test_bezier_surface() {
     echo("==== test_bezier_surface ====");
-
-    include <unittest.scad>;
-    include <bezier_curve.scad>;
-    include <bezier_surface.scad>; 
 
     t_step = 0.05;
     thickness = 0.5;

@@ -1,9 +1,8 @@
+include <unittest.scad>;
+include <rotate_p.scad>;
 
 module test_rotate_p() {
     echo("==== test_rotate_p ====");
-
-    include <unittest.scad>;
-    include <rotate_p.scad>;
 
     point = [20, 0, 0];
     a = [0, -45, 45];

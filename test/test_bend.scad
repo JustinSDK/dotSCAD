@@ -1,5 +1,6 @@
+include <unittest.scad>;
+
 module test_bend() {
-    include <unittest.scad>;
     include <bend.scad>;
 
     x = 9.25;

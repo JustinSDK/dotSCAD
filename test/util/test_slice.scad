@@ -1,8 +1,8 @@
+include <unittest.scad>;
+include <util/slice.scad>;
+
 module test_slice() {
     echo("==== test_slice ====");
-
-    include <unittest.scad>;
-    include <util/slice.scad>;
 
     lt = [for(c = "helloworld") c];
     expected1 = [for(c = "hello") c];

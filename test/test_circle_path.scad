@@ -1,8 +1,8 @@
+include <unittest.scad>;
+include <circle_path.scad>;
+
 module test_circle_path() {
     echo("==== test_circle_path ====");
-
-    include <unittest.scad>;
-    include <circle_path.scad>;
 
     $fn = 24;
 

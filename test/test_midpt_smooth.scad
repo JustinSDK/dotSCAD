@@ -1,10 +1,10 @@
+include <unittest.scad>;
+include <shape_taiwan.scad>;
+include <bijection_offset.scad>;
+include <midpt_smooth.scad>;
+
 module test_midpt_smooth() {
     echo("==== test_midpt_smooth ====");
-
-    include <unittest.scad>;
-    include <shape_taiwan.scad>;
-    include <bijection_offset.scad>;
-    include <midpt_smooth.scad>;
 
     taiwan = shape_taiwan(50);  
 

@@ -1,8 +1,8 @@
+include <unittest.scad>;
+include <bezier_curve.scad>;
+
 module test_bezier_curve() {
     echo("==== test_bezier_curve ====");
-
-    include <unittest.scad>;
-    include <bezier_curve.scad>;
 
     t_step = 0.05;
     width = 2;
