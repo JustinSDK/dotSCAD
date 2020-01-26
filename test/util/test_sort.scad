@@ -1,5 +1,5 @@
-include <unittest.scad>;
-include <util/sort.scad>;
+use <unittest.scad>;
+use <util/sort.scad>;
 
 module test_sort() {
     echo("==== test_sort ====");
