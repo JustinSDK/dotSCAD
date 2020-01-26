@@ -1,6 +1,5 @@
-include <unittest.scad>;
-include <pixel/px_line.scad>;
-include <pixel/px_polyline.scad>;
+use <unittest.scad>;
+use <pixel/px_polyline.scad>;
 
 module test_px_polyline() {
     echo("==== test_px_polyline ====");
