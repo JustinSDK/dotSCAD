@@ -1,5 +1,5 @@
 include <unittest.scad>;
-include <util/sub_str.scad>;
+use <util/sub_str.scad>;
 
 module test_sub_str() {
     echo("==== test_sub_str ====");
