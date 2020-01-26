@@ -1,6 +1,5 @@
-include <unittest.scad>;
-include <util/sub_str.scad>;
-include <util/split_str.scad>;
+use <unittest.scad>;
+use <util/split_str.scad>;
 
 module test_split_str() {
     echo("==== test_split_str ====");
