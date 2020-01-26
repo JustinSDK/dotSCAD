@@ -70,6 +70,7 @@ include <util/test_parse_number.scad>;
 include <util/test_slice.scad>;
 include <util/test_sort.scad>;
 include <util/test_reverse.scad>;
+include <util/test_fibseq.scad>;
 
 // Pixel
 include <pixel/test_px_line.scad>;
