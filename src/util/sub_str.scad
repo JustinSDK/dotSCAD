@@ -8,6 +8,6 @@
 *
 **/ 
 
-use <_impl/_sub_str_impl.scad>;
+use <util/_impl/_sub_str_impl.scad>;
 
 function sub_str(t, begin, end) = _sub_str_impl(t, begin, end);

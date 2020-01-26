@@ -8,6 +8,6 @@
 *
 **/ 
 
-use <_impl/_parse_number_impl.scad>;
+use <util/_impl/_parse_number_impl.scad>;
          
 function parse_number(t) = _parse_number_impl(t);
