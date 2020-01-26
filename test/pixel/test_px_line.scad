@@ -1,5 +1,5 @@
-include <unittest.scad>;
-include <pixel/px_line.scad>;
+use <unittest.scad>;
+use <pixel/px_line.scad>;
 
 module test_px_line() {
     echo("==== test_px_line ====");
