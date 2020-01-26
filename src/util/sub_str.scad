@@ -1,10 +1,10 @@
 /**
-* _sub_str_impl.scad
+* sub_str.scad
 *
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *
-* @see https://openhome.cc/eGossip/OpenSCAD/lib2-_sub_str_impl.html
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2-sub_str.html
 *
 **/ 
 
