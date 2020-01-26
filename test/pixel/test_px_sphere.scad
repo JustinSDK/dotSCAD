@@ -1,5 +1,5 @@
-include <unittest.scad>;
-include <pixel/px_sphere.scad>;
+use <unittest.scad>;
+use <pixel/px_sphere.scad>;
 
 module test_px_sphere() {
     echo("==== test_px_sphere ====");
