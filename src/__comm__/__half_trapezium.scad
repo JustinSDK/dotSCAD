@@ -1,3 +1,6 @@
+use <__comm__/__frags.scad>;
+use <__comm__/__pie_for_rounding.scad>;
+
 function __tr__corner_t_leng_lt_zero(frags, t_sector_angle, l1, l2, h, round_r) = 
     let(t_height = tan(t_sector_angle) * l1 - round_r / sin(90 - t_sector_angle) - h / 2)
     [ 

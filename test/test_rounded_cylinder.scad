@@ -1,10 +1,9 @@
-include <unittest.scad>;
+use <unittest.scad>;
+use <rounded_cylinder.scad>;
 
 module test_rounded_cylinder() {
     echo("==== test_rounded_cylinder ====");
 
-    include <rounded_cylinder.scad>;
-    
     h = 25;
     
     module test_center_half_trapezium(center_pt, shape_pts) {
