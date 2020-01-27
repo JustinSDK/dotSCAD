@@ -1,8 +1,7 @@
-include <helix.scad>;
-include <bezier_curve.scad>;
-include <along_with.scad>;
-include <shape_trapezium.scad>;
-include <ellipse_extrude.scad>;
+use <helix.scad>;
+use <along_with.scad>;
+use <shape_trapezium.scad>;
+use <ellipse_extrude.scad>;
 
 r1 = 25;
 r2 = 15;
@@ -180,7 +179,15 @@ module dragon() {
         $fn = 36
     );
 
-
+    function __angy_angz(p1, p2) = 
+        let(
+            dx = p2[0] - p1[0],
+            dy = p2[1] - p1[1],
+            dz = p2[2] - p1[2],
+            ya = atan2(dz, sqrt(dx * dx + dy * dy)),
+            za = atan2(dy, dx)
+        ) [ya, za];
+        
     angy_angz = __angy_angz(path_pts[0], path_pts[1]);
     
     
