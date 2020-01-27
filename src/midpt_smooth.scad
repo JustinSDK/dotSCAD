@@ -8,17 +8,6 @@
 *
 **/
 
-function _midpt_smooth_sub(points, iend, closed = false) = 
-    concat(
-        [
-            for(i = 0; i < iend; i = i + 1) 
-                (points[i] + points[i + 1]) / 2
-        ],
-        closed ? [(points[iend] + points[0]) / 2] : []
-    );
+use <_impl/_midpt_smooth_impl.scad>;
 
-function midpt_smooth(points, n, closed = false) =
-    let(
-        smoothed = _midpt_smooth_sub(points, len(points) - 1, closed)
-    )
-    n == 1 ? smoothed : midpt_smooth(smoothed, n - 1, closed);
+function midpt_smooth(points, n, closed = false) = _midpt_smooth_impl(points, n, closed);
