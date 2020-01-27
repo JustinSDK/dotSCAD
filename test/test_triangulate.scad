@@ -1,5 +1,5 @@
-include <unittest.scad>;    
-include <triangulate.scad>; 
+use <unittest.scad>;    
+use <triangulate.scad>; 
 
 module test_triangulate() {
     echo("==== test_triangulate ====");
