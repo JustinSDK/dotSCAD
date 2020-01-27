@@ -8,7 +8,7 @@
 *
 **/
 
-include <__comm__/__angy_angz.scad>;
+use <__comm__/__angy_angz.scad>;
 
 // slow but workable
 
