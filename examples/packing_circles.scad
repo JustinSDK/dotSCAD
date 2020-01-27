@@ -1,4 +1,4 @@
-include <util/rand.scad>;
+use <util/rand.scad>;
 
 size = [500, 250];
 min_radius = 5;
