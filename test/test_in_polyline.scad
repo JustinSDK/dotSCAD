@@ -1,8 +1,6 @@
 include <in_polyline.scad>;
 
 module test_in_polyline() {
-
-
     echo("==== test_in_polyline ====");
     
     pts = [
