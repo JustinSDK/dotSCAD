@@ -8,6 +8,8 @@
 *
 **/ 
 
+use <bezier_curve.scad>;
+
 function bezier_surface(t_step, ctrl_pts) =
     let(
         leng_ctrl_pts = len(ctrl_pts),

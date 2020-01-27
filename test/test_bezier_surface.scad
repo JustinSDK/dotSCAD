@@ -1,6 +1,5 @@
-include <unittest.scad>;
-include <bezier_curve.scad>;
-include <bezier_surface.scad>; 
+use <unittest.scad>;
+use <bezier_surface.scad>; 
 
 module test_bezier_surface() {
     echo("==== test_bezier_surface ====");
