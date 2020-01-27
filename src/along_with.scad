@@ -8,9 +8,9 @@
 *
 **/ 
  
-include <__comm__/__angy_angz.scad>;
-include <__comm__/__to3d.scad>;
-include <matrix/__comm__/__m_rotation.scad>;
+use <__comm__/__angy_angz.scad>;
+use <__comm__/__to3d.scad>;
+use <matrix/m_rotation.scad>;
 
 module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE") {
     leng_points = len(points);
@@ -190,10 +190,10 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
             }
         }    
 
-        test_along_with_angles(angs);    
+        test_along_with_angles(angs, $children);    
     }
 }
 
-module test_along_with_angles(angles) {
+module test_along_with_angles(angles, children) {
 
 }
