@@ -1,6 +1,5 @@
-include <line2d.scad>;
-include <polyline2d.scad>
-include <util/fibseq.scad>;
+use <polyline2d.scad>
+use <util/fibseq.scad>;
 
 smallest_length = 30;
 height1 = 60;
@@ -8,10 +7,10 @@ height2 = 120;
 thickness = 1;
 
 module tableware_organizer(smallest_length, height1, height2, thickness) {
-    module golden_rectangle(fibseq, i = 0) {
-        if(i < len(fibseq) - 1) {
-            f1 = fibseq[i] * smallest_length;
-            f2 = fibseq[i + 1] * smallest_length;
+    module golden_rectangle(fseq, i = 0) {
+        if(i < len(fseq) - 1) {
+            f1 = fseq[i] * smallest_length;
+            f2 = fseq[i + 1] * smallest_length;
             
             linear_extrude(f1 < 3 * smallest_length ? height1 : height2) 
                 polyline2d([[0, 0], [f1, 0], [f1, f1], [0, f1], [0, 0]], thickness);
@@ -22,7 +21,7 @@ module tableware_organizer(smallest_length, height1, height2, thickness) {
             
             translate([0, f1 - f2, 0]) 
             rotate(90)
-                golden_rectangle(fibseq, i + 1);    
+                golden_rectangle(fseq, i + 1);    
         }
     }
 
