@@ -1,5 +1,5 @@
-include <unittest.scad>;
-include <shape_glued2circles.scad>;
+use <unittest.scad>;
+use <shape_glued2circles.scad>;
 
 module test_shape_glued2circles() {
     echo("==== test_shape_glued2circles ====");
