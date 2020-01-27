@@ -1,3 +1,5 @@
+use <util/reverse.scad>;
+
 function __polytransversals(transversals) =
     let(
         leng_trs = len(transversals),
@@ -15,6 +17,6 @@ function __polytransversals(transversals) =
     ) concat(
         transversals[0], 
         rights, 
-        __reverse(transversals[leng_trs - 1]), 
+        reverse(transversals[leng_trs - 1]), 
         lefts
     );
