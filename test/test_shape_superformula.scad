@@ -1,5 +1,5 @@
-include <unittest.scad>;
-include <shape_superformula.scad>;  
+use <unittest.scad>;
+use <shape_superformula.scad>;  
 
 module test_shape_superformula() {
     echo("==== test_shape_superformula ====");
