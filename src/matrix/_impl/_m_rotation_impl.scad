@@ -62,7 +62,7 @@ function __m_rotation_xyz_rotation(a) =
     let(ang = __to_ang_vect(a))
     __m_rotation_zRotation(ang[2]) * __m_rotation_yRotation(ang[1]) * __m_rotation_xRotation(ang[0]);
 
-function __m_rotation(a, v) = 
+function _m_rotation_impl(a, v) = 
     (a == 0 || a == [0, 0, 0] || a == [0] || a == [0, 0]) ? [
         [1, 0, 0, 0],
         [0, 1, 0, 0],

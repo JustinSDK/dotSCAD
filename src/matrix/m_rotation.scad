@@ -8,6 +8,6 @@
 *
 **/
 
-use <matrix/__comm__/__m_rotation.scad>;
+use <matrix/_impl/_m_rotation_impl.scad>;
 
-function m_rotation(a, v) = __m_rotation(a, v);
+function m_rotation(a, v) = _m_rotation_impl(a, v);
