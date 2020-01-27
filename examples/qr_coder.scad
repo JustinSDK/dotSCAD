@@ -1,4 +1,4 @@
-include <part/connector_peg.scad>;
+use <part/connector_peg.scad>;
 
 t = "1000 followers"; 
 head_size = 30;
