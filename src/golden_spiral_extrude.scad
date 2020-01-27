@@ -8,6 +8,10 @@
 *
 **/
 
+use <golden_spiral.scad>;
+use <cross_sections.scad>;
+use <polysections.scad>;
+
 module golden_spiral_extrude(shape_pts, from, to, point_distance, 
                              rt_dir = "CT_CLK", twist = 0, scale = 1.0, triangles = "SOLID") {
 
@@ -39,10 +43,10 @@ module golden_spiral_extrude(shape_pts, from, to, point_distance,
     );
 
     // testing hook
-    test_golden_spiral_extrude(sections);
+    test_golden_spiral_extrude(sections, triangles);
 }
 
 // override it to test
-module test_golden_spiral_extrude(sections) {
+module test_golden_spiral_extrude(sections, triangles) {
 
 }
