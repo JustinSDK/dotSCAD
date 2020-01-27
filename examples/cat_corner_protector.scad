@@ -1,8 +1,4 @@
-include <rotate_p.scad>;
-include <cross_sections.scad>;
-include <polysections.scad>;
-include <ring_extrude.scad>;
-include <crystal_ball.scad>;
+use <crystal_ball.scad>;
 
 radius = 15;
 
