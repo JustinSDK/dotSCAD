@@ -1,6 +1,6 @@
-include <line2d.scad>;
-include <hollow_out.scad>;
-include <bend_extrude.scad>;
+use <line2d.scad>;
+use <hollow_out.scad>;
+use <bend_extrude.scad>;
 
 minute = 18; 
 hour = 9;    
