@@ -1,4 +1,4 @@
-include <hull_polyline3d.scad>;
+use <hull_polyline3d.scad>;
 
 side_leng = 100;
 min_leng = 5;
