@@ -8,9 +8,11 @@
 *
 **/
 
-include <__comm__/__to3d.scad>;
-include <__comm__/__angy_angz.scad>;
-include <matrix/__comm__/__m_rotation.scad>;
+use <__comm__/__to3d.scad>;
+use <__comm__/__angy_angz.scad>;
+use <rotate_p.scad>;
+use <polysections.scad>;
+use <matrix/m_rotation.scad>;
 
 module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale = 1.0, closed = false, method = "AXIS_ANGLE") {
     sh_pts = len(shape_pts[0]) == 3 ? shape_pts : [for(p = shape_pts) __to3d(p)];
@@ -56,7 +58,7 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
 
         rot_matrice = [
             for(ang_vect = local_ang_vects(len_path_pts - 2)) 
-                __m_rotation(ang_vect[0], ang_vect[1])
+                m_rotation(ang_vect[0], ang_vect[1])
         ];
 
         leng_rot_matrice = len(rot_matrice);
