@@ -8,19 +8,14 @@
 *
 **/
 
-include <__comm__/__frags.scad>;
+use <__comm__/__frags.scad>;
+use <helix.scad>;
+use <cross_sections.scad>;
+use <polysections.scad>;
 
 module helix_extrude(shape_pts, radius, levels, level_dist, 
                      vt_dir = "SPI_DOWN", rt_dir = "CT_CLK", 
-                     twist = 0, scale = 1.0, triangles = "SOLID") {
-
-    function reverse(vt) = 
-        let(leng = len(vt))
-        [
-            for(i = 0; i < leng; i = i + 1)
-                vt[leng - 1 - i]
-        ];                         
-                         
+                     twist = 0, scale = 1.0, triangles = "SOLID") {                       
     is_flt = is_num(radius);
     r1 = is_flt ? radius : radius[0];
     r2 = is_flt ? radius : radius[1];
