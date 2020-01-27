@@ -151,7 +151,7 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
         );   
 
         // hook for testing
-        test_path_extrude(sections);        
+        test_path_extrude(sections, method);        
     }
 
     module euler_angle_path_extrude() {
@@ -198,7 +198,7 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
         );   
 
         // hook for testing
-        test_path_extrude(calculated_sections);
+        test_path_extrude(calculated_sections, method);
     }
 
     if(method == "AXIS_ANGLE") {
@@ -210,6 +210,6 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
 }
 
 // override to test
-module test_path_extrude(sections) {
+module test_path_extrude(sections, method) {
 
 }
