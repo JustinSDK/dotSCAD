@@ -8,8 +8,8 @@
 *
 **/
 
-include <__comm__/__frags.scad>;
-include <__comm__/__nearest_multiple_of_4.scad>;
+use <__comm__/__frags.scad>;
+use <__comm__/__nearest_multiple_of_4.scad>;
 
 module rounded_cube(size, corner_r, center = false) {
     is_flt = is_num(size);
