@@ -8,7 +8,7 @@
 *
 **/
 
-include <util/__comm__/__reverse.scad>;
+use <util/reverse.scad>;
 
 module polysections(sections, triangles = "SOLID") {
 
@@ -87,7 +87,7 @@ module polysections(sections, triangles = "SOLID") {
             ); 
 
             // hook for testing
-            test_polysections_solid(v_pts, f_idxes);
+            test_polysections_solid(v_pts, f_idxes, triangles);
         } else {
             range_i = [0:leng_pts_sect - 1];
             first_idxes = [for(i = range_i) leng_pts_sect - 1 - i];  
@@ -104,7 +104,7 @@ module polysections(sections, triangles = "SOLID") {
             );   
 
             // hook for testing
-            test_polysections_solid(v_pts, f_idxes);             
+            test_polysections_solid(v_pts, f_idxes, triangles);             
         }
     }
 
@@ -154,7 +154,7 @@ module polysections(sections, triangles = "SOLID") {
         outer_idxes = side_indexes(outer_sects);
         inner_idxes = [ 
             for(idxes = side_indexes(inner_sects, half_leng_v_pts))
-                __reverse(idxes)
+                reverse(idxes)
         ];
 
         first_outer_sect = outer_sects[0];
@@ -182,7 +182,7 @@ module polysections(sections, triangles = "SOLID") {
             );      
 
             // hook for testing
-            test_polysections_solid(v_pts, f_idxes);                     
+            test_polysections_solid(v_pts, f_idxes, triangles);                     
         } else {
             first_idxes = first_idxes();
             last_idxes = last_idxes(half_leng_v_pts - half_leng_sect);
@@ -195,7 +195,7 @@ module polysections(sections, triangles = "SOLID") {
             ); 
 
             // hook for testing
-            test_polysections_solid(v_pts, f_idxes);              
+            test_polysections_solid(v_pts, f_idxes, triangles);              
         }
     }
     
@@ -249,6 +249,6 @@ module polysections(sections, triangles = "SOLID") {
 
 // override it to test
 
-module test_polysections_solid(points, faces) {
+module test_polysections_solid(points, faces, triangles) {
 
 }
