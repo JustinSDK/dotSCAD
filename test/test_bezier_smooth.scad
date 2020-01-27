@@ -1,6 +1,5 @@
-include <unittest.scad>;
-include <bezier_curve.scad>;
-include <bezier_smooth.scad>;
+use <unittest.scad>;
+use <bezier_smooth.scad>;
 
 module test_bezier_smooth_no_closed() {
     echo("==== test_bezier_smooth_no_closed ====");
