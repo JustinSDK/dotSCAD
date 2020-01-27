@@ -1,8 +1,6 @@
-include <shape_pentagram.scad>;
-include <rotate_p.scad>;
-include <polysections.scad>;
-include <path_extrude.scad>;
-include <torus_knot.scad>;
+use <shape_pentagram.scad>;
+use <path_extrude.scad>;
+use <torus_knot.scad>;
 
 p = 2;
 q = 3;
