@@ -8,11 +8,7 @@
 *
 **/
 
-function _m_cumulate(matrice, i) = 
-    i == len(matrice) - 2 ?
-        matrice[i] * matrice[i + 1] :
-        matrice[i] * _m_cumulate(matrice, i + 1);
+use <matrix/_impl/_m_cumulate_impl.scad>;
 
-function m_cumulate(matrice) = 
-    len(matrice) == 1 ? matrice[0] : _m_cumulate(matrice, 0);
+function m_cumulate(matrice) = _m_cumulate_impl(matrice);
     
