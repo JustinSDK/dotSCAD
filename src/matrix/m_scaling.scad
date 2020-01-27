@@ -8,6 +8,6 @@
 *
 **/
 
-use <matrix/__comm__/__m_scaling.scad>;
+use <matrix/_impl/_m_scaling_impl.scad>;
 
-function m_scaling(s) = __m_scaling(s);
+function m_scaling(s) = _m_scaling_impl(s);

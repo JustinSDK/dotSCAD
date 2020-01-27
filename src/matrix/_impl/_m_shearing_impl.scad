@@ -1,4 +1,4 @@
-function __m_shearing(sx, sy, sz) = 
+function _m_shearing_impl(sx, sy, sz) = 
     let(
         sx_along_y = sx[0],
         sx_along_z = sx[1],
