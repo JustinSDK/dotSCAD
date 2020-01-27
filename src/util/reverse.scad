@@ -8,6 +8,4 @@
 *
 **/ 
 
-use <__comm__/__reverse.scad>;
-
-function reverse(lt) = __reverse(lt);
+function reverse(lt) = [for(i = len(lt) - 1; i >= 0; i = i - 1) lt[i]];
