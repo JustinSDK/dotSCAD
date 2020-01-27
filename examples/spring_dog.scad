@@ -1,17 +1,11 @@
-include <rounded_cylinder.scad>;
-include <cross_sections.scad>;
-include <rotate_p.scad>;
-include <helix_extrude.scad>;
-include <helix.scad>;
-include <circle_path.scad>;
-include <polysections.scad>;
-include <arc.scad>;
-include <ellipse_extrude.scad>;
-include <shape_ellipse.scad>;
-include <shape_glued2circles.scad>;
-include <bezier_curve.scad>;
-include <shape_pie.scad>;
-include <part/connector_peg.scad>;
+use <rounded_cylinder.scad>;
+use <helix_extrude.scad>;
+use <circle_path.scad>;
+use <arc.scad>;
+use <ellipse_extrude.scad>;
+use <shape_ellipse.scad>;
+use <shape_glued2circles.scad>;
+use <part/connector_peg.scad>;
 
 part = "PREVIEW"; // [FRONT, SPRING, BACK, PREVIEW]
 
