@@ -1,5 +1,5 @@
-include <unittest.scad>;
-include <line2d.scad>;
+use <unittest.scad>;
+use <line2d.scad>;
 
 module test_line2d() {
     $fn = 24;
