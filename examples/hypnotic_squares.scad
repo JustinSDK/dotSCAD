@@ -1,6 +1,6 @@
-include <hollow_out.scad>;
-include <bend_extrude.scad>;
-include <box_extrude.scad>;
+use <hollow_out.scad>;
+use <bend_extrude.scad>;
+use <box_extrude.scad>;
 
 x_grids = 12;
 y_grids = 5;
