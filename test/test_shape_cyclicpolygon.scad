@@ -1,5 +1,5 @@
-include <unittest.scad>;
-include <shape_cyclicpolygon.scad>;
+use <unittest.scad>;
+use <shape_cyclicpolygon.scad>;
 
 module test_shape_cyclicpolygon() {
     echo("==== test_shape_cyclicpolygon ====");
