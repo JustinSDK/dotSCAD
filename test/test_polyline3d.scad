@@ -1,8 +1,7 @@
-include <unittest.scad>;
-include <line3d.scad>;
+use <unittest.scad>;
+use <polyline3d.scad>;
 
 module test_polyline3d() { 
-
     $fn = 24;
     
     points =  [
@@ -61,8 +60,6 @@ module test_polyline3d() {
     module test_polyline3d_cap_default() {
         echo("==== test_polyline3d_cap_default ====");
     
-        include <polyline3d.scad>;
-        
         module test_polyline3d_line3d_segment(index, point1, point2, thickness, p1Style, p2Style) {
         
             assertCorrectSegment(
@@ -84,101 +81,7 @@ module test_polyline3d() {
         ); 
     }
     
-    module test_polyline3d_end_cap_sphere() {
-        echo("==== test_polyline3d_end_cap_sphere ====");
-    
-        include <polyline3d.scad>;
-        
-        module test_polyline3d_line3d_segment(index, point1, point2, thickness, p1Style, p2Style) {
-        
-            assertCorrectSegment(
-                [points[index - 1], points[index]],
-                [point1, point2], 
-                thickness
-            );
-            assertCorrectCaps(
-                leng_points,
-                "CAP_CIRCLE", "CAP_SPHERE", 
-                index, p1Style, p2Style
-            );
-        } 
-        
-        polyline3d(
-            points = points, 
-            thickness = line_thickness,
-            endingStyle = "CAP_SPHERE",            
-            $fn = 24
-        ); 
-    }    
-    
-    module test_polyline3d_cap_spheres() {
-        echo("==== test_polyline3d_cap_spheres ====");
-    
-        include <polyline3d.scad>;
-        
-        module test_polyline3d_line3d_segment(index, point1, point2, thickness, p1Style, p2Style) {
-        
-            assertCorrectSegment(
-                [points[index - 1], points[index]],
-                [point1, point2], 
-                thickness
-            );
-            assertCorrectCaps(
-                leng_points,
-                "CAP_SPHERE", "CAP_SPHERE", 
-                index, p1Style, p2Style
-            );
-        }  
-        
-        polyline3d(
-            points = points, 
-            thickness = line_thickness,
-            startingStyle = "CAP_SPHERE",
-            endingStyle = "CAP_SPHERE",            
-            $fn = 24
-        ); 
-    }    
-    
-    module test_polyline3d_helix() {
-        echo("==== test_polyline3d_helix ====");
-
-        r = 20;
-        h = 5;
-        fa = 15;
-        circles = 10;
-        
-        points = [
-            for(a = [0:fa:360 * circles]) 
-                [r * cos(a), r * sin(a), h / (360 / fa) * (a / fa)]
-        ];        
-    
-        include <polyline3d.scad>;
-        
-        module test_polyline3d_line3d_segment(index, point1, point2, thickness, p1Style, p2Style) {
-        
-            assertCorrectSegment(
-                [points[index - 1], points[index]],
-                [point1, point2], 
-                thickness
-            );
-            assertCorrectCaps(
-                len(points),
-                "CAP_CIRCLE", "CAP_CIRCLE", 
-                index, p1Style, p2Style
-            );
-        } 
-        
-        polyline3d(
-            points = points, 
-            thickness = line_thickness,
-            $fn = 24
-        ); 
-    }       
-    
     test_polyline3d_cap_default();
-    test_polyline3d_end_cap_sphere();
-    test_polyline3d_cap_spheres();
-    test_polyline3d_helix();
 }
 
 test_polyline3d();

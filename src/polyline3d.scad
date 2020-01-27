@@ -8,6 +8,8 @@
 *
 **/
 
+use <line3d.scad>;
+
 module polyline3d(points, thickness, startingStyle = "CAP_CIRCLE", endingStyle = "CAP_CIRCLE") {
     leng_pts = len(points);
     
