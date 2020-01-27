@@ -1,7 +1,7 @@
-include <unittest.scad>;    
-include <trim_shape.scad>;
-include <shape_taiwan.scad>;
-include <bijection_offset.scad>;
+use <unittest.scad>;    
+use <trim_shape.scad>;
+use <shape_taiwan.scad>;
+use <bijection_offset.scad>;
 
 module test_trim_shape() {
     echo("==== test_trim_shape ====");
