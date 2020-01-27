@@ -1,5 +1,5 @@
-include <polysections.scad>;
-include <util/reverse.scad>;
+use <polysections.scad>;
+use <util/reverse.scad>;
 
 thickness = 0.05;
 
