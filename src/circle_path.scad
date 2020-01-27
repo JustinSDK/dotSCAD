@@ -8,7 +8,7 @@
 *
 **/
 
-include <__comm__/__frags.scad>;
+use <__comm__/__frags.scad>;
 
 function circle_path(radius, n) =
     let(
