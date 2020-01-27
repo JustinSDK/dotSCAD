@@ -1,4 +1,4 @@
-include <hull_polyline3d.scad>;
+use <hull_polyline3d.scad>;
 
 leng = 50;
 thickness = 5;
