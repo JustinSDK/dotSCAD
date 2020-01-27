@@ -1,8 +1,5 @@
-include <rotate_p.scad>;
-include <circle_path.scad>;
-include <cross_sections.scad>;
-include <polysections.scad>;
-include <ring_extrude.scad>;
+use <circle_path.scad>;
+use <ring_extrude.scad>;
 
 ball_radius = 10;
 mobius_radius = 30;
