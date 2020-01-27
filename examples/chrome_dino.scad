@@ -1,8 +1,5 @@
-include <pixel/px_circle.scad>;
-include <in_shape.scad>;
-include <pixel/px_line.scad>;
-include <pixel/px_polyline.scad>;
-include <pixel/px_polygon.scad>;
+use <pixel/px_circle.scad>;
+use <pixel/px_polygon.scad>;
 
 w = 5;
 merged_dino = false;
