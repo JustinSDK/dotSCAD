@@ -1,7 +1,6 @@
-include <unittest.scad>;
-include <cross_sections.scad>;
-include <archimedean_spiral.scad>;
-include <rotate_p.scad>;
+use <unittest.scad>;
+use <cross_sections.scad>;
+use <archimedean_spiral.scad>;
 
 module test_cross_sections() {
     echo("==== test_cross_sections ====");

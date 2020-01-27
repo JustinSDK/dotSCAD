@@ -1,5 +1,5 @@
-include <unittest.scad>;
-include <archimedean_spiral.scad>; 
+use <unittest.scad>;
+use <archimedean_spiral.scad>; 
 
 module test_archimedean_spiral() {
     echo("==== test_archimedean_spiral ====");

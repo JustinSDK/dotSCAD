@@ -1,5 +1,5 @@
-include <unittest.scad>;
-include <circle_path.scad>;
+use <unittest.scad>;
+use <circle_path.scad>;
 
 module test_circle_path() {
     echo("==== test_circle_path ====");

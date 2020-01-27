@@ -1,5 +1,5 @@
-include <unittest.scad>;
-include <shape_arc.scad>;
+use <unittest.scad>;
+use <shape_arc.scad>;
 
 module test_shape_arc() {
     echo("==== test_shape_arc ====");
