@@ -1,5 +1,4 @@
-include <arc.scad>;
-
+use <arc.scad>;
 
 radius = 30;
 thickness = 2.5;
