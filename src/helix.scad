@@ -8,7 +8,7 @@
 *
 **/ 
 
-include <__comm__/__frags.scad>;
+use <__comm__/__frags.scad>;
 
 function helix(radius, levels, level_dist, vt_dir = "SPI_DOWN", rt_dir = "CT_CLK") = 
     let(
