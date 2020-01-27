@@ -1,9 +1,5 @@
-include <rotate_p.scad>;
-include <cross_sections.scad>;
-include <polysections.scad>;
-include <ring_extrude.scad>;
-include <crystal_ball.scad>;
-include <util/fibseq.scad>;
+use <crystal_ball.scad>;
+use <util/fibseq.scad>;
 
 spirals = 10;
 petals_per_spiral = 4; 
