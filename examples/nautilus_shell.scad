@@ -1,7 +1,7 @@
-include <rotate_p.scad>;
-include <hull_polyline2d.scad>;
-include <bezier_curve.scad>;
-include <ellipse_extrude.scad>;
+use <rotate_p.scad>;
+use <hull_polyline2d.scad>;
+use <bezier_curve.scad>;
+use <ellipse_extrude.scad>;
 
 chambered_section_max_angle = 300;
 steps = 25;
