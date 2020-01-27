@@ -1,7 +1,6 @@
-include <bezier_curve.scad>;
-include <pixel/px_line.scad>;
-include <pixel/px_polyline.scad>;
-include <pixel/px_cylinder.scad>;
+use <bezier_curve.scad>;
+use <pixel/px_polyline.scad>;
+use <pixel/px_cylinder.scad>;
 
 x1 = 5;
 x2 = 20;
