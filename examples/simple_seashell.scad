@@ -1,6 +1,6 @@
-include <circle_path.scad>;
-include <rotate_p.scad>;
-include <polysections.scad>;
+use <circle_path.scad>;
+use <rotate_p.scad>;
+use <polysections.scad>;
 
 r1 = 0.1;
 r2 = 50;
