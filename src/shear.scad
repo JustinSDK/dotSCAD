@@ -8,7 +8,7 @@
 *
 **/
 
-include <matrix/m_shearing.scad>;
+use <matrix/m_shearing.scad>;
 
 module shear(sx = [0, 0], sy = [0, 0], sz = [0, 0]) {
     multmatrix(m_shearing(sx, sy, sz)) children();
