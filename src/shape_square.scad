@@ -8,10 +8,7 @@
 *
 **/
 
-include <__comm__/__frags.scad>;
-include <__comm__/__pie_for_rounding.scad>;
-include <__comm__/__half_trapezium.scad>;
-include <__comm__/__trapezium.scad>;
+use <__comm__/__trapezium.scad>;
  
 function shape_square(size, corner_r = 0) = 
     let(
