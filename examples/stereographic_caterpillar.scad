@@ -1,5 +1,5 @@
-include <pixel/px_gray.scad>;
-include <stereographic_extrude.scad>;
+use <pixel/px_gray.scad>;
+use <stereographic_extrude.scad>;
 
 px_width = 0.8;
 
