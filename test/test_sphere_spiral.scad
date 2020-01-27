@@ -1,6 +1,5 @@
-include <unittest.scad>;
-include <rotate_p.scad>;
-include <sphere_spiral.scad>;
+use <unittest.scad>;
+use <sphere_spiral.scad>;
 
 module test_sphere_spiral() {
     echo("==== test_sphere_spiral ====");

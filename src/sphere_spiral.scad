@@ -8,6 +8,8 @@
 *
 **/ 
 
+use <rotate_p.scad>;
+
 function sphere_spiral(radius, za_step, z_circles = 1, begin_angle = 0, end_angle = 0, vt_dir = "SPI_DOWN", rt_dir = "CT_CLK") = 
     let(
         a_end = 90 * z_circles - end_angle
