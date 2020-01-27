@@ -8,6 +8,8 @@
 *
 **/
 
+use <line2d.scad>;
+
 module polyline2d(points, width, startingStyle = "CAP_SQUARE", endingStyle = "CAP_SQUARE") {
     leng_pts = len(points);
 

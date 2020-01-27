@@ -1,5 +1,5 @@
-include <unittest.scad>;
-include <line2d.scad>;
+use <unittest.scad>;
+use <polyline2d.scad>;
 
 module test_polyline2d() { 
 
@@ -54,8 +54,6 @@ module test_polyline2d() {
     
     module test_polyline2d_cap_square() {
         echo("==== test_polyline2d_cap_square ====");
-    
-        include <polyline2d.scad>;
         
         module test_polyline2d_line_segment(index, point1, point2, width, p1Style, p2Style) {
         
@@ -68,53 +66,9 @@ module test_polyline2d() {
         
         polyline2d(points = points, width = line_width);
     }
-    
-    module test_polyline2d_cap_end_round() {
-        echo("==== test_polyline2d_cap_end_round ====");
-    
-        include <polyline2d.scad>;
         
-        module test_polyline2d_line_segment(index, point1, point2, width, p1Style, p2Style) {
-        
-            assertCorrectSegment(index, point1, point2, width);
-            assertCorrectCaps(
-                "CAP_SQUARE", "CAP_ROUND", 
-                index, p1Style, p2Style
-            );
-        } 
-        
-        polyline2d(
-            points = points, 
-            width = line_width, 
-            endingStyle = "CAP_ROUND"
-        );
-    }    
-    
-    module test_polyline2d_cap_round() {
-        echo("==== test_polyline2d_cap_round ====");
-    
-        include <polyline2d.scad>;
-        
-        module test_polyline2d_line_segment(index, point1, point2, width, p1Style, p2Style) {
-        
-            assertCorrectSegment(index, point1, point2, width);
-            assertCorrectCaps(
-                "CAP_ROUND", "CAP_ROUND", 
-                index, p1Style, p2Style
-            );
-        }  
-        
-        polyline2d(
-            points = points, 
-            width = line_width, 
-            startingStyle = "CAP_ROUND", 
-            endingStyle = "CAP_ROUND"
-        );
-    }    
     
     test_polyline2d_cap_square();
-    test_polyline2d_cap_end_round();
-    test_polyline2d_cap_round();
 }
 
 test_polyline2d();
