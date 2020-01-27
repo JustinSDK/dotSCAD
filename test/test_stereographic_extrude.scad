@@ -1,14 +1,13 @@
-include <unittest.scad>;
+use <unittest.scad>;
+use <stereographic_extrude.scad>;
+
+module test_stereographic_extrude_rs(outer_sphere_r, inner_sphere_r) {
+    assertEqualPoint([16.6667, 15.0756], [outer_sphere_r, inner_sphere_r]);
+}
 
 module test_stereographic_extrude() {
     echo("==== test_stereographic_extrude ====");
 
-    include <stereographic_extrude.scad>;
-
-    module test_stereographic_extrude_rs(outer_sphere_r, inner_sphere_r) {
-        assertEqualPoint([16.6667, 15.0756], [outer_sphere_r, inner_sphere_r]);
-    }
-    
     dimension = 100;
 
     stereographic_extrude(shadow_side_leng = dimension)
