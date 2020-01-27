@@ -8,10 +8,8 @@
 *
 **/
 
-include <__comm__/__frags.scad>;
-include <__comm__/__ra_to_xy.scad>;
-include <__comm__/__shape_pie.scad>;
+include <shape_pie.scad>;
  
 module pie(radius, angle) {
-    polygon(__shape_pie(radius, angle));
+    polygon(shape_pie(radius, angle));
 }
