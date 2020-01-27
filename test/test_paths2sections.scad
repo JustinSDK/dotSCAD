@@ -1,6 +1,6 @@
-include <unittest.scad>;
-include <bezier_curve.scad>;
-include <paths2sections.scad>;
+use <unittest.scad>;
+use <bezier_curve.scad>;
+use <paths2sections.scad>;
 
 module test_paths2sections() {
     module test_simple_path() {
