@@ -1,8 +1,5 @@
-include <unittest.scad>;
-include <line3d.scad>;
-include <polyline3d.scad>;
-include <hull_polyline3d.scad>;
-include <function_grapher.scad>;
+use <unittest.scad>;
+use <function_grapher.scad>;
 
 module test_function_grapher_faces(points, faces) {
      pts = [
