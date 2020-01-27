@@ -1,5 +1,5 @@
-include <unittest.scad>;
-include <rotate_p.scad>;
+use <unittest.scad>;
+use <rotate_p.scad>;
 
 module test_rotate_p() {
     echo("==== test_rotate_p ====");
