@@ -1,8 +1,8 @@
-include <unittest.scad>;
-include <matrix/m_rotation.scad>;
-include <matrix/m_scaling.scad>;
-include <matrix/m_translation.scad>;
-include <matrix/m_cumulate.scad>;
+use <unittest.scad>;
+use <matrix/m_rotation.scad>;
+use <matrix/m_scaling.scad>;
+use <matrix/m_translation.scad>;
+use <matrix/m_cumulate.scad>;
 
 module test_m_cumulate() {
     echo("==== test_m_cumulate ====");
