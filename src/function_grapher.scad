@@ -8,7 +8,7 @@
 *
 **/ 
 
-include <util/__comm__/__reverse.scad>;
+use <util/reverse.scad>;
 
 module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
 
@@ -75,12 +75,12 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
         offset_v = [leng_pts, leng_pts, leng_pts];
         base_tri_faces1 = [
             for(face = top_tri_faces1)
-                __reverse(face) + offset_v
+                reverse(face) + offset_v
         ];
 
         base_tri_faces2 = [
             for(face = top_tri_faces2)
-                __reverse(face) + offset_v
+                reverse(face) + offset_v
         ];
         
         side_faces1 = [
