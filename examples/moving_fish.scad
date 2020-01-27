@@ -1,5 +1,5 @@
-include <hollow_out.scad>;
-include <archimedean_spiral.scad>;
+use <hollow_out.scad>;
+use <archimedean_spiral.scad>;
 
 head_size = 26;
 segments = 99; 
