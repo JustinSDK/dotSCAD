@@ -1,7 +1,4 @@
 include <unittest.scad>;
-include <rotate_p.scad>;
-include <bezier_curve.scad>;
-include <shape_pie.scad>;
 include <shape_glued2circles.scad>;
 
 module test_shape_glued2circles() {
