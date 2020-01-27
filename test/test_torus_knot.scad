@@ -1,5 +1,5 @@
-include <unittest.scad>;
-include <torus_knot.scad>;
+use <unittest.scad>;
+use <torus_knot.scad>;
 
 module test_torus_knot() {
     echo("==== test_torus_knot ====");
