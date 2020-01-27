@@ -1,5 +1,5 @@
-include <unittest.scad>;
-include <shape_starburst.scad>;
+use <unittest.scad>;
+use <shape_starburst.scad>;
 
 module test_shape_starburst() {
     echo("==== test_shape_starburst ====");
