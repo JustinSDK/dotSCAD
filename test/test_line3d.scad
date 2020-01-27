@@ -32,8 +32,6 @@ module test_line3d() {
         thickness = thickness,
         $fn = fn
     );       
-    
-    test_line3d_default_caps();
 }
 
 test_line3d();
