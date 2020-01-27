@@ -8,11 +8,8 @@
 *
 **/ 
 
-include <__comm__/__frags.scad>;
-include <__comm__/__ra_to_xy.scad>;
-include <__comm__/__edge_r.scad>;
-include <__comm__/__shape_arc.scad>;
+use <shape_arc.scad>;
 
 module arc(radius, angle, width, width_mode = "LINE_CROSS") {
-    polygon(__shape_arc(radius, angle, width, width_mode));
+    polygon(shape_arc(radius, angle, width, width_mode));
 }
