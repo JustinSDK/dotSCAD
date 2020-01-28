@@ -1,11 +1,9 @@
-include <polysections.scad>;
-include <arc_path.scad>;
-include <circle_path.scad>;
-include <path_extrude.scad>;
-include <bezier_curve.scad>;
-include <rotate_p.scad>;
-include <bspline_curve.scad>;
-include <hull_polyline2d.scad>;
+use <arc_path.scad>;
+use <circle_path.scad>;
+use <path_extrude.scad>;
+use <bezier_curve.scad>;
+use <bspline_curve.scad>;
+use <hull_polyline2d.scad>;
 
 thickness = 4.5;
 t_step = 0.05;
