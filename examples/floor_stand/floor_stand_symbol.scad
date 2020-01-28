@@ -1,10 +1,7 @@
-include <util/sub_str.scad>;
-include <util/split_str.scad>;
-include <multi_line_text.scad>;
-include <shape_taiwan.scad>;
-include <hollow_out.scad>;
-include <floor_stand.scad>;
-include <part/cone.scad>;
+use <util/split_str.scad>;
+use <multi_line_text.scad>;
+use <shape_taiwan.scad>;
+use <floor_stand.scad>;
 
 text = " Taiwan";
 font = "Arial Black";

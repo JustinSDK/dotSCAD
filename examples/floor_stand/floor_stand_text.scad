@@ -1,9 +1,6 @@
-include <util/sub_str.scad>;
-include <util/split_str.scad>;
-include <hollow_out.scad>;
-include <floor_stand.scad>;
-include <multi_line_text.scad>;
-include <part/cone.scad>;
+use <util/split_str.scad>;
+use <floor_stand.scad>;
+use <multi_line_text.scad>;
 
 text = "Coder at Work";
 font = "Arial Black";

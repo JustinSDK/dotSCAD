@@ -1,3 +1,6 @@
+use <hollow_out.scad>;
+use <part/cone.scad>;
+
 module floor_stand(width, height, thickness, spacing) {
     half_w = width / 2;
     half_h = height / 2;
@@ -72,7 +75,7 @@ module floor_stand(width, height, thickness, spacing) {
         translate([0, 0, half_th]) 
         color("black") 
         linear_extrude(half_th / 2) 
-        hollow_out(shell_thickness = font_size / 4) 
+        hollow_out(shell_thickness = thickness / 2) 
         offset(half_w / 10) 
         scale([0.75, 0.675]) 
             polygon(points);
