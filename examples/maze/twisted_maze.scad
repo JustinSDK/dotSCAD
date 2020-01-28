@@ -1,6 +1,6 @@
-include <hull_polyline3d.scad>;
-include <rotate_p.scad>;
-include <square_maze.scad>;
+use <hull_polyline3d.scad>;
+use <rotate_p.scad>;
+use <square_maze.scad>;
 
 rows = 16;
 columns = 8;

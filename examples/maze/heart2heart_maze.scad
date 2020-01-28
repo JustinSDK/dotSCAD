@@ -1,3 +1,5 @@
+use <arc.scad>;
+use <square_maze.scad>;
 use <heart_maze.scad>;
 
 names = ["Justin", "Monica"];

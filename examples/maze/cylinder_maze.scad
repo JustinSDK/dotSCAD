@@ -1,6 +1,5 @@
-include <hollow_out.scad>;
-include <bend.scad>;
-include <square_maze.scad>;
+use <bend.scad>;
+use <square_maze.scad>;
 
 radius = 30; 
 height = 60;

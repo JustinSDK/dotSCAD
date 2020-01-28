@@ -1,6 +1,5 @@
-include <line2d.scad>;
-include <stereographic_extrude.scad>;
-include <square_maze.scad>;
+use <stereographic_extrude.scad>;
+use <square_maze.scad>;
 
 maze_rows = 10;
 block_width = 40;

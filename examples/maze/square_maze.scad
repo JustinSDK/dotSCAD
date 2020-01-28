@@ -1,3 +1,6 @@
+use <line2d.scad>;
+use <polyline2d.scad>;
+
 // NO_WALL = 0;       
 // UPPER_WALL = 1;    
 // RIGHT_WALL = 2;    

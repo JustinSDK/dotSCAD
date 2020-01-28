@@ -1,5 +1,5 @@
-include <line2d.scad>;
-include <arc.scad>;
+use <line2d.scad>;
+use <arc.scad>;
 
 number_of_circles = 15;
 minimum_radius = 3;

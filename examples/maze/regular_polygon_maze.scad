@@ -1,6 +1,6 @@
-include <line2d.scad>;
-include <hollow_out.scad>;
-include <square_maze.scad>;
+use <line2d.scad>;
+use <hollow_out.scad>;
+use <square_maze.scad>;
 
 // only for creating a small maze
 

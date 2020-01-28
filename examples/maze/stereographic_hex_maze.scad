@@ -1,7 +1,5 @@
-include <line2d.scad>;
-include <polyline2d.scad>;
-include <stereographic_extrude.scad>;
-include <square_maze.scad>;
+use <stereographic_extrude.scad>;
+use <square_maze.scad>;
 
 x_cells = 10;
 cell_radius = 20;

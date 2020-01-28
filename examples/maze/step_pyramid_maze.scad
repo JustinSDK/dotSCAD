@@ -1,5 +1,4 @@
-include <line2d.scad>;
-include <square_maze.scad>;
+use <square_maze.scad>;
 
 maze_rows = 8;
 block_width = 10;

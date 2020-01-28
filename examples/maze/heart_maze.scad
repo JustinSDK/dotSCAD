@@ -1,8 +1,8 @@
-include <line2d.scad>;
-include <hollow_out.scad>;
-include <square_maze.scad>;
-include <ellipse_extrude.scad>;
-include <arc.scad>;
+use <line2d.scad>;
+use <hollow_out.scad>;
+use <square_maze.scad>;
+use <ellipse_extrude.scad>;
+use <arc.scad>;
 
 radius_of_heart = 12;
 height_of_heart = 25;
