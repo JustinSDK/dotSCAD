@@ -1,6 +1,6 @@
-include <hull_polyline2d.scad>;
-include <hollow_out.scad>;
-include <turtle/t2d.scad>;
+use <hull_polyline2d.scad>;
+use <hollow_out.scad>;
+use <turtle/t2d.scad>;
 
 radius = 40;
 height = 3;

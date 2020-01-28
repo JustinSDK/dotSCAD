@@ -1,5 +1,5 @@
-include <hull_polyline2d.scad>;
-include <turtle/t2d.scad>;
+use <hull_polyline2d.scad>;
+use <turtle/t2d.scad>;
 
 side_leng = 100;
 min_leng = 4;

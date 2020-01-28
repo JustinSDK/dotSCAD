@@ -1,5 +1,5 @@
-include <line2d.scad>;
-include <turtle/t2d.scad>;
+use <line2d.scad>;
+use <turtle/t2d.scad>;
 
 style = "MIRROR"; // [TREES, INVERTED, MIRROR]
 trunk_angle = 86; // [1:90]

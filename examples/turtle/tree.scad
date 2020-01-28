@@ -1,5 +1,5 @@
-include <line3d.scad>;
-include <turtle/t3d.scad>;
+use <line3d.scad>;
+use <turtle/t3d.scad>;
 
 module tree(t, leng, leng_scale1, leng_scale2, leng_limit, 
             angleZ, angleX, width) {
