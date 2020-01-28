@@ -1,7 +1,7 @@
-include <voronoi3d.scad>;
-include <bezier_curve.scad>;
-include <hollow_out.scad>;
-include <polysections.scad>;
+use <voronoi3d.scad>;
+use <bezier_curve.scad>;
+use <hollow_out.scad>;
+use <polysections.scad>;
 
 r = 13;
 h = 60;
