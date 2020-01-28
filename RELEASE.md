@@ -1,5 +1,10 @@
 > Version numbers are based on [Semantic Versioning](https://semver.org/).
 
+# v2.2
+- Bugfixes
+  - `util/sort`: fix "search term not found" warning when `by` is `"idx"`.
+- Better dependency management. Just `use` modules you want. Existing scripts are not required to do any change.
+
 # v2.1
 - Bugfixes
   - `bend_extrude`: fix wrong rotation.
