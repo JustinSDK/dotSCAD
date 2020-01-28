@@ -1,6 +1,6 @@
-include <hollow_out.scad>;
-include <voronoi2d.scad>;
-include <bend_extrude.scad>;
+use <hollow_out.scad>;
+use <voronoi2d.scad>;
+use <bend_extrude.scad>;
 
 r = 35;
 height = 35;
