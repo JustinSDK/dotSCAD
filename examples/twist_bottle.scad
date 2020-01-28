@@ -1,4 +1,4 @@
-include <box_extrude.scad>;
+use <box_extrude.scad>;
 
 /* [Basic] */
 
