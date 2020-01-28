@@ -1,4 +1,4 @@
-include <line2d.scad>;
+use <line2d.scad>;
 
 module tiled_lines(size, line_width = 1, step) {
     sizexy = is_num(size) ? [size, size] : size;
