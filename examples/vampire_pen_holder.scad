@@ -1,11 +1,10 @@
-include <bezier_curve.scad>;
-include <bezier_surface.scad>;
-include <function_grapher.scad>;
-include <hollow_out.scad>;
-include <rounded_extrude.scad>;
-include <bend_extrude.scad>;
-include <ellipse_extrude.scad>;
-include <shape_ellipse.scad>;
+use <bezier_surface.scad>;
+use <function_grapher.scad>;
+use <hollow_out.scad>;
+use <rounded_extrude.scad>;
+use <bend_extrude.scad>;
+use <ellipse_extrude.scad>;
+use <shape_ellipse.scad>;
 
 holder_height = 80;
 holder_round_r = 5;
