@@ -4,7 +4,7 @@
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *
-* @see https://openhome.cc/eGossip/OpenSCAD/lib-multi_line_text.html
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-multi_line_text.html
 *
 **/ 
 module multi_line_text(lines, line_spacing = 15, size = 10, font = "Arial", halign = "left", valign = "baseline", direction = "ltr", language = "en", script = "latin"){

@@ -4,7 +4,7 @@
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *
-* @see https://openhome.cc/eGossip/OpenSCAD/lib-archimedean_spiral_extrude.html
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-archimedean_spiral_extrude.html
 *
 **/
 

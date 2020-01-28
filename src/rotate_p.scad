@@ -4,7 +4,7 @@
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *
-* @see https://openhome.cc/eGossip/OpenSCAD/lib-rotate_p.html
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-rotate_p.html
 *
 **/ 
 
