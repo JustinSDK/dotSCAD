@@ -21,6 +21,7 @@ Every module or function is located in the file which has the same name as the m
 Some module files are organized in a directory. For example, px_circle.scad exists in `pixel` directory. You have to prefix the directory name when including `px_circle`.
 
     use <pixel/px_circle.scad>;
+	
 	points = px_circle(radius = 10);
 	for(pt = points) {
         translate(pt) square(1);
