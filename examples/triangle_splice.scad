@@ -1,5 +1,4 @@
-include <line2d.scad>;
-include <polyline2d.scad>;
+use <polyline2d.scad>;
 
 tri_side_leng = 20;
 tris_per_line = 10;
