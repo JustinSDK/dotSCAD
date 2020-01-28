@@ -1,6 +1,6 @@
-include <hollow_out.scad>;
-include <part/joint_T.scad>;
-include <triangle2square.scad>;
+use <hollow_out.scad>;
+use <part/joint_T.scad>;
+use <triangle2square.scad>;
 
 tri_side_leng = 45;
 height = 6;
