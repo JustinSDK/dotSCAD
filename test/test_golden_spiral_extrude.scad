@@ -1,6 +1,6 @@
 use <unittest.scad>;
 use <circle_path.scad>;
-use <golden_spiral_extrude.scad>;
+include <golden_spiral_extrude.scad>;
 
 module test_golden_spiral_extrude(sections, triangles) {
     if(triangles == "SOLID") {

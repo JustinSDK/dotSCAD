@@ -1,7 +1,6 @@
 // 2D
 include <test_rounded_square.scad>;
 include <test_line2d.scad>;
-include <test_polyline2d.scad>;
 include <test_hull_polyline2d.scad>;
 include <test_hexagons.scad>;
 
@@ -10,10 +9,8 @@ include <test_rounded_cube.scad>;
 include <test_rounded_cylinder.scad>;
 include <test_crystal_ball.scad>;
 include <test_line3d.scad>;
-include <test_polyline3d.scad>;
 include <test_hull_polyline3d.scad>;
 include <test_function_grapher.scad>;
-include <test_polysections.scad>;
 
 // Transformation
 include <test_bend.scad>;

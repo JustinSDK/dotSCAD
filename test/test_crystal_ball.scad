@@ -1,5 +1,5 @@
 use <unittest.scad>;
-use <crystal_ball.scad>;
+include <crystal_ball.scad>;
 
 module test_crystal_ball_pie(shape_pts) {
     expected = [[0, 0], [5.1392, 2.9671], [4.8541, 3.5267], [3.5267, 4.8541], [2.9671, 5.1392]];

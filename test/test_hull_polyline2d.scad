@@ -1,5 +1,5 @@
 use <unittest.scad>;
-use <hull_polyline2d.scad>;
+include <hull_polyline2d.scad>;
 
 module test_hull_polyline2d_line_segment(index, point1, point2, radius) {
     points = [[1, 2], [-5, -4], [-5, 3], [5, 5]];

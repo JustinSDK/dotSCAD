@@ -1,5 +1,5 @@
 use <unittest.scad>;
-use <function_grapher.scad>;
+include <function_grapher.scad>;
 
 module test_function_grapher_faces(points, faces) {
      pts = [

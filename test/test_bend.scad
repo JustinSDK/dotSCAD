@@ -1,5 +1,5 @@
 use <unittest.scad>;
-use <bend.scad>;
+include <bend.scad>;
  
 module test_bend_tri_frag(points, angle) {
     expected_points = [[0, 0], [0.1927, 1.9566], [0.3854, 0], [0, 0]];

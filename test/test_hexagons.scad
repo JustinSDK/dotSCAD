@@ -1,5 +1,5 @@
 use <unittest.scad>;
-use <hexagons.scad>;
+include <hexagons.scad>;
 
 module test_each_hexagon(hex_r, pts_all_lines) {
     // ==== test_hexagons_lv2 ====

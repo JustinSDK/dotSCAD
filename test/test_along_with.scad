@@ -1,6 +1,6 @@
 use <unittest.scad>;
 use <circle_path.scad>;
-use <along_with.scad>;
+include <along_with.scad>;
 
 module test_along_with_angles(angles, children) {
     if(children == 1) {
