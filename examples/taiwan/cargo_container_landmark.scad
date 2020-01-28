@@ -1,5 +1,5 @@
-include <along_with.scad>;
-include <box_extrude.scad>;
+use <along_with.scad>;
+use <box_extrude.scad>;
 
 platform = "YES"; // [YES, NO]
 cube_only = "NO";   // [YES, NO]

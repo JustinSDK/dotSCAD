@@ -1,6 +1,6 @@
-include <shape_taiwan.scad>;
-include <ellipse_extrude.scad>;
-include <midpt_smooth.scad>;
+use <shape_taiwan.scad>;
+use <ellipse_extrude.scad>;
+use <midpt_smooth.scad>;
 
 smooth_times = 40;
 slices = 2;

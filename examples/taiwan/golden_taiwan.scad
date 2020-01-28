@@ -1,13 +1,8 @@
-include <shape_taiwan.scad>;
-include <circle_path.scad>;
-include <rotate_p.scad>;
-include <golden_spiral.scad>;
-include <cross_sections.scad>;
-include <polysections.scad>;
-include <golden_spiral_extrude.scad>;
-include <bezier_curve.scad>;
-include <bezier_surface.scad>;
-include <function_grapher.scad>;
+use <shape_taiwan.scad>;
+use <golden_spiral.scad>;
+use <golden_spiral_extrude.scad>;
+use <bezier_surface.scad>;
+use <function_grapher.scad>;
 
 // smaller values are better
 taiwan_fineness = 5;  

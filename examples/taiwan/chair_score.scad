@@ -1,5 +1,4 @@
-include <arc.scad>;
-include <util/rand.scad>;
+use <util/rand.scad>;
 
 layer = 15;  // [1:15]
 radial = 30; // [1:30]

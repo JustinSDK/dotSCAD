@@ -1,10 +1,10 @@
-include <trim_shape.scad>;
-include <bezier_curve.scad>;
-include <shape_taiwan.scad>;
-include <path_scaling_sections.scad>;
-include <polysections.scad>;
-include <rotate_p.scad>;
-include <bijection_offset.scad>;
+use <trim_shape.scad>;
+use <bezier_curve.scad>;
+use <shape_taiwan.scad>;
+use <path_scaling_sections.scad>;
+use <polysections.scad>;
+use <rotate_p.scad>;
+use <bijection_offset.scad>;
 
 x1 = 4; // [-20:4]
 x2 = 3; // [-20:4]

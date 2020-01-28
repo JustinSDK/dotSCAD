@@ -1,10 +1,8 @@
-include <in_shape.scad>;
-include <shape_taiwan.scad>;
-include <pixel/px_line.scad>;
-include <pixel/px_polyline.scad>;
-include <pixel/px_sphere.scad>;
-include <pixel/px_cylinder.scad>;
-include <pixel/px_polygon.scad>;
+use <shape_taiwan.scad>;
+use <pixel/px_polyline.scad>;
+use <pixel/px_sphere.scad>;
+use <pixel/px_cylinder.scad>;
+use <pixel/px_polygon.scad>;
 
 module blocks(points) {
     for(pt = points) {

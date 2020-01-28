@@ -1,13 +1,9 @@
-include <rotate_p.scad>;
-include <cross_sections.scad>;
-include <polysections.scad>;
-include <ring_extrude.scad>;
-include <crystal_ball.scad>;
+use <crystal_ball.scad>;
 
 leng = 30;
 leng_diff = 3;
 min_leng = 2;
-model = "Base"; // [Cube, Base]
+model = "Cube"; // [Cube, Base]
 
 module spiral_cube(leng, leng_diff, min_leng) {
     thickness = leng_diff / 3;
