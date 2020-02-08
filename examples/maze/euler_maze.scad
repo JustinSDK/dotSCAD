@@ -1,5 +1,6 @@
 use <line2d.scad>;
 use <arc.scad>;
+use <util/rand.scad>;
 
 number_of_circles = 15;
 minimum_radius = 3;
@@ -36,7 +37,7 @@ module euler_maze(n, r, d, width = 1) {
         line2d(p3, p4, width = width, p1Style = "CAP_ROUND", p2Style = "CAP_ROUND");  
                    
         if(n != 0) {
-            rand_a = rands(15, 180, 15)[0];
+            rand_a = rand(15, 180);
             angle_between_gap = rand_a - gap_angle;         
             twoGapsCircle(outer_r, d, 
                 gap_angle,
