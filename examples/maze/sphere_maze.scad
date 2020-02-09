@@ -19,14 +19,14 @@ module sphere_maze() {
         rows, columns, y_circular = true
     );
 
-    p_offset = [wall_thickness * columns, pole_offset, 0];
+    p_offset = [block_width * rows, pole_offset, 0];
     mr = m_rotation(90);
 
     walls = maze_walls(blocks, rows, columns, block_width, bottom_border = false);
     for(wall_pts = walls) {  
         rxpts = [
             for(p = wall_pts) 
-                pt_to_sphere(mr * [p[0], p[1], 0, 0] + p_offset, size, r)
+                pt_to_sphere(size, mr * [p[0], p[1], 0, 0] + p_offset, r)
         ];
         hull_polyline3d(rxpts, wall_thickness, $fn = 6);
     }
