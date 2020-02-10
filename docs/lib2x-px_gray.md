@@ -73,7 +73,7 @@ I provide a tool [img2gray](https://github.com/JustinSDK/img2gray) for convertin
 
 After converting the image, use the data in the text file as the `levels` value of `pixel_gray`, you can build a model like this:
 
-    include <pixel/px_gray.scad>;
+    use <pixel/px_gray.scad>;
 
     levels = [
         [255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255], 
