@@ -6,7 +6,7 @@ use <rotate_p.scad>;
     r: sphere radius.
     angle: [za, xa] mapping angles.
 */
-function pt_to_sphere(size, p, r, angle = [180, 360]) =
+function pt2sphere(size, p, r, angle = [180, 360]) =
     let(
         x = p[0],
         y = p[1],
