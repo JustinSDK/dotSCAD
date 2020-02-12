@@ -9,6 +9,8 @@ wall_thickness = 1;
 angle = 180;
 // $fn = 24;
 
+function tf_twist(size, p, ) =
+
 function y_twist(walls, angle, rows, columns, block_width) = 
     let(
         x_offset = columns * block_width / 2,
