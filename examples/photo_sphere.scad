@@ -1,5 +1,5 @@
 use <pixel/px_gray.scad>;
-use <experimental/pt2sphere.scad>;
+use <experimental/tf_sphere.scad>;
 
 photo_size = [100, 100];
 levels = [
@@ -110,14 +110,14 @@ dots = px_gray(levels, center = true, normalize = true);
 
 color("white")
     for(dot = dots) {   
-        translate(pt2sphere(photo_size, dot[0] + [50, 50], 50, [180, 180])) 
+        translate(tf_sphere(photo_size, dot[0] + [50, 50], 50, [180, 180])) 
             square(dot[1] * 2.5);
     }
     
 rotate([180, 0, 0])
 color("white")
     for(dot = dots) {   
-        translate(pt2sphere(photo_size, dot[0] + [50, 50], 50, [180, 180])) 
+        translate(tf_sphere(photo_size, dot[0] + [50, 50], 50, [180, 180])) 
             square(dot[1] * 2.5);
     }
     
