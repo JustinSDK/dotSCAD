@@ -1,5 +1,10 @@
 use <rotate_p.scad>;
 
+/*
+    size: The size of a rectangle.
+    point: A point in the rectangle.
+    angle: twisted angle.
+*/
 function tf_y_twist(size, point, angle) =
     let(
         xlen = size[0],
