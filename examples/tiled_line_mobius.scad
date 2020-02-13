@@ -24,17 +24,17 @@ module tiled_line_mobius(size, twist, step, line_width = 1) {
                 [[size[0], i], [size[0], i + step]]
         ]
     );
-    
+            
     for(line = lines) {
         pts = [for(p = line) tf_ring(size, p, size[0], 360, twist)];
         hull_polyline3d(pts, thickness = line_width);
     }
 }
 
-size = [20, 100];
-line_width = .5;
+size = [20, 75];
+line_width = 1.5;
 step = 1; 
 twist = 180;
-$fn = 4;
+$fn = 8;
 
 tiled_line_mobius(size, twist, step, line_width);
