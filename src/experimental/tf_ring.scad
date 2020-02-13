@@ -1,6 +1,13 @@
 use <rotate_p.scad>;
 use <experimental/tf_y_twist.scad>;
 
+/*
+    size: The size of a rectangle.
+    point: A point in the rectangle.
+    radius: sphere radius.
+    angle: arc angle.
+    twist: The number of degrees of through which the rectangle is twisted.
+*/
 function tf_ring(size, point, radius, angle, twist = 0) = 
     let(
         yleng = size[1],
