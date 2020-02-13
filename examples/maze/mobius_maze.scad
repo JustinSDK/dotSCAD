@@ -23,6 +23,6 @@ walls = maze_walls(blocks, rows, columns, block_width, bottom_border = false);
 
 size = [columns * block_width, rows * block_width];
 for(wall_pts = walls) {  
-   z_rotated = [for(pt = wall_pts) tf_ring(size, pt, radius, 360, angle)];
-   hull_polyline3d(z_rotated, wall_thickness);
+   transformed = [for(pt = wall_pts) tf_ring(size, pt, radius, 360, angle)];
+   hull_polyline3d(transformed, wall_thickness);
 }
