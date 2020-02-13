@@ -1,11 +1,12 @@
 use <line2d.scad>;
+use <util/rand.scad>;
 
-module tiled_lines(size, line_width = 1, step) {
+module tiled_lines(size, step, line_width = 1) {
     sizexy = is_num(size) ? [size, size] : size;
     s = is_undef(step) ? line_width * 2 : step;
  
     module rand_diagonal_line(x, y, size) {
-        if(rands(0, 1, 1)[0] >= 0.5) {
+        if(rand(0, 1) >= 0.5) {
             line2d([x, y], [x + size, y + size], width = line_width);
         } 
         else {
@@ -24,4 +25,4 @@ size = [50, 25];
 line_width = 1;
 step = 2; 
 
-tiled_lines(size, line_width, step);
+tiled_lines(size, step, line_width);
