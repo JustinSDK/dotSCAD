@@ -22,7 +22,7 @@ module tiled_lines(size, step, line_width = 1) {
 }
 
 size = [50, 25];
-line_width = 1;
 step = 2; 
+line_width = 1;
 
 tiled_lines(size, step, line_width);
