@@ -31,10 +31,10 @@ module tiled_line_mobius(size, twist, step, line_width = 1) {
     }
 }
 
-size = [20, 75];
+size = [20, 100];
 line_width = 1.5;
 step = 1; 
 twist = 180;
-$fn = 6;
+$fn = 8;
 
 tiled_line_mobius(size, twist, step, line_width);
