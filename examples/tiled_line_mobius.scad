@@ -35,6 +35,6 @@ size = [20, 75];
 line_width = 1.5;
 step = 1; 
 twist = 180;
-$fn = 8;
+$fn = 6;
 
 tiled_line_mobius(size, twist, step, line_width);
