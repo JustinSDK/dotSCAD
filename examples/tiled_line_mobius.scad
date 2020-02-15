@@ -26,7 +26,7 @@ module tiled_line_mobius(size, twist, step, line_width = 1) {
     );
             
     for(line = lines) {
-        pts = [for(p = line) tf_ring(size, p, size[0], 360, twist)];
+        pts = [for(p = line) tf_ring(size, p, size[0], twist = twist)];
         hull_polyline3d(pts, thickness = line_width);
     }
 }
