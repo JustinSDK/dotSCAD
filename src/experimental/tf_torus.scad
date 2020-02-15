@@ -13,8 +13,7 @@ function tf_torus(size, point, radius, angle = [360, 360], twist = 0) =
         ya_step = a / xlen,
         za_step = A / ylen,
         twa_step = twist / ylen,
-        ya = 180 - x * ya_step,
-        za = za_step * y,
-        twisted = rotate_p([r * cos(ya), 0, r * sin(ya)], [0, twa_step * y, 0])
+        ya = 180 - x * ya_step + twa_step * y,
+        za = za_step * y
     ) 
-    rotate_p(twisted + [R + r, 0, 0], za);
+    rotate_p([r * cos(ya) + R + r, 0, r * sin(ya)], za);
