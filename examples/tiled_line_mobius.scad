@@ -2,6 +2,12 @@ use <util/rand.scad>;
 use <hull_polyline3d.scad>;
 use <experimental/tf_ring.scad>;
 
+size = [20, 100];
+line_width = 1;
+step = 1; 
+twist = 180;
+$fn = 8;
+
 module tiled_line_mobius(size, twist, step, line_width = 1) {
     sizexy = is_num(size) ? [size, size] : size;
     s = is_undef(step) ? line_width * 2 : step;
@@ -30,11 +36,5 @@ module tiled_line_mobius(size, twist, step, line_width = 1) {
         hull_polyline3d(pts, thickness = line_width);
     }
 }
-
-size = [20, 100];
-line_width = 1;
-step = 1; 
-twist = 180;
-$fn = 8;
 
 tiled_line_mobius(size, twist, step, line_width);
