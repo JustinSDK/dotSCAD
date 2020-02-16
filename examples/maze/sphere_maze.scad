@@ -1,7 +1,7 @@
 use <hull_polyline3d.scad>;
-use <rotate_p.scad>;
-use <square_maze.scad>;
 use <matrix/m_rotation.scad>;
+use <experimental/mz_blocks.scad>;
+use <experimental/mz_walls.scad>;
 use <experimental/tf_sphere.scad>;
 
 r = 10;
@@ -13,16 +13,16 @@ pole_offset = block_width * 1.5;
 
 module sphere_maze() {
     size = [rows * block_width, columns * block_width + pole_offset * 2];
-    blocks = go_maze( 
-        1, 1,   // starting point
-        starting_maze(rows, columns),  
-        rows, columns, y_circular = true
+    blocks = mz_blocks(
+        [1, 1],  
+        rows, columns, 
+        y_circular = true
     );
 
     p_offset = [block_width * rows, pole_offset, 0];
     mr = m_rotation(90);
 
-    walls = maze_walls(blocks, rows, columns, block_width, bottom_border = false);
+    walls = mz_walls(blocks, rows, columns, block_width, bottom_border = false);
     for(wall_pts = walls) {  
         rxpts = [
             for(p = wall_pts) 
