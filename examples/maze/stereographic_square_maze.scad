@@ -1,5 +1,6 @@
 use <stereographic_extrude.scad>;
-use <square_maze.scad>;
+use <experimental/mz_blocks.scad>;
+use <experimental/mz_walls.scad>;
 
 maze_rows = 10;
 block_width = 40;
@@ -9,23 +10,25 @@ shadow = "YES"; // [YES, NO]
 wall_height = 2;
 
 module stereographic_projection_maze2(maze_rows, block_width, wall_thickness, fn, wall_height, shadow) {
-    maze_blocks = go_maze(
-        1, 1,   // starting point
-        starting_maze(maze_rows, maze_rows),  
+    blocks = mz_blocks(
+        [1, 1],  
         maze_rows, maze_rows
-    ); 
+    );
+
+    walls = mz_walls(blocks, maze_rows, maze_rows, block_width);
 
     length = block_width * maze_rows + wall_thickness;
     
     module maze() {
         translate([-block_width * maze_rows / 2, -block_width * maze_rows / 2, 0]) 
-            build_square_maze(
-                maze_rows, 
-                maze_rows, 
-                maze_blocks, 
-                block_width, 
-                wall_thickness
-            );
+        for(wall = walls) {
+            for(i = [0:len(wall) - 2]) {
+                hull() {
+                    translate(wall[i]) square(wall_thickness, center = true);
+                    translate(wall[i + 1]) square(wall_thickness, center = true);
+                }
+            }
+        } 
     }
     
     stereographic_extrude(shadow_side_leng = length, $fn = fn)
