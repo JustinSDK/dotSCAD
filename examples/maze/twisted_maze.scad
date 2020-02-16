@@ -1,6 +1,8 @@
 use <hull_polyline3d.scad>;
 use <rotate_p.scad>;
 use <square_maze.scad>;
+use <experimental/mz_blocks.scad>;
+use <experimental/mz_walls.scad>;
 use <experimental/tf_y_twist.scad>;
 
 rows = 16;
@@ -10,12 +12,12 @@ wall_thickness = 1;
 angle = 180;
 // $fn = 24;
 
-blocks = go_maze( 
-    1, 1,   // starting point
-    starting_maze(rows, columns),  
+blocks = mz_blocks(
+    [1, 1],  
     rows, columns
 );
-walls = maze_walls(blocks, rows, columns, block_width);
+
+walls = mz_walls(blocks, rows, columns, block_width);
 
 size = [columns * block_width, rows * block_width];
 for(wall_pts = walls) {  
