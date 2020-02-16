@@ -1,10 +1,9 @@
-use <experimental/mz_blocks.scad>;
-use <experimental/mz_walls.scad>;
+use <square_maze.scad>;
 
 maze_rows = 8;
 block_width = 2;
 wall_thickness = 1;
-inner_cube = false;
+inner_cube = true;
 travel_all = true;
 
 module cube_maze(maze_rows, block_width, wall_thickness, inner_cube, travel_all) {
@@ -20,23 +19,9 @@ module cube_maze(maze_rows, block_width, wall_thickness, inner_cube, travel_all)
     
     module two_mazes() {
         module one_maze() {
-            blocks = mz_blocks(
-                [1, 1],  
-                maze_rows, maze_rows
-            );
-
-            walls = mz_walls(blocks, maze_rows, maze_rows, block_width);
-
             translate([origin, origin, half_cube_size]) 
-                linear_extrude(wall_thickness) 
-                for(wall = walls) {
-                    for(i = [0:len(wall) - 2]) {
-                        hull() {
-                            translate(wall[i]) square(wall_thickness, center = true);
-                            translate(wall[i + 1]) square(wall_thickness, center = true);
-                        }
-                    }
-                }
+            linear_extrude(wall_thickness) 
+                square_maze([1, 1], maze_rows, block_width, wall_thickness);
         }
 
         one_maze();  
