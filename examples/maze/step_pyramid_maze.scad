@@ -1,5 +1,4 @@
-use <experimental/mz_blocks.scad>;
-use <experimental/mz_walls.scad>;
+use <square_maze.scad>;
 
 maze_rows = 8;
 block_width = 10;
@@ -30,14 +29,7 @@ module pyramid_with_stairs(base_width, stairs_width, rows) {
     }
 }
 
-module step_pyramid_maze(maze_rows, block_width, stairs_width) {
-    blocks = mz_blocks(
-        [1, 1],  
-        maze_rows, maze_rows
-    );
-
-    walls = mz_walls(blocks, maze_rows, maze_rows, block_width);
-    
+module step_pyramid_maze(maze_rows, block_width, stairs_width) {    
     intersection() {
         pyramid_with_stairs(
             maze_rows * block_width, stairs_width, maze_rows);
@@ -48,14 +40,7 @@ module step_pyramid_maze(maze_rows, block_width, stairs_width) {
             
             translate([-(maze_rows * block_width) / 2, -(maze_rows * block_width) / 2, 0]) 
             difference() {
-                for(wall = walls) {
-                    for(i = [0:len(wall) - 2]) {
-                        hull() {
-                            translate(wall[i]) square(stairs_width, center = true);
-                            translate(wall[i + 1]) square(stairs_width, center = true);
-                        }
-                    }
-                }   
+                square_maze([1, 1], maze_rows, block_width, stairs_width);
 
                 // entry
                 translate([0, stairs_width]) 
