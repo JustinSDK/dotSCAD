@@ -1,6 +1,4 @@
 use <hull_polyline3d.scad>;
-use <rotate_p.scad>;
-use <square_maze.scad>;
 use <experimental/mz_blocks.scad>;
 use <experimental/mz_walls.scad>;
 use <experimental/tf_y_twist.scad>;
