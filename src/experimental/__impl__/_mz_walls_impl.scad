@@ -1,4 +1,4 @@
-use <experimental/__impl__/_maze_comm.scad>;
+use <experimental/__impl__/_mz_comm.scad>;
 
 function block_walls(block, block_width) = 
     let(
