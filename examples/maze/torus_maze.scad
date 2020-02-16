@@ -1,7 +1,7 @@
 use <hull_polyline3d.scad>;
-use <rotate_p.scad>;
-use <square_maze.scad>;
 use <experimental/tf_torus.scad>;
+use <experimental/maze_blocks.scad>;
+use <experimental/maze_walls.scad>;
 
 rows = 36;
 columns = 12;
@@ -14,11 +14,12 @@ leng = rows * block_width;
 radius = 0.5 * leng / PI;
 a_step = 360 / leng;
 
-blocks = go_maze( 
-    1, 1,   // starting point
-    starting_maze(rows, columns),  
-    rows, columns, x_circular = true, y_circular = true
+blocks = maze_blocks(
+    [1, 1],  
+    rows, columns, 
+    x_circular = true, y_circular = true
 );
+
 walls = maze_walls(blocks, rows, columns, block_width, left_border = false, bottom_border = false);
 
 size = [columns * block_width, rows * block_width];
