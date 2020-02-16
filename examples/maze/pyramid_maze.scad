@@ -1,4 +1,5 @@
-use <square_maze.scad>;
+use <experimental/mz_blocks.scad>;
+use <experimental/mz_walls.scad>;
 
 maze_rows = 10;
 block_width = 2;
@@ -10,25 +11,28 @@ module pyramid_maze(maze_rows, block_width, wall_thickness) {
         linear_extrude(height, scale = 0) 
             square(leng, center = true);
     }
-
-    maze_blocks = go_maze(
-        1, 1,   // starting point
-        starting_maze(maze_rows, maze_rows),  
+    
+    blocks = mz_blocks(
+        [1, 1],  
         maze_rows, maze_rows
-    ); 
-   
+    );
+
+    walls = mz_walls(blocks, maze_rows, maze_rows, block_width);
+
     leng = maze_rows * block_width ;
     half_leng = leng / 2;
     
     intersection() {
         linear_extrude(leng * 2) 
-        translate([-half_leng, -half_leng]) build_square_maze(
-            maze_rows, 
-            maze_rows, 
-            maze_blocks, 
-            block_width, 
-            wall_thickness
-        );
+        translate([-half_leng, -half_leng]) 
+        for(wall = walls) {
+            for(i = [0:len(wall) - 2]) {
+                hull() {
+                    translate(wall[i]) square(wall_thickness, center = true);
+                    translate(wall[i + 1]) square(wall_thickness, center = true);
+                }
+            }
+        }        
         
         pyramid(leng + wall_thickness);
     }
