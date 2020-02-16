@@ -1,6 +1,6 @@
 use <arc.scad>;
-use <square_maze.scad>;
 use <heart_maze.scad>;
+use <experimental/mz_blocks.scad>;
 
 names = ["Justin", "Monica"];
 font_name = "Arial Black";
@@ -31,9 +31,9 @@ module heart_base(name, font_name, font_size, radius, ring_thickness, tip_r_of_h
 }
 
 module heart2heart_maze(names, font_name, font_size, radius_of_heart, tip_r_of_heart, wall_thickness, cblocks, levels, spacing) {
-    maze = go_maze(1, 1, 
-        starting_maze(cblocks, levels),
-        cblocks, levels, y_circular = true
+    maze = mz_blocks(
+	    [1, 1],  
+	    cblocks, levels, y_circular = true
     );
 
     translate([0, 0, wall_thickness])
