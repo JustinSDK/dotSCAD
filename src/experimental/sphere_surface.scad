@@ -1,4 +1,4 @@
-use <experimental/surface_grapher.scad>;
+use <experimental/sf_solidify.scad>;
 use <experimental/tf_sphere.scad>;
 
 /*
@@ -31,7 +31,7 @@ module sphere_surface(levels, radius, thickness, angle = [180, 360], invert = fa
         ]
     ];
 
-    surface_grapher(
+    sf_solidify(
         [
             for(row = surface1) 
             [
