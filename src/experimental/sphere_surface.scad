@@ -1,6 +1,13 @@
 use <experimental/surface_grapher.scad>;
 use <experimental/tf_sphere.scad>;
 
+/*
+    levels : A list of numbers (0 ~ 255).
+    radius: sphere radius.
+    thickness: shell thickness
+    angle: [za, xa] mapping angles.
+    invert: inverts how the gray levels are translated into height values.
+*/
 module sphere_surface(levels, radius, thickness, angle = [180, 360], invert = false) {
     columns = len(levels);
     rows = len(levels[0]);
