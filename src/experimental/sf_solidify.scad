@@ -1,17 +1,17 @@
 /**
-* surface_grapher.scad
+* sf_solidify.scad
 *
 * @copyright Justin Lin, 2020
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *
-* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-surface_grapher.html
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-sf_solidify.html
 *
 **/ 
 
 use <util/reverse.scad>;
 use <experimental/flat.scad>;
 
-module surface_grapher(surface1, surface2, slicing = "SLASH") {
+module sf_solidify(surface1, surface2, slicing = "SLASH") {
     rows = len(surface1);
     columns = len(surface1[0]);
 
