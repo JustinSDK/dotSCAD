@@ -1,5 +1,4 @@
 use <experimental/sf_solidify.scad>;
-use <experimental/tf_sphere.scad>;
 
 /*
     levels : A list of numbers (0 ~ 255).
