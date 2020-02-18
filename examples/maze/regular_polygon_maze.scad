@@ -1,6 +1,7 @@
 use <line2d.scad>;
 use <hollow_out.scad>;
 use <experimental/mz_blocks.scad>;
+use <experimental/mz_get.scad>;
 
 // only for creating a small maze
 
@@ -36,20 +37,14 @@ module regular_polygon_to_polygon_wall(radius, length, angle, thickness, sides) 
 }
 
 module regular_polygon_maze(radius, cblocks, levels, thickness = 1, sides) {    
-    // NO_WALL = 0;       
-	// UPPER_WALL = 1;    
-	// RIGHT_WALL = 2;    
-	// UPPER_RIGHT_WALL = 3; 
+	function no_wall(block) = get_wall_type(block) == "NO_WALL";
+	function upper_wall(block) = get_wall_type(block) == "UPPER_WALL";
+	function right_wall(block) = get_wall_type(block) == "RIGHT_WALL";
+	function upper_right_wall(block) = get_wall_type(block) == "UPPER_RIGHT_WALL";
 
-	function no_wall(block) = get_wall_type(block) == 0;
-	function upper_wall(block) = get_wall_type(block) == 1;
-	function right_wall(block) = get_wall_type(block) == 2;
-	function upper_right_wall(block) = get_wall_type(block) == 3;
-
-	function block(x, y, wall_type, visited) = [x, y, wall_type, visited];
-	function get_x(block) = block[0];
-	function get_y(block) = block[1];
-	function get_wall_type(block) = block[2];
+	function get_x(block) = mz_get(block, "x"); 
+	function get_y(block) = mz_get(block, "y");
+	function get_wall_type(block) = mz_get(block, "w");
 
     arc_angle = 360 / cblocks;
 	r = radius / (levels + 1);
