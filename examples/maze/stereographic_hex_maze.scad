@@ -1,6 +1,7 @@
 use <polyline2d.scad>;
 use <stereographic_extrude.scad>;
 use <experimental/mz_blocks.scad>;
+use <experimental/mz_get.scad>;
 
 x_cells = 10;
 cell_radius = 20;
@@ -10,20 +11,14 @@ shadow = "YES"; // [YES, NO]
 wall_height = 1;
 
 module build_hex_maze(y_cells, x_cells, maze_vector, cell_radius, wall_thickness, left_border = true, bottom_border = true) {
-    // NO_WALL = 0;       
-	// UPPER_WALL = 1;    
-	// RIGHT_WALL = 2;    
-	// UPPER_RIGHT_WALL = 3; 
+	function no_wall(block) = get_wall_type(block) == "NO_WALL";
+	function upper_wall(block) = get_wall_type(block) == "UPPER_WALL";
+	function right_wall(block) = get_wall_type(block) == "RIGHT_WALL";
+	function upper_right_wall(block) = get_wall_type(block) == "UPPER_RIGHT_WALL";
 
-	function no_wall(block) = get_wall_type(block) == 0;
-	function upper_wall(block) = get_wall_type(block) == 1;
-	function right_wall(block) = get_wall_type(block) == 2;
-	function upper_right_wall(block) = get_wall_type(block) == 3;
-
-	function block(x, y, wall_type, visited) = [x, y, wall_type, visited];
-	function get_x(block) = block[0];
-	function get_y(block) = block[1];
-	function get_wall_type(block) = block[2];
+	function get_x(block) = mz_get(block, "x"); 
+	function get_y(block) = mz_get(block, "y");
+	function get_wall_type(block) = mz_get(block, "w");
 
 	function cell_position(x_cell, y_cell) =
 		let(
