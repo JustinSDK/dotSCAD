@@ -12,7 +12,9 @@ function tf_bend(size, point, radius, angle) =
         // ylen = size[1],
         y = point[0],
         z = point[1],
+        x = is_undef(point[2]) ? 0 : point[2],
         a_step = angle / xlen,
-        a = a_step * y
+        a = a_step * y,
+        r = radius + x
     )
-    [radius * cos(a), radius * sin(a), z];
+    [r * cos(a), r * sin(a), z];
