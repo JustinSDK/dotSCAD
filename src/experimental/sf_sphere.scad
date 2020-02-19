@@ -9,16 +9,15 @@ use <experimental/tf_sphere.scad>;
     invert: inverts how the gray levels are translated into height values.
 */
 module sf_sphere(levels, radius, thickness, angle = [180, 360], invert = false) {
-    columns = len(levels);
-    rows = len(levels[0]);
-    
+    rows = len(levels);
+    columns = len(levels[0]);
     size = [columns - 1, rows - 1];
 
     surface1 = [
         for(r = [0:rows - 1]) 
         [
             for(c = [0:columns - 1]) 
-            let(lv = invert ? 255 - levels[c][r] : levels[c][r])
+            let(lv = invert ? 255 - levels[rows - r - 1][c] : levels[rows - r - 1][c])
             [c, r, lv / 255 * thickness]
         ]
     ];
