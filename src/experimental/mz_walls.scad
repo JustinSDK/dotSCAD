@@ -1,4 +1,4 @@
-use <experimental/__impl__/_mz_walls_impl.scad>;
+use <experimental/_impl/_mz_walls_impl.scad>;
 
 function mz_walls(blocks, rows, columns, block_width, left_border = true, bottom_border = true) = 
     let(

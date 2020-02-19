@@ -1,4 +1,4 @@
-use <experimental/__impl__/_mz_blocks_impl.scad>;
+use <experimental/_impl/_mz_blocks_impl.scad>;
 
 function mz_blocks(start, rows, columns, maze, x_circular = false, y_circular = false) = 
     go_maze( 

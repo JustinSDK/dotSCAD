@@ -1,3 +1,4 @@
+use <experimental/_impl/sf_solidify.scad>;
 use <experimental/sf_solidify.scad>;
 
 /*
