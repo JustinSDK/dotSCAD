@@ -16,11 +16,12 @@ module sf_sphere(levels, radius, thickness, angle = [180, 360], invert = false) 
     size = [columns - 1, rows - 1];
 
     offset_z = invert ? thickness : 0;
+    r = radius + offset_z;
     sf_solidify(
         [
             for(row = surface[0]) 
             [
-                for(p = row) tf_sphere(size, p, radius + offset_z, angle)
+                for(p = row) tf_sphere(size, p, r, angle)
             ]
         ]
         ,
