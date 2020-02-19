@@ -28,15 +28,13 @@ module sf_square(levels, thickness, invert = false) {
         ]
     ];
 
+    offset_z = invert ? thickness : 0;
     sf_solidify(
         [
             for(r = [0:rows - 1]) 
             [
                 for(c = [0:columns - 1]) 
-                let(
-                    lv = invert ? 255 - levels[c][r] : levels[c][r],
-                    offset_z = invert ? thickness : 0
-                )
+                let(lv = invert ? 255 - levels[c][r] : levels[c][r])
                 [c, r, lv / 255 * thickness + offset_z]
             ]
         ],
