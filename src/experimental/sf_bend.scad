@@ -20,8 +20,7 @@ module sf_bend(levels, radius, thickness, angle, invert = false) {
         [
             for(row = surface[0]) 
             [
-                for(p = row) 
-                tf_bend(size, p, radius + offset_z, angle)
+                for(p = row) tf_bend(size, p, radius + offset_z, angle)
             ]
         ],
         [
