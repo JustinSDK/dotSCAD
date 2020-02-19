@@ -18,6 +18,6 @@ function tf_sphere(size, point, radius, angle = [180, 360]) =
         za_step = za / ylen,
         rza = za_step * y,
         rzpt = [(radius + z) * cos(rza), (radius + z) * sin(rza), 0],       
-        rxpt = rotate_p(rzpt, [180 - xa / xlen * x, 0, 0])   
+        rxpt = rotate_p(rzpt, [-xa / xlen * x + xa, 0, 0])   
     )
     rxpt;
