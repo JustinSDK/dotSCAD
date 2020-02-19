@@ -6,7 +6,7 @@ function _sf_square_surfaces(levels, thickness, invert) =
             for(r = [0:rows - 1]) 
             [
                 for(c = [0:columns - 1]) 
-                let(lv = invert ? 255 - levels[rows - r - 1][c] : levels[rows - r - 1][c])
+                let(lv = (invert ? 255 - levels[rows - r - 1][c] : levels[rows - r - 1][c]) + 1) // minimum level is 1
                 [c, r, lv / 255 * thickness]
             ]
         ],
