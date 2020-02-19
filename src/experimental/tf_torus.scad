@@ -14,7 +14,7 @@ function tf_torus(size, point, radius, angle = [360, 360], twist = 0) =
         x = point[0],        
         y = point[1],
         R = radius[0],
-        r = radius[1],
+        r = radius[1] + (is_undef(point[2]) ? 0 : point[2]),
         A = angle[0],
         a = angle[1],
         ya_step = a / xlen,
