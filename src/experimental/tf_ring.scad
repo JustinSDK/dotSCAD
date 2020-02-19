@@ -4,7 +4,7 @@ use <experimental/tf_y_twist.scad>;
 /*
     size: The size of a rectangle.
     point: A point in the rectangle.
-    radius: sphere radius.
+    radius: ring radius.
     angle: arc angle.
     twist: The number of degrees of through which the rectangle is twisted.
 */
