@@ -20,7 +20,7 @@ module sf_square(levels, thickness, invert = false) {
                 [c, r, lv / 255 * thickness + offset_z]
             ]
         ],
-         [
+        [
             for(r = [0:rows - 1]) 
             [
                 for(c = [0:columns - 1]) 
