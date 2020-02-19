@@ -4,9 +4,9 @@ use <experimental/tf_ring.scad>;
 
 /*
     levels : A list of numbers (0 ~ 255).
-    radius: The radius of the arc after being bent
-    thickness: shell thickness
-    angle: The central angle of the arc..
+    radius: ring radius.
+    thickness: thickness
+    angle: arc angle.
     invert: inverts how the gray levels are translated into height values.
 */
 
