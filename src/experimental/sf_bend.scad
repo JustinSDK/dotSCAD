@@ -16,11 +16,12 @@ module sf_bend(levels, radius, thickness, angle, invert = false) {
     size = [columns - 1, rows - 1];
 
     offset_z = invert ? thickness : 0;
+    r = radius + offset_z;
     sf_solidify(
         [
             for(row = surface[0]) 
             [
-                for(p = row) tf_bend(size, p, radius + offset_z, angle)
+                for(p = row) tf_bend(size, p, r, angle)
             ]
         ],
         [
