@@ -38,8 +38,7 @@ module sf_bend(levels, radius, thickness, angle, invert = false) {
                 for(p = row) 
                 tf_bend(size, p, radius + offset_z, angle)
             ]
-        ]
-        ,
+        ],
         [
             for(row = surface2) 
             [
