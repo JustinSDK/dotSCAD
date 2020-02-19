@@ -7,30 +7,53 @@ use <experimental/tf_ring.scad>;
     radius: ring radius.
     thickness: thickness
     angle: arc angle.
+    twist: The number of degrees of through which the rectangle is twisted.    
     invert: inverts how the gray levels are translated into height values.
 */
 
-module sf_ring(levels, radius, thickness, angle = 360, invert = false) {
+module sf_ring(levels, radius, thickness, angle = 360, twist = 0, invert = false) {
     surface = _sf_square_surfaces(levels, thickness, invert);
     rows = len(levels);
     columns = len(levels[0]);
     size = [columns - 1, rows - 1];
     
     offset_z = invert ? thickness : 0;
-    sf_solidify(
-        [
-            for(row = surface[0]) 
+    centered = invert ? [0, 0, thickness] : [0, 0, thickness / 2];
+    if(invert) {
+        mirror([0, 0, 1]) 
+            sf_solidify(
+                [
+                    for(row = surface[1]) 
+                    [
+                        for(p = row) 
+                            tf_ring(size, p + centered, radius, angle, twist)
+                    ]
+                ],            
+                [
+                    for(row = surface[0]) 
+                    [
+                        for(p = row) 
+                            tf_ring(size, [p[0], p[1], -p[2]], radius, angle, twist)
+                    ]
+                ]
+                
+            );   
+    } else {
+        sf_solidify(
             [
-                for(p = row) 
-                    tf_ring(size, p, radius, angle, 0) + + [0, 0, offset_z]
-            ]
-        ],
-        [
-            for(row = surface[1]) 
+                for(row = surface[0]) 
+                [
+                    for(p = row) 
+                        tf_ring(size, p - centered, radius, angle, twist) + [0, 0, offset_z]
+                ]
+            ],
             [
-                for(p = row) 
-                    tf_ring(size, p, radius, angle, 0)
+                for(row = surface[1]) 
+                [
+                    for(p = row) 
+                        tf_ring(size, p - centered, radius, angle, twist)
+                ]
             ]
-        ]
-    );
+        );     
+    }
 }
