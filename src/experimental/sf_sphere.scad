@@ -6,6 +6,7 @@ use <experimental/tf_sphere.scad>;
     levels : A list of numbers (0 ~ 255).
     radius: sphere radius.
     thickness: shell thickness
+    depth: the depth of the image
     angle: [za, xa] mapping angles.
     invert: inverts how the gray levels are translated into height values.
 */

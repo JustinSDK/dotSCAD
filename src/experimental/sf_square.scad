@@ -4,6 +4,7 @@ use <experimental/sf_solidify.scad>;
 /*
     levels : A list of numbers (0 ~ 255).
     thickness: square thickness
+    depth: the depth of the image
     invert: inverts how the gray levels are translated into height values.
 */
 module sf_square(levels, thickness, depth, invert = false) {
