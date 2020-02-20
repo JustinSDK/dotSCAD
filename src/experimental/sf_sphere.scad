@@ -9,8 +9,9 @@ use <experimental/tf_sphere.scad>;
     angle: [za, xa] mapping angles.
     invert: inverts how the gray levels are translated into height values.
 */
-module sf_sphere(levels, radius, thickness, angle = [180, 360], invert = false) {
-    surface = _sf_square_surfaces(levels, thickness, invert);
+module sf_sphere(levels, radius, thickness, depth, angle = [180, 360], invert = false) {
+    dp = is_undef(depth) ? thickness - .1 : depth;
+    surface = _sf_square_surfaces(levels, thickness, dp, invert);
     rows = len(levels);
     columns = len(levels[0]);
     size = [columns - 1, rows - 1];
