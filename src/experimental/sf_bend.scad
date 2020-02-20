@@ -6,11 +6,13 @@ use <experimental/tf_bend.scad>;
     levels : A list of numbers (0 ~ 255).
     radius: The radius of the arc after being bent
     thickness: shell thickness
+    depth: the depth of the image
     angle: The central angle of the arc..
     invert: inverts how the gray levels are translated into height values.
 */
-module sf_bend(levels, radius, thickness, angle, invert = false) {
-    surface = _sf_square_surfaces(levels, thickness, invert);
+module sf_bend(levels, radius, thickness, depth, angle = 180, invert = false) {
+    dp = is_undef(depth) ? thickness / 2 : depth;
+    surface = _sf_square_surfaces(levels, thickness, dp, invert);
     rows = len(levels);
     columns = len(levels[0]);
     size = [columns - 1, rows - 1];
