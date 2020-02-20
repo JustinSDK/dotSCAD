@@ -8,7 +8,7 @@ use <experimental/sf_solidify.scad>;
     invert: inverts how the gray levels are translated into height values.
 */
 module sf_square(levels, thickness, depth, invert = false) {
-    dp = is_undef(depth) ? thickness - .1 : depth;
+    dp = is_undef(depth) ? thickness / 2 : depth;
     surface = _sf_square_surfaces(levels, thickness, dp, invert);
     offset_z = invert ? thickness : 0;
 
