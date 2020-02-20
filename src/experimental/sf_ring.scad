@@ -6,13 +6,15 @@ use <experimental/tf_ring.scad>;
     levels : A list of numbers (0 ~ 255).
     radius: ring radius.
     thickness: thickness
+    depth: the depth of the image    
     angle: arc angle.
     twist: The number of degrees of through which the rectangle is twisted.    
     invert: inverts how the gray levels are translated into height values.
 */
 
-module sf_ring(levels, radius, thickness, angle = 360, twist = 0, invert = false) {
-    surface = _sf_square_surfaces(levels, thickness, invert);
+module sf_ring(levels, radius, thickness, depth, angle = 360, twist = 0, invert = false) {
+    dp = is_undef(depth) ? thickness / 2 : depth;
+    surface = _sf_square_surfaces(levels, thickness, dp, invert);
     rows = len(levels);
     columns = len(levels[0]);
     size = [columns - 1, rows - 1];
