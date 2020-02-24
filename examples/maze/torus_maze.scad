@@ -1,5 +1,5 @@
 use <hull_polyline3d.scad>;
-use <experimental/tf_torus.scad>;
+use <experimental/ptf_torus.scad>;
 use <experimental/mz_blocks.scad>;
 use <experimental/mz_walls.scad>;
 
@@ -24,7 +24,7 @@ walls = mz_walls(blocks, rows, columns, block_width, left_border = false, bottom
 
 size = [columns * block_width, rows * block_width];
 for(wall_pts = walls) {  
-   transformed = [for(pt = wall_pts) tf_torus(size, pt, [radius, radius / 2], twist = twist)];
+   transformed = [for(pt = wall_pts) ptf_torus(size, pt, [radius, radius / 2], twist = twist)];
    hull_polyline3d(transformed, wall_thickness, $fn = 4);
 }
 

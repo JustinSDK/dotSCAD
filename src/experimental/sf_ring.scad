@@ -1,6 +1,6 @@
 use <experimental/_impl/_sf_square_surfaces.scad>;
 use <experimental/sf_solidify.scad>;
-use <experimental/tf_ring.scad>;
+use <experimental/ptf_ring.scad>;
 
 /*
     levels : A list of numbers (0 ~ 255).
@@ -28,14 +28,14 @@ module sf_ring(levels, radius, thickness, depth, angle = 360, twist = 0, invert 
                     for(row = surface[1]) 
                     [
                         for(p = row) 
-                            tf_ring(size, p + centered, radius, angle, twist)
+                            ptf_ring(size, p + centered, radius, angle, twist)
                     ]
                 ],            
                 [
                     for(row = surface[0]) 
                     [
                         for(p = row) 
-                            tf_ring(size, [p[0], p[1], -p[2]], radius, angle, twist)
+                            ptf_ring(size, [p[0], p[1], -p[2]], radius, angle, twist)
                     ]
                 ]
                 
@@ -46,14 +46,14 @@ module sf_ring(levels, radius, thickness, depth, angle = 360, twist = 0, invert 
                 for(row = surface[0]) 
                 [
                     for(p = row) 
-                        tf_ring(size, p - centered, radius, angle, twist) + [0, 0, offset_z]
+                        ptf_ring(size, p - centered, radius, angle, twist) + [0, 0, offset_z]
                 ]
             ],
             [
                 for(row = surface[1]) 
                 [
                     for(p = row) 
-                        tf_ring(size, p - centered, radius, angle, twist)
+                        ptf_ring(size, p - centered, radius, angle, twist)
                 ]
             ]
         );     

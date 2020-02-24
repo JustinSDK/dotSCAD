@@ -1,7 +1,7 @@
 use <hull_polyline3d.scad>;
 use <experimental/mz_blocks.scad>;
 use <experimental/mz_walls.scad>;
-use <experimental/tf_ring.scad>;
+use <experimental/ptf_ring.scad>;
 
 rows = 48;
 columns = 8;
@@ -24,6 +24,6 @@ walls = mz_walls(blocks, rows, columns, block_width, bottom_border = false);
 
 size = [columns * block_width, rows * block_width];
 for(wall_pts = walls) {  
-   transformed = [for(pt = wall_pts) tf_ring(size, pt, radius, 360, angle)];
+   transformed = [for(pt = wall_pts) ptf_ring(size, pt, radius, 360, angle)];
    hull_polyline3d(transformed, wall_thickness);
 }

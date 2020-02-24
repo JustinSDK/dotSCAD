@@ -2,7 +2,7 @@ use <hull_polyline3d.scad>;
 use <matrix/m_rotation.scad>;
 use <experimental/mz_blocks.scad>;
 use <experimental/mz_walls.scad>;
-use <experimental/tf_sphere.scad>;
+use <experimental/ptf_sphere.scad>;
 
 r = 10;
 rows = 24;
@@ -26,7 +26,7 @@ module sphere_maze() {
     for(wall_pts = walls) {  
         rxpts = [
             for(p = wall_pts) 
-                tf_sphere(size, mr * [p[0], p[1], 0, 0] + p_offset, r)
+                ptf_sphere(size, mr * [p[0], p[1], 0, 0] + p_offset, r)
         ];
         hull_polyline3d(rxpts, wall_thickness, $fn = 6);
     }

@@ -5,7 +5,7 @@
     angle: The central angle of the arc.
 */
 
-function tf_bend(size, point, radius, angle) = 
+function ptf_bend(size, point, radius, angle) = 
     let(
         xlen = size[0],
         // ignored

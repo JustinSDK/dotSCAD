@@ -1,6 +1,6 @@
 use <experimental/_impl/_sf_square_surfaces.scad>;
 use <experimental/sf_solidify.scad>;
-use <experimental/tf_bend.scad>;
+use <experimental/ptf_bend.scad>;
 
 /*
     levels : A list of numbers (0 ~ 255).
@@ -23,13 +23,13 @@ module sf_bend(levels, radius, thickness, depth, angle = 180, invert = false) {
         [
             for(row = surface[0]) 
             [
-                for(p = row) tf_bend(size, p, r, angle)
+                for(p = row) ptf_bend(size, p, r, angle)
             ]
         ],
         [
             for(row = surface[1]) 
             [
-                for(p = row) tf_bend(size, p, radius, angle)
+                for(p = row) ptf_bend(size, p, radius, angle)
             ]
         ]
     );

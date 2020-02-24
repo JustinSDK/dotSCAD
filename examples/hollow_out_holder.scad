@@ -1,7 +1,7 @@
 use <hull_polyline3d.scad>;
 use <util/rand.scad>;
 use <experimental/tri_bisectors.scad>;
-use <experimental/tf_bend.scad>;
+use <experimental/ptf_bend.scad>;
 
 width = 5;
 columns = 30;
@@ -47,7 +47,7 @@ lines = concat(
 );
 
 for(line = lines) {  
-   transformed = [for(pt = line) tf_bend([columns * width, rows * width], pt, radius, angle)];
+   transformed = [for(pt = line) ptf_bend([columns * width, rows * width], pt, radius, angle)];
    hull_polyline3d(transformed, thickness, $fn = 4);
 }
 

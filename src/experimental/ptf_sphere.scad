@@ -6,7 +6,7 @@ use <rotate_p.scad>;
     radius: sphere radius.
     angle: [za, xa] mapping angles.
 */
-function tf_sphere(size, point, radius, angle = [180, 360]) =
+function ptf_sphere(size, point, radius, angle = [180, 360]) =
     let(
         x = point[0],
         y = point[1],

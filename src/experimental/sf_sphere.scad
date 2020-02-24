@@ -1,6 +1,6 @@
 use <experimental/_impl/_sf_square_surfaces.scad>;
 use <experimental/sf_solidify.scad>;
-use <experimental/tf_sphere.scad>;
+use <experimental/ptf_sphere.scad>;
 
 /*
     levels : A list of numbers (0 ~ 255).
@@ -23,14 +23,14 @@ module sf_sphere(levels, radius, thickness, depth, angle = [180, 360], invert = 
         [
             for(row = surface[0]) 
             [
-                for(p = row) tf_sphere(size, p, r, angle)
+                for(p = row) ptf_sphere(size, p, r, angle)
             ]
         ]
         ,
         [
             for(row = surface[1]) 
             [
-                for(p = row) tf_sphere(size, p, radius, angle)
+                for(p = row) ptf_sphere(size, p, radius, angle)
             ]
         ]
     );

@@ -1,7 +1,7 @@
 use <hull_polyline3d.scad>;
 use <experimental/mz_blocks.scad>;
 use <experimental/mz_walls.scad>;
-use <experimental/tf_y_twist.scad>;
+use <experimental/ptf_y_twist.scad>;
 
 rows = 16;
 columns = 8;
@@ -19,6 +19,6 @@ walls = mz_walls(blocks, rows, columns, block_width);
 
 size = [columns * block_width, rows * block_width];
 for(wall_pts = walls) {  
-   transformed = [for(pt = wall_pts) tf_y_twist(size, pt, angle)];
+   transformed = [for(pt = wall_pts) ptf_y_twist(size, pt, angle)];
    hull_polyline3d(transformed, wall_thickness);
 }

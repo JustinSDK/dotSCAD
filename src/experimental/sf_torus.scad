@@ -1,6 +1,6 @@
 use <experimental/_impl/_sf_square_surfaces.scad>;
 use <experimental/sf_solidify.scad>;
-use <experimental/tf_torus.scad>;
+use <experimental/ptf_torus.scad>;
 
 /*
     levels : A list of numbers (0 ~ 255).
@@ -30,13 +30,13 @@ module sf_torus(levels, radius, thickness, depth, angle = [360, 360], twist = 0,
         [
             for(row = surface[0]) 
             [
-                for(p = row) tf_torus(size, p, tr1, angle, twist)
+                for(p = row) ptf_torus(size, p, tr1, angle, twist)
             ]
         ],
         [
             for(row = surface[1]) 
             [
-                for(p = row) tf_torus(size, p, tr2, angle, twist)
+                for(p = row) ptf_torus(size, p, tr2, angle, twist)
             ]
         ]
     );

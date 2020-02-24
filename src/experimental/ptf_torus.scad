@@ -7,7 +7,7 @@ use <rotate_p.scad>;
     angle: torus [A, a].
     twist: The number of degrees of through which the rectangle is twisted.
 */
-function tf_torus(size, point, radius, angle = [360, 360], twist = 0) =
+function ptf_torus(size, point, radius, angle = [360, 360], twist = 0) =
     let(
         xlen = size[0],
         ylen = size[1],
