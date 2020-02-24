@@ -9,6 +9,9 @@ function _triangulate_in_triangle(p0, p1, p2, p) =
     )
     (c0 > 0 && c1 > 0 && c2 > 0) || (c0 < 0 && c1 < 0 && c2 < 0);
 
+function _triangulate_determinant_2x2(matrix) =
+    matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
+
 function _triangulate_snipable(shape_pts, u, v, w, n, indices, epsilon = 0.0001) =
     let(
         a = shape_pts[indices[u]],
@@ -19,9 +22,14 @@ function _triangulate_snipable(shape_pts, u, v, w, n, indices, epsilon = 0.0001)
         bx = b[0],
         by = b[1],
         cx = c[0],
-        cy = c[1]
+        cy = c[1],
+        determinant = _triangulate_determinant_2x2([
+            [bx - ax, by - ay], 
+            [cx - ax, cy - ay]
+        ])
     )
-    epsilon > (((bx - ax) * (cy - ay)) - ((by - ay) * (cx - ax))) ? 
+    
+    epsilon > determinant ? 
         false : _triangulate_snipable_sub(shape_pts, n, u, v, w, a, b, c, indices);
     
 function _triangulate_snipable_sub(shape_pts, n, u, v, w, a, b, c, indices, p = 0) = 
