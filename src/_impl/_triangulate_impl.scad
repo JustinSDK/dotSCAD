@@ -28,7 +28,6 @@ function _triangulate_snipable(shape_pts, u, v, w, n, indices, epsilon = 0.0001)
             [cx - ax, cy - ay]
         ])
     )
-    
     epsilon > determinant ? 
         false : _triangulate_snipable_sub(shape_pts, n, u, v, w, a, b, c, indices);
     
