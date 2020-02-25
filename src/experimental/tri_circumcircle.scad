@@ -9,7 +9,7 @@ function tri_circumcircle(points) =
       d1 = (p2 + p1) / 2 * v1,
       det = -cross(v0 , v1)
    )
-   det == 0? undef : 
+   det == 0? [] : 
              let(
                  x = (d1 * v0[1] - d0 * v1[1]) / det,
                  y = (d0 * v1[0] - d1 * v0[0]) / det,
