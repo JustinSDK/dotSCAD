@@ -19,10 +19,7 @@ Creats a [Voronoi diagram](https://en.wikipedia.org/wiki/Voronoi_diagram). The i
 
     use <voronoi2d.scad>;
 
-    xs = rands(-20, 20, 50);
-    ys = rands(-20, 20, 50);
-
-    points = [for(i = [0:len(xs) - 1]) [xs[i], ys[i]]];
+    points = [for(i = [0:50]) rands(-20, 20, 2)];
 
     voronoi2d(points);
     translate([60, 0, 0]) 
