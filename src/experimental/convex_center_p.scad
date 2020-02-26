@@ -1,5 +1,3 @@
-use <experimental/_impl/_convex_center_p_impl.scad>;
+use <experimental/sum.scad>;
 
-function convex_center_p(points) =
-    let(leng = len(points))
-    _convex_center_p_sum(points, leng) / leng;
+function convex_center_p(points) = sum(points) / len(points);
