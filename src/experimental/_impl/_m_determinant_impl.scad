@@ -1,7 +1,5 @@
 use <util/slice.scad>;
-
-function _m_determinant_sum(lt, leng, i = 0) =
-    i == leng ? 0 : (lt[i] + _m_determinant_sum(lt, leng, i + 1));
+use <experimental/sum.scad>;
 
 function _m_determinant_sub(matrix, leng, fc) = 
     let(
@@ -17,4 +15,4 @@ function _m_determinant(matrix) =
     let(leng = len(matrix))
     leng == 2 ? matrix[0][0] * matrix[1][1] - matrix[1][0] * matrix[0][1] :
         let(indices = [for(i = [0:leng - 1]) i])
-        _m_determinant_sum([for(fc = indices) _m_determinant_sub(matrix, leng, fc)], leng);
+        sum([for(fc = indices) _m_determinant_sub(matrix, leng, fc)]);
