@@ -1,9 +1,8 @@
 use <experimental/_impl/_convex_hull_impl.scad>;
-use <util/sort.scad>;
 
 function convex_hull(points) = 
     let(
-        sorted = sort(points, by = "x"),
+        sorted = _convex_hull_sort_by_xy(points),
         leng = len(sorted),
         lwr_ch = _convex_hull_lower_chain(sorted, leng, [], 0, 0),
         leng_lwr_ch = len(lwr_ch),
