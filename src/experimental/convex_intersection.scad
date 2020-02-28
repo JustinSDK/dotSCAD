@@ -4,6 +4,7 @@ use <experimental/_impl/_convex_intersection_impl.scad>;
 use <experimental/convex_ct_clk_order.scad>;
 
 function convex_intersection(shape1, shape2, epsilon = 0.0001) =
+    (shape1 == [] || shape2 == []) ? [] :
     let(
         leng = len(shape1),
         pts = concat(shape1, [shape1[0]])
