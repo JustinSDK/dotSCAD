@@ -1,20 +1,25 @@
 use <torus_knot.scad>;
 use <cross_sections.scad>;
-use <util/rand.scad>;
 use <circle_path.scad>;
 use <shape_pentagram.scad>;
-use <hull_polyline3d.scad>;
 use <experimental/tri_bisectors.scad>;
+use <experimental/hollow_out_sweep.scad>;
 
 p = 2;
 q = 3;
 phi_step = 0.075;
 thickness = .1;
-shape = shape_pentagram(.5); // circle_path(radius = .5, $fn = 12);
+section_style = "STAR";    // [STAR, CIRCLE]
+line_style = "HULL_LINES"; // [LINES, HULL_LINES]
 
-hollow_out_torus_knot(shape, p, q, phi_step, thickness, $fn = 4);
+if(section_style == "STAR") {
+    hollow_out_torus_knot(shape_pentagram(.5), p, q, phi_step, thickness, line_style);
+}
+else {
+    hollow_out_torus_knot(circle_path(radius = .5, $fn = 12), p, q, phi_step, thickness, line_style);
+}
 
-module hollow_out_torus_knot(shape, p, q, phi_step, thickness) {
+module hollow_out_torus_knot(shape, p, q, phi_step, thickness, line_style) {
     function angy_angz(p1, p2) = 
         let(
             dx = p2[0] - p1[0],
@@ -37,40 +42,9 @@ module hollow_out_torus_knot(shape, p, q, phi_step, thickness) {
             ]
         )
        cross_sections(shape, path, concat([angles[0]], angles));
-
-    function rects(sects) = 
-        let(
-            sects_leng = len(sects),
-            shape_pt_leng = len(sects[0])
-        )
-        [
-            for(i = [0:sects_leng - 1])
-                let(
-                    sect1 = sects[i],
-                    sect2 = sects[(i + 1) % sects_leng]
-                )
-                for(j = [0:shape_pt_leng - 1])
-                    let(k = (j + 1) % shape_pt_leng)
-                    [sect1[j], sect1[k], sect2[k], sect2[j]]
-        ];
-        
-    function rand_tris(rect) =
-        let(
-            i = ceil(rand() * 10) % 2
-        )
-        i == 0 ?
-            [[rect[0], rect[1], rect[2]], [rect[0], rect[2], rect[3]]] :
-            [[rect[1], rect[2], rect[3]], [rect[1], rect[3], rect[0]]];        
-    
     
     pts = torus_knot(p, q, phi_step);
     sects = sects_by_path(shape, pts);
 
-    for(rect = rects(sects)) {
-        for(tri = rand_tris(rect)) {
-            for(line = tri_bisectors(tri)) {
-                hull_polyline3d(line, thickness = thickness);
-            }
-        }
-    }
+    hollow_out_sweep(concat(sects, [sects[0]]), thickness, line_style);
 }
