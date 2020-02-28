@@ -46,5 +46,5 @@ module hollow_out_torus_knot(shape, p, q, phi_step, thickness, line_style) {
     pts = torus_knot(p, q, phi_step);
     sects = sects_by_path(shape, pts);
 
-    hollow_out_sweep(concat(sects, [sects[0]]), thickness, line_style);
+    hollow_out_sweep(sects, thickness, closed = true, style = line_style);
 }

@@ -4,11 +4,11 @@ use <hull_polyline3d.scad>;
 use <experimental/tri_bisectors.scad>;
 
 // style: LINES or HULL_LINES
-module hollow_out_sweep(sections, thickness, style = "LINES") {
+module hollow_out_sweep(sections, thickness, closed = false, style = "LINES") {
     function rects(sects) = 
         let(
-            sects_leng = len(sections),
-            shape_pt_leng = len(sections[0])
+            sects_leng = len(sects),
+            shape_pt_leng = len(sects[0])
         )
         [
             for(i = [0:sects_leng - 2])
@@ -29,8 +29,9 @@ module hollow_out_sweep(sections, thickness, style = "LINES") {
             [[rect[0], rect[1], rect[2]], [rect[0], rect[2], rect[3]]] :
             [[rect[1], rect[2], rect[3]], [rect[1], rect[3], rect[0]]];        
     
+    sects = closed ? concat(sections, [sections[0]]) : sections;
     lines = [
-        for(rect = rects(sections)) 
+        for(rect = rects(sects)) 
             for(tri = rand_tris(rect)) 
                 each tri_bisectors(tri) 
     ];
