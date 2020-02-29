@@ -62,5 +62,4 @@ module hollow_out_vase(ctrl_pts, t_step, width, fn, line_style) {
        hull_polyline3d([lst_sect[i] + offset_z, dangling_pts[i]], thickness = width, $fn = 4);
        hull_polyline3d([lst_sect[(i + 1) % leng_sect] + offset_z, dangling_pts[i]], thickness = width, $fn = 4);   
     }
-        
 }
