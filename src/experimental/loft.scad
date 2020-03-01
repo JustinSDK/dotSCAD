@@ -1,6 +1,6 @@
 use <experimental/sweep.scad>;
    
-module loft(sections) {
+module loft(sections, slices = 1) {
     function gcd(m, n) = n == 0 ? m : gcd(n, m % n);
 
     function lcm(m, n) = m * n / gcd(m, n);
@@ -30,11 +30,27 @@ module loft(sections) {
         n <= 1 ? sect : _interpolate(sect, len(sect), n);
         
     module _loft(sect1, sect2) {
+        function inter_sects(s1, s2, s_leng, slices) = 
+            slices == 1 ? [] : 
+                let(
+                    dps = [
+                        for(i = [0:lcm_n - 1])
+                        (s2[i] - s1[i]) / slices
+                    ]
+                )
+                [for(i = [1:slices - 1]) s1 + dps * i];
+
         lcm_n = lcm(len(sect1), len(sect2));
         new_sect1 = interpolate(sect1, lcm_n / len(sect1));
         new_sect2 = interpolate(sect2, lcm_n / len(sect2));
         
-        sweep([new_sect1, new_sect2]);
+        sweep(
+            concat(
+                [new_sect1],
+                inter_sects(new_sect1, new_sect2, lcm_n, slices),
+                [new_sect2]
+            )
+        );
     }
         
     for(i = [0:len(sections) - 2]) {
