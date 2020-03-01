@@ -1,0 +1,1 @@
+function gcd(m, n) = n == 0 ? m : gcd(n, m % n);
