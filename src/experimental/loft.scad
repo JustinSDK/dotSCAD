@@ -29,7 +29,7 @@ module loft(sections, slices = 1) {
     function interpolate(sect, n) = 
         n <= 1 ? sect : _interpolate(sect, len(sect), n);
         
-    module _loft(sect1, sect2) {
+    module _loft(sect1, sect2, slices) {
         function inter_sects(s1, s2, s_leng, slices) = 
             slices == 1 ? [] : 
                 let(
@@ -54,6 +54,6 @@ module loft(sections, slices = 1) {
     }
         
     for(i = [0:len(sections) - 2]) {
-        _loft(sections[i], sections[i + 1]);
+        _loft(sections[i], sections[i + 1], slices);
     }
 }
