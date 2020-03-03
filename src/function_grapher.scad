@@ -245,9 +245,9 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
     if(style == "FACES") {
         faces();
     } else {
-        for(yi = yi_range) {
-            for(xi = xi_range) {
-                if(slicing == "SLASH") {
+        if(slicing == "SLASH") {
+            for(yi = yi_range) {
+                for(xi = xi_range) {
                     tri_to_graph([
                         points[yi][xi], 
                         points[yi][xi + 1], 
@@ -256,8 +256,13 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
                         points[yi][xi], 
                         points[yi + 1][xi + 1], 
                         points[yi + 1][xi]
-                    ]);
-                } else {                
+                    ]);       
+                }
+            }            
+        }
+        else {
+            for(yi = yi_range) {
+                for(xi = xi_range) {
                     tri_to_graph([
                         points[yi][xi], 
                         points[yi][xi + 1], 
@@ -266,9 +271,9 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
                         points[yi + 1][xi], 
                         points[yi][xi + 1], 
                         points[yi + 1][xi + 1]
-                    ]);                    
-                }        
-            }
+                    ]);                     
+                }
+            }            
         }
     }
 }
