@@ -222,25 +222,36 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
        hull_pts(tri2);
     }    
 
-    module tri_to_graph(tri1, tri2) {
+    module tri_to_graph(twintri_lt) {
         if(style == "LINES") {
             if(slicing == "SLASH") {
-                tri_to_slash_lines(tri1, tri2);
+                for(twintri = twintri_lt) {
+                    tri_to_slash_lines(twintri[0], twintri[1]);
+                }
             }
             else {
-                tri_to_backslash_lines(tri1, tri2);
+                for(twintri = twintri_lt) {
+                    tri_to_backslash_lines(twintri[0], twintri[1]);
+                }                
             }
         } else if(style == "HULL_FACES") {  // Warning: May be very slow!!
-            tri_to_hull_faces(tri1, tri2);
-        } else if(style == "HULL_LINES") {  // Warning: very very slow!!
+            for(twintri = twintri_lt) {
+                tri_to_hull_faces(twintri[0], twintri[1]);
+            }                  
+        } else if(style == "HULL_LINES") {  // Warning: May be very slow!!
             if(slicing == "SLASH") {
-                tri_to_slash_hull_lines(tri1, tri2);
+                for(twintri = twintri_lt) {
+                    tri_to_slash_hull_lines(twintri[0], twintri[1]);
+                }                  
             }
             else {
-                tri_to_backslash_hull_lines(tri1, tri2);
+                for(twintri = twintri_lt) {
+                    tri_to_backslash_hull_lines(twintri[0], twintri[1]);
+                }                    
             }
         }
     }
+        
     
     if(style == "FACES") {
         faces();
@@ -279,11 +290,8 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
                             ]
                         ]
             ];
-
-
-        for(twintri = twintri_lt) {
-            tri_to_graph(twintri[0], twintri[1]);
-        }    
+        
+        tri_to_graph(twintri_lt);
     }
 }
 
