@@ -164,12 +164,48 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
 
     module tri_to_lines(tri1, tri2) {
        polyline3d(concat(tri1, [tri1[0]]), thickness);
-       polyline3d(concat(tri2, [tri2[0]]), thickness);
+
+       if(slicing == "SLASH") {
+            if(tri2[0][0] == points[0][0][0]) {
+                polyline3d([tri2[0], tri2[2]], thickness);
+            }
+
+            if(tri2[1][1] == points[rows - 1][0][1]) {
+                polyline3d([tri2[1], tri2[2]], thickness);
+            }
+       }
+       else {
+            if(tri2[1][0] == points[0][columns - 1][0]) {
+                polyline3d([tri2[1], tri2[2]], thickness);
+            }
+
+            if(tri2[2][1] == points[rows - 1][columns - 1][1]) {
+                polyline3d([tri2[0], tri2[2]], thickness);
+            }
+       }
     }
 
     module tri_to_hull_lines(tri1, tri2) {
-       hull_polyline3d(concat(tri1, [tri1[0]]), thickness);
-       hull_polyline3d(concat(tri2, [tri2[0]]), thickness);
+        hull_polyline3d(concat(tri1, [tri1[0]]), thickness);
+
+        if(slicing == "SLASH") {
+            if(tri2[0][0] == points[0][0][0]) {
+                hull_polyline3d([tri2[0], tri2[2]], thickness);
+            }
+
+            if(tri2[1][1] == points[rows - 1][0][1]) {
+                hull_polyline3d([tri2[1], tri2[2]], thickness);
+            }
+       }
+       else {
+            if(tri2[1][0] == points[0][columns - 1][0]) {
+                hull_polyline3d([tri2[1], tri2[2]], thickness);
+            }
+
+            if(tri2[2][1] == points[rows - 1][columns - 1][1]) {
+                hull_polyline3d([tri2[0], tri2[2]], thickness);
+            }
+       }
     }    
     
     module hull_pts(tri) {
