@@ -6,7 +6,7 @@ Creates a polyline from a list of `[x, y, z]` coordinates.
 
 - `points` : The list of `[x, y, z]` points of the polyline. The points are indexed from 0 to n-1.
 - `thickness` : The line thickness.
-- `startingStyle` : The end-cap style of the starting point. The value must be `"CAP_BUTT"`, `"CAP_CIRCLE"` or `"CAP_SPHERE"`. The default value is `"CAP_CIRCL"`. 
+- `startingStyle` : The end-cap style of the starting point. The value must be `"CAP_BUTT"`, `"CAP_CIRCLE"` or `"CAP_SPHERE"`. The default value is `"CAP_CIRCLE"`. 
 - `endingStyle` : The end-cap style of the ending point. The value must be `"CAP_BUTT"`, `"CAP_CIRCLE"` or `"CAP_SPHERE"`. The default value is `"CAP_CIRCLE"`.
 - `$fa`, `$fs`, `$fn` : Used by the `circle` or `sphere` module internally. Check [the circle module](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Using_the_2D_Subsystem#circle) or [the sphere module](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Primitive_Solids#sphere) for more details. The final fragments of a circle will be a multiple of 4 to fit edges if possible.
 
