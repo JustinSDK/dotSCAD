@@ -245,36 +245,45 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
     if(style == "FACES") {
         faces();
     } else {
-        if(slicing == "SLASH") {
-            for(yi = yi_range) {
-                for(xi = xi_range) {
-                    tri_to_graph([
-                        points[yi][xi], 
-                        points[yi][xi + 1], 
-                        points[yi + 1][xi + 1]
-                    ], [
-                        points[yi][xi], 
-                        points[yi + 1][xi + 1], 
-                        points[yi + 1][xi]
-                    ]);       
-                }
-            }            
-        }
-        else {
-            for(yi = yi_range) {
-                for(xi = xi_range) {
-                    tri_to_graph([
-                        points[yi][xi], 
-                        points[yi][xi + 1], 
-                        points[yi + 1][xi]
-                    ], [
-                        points[yi + 1][xi], 
-                        points[yi][xi + 1], 
-                        points[yi + 1][xi + 1]
-                    ]);                     
-                }
-            }            
-        }
+        twintri_lt = slicing == "SLASH" ? 
+            [
+                for(yi = yi_range)
+                    for(xi = xi_range)
+                        [
+                            [
+                                points[yi][xi], 
+                                points[yi][xi + 1], 
+                                points[yi + 1][xi + 1]
+                            ],
+                            [
+                                points[yi][xi], 
+                                points[yi + 1][xi + 1], 
+                                points[yi + 1][xi]                            
+                            ]
+                        ]
+            ]
+            :
+            [
+                for(yi = yi_range)
+                    for(xi = xi_range)
+                        [
+                            [
+                                points[yi][xi], 
+                                points[yi][xi + 1], 
+                                points[yi + 1][xi]
+                            ],
+                            [
+                                points[yi + 1][xi], 
+                                points[yi][xi + 1], 
+                                points[yi + 1][xi + 1]                        
+                            ]
+                        ]
+            ];
+
+
+        for(twintri = twintri_lt) {
+            tri_to_graph(twintri[0], twintri[1]);
+        }    
     }
 }
 
