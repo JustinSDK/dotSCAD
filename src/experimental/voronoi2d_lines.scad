@@ -1,8 +1,8 @@
-use <experimental/_impl/_voronoi_lines_impl.scad>;
+use <experimental/_impl/_voronoi2d_lines_impl.scad>;
 use <experimental/tri_delaunay.scad>;
 use <experimental/tri_circumcircle.scad>;
 
-function voronoi_lines(points) = 
+function voronoi2d_lines(points) = 
     let(
         tris = [
             for(idxes = tri_delaunay(points))
@@ -10,7 +10,7 @@ function voronoi_lines(points) =
         ],
         lines = [for(me = tris) 
         let(
-            nbrs = _voronoi_lines_tri_neighbors(tris, me),
+            nbrs = _voronoi2d_lines_tri_neighbors(tris, me),
             circumcircle_cpts = [
                 for(nbr = concat([me], nbrs))
                 tri_circumcircle(nbr)[0]
@@ -25,4 +25,4 @@ function voronoi_lines(points) =
             each lines
         ]
     )
-    _voronoi_lines_dedup_lines(lines); 
+    _voronoi2d_lines_dedup_lines(lines); 

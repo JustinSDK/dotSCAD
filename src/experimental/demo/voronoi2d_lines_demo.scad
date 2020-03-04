@@ -1,5 +1,5 @@
 use <hull_polyline2d.scad>;
-use <experimental/voronoi_lines.scad>;
+use <experimental/voronoi2d_lines.scad>;
 use <experimental/convex_hull.scad>;
 
 pt_nums = 50;
@@ -13,7 +13,7 @@ hull_polyline2d(
 );
   
 intersection() {  
-    for(line = voronoi_lines(points)) {
+    for(line = voronoi2d_lines(points)) {
         hull_polyline2d(
             line, 
             width = width,
