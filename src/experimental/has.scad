@@ -1,0 +1,1 @@
+function has(lt, elem) = search([elem], lt) != [[]];
