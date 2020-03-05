@@ -3,7 +3,7 @@ use <experimental/mz_blocks.scad>;
 use <experimental/mz_get.scad>;
 use <experimental/dedup.scad>;
 
-function mz_hamiltonian(start, rows, columns) =
+function mz_hamiltonian(rows, columns, start) =
     let(
         blocks = mz_blocks(
             [1, 1],  

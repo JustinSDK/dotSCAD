@@ -1,7 +1,7 @@
 use <experimental/mz_hamiltonian.scad>;
 
-module random_scala(start, rows, columns, width, height) {
-    line = mz_hamiltonian(start, rows, columns);
+module random_scala(rows, columns, start, width, height) {
+    line = mz_hamiltonian(rows, columns, start);
     leng = len(line);
     
     for(i = [0:leng - 1]) {
@@ -19,9 +19,9 @@ module random_scala(start, rows, columns, width, height) {
 }
 
 random_scala(
-    start = [0, 0],
     rows = 2, 
-    columns = 5,
+    columns = 3,
+    start = [0, 0],
     width = .5,
     height = .25
 );
