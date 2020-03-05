@@ -2,14 +2,15 @@ use <experimental/mz_hamiltonian.scad>;
 
 module random_scala(start, rows, columns, width, height) {
     line = mz_hamiltonian(start, rows, columns);
+    leng = len(line);
     
-    for(i = [0:len(line) - 1]) {
+    for(i = [0:leng - 1]) {
         p1 = line[i];
         translate(p1)
         linear_extrude(height * i * 2 + height)
             square(width + 0.01, center = true);
             
-        p2 = line[(i + 1) % len(line)];
+        p2 = line[(i + 1) % leng];
         
         translate(p1 + (p2 - p1) / 2)        
         linear_extrude(height * (2 * i + 1) + height)
