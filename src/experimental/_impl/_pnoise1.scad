@@ -2,7 +2,7 @@ _pnoise_table = [151,160,137,91,90,15,131,13,201,95,96,53,194,233,7,225,140,36,1
 
 function _pnoise_fade(t) = pow(t, 3) * (t * (t * 6 - 15) + 10);
 
-function lerp(a, b, t) = a + t * (b - a);
+function _pnoise_lerp(a, b, t) = a + t * (b - a);
 
 function grad1(hashvalue, x) = (hashvalue % 2 == 0) ? x : -x; 
 
@@ -14,7 +14,7 @@ function _pnoise1(x, n, seed = 0) =
         a = _pnoise_table[(seed + xi) % 256],
         b = _pnoise_table[(seed + xi + 1) % 256]
     )
-    lerp(
+    _pnoise_lerp(
         grad1(a, xf),
         grad1(b, xf - 1),
         u
