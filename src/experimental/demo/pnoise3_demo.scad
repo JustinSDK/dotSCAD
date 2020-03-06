@@ -1,5 +1,4 @@
 use <util/rand.scad>;
-use <function_grapher.scad>;
 use <experimental/pnoise2.scad>;
 use <experimental/pnoise3.scad>;
 
@@ -51,6 +50,9 @@ module demo2() {
             noise = pnoise3(pts, seed);
             for(j = [0:len(pts) - 1]) {
                 if(noise[j] > 0) {
+                    color(
+                        pts[j][2] < 1.25 ? "green" : 
+                        pts[j][2] < 1.75 ? "Olive" : "white")
                     translate(pts[j])
                         cube(.2);
                 }           
@@ -58,6 +60,7 @@ module demo2() {
         }
     }
     
+    color("LimeGreen")
     linear_extrude(.2)
         square(10);
 }
