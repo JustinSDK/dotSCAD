@@ -1,6 +1,6 @@
 use <experimental/_impl/_pnoise_comm.scad>;
 
-function _pnoise1(x, n, seed) =
+function _pnoise1(x, seed) =
     let(
         xi = floor(x),
         xf = x - floor(x),
