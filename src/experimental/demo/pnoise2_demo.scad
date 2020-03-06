@@ -14,7 +14,7 @@ module demo1() {
         c = (noise[i] + 1.1) / 2;
         color([c, c, c])
         translate(points[i])
-            square(.2, center = true);
+            square(.2);
     }
 }
 
