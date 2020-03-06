@@ -30,24 +30,26 @@ function _mz_hamiltonian_corner_value(dots, x, y) =
     )
     c1 + c2 + c3 + c4;
 
+_mz_hamiltonian_dir_table = [
+    [4,  0], [12, 0], [13, 0], // UP
+    [1,  1], [3,  1], [7,  1], // DOWN
+    [2,  2], [6,  2], [14, 2], // LEFT
+    [8,  3], [9,  3], [11, 3]  // RIGHT
+];
 function _mz_hamiltonian_dir(cr_value) = 
-    lookup(cr_value, [
-        [4,  0], [12, 0], [13, 0], // UP
-        [1,  1], [3,  1], [7,  1], // DOWN
-        [2,  2], [6,  2], [14, 2], // LEFT
-        [8,  3], [9,  3], [11, 3]  // RIGHT
-    ]);
+    lookup(cr_value, _mz_hamiltonian_dir_table);
 
+_mz_hamiltonian_nxt_offset = [
+    [0,  1],  // UP
+    [0, -1],  // DOWN
+    [-1, 0],  // LEFT
+    [1,  0]   // RIGHT
+];
 function _mz_hamiltonian_travel(dot_pts, p, leng, i = 0) = 
     i == leng ? [] :
     let(
         dir_i = _mz_hamiltonian_dir(_mz_hamiltonian_corner_value(dot_pts, p[0], p[1])),
-        nxt_p = p + [
-            [0,  1],  // UP
-            [0, -1],  // DOWN
-            [-1, 0],  // LEFT
-            [1,  0]   // RIGHT
-        ][dir_i]
+        nxt_p = p + _mz_hamiltonian_nxt_offset[dir_i]
     )
     concat(
         [p], _mz_hamiltonian_travel(dot_pts, nxt_p, leng, i + 1)
