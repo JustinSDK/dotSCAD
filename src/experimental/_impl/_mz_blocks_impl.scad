@@ -37,37 +37,39 @@ function set_visited(x, y, maze) = [
 ];
     
 // 0(right), 1(upper), 2(left), 3(down)
+_rand_dir_table = [
+    [0, 1, 2, 3],
+    [0, 1, 3, 2],
+    [0, 2, 1, 3],
+    [0, 2, 3, 1],
+    [0, 3, 1, 2],
+    [0, 3, 2, 1],
+    [1, 0, 2, 3],
+    [1, 0, 3, 2],
+    [1, 2, 0, 3],
+    [1, 2, 3, 0],
+    [1, 3, 0, 2],
+    [1, 3, 2, 0],
+    [2, 0, 1, 3],
+    [2, 0, 3, 1],
+    [2, 1, 0, 3],
+    [2, 1, 3, 0],
+    [2, 3, 0, 1],
+    [2, 3, 1, 0],
+    [3, 0, 1, 2],
+    [3, 0, 2, 1],
+    [3, 1, 0, 2],
+    [3, 1, 2, 0],
+    [3, 2, 0, 1],
+    [3, 2, 1, 0]
+];
 function rand_dirs() =
-    [
-        [0, 1, 2, 3],
-        [0, 1, 3, 2],
-        [0, 2, 1, 3],
-        [0, 2, 3, 1],
-        [0, 3, 1, 2],
-        [0, 3, 2, 1],
-        [1, 0, 2, 3],
-        [1, 0, 3, 2],
-        [1, 2, 0, 3],
-        [1, 2, 3, 0],
-        [1, 3, 0, 2],
-        [1, 3, 2, 0],
-        [2, 0, 1, 3],
-        [2, 0, 3, 1],
-        [2, 1, 0, 3],
-        [2, 1, 3, 0],
-        [2, 3, 0, 1],
-        [2, 3, 1, 0],
-        [3, 0, 1, 2],
-        [3, 0, 2, 1],
-        [3, 1, 0, 2],
-        [3, 1, 2, 0],
-        [3, 2, 0, 1],
-        [3, 2, 1, 0]
-    ][round(rands(0, 24, 1)[0])]; 
+    _rand_dir_table[round(rands(0, 24, 1)[0])]; 
 
 // get x value by dir
+_next_x_table = [1, 0, -1, 0];
 function next_x(x, dir, columns, circular) = 
-    let(nx = x + [1, 0, -1, 0][dir])
+    let(nx = x + _next_x_table[dir])
     circular ? 
         nx < 1 ? nx + columns : (
             nx > columns ? nx % columns : nx
@@ -76,8 +78,9 @@ function next_x(x, dir, columns, circular) =
         nx;
     
 // get y value by dir
+_next_y_table = [0, 1, 0, -1];
 function next_y(y, dir, rows, circular) = 
-    let(ny = y + [0, 1, 0, -1][dir])
+    let(ny = y + _next_y_table[dir])
     circular ? 
         ny < 1 ? ny + rows : (
             ny > rows ? ny % rows : ny
@@ -141,8 +144,9 @@ function try_block(dir, x, y, maze, rows, columns) =
 
 
 // find out visitable dirs from (x, y)
+_visitable_dir_table = [0, 1, 2, 3];
 function visitable_dirs_from(x, y, maze, rows, columns, x_circular, y_circular) = [
-    for(dir = [0, 1, 2, 3]) 
+    for(dir = _visitable_dir_table) 
         if(visitable(next_x(x, dir, columns, x_circular), next_y(y, dir, rows, y_circular), maze, rows, columns)) 
             dir
 ];  
