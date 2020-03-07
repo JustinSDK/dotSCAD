@@ -3,22 +3,22 @@ use <experimental/pnoise2.scad>;
 use <experimental/pnoise3.scad>;
 
 module demo1() {
-    points = [
-        for(z = [0:.2:3])
+    for(z = [0:.2:5]) {
+        points = [
             for(y = [0:.2:5])
                 for(x = [0:.2:5])
                     [x, y, z]
-    ];
-    noise = pnoise3(points);
-
-    for(i = [0:len(points) - 1]) {
-        if(noise[i] > 0) {
-            translate(points[i])
-                cube(.2);
+        ];    
+        noise = pnoise3(points, 3);
+        for(i = [0:len(points) - 1]) {
+            if(noise[i] > 0) {
+                color([noise[i], .75, .75])
+                translate(points[i])
+                    cube(.2);
+            }
         }
     }
 }
-
 
 module demo2() {
     points = [
