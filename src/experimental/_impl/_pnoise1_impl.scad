@@ -2,7 +2,7 @@ use <experimental/_impl/_pnoise_comm.scad>;
 
 function _pnoise1_grad1(hashvalue, x) = (hashvalue % 2 == 0) ? x : -x; 
 
-function _pnoise1(x, seed) =
+function _pnoise1_impl(x, seed) =
     let(
         xi = floor(x),
         xf = x - xi,
