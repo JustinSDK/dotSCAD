@@ -11,7 +11,7 @@ step = 4;
 module perlin_noise_cylinder(radius, height, thickness_scale, step) {
     size = [PI * radius, height];
     
-    surface_insde = [
+    surface_inside = [
         for(y = [0:step:size[1]])
             concat(
                 [
@@ -24,11 +24,11 @@ module perlin_noise_cylinder(radius, height, thickness_scale, step) {
     
     seed = rand(0, 256);
     surface_outside = [
-            for(ri = [0:len(surface_insde) - 1])
-                let(ns = pnoise2(surface_insde[ri], seed))
+            for(ri = [0:len(surface_inside) - 1])
+                let(ns = pnoise2(surface_inside[ri], seed))
                     [
                         for(ci = [0:len(ns) - 1])
-                            [surface_insde[ri][ci][0], surface_insde[ri][ci][1], thickness_scale * (ns[ci] + 1)]
+                            [surface_inside[ri][ci][0], surface_inside[ri][ci][1], thickness_scale * (ns[ci] + 1)]
                     ]
         ];
 
@@ -41,7 +41,7 @@ module perlin_noise_cylinder(radius, height, thickness_scale, step) {
                 ]
         ];
     t_surface_insde = [
-        for(row = surface_insde)
+        for(row = surface_inside)
             [for(p = row)
                 ptf_bend(size_div_10, p, radius_div_10, 180)
             ]
