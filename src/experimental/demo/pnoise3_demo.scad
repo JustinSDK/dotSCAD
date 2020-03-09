@@ -1,6 +1,6 @@
 use <util/rand.scad>;
-use <experimental/pnoise2.scad>;
-use <experimental/pnoise3.scad>;
+use <experimental/pnoise2s.scad>;
+use <experimental/pnoise3s.scad>;
 
 module demo1() {
     for(z = [0:.2:5]) {
@@ -9,13 +9,12 @@ module demo1() {
                 for(x = [0:.2:5])
                     [x, y, z]
         ];    
-        noise = pnoise3(points, 3);
+        noise = pnoise3s(points, 3);
         for(i = [0:len(points) - 1]) {
-            if(noise[i] > 0) {
-                color([noise[i], .75, .75])
-                translate(points[i])
-                    cube(.2);
-            }
+            alpha = abs(noise[i] + .5);            
+            color([.75, .75, .75, alpha < 0 ? 0 : alpha > 1 ? 1 : alpha])
+            translate(points[i])
+                cube(.2);
         }
     }
 }
@@ -33,7 +32,7 @@ module demo2() {
     
     points_with_h = [
             for(ri = [0:len(points) - 1])
-                let(ns = pnoise2(points[ri], seed))
+                let(ns = pnoise2s(points[ri], seed))
                     [
                         for(ci = [0:len(ns) - 1])
                             [points[ri][ci][0], points[ri][ci][1], ns[ci] + 1]
@@ -47,7 +46,7 @@ module demo2() {
             pts = [
                 for(z = [0:.2:p[2] * h_scale]) [p[0], p[1], z]
             ];
-            noise = pnoise3(pts, seed);
+            noise = pnoise3s(pts, seed);
             for(j = [0:len(pts) - 1]) {
                 if(noise[j] > 0) {
                     color(
