@@ -7,7 +7,7 @@ function _pnoise_contour_step_sub(x, y, current_noise, seed, step_leng, step_ang
     let(
         nx = x + step_leng * cos(theta),
         ny = y + step_leng * sin(theta),
-        new_noise = pnoise2([[nx, ny]], seed)[0],
+        new_noise = pnoise2(nx, ny, seed),
         delta = abs(new_noise - current_noise)        
     )
     delta < min_delta ? 
@@ -17,7 +17,7 @@ function _pnoise_contour_step_sub(x, y, current_noise, seed, step_leng, step_ang
 function _pnoise_contour_step(x, y, heading, noise, seed, step_leng, step_angle) = 
     _pnoise_contour_step_sub(
         x, y, 
-        is_undef(noise) ? pnoise2([[x, y]], seed)[0] : noise,
+        is_undef(noise) ? pnoise2(x, y, seed) : noise,
         seed, step_leng, step_angle, heading, INFINITY, heading, -1, -1, -1, heading - 90
     );
 
