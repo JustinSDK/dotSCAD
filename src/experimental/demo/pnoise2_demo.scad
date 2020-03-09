@@ -1,6 +1,6 @@
 use <util/rand.scad>;
 use <function_grapher.scad>;
-use <experimental/pnoise2.scad>;
+use <experimental/pnoise2s.scad>;
 
 module demo1() {
     points = [
@@ -8,7 +8,7 @@ module demo1() {
             for(x = [0:.2:10])
                 [x, y]
     ];
-    noise = pnoise2(points);
+    noise = pnoise2s(points);
     
     for(i = [0:len(points) - 1]) {
         c = (noise[i] + 1.1) / 2;
@@ -32,7 +32,7 @@ module demo2() {
     function_grapher(
         [
             for(ri = [0:len(points) - 1])
-                let(ns = pnoise2(points[ri], seed))
+                let(ns = pnoise2s(points[ri], seed))
                     [
                         for(ci = [0:len(ns) - 1])
                             [points[ri][ci][0], points[ri][ci][1], ns[ci]]
