@@ -1,16 +1,7 @@
 use <hull_polyline2d.scad>;
 use <experimental/mz_blocks.scad>;
 use <experimental/mz_walls.scad>;
-
-function ptf_circle(point, offset) =
-    let(
-        p = [point[0] - offset, point[1] - offset],
-        n = max(abs(p[0]), abs(p[1])),
-        r = n * 1.414,
-        a = atan2(p[0], p[1])
-    )
-    [r * cos(a), r * sin(a)];
-    
+use <experimental/ptf_circle.scad>;
 
 module circle_maze(start, r_blocks, block_width, wall_thickness, origin_offset) {
     double_r_blocks = r_blocks * 2;
