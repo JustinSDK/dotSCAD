@@ -13,7 +13,8 @@ module circle_maze(start, r_blocks, block_width, wall_thickness, origin_offset) 
     width = double_r_blocks * block_width;
     walls = mz_walls(blocks, double_r_blocks, double_r_blocks, block_width);
     
-    offset = is_undef(origin_offset) ? width / 2 : origin_offset;
+    half_width =  width / 2;
+    offset = is_undef(origin_offset) ? [half_width, half_width] : origin_offset;
     
     for(wall = walls) {
         for(i = [0:len(wall) - 2]) {
@@ -26,7 +27,7 @@ module circle_maze(start, r_blocks, block_width, wall_thickness, origin_offset) 
 
 circle_maze(
     start = [1, 1], 
-    r_blocks = 10, 
+    r_blocks = 5, 
     block_width = 2, 
     wall_thickness = .75
 );
