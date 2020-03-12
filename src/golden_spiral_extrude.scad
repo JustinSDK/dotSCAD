@@ -10,7 +10,7 @@
 
 use <golden_spiral.scad>;
 use <cross_sections.scad>;
-use <polysections.scad>;
+use <sweep.scad>;
 
 module golden_spiral_extrude(shape_pts, from, to, point_distance, 
                              rt_dir = "CT_CLK", twist = 0, scale = 1.0, triangles = "SOLID") {
@@ -37,7 +37,7 @@ module golden_spiral_extrude(shape_pts, from, to, point_distance,
         scale = scale
     );
 
-    polysections(
+    sweep(
         sections,
         triangles = triangles
     );

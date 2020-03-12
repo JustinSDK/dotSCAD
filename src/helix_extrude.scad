@@ -11,7 +11,7 @@
 use <__comm__/__frags.scad>;
 use <helix.scad>;
 use <cross_sections.scad>;
-use <polysections.scad>;
+use <sweep.scad>;
 
 module helix_extrude(shape_pts, radius, levels, level_dist, 
                      vt_dir = "SPI_DOWN", rt_dir = "CT_CLK", 
@@ -47,7 +47,7 @@ module helix_extrude(shape_pts, radius, levels, level_dist,
     
     sections = cross_sections(shape_pts, path_points, angles, twist, scale);
 
-    polysections(
+    sweep(
         sections,
         triangles = triangles
     );

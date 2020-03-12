@@ -10,7 +10,7 @@
 
 use <cross_sections.scad>;
 use <sphere_spiral.scad>;
-use <polysections.scad>;
+use <sweep.scad>;
 
 module sphere_spiral_extrude(shape_pts, radius, za_step, 
                              z_circles = 1, begin_angle = 0, end_angle = 0, vt_dir = "SPI_DOWN", rt_dir = "CT_CLK", 
@@ -36,7 +36,7 @@ module sphere_spiral_extrude(shape_pts, radius, za_step,
         shape_pts, points, angles, twist = twist, scale = scale
     );
 
-    polysections(
+    sweep(
         sections, 
         triangles = triangles
     );

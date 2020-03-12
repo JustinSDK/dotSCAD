@@ -1,7 +1,3 @@
-/**
-    copy from polysections. sweep will replace polysections.
-**/
-
 use <util/reverse.scad>;
 
 module sweep(sections, triangles = "SOLID") {
@@ -81,7 +77,7 @@ module sweep(sections, triangles = "SOLID") {
             ); 
 
             // hook for testing
-            test_polysections_solid(v_pts, f_idxes, triangles);
+            test_sweep_solid(v_pts, f_idxes, triangles);
         } else {
             range_i = [0:leng_pts_sect - 1];
             first_idxes = [for(i = range_i) leng_pts_sect - 1 - i];  
@@ -98,7 +94,7 @@ module sweep(sections, triangles = "SOLID") {
             );   
 
             // hook for testing
-            test_polysections_solid(v_pts, f_idxes, triangles);             
+            test_sweep_solid(v_pts, f_idxes, triangles);             
         }
     }
 
@@ -176,7 +172,7 @@ module sweep(sections, triangles = "SOLID") {
             );      
 
             // hook for testing
-            test_polysections_solid(v_pts, f_idxes, triangles);                     
+            test_sweep_solid(v_pts, f_idxes, triangles);                     
         } else {
             first_idxes = first_idxes();
             last_idxes = last_idxes(half_leng_v_pts - half_leng_sect);
@@ -189,7 +185,7 @@ module sweep(sections, triangles = "SOLID") {
             ); 
 
             // hook for testing
-            test_polysections_solid(v_pts, f_idxes, triangles);              
+            test_sweep_solid(v_pts, f_idxes, triangles);              
         }
     }
     
@@ -243,6 +239,6 @@ module sweep(sections, triangles = "SOLID") {
 
 // override it to test
 
-module test_polysections_solid(points, faces, triangles) {
+module test_sweep_solid(points, faces, triangles) {
 
 }

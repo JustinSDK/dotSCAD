@@ -11,7 +11,7 @@
 use <__comm__/__to3d.scad>;
 use <__comm__/__angy_angz.scad>;
 use <rotate_p.scad>;
-use <polysections.scad>;
+use <sweep.scad>;
 use <matrix/m_rotation.scad>;
 
 module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale = 1.0, closed = false, method = "AXIS_ANGLE") {
@@ -145,7 +145,7 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
                 concat(sections, [sections[0]]) : // round-robin
                 sections;
         
-        polysections(
+        sweep(
             calculated_sections,
             triangles = triangles
         );   
@@ -192,7 +192,7 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
                 concat(path_extrude_inner, [path_extrude_inner[0]]) : // round-robin
                 concat([section(pth_pts[0], pth_pts[1], 0)], path_extrude_inner);
 
-        polysections(
+        sweep(
             calculated_sections,
             triangles = triangles
         );   
