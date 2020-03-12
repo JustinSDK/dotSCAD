@@ -1,7 +1,7 @@
 use <experimental/_impl/_mz_hamiltonian_impl.scad>;
 use <experimental/mz_blocks.scad>;
 use <experimental/mz_get.scad>;
-use <experimental/dedup.scad>;
+use <util/dedup.scad>;
 
 function mz_hamiltonian(rows, columns, start) =
     let(

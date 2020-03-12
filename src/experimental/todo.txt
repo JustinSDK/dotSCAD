@@ -7,3 +7,5 @@
 Preview
 
 - sweep
+- util/has
+- util/dedup

@@ -1,7 +1,7 @@
 use <in_shape.scad>;
 use <util/sort.scad>;
+use <util/dedup.scad>;
 use <pixel/px_polyline.scad>;
-use <experimental/dedup.scad>;
 
 function px_polygon(points) =
     let(

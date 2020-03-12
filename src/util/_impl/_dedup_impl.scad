@@ -1,4 +1,4 @@
-use <experimental/has.scad>;
+use <util/has.scad>;
 
 function _dedup(src, dest, leng, i = 0) = 
     i == leng ? dest :
