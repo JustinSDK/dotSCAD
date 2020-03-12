@@ -9,6 +9,7 @@
 **/ 
 
 use <pixel/_impl/_px_cylinder_impl.scad>; 
+use <util/dedup.scad>;
 
 function px_cylinder(r, h, filled = false, thickness = 1) =
-    _px_cylinder_impl(r, h, filled, thickness);
+    dedup(_px_cylinder_impl(r, h, filled, thickness));
