@@ -1,34 +1,32 @@
-/**
-* px_polygon.scad
-*
-* @copyright Justin Lin, 2019
-* @license https://opensource.org/licenses/lgpl-3.0.html
-*
-* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-px_polygon.html
-*
-**/ 
-
 use <in_shape.scad>;
+use <util/sort.scad>;
+use <util/dedup.scad>;
 use <pixel/px_polyline.scad>;
 
 function px_polygon(points, filled = false) =
-    filled ?
+    let(contour = px_polyline(concat(points, [points[0]])))
+    !filled ? contour :
     let(
-        xs = [for(pt = points) pt[0]],
-        ys = [for(pt = points) pt[1]],
-        max_x = max(xs),
-        min_x = min(xs),
-        max_y = max(ys),
-        min_y = min(ys)
+        sortedXY = sort(sort(contour, by = "x"), by = "y"),
+        ys = [for(p = sortedXY) p[1]],
+        rows = [
+            for(y = [min(ys):max(ys)])
+            let(
+                idxes = search(y, sortedXY, num_returns_per_match = 0, index_col_num = 1)
+            )
+            [for(i = idxes) sortedXY[i]]
+        ]
     )
-    [
-        for(y = min_y; y <= max_y; y = y + 1)
-            for(x = min_x; x <= max_x; x = x + 1)
-                let(pt = [x, y])
-                if(in_shape(points, pt, true)) pt
-    ]
-    : 
-    px_polyline(
-        concat(points, [points[len(points) - 1], points[0]])
+    dedup(
+        concat(
+            sortedXY,
+            [
+                for(row = rows)
+                let(to = len(row) - 1, y = row[0][1])
+                if(to > 0 && (row[0][0] + 1 != row[to][0]))
+                    for(i = [row[0][0] + 1:row[to][0] - 1])
+                    let(p = [i, y])
+                    if(in_shape(points, p)) p
+            ]
+        )
     );
-    
