@@ -2,10 +2,10 @@ use <util/has.scad>;
 
 function _px_surround_corner_value(pts, x, y) =
     let(
-        c1 = has(pts, [x, y - 1]) || has(pts, [x - 1, y - 1]) ? 1 : 0,
-        c2 = has(pts, [x - 1, y]) || has(pts, [x - 1, y + 1]) ? 2 : 0,
-        c3 = has(pts, [x, y + 1]) || has(pts, [x + 1, y + 1]) ? 4 : 0,
-        c4 = has(pts, [x + 1, y]) || has(pts, [x + 1, y - 1]) ? 8 : 0
+        c1 = has(pts, [x, y - 1], sorted = true) || has(pts, [x - 1, y - 1], sorted = true) ? 1 : 0,
+        c2 = has(pts, [x - 1, y], sorted = true) || has(pts, [x - 1, y + 1], sorted = true) ? 2 : 0,
+        c3 = has(pts, [x, y + 1], sorted = true) || has(pts, [x + 1, y + 1], sorted = true) ? 4 : 0,
+        c4 = has(pts, [x + 1, y], sorted = true) || has(pts, [x + 1, y - 1], sorted = true) ? 8 : 0
     )
     c1 + c2 + c3 + c4;
 

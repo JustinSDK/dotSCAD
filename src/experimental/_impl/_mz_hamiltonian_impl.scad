@@ -23,10 +23,10 @@ function _mz_hamiltonian_upper_right(x, y) =
 
 function _mz_hamiltonian_corner_value(dots, x, y) =
     let(
-        c1 = has(dots, [x, y]) ? 1 : 0,
-        c2 = has(dots, [x, y + 1]) ? 2 : 0,
-        c3 = has(dots, [x + 1, y + 1]) ? 4 : 0,
-        c4 = has(dots, [x + 1, y]) ? 8 : 0
+        c1 = has(dots, [x, y], sorted = true) ? 1 : 0,
+        c2 = has(dots, [x, y + 1], sorted = true) ? 2 : 0,
+        c3 = has(dots, [x + 1, y + 1], sorted = true) ? 4 : 0,
+        c4 = has(dots, [x + 1, y], sorted = true) ? 8 : 0
     )
     c1 + c2 + c3 + c4;
 
