@@ -10,7 +10,7 @@ function _sort(lt, i) =
 
 function _sort_impl(lt, by, idx) =
     let(
-        dict = [["x", 0], ["y", 1], ["z", 0], ["i", idx]],
+        dict = [["x", 0], ["y", 1], ["z", 2], ["i", idx]],
         i = dict[search(by == "idx" ? "i" : by, dict)[0]][1]
     )
     _sort(lt, i);
