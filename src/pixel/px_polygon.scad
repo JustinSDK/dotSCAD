@@ -15,10 +15,8 @@ function px_polygon(points, filled = false) =
                 idxes = search(y, sortedXY, num_returns_per_match = 0, index_col_num = 1)
             )
             [for(i = idxes) sortedXY[i]]
-        ]
-    )
-    dedup(
-        concat(
+        ],
+        all = concat(
             sortedXY,
             [
                 for(row = rows)
@@ -29,4 +27,5 @@ function px_polygon(points, filled = false) =
                     if(in_shape(points, p)) p
             ]
         )
-    );
+    )
+    dedup(sort(sort(all, by = "x"), by = "y"), sorted = true);

@@ -9,3 +9,6 @@ Preview
 - sweep
 - util/has
 - util/dedup
+
+bugs:
+- util/sort: z not sorted

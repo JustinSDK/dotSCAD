@@ -9,6 +9,9 @@
 **/ 
 
 use <pixel/_impl/_px_circle_impl.scad>;
+use <util/sort.scad>;
 use <util/dedup.scad>;
 
-function px_circle(radius, filled = false) = dedup(_px_circle_impl(radius, filled));
+function px_circle(radius, filled = false) = 
+    let(all = _px_circle_impl(radius, filled))
+    dedup(sort(sort(all, by = "x"), by = "y"), sorted = true);

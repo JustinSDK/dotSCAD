@@ -12,6 +12,7 @@ use <__comm__/__to3d.scad>;
 use <__comm__/__to2d.scad>;
 use <__comm__/__lines_from.scad>;
 use <pixel/px_line.scad>;
+use <util/sort.scad>;
 use <util/dedup.scad>;
 
 function px_polyline(points) =
@@ -20,4 +21,8 @@ function px_polyline(points) =
         pts = is_2d ? [for(pt = points) __to3d(pt)] : points,
         polyline = [for(line =  __lines_from(pts)) each px_line(line[0], line[1])]
     )
-    dedup(is_2d ? [for(pt = polyline) __to2d(pt)] : polyline);
+    dedup(is_2d ? 
+        sort(sort([for(pt = polyline) __to2d(pt)], by = "x"), by = "y")
+         : 
+        sort(sort(sort(polyline, by = "x"), by = "y"), by = "z")
+    , sorted = true);

@@ -9,7 +9,9 @@
 **/ 
 
 use <pixel/_impl/_px_cylinder_impl.scad>; 
+use <util/sort.scad>;
 use <util/dedup.scad>;
 
 function px_cylinder(r, h, filled = false, thickness = 1) =
-    dedup(_px_cylinder_impl(r, h, filled, thickness));
+    let(all = _px_cylinder_impl(r, h, filled, thickness))
+    dedup(sort(sort(sort(all, by = "x"), by = "y"), by = "z"), sorted = true);
