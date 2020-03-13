@@ -1,4 +1,3 @@
-use <util/sort.scad>;
 use <util/bsearch.scad>;
 
 function has(lt, elem, sorted = false) = 
