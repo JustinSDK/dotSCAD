@@ -14,4 +14,4 @@ use <util/dedup.scad>;
 
 function px_circle(radius, filled = false) = 
     let(all = _px_circle_impl(radius, filled))
-    dedup(sort(sort(all, by = "x"), by = "y"), sorted = true);
+    dedup(sort(all, by = "vt"), sorted = true);

@@ -4,7 +4,7 @@ use <util/sort.scad>;
 function px_surround(points) = 
     let(
         // always start from the left-bottom pt
-        sortedXY = sort(sort(points, by = "x"), by = "y"),
+        sortedXY = sort(points, by = "vt"),
         fst = sortedXY[0] + [-1, -1]
     )
     _px_surround_travel(sortedXY, fst, fst);

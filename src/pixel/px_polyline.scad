@@ -22,7 +22,7 @@ function px_polyline(points) =
         polyline = [for(line =  __lines_from(pts)) each px_line(line[0], line[1])]
     )
     dedup(is_2d ? 
-        sort(sort([for(pt = polyline) __to2d(pt)], by = "x"), by = "y")
+        sort([for(pt = polyline) __to2d(pt)], by = "vt")
          : 
-        sort(sort(sort(polyline, by = "x"), by = "y"), by = "z")
+        sort(polyline, by = "vt")
     , sorted = true);

@@ -26,6 +26,6 @@ function mz_hamiltonian(rows, columns, start) =
             [for(x = [0:columns * 2 - 1]) [x, 0]],
             [for(y = [0:rows * 2 - 1]) [0, y]]
         ),
-        dot_pts = dedup(sort(sort(all, by = "x"), by = "y"), sorted = true)
+        dot_pts = dedup(sort(all, by = "vt"), sorted = true)
     )
     _mz_hamiltonian_travel(dot_pts, start, rows * columns * 4);

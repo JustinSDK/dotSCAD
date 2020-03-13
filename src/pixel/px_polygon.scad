@@ -7,7 +7,7 @@ function px_polygon(points, filled = false) =
     let(contour = px_polyline(concat(points, [points[0]])))
     !filled ? contour :
     let(
-        sortedXY = sort(sort(contour, by = "x"), by = "y"),
+        sortedXY = sort(contour, by = "vt"),
         ys = [for(p = sortedXY) p[1]],
         rows = [
             for(y = [min(ys):max(ys)])

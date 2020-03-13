@@ -14,4 +14,4 @@ use <util/dedup.scad>;
 
 function px_cylinder(r, h, filled = false, thickness = 1) =
     let(all = _px_cylinder_impl(r, h, filled, thickness))
-    dedup(sort(sort(sort(all, by = "x"), by = "y"), by = "z"), sorted = true);
+    dedup(sort(all, by = "vt"), sorted = true);
