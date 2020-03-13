@@ -1,7 +1,6 @@
 - deprecate polysections, use sweep.
 - deprecate trianglate, use tri_ear_clipping.
 - sort supports a list of ints?
-- dedup px_xxx?
 - px_union, px_intersection, px_difference?
 
 Preview
