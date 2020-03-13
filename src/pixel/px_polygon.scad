@@ -28,4 +28,4 @@ function px_polygon(points, filled = false) =
             ]
         )
     )
-    dedup(sort(sort(all, by = "x"), by = "y"), sorted = true);
+    dedup(sort(all, by = "vt"), sorted = true);
