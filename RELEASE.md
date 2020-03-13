@@ -1,5 +1,13 @@
 > Version numbers are based on [Semantic Versioning](https://semver.org/).
 
+# v2.2.1
+Bugfixes:
+- `util/sort`: z not sorted.
+
+Improvements:
+- Faster when the `style` of `function_grapher` is `"LINES"` or `"HULL_LINES"`.
+- Dedup pixels of `pixel/px_polyline`, `pixel/px_circle`, `pixel/px_cylinder`, `pixel/px_sphere`, `pixel/px_polygon`.
+
 # v2.2
 - Bugfixes
   - `util/sort`: fix "search term not found" warning when `by` is `"idx"`.

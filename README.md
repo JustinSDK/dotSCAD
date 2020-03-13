@@ -1,4 +1,4 @@
-# dotSCAD 2.2
+# dotSCAD 2.2.1
 
 > **Reduce the burden of 3D modeling in mathematics.**
 
