@@ -10,6 +10,4 @@ Preview
 - util/has
 - util/dedup
 - util/bsearch for a sorted lt by z, y, x
-
-bugs:
-- util/sort: z not sorted
+- util/sort supports by = "vt"
