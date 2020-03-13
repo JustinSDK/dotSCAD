@@ -10,4 +10,6 @@
 
 use <util/_impl/_sort_impl.scad>;
 
-function sort(lt, by = "idx", idx = 0) = _sort_impl(lt, by, idx);
+function sort(lt, by = "idx", idx = 0) = 
+    by == "vt" ? _default_sort(lt) :      // for example, sort by zyx for a list of points
+                 _sort_impl(lt, by, idx);
