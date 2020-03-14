@@ -49,11 +49,7 @@ module voronoi_fibonacci() {
         cell = cells[i];
         
         if(style == "BLOCK") {
-            linear_extrude(line_thickness)
-            circle(lst_r);
-
             pt = pts[i];
-            
             color(rands(0, 1, 3))
             translate(pt)    
             linear_extrude(cell_thickness, scale = cell_top_scale)
@@ -65,13 +61,21 @@ module voronoi_fibonacci() {
         }        
         else {
             linear_extrude(line_thickness) 
-            union() {
-                intersection() {
-                    hollow_out(half_line_thicness) polygon(cell);
-                    circle(lst_r);
-                }        
-                hollow_out(line_thickness) circle(lst_r);
-            }
+            intersection() {
+                hollow_out(half_line_thicness) polygon(cell);
+                circle(lst_r);
+            }   
+            
         }
+    }
+    
+    if(style == "BLOCK") {
+        linear_extrude(line_thickness)
+            circle(lst_r);
+    }
+    else {
+        linear_extrude(line_thickness)
+        hollow_out(line_thickness) 
+            circle(lst_r);
     }
 }
