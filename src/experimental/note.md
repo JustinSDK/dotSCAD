@@ -12,3 +12,6 @@ Preview
 - `util/dedup`
 - `util/bsearch` for a sorted lt by z, y, x
 - `util/sort` supports `by = "vt"`
+
+Bugfixes:
+- `helix_extrude`: wrong orientation when CLK
