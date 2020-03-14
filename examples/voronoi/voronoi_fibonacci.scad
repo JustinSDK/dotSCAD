@@ -65,7 +65,6 @@ module voronoi_fibonacci() {
                 hollow_out(half_line_thicness) polygon(cell);
                 circle(lst_r);
             }   
-            
         }
     }
     
