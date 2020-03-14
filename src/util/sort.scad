@@ -11,5 +11,5 @@
 use <util/_impl/_sort_impl.scad>;
 
 function sort(lt, by = "idx", idx = 0) = 
-    by == "vt" ? _default_sort(lt) :      // for example, sort by zyx for a list of points
-                 _sort_impl(lt, by, idx);
+    by == "vt" ? _vt_sort(lt) :      // for example, sort by zyx for a list of points
+                 _sort_by(lt, by, idx);
