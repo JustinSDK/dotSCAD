@@ -69,13 +69,13 @@ module voronoi_fibonacci() {
         }
     }
     
-    if(style == "BLOCK") {
-        linear_extrude(line_thickness)
+    linear_extrude(line_thickness) {
+        if(style == "BLOCK") {
             circle(lst_r);
-    }
-    else {
-        linear_extrude(line_thickness)
-        hollow_out(line_thickness) 
-            circle(lst_r);
+        }
+        else {
+            hollow_out(line_thickness) 
+                circle(lst_r);
+        }    
     }
 }
