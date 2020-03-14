@@ -28,7 +28,8 @@ module helix_extrude(shape_pts, radius, levels, level_dist,
     r_dir = rt_dir == "CT_CLK" ? 1 : -1;
             
     angle_step = 360 / frags * r_dir;
-    initial_angle = atan2(level_dist / frags, PI * 2 * init_r / frags) * v_dir * r_dir;
+    initial_angle = atan2(level_dist / frags, PI * 2 * init_r / frags) * v_dir * r_dir + 
+                    v_dir == "SPI_DOWN" && r_dir == "CLK" ? 45 : 0;
 
     path_points = helix(
         radius = radius, 
