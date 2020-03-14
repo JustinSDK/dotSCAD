@@ -23,13 +23,13 @@ module voronoi_fibonacci() {
         to = to, 
         point_distance = point_distance
     );
-    points = [for(pa = points_angles) pa[0]];
+    spiral = [for(pa = points_angles) pa[0]];
     
     a_step = 360 / spirals;
 
     pts = [
         for(a = [0:a_step:360 - a_step])
-        each [for(p = points) rotate_p(p, a)]
+        each [for(p = spiral) rotate_p(p, a)]
     ];
 
     function default_region_size(points) = 
@@ -39,21 +39,21 @@ module voronoi_fibonacci() {
         )
         max([(max(xs) -  min(xs) / 2), (max(ys) -  min(ys)) / 2]);
         
-
-    size = default_region_size(pts);  
-    region_shape = shape_square(size);
-
-    cells = voronoi2d_cells(pts, region_shape);
     half_line_thicness = line_thickness / 2;
-    lst_r = norm(points[len(points) - 1]) + half_line_thicness;
+    lst_r = norm(spiral[len(spiral) - 1]) + half_line_thicness;
+
+    cells = voronoi2d_cells(pts, 
+                shape_square(default_region_size(pts))
+            );    
     for(i = [0:len(pts) - 1]) {
-        pt = pts[i];
         cell = cells[i];
         
         if(style == "BLOCK") {
             linear_extrude(line_thickness)
             circle(lst_r);
 
+            pt = pts[i];
+            
             color(rands(0, 1, 3))
             translate(pt)    
             linear_extrude(cell_thickness, scale = cell_top_scale)
