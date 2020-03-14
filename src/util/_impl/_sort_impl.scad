@@ -25,4 +25,4 @@ function _sort_by(lt, by, idx) =
         dict = [["x", 0], ["y", 1], ["z", 2], ["i", idx]],
         i = dict[search(by == "idx" ? "i" : by, dict)[0]][1]
     )
-    _sort(lt, i);
+    _sort_by_idx(lt, i);
