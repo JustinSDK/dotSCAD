@@ -12,9 +12,9 @@ module senbon_torii(rows, columns, start, width, height) {
     color("LightSalmon")
     translate(line[0])
     rotate([90, 0, fa]) 
-        linear_extrude(.1, center = true) 
-            translate([0, .175])
-                children(0);     
+    linear_extrude(.1, center = true) 
+    translate([0, .175])
+            children(0);     
                
     // middle torris               
     for(i = [0:leng - 2]) {
@@ -68,11 +68,10 @@ module senbon_torii(rows, columns, start, width, height) {
         children(1);     
 }
 
-module torii_symbol() {       
-    
+module torii_symbol() {
     difference() {
         translate([-0.025, 0.025])
-        text("⛩", font = "Segoe UI Emoji", size = 0.5 * 0.7, halign = "center");
+            text("⛩", font = "Segoe UI Emoji", size = 0.5 * 0.7, halign = "center");
         
         *translate([0, .285])
             square([.275, .1], center = true);
