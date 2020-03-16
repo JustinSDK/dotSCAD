@@ -5,7 +5,7 @@ columns = 2;
 start = [0, 0];
 width = .5;
 height = .05;
-test_torii = "TRUE"; // [TRUE, FALSE]
+test_torii = "FALSE"; // [TRUE, FALSE]
 
 if(test_torii == "TRUE") {
     rotate([90, 0, 0])
