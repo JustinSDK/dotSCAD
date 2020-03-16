@@ -1,5 +1,29 @@
 use <experimental/mz_hamiltonian.scad>;
 
+rows = 2;
+columns = 2;
+start = [0, 0];
+width = .5;
+height = .05;
+test_torii = "TRUE"; // [TRUE, FALSE]
+
+if(test_torii == "TRUE") {
+    rotate([90, 0, 0])
+        torii_symbol();
+}
+else {
+    senbon_torii(
+        rows = rows, 
+        columns = columns,
+        start = start,
+        width = width,
+        height = height
+    ) {
+        torii_symbol();
+        top_symbol();
+    };
+}
+
 module senbon_torii(rows, columns, start, width, height) {
     line = mz_hamiltonian(rows, columns, start);
     leng = len(line);
@@ -69,22 +93,43 @@ module senbon_torii(rows, columns, start, width, height) {
 }
 
 module torii_symbol() {
+    // design your own symbol
     linear_extrude(.1, center = true) 
     scale(1.25) {
-        translate([-0.025, 0.10])
-            text("⛩", font = "Segoe UI Emoji", size = 0.5 * 0.7, halign = "center");
-            
-        translate([0, 0.3715])   
-        difference() {    
-            square([0.35, 0.075], center = true);
-            square([0.35 / 2, 0.075 / 2], center = true);
+        difference() {
+            union() {
+                translate([-0.025, 0.10])
+                    text("⛩", font = "Segoe UI Emoji", size = 0.5 * 0.7, halign = "center");
+                
+                translate([0, 0.455])   
+                    square([.46, 0.05], center = true);
+                
+                translate([0, 0.3])   
+                    square([.15, 0.07], center = true);     
+                    
+                translate([0, 0.3715]) 
+                    square([0.35, 0.075], center = true);
+            }
+
+        translate([0, 0.34])   
+            square([0.35 / 5.5, 0.07], center = true);
         }
+        
+        
+        translate([.201, 0.262])
+        scale([1, 0.75])
+            circle(.05, $fn = 3);
+
+        mirror([1, 0, 0])
+        translate([.201, 0.262])
+        scale([1, 0.75])
+            circle(.05, $fn = 3);        
     }      
 }
 
 module top_symbol() {
-    translate([-0.01295, .13])
-    {
+    // design your own symbol
+    translate([-0.01295, .13]) {
         linear_extrude(.2, center = true)     
         scale([0.975, 1.5])
         hull()
@@ -95,14 +140,3 @@ module top_symbol() {
             text("🏔", font = "Segoe UI Emoji", size = 0.45 * 0.7, halign = "center");  
     }
 }
-
-senbon_torii(
-    rows = 2, 
-    columns = 2,
-    start = [0, 0],
-    width = .5,
-    height = .05
-) {
-    torii_symbol();
-    top_symbol();
-};
