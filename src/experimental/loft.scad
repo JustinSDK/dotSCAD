@@ -1,5 +1,5 @@
 use <experimental/lcm.scad>;
-use <experimental/sweep.scad>;
+use <sweep.scad>;
    
 module loft(sections, slices = 1) {
     function inter_pts(p1, p2, n) =
