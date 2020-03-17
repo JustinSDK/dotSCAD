@@ -65,15 +65,15 @@ See [examples](examples).
 	- [bend](https://openhome.cc/eGossip/OpenSCAD/lib2x-bend.html)
 	- [shear](https://openhome.cc/eGossip/OpenSCAD/lib2x-shear.html)
 
-- 2d & 3D Function
+- 2D & 3D Function
 	- [rotate_p](https://openhome.cc/eGossip/OpenSCAD/lib2x-rotate_p.html)
 	- [cross_sections](https://openhome.cc/eGossip/OpenSCAD/lib2x-cross_sections.html)
 	- [paths2sections](https://openhome.cc/eGossip/OpenSCAD/lib2x-paths2sections.html)
 	- [path_scaling_sections](https://openhome.cc/eGossip/OpenSCAD/lib2x-path_scaling_sections.html)
-	- [bijection_offset](https://openhome.cc/eGossip/OpenSCAD/lib2x-bijection_offset.html)
+	- [midpt_smooth](https://openhome.cc/eGossip/OpenSCAD/lib2x-midpt_smooth.html)
 	- [in_polyline](https://openhome.cc/eGossip/OpenSCAD/lib2x-in_polyline.html)
 	- [in_shape](https://openhome.cc/eGossip/OpenSCAD/lib2x-in_shape.html)
-	- [midpt_smooth](https://openhome.cc/eGossip/OpenSCAD/lib2x-midpt_smooth.html)
+	- [bijection_offset](https://openhome.cc/eGossip/OpenSCAD/lib2x-bijection_offset.html)	
 	- [trim_shape](https://openhome.cc/eGossip/OpenSCAD/lib2x-trim_shape.html)
 	- [triangulate](https://openhome.cc/eGossip/OpenSCAD/lib2x-triangulate.html)
 	
