@@ -1,5 +1,5 @@
 use <shape_starburst.scad>;
-use <circle_shape.scad>;
+use <shape_circle.scad>;
 use <rotate_p.scad>;
 use <experimental/loft.scad>;
     
@@ -15,16 +15,16 @@ translate([30, 0, 0])
 difference() {
     loft(
         [
-            [for(p = circle_shape(10, $fn = 3)) [p[0], p[1], 15]],
-            [for(p = circle_shape(15, $fn = 24)) [p[0], p[1], 0]]        
+            [for(p = shape_circle(10, $fn = 3)) [p[0], p[1], 15]],
+            [for(p = shape_circle(15, $fn = 24)) [p[0], p[1], 0]]        
         ],
         slices = 4
     );
 
     loft(
         [
-            [for(p = circle_shape(8, $fn = 3)) [p[0], p[1], 15.1]],
-            [for(p = circle_shape(13, $fn = 24)) [p[0], p[1], -0.1]]        
+            [for(p = shape_circle(8, $fn = 3)) [p[0], p[1], 15.1]],
+            [for(p = shape_circle(13, $fn = 24)) [p[0], p[1], -0.1]]        
         ],
         slices = 4
     );    

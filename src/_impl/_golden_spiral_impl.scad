@@ -1,6 +1,6 @@
 use <__comm__/__fast_fibonacci.scad>;
 use <rotate_p.scad>;
-use <circle_shape.scad>;
+use <shape_circle.scad>;
 
 function _fast_fibonacci_sub(nth) = 
     let(
@@ -29,7 +29,7 @@ function _golden_spiral_from_ls_or_eql_to(from, to, point_distance, rt_dir) =
         f2 = __fast_fibonacci(from + 1),
         fn = floor(f1 * 6.28312 / point_distance), 
         $fn = fn + 4 - (fn % 4),
-        circle_pts = circle_shape(radius = f1, n = $fn / 4 + 1),
+        circle_pts = shape_circle(radius = f1, n = $fn / 4 + 1),
         len_pts = len(circle_pts),
         a_step = 360 / $fn * rt_dir,
         range_i = [0:len_pts - 1],
