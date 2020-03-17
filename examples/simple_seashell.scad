@@ -1,4 +1,4 @@
-use <circle_path.scad>;
+use <shape_circle.scad>;
 use <rotate_p.scad>;
 use <polysections.scad>;
 
@@ -23,7 +23,7 @@ module simple_seashell(r1, r2, a1, a2, steps) {
             a = a1 + i * ad
         )
         [
-            for(p = concat(circle_path(r), circle_path(r * 0.9))) 
+            for(p = concat(shape_circle(r), shape_circle(r * 0.9))) 
                 rotate_p([p[0], p[1], 0] + [r, 0, 0], [0, a, 0])
         ]    
             

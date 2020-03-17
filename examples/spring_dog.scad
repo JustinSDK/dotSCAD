@@ -1,6 +1,6 @@
 use <rounded_cylinder.scad>;
 use <helix_extrude.scad>;
-use <circle_path.scad>;
+use <shape_circle.scad>;
 use <arc.scad>;
 use <ellipse_extrude.scad>;
 use <shape_ellipse.scad>;
@@ -21,7 +21,7 @@ spacing = 0.4;
 module toy_spring(radius, levels, sides, line_thickness, line_distance) {
     $fn = 4;
     
-    spring = circle_path(radius = line_thickness / 2);
+    spring = shape_circle(radius = line_thickness / 2);
 
     helix_extrude(spring, 
         radius = radius, 
@@ -31,7 +31,7 @@ module toy_spring(radius, levels, sides, line_thickness, line_distance) {
     );
     
     if(line_distance != 0) {
-        spring_gap = circle_path(radius = line_distance / 2);
+        spring_gap = shape_circle(radius = line_distance / 2);
         
         #translate([0, 0, line_thickness / 2 + line_distance / 2])
             helix_extrude(spring_gap, 

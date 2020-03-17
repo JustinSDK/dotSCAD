@@ -1,6 +1,6 @@
 use <torus_knot.scad>;
 use <cross_sections.scad>;
-use <circle_path.scad>;
+use <shape_circle.scad>;
 use <shape_pentagram.scad>;
 use <experimental/tri_bisectors.scad>;
 use <experimental/hollow_out_sweep.scad>;
@@ -16,7 +16,7 @@ if(section_style == "STAR") {
     hollow_out_torus_knot(shape_pentagram(.5), p, q, phi_step, thickness, line_style);
 }
 else {
-    hollow_out_torus_knot(circle_path(radius = .5, $fn = 12), p, q, phi_step, thickness, line_style);
+    hollow_out_torus_knot(shape_circle(radius = .5, $fn = 12), p, q, phi_step, thickness, line_style);
 }
 
 module hollow_out_torus_knot(shape, p, q, phi_step, thickness, line_style) {

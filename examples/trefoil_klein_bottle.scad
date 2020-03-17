@@ -1,5 +1,5 @@
 use <arc_path.scad>;
-use <circle_path.scad>;
+use <shape_circle.scad>;
 use <path_extrude.scad>;
 use <bezier_curve.scad>;
 use <bspline_curve.scad>;
@@ -78,14 +78,14 @@ module dis_connected_klein_bottle(radius1, radius2, bottom_height, thickness, t_
 
                 rotate(-90) 
                 path_extrude(
-                    circle_path(radius1 + half_thickness),
+                    shape_circle(radius1 + half_thickness),
                     tube_path
                 );
             }
 
             rotate(-90)
             path_extrude(
-                circle_path(radius1 - half_thickness),
+                shape_circle(radius1 - half_thickness),
                 tube_path2
             );
         }

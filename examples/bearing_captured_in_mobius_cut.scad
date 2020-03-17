@@ -1,4 +1,4 @@
-use <circle_path.scad>;
+use <shape_circle.scad>;
 use <ring_extrude.scad>;
 
 ball_radius = 10;
@@ -14,7 +14,7 @@ module bearing_captured_in_mobius_cut(ball_radius, mobius_radius, ring_radius, s
     ball_track_radius = ball_radius + spacing;
     trans_pt = [mobius_radius - ball_track_radius + ball_track_radius / 3, 0, 0];
 
-    circle_points = [for(p = circle_path(ball_track_radius)) p + trans_pt];
+    circle_points = [for(p = shape_circle(ball_track_radius)) p + trans_pt];
 
     difference() {
         rotate_extrude() 
