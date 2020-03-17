@@ -1,15 +1,15 @@
 use <unittest.scad>;
-use <circle_path.scad>;
+use <shape_circle.scad>;
 
-module test_circle_path() {
-    echo("==== test_circle_path ====");
+module test_shape_circle() {
+    echo("==== test_shape_circle ====");
 
     $fn = 24;
 
     expected = [[50, 0], [48.2963, 12.941], [43.3013, 25], [35.3553, 35.3553], [25, 43.3013], [12.941, 48.2963], [0, 50], [-12.941, 48.2963], [-25, 43.3013], [-35.3553, 35.3553], [-43.3013, 25], [-48.2963, 12.941], [-50, 0], [-48.2963, -12.941], [-43.3013, -25], [-35.3553, -35.3553], [-25, -43.3013], [-12.941, -48.2963], [0, -50], [12.941, -48.2963], [25, -43.3013], [35.3553, -35.3553], [43.3013, -25], [48.2963, -12.941]];
-    actual = circle_path(radius = 50);
+    actual = shape_circle(radius = 50);
 
     assertEqualPoints(expected, actual);
 }
  
-test_circle_path();
+test_shape_circle();

@@ -1,5 +1,5 @@
 use <unittest.scad>;
-use <circle_path.scad>;
+use <shape_circle.scad>;
 include <along_with.scad>;
 
 module test_along_with_angles(angles, children) {
@@ -21,7 +21,7 @@ module test_along_with_default_angles() {
     echo("==== test_along_with_default_angles  ====");
 
     $fn = 24;
-    points = circle_path(radius = 50);
+    points = shape_circle(radius = 50);
     along_with(points, method = "EULER_ANGLE") 
         sphere(5);
 }
@@ -30,7 +30,7 @@ module test_along_with_children() {
     echo("==== test_along_with_children ====");
     
     $fn = 24;
-    points = circle_path(radius = 50);    
+    points = shape_circle(radius = 50);    
     along_with(points, method = "EULER_ANGLE") {
         linear_extrude(10, center = true) text("A", valign = "center", halign = "center");
         linear_extrude(5, center = true) circle(2);

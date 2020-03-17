@@ -26,7 +26,6 @@ include <test_trim_shape.scad>;
 include <test_midpt_smooth.scad>;
 
 // Path
-include <test_circle_path.scad>;
 include <test_bezier_curve.scad>;
 include <test_bezier_surface.scad>;
 include <test_bezier_smooth.scad>;
@@ -41,6 +40,7 @@ include <test_ellipse_extrude.scad>;
 include <test_stereographic_extrude.scad>;
 
 // 2D Shape
+include <test_shape_circle.scad>;
 include <test_shape_arc.scad>;
 include <test_shape_cyclicpolygon.scad>;
 include <test_shape_ellipse.scad>;

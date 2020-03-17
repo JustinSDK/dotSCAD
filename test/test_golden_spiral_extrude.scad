@@ -1,5 +1,5 @@
 use <unittest.scad>;
-use <circle_path.scad>;
+use <shape_circle.scad>;
 include <golden_spiral_extrude.scad>;
 
 module test_golden_spiral_extrude(sections, triangles) {
@@ -48,8 +48,8 @@ module test_golden_spiral_extrude_hollow() {
     $fn = 12;
 
     shape_pts = concat(
-        circle_path(radius = 3),
-        circle_path(radius = 2)
+        shape_circle(radius = 3),
+        shape_circle(radius = 2)
     );
 
     golden_spiral_extrude(
