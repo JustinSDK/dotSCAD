@@ -65,7 +65,7 @@ See [examples](examples).
 	- [bend](https://openhome.cc/eGossip/OpenSCAD/lib2x-bend.html)
 	- [shear](https://openhome.cc/eGossip/OpenSCAD/lib2x-shear.html)
 
-- Functon
+- 2d & 3D Function
 	- [rotate_p](https://openhome.cc/eGossip/OpenSCAD/lib2x-rotate_p.html)
 	- [cross_sections](https://openhome.cc/eGossip/OpenSCAD/lib2x-cross_sections.html)
 	- [paths2sections](https://openhome.cc/eGossip/OpenSCAD/lib2x-paths2sections.html)
