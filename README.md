@@ -35,7 +35,7 @@ See [examples](examples).
 
 ## Documentation
 
-- 2D
+- 2D Module
     - [arc](https://openhome.cc/eGossip/OpenSCAD/lib2x-arc.html)
 	- [pie](https://openhome.cc/eGossip/OpenSCAD/lib2x-pie.html)
 	- [rounded_square](https://openhome.cc/eGossip/OpenSCAD/lib2x-rounded_square.html)
@@ -47,7 +47,7 @@ See [examples](examples).
     - [multi_line_text](https://openhome.cc/eGossip/OpenSCAD/lib2x-multi_line_text.html)
 	- [voronoi2d](https://openhome.cc/eGossip/OpenSCAD/lib2x-voronoi2d.html)
 
-- 3D
+- 3D Module
 	- [rounded_cube](https://openhome.cc/eGossip/OpenSCAD/lib2x-rounded_cube.html)
     - [rounded_cylinder](https://openhome.cc/eGossip/OpenSCAD/lib2x-rounded_cylinder.html)
     - [crystal_ball](https://openhome.cc/eGossip/OpenSCAD/lib2x-crystal_ball.html)
@@ -65,24 +65,26 @@ See [examples](examples).
 	- [bend](https://openhome.cc/eGossip/OpenSCAD/lib2x-bend.html)
 	- [shear](https://openhome.cc/eGossip/OpenSCAD/lib2x-shear.html)
 
-- 2D & 3D Function
-	- [rotate_p](https://openhome.cc/eGossip/OpenSCAD/lib2x-rotate_p.html)
-	- [cross_sections](https://openhome.cc/eGossip/OpenSCAD/lib2x-cross_sections.html)
-	- [paths2sections](https://openhome.cc/eGossip/OpenSCAD/lib2x-paths2sections.html)
-	- [path_scaling_sections](https://openhome.cc/eGossip/OpenSCAD/lib2x-path_scaling_sections.html)
-	- [midpt_smooth](https://openhome.cc/eGossip/OpenSCAD/lib2x-midpt_smooth.html)
-	- [in_polyline](https://openhome.cc/eGossip/OpenSCAD/lib2x-in_polyline.html)
+- 2D Function
 	- [in_shape](https://openhome.cc/eGossip/OpenSCAD/lib2x-in_shape.html)
 	- [bijection_offset](https://openhome.cc/eGossip/OpenSCAD/lib2x-bijection_offset.html)	
 	- [trim_shape](https://openhome.cc/eGossip/OpenSCAD/lib2x-trim_shape.html)
 	- [triangulate](https://openhome.cc/eGossip/OpenSCAD/lib2x-triangulate.html)
+
+- 3D Function
+	- [rotate_p](https://openhome.cc/eGossip/OpenSCAD/lib2x-rotate_p.html)
+	- [cross_sections](https://openhome.cc/eGossip/OpenSCAD/lib2x-cross_sections.html)
+	- [paths2sections](https://openhome.cc/eGossip/OpenSCAD/lib2x-paths2sections.html)
+	- [path_scaling_sections](https://openhome.cc/eGossip/OpenSCAD/lib2x-path_scaling_sections.html)
+	- [bezier_surface](https://openhome.cc/eGossip/OpenSCAD/lib2x-bezier_surface.html)	
+	- [midpt_smooth](https://openhome.cc/eGossip/OpenSCAD/lib2x-midpt_smooth.html)
+	- [in_polyline](https://openhome.cc/eGossip/OpenSCAD/lib2x-in_polyline.html)
 	
 - Path
     - [arc_path](https://openhome.cc/eGossip/OpenSCAD/lib2x-arc_path.html)
 	- [circle_path](https://openhome.cc/eGossip/OpenSCAD/lib2x-circle_path.html)
     - [bspline_curve](https://openhome.cc/eGossip/OpenSCAD/lib2x-bspline_curve.html)
 	- [bezier_curve](https://openhome.cc/eGossip/OpenSCAD/lib2x-bezier_curve.html)
-	- [bezier_surface](https://openhome.cc/eGossip/OpenSCAD/lib2x-bezier_surface.html)
 	- [bezier_smooth](https://openhome.cc/eGossip/OpenSCAD/lib2x-bezier_smooth.html)
     - [helix](https://openhome.cc/eGossip/OpenSCAD/lib2x-helix.html)
     - [golden_spiral](https://openhome.cc/eGossip/OpenSCAD/lib2x-golden_spiral.html)
@@ -119,7 +121,7 @@ See [examples](examples).
 	- [archimedean_spiral_extrude](https://openhome.cc/eGossip/OpenSCAD/lib2x-archimedean_spiral_extrude.html)
 	- [sphere_spiral_extrude](https://openhome.cc/eGossip/OpenSCAD/lib2x-sphere_spiral_extrude.html)
 
-- Utilities
+- Util
 	- [util/sub_str](https://openhome.cc/eGossip/OpenSCAD/lib2x-sub_str.html)
 	- [util/split_str](https://openhome.cc/eGossip/OpenSCAD/lib2x-split_str.html)
 	- [util/parse_number](https://openhome.cc/eGossip/OpenSCAD/lib2x-parse_number.html)
