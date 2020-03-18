@@ -77,6 +77,7 @@ See [examples](examples).
 	- [paths2sections](https://openhome.cc/eGossip/OpenSCAD/lib2x-paths2sections.html)
 	- [path_scaling_sections](https://openhome.cc/eGossip/OpenSCAD/lib2x-path_scaling_sections.html)
 	- [bezier_surface](https://openhome.cc/eGossip/OpenSCAD/lib2x-bezier_surface.html)	
+	- [bezier_smooth](https://openhome.cc/eGossip/OpenSCAD/lib2x-bezier_smooth.html)	
 	- [midpt_smooth](https://openhome.cc/eGossip/OpenSCAD/lib2x-midpt_smooth.html)
 	- [in_polyline](https://openhome.cc/eGossip/OpenSCAD/lib2x-in_polyline.html)
 	
@@ -85,7 +86,6 @@ See [examples](examples).
 	- [circle_path](https://openhome.cc/eGossip/OpenSCAD/lib2x-circle_path.html)
     - [bspline_curve](https://openhome.cc/eGossip/OpenSCAD/lib2x-bspline_curve.html)
 	- [bezier_curve](https://openhome.cc/eGossip/OpenSCAD/lib2x-bezier_curve.html)
-	- [bezier_smooth](https://openhome.cc/eGossip/OpenSCAD/lib2x-bezier_smooth.html)
     - [helix](https://openhome.cc/eGossip/OpenSCAD/lib2x-helix.html)
     - [golden_spiral](https://openhome.cc/eGossip/OpenSCAD/lib2x-golden_spiral.html)
     - [archimedean_spiral](https://openhome.cc/eGossip/OpenSCAD/lib2x-archimedean_spiral.html)
