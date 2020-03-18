@@ -71,7 +71,7 @@ See [examples](examples).
 	- [trim_shape](https://openhome.cc/eGossip/OpenSCAD/lib2x-trim_shape.html)
 	- [triangulate](https://openhome.cc/eGossip/OpenSCAD/lib2x-triangulate.html)
 
-- 3D Function
+- 2D/3D Function
 	- [rotate_p](https://openhome.cc/eGossip/OpenSCAD/lib2x-rotate_p.html)
 	- [cross_sections](https://openhome.cc/eGossip/OpenSCAD/lib2x-cross_sections.html)
 	- [paths2sections](https://openhome.cc/eGossip/OpenSCAD/lib2x-paths2sections.html)
