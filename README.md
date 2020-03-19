@@ -130,6 +130,8 @@ See [examples](examples).
 	- [util/sort](https://openhome.cc/eGossip/OpenSCAD/lib2x-sort.html)
 	- [util/rand](https://openhome.cc/eGossip/OpenSCAD/lib2x-rand.html)
 	- [util/fibseq](https://openhome.cc/eGossip/OpenSCAD/lib2x-fibseq.html)	
+	- [util/has](https://openhome.cc/eGossip/OpenSCAD/lib2x-has.html)     (2.3 Preview)
+	- [util/dedup](https://openhome.cc/eGossip/OpenSCAD/lib2x-dedup.html) (2.3 Preview)
 
 - Matrix
 	- [matrix/m_cumulate](https://openhome.cc/eGossip/OpenSCAD/lib2x-m_cumulate.html)	
