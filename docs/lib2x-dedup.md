@@ -33,6 +33,7 @@ Eliminating duplicate copies of repeating vectors. If `lt` has many elements, so
     pts1 = px_circle(20, filled = true);
     pts2 = [for(p = px_circle(10, filled = true)) p + [20, 0]];
 
+    // From dotSCAD 2.3, you can use sort(concat(pts1, pts2), by = "vt") instead.
     sorted_pts = sort(sort(concat(pts1, pts2), by = "x"), by = "y");
     
     // simple union
