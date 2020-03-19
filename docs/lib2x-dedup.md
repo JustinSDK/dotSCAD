@@ -7,7 +7,7 @@ Eliminating duplicate copies of repeating vectors. If `lt` has many elements, so
 ## Parameters
 
 - `lt` : A list of vectors.
-- `sorted` : If `false` (default), use native `search`. If `true`, `lt` must be sorted by zyx (from the last idx to first) and `dedup` will use binary search internally.
+- `sorted` : If `false` (default), use native `search`. If `true`, `lt` must be sorted by zyx (from the last index to the first one) and `dedup` will use binary search internally.
 
 ## Examples
 
@@ -33,8 +33,7 @@ Eliminating duplicate copies of repeating vectors. If `lt` has many elements, so
     pts1 = px_circle(20, filled = true);
     pts2 = [for(p = px_circle(10, filled = true)) p + [20, 0]];
 
-    // From dotSCAD 2.3, you can use sort(concat(pts1, pts2), by = "vt") instead.
-    sorted_pts = sort(sort(concat(pts1, pts2), by = "x"), by = "y");
+    sorted_pts = sort(concat(pts1, pts2), by = "vt");
     
     // simple union
     pts3 = dedup(sorted_pts, sorted = true);

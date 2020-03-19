@@ -8,7 +8,7 @@ If `lt` contains `elem`, this function returns `true`. If you want to test eleme
 
 - `lt` : A list of vectors.
 - `elem` : A vector.
-- `sorted` : If `false` (default), use native `search`. If `true`, `lt` must be sorted by zyx (from the last idx to first) and `has` will use binary search internally.
+- `sorted` : If `false` (default), use native `search`. If `true`, `lt` must be sorted by zyx (from the last index to the first one) and `has` will use binary search internally.
 
 ## Examples
 
@@ -20,7 +20,6 @@ If `lt` contains `elem`, this function returns `true`. If you want to test eleme
     assert(has(pts, [2, -10])); 
     assert(!has(pts, [0, 0]));  
 
-    // From dotSCAD 2.3, you can use sort(pts, by = "vt") instead.
-    sorted_pts = sort(sort(pts, by = "x"), by = "y");
+    sorted_pts = sort(pts, by = "vt");
     assert(has(sorted_pts, [2, -10]));
     assert(!has(sorted_pts, [0, 0])); 
