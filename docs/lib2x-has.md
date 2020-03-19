@@ -8,7 +8,7 @@ If `lt` contains `elem`, this function returns `true`. If you want to test eleme
 
 - `lt` : A list of vectors.
 - `elem` : A vector.
-- `sorted` : If `false`, use native `search`. If `true`, `lt` must be sorted by zyx (from the last idx to first) and `has` will use binary search internally.
+- `sorted` : If `false` (default), use native `search`. If `true`, `lt` must be sorted by zyx (from the last idx to first) and `has` will use binary search internally.
 
 ## Examples
 
