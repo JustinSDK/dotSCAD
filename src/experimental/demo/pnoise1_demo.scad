@@ -1,6 +1,6 @@
 use <hull_polyline2d.scad>;
 use <util/rand.scad>;
-use <experimental/zip2.scad>;
+use <experimental/zip.scad>;
 use <experimental/pnoise1.scad>;
 use <experimental/pnoise1s.scad>;
 
@@ -14,5 +14,5 @@ ys = pnoise1s(xs);
 
 translate([0, 2])
     hull_polyline2d(
-        zip2(xs, ys), width = .1
+        zip(xs, ys), width = .1
     );
