@@ -14,5 +14,5 @@ ys = pnoise1s(xs);
 
 translate([0, 2])
     hull_polyline2d(
-        zip(xs, ys), width = .1
+        zip([xs, ys]), width = .1
     );
