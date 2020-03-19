@@ -55,7 +55,8 @@ See [examples](examples).
 	- [polyline3d](https://openhome.cc/eGossip/OpenSCAD/lib2x-polyline3d.html)
 	- [hull_polyline3d](https://openhome.cc/eGossip/OpenSCAD/lib2x-hull_polyline3d.html)
 	- [function_grapher](https://openhome.cc/eGossip/OpenSCAD/lib2x-function_grapher.html)
-	- [polysections](https://openhome.cc/eGossip/OpenSCAD/lib2x-polysections.html)
+	- [polysections](https://openhome.cc/eGossip/OpenSCAD/lib2x-polysections.html) (It'll be deprecated from 2.3. Use sweep instead.)
+	- [sweep](https://openhome.cc/eGossip/OpenSCAD/lib2x-sweep.html) (2.3 Preview)
 	- [starburst](https://openhome.cc/eGossip/OpenSCAD/lib2x-starburst.html)
 	- [voronoi3d](https://openhome.cc/eGossip/OpenSCAD/lib2x-voronoi3d.html)
 	
@@ -130,7 +131,7 @@ See [examples](examples).
 	- [util/sort](https://openhome.cc/eGossip/OpenSCAD/lib2x-sort.html)
 	- [util/rand](https://openhome.cc/eGossip/OpenSCAD/lib2x-rand.html)
 	- [util/fibseq](https://openhome.cc/eGossip/OpenSCAD/lib2x-fibseq.html)	
-	- [util/has](https://openhome.cc/eGossip/OpenSCAD/lib2x-has.html)     (2.3 Preview)
+	- [util/has](https://openhome.cc/eGossip/OpenSCAD/lib2x-has.html) (2.3 Preview)
 	- [util/dedup](https://openhome.cc/eGossip/OpenSCAD/lib2x-dedup.html) (2.3 Preview)
 
 - Matrix
