@@ -1,7 +1,7 @@
 use <experimental/_impl/_marching_squares_impl.scad>;
 
-function marching_squares(pts, sigma) = 
-    let(labeled_pts = pn_label(pts, sigma))
+function marching_squares(points, sigma) = 
+    let(labeled_pts = pn_label(points, sigma))
     [
         for(y = [0:len(labeled_pts) - 2])
             [
