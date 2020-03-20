@@ -21,7 +21,7 @@ function interpolated_pt(p0, p1, sigma) =
         v = p1 - p0,
         t = (sigma - z0) / v[2]
     )
-    [x0 + v[0] * t, y0 + v[1] * t, sigma];
+    [x0 + v[0] * t, y0 + v[1] * t];
 
 function case1_contours(cell_pts, sigma) = [
     [interpolated_pt(cell_pts[0], cell_pts[1], sigma), interpolated_pt(cell_pts[0], cell_pts[3], sigma)]
