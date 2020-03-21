@@ -1,10 +1,10 @@
-function pn_label(pts, sigma) =
+function _contours_pn_label(pts, sigma) =
     [
         for(row = pts)
         [for(p = row) [p[0], p[1], p[2], p[2] - sigma >= 0]]
     ]; 
     
-function corner_value(cell_pts) =
+function _contours_corner_value(cell_pts) =
     let(
         c0 = cell_pts[0][3] ? 1 : 0,
         c1 = cell_pts[1][3] ? 2 : 0,
@@ -23,23 +23,23 @@ function interpolated_pt(p0, p1, sigma) =
     )
     [x0 + v[0] * t, y0 + v[1] * t];
 
-function case1_contours(cell_pts, sigma) = [
+function _case1_contours(cell_pts, sigma) = [
     [interpolated_pt(cell_pts[0], cell_pts[1], sigma), interpolated_pt(cell_pts[0], cell_pts[3], sigma)]
 ];
 
-function case2_contours(cell_pts, sigma) = [
+function _case2_contours(cell_pts, sigma) = [
     [interpolated_pt(cell_pts[0], cell_pts[3], sigma), interpolated_pt(cell_pts[2], cell_pts[3], sigma)]
 ];
 
-function case3_contours(cell_pts, sigma) = [
+function _case3_contours(cell_pts, sigma) = [
     [interpolated_pt(cell_pts[0], cell_pts[1], sigma), interpolated_pt(cell_pts[2], cell_pts[3], sigma)]
 ];
 
-function case4_contours(cell_pts, sigma) = [
+function _case4_contours(cell_pts, sigma) = [
     [interpolated_pt(cell_pts[1], cell_pts[2], sigma), interpolated_pt(cell_pts[2], cell_pts[3], sigma)]
 ];
 
-function case5_contours(cell_pts, sigma) = 
+function _case5_contours(cell_pts, sigma) = 
     let(mdpz = ((cell_pts[0] + cell_pts[1]) / 2)[2])
     mdpz >= sigma ?
     [
@@ -52,19 +52,19 @@ function case5_contours(cell_pts, sigma) =
         [interpolated_pt(cell_pts[1], cell_pts[2], sigma), interpolated_pt(cell_pts[2], cell_pts[3], sigma)]
     ];
 
-function case6_contours(cell_pts, sigma) = [
+function _case6_contours(cell_pts, sigma) = [
     [interpolated_pt(cell_pts[1], cell_pts[2], sigma), interpolated_pt(cell_pts[0], cell_pts[3], sigma)]
 ];
 
-function case7_contours(cell_pts, sigma) = [
+function _case7_contours(cell_pts, sigma) = [
     [interpolated_pt(cell_pts[0], cell_pts[1], sigma), interpolated_pt(cell_pts[1], cell_pts[2], sigma)]
 ];
     
-function case8_contours(cell_pts, sigma) = case7_contours(cell_pts, sigma);
+function _case8_contours(cell_pts, sigma) = _case7_contours(cell_pts, sigma);
 
-function case9_contours(cell_pts, sigma) = case6_contours(cell_pts, sigma);
+function _case9_contours(cell_pts, sigma) = _case6_contours(cell_pts, sigma);
 
-function case10_contours(cell_pts, sigma) = 
+function _case10_contours(cell_pts, sigma) = 
     let(mdpz = ((cell_pts[0] + cell_pts[1]) / 2)[2])
     mdpz >= sigma ?
         [
@@ -77,28 +77,28 @@ function case10_contours(cell_pts, sigma) =
             [interpolated_pt(cell_pts[0], cell_pts[3], sigma), interpolated_pt(cell_pts[2], cell_pts[3], sigma)]
         ];
     
-function case11_contours(cell_pts, sigma) = case4_contours(cell_pts, sigma);
+function _case11_contours(cell_pts, sigma) = _case4_contours(cell_pts, sigma);
 
-function case12_contours(cell_pts, sigma) = case3_contours(cell_pts, sigma);
+function _case12_contours(cell_pts, sigma) = _case3_contours(cell_pts, sigma);
 
-function case13_contours(cell_pts, sigma) = case2_contours(cell_pts, sigma);
+function _case13_contours(cell_pts, sigma) = _case2_contours(cell_pts, sigma);
 
-function case14_contours(cell_pts, sigma) = case1_contours(cell_pts, sigma);
+function _case14_contours(cell_pts, sigma) = _case1_contours(cell_pts, sigma);
 
-function contours_of(cell_pts, sigma) =
-    let(cv = corner_value(cell_pts))
+function _contours_of(cell_pts, sigma) =
+    let(cv = _contours_corner_value(cell_pts))
     cv == 0  ? [] :
-    cv == 1  ? case1_contours(cell_pts, sigma) :
-    cv == 8  ? case2_contours(cell_pts, sigma) :
-    cv == 9  ? case3_contours(cell_pts, sigma) :
-    cv == 4  ? case4_contours(cell_pts, sigma) :
-    cv == 5  ? case5_contours(cell_pts, sigma) :
-    cv == 12 ? case6_contours(cell_pts, sigma) :
-    cv == 13 ? case7_contours(cell_pts, sigma) :
-    cv == 2  ? case8_contours(cell_pts, sigma) :
-    cv == 3  ? case9_contours(cell_pts, sigma) :
-    cv == 10 ? case10_contours(cell_pts, sigma) :
-    cv == 11 ? case11_contours(cell_pts, sigma) :
-    cv == 6  ? case12_contours(cell_pts, sigma) :
-    cv == 7  ? case13_contours(cell_pts, sigma) :
-    cv == 14 ? case14_contours(cell_pts, sigma) : [];
+    cv == 1  ? _case1_contours(cell_pts, sigma) :
+    cv == 8  ? _case2_contours(cell_pts, sigma) :
+    cv == 9  ? _case3_contours(cell_pts, sigma) :
+    cv == 4  ? _case4_contours(cell_pts, sigma) :
+    cv == 5  ? _case5_contours(cell_pts, sigma) :
+    cv == 12 ? _case6_contours(cell_pts, sigma) :
+    cv == 13 ? _case7_contours(cell_pts, sigma) :
+    cv == 2  ? _case8_contours(cell_pts, sigma) :
+    cv == 3  ? _case9_contours(cell_pts, sigma) :
+    cv == 10 ? _case10_contours(cell_pts, sigma) :
+    cv == 11 ? _case11_contours(cell_pts, sigma) :
+    cv == 6  ? _case12_contours(cell_pts, sigma) :
+    cv == 7  ? _case13_contours(cell_pts, sigma) :
+    cv == 14 ? _case14_contours(cell_pts, sigma) : [];
