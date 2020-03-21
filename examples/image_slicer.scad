@@ -116,23 +116,34 @@ module image_slicer(levels, level_step, contour_width) {
 
     max_h = (floor(255 / level_step) + 1) * level_step;
 
+	module contour_lines(points, z, contour_width) {
+		for(row = marching_squares(points, z)) {
+			for(line = row) {
+				hull_polyline2d(line, width = contour_width);
+			}
+		}
+	}
+
+    /*
+	    Even though we can calculate isobands using [the algorithm](https://en.wikipedia.org/wiki/Marching_squares#Isoband),
+		it's easier to fill pixels when the z value of the point is lower than the z parameter.
+    */
+	module simple_isobands(points, z) {
+		for(row = points) {
+			for(p = row) {
+				if(p[2] < z) {
+					translate([p[0], p[1]])
+						square(1, center = true);
+				}
+			}
+		}  		
+	}
+
     for(z = [level_step:level_step:255]) {
-        render()
         linear_extrude((max_h - z) / level_step)
         union() {
-            for(row = marching_squares(points, z)) {
-                for(line = row) {
-                    hull_polyline2d(line, width = contour_width);
-                }
-            }
-            for(row = points) {
-                for(p = row) {
-                    if(p[2] < z) {
-                        translate([p[0], p[1]])
-                            square(1, center = true);
-                    }
-                }
-            }  
+            contour_lines(points, z, contour_width);
+            simple_isobands(points, z);
         }    
     }
 }
