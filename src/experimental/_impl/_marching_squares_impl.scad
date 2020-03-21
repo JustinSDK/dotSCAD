@@ -39,10 +39,18 @@ function case4_contours(cell_pts, sigma) = [
     [interpolated_pt(cell_pts[1], cell_pts[2], sigma), interpolated_pt(cell_pts[2], cell_pts[3], sigma)]
 ];
 
-function case5_contours(cell_pts, sigma) = [
-    [interpolated_pt(cell_pts[0], cell_pts[1], sigma), interpolated_pt(cell_pts[1], cell_pts[2], sigma)],
-    [interpolated_pt(cell_pts[0], cell_pts[3], sigma), interpolated_pt(cell_pts[2], cell_pts[3], sigma)]
-];
+function case5_contours(cell_pts, sigma) = 
+    let(mdpz = ((cell_pts[0] + cell_pts[1]) / 2)[2])
+    mdpz >= sigma ?
+    [
+        [interpolated_pt(cell_pts[0], cell_pts[1], sigma), interpolated_pt(cell_pts[1], cell_pts[2], sigma)],
+        [interpolated_pt(cell_pts[0], cell_pts[3], sigma), interpolated_pt(cell_pts[2], cell_pts[3], sigma)]
+    ]
+    :
+    [
+        [interpolated_pt(cell_pts[0], cell_pts[1], sigma), interpolated_pt(cell_pts[0], cell_pts[3], sigma)],
+        [interpolated_pt(cell_pts[1], cell_pts[2], sigma), interpolated_pt(cell_pts[2], cell_pts[3], sigma)]
+    ];
 
 function case6_contours(cell_pts, sigma) = [
     [interpolated_pt(cell_pts[1], cell_pts[2], sigma), interpolated_pt(cell_pts[0], cell_pts[3], sigma)]
@@ -56,10 +64,18 @@ function case8_contours(cell_pts, sigma) = case7_contours(cell_pts, sigma);
 
 function case9_contours(cell_pts, sigma) = case6_contours(cell_pts, sigma);
 
-function case10_contours(cell_pts, sigma) = [
-    [interpolated_pt(cell_pts[0], cell_pts[1], sigma), interpolated_pt(cell_pts[0], cell_pts[3], sigma)],
-    [interpolated_pt(cell_pts[1], cell_pts[2], sigma), interpolated_pt(cell_pts[2], cell_pts[3], sigma)]
-];
+function case10_contours(cell_pts, sigma) = 
+    let(mdpz = ((cell_pts[0] + cell_pts[1]) / 2)[2])
+    mdpz >= sigma ?
+        [
+            [interpolated_pt(cell_pts[0], cell_pts[1], sigma), interpolated_pt(cell_pts[0], cell_pts[3], sigma)],
+            [interpolated_pt(cell_pts[1], cell_pts[2], sigma), interpolated_pt(cell_pts[2], cell_pts[3], sigma)]
+        ]
+        :
+        [
+            [interpolated_pt(cell_pts[0], cell_pts[1], sigma), interpolated_pt(cell_pts[1], cell_pts[2], sigma)],
+            [interpolated_pt(cell_pts[0], cell_pts[3], sigma), interpolated_pt(cell_pts[2], cell_pts[3], sigma)]
+        ];
     
 function case11_contours(cell_pts, sigma) = case4_contours(cell_pts, sigma);
 
