@@ -1,3 +1,17 @@
+function interpolated_pt(p0, p1, sigma) =
+    let(
+        x0 = p0[0],
+        y0 = p0[1],
+        z0 = p0[2],
+        v = p1 - p0,
+        t = (sigma - z0) / v[2]
+    )
+    [x0 + v[0] * t, y0 + v[1] * t, sigma];
+
+/*
+    ISOLINES Impl Begin ============================
+*/
+
 function _isolines_pn_label(pts, sigma) =
     [
         for(row = pts)
@@ -12,16 +26,6 @@ function _isolines_corner_value(cell_pts) =
         c3 = cell_pts[3][3] ? 8 : 0
     )
     c0 + c1 + c2 + c3;
-
-function interpolated_pt(p0, p1, sigma) =
-    let(
-        x0 = p0[0],
-        y0 = p0[1],
-        z0 = p0[2],
-        v = p1 - p0,
-        t = (sigma - z0) / v[2]
-    )
-    [x0 + v[0] * t, y0 + v[1] * t, sigma];
 
 function _case1_isolines(cell_pts, sigma) = [
     [interpolated_pt(cell_pts[0], cell_pts[1], sigma), interpolated_pt(cell_pts[0], cell_pts[3], sigma)]
@@ -102,3 +106,27 @@ function _isolines_of(cell_pts, sigma) =
     cv == 6  ? _case12_isolines(cell_pts, sigma) :
     cv == 7  ? _case13_isolines(cell_pts, sigma) :
                _case14_isolines(cell_pts, sigma);
+
+function _marching_squares_isolines(points, sigma) = 
+    let(labeled_pts = _isolines_pn_label(points, sigma))
+    [
+        for(y = [0:len(labeled_pts) - 2])
+            [
+                 for(x = [0:len(labeled_pts[0]) - 2])
+                 let(
+                    p0 = labeled_pts[y][x],
+                    p1 = labeled_pts[y + 1][x],
+                    p2 = labeled_pts[y + 1][x + 1],
+                    p3 = labeled_pts[y][x + 1],
+                    cell_pts = [p0, p1, p2, p3],
+                    isolines_lt = _isolines_of(cell_pts, sigma)
+                 )
+                 if(isolines_lt != [])
+                 each isolines_lt
+           ]
+    ];               
+
+/*
+    ISOLINES Impl End ============================
+*/
+
