@@ -87,7 +87,7 @@ function _case14_isolines(cell_pts, sigma) = _case1_isolines(cell_pts, sigma);
 
 function _isolines_of(cell_pts, sigma) =
     let(cv = _isolines_corner_value(cell_pts))
-    cv == 0  ? [] :
+    cv == 0 || cv == 15  ? [] :
     cv == 1  ? _case1_isolines(cell_pts, sigma) :
     cv == 8  ? _case2_isolines(cell_pts, sigma) :
     cv == 9  ? _case3_isolines(cell_pts, sigma) :
@@ -101,4 +101,4 @@ function _isolines_of(cell_pts, sigma) =
     cv == 11 ? _case11_isolines(cell_pts, sigma) :
     cv == 6  ? _case12_isolines(cell_pts, sigma) :
     cv == 7  ? _case13_isolines(cell_pts, sigma) :
-    cv == 14 ? _case14_isolines(cell_pts, sigma) : [];
+               _case14_isolines(cell_pts, sigma);
