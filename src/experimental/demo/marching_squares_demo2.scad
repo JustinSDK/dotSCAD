@@ -113,9 +113,7 @@ points = [
 for(z = [0:40:255]) {
     for(row = marching_squares(points, z)) {
         for(line = row) {
-            p0 = [line[0][0], line[0][1]];
-            p1 = [line[1][0], line[1][1]];
-            hull_polyline2d([p0, p1], width = .25);
+            hull_polyline2d(line, width = .25);
         }
     }    
 }
