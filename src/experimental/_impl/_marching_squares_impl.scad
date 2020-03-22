@@ -40,7 +40,7 @@ function _case4_isolines(cell_pts, sigma) = [
 ];
 
 function _case5_isolines(cell_pts, sigma) = 
-    let(mdpz = ((cell_pts[0] + cell_pts[1]) / 2)[2])
+    let(mdpz = (cell_pts[0][2] + cell_pts[1][2] + cell_pts[2][2] + cell_pts[3][2]) / 4)
     mdpz >= sigma ?
     [
         [interpolated_pt(cell_pts[0], cell_pts[1], sigma), interpolated_pt(cell_pts[1], cell_pts[2], sigma)],
@@ -65,7 +65,7 @@ function _case8_isolines(cell_pts, sigma) = _case7_isolines(cell_pts, sigma);
 function _case9_isolines(cell_pts, sigma) = _case6_isolines(cell_pts, sigma);
 
 function _case10_isolines(cell_pts, sigma) = 
-    let(mdpz = ((cell_pts[0] + cell_pts[1]) / 2)[2])
+    let(mdpz = (cell_pts[0][2] + cell_pts[1][2] + cell_pts[2][2] + cell_pts[3][2]) / 4)
     mdpz >= sigma ?
         [
             [interpolated_pt(cell_pts[0], cell_pts[1], sigma), interpolated_pt(cell_pts[0], cell_pts[3], sigma)],
