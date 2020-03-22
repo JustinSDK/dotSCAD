@@ -14,17 +14,15 @@ points = [
 
 if(style == "ISOLINES") {
     for(row = marching_squares(points, 0.1)) {
-        for(line = row) {
-            p0 = [line[0][0], line[0][1]];
-            p1 = [line[1][0], line[1][1]];
-            hull_polyline2d([p0, p1], width = .1);
+        for(isoline = row) {
+            hull_polyline2d(isoline, width = .1);
         }
     }    
 }
 else {
     for(row = marching_squares(points, [-.2, .2])) {
-        for(iso_band = row) {
-            polygon([for(p = iso_band) [p[0], p[1]]]);
+        for(isoband = row) {
+            polygon([for(p = isoband) [p[0], p[1]]]);
         }
     } 
 }
