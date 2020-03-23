@@ -13,11 +13,11 @@ Puts children along the given path. If there's only one child, it will put the c
 ## Examples
 
 	use <along_with.scad>;
-	use <circle_path.scad>;
+	use <shape_circle.scad>;
 	
 	$fn = 24;
 	
-	points = circle_path(radius = 50);
+	points = shape_circle(radius = 50);
 	
 	along_with(points) 
 	    sphere(5);
@@ -25,11 +25,11 @@ Puts children along the given path. If there's only one child, it will put the c
 ![along_with](images/lib-along_with-1.JPG)
 
 	use <along_with.scad>;
-	use <circle_path.scad>;
+	use <shape_circle.scad>;
 
 	$fn = 24;
 
-	points = circle_path(radius = 50);
+	points = shape_circle(radius = 50);
 
 	along_with(points) {
 		linear_extrude(10, center = true) text("A", valign = "center", halign = "center");

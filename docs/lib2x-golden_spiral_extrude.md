@@ -38,14 +38,14 @@ When using this module, you should use points to represent the 2D shape. If your
 
 ![golden_spiral_extrude](images/lib-golden_spiral_extrude-1.JPG)
 
-    use <circle_path.scad>;
+    use <shape_circle.scad>;
 	use <golden_spiral_extrude.scad>;
 
 	$fn = 12;
 
 	shape_pts = concat(
-		circle_path(radius = 3),
-		circle_path(radius = 2)
+		shape_circle(radius = 3),
+		shape_circle(radius = 2)
 	);
 
 	golden_spiral_extrude(

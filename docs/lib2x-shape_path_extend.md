@@ -14,13 +14,13 @@ When using this function, you should use points to represent the 2D stroke.
 ## Examples
 
 	use <shape_path_extend.scad>;
-	use <circle_path.scad>;
+	use <shape_circle.scad>;
 	use <archimedean_spiral.scad>;
 	
 	$fn = 96;
 	
 	stroke1 = [[-5, 2.5], [-2.5, 0], [0, 2.5], [2.5, 0], [5, 2.5]];
-	path_pts1 = circle_path(50, 60);
+	path_pts1 = shape_circle(50, 60);
     polygon(
 	    shape_path_extend(stroke1, path_pts1)
     );
