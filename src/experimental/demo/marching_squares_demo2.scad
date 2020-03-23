@@ -111,9 +111,7 @@ points = [
 ];
 
 for(z = [0:40:255]) {
-    for(row = marching_squares(points, z)) {
-        for(isoline = row) {
-            hull_polyline2d(isoline, width = .25);
-        }
+    for(isoline = marching_squares(points, z)) {
+        hull_polyline2d(isoline, width = .25);
     }    
 }

@@ -27,6 +27,7 @@ Preview
 - `util/dedup`
 - `util/bsearch` 
 - `util/sort` supports `by = "vt"`
+- `shape_circle`
 
 Bugfixes:
 - `helix_extrude`: wrong orientation when CLK

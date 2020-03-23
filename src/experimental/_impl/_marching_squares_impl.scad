@@ -110,20 +110,18 @@ function _isolines_of(cell_pts, sigma) =
 function _marching_squares_isolines(points, sigma) = 
     let(labeled_pts = _isolines_pn_label(points, sigma))
     [
-        for(y = [0:len(labeled_pts) - 2])
-            [
-                 for(x = [0:len(labeled_pts[0]) - 2])
-                 let(
-                    p0 = labeled_pts[y][x],
-                    p1 = labeled_pts[y + 1][x],
-                    p2 = labeled_pts[y + 1][x + 1],
-                    p3 = labeled_pts[y][x + 1],
-                    cell_pts = [p0, p1, p2, p3],
-                    isolines_lt = _isolines_of(cell_pts, sigma)
-                 )
-                 if(isolines_lt != [])
-                 each isolines_lt
-           ]
+        for(y = [0:len(labeled_pts) - 2])            
+            for(x = [0:len(labeled_pts[0]) - 2])
+            let(
+                p0 = labeled_pts[y][x],
+                p1 = labeled_pts[y + 1][x],
+                p2 = labeled_pts[y + 1][x + 1],
+                p3 = labeled_pts[y][x + 1],
+                cell_pts = [p0, p1, p2, p3],
+                isolines_lt = _isolines_of(cell_pts, sigma)
+            )
+            if(isolines_lt != [])
+            each isolines_lt
     ];               
 
 /*
@@ -940,7 +938,7 @@ function _case2010_isobands(cell_pts, lower, upper) =
 function _isobands_of(cell_pts, lower, upper) =    
     let(cv = _isobands_corner_value(cell_pts))
     // no contour
-    cv == "0000" ? [] : 
+    cv == "0000" || cv == "2222" ? [] : 
     // single square
     cv == "1111" ? [[for(i = 3; i >= 0; i = i - 1) [cell_pts[i][0], cell_pts[i][1]]]] :
     // single triangle
@@ -1026,27 +1024,23 @@ function _isobands_of(cell_pts, lower, upper) =
     cv == "1202" ? _case1202_isobands(cell_pts, lower, upper) :      
     cv == "1020" ? _case1020_isobands(cell_pts, lower, upper) :  
     cv == "0212" ? _case0212_isobands(cell_pts, lower, upper) :  
-    cv == "2010" ? _case2010_isobands(cell_pts, lower, upper) :  
-    // no contour
-    []; // 2222
+                   _case2010_isobands(cell_pts, lower, upper);
     
 function _marching_squares_isobands(points, lower, upper) = 
     let(labeled_pts = _isobands_tri_label(points, lower, upper))
     [
         for(y = [0:len(labeled_pts) - 2])
-            [
-                 for(x = [0:len(labeled_pts[0]) - 2])
-                 let(
-                    p0 = labeled_pts[y][x],
-                    p1 = labeled_pts[y + 1][x],
-                    p2 = labeled_pts[y + 1][x + 1],
-                    p3 = labeled_pts[y][x + 1],
-                    cell_pts = [p0, p1, p2, p3],
-                    isobands_lt = _isobands_of(cell_pts, lower, upper)
-                 )
-                 if(isobands_lt != [])
-                 each isobands_lt
-           ]
+            for(x = [0:len(labeled_pts[0]) - 2])
+            let(
+                p0 = labeled_pts[y][x],
+                p1 = labeled_pts[y + 1][x],
+                p2 = labeled_pts[y + 1][x + 1],
+                p3 = labeled_pts[y][x + 1],
+                cell_pts = [p0, p1, p2, p3],
+                isobands_lt = _isobands_of(cell_pts, lower, upper)
+            )
+            if(isobands_lt != [])
+            each isobands_lt
     ];
     
 /*

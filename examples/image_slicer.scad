@@ -118,10 +118,8 @@ module image_slicer(levels, level_step, contour_width) {
 
 	module contours(points, z, contour_width) {
 		union() {
-			for(row = marching_squares(points, [0, z])) {
-				for(iso_band = row) {
-					polygon([for(p = iso_band) [p[0], p[1]]]);
-				}
+			for(iso_band = marching_squares(points, [0, z])) {
+				polygon([for(p = iso_band) [p[0], p[1]]]);
 			}
 		}
 	}

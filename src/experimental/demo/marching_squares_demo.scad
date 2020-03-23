@@ -11,14 +11,11 @@ points = [
 ];
 
 
-for(row = marching_squares(points, 0.1)) {
-    for(isoline = row) {
-        hull_polyline2d(isoline, width = .1);
-    }
+for(isoline = marching_squares(points, 0.1)) {
+    hull_polyline2d(isoline, width = .1);
 }    
 
-translate([12, 0]) for(row = marching_squares(points, [-.2, .2])) {
-    for(isoband = row) {
-        polygon([for(p = isoband) [p[0], p[1]]]);
-    }
+translate([12, 0]) 
+for(isoband = marching_squares(points, [-.2, .2])) {
+    polygon([for(p = isoband) [p[0], p[1]]]);
 } 
