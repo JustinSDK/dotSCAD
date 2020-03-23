@@ -55,7 +55,7 @@ See [examples](examples).
 	- [polyline3d](https://openhome.cc/eGossip/OpenSCAD/lib2x-polyline3d.html)
 	- [hull_polyline3d](https://openhome.cc/eGossip/OpenSCAD/lib2x-hull_polyline3d.html)
 	- [function_grapher](https://openhome.cc/eGossip/OpenSCAD/lib2x-function_grapher.html)
-	- [polysections](https://openhome.cc/eGossip/OpenSCAD/lib2x-polysections.html) (It'll be deprecated from 2.3. Use sweep instead.)
+	- [polysections](https://openhome.cc/eGossip/OpenSCAD/lib2x-polysections.html) (It'll be deprecated from 2.3. Use `sweep` instead.)
 	- [sweep](https://openhome.cc/eGossip/OpenSCAD/lib2x-sweep.html) (2.3 Preview)
 	- [starburst](https://openhome.cc/eGossip/OpenSCAD/lib2x-starburst.html)
 	- [voronoi3d](https://openhome.cc/eGossip/OpenSCAD/lib2x-voronoi3d.html)
@@ -84,7 +84,7 @@ See [examples](examples).
 	
 - Path
     - [arc_path](https://openhome.cc/eGossip/OpenSCAD/lib2x-arc_path.html)
-	- [circle_path](https://openhome.cc/eGossip/OpenSCAD/lib2x-circle_path.html)
+	- [circle_path](https://openhome.cc/eGossip/OpenSCAD/lib2x-circle_path.html) (It'll be deprecated from 2.3. Use `shape_circle` instead.)
     - [bspline_curve](https://openhome.cc/eGossip/OpenSCAD/lib2x-bspline_curve.html)
 	- [bezier_curve](https://openhome.cc/eGossip/OpenSCAD/lib2x-bezier_curve.html)
     - [helix](https://openhome.cc/eGossip/OpenSCAD/lib2x-helix.html)
@@ -104,6 +104,7 @@ See [examples](examples).
     - [shape_taiwan](https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_taiwan.html)
 	- [shape_arc](https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_arc.html)
 	- [shape_pie](https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_pie.html)
+	- [shape_circle](https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_circle.html) (2.3 Preview)
 	- [shape_ellipse](https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_ellipse.html)
     - [shape_square](https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_square.html)
 	- [shape_trapezium](https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_trapezium.html)
