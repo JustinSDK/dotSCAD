@@ -2,6 +2,8 @@
 
 Sometimes you need all points on the path of a circle. Here's the function. Its `$fa`, `$fs` and `$fn` parameters are consistent with the `circle` module.
 
+**Since: 2.3**
+
 ## Parameters
 
 - `radius` : The radius of the circle.
