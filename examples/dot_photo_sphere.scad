@@ -1,5 +1,5 @@
 use <pixel/px_gray.scad>;
-use <experimental/ptf_sphere.scad>;
+use <ptf/ptf_sphere.scad>;
 
 photo_size = [100, 100];
 radius = 50;

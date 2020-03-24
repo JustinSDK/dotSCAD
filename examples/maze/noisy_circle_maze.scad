@@ -2,7 +2,7 @@ use <hull_polyline2d.scad>;
 use <util/rand.scad>;
 use <experimental/mz_blocks.scad>;
 use <experimental/mz_walls.scad>;
-use <experimental/ptf_circle.scad>;
+use <ptf/ptf_circle.scad>;
 use <experimental/pnoise2.scad>;
 
 module noisy_circle_maze(start, r_blocks, block_width, wall_thickness, origin_offset, noisy_factor) {

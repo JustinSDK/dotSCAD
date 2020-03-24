@@ -1,7 +1,7 @@
 use <util/rand.scad>;
 use <experimental/pnoise2s.scad>;
 use <experimental/sf_solidify.scad>;
-use <experimental/ptf_bend.scad>;
+use <ptf/ptf_bend.scad>;
 use <util/slice.scad>;
 
 radius = 40;

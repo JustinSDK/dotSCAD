@@ -1,5 +1,5 @@
 use <hull_polyline3d.scad>;
-use <experimental/ptf_bend.scad>;
+use <ptf/ptf_bend.scad>;
 use <hollow_out_square.scad>;
 
 width = 5;

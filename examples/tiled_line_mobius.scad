@@ -1,6 +1,6 @@
 use <util/rand.scad>;
 use <hull_polyline3d.scad>;
-use <experimental/ptf_ring.scad>;
+use <ptf/ptf_ring.scad>;
 
 size = [20, 100];
 line_width = 1;

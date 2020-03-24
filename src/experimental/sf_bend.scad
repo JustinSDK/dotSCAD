@@ -1,6 +1,6 @@
 use <experimental/_impl/_sf_square_surfaces.scad>;
 use <experimental/sf_solidify.scad>;
-use <experimental/ptf_bend.scad>;
+use <ptf/ptf_bend.scad>;
 
 /*
     levels : A list of numbers (0 ~ 255).

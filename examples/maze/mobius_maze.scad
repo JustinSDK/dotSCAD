@@ -1,7 +1,7 @@
 use <hull_polyline3d.scad>;
 use <experimental/mz_blocks.scad>;
 use <experimental/mz_walls.scad>;
-use <experimental/ptf_ring.scad>;
+use <ptf/ptf_ring.scad>;
 
 rows = 48;
 columns = 8;

@@ -1,6 +1,6 @@
 use <util/rand.scad>;
 use <hull_polyline3d.scad>;
-use <experimental/ptf_torus.scad>;
+use <ptf/ptf_torus.scad>;
 
 size = [20, 50];
 line_width = 1;
