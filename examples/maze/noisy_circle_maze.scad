@@ -1,9 +1,11 @@
 use <hull_polyline2d.scad>;
+use <util/rand.scad>;
 use <experimental/mz_blocks.scad>;
 use <experimental/mz_walls.scad>;
 use <experimental/ptf_circle.scad>;
+use <experimental/pnoise2.scad>;
 
-module circle_maze(start, r_blocks, block_width, wall_thickness, origin_offset) {
+module noisy_circle_maze(start, r_blocks, block_width, wall_thickness, origin_offset, noisy_factor) {
     double_r_blocks = r_blocks * 2;
     blocks = mz_blocks(
         start,  
@@ -15,19 +17,25 @@ module circle_maze(start, r_blocks, block_width, wall_thickness, origin_offset) 
     
     half_width =  width / 2;
     offset = is_undef(origin_offset) ? [-half_width, -half_width] : origin_offset;
+
+    noisy_f = is_undef(noisy_factor) ? 1 : noisy_factor;
     
+    seed = rand(0, 256);
     for(wall = walls) {
         for(i = [0:len(wall) - 2]) {
             p0 = ptf_circle(wall[i], offset);
             p1 = ptf_circle(wall[i + 1], offset);
-            hull_polyline2d([p0, p1], width = wall_thickness);
+            pn0 = pnoise2(p0[0], p0[1], seed);
+            pn1 = pnoise2(p1[0], p1[1], seed);
+            hull_polyline2d([p0 + [pn0, pn0] * noisy_f, p1 + [pn1, pn1] * noisy_f], width = wall_thickness);
         }
     } 
 }
 
-circle_maze(
+noisy_circle_maze(
     start = [1, 1], 
-    r_blocks = 5, 
-    block_width = 2, 
-    wall_thickness = .75
+    r_blocks = 7, 
+    block_width = 5, 
+    wall_thickness = 2,
+    noisy_factor = 2
 );
