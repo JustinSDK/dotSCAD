@@ -1,3 +1,13 @@
+/**
+* sweep.scad
+*
+* @copyright Justin Lin, 2020
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-sweep.html
+*
+**/
+
 use <util/reverse.scad>;
 
 module sweep(sections, triangles = "SOLID") {

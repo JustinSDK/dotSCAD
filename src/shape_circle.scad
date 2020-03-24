@@ -1,7 +1,7 @@
 /**
 * shape_circle.scad
 *
-* @copyright Justin Lin, 2017
+* @copyright Justin Lin, 2020
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *
 * @see https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_circle.html
