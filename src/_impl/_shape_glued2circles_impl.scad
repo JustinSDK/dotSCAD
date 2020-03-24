@@ -1,4 +1,4 @@
-use <rotate_p.scad>;
+use <ptf/ptf_rotate.scad>;
 use <shape_pie.scad>;
 use <bezier_curve.scad>;
 
@@ -15,7 +15,7 @@ function _glued2circles_pie_curve(radius, centre_dist, tangent_angle) =
     
 function _glued2circles_bezier(radius, centre_dist, tangent_angle, t_step, ctrl_p1) = 
     let(
-        ctrl_p = rotate_p([radius * tan(tangent_angle), -radius], tangent_angle),
+        ctrl_p = ptf_rotate([radius * tan(tangent_angle), -radius], tangent_angle),
         ctrl_p2 = [-ctrl_p[0], ctrl_p[1]] + [centre_dist / 2, 0],
         ctrl_p3 = [-ctrl_p2[0], ctrl_p2[1]],
         ctrl_p4 = [-ctrl_p1[0], ctrl_p1[1]]            

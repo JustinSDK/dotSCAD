@@ -1,5 +1,5 @@
 use <__comm__/__fast_fibonacci.scad>;
-use <rotate_p.scad>;
+use <ptf/ptf_rotate.scad>;
 use <shape_circle.scad>;
 
 function _fast_fibonacci_sub(nth) = 
@@ -46,7 +46,7 @@ function _golden_spiral_from_ls_or_eql_to(from, to, point_distance, rt_dir) =
         [
             for(pt_a = _golden_spiral(from + 1, to, point_distance, rt_dir)) 
                 [ 
-                    rotate_p(pt_a[0], [0, 0, 90 * rt_dir]) + 
+                    ptf_rotate(pt_a[0], [0, 0, 90 * rt_dir]) + 
                     (rt_dir == 1 ? [0, -offset, 0] : [-offset, 0, 0]), 
                     pt_a[1] + 90 * rt_dir
                 ]

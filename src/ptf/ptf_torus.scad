@@ -1,4 +1,4 @@
-use <rotate_p.scad>;
+use <ptf/ptf_rotate.scad>;
 
 /*
     size: The size of a rectangle.
@@ -23,4 +23,4 @@ function ptf_torus(size, point, radius, angle = [360, 360], twist = 0) =
         ya = 180 - x * ya_step + twa_step * y,
         za = za_step * y
     ) 
-    rotate_p([r * cos(ya) + R + r, 0, r * sin(ya)], za);
+    ptf_rotate([r * cos(ya) + R + r, 0, r * sin(ya)], za);

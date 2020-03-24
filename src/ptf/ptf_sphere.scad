@@ -1,4 +1,4 @@
-use <rotate_p.scad>;
+use <ptf/ptf_rotate.scad>;
 
 /*
     size: The size of the rectangle mapping to a sphere.
@@ -18,6 +18,6 @@ function ptf_sphere(size, point, radius, angle = [180, 360]) =
         za_step = za / ylen,
         rza = za_step * y,
         rzpt = [(radius + z) * cos(rza), (radius + z) * sin(rza), 0],       
-        rxpt = rotate_p(rzpt, [90 - xa / xlen * x, 90, 0])   
+        rxpt = ptf_rotate(rzpt, [90 - xa / xlen * x, 90, 0])   
     )
     rxpt;

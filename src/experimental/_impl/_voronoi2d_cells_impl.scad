@@ -1,5 +1,5 @@
 
-use <rotate_p.scad>;
+use <ptf/ptf_rotate.scad>;
 
 function _default_region_size(points) = 
     let(
@@ -20,6 +20,6 @@ function _cells_lt_before_intersection(shape, size, points, pt) =
             )
             [
                 for(sp = shape)
-                     rotate_p(sp, a) + offset
+                     ptf_rotate(sp, a) + offset
             ]
     ];

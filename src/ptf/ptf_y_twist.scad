@@ -1,4 +1,4 @@
-use <rotate_p.scad>;
+use <ptf/ptf_rotate.scad>;
 
 /*
     size: The size of a rectangle.
@@ -13,4 +13,4 @@ function ptf_y_twist(size, point, angle) =
         a_step = angle / ylen,
         x_centered = [point[0], point[1], is_undef(point[2]) ? 0 : point[2]] + [-x_offset, 0, 0]
     )
-    rotate_p(x_centered, [0, point[1] * a_step, 0]) + [x_offset, 0, 0];
+    ptf_rotate(x_centered, [0, point[1] * a_step, 0]) + [x_offset, 0, 0];

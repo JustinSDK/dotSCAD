@@ -10,7 +10,7 @@
 
 use <__comm__/__to3d.scad>;
 use <__comm__/__angy_angz.scad>;
-use <rotate_p.scad>;
+use <ptf/ptf_rotate.scad>;
 use <sweep.scad>;
 use <matrix/m_rotation.scad>;
 
@@ -32,7 +32,7 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
             for(p = pts) [p[0] + t[0], p[1] + t[1], p[2] + t[2]]
         ];
             
-        function rotate_pts(pts, a, v) = [for(p = pts) rotate_p(p, a, v)];
+        function rotate_pts(pts, a, v) = [for(p = pts) ptf_rotate(p, a, v)];
 
         scale_step_vt = is_num(scale) ? 
             let(s =  (scale - 1) / len_path_pts_minus_one) [s, s, s] : 
@@ -173,9 +173,9 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
             [
                 for(p = sh_pts) 
                     let(scaled_p = [p[0] * (1 + scale_step_x * i), p[1] * (1 + scale_step_y * i), p[2]])
-                    rotate_p(
-                        rotate_p(
-                            rotate_p(scaled_p, twist_step * i), [90, 0, -90]
+                    ptf_rotate(
+                        ptf_rotate(
+                            ptf_rotate(scaled_p, twist_step * i), [90, 0, -90]
                         ) + [i == 0 ? 0 : length, 0, 0], 
                         [0, ay, az]
                     ) + p1

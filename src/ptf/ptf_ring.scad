@@ -1,4 +1,4 @@
-use <rotate_p.scad>;
+use <ptf/ptf_rotate.scad>;
 use <ptf/ptf_y_twist.scad>;
 
 /*
@@ -14,4 +14,4 @@ function ptf_ring(size, point, radius, angle = 360, twist = 0) =
         a_step = angle / yleng,
         twisted = ptf_y_twist(size, point, twist)
     )
-    rotate_p([radius + twisted[0], 0, twisted[2]], a_step * twisted[1]);
+    ptf_rotate([radius + twisted[0], 0, twisted[2]], a_step * twisted[1]);

@@ -17,7 +17,7 @@ include <test_bend.scad>;
 include <test_along_with.scad>;
 
 // Function
-include <test_rotate_p.scad>;
+include <test_ptf_rotate.scad>;
 include <test_cross_sections.scad>;
 include <test_paths2sections.scad>;
 include <test_in_polyline.scad>;
