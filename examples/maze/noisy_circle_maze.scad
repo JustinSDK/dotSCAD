@@ -16,15 +16,15 @@ module noisy_circle_maze(start, r_blocks, block_width, wall_thickness, origin_of
     walls = mz_walls(blocks, double_r_blocks, double_r_blocks, block_width);
     
     half_width =  width / 2;
-    offset = is_undef(origin_offset) ? [-half_width, -half_width] : origin_offset;
+    rect_size = is_undef(origin_offset) ? [width, width] : [width, width] - origin_offset * 2;
 
     noisy_f = is_undef(noisy_factor) ? 1 : noisy_factor;
     
     seed = rand(0, 256);
     for(wall = walls) {
         for(i = [0:len(wall) - 2]) {
-            p0 = ptf_circle(wall[i], offset);
-            p1 = ptf_circle(wall[i + 1], offset);
+            p0 = ptf_circle(rect_size, wall[i]);
+            p1 = ptf_circle(rect_size, wall[i + 1]);
             pn00 = pnoise2(p0[0], p0[1], seed) * noisy_f;
             pn01 = pnoise2(p0[0] + seed, p0[1] + seed, seed) * noisy_f;
             pn10 = pnoise2(p1[0], p1[1], seed) * noisy_f;

@@ -32,6 +32,7 @@ Preview
 - `ptf/ptf_rotate`
 - `ptf/ptf_x_twist`
 - `ptf/ptf_y_twist`
+- `ptf/ptf_circle`
 - `ptf/ptf_bend`
 - `ptf/ptf_ring`
 - `ptf/ptf_sphere`
