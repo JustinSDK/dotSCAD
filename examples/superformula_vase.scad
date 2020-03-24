@@ -2,7 +2,7 @@ use <trim_shape.scad>;
 use <bezier_curve.scad>;
 use <path_scaling_sections.scad>;
 use <polysections.scad>;
-use <rotate_p.scad>;
+use <ptf/ptf_rotate.scad>;
 use <bijection_offset.scad>;
 use <shape_superformula.scad>;
 
@@ -35,7 +35,7 @@ module superformula_vase(phi_step, m, n, n3, d, r1, r2, h1, h2, t_step, twist) {
             for(i = [0:leng - 1]) 
             [
                 for(p = sects[i]) 
-                    rotate_p(p, twist_step * i)        
+                    ptf_rotate(p, twist_step * i)        
             ]
         ];
 

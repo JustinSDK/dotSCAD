@@ -3,7 +3,7 @@ use <bezier_curve.scad>;
 use <shape_taiwan.scad>;
 use <path_scaling_sections.scad>;
 use <polysections.scad>;
-use <rotate_p.scad>;
+use <ptf/ptf_rotate.scad>;
 use <bijection_offset.scad>;
 
 x1 = 4; // [-20:4]
@@ -27,7 +27,7 @@ module dancing_formosan(x1, x2, x3, y1, y2, y3, twist, t_step) {
             for(i = [0:leng - 1]) 
             [
                 for(p = sects[i]) 
-                    rotate_p(p, twist_step * i)        
+                    ptf_rotate(p, twist_step * i)        
             ]
         ];
 

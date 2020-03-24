@@ -167,6 +167,15 @@ See [examples](examples).
     - [part/connector_peg](https://openhome.cc/eGossip/OpenSCAD/lib2x-connector_peg.html)
 	- [part/cone](https://openhome.cc/eGossip/OpenSCAD/lib2x-cone.html)
 	- [part/joint_T](https://openhome.cc/eGossip/OpenSCAD/lib2-joint_T.html)
+
+- Point Transformation (2.3 Preview)
+    - ptf/ptf_rotate
+    - ptf/ptf_x_twist
+	- ptf/ptf_y_twist
+	- ptf/ptf_bend
+	- ptf/ptf_ring
+	- ptf/ptf_sphere
+	- ptf/ptf_torus
 	
 ## Bugs and Feedback
 

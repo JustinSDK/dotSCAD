@@ -1,5 +1,5 @@
 use <golden_spiral.scad>;
-use <rotate_p.scad>;
+use <ptf/ptf_rotate.scad>;
 use <hollow_out.scad>;
 use <experimental/voronoi2d_cells.scad>;
 
@@ -27,7 +27,7 @@ module voronoi_fibonacci() {
 
     pts = [
         for(a = [0:a_step:360 - a_step])
-        each [for(p = spiral) rotate_p(p, a)]
+        each [for(p = spiral) ptf_rotate(p, a)]
     ];
         
     half_line_thicness = line_thickness / 2;
