@@ -1,7 +1,7 @@
 use <hull_polyline2d.scad>;
 use <util/rand.scad>;
 use <experimental/pnoise2.scad>;
-use <experimental/marching_squares.scad>;
+use <experimental/contours.scad>;
 
 seed = rand(0, 256);
 points = [
@@ -11,11 +11,11 @@ points = [
 ];
 
 
-for(isoline = marching_squares(points, 0.1)) {
+for(isoline = contours(points, 0.1)) {
     hull_polyline2d(isoline, width = .1);
 }    
 
 translate([12, 0]) 
-for(isoband = marching_squares(points, [-.2, .2])) {
+for(isoband = contours(points, [-.2, .2])) {
     polygon([for(p = isoband) [p[0], p[1]]]);
 } 

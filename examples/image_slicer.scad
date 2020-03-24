@@ -1,5 +1,5 @@
 use <hull_polyline2d.scad>;
-use <experimental/marching_squares.scad>;
+use <experimental/contours.scad>;
 
 level_step = 51;
 contour_width = 1.5;
@@ -116,18 +116,14 @@ module image_slicer(levels, level_step, contour_width) {
 
     max_h = (floor(255 / level_step) + 1) * level_step;
 
-	module contours(points, z, contour_width) {
-		union() {
-			for(iso_band = marching_squares(points, [0, z])) {
-				polygon([for(p = iso_band) [p[0], p[1]]]);
-			}
-		}
-	}
-
     for(z = [level_step:level_step:255]) {
         linear_extrude((max_h - z) / level_step)
         offset(0.01) // Avoid warning
-		    contours(points, z, contour_width);   
+		union() {
+			for(iso_band = contours(points, [0, z])) {
+				polygon([for(p = iso_band) [p[0], p[1]]]);
+			}
+		}   
     }
 }
 
