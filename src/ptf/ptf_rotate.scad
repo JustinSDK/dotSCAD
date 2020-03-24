@@ -1,10 +1,10 @@
 /**
-* rotate_p.scad
+* ptf_rotate.scad
 *
-* @copyright Justin Lin, 2017
+* @copyright Justin Lin, 2020
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *
-* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-rotate_p.html
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_rotate.html
 *
 **/ 
 
