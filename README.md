@@ -73,7 +73,7 @@ See [examples](examples).
 	- [triangulate](https://openhome.cc/eGossip/OpenSCAD/lib2x-triangulate.html)
 
 - 2D/3D Function
-	- [rotate_p](https://openhome.cc/eGossip/OpenSCAD/lib2x-rotate_p.html)
+	- [rotate_p](https://openhome.cc/eGossip/OpenSCAD/lib2x-rotate_p.html) (It'll be deprecated from 2.3. Use `ptf/ptf_rotate` instead.)
 	- [cross_sections](https://openhome.cc/eGossip/OpenSCAD/lib2x-cross_sections.html)
 	- [paths2sections](https://openhome.cc/eGossip/OpenSCAD/lib2x-paths2sections.html)
 	- [path_scaling_sections](https://openhome.cc/eGossip/OpenSCAD/lib2x-path_scaling_sections.html)
@@ -145,7 +145,7 @@ See [examples](examples).
 	- [matrix/m_shearing](https://openhome.cc/eGossip/OpenSCAD/lib2x-m_shearing.html)
 
 - Point Transformation (2.3 Preview)
-    - ptf/ptf_rotate
+    - [ptf/ptf_rotate](https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_rotate.html)
     - ptf/ptf_x_twist
 	- ptf/ptf_y_twist
 	- ptf/ptf_circle
@@ -153,7 +153,7 @@ See [examples](examples).
 	- ptf/ptf_ring
 	- ptf/ptf_sphere
 	- ptf/ptf_torus
-	
+
 ----
 
 - Turtle
