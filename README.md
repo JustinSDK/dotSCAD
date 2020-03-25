@@ -1,6 +1,6 @@
 # dotSCAD 2.2.1
 
-> **Reduce the burden of 3D modeling in mathematics.**
+> **Reduce the burden of mathematics when playing OpenSCAD.**
 
 ![dotSCAD](featured_img/LeopardCatTaiwan.JPG)
 
