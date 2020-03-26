@@ -1,3 +1,13 @@
+/**
+* ptf_circle.scad
+*
+* @copyright Justin Lin, 2020
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_circle.html
+*
+**/ 
+
 function ptf_circle(size, point) =
     let(
         p_offset = -size / 2,
