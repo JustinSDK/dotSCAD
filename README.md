@@ -147,7 +147,7 @@ See [examples](examples).
 - Point Transformation (2.3 Preview)
     - [ptf/ptf_rotate](https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_rotate.html)
     - [ptf/ptf_x_twist](https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_x_twist.html)
-	- ptf/ptf_y_twist
+	- [ptf/ptf_y_twist](https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_y_twist.html)
 	- ptf/ptf_circle
 	- ptf/ptf_bend
 	- ptf/ptf_ring

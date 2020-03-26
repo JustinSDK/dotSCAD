@@ -1,10 +1,15 @@
+/**
+* ptf_y_twist.scad
+*
+* @copyright Justin Lin, 2020
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_y_twist.html
+*
+**/ 
+
 use <ptf/ptf_rotate.scad>;
 
-/*
-    size: The size of a rectangle.
-    point: A point in the rectangle.
-    angle: twisted angle.
-*/
 function ptf_y_twist(size, point, angle) =
     let(
         xlen = size[0],
