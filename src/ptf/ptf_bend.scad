@@ -1,9 +1,12 @@
-/*
-    size: The size of the rectangle which can contain the point.
-    point: A point in the rectangle.
-    radius: The radius of the arc after being bent
-    angle: The central angle of the arc.
-*/
+/**
+* ptf_bend.scad
+*
+* @copyright Justin Lin, 2020
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_bend.html
+*
+**/ 
 
 function ptf_bend(size, point, radius, angle) = 
     let(

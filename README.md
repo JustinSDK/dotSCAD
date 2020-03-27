@@ -149,7 +149,7 @@ See [examples](examples).
     - [ptf/ptf_x_twist](https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_x_twist.html)
 	- [ptf/ptf_y_twist](https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_y_twist.html)
 	- [ptf/ptf_circle](https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_circle.html)
-	- ptf/ptf_bend
+	- [ptf/ptf_bend](https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_bend.html)
 	- ptf/ptf_ring
 	- ptf/ptf_sphere
 	- ptf/ptf_torus
