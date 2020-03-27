@@ -1,13 +1,16 @@
+/**
+* ptf_ring.scad
+*
+* @copyright Justin Lin, 2020
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_ring.html
+*
+**/ 
+
 use <ptf/ptf_rotate.scad>;
 use <ptf/ptf_y_twist.scad>;
 
-/*
-    size: The size of a rectangle.
-    point: A point in the rectangle.
-    radius: ring radius.
-    angle: arc angle.
-    twist: The number of degrees of through which the rectangle is twisted.
-*/
 function ptf_ring(size, point, radius, angle = 360, twist = 0) = 
     let(
         yleng = size[1],
