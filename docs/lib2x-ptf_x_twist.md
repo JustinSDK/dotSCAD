@@ -4,7 +4,7 @@ Twist a point along the x-axis. You can use it to create something such as a [tw
 
 ![ptf_x_twist](images/lib2x-ptf_x_twist-2.JPG)
 
-**Since:** 2.3.
+**Since:** 2.3
 
 ## Parameters
 

@@ -4,7 +4,7 @@ Transform a point inside a rectangle to a point inside a circle. You can use it 
 
 ![ptf_circle](images/lib2x-ptf_circle-1.JPG)
 
-**Since:** 2.3.
+**Since:** 2.3
 
 ## Parameters
 

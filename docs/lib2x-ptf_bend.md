@@ -2,7 +2,7 @@
 
 Transforms a point inside a rectangle to a point of an arc.
 
-**Since:** 2.3.
+**Since:** 2.3
 
 ## Parameters
 

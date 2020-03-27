@@ -2,6 +2,8 @@
 
 Rotates a point `a` degrees around the axis of the coordinate system or an arbitrary axis. It behaves as the built-in `rotate` module
 
+**Since:** 2.3
+
 ## Parameters
 
 - `point` : A 3D point `[x, y, z]` or a 2D point `[x, y]`.
