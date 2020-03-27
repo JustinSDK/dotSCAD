@@ -1,6 +1,6 @@
 # bsearch
 
-The `search` function is a general-purpose function to find a value or a list of values in a vector. The vector must be sorted by zyx (from the last index to the first one).
+The `bsearch` function is a general-purpose function to find a value or a list of values in a vector. The vector must be sorted by zyx (from the last index to the first one).
 
 **Since:**  2.3
 

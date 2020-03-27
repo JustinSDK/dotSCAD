@@ -1,6 +1,6 @@
 # dedup
 
-Eliminating duplicate copies of repeating vectors. If `lt` has many elements, sorting `lt` first and setting `sorted` to `true` will be faster.
+Eliminating duplicate copies of repeating vectors. If `lt` has a large number of elements, sorting `lt` first and setting `sorted` to `true` will be faster.
 
 **Since:** 2.3
 
