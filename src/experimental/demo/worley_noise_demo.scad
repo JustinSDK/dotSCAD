@@ -19,6 +19,6 @@ for(n = noised) {
     c = n[2] / max_dist;
     color([c, c, c])
     linear_extrude(c * max_dist)
-    translate([n[0], n[1], n[2]])
+    translate([n[0], n[1]])
         square(1);
 }
