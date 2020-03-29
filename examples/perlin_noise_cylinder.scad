@@ -1,5 +1,5 @@
 use <util/rand.scad>;
-use <experimental/pnoise2s.scad>;
+use <experimental/nz_perlin2s.scad>;
 use <experimental/sf_solidify.scad>;
 use <ptf/ptf_bend.scad>;
 use <util/slice.scad>;
@@ -30,7 +30,7 @@ module perlin_noise_cylinder(radius, height, thickness_scale, step) {
                 let(
                     row = surface_inside[ri],
                     row_for_noise = concat(slice(row, 0, leng_row - 1), [[0, row[leng_row - 1][1], 0]]),
-                    ns = pnoise2s(row_for_noise, seed)
+                    ns = nz_perlin2s(row_for_noise, seed)
                 )
                 [
                     for(ci = [0:len(ns) - 1])

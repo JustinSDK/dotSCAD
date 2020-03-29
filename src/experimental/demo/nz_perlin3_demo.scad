@@ -1,6 +1,6 @@
 use <util/rand.scad>;
-use <experimental/pnoise2s.scad>;
-use <experimental/pnoise3s.scad>;
+use <experimental/nz_perlin2s.scad>;
+use <experimental/nz_perlin3s.scad>;
 
 module demo1() {
     for(z = [0:.2:5]) {
@@ -9,7 +9,7 @@ module demo1() {
                 for(x = [0:.2:5])
                     [x, y, z]
         ];    
-        noise = pnoise3s(points, 3);
+        noise = nz_perlin3s(points, 3);
         for(i = [0:len(points) - 1]) {
             alpha = abs(noise[i] + .5);            
             color([.75, .75, .75, alpha < 0 ? 0 : alpha > 1 ? 1 : alpha])
@@ -32,7 +32,7 @@ module demo2() {
     
     points_with_h = [
             for(ri = [0:len(points) - 1])
-                let(ns = pnoise2s(points[ri], seed))
+                let(ns = nz_perlin2s(points[ri], seed))
                     [
                         for(ci = [0:len(ns) - 1])
                             [points[ri][ci][0], points[ri][ci][1], ns[ci] + 1]
@@ -46,7 +46,7 @@ module demo2() {
             pts = [
                 for(z = [0:.2:p[2] * h_scale]) [p[0], p[1], z]
             ];
-            noise = pnoise3s(pts, seed);
+            noise = nz_perlin3s(pts, seed);
             for(j = [0:len(pts) - 1]) {
                 if(noise[j] > 0) {
                     color(

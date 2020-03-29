@@ -3,7 +3,7 @@ use <util/rand.scad>;
 use <experimental/mz_blocks.scad>;
 use <experimental/mz_walls.scad>;
 use <ptf/ptf_circle.scad>;
-use <experimental/pnoise2.scad>;
+use <experimental/nz_perlin2.scad>;
 
 module noisy_circle_maze(start, r_blocks, block_width, wall_thickness, origin_offset, noisy_factor) {
     double_r_blocks = r_blocks * 2;
@@ -25,10 +25,10 @@ module noisy_circle_maze(start, r_blocks, block_width, wall_thickness, origin_of
         for(i = [0:len(wall) - 2]) {
             p0 = ptf_circle(rect_size, wall[i]);
             p1 = ptf_circle(rect_size, wall[i + 1]);
-            pn00 = pnoise2(p0[0], p0[1], seed) * noisy_f;
-            pn01 = pnoise2(p0[0] + seed, p0[1] + seed, seed) * noisy_f;
-            pn10 = pnoise2(p1[0], p1[1], seed) * noisy_f;
-            pn11 = pnoise2(p1[0] + seed, p1[1] + seed, seed) * noisy_f;
+            pn00 = nz_perlin2(p0[0], p0[1], seed) * noisy_f;
+            pn01 = nz_perlin2(p0[0] + seed, p0[1] + seed, seed) * noisy_f;
+            pn10 = nz_perlin2(p1[0], p1[1], seed) * noisy_f;
+            pn11 = nz_perlin2(p1[0] + seed, p1[1] + seed, seed) * noisy_f;
             hull_polyline2d([p0 + [pn00, pn01], p1 + [pn10, pn11]], width = wall_thickness);
         }
     } 
