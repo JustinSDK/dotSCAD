@@ -4,4 +4,4 @@ function _pnoise_fade(t) = pow(t, 3) * (t * (t * 6 - 15) + 10);
 
 function _pnoise_lerp(a, b, t) = a + t * (b - a);
 
-function _pnoise_lookup_poise_table(i) = _pnoise_table[i % 256];
+function _pnoise_lookup_pnoise_table(i) = _pnoise_table[i % 256];

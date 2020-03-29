@@ -30,44 +30,44 @@ function _pnoise3(x, y, z, seed) =
         v = _pnoise_fade(yf),
         w = _pnoise_fade(zf),
 
-        aaa = _pnoise_lookup_poise_table(
-            _pnoise_lookup_poise_table(
-                    _pnoise_lookup_poise_table(seed + xi) + yi
+        aaa = _pnoise_lookup_pnoise_table(
+            _pnoise_lookup_pnoise_table(
+                    _pnoise_lookup_pnoise_table(seed + xi) + yi
                 ) + zi            
         ),
-        aba = _pnoise_lookup_poise_table(
-            _pnoise_lookup_poise_table(
-                    _pnoise_lookup_poise_table(seed + xi) + yi + 1
+        aba = _pnoise_lookup_pnoise_table(
+            _pnoise_lookup_pnoise_table(
+                    _pnoise_lookup_pnoise_table(seed + xi) + yi + 1
                 ) + zi            
         ),        
-        aab = _pnoise_lookup_poise_table(
-            _pnoise_lookup_poise_table(
-                    _pnoise_lookup_poise_table(seed + xi) + yi
+        aab = _pnoise_lookup_pnoise_table(
+            _pnoise_lookup_pnoise_table(
+                    _pnoise_lookup_pnoise_table(seed + xi) + yi
                 ) + zi + 1     
         ),
-        abb = _pnoise_lookup_poise_table(
-            _pnoise_lookup_poise_table(
-                    _pnoise_lookup_poise_table(seed + xi) + yi + 1
+        abb = _pnoise_lookup_pnoise_table(
+            _pnoise_lookup_pnoise_table(
+                    _pnoise_lookup_pnoise_table(seed + xi) + yi + 1
                 ) + zi + 1
         ),
-        baa = _pnoise_lookup_poise_table(
-            _pnoise_lookup_poise_table(
-                    _pnoise_lookup_poise_table(seed + xi + 1) + yi
+        baa = _pnoise_lookup_pnoise_table(
+            _pnoise_lookup_pnoise_table(
+                    _pnoise_lookup_pnoise_table(seed + xi + 1) + yi
                 ) + zi            
         ),
-        bba = _pnoise_lookup_poise_table(
-            _pnoise_lookup_poise_table(
-                    _pnoise_lookup_poise_table(seed + xi + 1) + yi + 1
+        bba = _pnoise_lookup_pnoise_table(
+            _pnoise_lookup_pnoise_table(
+                    _pnoise_lookup_pnoise_table(seed + xi + 1) + yi + 1
                 ) + zi            
         ),    
-        bab = _pnoise_lookup_poise_table(
-            _pnoise_lookup_poise_table(
-                    _pnoise_lookup_poise_table(seed + xi + 1) + yi
+        bab = _pnoise_lookup_pnoise_table(
+            _pnoise_lookup_pnoise_table(
+                    _pnoise_lookup_pnoise_table(seed + xi + 1) + yi
                 ) + zi + 1
         ),
-        bbb = _pnoise_lookup_poise_table(
-            _pnoise_lookup_poise_table(
-                    _pnoise_lookup_poise_table(seed + xi + 1) + yi + 1
+        bbb = _pnoise_lookup_pnoise_table(
+            _pnoise_lookup_pnoise_table(
+                    _pnoise_lookup_pnoise_table(seed + xi + 1) + yi + 1
                 ) + zi + 1
         ),        
         x1 = _pnoise_lerp(
