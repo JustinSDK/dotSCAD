@@ -12,8 +12,7 @@ function _neighbors(fcord, seed, dim, m, n) = [
             ny = fcord[1] + y,
             sd_base = nx + ny * dim,
             sd1 = _lookup_noise_table(seed + sd_base),
-            sd2 = _lookup_noise_table(sd1 * 255 + sd_base)
-            ,
+            sd2 = _lookup_noise_table(sd1 * 255 + sd_base),
             nbr = [(nx + sd1) * m, (ny + sd2) * n]
         )
         nbr
