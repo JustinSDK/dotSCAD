@@ -1,11 +1,15 @@
+/**
+* ptf_sphere.scad
+*
+* @copyright Justin Lin, 2020
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_sphere.html
+*
+**/ 
+
 use <ptf/ptf_rotate.scad>;
 
-/*
-    size: The size of the rectangle mapping to a sphere.
-    point: A point in the rectangle.
-    radius: sphere radius.
-    angle: [za, xa] mapping angles.
-*/
 function ptf_sphere(size, point, radius, angle = [180, 360]) =
     let(
         x = point[0],
