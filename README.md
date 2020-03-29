@@ -151,7 +151,7 @@ See [examples](examples).
 	- [ptf/ptf_circle](https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_circle.html)
 	- [ptf/ptf_bend](https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_bend.html)
 	- [ptf/ptf_ring](https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_ring.html)
-	- [ptf/ptf_sphere]https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_sphere.html)
+	- [ptf/ptf_sphere](https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_sphere.html)
 	- ptf/ptf_torus
 
 ----
