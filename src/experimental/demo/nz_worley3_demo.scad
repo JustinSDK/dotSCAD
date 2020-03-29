@@ -1,6 +1,6 @@
 use <experimental/nz_worley3.scad>;
 
-size = [30, 30, 30];
+size = [20, 20, 20];
 dim = 5;
 dist = "euclidean"; // [euclidean, manhattan, chebyshev] 
 seed = 5;
