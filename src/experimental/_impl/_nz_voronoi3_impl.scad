@@ -8,8 +8,11 @@ function _nz_voronoi3(p, seed, dim, m, n, o) =
         dists = [
             for(nbr = nbrs) 
                 if(!is_undef(nbr[1])) // Here's a workaround for a weired undef problem. bug of 2019.05? 
-                    [norm(nbr - p)]
+                    [nbr[0], nbr[1], nbr[2], norm(nbr - p)]
         ],
-        sorted = sort(dists)
+        sorted = sort(dists, by = "idx", idx = 3),
+        a = [sorted[0][0], sorted[0][1], sorted[0][2]],
+        b = [sorted[1][0], sorted[1][1], sorted[1][2]],
+        m = (a + b) / 2        
     )
-    sorted[1][0] - sorted[0][0];
+    (p - m) * (a - m);
