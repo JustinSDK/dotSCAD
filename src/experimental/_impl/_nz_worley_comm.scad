@@ -4,20 +4,6 @@ _noise_table = [0.592157, 0.627451, 0.537255, 0.356863, 0.352941, 0.0588235, 0.5
 
 function _lookup_noise_table(i) = _noise_table[i % 256];
 
-function _neighbors(fcord, seed, dim, m, n) = [
-    for(y = [-1:1])
-        for(x = [-1:1])
-        let(
-            nx = fcord[0] + x,
-            ny = fcord[1] + y,
-            sd_base = nx + ny * dim,
-            sd1 = _lookup_noise_table(seed + sd_base),
-            sd2 = _lookup_noise_table(sd1 * 255 + sd_base),
-            nbr = [(nx + sd1) * m, (ny + sd2) * n]
-        )
-        nbr
-];
-    
 function _manhattan(v) = sum([for(d = v) abs(d)]);
 
 function _chebyshev(p1, p2) =
@@ -28,15 +14,3 @@ function _distance(nbr, p, dist) =
     dist == "manhattan" ? _manhattan(nbr - p) :
     dist == "chebyshev" ? _chebyshev(nbr, p) : 
                           assert("Unknown distance option");
-    
-function _nz_worley2(p, seed, dim, m, n, dist) = 
-    let(
-        fcord = [floor(p[0] / m), floor(p[1] / n)],
-        nbrs = _neighbors(fcord, seed, dim, m, n),
-        dists = [
-            for(nbr = nbrs) 
-                if(!is_undef(nbr[1])) // Here's a workaround for a weired undef problem. bug of 2019.05? 
-                    _distance(nbr, p, dist)
-        ]
-    )
-    min(dists);
