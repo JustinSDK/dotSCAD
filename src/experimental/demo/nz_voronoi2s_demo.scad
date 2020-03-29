@@ -16,7 +16,6 @@ max_dist = max(noises);
 for(i = [0:len(noises) - 1]) {
     c = noises[i] / max_dist;
     color([c, c, c])
-    linear_extrude(c * max_dist)
     translate(points[i])
         square(1);
 }
