@@ -1,5 +1,5 @@
 use <util/rand.scad>;
-use <experimental/_impl/_nz_worley3_comm.scad>;
+use <experimental/_impl/_nz_worley3_impl.scad>;
 
 function nz_worley3(size, x, y, z, seed, dim = 3, dist = "euclidean") =
     let(
