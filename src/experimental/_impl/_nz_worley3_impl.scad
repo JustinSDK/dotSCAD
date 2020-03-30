@@ -26,11 +26,11 @@ function _nz_worley3_classic(p, nbrs, dist) =
 
 function _nz_worley3_border(p, nbrs, dist) = 
     let(
-        dists = [
+        cells = [
             for(nbr = nbrs) 
                 [nbr[0], nbr[1], nbr[2], norm(nbr - p)]
         ],
-        sorted = sort(dists, by = "idx", idx = 3),
+        sorted = sort(cells, by = "idx", idx = 3),
         a = [sorted[0][0], sorted[0][1], sorted[0][2]],
         b = [sorted[1][0], sorted[1][1], sorted[1][2]],
         m = (a + b) / 2        
