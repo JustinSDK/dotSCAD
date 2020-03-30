@@ -18,16 +18,14 @@ function _neighbors(fcord, seed, cell_w) = [
 function _nz_worley2_classic(p, nbrs, dist) = 
     min([
         for(nbr = nbrs) 
-            if(!is_undef(nbr[1])) // Here's a workaround for a weired undef problem. bug of 2019.05? 
-                _distance(nbr, p, dist)
+            _distance(nbr, p, dist)
     ]);
 
 function _nz_worley2_border(p, nbrs, dist) = 
     let(
         dists = [
             for(nbr = nbrs) 
-                if(!is_undef(nbr[1])) // Here's a workaround for a weired undef problem. bug of 2019.05? 
-                    [nbr[0], nbr[1], norm(nbr - p)]
+                [nbr[0], nbr[1], norm(nbr - p)]
         ],
         sorted = sort(dists, by = "z"),
         a = [sorted[0][0], sorted[0][1]],
