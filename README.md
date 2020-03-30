@@ -185,7 +185,19 @@ See [examples](examples).
 	- surface/sf_sphere
 	- surface/sf_torus
 	- surface/sf_solidify
-	
+
+- Noise (2.3 Preview)
+	- noise/nz_perlin1
+	- noise/nz_perlin1s
+	- noise/nz_perlin2
+	- noise/nz_perlin2s
+	- noise/nz_perlin3
+	- noise/nz_perlin3s
+	- noise/nz_worley1
+	- noise/nz_worley1s
+	- noise/nz_worley2
+	- noise/nz_worley2s
+
 ## Bugs and Feedback
 
 For bugs, questions and discussions please use the [Github Issues](https://github.com/JustinSDK/dotSCAD/issues).
