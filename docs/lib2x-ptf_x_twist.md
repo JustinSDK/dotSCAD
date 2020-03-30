@@ -39,4 +39,4 @@ Twist a point along the x-axis. You can use it to create something such as a [tw
         hull_polyline3d(twisted, thickness = .1);
     }
 
-![ptf_x_twist](images/lib2x-ptf_x_twist-2.JPG)
+![ptf_x_twist](images/lib2x-ptf_x_twist-1.JPG)
