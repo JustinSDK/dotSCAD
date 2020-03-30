@@ -113,7 +113,7 @@ See [examples](examples).
     - [shape_starburst](https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_starburst.html)	    
 	- [shape_superformula](https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_superformula.html)
 	- [shape_glued2circles](https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_glued2circles.html)
-	- [shape_path_extend](https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_path_extend.html)		
+	- [shape_path_extend](https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_path_extend.html)
 
 - 2D Shape Extrusion
 	- [path_extrude](https://openhome.cc/eGossip/OpenSCAD/lib2x-path_extrude.html)
@@ -153,7 +153,7 @@ See [examples](examples).
 	- [ptf/ptf_ring](https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_ring.html)
 	- [ptf/ptf_sphere](https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_sphere.html)
 	- [ptf/ptf_torus](https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_torus.html)
-	
+
 ----
 
 - Turtle
@@ -177,6 +177,14 @@ See [examples](examples).
     - [part/connector_peg](https://openhome.cc/eGossip/OpenSCAD/lib2x-connector_peg.html)
 	- [part/cone](https://openhome.cc/eGossip/OpenSCAD/lib2x-cone.html)
 	- [part/joint_T](https://openhome.cc/eGossip/OpenSCAD/lib2-joint_T.html)
+
+- Surface (2.3 Preview)
+	- surface/sf_square
+	- surface/sf_bend
+	- surface/sf_ring
+	- surface/sf_sphere
+	- surface/sf_torus
+	- surface/sf_solidify
 	
 ## Bugs and Feedback
 
