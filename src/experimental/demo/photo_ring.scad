@@ -1,4 +1,4 @@
-use <experimental/sf_ring.scad>;
+use <surface/sf_ring.scad>;
 
 radius = 50;
 thickness = 10;

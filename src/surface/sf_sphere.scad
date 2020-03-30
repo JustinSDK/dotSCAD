@@ -1,16 +1,16 @@
-use <experimental/_impl/_sf_square_surfaces.scad>;
-use <experimental/sf_solidify.scad>;
-use <ptf/ptf_bend.scad>;
+use <surface/_impl/_sf_square_surfaces.scad>;
+use <surface/sf_solidify.scad>;
+use <ptf/ptf_sphere.scad>;
 
 /*
     levels : A list of numbers (0 ~ 255).
-    radius: The radius of the arc after being bent
+    radius: sphere radius.
     thickness: shell thickness
     depth: the depth of the image
-    angle: The central angle of the arc..
+    angle: [za, xa] mapping angles.
     invert: inverts how the gray levels are translated into height values.
 */
-module sf_bend(levels, radius, thickness, depth, angle = 180, invert = false) {
+module sf_sphere(levels, radius, thickness, depth, angle = [180, 360], invert = false) {
     dp = is_undef(depth) ? thickness / 2 : depth;
     surface = _sf_square_surfaces(levels, thickness, dp, invert);
     rows = len(levels);
@@ -23,13 +23,14 @@ module sf_bend(levels, radius, thickness, depth, angle = 180, invert = false) {
         [
             for(row = surface[0]) 
             [
-                for(p = row) ptf_bend(size, p, r, angle)
+                for(p = row) ptf_sphere(size, p, r, angle)
             ]
-        ],
+        ]
+        ,
         [
             for(row = surface[1]) 
             [
-                for(p = row) ptf_bend(size, p, radius, angle)
+                for(p = row) ptf_sphere(size, p, radius, angle)
             ]
         ]
     );

@@ -1,5 +1,5 @@
-use <experimental/_impl/_sf_square_surfaces.scad>;
-use <experimental/sf_solidify.scad>;
+use <surface/_impl/_sf_square_surfaces.scad>;
+use <surface/sf_solidify.scad>;
 use <ptf/ptf_ring.scad>;
 
 /*

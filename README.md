@@ -135,6 +135,7 @@ See [examples](examples).
 	- [util/bsearch](https://openhome.cc/eGossip/OpenSCAD/lib2x-bsearch.html) (2.3 Preview)	
 	- [util/has](https://openhome.cc/eGossip/OpenSCAD/lib2x-has.html) (2.3 Preview)
 	- [util/dedup](https://openhome.cc/eGossip/OpenSCAD/lib2x-dedup.html) (2.3 Preview)
+	- util/flat (2.3 Preview)
 
 - Matrix
 	- [matrix/m_cumulate](https://openhome.cc/eGossip/OpenSCAD/lib2x-m_cumulate.html)	

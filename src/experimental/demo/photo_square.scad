@@ -1,4 +1,4 @@
-use <experimental/sf_square.scad>;
+use <surface/sf_square.scad>;
 
 thicnkess = 10;
 depth = 5;

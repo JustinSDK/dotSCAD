@@ -1,4 +1,4 @@
-use <experimental/sf_torus.scad>;
+use <surface/sf_torus.scad>;
 
 radius = [100, 50];
 thickness = 10;

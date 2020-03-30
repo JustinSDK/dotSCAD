@@ -1,4 +1,4 @@
-use <experimental/sf_bend.scad>;
+use <surface/sf_bend.scad>;
 
 radius = 50;
 thickness = 10;

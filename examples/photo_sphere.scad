@@ -1,4 +1,4 @@
-use <experimental/sf_sphere.scad>;
+use <surface/sf_sphere.scad>;
 
 radius = 50;
 thickness = 10;
