@@ -22,7 +22,7 @@ Puts children along the given path. If there's only one child, it will put the c
 	along_with(points) 
 	    sphere(5);
 
-![along_with](images/lib-along_with-1.JPG)
+![along_with](images/lib2x-along_with-1.JPG)
 
 	use <along_with.scad>;
 	use <shape_circle.scad>;
@@ -42,7 +42,7 @@ Puts children along the given path. If there's only one child, it will put the c
 		cube(5);        
 	}
 
-![along_with](images/lib-along_with-2.JPG)
+![along_with](images/lib2x-along_with-2.JPG)
 
 	use <along_with.scad>;
 	use <golden_spiral.scad>;
@@ -61,7 +61,7 @@ Puts children along the given path. If there's only one child, it will put the c
 			linear_extrude(1, center = true) 
 				text("A", valign = "center", halign = "center");
 
-![along_with](images/lib-along_with-3.JPG)
+![along_with](images/lib2x-along_with-3.JPG)
 
 	use <bezier_curve.scad>;
 	use <along_with.scad>;
@@ -101,4 +101,4 @@ Puts children along the given path. If there's only one child, it will put the c
 	along_with(path_pts, scale = 0.5)  
 		scales();
 
-![along_with](images/lib-along_with-4.JPG)
+![along_with](images/lib2x-along_with-4.JPG)

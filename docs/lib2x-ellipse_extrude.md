@@ -17,7 +17,7 @@ Extrudes a 2D object along the path of an ellipse from 0 to 180 degrees. The sem
 	ellipse_extrude(semi_minor_axis) 
 	    circle(semi_minor_axis * 2);
 
-![ellipse_extrude](images/lib-ellipse_extrude-1.JPG)
+![ellipse_extrude](images/lib2x-ellipse_extrude-1.JPG)
 
 	use <ellipse_extrude.scad>;
 	
@@ -26,7 +26,7 @@ Extrudes a 2D object along the path of an ellipse from 0 to 180 degrees. The sem
 	ellipse_extrude(semi_minor_axis, height = 4.5) 
 	    text("A", valign = "center", halign = "center");
 
-![ellipse_extrude](images/lib-ellipse_extrude-2.JPG)
+![ellipse_extrude](images/lib2x-ellipse_extrude-2.JPG)
 
     use <ellipse_extrude.scad>;
 
@@ -37,7 +37,7 @@ Extrudes a 2D object along the path of an ellipse from 0 to 180 degrees. The sem
 	mirror([0, 0, 1]) ellipse_extrude(semi_minor_axis) 
 	    text("♥", size = 40, valign = "center", halign = "center");
 
-![ellipse_extrude](images/lib-ellipse_extrude-3.JPG)
+![ellipse_extrude](images/lib2x-ellipse_extrude-3.JPG)
 
 	use <ellipse_extrude.scad>;
 	
@@ -46,4 +46,4 @@ Extrudes a 2D object along the path of an ellipse from 0 to 180 degrees. The sem
 	ellipse_extrude(semi_minor_axis, twist = 30, slices = 10) 
 	    text("♥", size = 40, valign = "center", halign = "center");
 
-![ellipse_extrude](images/lib-ellipse_extrude-4.JPG)
+![ellipse_extrude](images/lib2x-ellipse_extrude-4.JPG)

@@ -29,7 +29,7 @@ If your 2D shape is not solid, indexes of triangles are required. See [polysecti
 
 	ring_extrude(shape_pts, radius = 50, twist = 180);
 
-![ring_extrude](images/lib-ring_extrude-1.JPG)
+![ring_extrude](images/lib2x-ring_extrude-1.JPG)
 
 	use <ring_extrude.scad>;
 
@@ -42,4 +42,4 @@ If your 2D shape is not solid, indexes of triangles are required. See [polysecti
 
 	ring_extrude(shape_pts, radius = 50, angle = 180, scale = 2);
 
-![ring_extrude](images/lib-ring_extrude-2.JPG)
+![ring_extrude](images/lib2x-ring_extrude-2.JPG)

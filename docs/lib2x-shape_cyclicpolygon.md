@@ -40,7 +40,7 @@ Returns shape points of a regular cyclic polygon. They can be used with xxx_extr
             );
     }
 
-![shape_cyclicpolygon](images/lib-shape_cyclicpolygon-1.JPG)
+![shape_cyclicpolygon](images/lib2x-shape_cyclicpolygon-1.JPG)
 
     use <shape_cyclicpolygon.scad>;
     use <ring_extrude.scad>;
@@ -53,4 +53,4 @@ Returns shape points of a regular cyclic polygon. They can be used with xxx_extr
 
     ring_extrude(shape_pts, radius = 20, angle = 180, twist = 90);
 
-![shape_cyclicpolygon](images/lib-shape_cyclicpolygon-2.JPG)
+![shape_cyclicpolygon](images/lib2x-shape_cyclicpolygon-2.JPG)

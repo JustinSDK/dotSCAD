@@ -23,7 +23,7 @@ Generate 8x8 pixel points of printable ASCII characters (codes 32dec to 126dec).
             }
     }       
 
-![px_ascii](images/lib2-px_ascii-1.JPG)
+![px_ascii](images/lib2x-px_ascii-1.JPG)
 
     use <pixel/px_ascii.scad>;
 
@@ -37,4 +37,4 @@ Generate 8x8 pixel points of printable ASCII characters (codes 32dec to 126dec).
             }
     }
 
-![px_ascii](images/lib2-px_ascii-2.JPG)
+![px_ascii](images/lib2x-px_ascii-2.JPG)

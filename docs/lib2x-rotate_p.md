@@ -35,7 +35,7 @@ The following code has the same effect.
 	           sphere(1);   
 	}  
 
-![rotate_p](images/lib-rotate_p-1.JPG)
+![rotate_p](images/lib2x-rotate_p-1.JPG)
 
 The `rotate_p` function is useful in some situations. For example, you probably want to get all points on the path of a spiral around a sphere. 
 
@@ -61,7 +61,7 @@ The `rotate_p` function is useful in some situations. For example, you probably 
 	
 	%sphere(radius);
 
-![rotate_p](images/lib-rotate_p-2.JPG)
+![rotate_p](images/lib2x-rotate_p-2.JPG)
 
 	use <rotate_p.scad>;
 
@@ -79,4 +79,4 @@ The `rotate_p` function is useful in some situations. For example, you probably 
 			sphere(1);  
 	}
 	
-![rotate_p](images/lib-rotate_p-3.JPG)
+![rotate_p](images/lib2x-rotate_p-3.JPG)

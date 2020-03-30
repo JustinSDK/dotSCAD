@@ -20,7 +20,7 @@ Returns points that can be used to draw a pixel-style cylinder.
 			cube(1, center = true);
 	}
 
-![px_cylinder](images/lib2-px_cylinder-1.JPG)
+![px_cylinder](images/lib2x-px_cylinder-1.JPG)
 
 	use <pixel/px_cylinder.scad>;
 
@@ -29,5 +29,5 @@ Returns points that can be used to draw a pixel-style cylinder.
 			cube(1, center = true);
 	}
 	
-![px_cylinder](images/lib2-px_cylinder-2.JPG)
+![px_cylinder](images/lib2x-px_cylinder-2.JPG)
 

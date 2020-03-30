@@ -79,7 +79,7 @@ The code below creates the same drawing.
 		width = 1
 	);	 
 
-![t2d](images/lib2-t2d-1.JPG)
+![t2d](images/lib2x-t2d-1.JPG)
 	
 	use <hull_polyline2d.scad>;
 	use <turtle/t2d.scad>;
@@ -124,4 +124,4 @@ The code below creates the same drawing.
 	    }
 	}
 
-![t2d](images/lib2-t2d-2.JPG)
+![t2d](images/lib2x-t2d-2.JPG)

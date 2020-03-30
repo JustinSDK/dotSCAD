@@ -2,11 +2,11 @@
 
 Crosscutting a polyline at different points gets several transversals. This module can operate reversely. It uses transversals to construct a polyline. For example, imagine that you have the following transversals:
 
-![polytransversals](images/lib-polytransversals-1.JPG)
+![polytransversals](images/lib2x-polytransversals-1.JPG)
 
 This module can use them to construct the polyline:
 
-![polytransversals](images/lib-polytransversals-2.JPG)
+![polytransversals](images/lib2x-polytransversals-2.JPG)
 
 When using this module, you should use points to represent each transversal. 
 
@@ -39,4 +39,4 @@ You can view it as a better polyline2d module. If you have only the points of a 
 	    hull_polyline2d(tran, 0.5);
 	}
 
-![polytransversals](images/lib-polytransversals-3.JPG)
+![polytransversals](images/lib2x-polytransversals-3.JPG)

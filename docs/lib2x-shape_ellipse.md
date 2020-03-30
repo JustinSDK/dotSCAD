@@ -15,7 +15,7 @@ Returns shape points of an ellipse. They can be used with xxx_extrude modules of
 		shape_ellipse([40, 20])
 	);
 
-![shape_ellipse](images/lib-shape_ellipse-1.JPG)
+![shape_ellipse](images/lib2x-shape_ellipse-1.JPG)
 
 	use <shape_ellipse.scad>;
 	use <helix_extrude.scad>;
@@ -31,5 +31,5 @@ Returns shape points of an ellipse. They can be used with xxx_extrude modules of
         rt_dir = "CLK"
 	);
 
-![shape_ellipse](images/lib-shape_ellipse-2.JPG)
+![shape_ellipse](images/lib2x-shape_ellipse-2.JPG)
 

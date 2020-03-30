@@ -18,7 +18,7 @@ Returns points that can be used to draw a pixel-style circle.
 			square(1, center = true);
 	}
 
-![px_circle](images/lib2-px_circle-1.JPG)
+![px_circle](images/lib2x-px_circle-1.JPG)
 
 	use <pixel/px_circle.scad>;
 
@@ -28,5 +28,5 @@ Returns points that can be used to draw a pixel-style circle.
 				square(1, center = true);
 	}
 		
-![px_circle](images/lib2-px_circle-2.JPG)
+![px_circle](images/lib2x-px_circle-2.JPG)
 

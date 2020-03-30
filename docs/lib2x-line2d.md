@@ -27,4 +27,4 @@ Creates a line from two points. When the end points are `CAP_ROUND`, you can use
 	    line2d(p1 = [0, 0], p2 = [5, 0], width = 1, 
 	           p1Style = "CAP_BUTT", p2Style = "CAP_BUTT");
 
-![line2d](images/lib-line2d-1.JPG)
+![line2d](images/lib2x-line2d-1.JPG)

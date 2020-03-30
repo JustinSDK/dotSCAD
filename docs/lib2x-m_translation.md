@@ -18,5 +18,5 @@ Generate a 4x4 transformation matrix which can pass into `multmatrix` to transla
 	multmatrix(m_translation([5, 0, 0]))
 	    sphere(1);
 
-![m_translation](images/lib-m_translation-1.JPG)
+![m_translation](images/lib2x-m_translation-1.JPG)
 

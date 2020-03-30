@@ -28,4 +28,4 @@ If you have four control points and combine with the `hull_polyline3d` module:
 	
 	hull_polyline3d(points, width);      
 
-![bezier_curve](images/lib-bezier_curve-1.JPG)
+![bezier_curve](images/lib2x-bezier_curve-1.JPG)

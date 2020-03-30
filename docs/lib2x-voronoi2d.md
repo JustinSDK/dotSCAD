@@ -6,7 +6,7 @@ Creats a [Voronoi diagram](https://en.wikipedia.org/wiki/Voronoi_diagram). The i
     ys = [for(p = points) abs(p[1])];
     region_size = max([(max(xs) -  min(xs) / 2), (max(ys) -  min(ys)) / 2]);    
 
-**Since:** 1.3.
+**Since:** 1.3
 
 ## Parameters
 
@@ -25,7 +25,7 @@ Creats a [Voronoi diagram](https://en.wikipedia.org/wiki/Voronoi_diagram). The i
     translate([60, 0, 0]) 
         voronoi2d(points, region_type = "circle");
 
-![voronoi2d](images/lib-voronoi2d-1.JPG)
+![voronoi2d](images/lib2x-voronoi2d-1.JPG)
 
     use <voronoi2d.scad>;
     use <hollow_out.scad>;
@@ -41,4 +41,4 @@ Creats a [Voronoi diagram](https://en.wikipedia.org/wiki/Voronoi_diagram). The i
     }
     hollow_out(shell_thickness = 1) square([40, 20]);
     
-![voronoi2d](images/lib-voronoi2d-2.JPG)
+![voronoi2d](images/lib2x-voronoi2d-2.JPG)

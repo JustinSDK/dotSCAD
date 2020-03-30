@@ -42,7 +42,7 @@ When using this function, you should use points to represent the 2D stroke.
 	        )
         );
 
-![shape_path_extend](images/lib-shape_path_extend-1.JPG)
+![shape_path_extend](images/lib2x-shape_path_extend-1.JPG)
 
 	use <bezier_curve.scad>;
 	use <shape_path_extend.scad>;
@@ -68,4 +68,4 @@ When using this function, you should use points to represent the 2D stroke.
 		scale = 0.1
 	);
 
-![shape_path_extend](images/lib-shape_path_extend-2.JPG)
+![shape_path_extend](images/lib2x-shape_path_extend-2.JPG)

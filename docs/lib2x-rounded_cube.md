@@ -15,7 +15,7 @@ Creates a cube in the first octant. When `center` is `true`, the cube is centere
 	
 	rounded_cube(20, 5);
 
-![rounded_cube](images/lib-rounded_cube-1.JPG)
+![rounded_cube](images/lib2x-rounded_cube-1.JPG)
 
 	use <rounded_cube.scad>;
 	
@@ -25,7 +25,7 @@ Creates a cube in the first octant. When `center` is `true`, the cube is centere
 	    center = true
 	);
 
-![rounded_cube](images/lib-rounded_cube-2.JPG)
+![rounded_cube](images/lib2x-rounded_cube-2.JPG)
 
 	use <rounded_cube.scad>;
 	
@@ -37,7 +37,7 @@ Creates a cube in the first octant. When `center` is `true`, the cube is centere
 	    center = true
 	);
 
-![rounded_cube](images/lib-rounded_cube-3.JPG)
+![rounded_cube](images/lib2x-rounded_cube-3.JPG)
 
 
 

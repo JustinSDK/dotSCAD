@@ -18,7 +18,7 @@ Given two points. `px_line` returns points that can be used to draw a pixel-styl
 			square(1, center = true);
 	}
 
-![px_line](images/lib2-px_line-1.JPG)
+![px_line](images/lib2x-px_line-1.JPG)
 
 	use <pixel/px_line.scad>;
 
@@ -27,5 +27,5 @@ Given two points. `px_line` returns points that can be used to draw a pixel-styl
 			cube(1, center = true);
 	}
 
-![px_line](images/lib2-px_line-2.JPG)
+![px_line](images/lib2x-px_line-2.JPG)
 

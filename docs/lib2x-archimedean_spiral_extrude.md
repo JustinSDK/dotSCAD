@@ -36,5 +36,5 @@ When using this module, you should use points to represent the 2D shape. If your
 		scale = [1, 5]
 	);
 
-![archimedean_spiral_extrude](images/lib-archimedean_spiral_extrude-1.JPG)
+![archimedean_spiral_extrude](images/lib2x-archimedean_spiral_extrude-1.JPG)
 

@@ -26,7 +26,7 @@ It returns a vector of `[[x, y], angle]`.
 	        sphere(0.5);
     }
 
-![golden_spiral](images/lib-golden_spiral-1.JPG)
+![golden_spiral](images/lib2x-golden_spiral-1.JPG)
 	
 	use <golden_spiral.scad>;
 	        
@@ -43,4 +43,4 @@ It returns a vector of `[[x, y], angle]`.
 	                text("A", valign = "center", halign = "center");
 	}
     
-![golden_spiral](images/lib-golden_spiral-2.JPG)
+![golden_spiral](images/lib2x-golden_spiral-2.JPG)

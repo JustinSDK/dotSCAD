@@ -44,7 +44,7 @@ The preview or rendering of 3D Voronoi is slow. If you want to use this module, 
         voronoi3d(points);
     }
 
-![voronoi3d](images/lib-voronoi3d-1.JPG)
+![voronoi3d](images/lib2x-voronoi3d-1.JPG)
 
 If you render, export and save the previous model as `voronoi3d.stl`, the following code will generate a Voronoi sphere.
 
@@ -57,4 +57,4 @@ If you render, export and save the previous model as `voronoi3d.stl`, the follow
         sphere(r - thickness);
     }
     
-![voronoi3d](images/lib-voronoi3d-2.JPG)
+![voronoi3d](images/lib2x-voronoi3d-2.JPG)

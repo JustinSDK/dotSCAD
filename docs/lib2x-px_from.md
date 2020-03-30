@@ -33,11 +33,11 @@ Given a list of 0s and 1s that represent a black-and-white image. This function 
         translate(pt) text("A", font="Arial Black", 1);
     }
 
-![px_from](images/lib2-px_from-1.JPG)
+![px_from](images/lib2x-px_from-1.JPG)
 
 I provide a tool [img2binary](https://github.com/JustinSDK/img2binary) for converting an image into 0 and 1. A black and white picture is suggested. 0 is for black and 1 is for white. Given an image like this:
 
-![px_from](images/lib2-px_from-2.JPG)
+![px_from](images/lib2x-px_from-2.JPG)
 
 The tool converts it into binaries. Combined with the `pixel_from`, you can build a model like this:
 
@@ -105,4 +105,4 @@ The tool converts it into binaries. Combined with the `pixel_from`, you can buil
         translate(pt) sphere(.5, $fn = 24);
     }
 
-![px_from](images/lib2-px_from-3.JPG)
+![px_from](images/lib2x-px_from-3.JPG)

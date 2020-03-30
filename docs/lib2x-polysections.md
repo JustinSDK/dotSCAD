@@ -2,11 +2,11 @@
 
 Crosscutting a tube-like shape at different points gets several cross-sections. This module can operate reversely. It uses cross-sections to construct a tube-like shape. For example, imagine that you have the following cross-sections:
 
-![polysections](images/lib-polysections-1.JPG)
+![polysections](images/lib2x-polysections-1.JPG)
 
 This module can use them to construct the following model:
 
-![polysections](images/lib-polysections-2.JPG)
+![polysections](images/lib2x-polysections-2.JPG)
 
 Looks like extruding along the path? Yes, it can perform the task; however, it's more flexible. 
 
@@ -14,15 +14,15 @@ You can also view it as a better polyline3d module if you want. If you have only
 
 When using this module, you should use points to represent each cross section. The points of your cross section should have count-clockwise indexes. For example:
 
-![polysections](images/lib-polysections-10.JPG)
+![polysections](images/lib2x-polysections-10.JPG)
 
 If your cross section is hollow, set the `triangles` parameter to `"HOLLOW"` and index the points as the following:
 
-![polysections](images/lib-polysections-5.JPG)
+![polysections](images/lib2x-polysections-5.JPG)
 
 You can cut triangles by yourself. For example, the above shape can be cut into triangles such as:
 
-![polysections](images/lib-polysections-6.JPG)
+![polysections](images/lib2x-polysections-6.JPG)
 
 The indexes of the above triangles is:
 
@@ -66,7 +66,7 @@ When defining triangles, you can use clockwise or counter-clockwise indexes.
 
 	polysections(sections);
 
-![polysections](images/lib-polysections-7.JPG)
+![polysections](images/lib2x-polysections-7.JPG)
 
 	use <rotate_p.scad>;
 	use <polysections.scad>;
@@ -96,7 +96,7 @@ When defining triangles, you can use clockwise or counter-clockwise indexes.
 	    
 	polysections(sections, "HOLLOW");
 
-![polysections](images/lib-polysections-8.JPG)
+![polysections](images/lib2x-polysections-8.JPG)
 
 	use <rotate_p.scad>;
 	use <polysections.scad>;
@@ -134,7 +134,7 @@ When defining triangles, you can use clockwise or counter-clockwise indexes.
         ]
 	);
 
-![polysections](images/lib-polysections-9.JPG)
+![polysections](images/lib2x-polysections-9.JPG)
 
 
 

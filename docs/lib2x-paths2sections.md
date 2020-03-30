@@ -29,7 +29,7 @@ You paths should be indexed count-clockwisely.
 	    hull_polyline3d(path, 0.5);
 	}
 
-![paths2sections](images/lib-paths2sections-1.JPG)
+![paths2sections](images/lib2x-paths2sections-1.JPG)
 
 	use <bezier_curve.scad>;
 	use <paths2sections.scad>;
@@ -62,4 +62,4 @@ You paths should be indexed count-clockwisely.
 	    hull_polyline3d(path, 0.5);
 	}
 
-![paths2sections](images/lib-paths2sections-2.JPG)
+![paths2sections](images/lib2x-paths2sections-2.JPG)

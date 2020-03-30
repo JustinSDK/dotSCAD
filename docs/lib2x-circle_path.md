@@ -26,5 +26,5 @@ Sometimes you need all points on the path of a circle. Here's the function. Its 
 	                text("A", valign = "center", halign = "center");
 	}
 
-![circle_path](images/lib-circle_path-1.JPG)
+![circle_path](images/lib2x-circle_path-1.JPG)
 

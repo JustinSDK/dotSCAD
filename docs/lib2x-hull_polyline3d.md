@@ -23,7 +23,7 @@ Creates a 3D polyline from a list of `[x, y, z]` coordinates. As the name says, 
 	    $fn = 3
 	);
 
-![polyline3d](images/lib-hull_polyline3d-1.JPG)
+![polyline3d](images/lib2x-hull_polyline3d-1.JPG)
 
     use <hull_polyline3d.scad>;
     
@@ -42,4 +42,4 @@ Creates a 3D polyline from a list of `[x, y, z]` coordinates. As the name says, 
 	        hull_polyline3d(points, 2, $fn = 3);
 	}
 
-![polyline3d](images/lib-hull_polyline3d-2.JPG)
+![polyline3d](images/lib2x-hull_polyline3d-2.JPG)

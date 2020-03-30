@@ -22,7 +22,7 @@ Creates a 3D line from two points.
         $fn = 24
 	);   
 
-![line3d](images/lib-line3d-1.JPG)
+![line3d](images/lib2x-line3d-1.JPG)
 
     use <line3d.scad>;
 	
@@ -35,7 +35,7 @@ Creates a 3D line from two points.
         $fn = 24
 	);   
 
-![line3d](images/lib-line3d-2.JPG)
+![line3d](images/lib2x-line3d-2.JPG)
 			   
     use <line3d.scad>;
     
@@ -48,4 +48,4 @@ Creates a 3D line from two points.
         $fn = 24
     );   
 
-![line3d](images/lib-line3d-3.JPG)
+![line3d](images/lib2x-line3d-3.JPG)

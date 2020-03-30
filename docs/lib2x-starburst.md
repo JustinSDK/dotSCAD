@@ -20,5 +20,5 @@ A 3D version of `shape_starburst`.
 	translate([40, 0, 0]) starburst(10, 5, 12, 10);
 	translate([60, 0, 0]) starburst(10, 5, 4, 3);
 
-![starburst](images/lib-starburst-1.JPG)
+![starburst](images/lib2x-starburst-1.JPG)
 

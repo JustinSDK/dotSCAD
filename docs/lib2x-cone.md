@@ -2,7 +2,7 @@
 
 Create a cone for rotatable models.
 
-![cone](images/lib2-cone-1.JPG)
+![cone](images/lib2x-cone-1.JPG)
 
 **Since:** 2.1
 
@@ -39,7 +39,7 @@ Create a cone for rotatable models.
         void = true
 	);
 
-![cone](images/lib2-cone-2.JPG)
+![cone](images/lib2x-cone-2.JPG)
 
 	use <part/cone.scad>;
 
@@ -64,4 +64,4 @@ Create a cone for rotatable models.
         ends = true
 	);
 
-![cone](images/lib2-cone-3.JPG)
+![cone](images/lib2x-cone-3.JPG)

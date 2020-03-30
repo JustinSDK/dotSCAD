@@ -16,7 +16,7 @@ Returns shape points of an arc shape. They can be used with xxx_extrude modules 
     shape_pts = shape_arc(radius = 10, angle = [-90, 90], width = 5);
     polygon(shape_pts);
 
-![shape_arc](images/lib-shape_arc-1.JPG)
+![shape_arc](images/lib2x-shape_arc-1.JPG)
 
     use <shape_arc.scad>;
     use <path_extrude.scad>;
@@ -39,4 +39,4 @@ Returns shape points of an arc shape. They can be used with xxx_extrude modules 
 
     path_extrude(shape_pts, path_pts);   
 
-![shape_arc](images/lib-shape_arc-2.JPG)
+![shape_arc](images/lib2x-shape_arc-2.JPG)

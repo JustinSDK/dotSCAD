@@ -30,7 +30,7 @@ An `init_angle` less than 180 degrees is not recommended because the function us
 	
 	polyline2d(points, width = 1);
 
-![archimedean_spiral](images/lib-archimedean_spiral-1.JPG)
+![archimedean_spiral](images/lib2x-archimedean_spiral-1.JPG)
 	
     use <archimedean_spiral.scad>;
     
@@ -46,7 +46,7 @@ An `init_angle` less than 180 degrees is not recommended because the function us
 	        circle(2);
 	}
 
-![archimedean_spiral](images/lib-archimedean_spiral-2.JPG)
+![archimedean_spiral](images/lib2x-archimedean_spiral-2.JPG)
 
     include <archimedean_spiral.scad>;
     
@@ -65,6 +65,6 @@ An `init_angle` less than 180 degrees is not recommended because the function us
 	            text(t[i], valign = "center", halign = "center");
 	}
 
-![archimedean_spiral](images/lib-archimedean_spiral-3.JPG)
+![archimedean_spiral](images/lib2x-archimedean_spiral-3.JPG)
 
 

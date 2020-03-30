@@ -25,7 +25,7 @@ Creates a polyline from a list of `[x, y, z]` coordinates.
         $fn = 24
 	);
 
-![polyline3d](images/lib-polyline3d-1.JPG)
+![polyline3d](images/lib2x-polyline3d-1.JPG)
 
     use <polyline3d.scad>;
 
@@ -41,7 +41,7 @@ Creates a polyline from a list of `[x, y, z]` coordinates.
         $fn = 24
 	);
 
-![polyline3d](images/lib-polyline3d-2.JPG)
+![polyline3d](images/lib2x-polyline3d-2.JPG)
 
     use <polyline3d.scad>;
 
@@ -58,7 +58,7 @@ Creates a polyline from a list of `[x, y, z]` coordinates.
         $fn = 24
 	);
 
-![polyline3d](images/lib-polyline3d-3.JPG)
+![polyline3d](images/lib2x-polyline3d-3.JPG)
 
     use <polyline3d.scad>;
     
@@ -73,4 +73,4 @@ Creates a polyline from a list of `[x, y, z]` coordinates.
 	];
 	polyline3d(points, thickness = 1, $fn = 24);
 
-![polyline3d](images/lib-polyline3d-4.JPG)
+![polyline3d](images/lib2x-polyline3d-4.JPG)

@@ -42,7 +42,7 @@ For more details, please see [3D turtle graphics](https://openhome.cc/eGossip/Op
 	    thickness
 	);
 
-![t3d](images/lib2-t3d-1.JPG)
+![t3d](images/lib2x-t3d-1.JPG)
 	
 	use <line3d.scad>;
 	use <turtle/t3d.scad>;
@@ -83,4 +83,4 @@ For more details, please see [3D turtle graphics](https://openhome.cc/eGossip/Op
 	tree(t, leng, leng_scale1, leng_scale2, leng_limit, 
 		angleZ, angleX, width);
 
-![t2d](images/lib2-t3d-2.JPG)
+![t2d](images/lib2x-t3d-2.JPG)

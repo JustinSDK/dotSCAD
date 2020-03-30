@@ -42,4 +42,4 @@ Uses spherical coordinate system to create a crystal ball.
 			thickness = 2
 		);           
 
-![crystal_ball](images/lib-crystal_ball-1.JPG)
+![crystal_ball](images/lib2x-crystal_ball-1.JPG)

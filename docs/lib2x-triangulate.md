@@ -37,5 +37,5 @@ Given a 2D shape. This function performs a simple polygon triangulation algorith
         }
     }
 
-![triangulate](images/lib-triangulate-1.JPG)
+![triangulate](images/lib2x-triangulate-1.JPG)
 

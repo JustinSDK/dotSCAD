@@ -41,7 +41,7 @@ Its `$fa`, `$fs` and `$fn` parameters are consistent with the `cylinder` module.
 		vt_dir = "SPI_UP"
 	);
 
-![helix_extrude](images/lib-helix_extrude-1.JPG)
+![helix_extrude](images/lib2x-helix_extrude-1.JPG)
 
 	use <helix_extrude.scad>;
 
@@ -70,5 +70,5 @@ Its `$fa`, `$fs` and `$fn` parameters are consistent with the `cylinder` module.
 
 	%cylinder(h = levels * level_dist, r1 = r1, r2 = r2);
 
-![helix_extrude](images/lib-helix_extrude-2.JPG)
+![helix_extrude](images/lib2x-helix_extrude-2.JPG)
 

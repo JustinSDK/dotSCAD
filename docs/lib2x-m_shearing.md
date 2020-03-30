@@ -49,5 +49,5 @@ Generate a 4x4 transformation matrix which can pass into `multmatrix` to shear a
 			cube(1);
 	}
 
-![m_shearing](images/lib-m_shearing-1.JPG)
+![m_shearing](images/lib2x-m_shearing-1.JPG)
 

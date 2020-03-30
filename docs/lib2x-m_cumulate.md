@@ -28,5 +28,5 @@ The dir changed since 2.0.
 		sphere(1);
 
 
-![m_cumulate](images/lib-m_cumulate-1.JPG)
+![m_cumulate](images/lib2x-m_cumulate-1.JPG)
 

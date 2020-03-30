@@ -30,7 +30,7 @@ Move 2D outlines outward or inward by a given amount. Each point of the offsette
 	color("indigo") polygon(bijection_offset(shape, -2));
 	color("purple") polygon(bijection_offset(shape, -3));
 
-![bijection_offset](images/lib-bijection_offset-1.JPG)
+![bijection_offset](images/lib2x-bijection_offset-1.JPG)
 
 	use <bijection_offset.scad>;
 	use <path_extrude.scad>;
@@ -62,5 +62,5 @@ Move 2D outlines outward or inward by a given amount. Each point of the offsette
 	path_extrude(concat(offsetted, shape), path_pts, "HOLLOW");
 	path_extrude(concat(offsetted3, offsetted2), path_pts, "HOLLOW");
 
-![bijection_offset](images/lib-bijection_offset-2.JPG)
+![bijection_offset](images/lib2x-bijection_offset-2.JPG)
 

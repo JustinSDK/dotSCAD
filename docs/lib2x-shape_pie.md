@@ -15,7 +15,7 @@ Returns shape points of a pie (circular sector) shape. They can be used with xxx
 	shape_pts = shape_pie(10, [45, 315], $fn = 24);
     polygon(shape_pts);
 
-![shape_pie](images/lib-shape_pie-1.JPG)
+![shape_pie](images/lib2x-shape_pie-1.JPG)
 
     use <shape_pie.scad>;
     use <helix_extrude.scad>;
@@ -28,4 +28,4 @@ Returns shape points of a pie (circular sector) shape. They can be used with xxx
         level_dist = 20
     );
 
-![shape_pie](images/lib-shape_pie-2.JPG)
+![shape_pie](images/lib2x-shape_pie-2.JPG)

@@ -19,7 +19,7 @@ Returns shape points of an isosceles trapezoid. They can be used with xxx_extrud
 		corner_r = 2)
 	);
 
-![shape_trapezium](images/lib-shape_trapezium-1.JPG)
+![shape_trapezium](images/lib2x-shape_trapezium-1.JPG)
 
 	use <shape_trapezium.scad>;
 	use <path_extrude.scad>;
@@ -46,4 +46,4 @@ Returns shape points of an isosceles trapezoid. They can be used with xxx_extrud
 
 	path_extrude(shape_pts, path_pts);   
 
-![shape_trapezium](images/lib-shape_trapezium-2.JPG)	
+![shape_trapezium](images/lib2x-shape_trapezium-2.JPG)	

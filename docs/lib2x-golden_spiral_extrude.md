@@ -36,7 +36,7 @@ When using this module, you should use points to represent the 2D shape. If your
 		scale = 0.1
 	);
 
-![golden_spiral_extrude](images/lib-golden_spiral_extrude-1.JPG)
+![golden_spiral_extrude](images/lib2x-golden_spiral_extrude-1.JPG)
 
     use <shape_circle.scad>;
 	use <golden_spiral_extrude.scad>;
@@ -57,4 +57,4 @@ When using this module, you should use points to represent the 2D shape. If your
 		triangles = "HOLLOW"
 	);
 
-![golden_spiral_extrude](images/lib-golden_spiral_extrude-2.JPG)
+![golden_spiral_extrude](images/lib2x-golden_spiral_extrude-2.JPG)

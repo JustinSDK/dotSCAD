@@ -65,7 +65,7 @@ Given a list of numbers (0 ~ 255) that represent a gray image. This function tra
                     square(1);
     }
 
-![px_gray](images/lib2-px_gray-1.JPG)
+![px_gray](images/lib2x-px_gray-1.JPG)
 
 I provide a tool [img2gray](https://github.com/JustinSDK/img2gray) for converting an image into data required by this function. Given an image like this:
 
@@ -184,4 +184,4 @@ After converting the image, use the data in the text file as the `levels` value 
             square(dot[1]);
     }
 
-![px_gray](images/lib2-px_gray-2.JPG)
+![px_gray](images/lib2x-px_gray-2.JPG)

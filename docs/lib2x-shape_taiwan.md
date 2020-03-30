@@ -13,7 +13,7 @@ Returns shape points of [Taiwan](https://www.google.com.tw/maps?q=taiwan&um=1&ie
 
 	polygon(shape_taiwan(10));
 
-![shape_taiwan](images/lib-shape_taiwan-1.JPG)
+![shape_taiwan](images/lib2x-shape_taiwan-1.JPG)
 
 	use <shape_taiwan.scad>;
 	use <golden_spiral_extrude.scad>;
@@ -28,7 +28,7 @@ Returns shape points of [Taiwan](https://www.google.com.tw/maps?q=taiwan&um=1&ie
 		scale = 10
 	);
 
-![shape_taiwan](images/lib-shape_taiwan-2.JPG)
+![shape_taiwan](images/lib2x-shape_taiwan-2.JPG)
 
 	use <shape_taiwan.scad>;
 	use <helix_extrude.scad>;
@@ -47,4 +47,4 @@ Returns shape points of [Taiwan](https://www.google.com.tw/maps?q=taiwan&um=1&ie
 		scale = 0.1
 	);
 
-![shape_taiwan](images/lib-shape_taiwan-3.JPG)
+![shape_taiwan](images/lib2x-shape_taiwan-3.JPG)

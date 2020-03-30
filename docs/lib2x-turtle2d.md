@@ -46,7 +46,7 @@ An OpenSCAD implementation of Turtle Graphics. It moves on the xy plane. You can
 	
 	turtle_spiral(turtle2d("create", 0, 0, 0), times, side_leng, angle, width);
 
-![turtle2d](images/lib-turtle2d-1.JPG)
+![turtle2d](images/lib2x-turtle2d-1.JPG)
 	
 	use <line2d.scad>;
     use <turtle/turtle2d.scad>;
@@ -85,4 +85,4 @@ An OpenSCAD implementation of Turtle Graphics. It moves on the xy plane. You can
 	    width
 	);
 
-![turtle2d](images/lib-turtle2d-2.JPG)
+![turtle2d](images/lib2x-turtle2d-2.JPG)

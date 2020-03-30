@@ -22,7 +22,7 @@ Returns shape points of two glued circles. They can be used with xxx_extrude mod
     shape_pts = shape_glued2circles(radius, centre_dist);
     polygon(shape_pts); 
 
-![shape_glued2circles](images/lib-shape_glued2circles-1.JPG)
+![shape_glued2circles](images/lib2x-shape_glued2circles-1.JPG)
 
     use <shape_glued2circles.scad>;
 
@@ -41,7 +41,7 @@ Returns shape points of two glued circles. They can be used with xxx_extrude mod
             square([width, radius * 2]);
     }
 
-![shape_glued2circles](images/lib-shape_glued2circles-2.JPG)
+![shape_glued2circles](images/lib2x-shape_glued2circles-2.JPG)
 
     use <shape_glued2circles.scad>;
 
@@ -62,4 +62,4 @@ Returns shape points of two glued circles. They can be used with xxx_extrude mod
                 square([radius, width], center = true);
         }
 
-![shape_glued2circles](images/lib-shape_glued2circles-3.JPG)
+![shape_glued2circles](images/lib2x-shape_glued2circles-3.JPG)

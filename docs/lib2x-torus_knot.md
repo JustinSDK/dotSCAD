@@ -4,7 +4,7 @@ Generate a path of [The (p,q)-torus knot](https://en.wikipedia.org/wiki/Torus_kn
 
 **Since:** 1.2.
 
-![torus_knot](images/lib-torus_knot-1.JPG)
+![torus_knot](images/lib2x-torus_knot-1.JPG)
 
 ## Parameters
 
@@ -34,5 +34,5 @@ Generate a path of [The (p,q)-torus knot](https://en.wikipedia.org/wiki/Torus_kn
 		method = "EULER_ANGLE"
 	);
 
-![torus_knot](images/lib-torus_knot-2.JPG)
+![torus_knot](images/lib2x-torus_knot-2.JPG)
 

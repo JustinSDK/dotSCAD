@@ -12,7 +12,7 @@ Returns shape points of a pentagram. They can be used with xxx_extrude modules o
 
 	polygon(shape_pentagram(5));
 
-![shape_pentagram](images/lib-shape_pentagram-1.JPG)
+![shape_pentagram](images/lib2x-shape_pentagram-1.JPG)
 
 	use <shape_pentagram.scad>;
 	use <golden_spiral_extrude.scad>;
@@ -27,5 +27,5 @@ Returns shape points of a pentagram. They can be used with xxx_extrude modules o
 		scale = 10
 	);
 
-![shape_pentagram](images/lib-shape_pentagram-2.JPG)
+![shape_pentagram](images/lib2x-shape_pentagram-2.JPG)
 

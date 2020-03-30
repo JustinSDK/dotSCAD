@@ -36,7 +36,7 @@ You can use any point as the first point of the edge path. Just remember that yo
 	#hull_polyline3d(edge_path);
 	polysections(path_scaling_sections(taiwan, edge_path));
 
-![path_scaling_sections](images/lib-path_scaling_sections-1.JPG)
+![path_scaling_sections](images/lib2x-path_scaling_sections-1.JPG)
 
 	use <hull_polyline3d.scad>;
 	use <shape_taiwan.scad>;
@@ -61,7 +61,7 @@ You can use any point as the first point of the edge path. Just remember that yo
 	#hull_polyline3d(edge_path);
 	polysections(path_scaling_sections(taiwan, edge_path));
 
-![path_scaling_sections](images/lib-path_scaling_sections-2.JPG)
+![path_scaling_sections](images/lib2x-path_scaling_sections-2.JPG)
 
 	use <shape_taiwan.scad>;
 	use <path_scaling_sections.scad>;
@@ -97,7 +97,7 @@ You can use any point as the first point of the edge path. Just remember that yo
 
 	polysections(rotated_sections);
 
-![path_scaling_sections](images/lib-path_scaling_sections-3.JPG)	
+![path_scaling_sections](images/lib2x-path_scaling_sections-3.JPG)	
 
 	use <hull_polyline3d.scad>;
 	use <shape_taiwan.scad>;
@@ -126,4 +126,4 @@ You can use any point as the first point of the edge path. Just remember that yo
 	#hull_polyline3d(edge_path);
 	polysections(path_scaling_sections(taiwan, edge_path));
 
-![path_scaling_sections](images/lib-path_scaling_sections-4.JPG)
+![path_scaling_sections](images/lib2x-path_scaling_sections-4.JPG)

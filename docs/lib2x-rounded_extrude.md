@@ -25,4 +25,4 @@ Extrudes a 2D object roundly from 0 to 180 degrees.
 	translate([0, 0, round_r]) 
 		cylinder(h = 20, r1 = circle_r + round_r, r2 = 0);
 
-![rounded_extrude](images/lib-rounded_extrude-1.JPG)
+![rounded_extrude](images/lib2x-rounded_extrude-1.JPG)

@@ -21,7 +21,7 @@ The containing square of the target shape should be laid down on the x-y plane. 
 	%square(size = [x, y]);
 	text("A");
 
-![bend_extrude](images/lib-bend_extrude-1.JPG)
+![bend_extrude](images/lib2x-bend_extrude-1.JPG)
 
 Once you have the size of the containing square, you can use it as the `size` argument of the `bend_extrude` module.
 
@@ -33,4 +33,4 @@ Once you have the size of the containing square, you can use it as the `size` ar
 	bend_extrude(size = [x, y], thickness = 1, angle = 270) 
 		text("A");
 
-![bend_extrude](images/lib-bend_extrude-2.JPG)
+![bend_extrude](images/lib2x-bend_extrude-2.JPG)

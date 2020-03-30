@@ -41,7 +41,7 @@ When using this module, you should use points to represent the 2D shape. If your
 
 	path_extrude(shape_pts, path_pts);
 
-![path_extrude](images/lib-path_extrude-1.JPG)
+![path_extrude](images/lib2x-path_extrude-1.JPG)
 
 	use <path_extrude.scad>;
 	use <bezier_curve.scad>;
@@ -73,7 +73,7 @@ When using this module, you should use points to represent the 2D shape. If your
 
 	path_extrude(shape_pts, path_pts, triangles = "HOLLOW");
 
-![path_extrude](images/lib-path_extrude-2.JPG)
+![path_extrude](images/lib2x-path_extrude-2.JPG)
 
 	use <path_extrude.scad>;
 	use <bezier_curve.scad>;
@@ -114,7 +114,7 @@ When using this module, you should use points to represent the 2D shape. If your
         ]
 	);
 
-![path_extrude](images/lib-path_extrude-3.JPG)
+![path_extrude](images/lib2x-path_extrude-3.JPG)
 
 ## About `path_extrude` (Important!!)
 
@@ -137,7 +137,7 @@ If you want to extrude a shape along a path precisely, providing enough informat
 		vt_dir = "SPI_UP"
 	);
 
-![path_extrude](images/lib-path_extrude-4.JPG)
+![path_extrude](images/lib2x-path_extrude-4.JPG)
 
 If you have only points, what `path_extrude` can do is to **guess** data about rotations. The different algorithm will dig out different data. For example:
 
@@ -159,7 +159,7 @@ If you have only points, what `path_extrude` can do is to **guess** data about r
 
 	path_extrude(shape_pts, points);
 
-![path_extrude](images/lib-path_extrude-5.JPG)
+![path_extrude](images/lib2x-path_extrude-5.JPG)
 
 You might think this is wrong. Actually, it's not. It's the correct/default behavior of `path_extrude`. Because **you don't provide other information**, what `path_extrude` can do is to **guess** how to generate sections from points. You think it's a bug in `path_extrude` because your brain has information that path points do not provide.
 
@@ -183,7 +183,7 @@ You might think this is wrong. Actually, it's not. It's the correct/default beha
 
 	path_extrude(shape_pts, points, method = "EULER_ANGLE");
 
-![path_extrude](images/lib-path_extrude-6.JPG)
+![path_extrude](images/lib2x-path_extrude-6.JPG)
 
 `"EULER_ANGLE"` generates the same section at the same point. You might think the model is correct. But, that's because what it guesses from points just match your expectation. 
 
@@ -209,7 +209,7 @@ You might think this is wrong. Actually, it's not. It's the correct/default beha
 
 	path_extrude(shape_pts, path_pts, method = "EULER_ANGLE");
 
-![path_extrude](images/lib-path_extrude-7.JPG)
+![path_extrude](images/lib2x-path_extrude-7.JPG)
 
 The problem doesn't happen when `method` is `"AXIS_ANGLE"`.
 
@@ -233,7 +233,7 @@ The problem doesn't happen when `method` is `"AXIS_ANGLE"`.
 
 	path_extrude(shape_pts, path_pts, method = "AXIS_ANGLE");
 
-![path_extrude](images/lib-path_extrude-8.JPG)
+![path_extrude](images/lib2x-path_extrude-8.JPG)
 
 So, which is the correct method? Both methods are correct when you provide only points. `method` is just a way you tell `path_extrude` how to guess more information when extruding. 
 
@@ -279,7 +279,7 @@ So, which is the correct method? Both methods are correct when you provide only 
 		method = "EULER_ANGLE"
 	);
 
-![path_extrude](images/lib-path_extrude-9.JPG)	
+![path_extrude](images/lib2x-path_extrude-9.JPG)	
 
 Both methods are useful. If `"AXIS_ANGLE"` doesn't guess out what you want, choose `"EULER_ANGLE"`, and vice versa.
 

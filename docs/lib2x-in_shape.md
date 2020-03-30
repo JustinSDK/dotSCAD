@@ -36,4 +36,4 @@ Checks wether a point is inside a shape.
             circle(.2); 
     }
 
-![in_shape](images/lib-in_shape-1.JPG)
+![in_shape](images/lib2x-in_shape-1.JPG)

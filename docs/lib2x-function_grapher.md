@@ -25,7 +25,7 @@ Given a set of points `[x, y, f(x, y)]` where `f(x, y)` is a mathematics functio
 	
 	function_grapher(points, thickness);
 
-![function_grapher](images/lib-function_grapher-1.JPG)
+![function_grapher](images/lib2x-function_grapher-1.JPG)
 
 	use <function_grapher.scad>;
 	
@@ -50,7 +50,7 @@ Given a set of points `[x, y, f(x, y)]` where `f(x, y)` is a mathematics functio
 	
 	function_grapher(points, thickness);
 
-![function_grapher](images/lib-function_grapher-2.JPG)
+![function_grapher](images/lib2x-function_grapher-2.JPG)
 
 	use <function_grapher.scad>;
 
@@ -76,7 +76,7 @@ Given a set of points `[x, y, f(x, y)]` where `f(x, y)` is a mathematics functio
 	
 	function_grapher(points, thickness, style);
 
-![function_grapher](images/lib-function_grapher-3.JPG)
+![function_grapher](images/lib2x-function_grapher-3.JPG)
 
 	use <function_grapher.scad>;
 
@@ -103,4 +103,4 @@ Given a set of points `[x, y, f(x, y)]` where `f(x, y)` is a mathematics functio
 	
 	function_grapher(points, thickness, style, slicing);
 
-![function_grapher](images/lib-function_grapher-4.JPG)
+![function_grapher](images/lib2x-function_grapher-4.JPG)

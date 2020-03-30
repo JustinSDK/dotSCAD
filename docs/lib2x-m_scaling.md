@@ -19,5 +19,5 @@ Generate a 4x4 transformation matrix which can pass into `multmatrix` to scale i
 		multmatrix(m_scaling([0.5, 1, 2]))
 			cube(10);
 
-![m_scaling](images/lib-m_scaling-1.JPG)
+![m_scaling](images/lib2x-m_scaling-1.JPG)
 

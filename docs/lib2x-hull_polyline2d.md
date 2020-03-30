@@ -19,4 +19,4 @@ Creates a 2D polyline from a list of `[x, y]` coordinates. As the name says, it 
 	    width = 1
 	);
 
-![hull_polyline3d](images/lib-hull_polyline2d-1.JPG)
+![hull_polyline3d](images/lib2x-hull_polyline2d-1.JPG)

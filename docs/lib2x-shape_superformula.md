@@ -30,7 +30,7 @@ Returns shape points of a [Superformula](https://en.wikipedia.org/wiki/Superform
     translate([9, -4]) 
         scale(0.3) polygon(shape_superformula(phi_step, 4, 4, 1, 7, 8));
 
-![shape_superformula](images/lib-shape_superformula-1.JPG)
+![shape_superformula](images/lib2x-shape_superformula-1.JPG)
 
     use <shape_superformula.scad>; 
     use <golden_spiral_extrude.scad>;  
@@ -51,4 +51,4 @@ Returns shape points of a [Superformula](https://en.wikipedia.org/wiki/Superform
         scale = 10
     );  
 
-![shape_superformula](images/lib-shape_superformula-2.JPG)
+![shape_superformula](images/lib2x-shape_superformula-2.JPG)

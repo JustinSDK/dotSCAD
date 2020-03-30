@@ -2,7 +2,7 @@
 
 Create a connector peg.
 
-![connector_peg](images/lib2-connector_peg-3.JPG)
+![connector_peg](images/lib2x-connector_peg-3.JPG)
 
 **Since:** 2.1
 
@@ -35,7 +35,7 @@ Create a connector peg.
 		void = true
 	);
 
-![connector_peg](images/lib2-connector_peg-1.JPG)
+![connector_peg](images/lib2x-connector_peg-1.JPG)
 
 	use <part/connector_peg.scad>;
 
@@ -57,4 +57,4 @@ Create a connector peg.
 		void = true
 	);
 
-![connector_peg](images/lib2-connector_peg-2.JPG)
+![connector_peg](images/lib2x-connector_peg-2.JPG)

@@ -45,7 +45,7 @@ For more details, please see [3D turtle graphics](https://openhome.cc/eGossip/Op
 	);
 
 
-![turtle3d](images/lib-turtle3d-1.JPG)
+![turtle3d](images/lib2x-turtle3d-1.JPG)
 	
 	use <turtle/turtle3d.scad>;
 	use <hull_polyline3d.scad>;
@@ -86,4 +86,4 @@ For more details, please see [3D turtle graphics](https://openhome.cc/eGossip/Op
 	tree(t, leng, leng_scale1, leng_scale2, leng_limit, 
 	     angleZ, angleX, width);
 
-![turtle3d](images/lib-turtle3d-2.JPG)
+![turtle3d](images/lib2x-turtle3d-2.JPG)

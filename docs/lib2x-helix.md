@@ -32,7 +32,7 @@ Gets all points on the path of a spiral around a cylinder. Its `$fa`, `$fs` and 
 	
 	hull_polyline3d(points, 2);
 
-![helix](images/lib-helix-1.JPG)
+![helix](images/lib2x-helix-1.JPG)
 
 	use <helix.scad>;
 	use <hull_polyline3d.scad>;
@@ -51,4 +51,4 @@ Gets all points on the path of a spiral around a cylinder. Its `$fa`, `$fs` and 
 
 	%cylinder(h = 100, r1 = 40, r2 = 20);
 
-![helix](images/lib-helix-2.JPG)
+![helix](images/lib2x-helix-2.JPG)

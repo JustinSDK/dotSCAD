@@ -19,4 +19,4 @@ Returns points that can be used to draw a pixel-style sphere.
 			cube(1, center = true);
 	}
 
-![px_sphere](images/lib2-px_sphere-1.JPG)
+![px_sphere](images/lib2x-px_sphere-1.JPG)

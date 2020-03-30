@@ -2,7 +2,7 @@
 
 Create a joint_T for rotatable models.
 
-![joint_T](images/lib2-joint_T-1.JPG)
+![joint_T](images/lib2x-joint_T-1.JPG)
 
 **Since:** 2.1
 
@@ -29,4 +29,4 @@ Create a joint_T for rotatable models.
 		spacing = 0.5
 	);
 
-![joint_T](images/lib2-joint_T-2.JPG)
+![joint_T](images/lib2x-joint_T-2.JPG)

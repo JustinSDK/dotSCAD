@@ -28,6 +28,6 @@ The 2D polygon should center at the origin and you have to determine the side le
             valign = "center", halign = "center"
        );
 
-![stereographic_extrude](images/lib-stereographic_extrude-1.JPG)
+![stereographic_extrude](images/lib2x-stereographic_extrude-1.JPG)
 
 For more advanced examples, take a look at [my stereographic_projection collection](https://www.thingiverse.com/JustinSDK/collections/stereographic-projection).

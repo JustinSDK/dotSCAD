@@ -15,7 +15,7 @@ Returns shape points of a star. They can be used with xxx_extrude modules of dot
 	
 	polygon(shape_starburst(30, 12, 6));
 
-![shape_starburst](images/lib-shape_starburst-1.JPG)
+![shape_starburst](images/lib2x-shape_starburst-1.JPG)
 
 	use <shape_starburst.scad>;
 	use <golden_spiral_extrude.scad>;
@@ -30,5 +30,5 @@ Returns shape points of a star. They can be used with xxx_extrude modules of dot
 	    scale = 10
 	);
 
-![shape_pentagram](images/lib-shape_starburst-2.JPG)
+![shape_pentagram](images/lib2x-shape_starburst-2.JPG)
 

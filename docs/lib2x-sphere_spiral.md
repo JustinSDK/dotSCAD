@@ -29,11 +29,11 @@ Creates all points and angles on the path of a spiral around a sphere. It return
 	
 	%sphere(40);
 
-![sphere_spiral](images/lib-sphere_spiral-1.JPG)
+![sphere_spiral](images/lib2x-sphere_spiral-1.JPG)
 
-![sphere_spiral](images/lib-sphere_spiral-2.JPG)
+![sphere_spiral](images/lib2x-sphere_spiral-2.JPG)
 
-![sphere_spiral](images/lib-sphere_spiral-3.JPG)
+![sphere_spiral](images/lib2x-sphere_spiral-3.JPG)
 
 	use <sphere_spiral.scad>;
 
@@ -52,7 +52,7 @@ Creates all points and angles on the path of a spiral around a sphere. It return
 	
 	%sphere(40);
 
-![sphere_spiral](images/lib-sphere_spiral-5.JPG)
+![sphere_spiral](images/lib2x-sphere_spiral-5.JPG)
 
 	use <hull_polyline3d.scad>;
 	use <sphere_spiral.scad>;
@@ -67,4 +67,4 @@ Creates all points and angles on the path of a spiral around a sphere. It return
 	        hull_polyline3d([for(pa = points_angles) pa[0]], 2);
 	}
 
-![sphere_spiral](images/lib-sphere_spiral-6.JPG)
+![sphere_spiral](images/lib2x-sphere_spiral-6.JPG)

@@ -16,7 +16,7 @@ Returns shape points of a rounded square or rectangle. They can be used with xxx
 		shape_square(size = 50, corner_r = 5)
 	);
 
-![shape_square](images/lib-shape_square-1.JPG)
+![shape_square](images/lib2x-shape_square-1.JPG)
 
 	use <shape_square.scad>;
 	use <ring_extrude.scad>;
@@ -33,4 +33,4 @@ Returns shape points of a rounded square or rectangle. They can be used with xxx
 		radius = 50, angle = 180, twist = 180, scale = 2
 	);
 
-![shape_square](images/lib-shape_square-2.JPG)
+![shape_square](images/lib2x-shape_square-2.JPG)

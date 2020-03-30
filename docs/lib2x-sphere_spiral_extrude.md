@@ -30,4 +30,4 @@ When using this module, you should use points to represent the 2D shape. If your
 		scale = 5
 	);
 
-![sphere_spiral_extrude](images/lib-sphere_spiral_extrude-1.JPG)
+![sphere_spiral_extrude](images/lib2x-sphere_spiral_extrude-1.JPG)

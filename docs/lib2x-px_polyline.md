@@ -24,7 +24,7 @@ Given a list of points. `px_polyline` returns points that can be used to draw a 
 			    square(1, center = true);
 	}
 
-![px_polyline](images/lib2-px_polyline-1.JPG)
+![px_polyline](images/lib2x-px_polyline-1.JPG)
 
 	use <pixel/px_polyline.scad>;
 	use <sphere_spiral.scad>;
@@ -48,5 +48,5 @@ Given a list of points. `px_polyline` returns points that can be used to draw a 
 			}
 	}
 		
-![px_polyline](images/lib2-px_polyline-2.JPG)
+![px_polyline](images/lib2x-px_polyline-2.JPG)
 

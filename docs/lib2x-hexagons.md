@@ -18,7 +18,7 @@ A hexagonal structure is useful in many situations. This module creates hexagons
 	
 	hexagons(radius, spacing, levels);
 
-![hexagons](images/lib-hexagons-1.JPG)
+![hexagons](images/lib2x-hexagons-1.JPG)
 
 	use <hexagons.scad>;
 	
@@ -29,4 +29,4 @@ A hexagonal structure is useful in many situations. This module creates hexagons
 	hexagons(radius, spacing, levels);
 
 
-![hexagons](images/lib-hexagons-2.JPG)
+![hexagons](images/lib2x-hexagons-2.JPG)

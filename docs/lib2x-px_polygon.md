@@ -32,5 +32,5 @@ Returns points that can be used to draw a pixel-style polygon.
                     square(1, center = true);
         }
 
-![px_polygon](images/lib2-px_polygon-1.JPG)
+![px_polygon](images/lib2x-px_polygon-1.JPG)
 

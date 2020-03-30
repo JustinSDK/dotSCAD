@@ -22,4 +22,4 @@ Given a 2D path, this function constructs a mid-point smoothed version by joinin
     translate([0, 0, 0]) hull_polyline2d(taiwan, .25); 
     #translate([10, 0, 0]) hull_polyline2d(smoothed, .25);
 
-![midpt_smooth](images/lib-midpt_smooth-1.JPG)
+![midpt_smooth](images/lib2x-midpt_smooth-1.JPG)

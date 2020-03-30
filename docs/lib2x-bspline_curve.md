@@ -35,7 +35,7 @@
 			sphere(0.1);
 	}
 
-![bspline_curve](images/lib2-bspline_curve-1.JPG)
+![bspline_curve](images/lib2x-bspline_curve-1.JPG)
 
     use <bspline_curve.scad>;
     
@@ -59,7 +59,7 @@
 			sphere(0.1);
 	}
 
-![bspline_curve](images/lib2-bspline_curve-2.JPG)
+![bspline_curve](images/lib2x-bspline_curve-2.JPG)
 
 	use <bspline_curve.scad>;
 		
@@ -83,4 +83,4 @@
 			sphere(0.1);
 	}
 
-![bspline_curve](images/lib2-bspline_curve-3.JPG)
+![bspline_curve](images/lib2x-bspline_curve-3.JPG)

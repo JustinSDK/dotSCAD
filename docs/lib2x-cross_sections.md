@@ -39,4 +39,4 @@ Given a 2D shape, points and angles along the path, this function will return al
 		cross_sections(shape_pts, pts, angles, twist = 180, scale = 0.1)
 	);
 
-![cross_sections](images/lib-cross_sections-1.JPG)
+![cross_sections](images/lib2x-cross_sections-1.JPG)

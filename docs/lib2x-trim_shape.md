@@ -29,5 +29,5 @@ Given a tangled-edge shape. This function trims the shape to a non-tangled shape
         hull_polyline2d(offseted, .2);
     hull_polyline2d(smoothed, .1); 
 
-![trim_shape](images/lib-trim_shape-1.JPG)
+![trim_shape](images/lib2x-trim_shape-1.JPG)
 

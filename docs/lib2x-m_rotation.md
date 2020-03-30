@@ -25,7 +25,7 @@ Generate a 4x4 transformation matrix which can pass into `multmatrix` to rotate 
 				sphere(1);   
 	}  
 
-![m_rotation](images/lib-m_rotation-1.JPG)
+![m_rotation](images/lib2x-m_rotation-1.JPG)
 
 	use <matrix/m_rotation.scad>;
 
@@ -44,4 +44,4 @@ Generate a 4x4 transformation matrix which can pass into `multmatrix` to rotate 
 				sphere(1);  
 	}
 
-![m_rotation](images/lib-m_rotation-2.JPG)
+![m_rotation](images/lib2x-m_rotation-2.JPG)

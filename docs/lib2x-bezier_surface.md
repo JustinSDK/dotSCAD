@@ -27,8 +27,8 @@ If you have 16 control points and combine with the `function_grapher` module:
 	g = bezier_surface(t_step, ctrl_pts);
 	function_grapher(g, thickness);    
 
-![bezier_surface](images/lib-bezier_surface-1.JPG)
+![bezier_surface](images/lib2x-bezier_surface-1.JPG)
 
 The following figure shows controll points and bazier curves around the surface.
 
-![bezier_surface](images/lib-bezier_surface-2.JPG)
+![bezier_surface](images/lib2x-bezier_surface-2.JPG)

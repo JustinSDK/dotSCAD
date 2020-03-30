@@ -18,7 +18,7 @@ Creates an arc path. You can pass a 2 element vector to define the central angle
     points = arc_path(radius = 20, angle = [45, 290]);
     hull_polyline2d(points, width = 2);
 
-![arc_path](images/lib-arc_path-1.JPG)
+![arc_path](images/lib2x-arc_path-1.JPG)
 
     use <arc_path.scad>;
     use <hull_polyline2d.scad>;
@@ -27,6 +27,6 @@ Creates an arc path. You can pass a 2 element vector to define the central angle
     points = arc_path(radius = 20, angle = 135);
     hull_polyline2d(points, width = 2);
 
-![arc_path](images/lib-arc_path-2.JPG)
+![arc_path](images/lib2x-arc_path-2.JPG)
 
 
