@@ -1,4 +1,5 @@
 use <experimental/nz_worley2.scad>;
+use <util/dedup.scad>;
 
 size = [100, 50];
 cell_w = 10;
@@ -8,14 +9,23 @@ seed = 51;
 points = [
     for(y = [0:size[1] - 1]) 
         for(x = [0:size[0] - 1]) 
-            [x, y, nz_worley2(x, y, seed, cell_w, dist)]
+            [x, y]
 ];
 
-max_dist = max([for(p = points) p[2]]);
-for(p = points) {
-    c = p[2] / max_dist;
+cells = [for(p = points) nz_worley2(p[0], p[1], seed, cell_w, dist)];
+
+max_dist = max([for(c = cells) c[2]]);
+for(i = [0:len(cells) - 1]) {
+    c = cells[i][2] / max_dist;
     color([c, c, c])
-    linear_extrude(c * max_dist)
-    translate([p[0], p[1]])
+    linear_extrude(cells[i][2])
+    translate(points[i])
+        square(1);
+}
+
+cells_pts = dedup([for(c = cells) [c[0], c[1]]]);
+for(p = cells_pts) {
+    translate(p)
+    linear_extrude(max_dist)
         square(1);
 }

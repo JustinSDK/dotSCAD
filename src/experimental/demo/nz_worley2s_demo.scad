@@ -1,23 +1,31 @@
 use <experimental/nz_worley2s.scad>;
+use <util/dedup.scad>;
 
 size = [100, 50];
 cell_w = 10;
 dist = "euclidean"; // [euclidean, manhattan, chebyshev, border] 
-seed = 5;
+seed = 51;
 
 points = [
     for(y = [0:size[1] - 1]) 
         for(x = [0:size[0] - 1]) 
             [x, y]
 ];
-        
-noises = nz_worley2s(points, seed, cell_w, dist);
 
-max_dist = max(noises);
-for(i = [0:len(noises) - 1]) {
-    c = noises[i] / max_dist;
+cells = nz_worley2s(points, seed, cell_w, dist);
+
+max_dist = max([for(c = cells) c[2]]);
+for(i = [0:len(cells) - 1]) {
+    c = cells[i][2] / max_dist;
     color([c, c, c])
-    linear_extrude(c * max_dist)
+    linear_extrude(cells[i][2])
     translate(points[i])
+        square(1);
+}
+
+cells_pts = dedup([for(c = cells) [c[0], c[1]]]);
+for(p = cells_pts) {
+    translate(p)
+    linear_extrude(max_dist)
         square(1);
 }
