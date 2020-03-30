@@ -1,14 +1,14 @@
 use <experimental/nz_worley2.scad>;
 
 size = [100, 50];
-dim = 5;
-dist = "euclidean"; // [euclidean, manhattan, chebyshev] 
-seed = 5;
+cell_w = 10;
+dist = "euclidean"; // [euclidean, manhattan, chebyshev, border] 
+seed = 51;
 
 points = [
     for(y = [0:size[1] - 1]) 
         for(x = [0:size[0] - 1]) 
-            [x, y, nz_worley2(size, x, y, seed, dim, dist)]
+            [x, y, nz_worley2(x, y, seed, cell_w, dist)]
 ];
 
 max_dist = max([for(p = points) p[2]]);

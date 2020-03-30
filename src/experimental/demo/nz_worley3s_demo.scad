@@ -1,8 +1,8 @@
 use <experimental/nz_worley3s.scad>;
 
 size = [20, 20, 20];
-dim = 5;
-dist = "euclidean"; // [euclidean, manhattan, chebyshev] 
+cell_w = 5;
+dist = "euclidean"; // [euclidean, manhattan, chebyshev, border] 
 seed = 5;
 
 points = [
@@ -12,7 +12,7 @@ points = [
                 [x, y, z]
 ];
         
-noises = nz_worley3s(size, points, seed, dim, dist);
+noises = nz_worley3s(points, seed, cell_w, dist);
 
 max_dist = max(noises);
 
