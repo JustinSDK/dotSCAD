@@ -7,7 +7,7 @@ function _neighbors(fcord, seed, cell_w) = [
         let(
             nx = fcord[0] + x,
             ny = fcord[1] + y,
-            sd_base = nx + ny * cell_w,
+            sd_base = abs(nx + ny * cell_w),
             sd1 = _lookup_noise_table(seed + sd_base),
             sd2 = _lookup_noise_table(sd1 * 255 + sd_base),
             nbr = [(nx + sd1) * cell_w, (ny + sd2) * cell_w]
