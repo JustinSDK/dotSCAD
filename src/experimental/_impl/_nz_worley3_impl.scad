@@ -18,11 +18,15 @@ function _neighbors(fcord, seed, cell_w) = [
             nbr
 ];
 
-function _nz_worley3_classic(p, nbrs, dist) = 
-    min([
-        for(nbr = nbrs) 
-            _distance(nbr, p, dist)
-    ]);
+function _nz_worley3_classic(p, nbrs, dist) =
+    let(
+        cells = [
+            for(nbr = nbrs) 
+                [nbr[0], nbr[1], nbr[2], _distance(nbr, p, dist)]
+        ],
+        sorted = sort(cells, by = "idx", idx = 3)
+    )
+    sorted[0];
 
 function _nz_worley3_border(p, nbrs, dist) = 
     let(
@@ -35,7 +39,7 @@ function _nz_worley3_border(p, nbrs, dist) =
         b = [sorted[1][0], sorted[1][1], sorted[1][2]],
         m = (a + b) / 2        
     )
-    (p - m) * (a - m);
+    [a[0], a[1], a[2], (p - m) * (a - m)];
     
 function _nz_worley3(p, seed, cell_w, dist) = 
     let(
