@@ -198,6 +198,7 @@ See [examples](examples).
 - noise/nz_worley1s
 - noise/nz_worley2
 - noise/nz_worley2s
+- noise/nz_cells
 
 ## Bugs and Feedback
 
