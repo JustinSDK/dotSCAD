@@ -177,10 +177,10 @@ See [examples](examples).
 - Part
     - [part/connector_peg](https://openhome.cc/eGossip/OpenSCAD/lib2x-connector_peg.html)
 	- [part/cone](https://openhome.cc/eGossip/OpenSCAD/lib2x-cone.html)
-	- [part/joint_T](https://openhome.cc/eGossip/OpenSCAD/lib2-joint_T.html)
+	- [part/joint_T](https://openhome.cc/eGossip/OpenSCAD/lib2x-joint_T.html)
 
 - Surface (2.3 Preview)
-	- [surface/sf_square](https://openhome.cc/eGossip/OpenSCAD/lib2-sf_square.html)
+	- [surface/sf_square](https://openhome.cc/eGossip/OpenSCAD/lib2x-sf_square.html)
 	- surface/sf_bend
 	- surface/sf_ring
 	- surface/sf_sphere
