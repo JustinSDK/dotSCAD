@@ -28,7 +28,7 @@ function _nz_worley3_classic(p, nbrs, dist) =
     )
     sorted[0];
 
-function _nz_worley3_border(p, nbrs, dist) = 
+function _nz_worley3_border(p, nbrs) = 
     let(
         cells = [
             for(nbr = nbrs) 
@@ -46,5 +46,5 @@ function _nz_worley3(p, seed, cell_w, dist) =
         fcord = [floor(p[0] / cell_w), floor(p[1] / cell_w), floor(p[2] / cell_w)],
         nbrs = _neighbors(fcord, seed, cell_w)
     )
-    dist == "border" ? _nz_worley3_border(p, nbrs, dist) :
+    dist == "border" ? _nz_worley3_border(p, nbrs) :
                        _nz_worley3_classic(p, nbrs, dist);
