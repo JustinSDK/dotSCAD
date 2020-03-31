@@ -135,7 +135,7 @@ See [examples](examples).
 	- [util/bsearch](https://openhome.cc/eGossip/OpenSCAD/lib2x-bsearch.html) (2.3 Preview)	
 	- [util/has](https://openhome.cc/eGossip/OpenSCAD/lib2x-has.html) (2.3 Preview)
 	- [util/dedup](https://openhome.cc/eGossip/OpenSCAD/lib2x-dedup.html) (2.3 Preview)
-	- util/flat (2.3 Preview)
+	- [util/flat](https://openhome.cc/eGossip/OpenSCAD/lib2x-flat.html) (2.3 Preview)
 
 - Matrix
 	- [matrix/m_cumulate](https://openhome.cc/eGossip/OpenSCAD/lib2x-m_cumulate.html)	
@@ -180,7 +180,7 @@ See [examples](examples).
 	- [part/joint_T](https://openhome.cc/eGossip/OpenSCAD/lib2-joint_T.html)
 
 - Surface (2.3 Preview)
-	- surface/sf_square
+	- [surface/sf_square](https://openhome.cc/eGossip/OpenSCAD/lib2-sf_square.html)
 	- surface/sf_bend
 	- surface/sf_ring
 	- surface/sf_sphere
