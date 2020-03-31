@@ -1,3 +1,13 @@
+/**
+* sf_square.scad
+*
+* @copyright Justin Lin, 2020
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-sf_square.html
+*
+**/ 
+
 use <ptf/ptf_x_twist.scad>;
 use <ptf/ptf_y_twist.scad>;
 use <surface/_impl/_sf_square_surfaces.scad>;
