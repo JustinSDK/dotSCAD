@@ -15,8 +15,8 @@ Follow the steps described in [img2gray](https://github.com/JustinSDK/img2gray).
 - `levels` : A list of numbers (0 ~ 255).
 - `thickness` : The thickness of the model.
 - `depth` : The depth of the image. Default to half of `thickness`.
-- `x_twist` : The number of twisted degrees along the x-axis. 
-- `y_twist` : The number of twisted degrees along the y-axis. 
+- `x_twist` : The number of twisted degrees along the x-axis. Default to 0. 
+- `y_twist` : The number of twisted degrees along the y-axis. Default to 0.
 - `invert` :  Inverts height values of the image. Default to `false`.
 
 ## Examples
