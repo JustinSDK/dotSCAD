@@ -182,7 +182,7 @@ See [examples](examples).
 ### Surface (2.3 Preview)
 - [surface/sf_square](https://openhome.cc/eGossip/OpenSCAD/lib2x-sf_square.html)
 - [surface/sf_bend](https://openhome.cc/eGossip/OpenSCAD/lib2x-sf_bend.html)
-- surface/sf_ring
+- [surface/sf_ring](https://openhome.cc/eGossip/OpenSCAD/lib2x-sf_ring.html)
 - surface/sf_sphere
 - surface/sf_torus
 - surface/sf_solidify

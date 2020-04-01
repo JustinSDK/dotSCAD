@@ -1,16 +1,16 @@
+/**
+* sf_ring.scad
+*
+* @copyright Justin Lin, 2020
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-sf_ring.html
+*
+**/ 
+
 use <surface/_impl/_sf_square_surfaces.scad>;
 use <surface/sf_solidify.scad>;
 use <ptf/ptf_ring.scad>;
-
-/*
-    levels : A list of numbers (0 ~ 255).
-    radius: ring radius.
-    thickness: thickness
-    depth: the depth of the image    
-    angle: arc angle.
-    twist: The number of degrees of through which the rectangle is twisted.    
-    invert: inverts how the gray levels are translated into height values.
-*/
 
 module sf_ring(levels, radius, thickness, depth, angle = 360, twist = 0, invert = false) {
     dp = is_undef(depth) ? thickness / 2 : depth;

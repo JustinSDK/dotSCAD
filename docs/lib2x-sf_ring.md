@@ -1,34 +1,36 @@
-# sf_square
+# sf_ring
 
 Given a photo, such as:
 
-![sf_square](images/caterpillar.JPG)
+![sf_ring](images/caterpillar.JPG)
 
-Follow the steps described in [img2gray](https://github.com/JustinSDK/img2gray). Copy the content (a list of numbers (0 ~ 255)) in the text file. Combined with the `sf_square` module, you can build a model like this:
+Follow the steps described in [img2gray](https://github.com/JustinSDK/img2gray). Copy the content (a list of numbers (0 ~ 255)) in the text file. Combined with the `sf_ring` module, you can build a model like this:
 
-![sf_square](images/lib2x-sf_square-1.JPG)
+![sf_ring](images/lib2x-sf_ring-1.JPG)
 
 **Since:** 2.3
 
 ## Parameters
 
 - `levels` : A list of numbers (0 ~ 255).
+- `radius` : The ring radius.
 - `thickness` : The thickness of the model.
 - `depth` : The depth of the image. Default to half of `thickness`.
-- `x_twist` : The number of twisted degrees along the x-axis. Default to 0. 
-- `y_twist` : The number of twisted degrees along the y-axis. Default to 0.
+- `angle` : The central angle of the arc. Default to 360. 
+- `twist` : The number of degrees of through which the rectangle is twisted. Default to 0.
 - `invert` : Inverts height values of the image. Default to `false`.
 
 ## Examples
 
     // The code of the above picture.
-    use <surface/sf_square.scad>;
+    use <surface/sf_ring.scad>;
 
-    thicnkess = 10;
+    radius = 50;
+    thickness = 10;
     depth = 5;
-    x_twist = 90;
-    y_twist = 90;
-    invert = false;
+    angle = 90;
+    twist = 90;
+    invert = true;
     levels = [
         [255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255], 
         [255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255], 
@@ -132,4 +134,4 @@ Follow the steps described in [img2gray](https://github.com/JustinSDK/img2gray).
         [255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255]
     ];
 
-    sf_square(levels, thicnkess, depth, x_twist = x_twist, y_twist = y_twist, invert = invert);
+    sf_ring(levels, radius, thickness, depth, angle, twist, invert);
