@@ -1,15 +1,17 @@
 use <surface/_impl/_sf_square_surfaces.scad>;
+/**
+* sf_bend.scad
+*
+* @copyright Justin Lin, 2020
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-sf_bend.html
+*
+**/ 
+
 use <surface/sf_solidify.scad>;
 use <ptf/ptf_bend.scad>;
 
-/*
-    levels : A list of numbers (0 ~ 255).
-    radius: The radius of the arc after being bent
-    thickness: shell thickness
-    depth: the depth of the image
-    angle: The central angle of the arc..
-    invert: inverts how the gray levels are translated into height values.
-*/
 module sf_bend(levels, radius, thickness, depth, angle = 180, invert = false) {
     dp = is_undef(depth) ? thickness / 2 : depth;
     surface = _sf_square_surfaces(levels, thickness, dp, invert);
