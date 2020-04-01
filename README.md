@@ -2,7 +2,7 @@
 
 > **Reduce the burden of mathematics when playing OpenSCAD.**
 
-![dotSCAD](featured_img/LeopardCatTaiwan.JPG)
+![dotSCAD](featured_img/TaiwanPangolin.JPG)
 
 [![license/LGPL](LICENSE.svg)](https://github.com/JustinSDK/lib-openscad/blob/master/LICENSE)
 
