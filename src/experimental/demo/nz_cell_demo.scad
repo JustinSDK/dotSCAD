@@ -1,4 +1,4 @@
-use <experimental/nz_cells.scad>;
+use <experimental/nz_cell.scad>;
 use <golden_spiral.scad>;
 
 size = [100, 50];
@@ -10,11 +10,11 @@ pts_angles = golden_spiral(
     point_distance = 3
 );
 
-cells = [for(pt_angle = pts_angles) pt_angle[0] + half_size];
+feature_points = [for(pt_angle = pts_angles) pt_angle[0] + half_size];
 noised = [
     for(y = [0:size[1] - 1]) 
         for(x = [0:size[0] - 1]) 
-            [x, y, nz_cells(cells, [x, y])]
+            [x, y, nz_cell(feature_points, [x, y])]
 ];
 
 max_dist = max([for(n = noised) n[2]]);

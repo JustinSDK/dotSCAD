@@ -6,7 +6,7 @@ function _manhattan(v) = sum([for(d = v) abs(d)]);
 function _chebyshev(p1, p2) =
     max([for(i = [0:len(p1) - 1]) abs(p1[i] - p2[i])]); 
 
-function _nz_cells_classic(cells, p, dist) =
+function _nz_cell_classic(cells, p, dist) =
     let(
         dists = [
             for(i = [0:len(cells) - 1])
@@ -18,7 +18,7 @@ function _nz_cells_classic(cells, p, dist) =
     )
     min(dists); 
 
-function _nz_cells_border(cells, p) =
+function _nz_cell_border(cells, p) =
     let(
         dists = [
             for(i = [0:len(cells) - 1])
