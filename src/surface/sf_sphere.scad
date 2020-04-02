@@ -1,15 +1,17 @@
+/**
+* sf_sphere.scad
+*
+* @copyright Justin Lin, 2020
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-sf_sphere.html
+*
+**/ 
+
 use <surface/_impl/_sf_square_surfaces.scad>;
 use <surface/sf_solidify.scad>;
 use <ptf/ptf_sphere.scad>;
 
-/*
-    levels : A list of numbers (0 ~ 255).
-    radius: sphere radius.
-    thickness: shell thickness
-    depth: the depth of the image
-    angle: [za, xa] mapping angles.
-    invert: inverts how the gray levels are translated into height values.
-*/
 module sf_sphere(levels, radius, thickness, depth, angle = [180, 360], invert = false) {
     dp = is_undef(depth) ? thickness / 2 : depth;
     surface = _sf_square_surfaces(levels, thickness, dp, invert);
