@@ -1,16 +1,16 @@
-# sf_phere
+# sf_sphere
 
 With this module, you can make a thing like [photo sphere](https://github.com/JustinSDK/dotSCAD/blob/master/examples/photo_sphere.scad).
 
-![sf_phere](images/lib2x-sf_phere-1.JPG)
+![sf_sphere](images/lib2x-sf_sphere-1.JPG)
 
 Given a photo, such as:
 
-![sf_phere](images/caterpillar.JPG)
+![sf_sphere](images/caterpillar.JPG)
 
-Follow the steps described in [img2gray](https://github.com/JustinSDK/img2gray). Copy the content (a list of numbers (0 ~ 255)) in the text file. Combined with the `sf_phere` module, you can build a model like this:
+Follow the steps described in [img2gray](https://github.com/JustinSDK/img2gray). Copy the content (a list of numbers (0 ~ 255)) in the text file. Combined with the `sf_sphere` module, you can build a model like this:
 
-![sf_phere](images/lib2x-sf_phere-2.JPG)
+![sf_sphere](images/lib2x-sf_sphere-2.JPG)
 
 **Since:** 2.3
 
