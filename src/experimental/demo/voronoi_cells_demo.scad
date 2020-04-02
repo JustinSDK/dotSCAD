@@ -6,17 +6,7 @@ xs1 = rands(-20, 20, 15);
 ys1 = rands(-20, 20, 15);
 points = [for(i = [0:len(xs1) - 1]) [xs1[i], ys1[i]]];
 
-function default_region_size(points) = 
-    let(
-        xs = [for(p = points) p[0]],
-        ys = [for(p = points) abs(p[1])]
-    )
-    max([(max(xs) -  min(xs) / 2), (max(ys) -  min(ys)) / 2]);
-
-size = default_region_size(points);  
-region_shape = shape_square(size, corner_r = size / 10);
-
-cells = voronoi_cells(points, region_shape);
+cells = voronoi_cells(points);
 for(i = [0:len(points) - 1]) {
     pt = points[i];
     cell = cells[i];
