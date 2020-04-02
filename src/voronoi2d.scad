@@ -23,23 +23,33 @@ module voronoi2d(points, spacing = 1, r = 0, delta = 0, chamfer = false, region_
             if(pt != p) {
                 v = p - pt;
                 translate((pt + p) / 2 - normalize(v) * offset_leng)
-                rotate(atan2(v[1], v[0])) 
-                if(region_type == "square") {
-                    square(region_size, center = true);
-                }
-                else if(region_type == "circle") {
-                    circle(region_size / 2);
-                }       
+                rotate(atan2(v[1], v[0]))
+                    children();
             }
         }
     }    
-    
-    for(p = points) {	
-        if(r != 0) {        
-            offset(r) region(p);
+
+    module offseted_region(pt) {
+        if(r != 0) {
+            offset(r) 
+            region(pt) 
+                children();
         }
         else {
-            offset(delta = delta, chamfer = chamfer) region(p);
+            offset(delta = delta, chamfer = chamfer) 
+            region(pt) 
+                children();
+        }     
+    }
+    
+    for(p = points) {	
+        if(region_type == "square") {
+            offseted_region(p)
+                square(region_size, center = true);
+        }
+        else {
+            offseted_region(p)
+                circle(half_region_size);
         }
     }
 }
