@@ -1,13 +1,13 @@
 # sf_solidify
 
-It solidifies two square surfaces, described as a set of points `[x, y, z]`. 
+It solidifies two square surfaces, described as a list of points `[x, y, z]`. 
 
 **Since:** 2.3
 
 ## Parameters
 
-- `surface1` : A list of numbers (0 ~ 255).
-- `surface1` : The thickness of the model.
+- `surface1` : A list of points `[x, y, z]`.
+- `surface2` : A list of points `[x, y, z]`.
 - `slicing` : Given a rectangle, we have two ways to slice it into two triangles. Using this parameter to determine the way you want. It accepts `"SLASH"` (default) and `"BACK_SLASH"`.
 
 ## Examples

@@ -1,10 +1,10 @@
 # function_grapher
 
-Given a set of points `[x, y, f(x, y)]` where `f(x, y)` is a mathematics function, the `function_grapher` module can create the graph of `f(x, y)`.
+Given a list of points `[x, y, f(x, y)]` where `f(x, y)` is a mathematics function, the `function_grapher` module can create the graph of `f(x, y)`.
 
 ## Parameters
 
-- `points` : A set of points `[x, y, f(x, y)]`. See examples below.
+- `points` : A list of points `[x, y, f(x, y)]`. See examples below.
 - `thickness` : The face or line thickness.
 - `style` : The style of the graph. It accepts `"FACES"`, `"LINES"`, `"HULL_FACES"` and `"HULL_LINES"`. The default value is `"FACES"` which simply takes `f(x, y) - thickness` for each point to build a bottom. It may cause thickness problems when slopes is high. The `"HULL_FACES"` value can solve the problem but is slow. When assigning `"LINES"`, it uses lines to connect points. The `"HULL_LINES"` is very very slow; however, the model might look smoother if you have a small `$fn`.
 - `slicing` : Given a rectangle, we have two ways to slice it into two triangles. Using this parameter to determine the way you want. It accepts `"SLASH"` (default) and `"BACK_SLASH"`.
