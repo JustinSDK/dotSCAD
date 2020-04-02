@@ -12,13 +12,14 @@ use <__comm__/__angy_angz.scad>;
 
 // slow but workable
 
-module voronoi3d(points, space_size = "auto", spacing = 1) {
+module voronoi3d(points, spacing = 1) {
     xs = [for(p = points) p[0]];
     ys = [for(p = points) abs(p[1])];
     zs = [for(p = points) abs(p[2])];
 
     space_size = max([max(xs) -  min(xs), max(ys) -  min(ys), max(zs) -  min(zs)]);    
     half_space_size = 0.5 * space_size; 
+    double_space_size = space_size * 2;
     offset_leng = spacing * 0.5 + half_space_size;
 
     function normalize(v) = v / norm(v);
@@ -31,7 +32,7 @@ module voronoi3d(points, space_size = "auto", spacing = 1) {
 
                 translate((pt + p) / 2 - normalize(v) * offset_leng)
                 rotate([0, -ryz[0], ryz[1]]) 
-                    cube([space_size, space_size * 2, space_size * 2], center = true); 
+                    cube([space_size, double_space_size, double_space_size], center = true); 
             }
         }
     }    
