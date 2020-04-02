@@ -1,6 +1,6 @@
 use <hull_polyline2d.scad>;
 use <shape_square.scad>;
-use <experimental/voronoi2d_cells.scad>;
+use <experimental/voronoi_cells.scad>;
 
 xs1 = rands(-20, 20, 15);
 ys1 = rands(-20, 20, 15);
@@ -16,7 +16,7 @@ function default_region_size(points) =
 size = default_region_size(points);  
 region_shape = shape_square(size, corner_r = size / 10);
 
-cells = voronoi2d_cells(points, region_shape);
+cells = voronoi_cells(points, region_shape);
 for(i = [0:len(points) - 1]) {
     pt = points[i];
     cell = cells[i];

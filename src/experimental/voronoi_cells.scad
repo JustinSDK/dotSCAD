@@ -2,7 +2,7 @@ use <experimental/_impl/_voronoi2d_cells_impl.scad>;
 use <experimental/convex_intersection_for.scad>;
 use <shape_square.scad>;
 
-function voronoi2d_cells(points, region_shape) = 
+function voronoi_cells(points, region_shape) = 
     let(
         size = _default_region_size(points),
         shape = is_undef(region_shape) ? shape_square(size) : region_shape,

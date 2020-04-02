@@ -2,7 +2,7 @@ use <experimental/_impl/_voronoi2d_lines_impl.scad>;
 use <experimental/tri_delaunay.scad>;
 use <experimental/tri_circumcircle.scad>;
 
-function voronoi2d_lines(points) = 
+function voronoi_lines(points) = 
     let(
         tris = [
             for(idxes = tri_delaunay(points))
