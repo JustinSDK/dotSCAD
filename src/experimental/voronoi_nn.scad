@@ -3,20 +3,29 @@ module voronoi_nn(size, cell_w, seed, spacing = 1, r = 0, delta = 0, chamfer = f
 
     function _lookup_noise_table(i) = _noise_table[i % 256];
 
-    // 25-nearest-neighbor 
-    function _neighbors(fcord, seed, cell_w) = [
-        for(y = [-2:2])
-            for(x = [-2:2])
-            let(
-                nx = fcord[0] + x,
-                ny = fcord[1] + y,
-                sd_base = abs(nx + ny * cell_w),
-                sd1 = _lookup_noise_table(seed + sd_base),
-                sd2 = _lookup_noise_table(sd1 * 255 + sd_base),
-                nbr = [(nx + sd1) * cell_w, (ny + sd2) * cell_w]
-            )
-            nbr
-    ];
+    function cell_pt(fcord, seed, x, y) = 
+        let(
+            nx = fcord[0] + x,
+            ny = fcord[1] + y,
+            sd_base = abs(nx + ny * cell_w),
+            sd1 = _lookup_noise_table(seed + sd_base),
+            sd2 = _lookup_noise_table(sd1 * 255 + sd_base)
+        )
+        [(nx + sd1) * cell_w, (ny + sd2) * cell_w];
+
+    // 21-nearest-neighbor 
+    function _neighbors(fcord, seed, cell_w) = 
+        concat(
+            [
+                for(y = [-1:1])
+                    for(x = [-1:1])
+                        cell_pt(fcord, seed, x, y)
+            ],
+            [for(x = [-1:1]) cell_pt(fcord, seed, x, -2)],
+            [for(x = [-1:1]) cell_pt(fcord, seed, x, 2)],
+            [for(y = [-1:1]) cell_pt(fcord, seed, -2, y)],
+            [for(y = [-1:1]) cell_pt(fcord, seed, 2, y)]
+        );
 
     region_size = cell_w * 3;
     half_region_size = 0.5 * region_size; 
@@ -43,10 +52,10 @@ module voronoi_nn(size, cell_w, seed, spacing = 1, r = 0, delta = 0, chamfer = f
                 sd, 
                 cell_w
             ),
-            p = nbrs[12],
+            p = nbrs[4],
             points = concat(
-                [for(i = [0:11]) nbrs[i]], 
-                [for(i = [13:24]) nbrs[i]]
+                [for(i = [0:3]) nbrs[i]], 
+                [for(i = [5:len(nbrs) - 1]) nbrs[i]]
             )
         )
         [p, points] 
