@@ -1,7 +1,7 @@
 use <hull_polyline2d.scad>;
 use <util/rand.scad>;
 use <experimental/nz_perlin2.scad>;
-use <experimental/contours.scad>;
+use <contours.scad>;
 
 seed = rand(0, 256);
 points = [
