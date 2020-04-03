@@ -1,6 +1,6 @@
 use <util/rand.scad>;
 use <function_grapher.scad>;
-use <experimental/nz_perlin2s.scad>;
+use <noise/nz_perlin2s.scad>;
 
 module demo1() {
     points = [

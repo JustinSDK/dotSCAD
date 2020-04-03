@@ -1,6 +1,6 @@
 use <util/rand.scad>;
-use <experimental/nz_perlin2s.scad>;
-use <experimental/sf_solidify.scad>;
+use <noise/nz_perlin2s.scad>;
+use <surface/sf_solidify.scad>;
 use <ptf/ptf_bend.scad>;
 use <util/slice.scad>;
 

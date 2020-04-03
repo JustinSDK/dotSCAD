@@ -1,4 +1,4 @@
-use <experimental/nz_worley3.scad>;
+use <noise/nz_worley3.scad>;
 
 size = [20, 20, 20];
 cell_w = 10;

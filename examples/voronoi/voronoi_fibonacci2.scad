@@ -1,4 +1,4 @@
-use <experimental/nz_cells.scad>;
+use <noise/nz_cell.scad>;
 use <golden_spiral.scad>;
 use <function_grapher.scad>;
 use <ptf/ptf_rotate.scad>;
@@ -31,7 +31,7 @@ noised = [
     for(y = [-half_size[1]:pixel_step:half_size[1]]) 
         [
             for(x = [-half_size[0]:pixel_step:half_size[0]]) 
-            let(n = nz_cells(cells, [x, y] * height_factor) )
+            let(n = nz_cell(cells, [x, y] * height_factor) )
                 [x, y, n < half_pixel_step ? half_pixel_step : n]
         ]
 ];

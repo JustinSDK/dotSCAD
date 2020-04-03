@@ -1,4 +1,4 @@
-use <experimental/nz_cell.scad>;
+use <noise/nz_cell.scad>;
 use <golden_spiral.scad>;
 
 size = [100, 50];

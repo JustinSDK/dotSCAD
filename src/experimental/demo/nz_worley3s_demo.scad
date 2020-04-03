@@ -1,4 +1,4 @@
-use <experimental/nz_worley3s.scad>;
+use <noise/nz_worley3s.scad>;
 use <util/dedup.scad>;
 
 size = [20, 20, 20];

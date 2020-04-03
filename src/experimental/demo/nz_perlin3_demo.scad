@@ -1,6 +1,6 @@
 use <util/rand.scad>;
-use <experimental/nz_perlin2s.scad>;
-use <experimental/nz_perlin3s.scad>;
+use <noise/nz_perlin2s.scad>;
+use <noise/nz_perlin3s.scad>;
 
 module demo1() {
     for(z = [0:.2:5]) {

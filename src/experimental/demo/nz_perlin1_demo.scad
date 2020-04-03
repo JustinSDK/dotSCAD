@@ -1,8 +1,8 @@
 use <hull_polyline2d.scad>;
 use <util/rand.scad>;
 use <experimental/zip.scad>;
-use <experimental/nz_perlin1.scad>;
-use <experimental/nz_perlin1s.scad>;
+use <noise/nz_perlin1.scad>;
+use <noise/nz_perlin1s.scad>;
 
 seed = rand();
 hull_polyline2d(
