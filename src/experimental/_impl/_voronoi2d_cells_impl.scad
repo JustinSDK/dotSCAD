@@ -1,4 +1,3 @@
-
 use <ptf/ptf_rotate.scad>;
 
 function _default_region_size(points) = 
@@ -8,8 +7,7 @@ function _default_region_size(points) =
     )
     max([(max(xs) -  min(xs) / 2), (max(ys) -  min(ys)) / 2]);
 
-function _cells_lt_before_intersection(shape, size, points, pt) =
-    let(half_region_size = 0.5 * size)
+function _cells_lt_before_intersection(shape, size, points, pt, half_region_size) =
     [
         for(p = points)
             if(pt != p)
