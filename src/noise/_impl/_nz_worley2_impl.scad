@@ -1,4 +1,4 @@
-use <experimental/_impl/_nz_worley_comm.scad>;
+use <noise/_impl/_nz_worley_comm.scad>;
 use <util/sort.scad>;
 
 function _neighbors(fcord, seed, cell_w) = [

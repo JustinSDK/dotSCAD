@@ -1,4 +1,4 @@
-use <experimental/_impl/_pnoise_comm.scad>;
+use <noise/_impl/_pnoise_comm.scad>;
 
 function _pnoise2_grad2(hashvalue, x, y) = 
     let(case = hashvalue % 8)
