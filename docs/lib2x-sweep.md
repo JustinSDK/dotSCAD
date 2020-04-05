@@ -31,6 +31,8 @@ The indexes of the above triangles is:
 		[0, 5, 3]
 	]
 
+**Since:** 2.3
+
 ## Parameters
 
 - `sections` : A list of cross-sections. Each cross-section is represented by points. See the example below.
