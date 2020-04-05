@@ -190,8 +190,8 @@ See [examples](examples).
 - [surface/sf_solidify](https://openhome.cc/eGossip/OpenSCAD/lib2x-sf_solidify.html)
 
 ### Noise (2.3 Preview)
-- noise/nz_perlin1
-- noise/nz_perlin1s
+- [noise/nz_perlin1](https://openhome.cc/eGossip/OpenSCAD/lib2x-nz_perlin1.html)
+- [noise/nz_perlin1s](https://openhome.cc/eGossip/OpenSCAD/lib2x-nz_perlin1s.html)
 - noise/nz_perlin2
 - noise/nz_perlin2s
 - noise/nz_perlin3
