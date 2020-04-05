@@ -57,7 +57,7 @@ See [examples](examples).
 - [function_grapher](https://openhome.cc/eGossip/OpenSCAD/lib2x-function_grapher.html)
 - [polysections](https://openhome.cc/eGossip/OpenSCAD/lib2x-polysections.html) (It'll be deprecated from 2.3. Use `sweep` instead.)
 - [sweep](https://openhome.cc/eGossip/OpenSCAD/lib2x-sweep.html) (2.3 Preview)
-- loft (2.3 Preview)
+- [loft](https://openhome.cc/eGossip/OpenSCAD/lib2x-loft.html) (2.3 Preview)
 - [starburst](https://openhome.cc/eGossip/OpenSCAD/lib2x-starburst.html)
 - [voronoi3d](https://openhome.cc/eGossip/OpenSCAD/lib2x-voronoi3d.html)
 
