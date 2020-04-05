@@ -1,7 +1,7 @@
 use <golden_spiral.scad>;
 use <ptf/ptf_rotate.scad>;
 use <hollow_out.scad>;
-use <experimental/voronoi2d_cells.scad>;
+use <experimental/voronoi_cells.scad>;
 
 spirals = 2;     // [2:]
 line_thickness = .5;
