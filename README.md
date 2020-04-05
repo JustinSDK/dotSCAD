@@ -82,7 +82,7 @@ See [examples](examples).
 - [bezier_smooth](https://openhome.cc/eGossip/OpenSCAD/lib2x-bezier_smooth.html)	
 - [midpt_smooth](https://openhome.cc/eGossip/OpenSCAD/lib2x-midpt_smooth.html)
 - [in_polyline](https://openhome.cc/eGossip/OpenSCAD/lib2x-in_polyline.html)
-- contours (2.3 Preview)
+- [contours](https://openhome.cc/eGossip/OpenSCAD/lib2x-contours.html) (2.3 Preview)
 	
 ### Path
 - [arc_path](https://openhome.cc/eGossip/OpenSCAD/lib2x-arc_path.html)
