@@ -1,4 +1,3 @@
-use <surface/_impl/_sf_square_surfaces.scad>;
 /**
 * sf_bend.scad
 *
@@ -9,6 +8,7 @@ use <surface/_impl/_sf_square_surfaces.scad>;
 *
 **/ 
 
+use <surface/_impl/_sf_square_surfaces.scad>;
 use <surface/sf_solidify.scad>;
 use <ptf/ptf_bend.scad>;
 
