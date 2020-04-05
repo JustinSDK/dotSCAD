@@ -1,6 +1,7 @@
 use <sweep.scad>;
    
 module loft(sections, slices = 1) {
+    function gcd(m, n) = n == 0 ? m : gcd(n, m % n);
     function lcm(m, n) = m * n / gcd(m, n);
 
     function inter_pts(p1, p2, n) =
