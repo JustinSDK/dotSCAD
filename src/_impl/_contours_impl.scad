@@ -214,19 +214,19 @@ function _case2202_isobands(cell_pts, lower, upper) = [
 
 function _case2022_isobands(cell_pts, lower, upper) = [
     [
-        interpolated_pt(cell_pts[0], cell_pts[1], upper),
         interpolated_pt(cell_pts[1], cell_pts[2], upper),
-        interpolated_pt(cell_pts[1], cell_pts[2], lower),
-        interpolated_pt(cell_pts[0], cell_pts[1], lower)
+        interpolated_pt(cell_pts[2], cell_pts[3], upper),
+        interpolated_pt(cell_pts[2], cell_pts[3], lower),
+        interpolated_pt(cell_pts[1], cell_pts[2], lower)
     ]
 ];
     
 function _case0222_isobands(cell_pts, lower, upper) = [
     [
+        interpolated_pt(cell_pts[0], cell_pts[1], upper),
         interpolated_pt(cell_pts[1], cell_pts[2], upper),
-        interpolated_pt(cell_pts[2], cell_pts[3], upper),
-        interpolated_pt(cell_pts[2], cell_pts[3], lower),
-        interpolated_pt(cell_pts[1], cell_pts[2], lower)
+        interpolated_pt(cell_pts[1], cell_pts[2], lower),
+        interpolated_pt(cell_pts[0], cell_pts[1], lower)
     ]
 ];
     
