@@ -2,7 +2,7 @@ use <noise/nz_worley3s.scad>;
 use <util/dedup.scad>;
 
 size = [20, 20, 20];
-cell_w = 10;
+tile_w = 10;
 dist = "euclidean"; // [euclidean, manhattan, chebyshev, border] 
 seed = 51;
 
@@ -13,7 +13,7 @@ points = [
                 [x, y, z]
 ];
 
-cells = nz_worley3s(points, seed, cell_w, dist);
+cells = nz_worley3s(points, seed, tile_w, dist);
 
 max_dist = max([for(c = cells) c[3]]);
 for(i = [0:len(cells) - 1]) {

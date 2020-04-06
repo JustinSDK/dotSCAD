@@ -3,7 +3,7 @@ use <sweep.scad>;
 
 radius = 25;
 a_step = 5;
-cell_w = 10;
+tile_w = 10;
 dist = "euclidean"; // [euclidean, manhattan, chebyshev, "border"] 
 noise_style = "CELL_R";    // [CELL_R, NOISE]
 noise_factor = 1;
@@ -34,7 +34,7 @@ module worley_noise_ball() {
             nz_worley3s(
                 [for(theta_tau = row) to_xyz([radius, theta_tau[0], theta_tau[1]])], 
                 seed, 
-                cell_w, 
+                tile_w, 
                 dist
             )
     ];

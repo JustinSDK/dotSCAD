@@ -2,7 +2,7 @@ use <noise/nz_worley2.scad>;
 use <util/dedup.scad>;
 
 size = [100, 50];
-cell_w = 10;
+tile_w = 10;
 dist = "euclidean"; // [euclidean, manhattan, chebyshev, border] 
 seed = 51;
 
@@ -12,7 +12,7 @@ points = [
             [x, y]
 ];
 
-cells = [for(p = points) nz_worley2(p[0], p[1], seed, cell_w, dist)];
+cells = [for(p = points) nz_worley2(p[0], p[1], seed, tile_w, dist)];
 
 max_dist = max([for(c = cells) c[2]]);
 for(i = [0:len(cells) - 1]) {
