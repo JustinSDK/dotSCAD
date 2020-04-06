@@ -192,8 +192,8 @@ See [examples](examples).
 ### Noise (2.3 Preview)
 - [noise/nz_perlin1](https://openhome.cc/eGossip/OpenSCAD/lib2x-nz_perlin1.html)
 - [noise/nz_perlin1s](https://openhome.cc/eGossip/OpenSCAD/lib2x-nz_perlin1s.html)
-- noise/nz_perlin2
-- noise/nz_perlin2s
+- [noise/nz_perlin2](https://openhome.cc/eGossip/OpenSCAD/lib2x-nz_perlin2.html)
+- [noise/nz_perlin2s](https://openhome.cc/eGossip/OpenSCAD/lib2x-nz_perlin2s.html)
 - noise/nz_perlin3
 - noise/nz_perlin3s
 - noise/nz_worley1
