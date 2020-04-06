@@ -1,25 +1,20 @@
-use <util/rand.scad>;
-use <noise/nz_perlin2s.scad>;
-use <noise/nz_perlin3s.scad>;
+# nz_perlin3s
 
-module demo1() {
-    for(z = [0:.2:5]) {
-        points = [
-            for(y = [0:.2:5])
-                for(x = [0:.2:5])
-                    [x, y, z]
-        ];    
-        noise = nz_perlin3s(points, 3);
-        for(i = [0:len(points) - 1]) {
-            alpha = abs(noise[i] + .5);            
-            color([.75, .75, .75, alpha < 0 ? 0 : alpha > 1 ? 1 : alpha])
-            translate(points[i])
-                cube(.2);
-        }
-    }
-}
+Returns 3D [Perlin noise](https://en.wikipedia.org/wiki/Perlin_noise) values at (x, y, z) coordinates.
 
-module demo2() {
+**Since:** 2.3
+
+## Parameters
+
+- `points` : A list of `[x, y, z]` coordinates.
+- `seed` : The random seed. If it's ignored, a randomized value will be used.
+
+## Examples
+
+    use <util/rand.scad>;
+    use <noise/nz_perlin2s.scad>;
+    use <noise/nz_perlin3s.scad>;
+
     points = [
         for(y = [0:.2:10])
             [
@@ -27,9 +22,9 @@ module demo2() {
                 [x, y]
             ]
     ];
-    
+
     seed = rand(0, 256);
-    
+
     points_with_h = [
             for(ri = [0:len(points) - 1])
                 let(ns = nz_perlin2s(points[ri], seed))
@@ -38,7 +33,7 @@ module demo2() {
                             [points[ri][ci][0], points[ri][ci][1], ns[ci] + 1]
                     ]
         ];
-    
+
     h_scale = 1.5;
     for(row = points_with_h) {        
         for(i = [0:len(row) - 1]) {
@@ -50,21 +45,17 @@ module demo2() {
             for(j = [0:len(pts) - 1]) {
                 if(noise[j] > 0) {
                     color(
-                        pts[j][2] < 1.25 ? "green" : 
-                        pts[j][2] < 1.75 ? "Olive" : "white")
+                        pts[j][2] < 1 ? "green" : 
+                        pts[j][2] < 1.5 ? "Olive" : "white")
                     translate(pts[j])
                         cube(.2);
                 }           
             }
         }
     }
-    
+
     color("LimeGreen")
     linear_extrude(.2)
         square(10);
-}
 
-demo1();
-
-translate([8, 0]) 
-    demo2();
+![nz_perlin3s](images/lib2x-nz_perlin3s-1.JPG)
