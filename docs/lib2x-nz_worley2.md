@@ -2,7 +2,7 @@
 
 Returns the 2D [Worley noise](https://en.wikipedia.org/wiki/Worley_noise) value `[cell_x, cell_y, noise]` at the (x, y) coordinate. 
 
-It divides the space into tiles. The nucleus of each cell is randomly placed in a tile. 
+It divides the space into grids. The nucleus of each cell is randomly placed in a grid. 
 
 ![nz_worley2](images/lib2x-nz_worley2-1.JPG)
 
@@ -13,7 +13,7 @@ It divides the space into tiles. The nucleus of each cell is randomly placed in 
 - `x` : The x coordinate.
 - `y` : The y coordinate.
 - `seed` : The random seed.
-- `tile_w` : The tile width. Default to 10. Smaller `tile_w` makes more cells.
+- `grid_w` : The grid width. Default to 10. Smaller `grid_w` makes more cells.
 - `dist` : The noise value of each point is based on its distance to other cells. Different distance strategies make different noises. The `dist` parameter accepts `"euclidean"`, `"manhattan"`, `"chebyshev"` or `"border"`.
 
 ## Examples
@@ -22,7 +22,7 @@ It divides the space into tiles. The nucleus of each cell is randomly placed in 
     use <util/dedup.scad>;
 
     size = [100, 50];
-    tile_w = 10;
+    grid_w = 10;
     dist = "euclidean"; // [euclidean, manhattan, chebyshev, border] 
     seed = 51;
 
@@ -32,7 +32,7 @@ It divides the space into tiles. The nucleus of each cell is randomly placed in 
                 [x, y]
     ];
 
-    cells = [for(p = points) nz_worley2(p[0], p[1], seed, tile_w, dist)];
+    cells = [for(p = points) nz_worley2(p[0], p[1], seed, grid_w, dist)];
 
     max_dist = max([for(c = cells) c[2]]);
     for(i = [0:len(cells) - 1]) {
