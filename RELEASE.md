@@ -13,7 +13,7 @@ New modules and functions:
 - 3D Module
   - [sweep](https://openhome.cc/eGossip/OpenSCAD/lib2x-sweep.html)
   - [loft](https://openhome.cc/eGossip/OpenSCAD/lib2x-loft.html)
-- 2D/3D Function
+- 2D Function
   - [contours](https://openhome.cc/eGossip/OpenSCAD/lib2x-contours.html)
 - Path
   - [shape_circle](https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_circle.html)
