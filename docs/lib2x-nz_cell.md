@@ -43,6 +43,6 @@ points, p, dist
 
 ![nz_cell](images/lib2x-nz_cell-1.JPG)
 
-You can build a model such as:
+You can build a model such as [voronoi_fibonacci2](https://github.com/JustinSDK/dotSCAD/blob/master/examples/voronoi/voronoi_fibonacci2.scad):
 
 ![nz_cell](images/lib2x-nz_cell-2.JPG)
