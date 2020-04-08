@@ -103,7 +103,7 @@ See [examples](examples).
 - [shape_taiwan](https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_taiwan.html)
 - [shape_arc](https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_arc.html)
 - [shape_pie](https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_pie.html)
-- [shape_circle](https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_circle.html) (2.3 Preview)
+- [shape_circle](https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_circle.html)
 - [shape_ellipse](https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_ellipse.html)
 - [shape_square](https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_square.html)
 - [shape_trapezium](https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_trapezium.html)
