@@ -71,6 +71,7 @@ See [examples](examples).
 - [bijection_offset](https://openhome.cc/eGossip/OpenSCAD/lib2x-bijection_offset.html)	
 - [trim_shape](https://openhome.cc/eGossip/OpenSCAD/lib2x-trim_shape.html)
 - [triangulate](https://openhome.cc/eGossip/OpenSCAD/lib2x-triangulate.html)
+- [contours](https://openhome.cc/eGossip/OpenSCAD/lib2x-contours.html)
 
 ### 2D/3D Function
 - [cross_sections](https://openhome.cc/eGossip/OpenSCAD/lib2x-cross_sections.html)
@@ -80,8 +81,7 @@ See [examples](examples).
 - [bezier_smooth](https://openhome.cc/eGossip/OpenSCAD/lib2x-bezier_smooth.html)	
 - [midpt_smooth](https://openhome.cc/eGossip/OpenSCAD/lib2x-midpt_smooth.html)
 - [in_polyline](https://openhome.cc/eGossip/OpenSCAD/lib2x-in_polyline.html)
-- [contours](https://openhome.cc/eGossip/OpenSCAD/lib2x-contours.html)
-	
+
 ### Path
 - [arc_path](https://openhome.cc/eGossip/OpenSCAD/lib2x-arc_path.html)
 - [bspline_curve](https://openhome.cc/eGossip/OpenSCAD/lib2x-bspline_curve.html)
