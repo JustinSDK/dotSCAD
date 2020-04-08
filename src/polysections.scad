@@ -11,6 +11,7 @@
 use <util/reverse.scad>;
 
 module polysections(sections, triangles = "SOLID") {
+    echo("<b><i>polysections</i> is deprecated: use <i>sweep</i> instead.</b>");
 
     function side_indexes(sects, begin_idx = 0) = 
         let(       

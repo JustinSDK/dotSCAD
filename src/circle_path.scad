@@ -12,6 +12,7 @@ use <__comm__/__frags.scad>;
 
 function circle_path(radius, n) =
     let(
+        _ = echo("<b><i>circle_path</i> is deprecated: use <i>shape_circle</i> instead.</b>"),
         _frags = __frags(radius),
         step_a = 360 / _frags,
         end_a = 360 - step_a * ((is_undef(n) || n > _frags) ? 1 : _frags - n + 1)

@@ -10,4 +10,6 @@
 
 use <_impl/_rotate_p_impl.scad>;
 
-function rotate_p(point, a, v) = _rotate_p_impl(point, a, v);
+function rotate_p(point, a, v) = 
+    let(_ = echo("<b><i>rotate_p</i> is deprecated: use <i>ptf_rotate</i> instead.</b>"))
+    _rotate_p_impl(point, a, v);
