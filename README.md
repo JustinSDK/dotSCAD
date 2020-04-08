@@ -1,4 +1,4 @@
-# dotSCAD 2.2.1
+# dotSCAD 2.3
 
 > **Reduce the burden of mathematics when playing OpenSCAD.**
 
@@ -55,9 +55,8 @@ See [examples](examples).
 - [polyline3d](https://openhome.cc/eGossip/OpenSCAD/lib2x-polyline3d.html)
 - [hull_polyline3d](https://openhome.cc/eGossip/OpenSCAD/lib2x-hull_polyline3d.html)
 - [function_grapher](https://openhome.cc/eGossip/OpenSCAD/lib2x-function_grapher.html)
-- [polysections](https://openhome.cc/eGossip/OpenSCAD/lib2x-polysections.html) (It'll be deprecated from 2.3. Use `sweep` instead.)
-- [sweep](https://openhome.cc/eGossip/OpenSCAD/lib2x-sweep.html) (2.3 Preview)
-- [loft](https://openhome.cc/eGossip/OpenSCAD/lib2x-loft.html) (2.3 Preview)
+- [sweep](https://openhome.cc/eGossip/OpenSCAD/lib2x-sweep.html)
+- [loft](https://openhome.cc/eGossip/OpenSCAD/lib2x-loft.html)
 - [starburst](https://openhome.cc/eGossip/OpenSCAD/lib2x-starburst.html)
 - [voronoi3d](https://openhome.cc/eGossip/OpenSCAD/lib2x-voronoi3d.html)
 
@@ -74,7 +73,6 @@ See [examples](examples).
 - [triangulate](https://openhome.cc/eGossip/OpenSCAD/lib2x-triangulate.html)
 
 ### 2D/3D Function
-- [rotate_p](https://openhome.cc/eGossip/OpenSCAD/lib2x-rotate_p.html) (It'll be deprecated from 2.3. Use `ptf/ptf_rotate` instead.)
 - [cross_sections](https://openhome.cc/eGossip/OpenSCAD/lib2x-cross_sections.html)
 - [paths2sections](https://openhome.cc/eGossip/OpenSCAD/lib2x-paths2sections.html)
 - [path_scaling_sections](https://openhome.cc/eGossip/OpenSCAD/lib2x-path_scaling_sections.html)
@@ -82,11 +80,10 @@ See [examples](examples).
 - [bezier_smooth](https://openhome.cc/eGossip/OpenSCAD/lib2x-bezier_smooth.html)	
 - [midpt_smooth](https://openhome.cc/eGossip/OpenSCAD/lib2x-midpt_smooth.html)
 - [in_polyline](https://openhome.cc/eGossip/OpenSCAD/lib2x-in_polyline.html)
-- [contours](https://openhome.cc/eGossip/OpenSCAD/lib2x-contours.html) (2.3 Preview)
+- [contours](https://openhome.cc/eGossip/OpenSCAD/lib2x-contours.html)
 	
 ### Path
 - [arc_path](https://openhome.cc/eGossip/OpenSCAD/lib2x-arc_path.html)
-- [circle_path](https://openhome.cc/eGossip/OpenSCAD/lib2x-circle_path.html) (It'll be deprecated from 2.3. Use `shape_circle` instead.)
 - [bspline_curve](https://openhome.cc/eGossip/OpenSCAD/lib2x-bspline_curve.html)
 - [bezier_curve](https://openhome.cc/eGossip/OpenSCAD/lib2x-bezier_curve.html)
 - [helix](https://openhome.cc/eGossip/OpenSCAD/lib2x-helix.html)
@@ -134,10 +131,10 @@ See [examples](examples).
 - [util/sort](https://openhome.cc/eGossip/OpenSCAD/lib2x-sort.html)
 - [util/rand](https://openhome.cc/eGossip/OpenSCAD/lib2x-rand.html)
 - [util/fibseq](https://openhome.cc/eGossip/OpenSCAD/lib2x-fibseq.html)	
-- [util/bsearch](https://openhome.cc/eGossip/OpenSCAD/lib2x-bsearch.html) (2.3 Preview)	
-- [util/has](https://openhome.cc/eGossip/OpenSCAD/lib2x-has.html) (2.3 Preview)
-- [util/dedup](https://openhome.cc/eGossip/OpenSCAD/lib2x-dedup.html) (2.3 Preview)
-- [util/flat](https://openhome.cc/eGossip/OpenSCAD/lib2x-flat.html) (2.3 Preview)
+- [util/bsearch](https://openhome.cc/eGossip/OpenSCAD/lib2x-bsearch.html)	
+- [util/has](https://openhome.cc/eGossip/OpenSCAD/lib2x-has.html)
+- [util/dedup](https://openhome.cc/eGossip/OpenSCAD/lib2x-dedup.html)
+- [util/flat](https://openhome.cc/eGossip/OpenSCAD/lib2x-flat.html)
 
 ### Matrix
 - [matrix/m_cumulate](https://openhome.cc/eGossip/OpenSCAD/lib2x-m_cumulate.html)	
@@ -147,7 +144,7 @@ See [examples](examples).
 - [matrix/m_mirror](https://openhome.cc/eGossip/OpenSCAD/lib2x-m_mirror.html)
 - [matrix/m_shearing](https://openhome.cc/eGossip/OpenSCAD/lib2x-m_shearing.html)
 
-### Point Transformation (2.3 Preview)
+### Point Transformation
 - [ptf/ptf_rotate](https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_rotate.html)
 - [ptf/ptf_x_twist](https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_x_twist.html)
 - [ptf/ptf_y_twist](https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_y_twist.html)
@@ -181,7 +178,7 @@ See [examples](examples).
 - [part/cone](https://openhome.cc/eGossip/OpenSCAD/lib2x-cone.html)
 - [part/joint_T](https://openhome.cc/eGossip/OpenSCAD/lib2x-joint_T.html)
 
-### Surface (2.3 Preview)
+### Surface
 - [surface/sf_square](https://openhome.cc/eGossip/OpenSCAD/lib2x-sf_square.html)
 - [surface/sf_bend](https://openhome.cc/eGossip/OpenSCAD/lib2x-sf_bend.html)
 - [surface/sf_ring](https://openhome.cc/eGossip/OpenSCAD/lib2x-sf_ring.html)
@@ -189,7 +186,7 @@ See [examples](examples).
 - [surface/sf_torus](https://openhome.cc/eGossip/OpenSCAD/lib2x-sf_torus.html)
 - [surface/sf_solidify](https://openhome.cc/eGossip/OpenSCAD/lib2x-sf_solidify.html)
 
-### Noise (2.3 Preview)
+### Noise
 - [noise/nz_perlin1](https://openhome.cc/eGossip/OpenSCAD/lib2x-nz_perlin1.html)
 - [noise/nz_perlin1s](https://openhome.cc/eGossip/OpenSCAD/lib2x-nz_perlin1s.html)
 - [noise/nz_perlin2](https://openhome.cc/eGossip/OpenSCAD/lib2x-nz_perlin2.html)
