@@ -1,5 +1,56 @@
 > Version numbers are based on [Semantic Versioning](https://semver.org/).
 
+# v2.3
+Bugfixes:
+- `helix_extrude`: wrong orientation when `CLK`.
+
+Deprecated:
+- polysections: use [sweep](https://openhome.cc/eGossip/OpenSCAD/lib2x-sweep.html) instead.
+- rotate_p: use [ptf_rotate](https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_rotate.html) instead.
+- circle_path: use [shape_circle](https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_circle.html) instead.
+
+New modules and functions:
+- 3D Module
+  - [sweep](https://openhome.cc/eGossip/OpenSCAD/lib2x-sweep.html)
+  - [loft](https://openhome.cc/eGossip/OpenSCAD/lib2x-loft.html)
+- 2D/3D Function
+  - [contours](https://openhome.cc/eGossip/OpenSCAD/lib2x-contours.html)
+- Path
+  - [shape_circle](https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_circle.html)
+- Util
+  - [util/bsearch](https://openhome.cc/eGossip/OpenSCAD/lib2x-bsearch.html)
+  - [util/has](https://openhome.cc/eGossip/OpenSCAD/lib2x-has.html)
+  - [util/dedup](https://openhome.cc/eGossip/OpenSCAD/lib2x-dedup.html)
+  - [util/flat](https://openhome.cc/eGossip/OpenSCAD/lib2x-flat.html)
+- Point transformation
+  - [ptf/ptf_rotate](https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_rotate.html)
+  - [ptf/ptf_x_twist](https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_x_twist.html)
+  - [ptf/ptf_y_twist](https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_y_twist.html)
+  - [ptf/ptf_circle](https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_circle.html)
+  - [ptf/ptf_bend](https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_bend.html)
+  - [ptf/ptf_ring](https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_ring.html)
+  - [ptf/ptf_sphere](https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_sphere.html)
+  - [ptf/ptf_torus](https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_torus.html)
+- Surface
+  - [surface/sf_square](https://openhome.cc/eGossip/OpenSCAD/lib2x-sf_square.html)
+  - [surface/sf_bend](https://openhome.cc/eGossip/OpenSCAD/lib2x-sf_bend.html)
+  - [surface/sf_ring](https://openhome.cc/eGossip/OpenSCAD/lib2x-sf_ring.html)
+  - [surface/sf_sphere](https://openhome.cc/eGossip/OpenSCAD/lib2x-sf_sphere.html)
+  - [surface/sf_torus](https://openhome.cc/eGossip/OpenSCAD/lib2x-sf_torus.html)
+  - [surface/sf_solidify](https://openhome.cc/eGossip/OpenSCAD/lib2x-sf_solidify.html)
+- Noise
+  - [noise/nz_perlin1](https://openhome.cc/eGossip/OpenSCAD/lib2x-nz_perlin1.html)
+  - [noise/nz_perlin1s](https://openhome.cc/eGossip/OpenSCAD/lib2x-nz_perlin1s.html)
+  - [noise/nz_perlin2](https://openhome.cc/eGossip/OpenSCAD/lib2x-nz_perlin2.html)
+  - [noise/nz_perlin2s](https://openhome.cc/eGossip/OpenSCAD/lib2x-nz_perlin2s.html)
+  - [noise/nz_perlin3](https://openhome.cc/eGossip/OpenSCAD/lib2x-nz_perlin3.html)
+  - [noise/nz_perlin3s](https://openhome.cc/eGossip/OpenSCAD/lib2x-nz_perlin3s.html)
+  - [noise/nz_worley2](https://openhome.cc/eGossip/OpenSCAD/lib2x-nz_worley2.html)
+  - [noise/nz_worley2s](https://openhome.cc/eGossip/OpenSCAD/lib2x-nz_worley2s.html)
+  - [noise/nz_worley3](https://openhome.cc/eGossip/OpenSCAD/lib2x-nz_worley3.html)
+  - [noise/nz_worley3s](https://openhome.cc/eGossip/OpenSCAD/lib2x-nz_worley3s.html)
+  - [noise/nz_cell](https://openhome.cc/eGossip/OpenSCAD/lib2x-nz_cell.html)
+
 # v2.2.1
 Bugfixes:
 - `util/sort`: z not sorted.
