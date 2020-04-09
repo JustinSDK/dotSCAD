@@ -1,53 +1,21 @@
-use <hull_polyline2d.scad>;
-use <shape_square.scad>;
-use <hollow_out.scad>;
+use <experimental/voronoi_square.scad>;
 use <bend_extrude.scad>;
-use <experimental/voronoi2d_cells.scad>;
+use <arc.scad>;
 
-xy = [100, 40];
-pt_nums = 20;
+size = [300, 120];
+grid_w = 30;
 thickness = 2;
+spacing = 3;
+seed = 5;
+$fn = 24;
 
-voronoi_penholder(xy, pt_nums, thickness);
+color("black")
+bend_extrude(size, thickness = thickness, angle = 360) 
+    voronoi_square(size, grid_w, seed, spacing);
 
-module voronoi_penholder(xy, pt_nums, thickness) {
-    xs1 = rands(0, xy[0], pt_nums);
-    ys1 = rands(0, xy[1], pt_nums);
-    points = [for(i = [0:len(xs1) - 1]) [xs1[i], ys1[i]]];
+r = size[0] / (2 * PI);
+linear_extrude(size[1])
+    arc(radius = r - thickness, angle = [0, 360], width = thickness / 2);
 
-    cpts = concat(
-        [for(p = points) if(p[0] > xy[0] - 10) p + [-xy[0], 0]],
-        points,
-        [for(p = points) if(p[0] < 10) p + [xy[0], 0]]
-    );
-
-    function default_region_size(points) = 
-        let(
-            xs = [for(p = points) p[0]],
-            ys = [for(p = points) abs(p[1])]
-        )
-        max([(max(xs) -  min(xs) / 2), (max(ys) -  min(ys)) / 2]);
-
-    size = default_region_size(cpts);  
-    region_shape = shape_square(size, corner_r = size / 5);
-
-    cells = voronoi2d_cells(cpts, region_shape);
-    bend_extrude(size = [xy[0], xy[1]], thickness = thickness, angle = 360, $fn = 48) 
-    {
-        for(i = [0:len(cpts) - 1]) {
-            cell = cells[i];
-            hull_polyline2d(concat(cell, [cell[0]]), width = thickness);
-            
-        }
-    }
-
-    r = 0.5 * xy[0] / PI;
-
-    linear_extrude(thickness)
-        circle(r, $fn = 48);
-
-    translate([0, 0, xy[1]])    
-    linear_extrude(thickness)
-    hollow_out(shell_thickness = thickness)
-        circle(r, $fn = 48);
-}
+linear_extrude(thickness)    
+    circle(r);    

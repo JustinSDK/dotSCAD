@@ -3,28 +3,32 @@ module voronoi_square(size, grid_w, seed, spacing = 1, r = 0, delta = 0, chamfer
 
     function _lookup_noise_table(i) = _noise_table[i % 256];
 
-    function cell_pt(fcord, seed, x, y) = 
+    function cell_pt(fcord, seed, x, y, gw, gh) = 
         let(
             nx = fcord[0] + x,
             ny = fcord[1] + y,
-            sd_base = abs(nx + ny * grid_w),
+            sd_x = nx < 0 ? nx + gw : 
+                   nx >= gw ? nx % gw : nx,
+            sd_y = ny < 0 ? ny + gh : 
+                   ny >= gh ? ny % gh : ny,                   
+            sd_base = abs(sd_x + sd_y * grid_w),
             sd1 = _lookup_noise_table(seed + sd_base),
             sd2 = _lookup_noise_table(sd1 * 255 + sd_base)
         )
         [(nx + sd1) * grid_w, (ny + sd2) * grid_w];
 
     // 21-nearest-neighbor 
-    function _neighbors(fcord, seed, grid_w) = 
+    function _neighbors(fcord, seed, grid_w, gw, gh) = 
         concat(
             [
                 for(y = [-1:1])
                     for(x = [-1:1])
-                        cell_pt(fcord, seed, x, y)
+                        cell_pt(fcord, seed, x, y, gw, gh)
             ],
-            [for(x = [-1:1]) cell_pt(fcord, seed, x, -2)],
-            [for(x = [-1:1]) cell_pt(fcord, seed, x, 2)],
-            [for(y = [-1:1]) cell_pt(fcord, seed, -2, y)],
-            [for(y = [-1:1]) cell_pt(fcord, seed, 2, y)]
+            [for(x = [-1:1]) cell_pt(fcord, seed, x, -2, gw, gh)],
+            [for(x = [-1:1]) cell_pt(fcord, seed, x, 2, gw, gh)],
+            [for(y = [-1:1]) cell_pt(fcord, seed, -2, y, gw, gh)],
+            [for(y = [-1:1]) cell_pt(fcord, seed, 2, y, gw, gh)]
         );
 
     region_size = grid_w * 3;
@@ -44,13 +48,19 @@ module voronoi_square(size, grid_w, seed, spacing = 1, r = 0, delta = 0, chamfer
     
     sd = is_undef(seed) ? rands(0, 255, 1)[0] : seed; 
 
-    cell_nbrs_lt = [for(cy = [0:grid_w:size[1]]) 
-        for(cx = [0:grid_w:size[0]])
+
+    gw = size[0] / grid_w;
+    gh = size[1] / grid_w;
+
+    cell_nbrs_lt = [for(cy = [-grid_w:grid_w:size[1]]) 
+        for(cx = [-grid_w:grid_w:size[0]])
         let(
             nbrs = _neighbors(
                 [floor(cx / grid_w), floor(cy / grid_w)],
                 sd, 
-                grid_w
+                grid_w,
+                gw, 
+                gh
             ),
             p = nbrs[4],
             points = concat(
