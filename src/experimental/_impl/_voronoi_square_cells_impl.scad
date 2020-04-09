@@ -4,28 +4,32 @@ _noise_table = [0.592157, 0.627451, 0.537255, 0.356863, 0.352941, 0.0588235, 0.5
 
 function _lookup_noise_table(i) = _noise_table[i % 256];
 
-function cell_pt(fcord, grid_w, seed, x, y) = 
+function cell_pt(fcord, grid_w, seed, x, y, gw, gh) = 
     let(
         nx = fcord[0] + x,
         ny = fcord[1] + y,
-        sd_base = abs(nx + ny * grid_w),
+        sd_x = nx < 0 ? nx + gw : 
+                nx >= gw ? nx % gw : nx,
+        sd_y = ny < 0 ? ny + gh : 
+                ny >= gh ? ny % gh : ny,                 
+        sd_base = abs(sd_x + sd_y * grid_w),
         sd1 = _lookup_noise_table(seed + sd_base),
         sd2 = _lookup_noise_table(sd1 * 255 + sd_base)
     )
     [(nx + sd1) * grid_w, (ny + sd2) * grid_w];
 
 // 21-nearest-neighbor 
-function _neighbors(fcord, seed, grid_w) = 
+function _neighbors(fcord, seed, grid_w, gw, gh) = 
     concat(
         [
             for(y = [-1:1])
                 for(x = [-1:1])
-                    cell_pt(fcord, grid_w, seed, x, y)
+                    cell_pt(fcord, grid_w, seed, x, y, gw, gh)
         ],
-        [for(x = [-1:1]) cell_pt(fcord, grid_w, seed, x, -2)],
-        [for(x = [-1:1]) cell_pt(fcord, grid_w, seed, x, 2)],
-        [for(y = [-1:1]) cell_pt(fcord, grid_w, seed, -2, y)],
-        [for(y = [-1:1]) cell_pt(fcord, grid_w, seed, 2, y)]
+        [for(x = [-1:1]) cell_pt(fcord, grid_w, seed, x, -2, gw, gh)],
+        [for(x = [-1:1]) cell_pt(fcord, grid_w, seed, x, 2, gw, gh)],
+        [for(y = [-1:1]) cell_pt(fcord, grid_w, seed, -2, y, gw, gh)],
+        [for(y = [-1:1]) cell_pt(fcord, grid_w, seed, 2, y, gw, gh)]
     );
 
 function _cells_lt_before_intersection(shape, size, points, pt, half_region_size) =

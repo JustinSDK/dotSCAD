@@ -8,13 +8,17 @@ function voronoi_square_cells(size, grid_w, seed) =
         region_size = grid_w * 3,
         half_region_size = region_size * 0.5,
         shape = shape_square(grid_w * 3),
-        cell_nbrs_lt = [for(cy = [0:grid_w:size[1]]) 
-            for(cx = [0:grid_w:size[0]])
+        gw = size[0] / grid_w,
+        gh = size[1] / grid_w,
+        cell_nbrs_lt = [for(cy = [-grid_w:grid_w:size[1]]) 
+            for(cx = [-grid_w:grid_w:size[0]])
             let(
                 nbrs = _neighbors(
                     [floor(cx / grid_w), floor(cy / grid_w)],
                     sd, 
-                    grid_w
+                    grid_w,
+                    gw, 
+                    gh
                 ),
                 p = nbrs[4],
                 points = concat(
