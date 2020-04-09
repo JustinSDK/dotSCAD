@@ -29,13 +29,13 @@ Transform a point inside a rectangle to a point inside a circle. You can use it 
     ];
 
     for(line = rows) {
-        twisted = [for(p = line) ptf_circle(size, p)];
-        hull_polyline3d(twisted, thickness = .1);
+        transformed = [for(p = line) ptf_circle(size, p)];
+        hull_polyline3d(transformed, thickness = .1);
     }
 
     for(line = columns) {
-        twisted = [for(p = line) ptf_circle(size, p)];
-        hull_polyline3d(twisted, thickness = .1);
+        transformed = [for(p = line) ptf_circle(size, p)];
+        hull_polyline3d(transformed, thickness = .1);
     }
 
 ![ptf_circle](images/lib2x-ptf_circle-2.JPG)

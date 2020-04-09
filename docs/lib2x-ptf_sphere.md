@@ -33,13 +33,13 @@ Transforms a point inside a rectangle to a point of a sphere. It can create thin
     ];
 
     for(line = rows) {
-        twisted = [for(p = line) ptf_sphere(size, p, radius, angle)];
-        hull_polyline3d(twisted, thickness = .5);
+        transformed = [for(p = line) ptf_sphere(size, p, radius, angle)];
+        hull_polyline3d(transformed, thickness = .5);
     }
 
     for(line = columns) {
-        twisted = [for(p = line) ptf_sphere(size, p, radius, angle)];
-        hull_polyline3d(twisted, thickness = .5);
+        transformed = [for(p = line) ptf_sphere(size, p, radius, angle)];
+        hull_polyline3d(transformed, thickness = .5);
     }
 
 ![ptf_sphere](images/lib2x-ptf_sphere-2.JPG)

@@ -35,13 +35,13 @@ Transforms a point inside a rectangle to a point of a torus. It can create thing
     ];
 
     for(line = rows) {
-        twisted = [for(p = line) ptf_torus(size, p, radius, angle, twist)];
-        hull_polyline3d(twisted, thickness = .5);
+        transformed = [for(p = line) ptf_torus(size, p, radius, angle, twist)];
+        hull_polyline3d(transformed, thickness = .5);
     }
 
     for(line = columns) {
-        twisted = [for(p = line) ptf_torus(size, p, radius, angle, twist)];
-        hull_polyline3d(twisted, thickness = .5);
+        transformed = [for(p = line) ptf_torus(size, p, radius, angle, twist)];
+        hull_polyline3d(transformed, thickness = .5);
     }
 
 ![ptf_torus](images/lib2x-ptf_torus-2.JPG)

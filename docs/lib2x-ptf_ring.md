@@ -33,13 +33,13 @@ Transforms a point inside a rectangle to a point of a ring. It can create things
     ];
 
     for(line = rows) {
-        twisted = [for(p = line) ptf_ring(size, p, radius, 360, 180)];
-        hull_polyline3d(twisted, thickness = .5);
+        transformed = [for(p = line) ptf_ring(size, p, radius, 360, 180)];
+        hull_polyline3d(transformed, thickness = .5);
     }
 
     for(line = columns) {
-        twisted = [for(p = line) ptf_ring(size, p, radius, 360, 180)];
-        hull_polyline3d(twisted, thickness = .5);
+        transformed = [for(p = line) ptf_ring(size, p, radius, 360, 180)];
+        hull_polyline3d(transformed, thickness = .5);
     }
 
 ![ptf_ring](images/lib2x-ptf_ring-2.JPG)
