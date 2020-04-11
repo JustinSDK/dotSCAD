@@ -1,4 +1,4 @@
 to_do:
 
 - deprecate `trianglate`, use `tri_ear_clipping`.
-- t2d_L_system?
+- t2d_lsystem?
