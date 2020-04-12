@@ -6,17 +6,17 @@ function _join(strs) =
     let(leng = len(strs))
     [for(i = 0, s = strs[0]; i < leng; i = i + 1, s = str(s, strs[i])) s][leng - 1];
 
-function _produce1(base, rule) = _join([
+function _derive1(base, rule) = _join([
     for(c = base) 
     let(v = assoc_lookup(rule, c))
     is_undef(v) ? c : v
 ]);
 
-function _produce(base, rule, n, i = 0) =
-    i == n ? base : _produce(_produce1(base, rule), rule, n, i + 1);
+function _derive(base, rule, n, i = 0) =
+    i == n ? base : _derive(_derive1(base, rule), rule, n, i + 1);
     
-function produce(rule, n) =
-    _produce(assoc_lookup(rule, "S"), rule, n);
+function derive(rule, n) =
+    _derive(assoc_lookup(rule, "S"), rule, n);
 
 function cmd(symbol, args) =
     symbol == "F" ? ["forward", args[0]] :
