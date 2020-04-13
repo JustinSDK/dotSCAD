@@ -1,7 +1,7 @@
 use <experimental/lsystem2.scad>;
 use <line2d.scad>;
 
-for(line = koch_curve_3()) {
+for(line = pentigree()) {
     line2d(
         line[0],
         line[1],
@@ -253,8 +253,17 @@ function penrose_tiling(n = 2, angle = 36, leng = 1, heading = 0, start = [0, 0]
 function bush(n = 3, angle = 16, leng = 1, heading = 0, start = [0, 0]) = 
     let(
         rule = [
-        ["S", "++++F"],
-        ["F", "FF-[-F+F+F]+[+F-F-F]"]
+            ["S", "++++F"],
+            ["F", "FF-[-F+F+F]+[+F-F-F]"]
         ]
     )
     lsystem2(rule, n, angle, leng, heading, start);       
+
+function pentigree(n = 3, angle = 72, leng = 1, heading = 0, start = [0, 0]) = 
+    let(
+        rule = [
+            ["S", "F-F-F-F-F"],
+            ["F", "F-F++F+F-F-F"]
+        ]
+    )
+    lsystem2(rule, n, angle, leng, heading, start);         
