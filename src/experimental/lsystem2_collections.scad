@@ -38,6 +38,15 @@ function koch_snowflake(n = 4, angle = 60, leng = 1, heading = 0, start = [0, 0]
     )
     lsystem2(rule, n, angle, leng, heading, start);
 
+function koch_quadratic(n = 3, angle = 90, leng = 1, heading = 0, start = [0, 0]) = 
+    let(
+        rule = [
+            ["S", "F-F-F-F"],
+            ["F", "FF-F-F-F-F-F+F"]
+        ]
+    )
+    lsystem2(rule, n, angle, leng, heading, start);
+
 function koch_quadratic_type1(n = 4, angle = 90, leng = 1, heading = 0, start = [0, 0]) = 
     let(
         rule = [
@@ -64,7 +73,7 @@ function koch_star(n = 4, angle = 60, leng = 1, heading = 0, start = [0, 0]) =
         ]
     )
     lsystem2(rule, n, angle, leng, heading, start, "6789");   
-    
+
 function dragon_curve(n = 10, angle = 90, leng = 1, heading = 0, start = [0, 0]) = 
     let(
         rule = [
