@@ -153,7 +153,7 @@ function gosper_curve(n = 4, angle = 60, leng = 1, heading = 0, start = [0, 0]) 
     )
     lsystem2(rule, n, angle, leng, heading, start, "AB");    
 
-function gosper_star(n = 3, angle = 60, leng = 1, heading = 0, start = [0, 0]) = 
+function gosper_star(n = 2, angle = 60, leng = 1, heading = 0, start = [0, 0]) = 
     let(
         rule = [
             ["S", "X-X-X-X-X-X"],
