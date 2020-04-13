@@ -1,6 +1,6 @@
 use <experimental/assoc_lookup.scad>;
 use <turtle/turtle2d.scad>;
-
+ 
 // It doesn't use recursion to avoid recursion error. 
 function _join(strs) = 
     let(leng = len(strs))
@@ -18,48 +18,41 @@ function _derive(base, rule, n, i = 0) =
 function derive(rule, n) =
     _derive(assoc_lookup(rule, "S"), rule, n);
 
-function cmd(symbol, args) =
-    symbol == "F" ? ["forward", args[0]] :
-    symbol == "M" ? ["move", args[0]] :
-    symbol == "+" ? ["turn", args[1]] :
-    symbol == "-" ? ["turn", -args[1]] : 
-    symbol == "[" ? ["push"] :
-    symbol == "]" ? ["pop"] : [];
-    
-function _fd_if_mv(cmd) = 
-    cmd == "move" ? "forward" : cmd;
-
-function _next_stack(t, cmd, stack) = 
-    cmd[0] == "push" ? concat([t], stack) :
+function _next_stack(t, code, stack) = 
+    code == "[" ? concat([t], stack) :
     let(leng = len(stack))
-    cmd[0] == "pop" ? 
+    code == "]" ? 
             (leng > 1 ? [for(i = [1:leng - 1]) stack[i]] : []) :
             stack;
 
-function _next_t1(t1, t2, cmd, stack) = 
-    cmd[0] == "push" ? t1 : 
-    cmd[0] == "pop" ? stack[0] : t2; 
+function _next_t1(t1, t2, code, stack) = 
+    code == "[" ? t1 : 
+    code == "]" ? stack[0] : t2; 
     
-function _next_t2(t, cmd) = 
-    is_undef(cmd) || cmd[0] == "push" || cmd[0] == "pop" ? t : turtle2d(_fd_if_mv(cmd[0]), t, cmd[1]);
+function _next_t2(t, code, angle, leng) = 
+    is_undef(code) || code == "[" || code == "]" ? t :
+    code == "F" ? turtle2d("forward", t, leng) :
+    code == "M" ? turtle2d("forward", t, leng) :
+    code == "+" ? turtle2d("turn", t, angle) :
+    code == "-" ? turtle2d("turn", t, -angle) : t;    
 
 // It doesn't use recursion to avoid recursion error.    
-function _lines(t, cmds) = 
-    let(leng = len(cmds))
+function _lines(t, codes, angle, leng) = 
+    let(codes_leng = len(codes))
     [
         for(
             i = 0,
             stack = [],            
             t1 = t, 
-            t2 = _next_t2(t1, cmds[i]);
+            t2 = _next_t2(t1, codes[i], angle, leng);
             
-            i < leng; 
+            i < codes_leng; 
             
-            t1 = _next_t1(t1, t2, cmds[i], stack), 
-            stack = _next_stack(t1, cmds[i], stack),
+            t1 = _next_t1(t1, t2, codes[i], stack), 
+            stack = _next_stack(t1, codes[i], stack),
             i = i + 1, 
-            t2 = _next_t2(t1, cmds[i])
+            t2 = _next_t2(t1, codes[i], angle, leng)
         )
-        if(cmds[i][0] != "move" && cmds[i][0] != "push" && cmds[i][0] != "pop")
+        if(search(codes[i], "F+-") != [])
             [turtle2d("pt", t1), turtle2d("pt", t2)]
     ];
