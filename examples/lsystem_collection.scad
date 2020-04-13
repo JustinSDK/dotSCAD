@@ -1,4 +1,15 @@
 use <experimental/lsystem2.scad>;
+use <line2d.scad>;
+
+for(line = koch_curve_3()) {
+    line2d(
+        line[0],
+        line[1],
+        .2,
+        p1Style = "CAP_ROUND", 
+        p2Style =  "CAP_ROUND"
+    );
+}
 
 function tree(n = 2, angle = 36, leng = 1, heading = 0, start = [0, 0]) = 
     let(
