@@ -1,7 +1,7 @@
 use <experimental/lsystem2.scad>;
 use <line2d.scad>;
 
-for(line = weed()) {
+for(line = gosper_star()) {
     line2d(
         line[0],
         line[1],
@@ -152,6 +152,16 @@ function gosper_curve(n = 4, angle = 60, leng = 1, heading = 0, start = [0, 0]) 
         ]
     )
     lsystem2(rule, n, angle, leng, heading, start, "AB");    
+
+function gosper_star(n = 3, angle = 60, leng = 1, heading = 0, start = [0, 0]) = 
+    let(
+        rule = [
+            ["S", "X-X-X-X-X-X"],
+            ["X", "FX+YF++YF-FX--FXFX-YF+"],
+            ["Y", "-FX+YFYF++YF+FX--FX-FY"]
+        ]
+    )
+    lsystem2(rule, n, angle, leng, heading, start);    
     
 function levy_c_curve(n = 8, angle = 45, leng = 1, heading = 0, start = [0, 0]) = 
     let(
