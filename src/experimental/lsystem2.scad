@@ -4,7 +4,7 @@ use <turtle/turtle2d.scad>;
 function lsystem2(rule, n, angle, leng = 1, heading = 0, start = [0, 0], forward_chars = "F") =
     let(
         derived = derive(rule, n),
-        codes = _join([
+        codes = forward_chars == "F" ? derived : _join([
             for(c = derived)
             let(idx = search(c, forward_chars))
             idx == [] ? c : "F"
