@@ -249,3 +249,12 @@ function penrose_tiling(n = 2, angle = 36, leng = 1, heading = 0, start = [0, 0]
         ]
     )
     lsystem2(rule, n, angle, leng, heading, start, "6789");       
+
+function bush(n = 3, angle = 16, leng = 1, heading = 0, start = [0, 0]) = 
+    let(
+        rule = [
+        ["S", "++++F"],
+        ["F", "FF-[-F+F+F]+[+F-F-F]"]
+        ]
+    )
+    lsystem2(rule, n, angle, leng, heading, start);       
