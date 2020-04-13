@@ -1,7 +1,7 @@
 use <experimental/lsystem2.scad>;
 use <line2d.scad>;
 
-for(line = penrose_snowflake()) {
+for(line = weed()) {
     line2d(
         line[0],
         line[1],
@@ -271,8 +271,19 @@ function pentigree(n = 3, angle = 72, leng = 1, heading = 0, start = [0, 0]) =
 function penrose_snowflake(n = 3, angle = 18, leng = 1, heading = 0, start = [0, 0]) = 
     let(
         rule = [
-        ["S", "F----F----F----F----F"],
-        ["F", "F----F----F----------F++F----F"]
+            ["S", "F----F----F----F----F"],
+            ["F", "F----F----F----------F++F----F"]
+        ]
+    )
+    lsystem2(rule, n, angle, leng, heading, start);         
+
+function weed(n = 6, angle = 22.5, leng = 1, heading = 0, start = [0, 0]) = 
+    let(
+        rule = [
+            ["S", "F"],
+            ["F", "FF-[XY]+[XY]"],
+            ["X", "+FY"],
+            ["Y", "-FX"]
         ]
     )
     lsystem2(rule, n, angle, leng, heading, start);         
