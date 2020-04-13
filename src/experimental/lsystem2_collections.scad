@@ -28,6 +28,14 @@ function koch_curve(n = 4, angle = 60, leng = 1, heading = 0, start = [0, 0]) =
     )
     lsystem2(rule, n, angle, leng, heading, start);
 
+function koch_curve_3(n = 3, angle = 90, leng = 1, heading = 0, start = [0, 0]) = 
+    let(
+        rule = [
+            ["S", "F-F-F-F"],
+            ["F", "FF-F+F-F-FF"]
+        ]
+    )
+    lsystem2(rule, n, angle, leng, heading, start);
 
 function koch_snowflake(n = 4, angle = 60, leng = 1, heading = 0, start = [0, 0]) = 
     let(
