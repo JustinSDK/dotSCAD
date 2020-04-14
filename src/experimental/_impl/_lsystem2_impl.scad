@@ -33,9 +33,9 @@ function _derive1(base, rules) = _join([
 function _derive(base, rules, n, i = 0) =
     i == n ? base : _derive(_derive1(base, rules), rules, n, i + 1);
     
-function _lsystem2_derive(rules, n, rules_pr) =
-    is_undef(rules_pr) ? _derive(rules[0][1], rules, n) : 
-    rand() <= rules_pr[0] ? _derive_p(rules[0][1], rules, rules_pr, n) : "";
+function _lsystem2_derive(axiom, rules, n, rules_pr) =
+    is_undef(rules_pr) ? _derive(axiom, rules, n) :
+                         _derive_p(axiom, rules, rules_pr, n);
 
 function _next_stack(t, code, stack) = 
     code == "[" ? concat([t], stack) :
