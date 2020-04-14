@@ -1,24 +1,24 @@
 use <experimental/assoc_lookup.scad>;
 use <turtle/turtle2d.scad>;
+use <util/rand.scad>;
 
 // It doesn't use recursion to avoid recursion error. 
 function _join(strs) = 
     let(leng = len(strs))
     [for(i = 0, s = strs[0]; i < leng; i = i + 1, s = str(s, strs[i])) s][leng - 1];
 
-function c_or_v(c, v, rand_n, rule, rule_pr, leng, i = 0) =
+function c_or_v(c, v, rule, rule_pr, leng, i = 0) =
     i == leng ? c : (
         let(idx = search([v[i]], rule, num_returns_per_match=0, index_col_num = 1)[0][0])
-        rand_n < rule_pr[idx] ? v[i] : c_or_v(c, v, rand_n, rule, rule_pr, leng, i + 1)
+        rand(0, 1) <= rule_pr[idx] ? v[i] : c_or_v(c, v, rule, rule_pr, leng, i + 1)
     );
 
 function _derive1_p(base, rule, rule_pr) = 
-    let(rand_n = rands(0, 1, 1)[0])
     _join([
         for(c = base) 
         let(v = [for(r = rule) if(r[0] == c) r[1]])
         v == [] ? c : 
-        c_or_v(c, v, rand_n, rule, rule_pr, len(v))
+        c_or_v(c, v, rule, rule_pr, len(v))
     ]);
 
 function _derive_p(base, rule, rule_pr, n, i = 0) =
@@ -34,9 +34,8 @@ function _derive(base, rule, n, i = 0) =
     i == n ? base : _derive(_derive1(base, rule), rule, n, i + 1);
     
 function _lsystem2_derive(rule, n, rule_pr) =
-    let(base = assoc_lookup(rule, "S"))
-    is_undef(rule_pr) ? _derive(base, rule, n) : 
-    _derive_p(base, rule, rule_pr, n);
+    is_undef(rule_pr) ? _derive(rule[0][1], rule, n) : 
+    rand() <= rule_pr[0] ? _derive_p(rule[0][1], rule, rule_pr, n) : "";
 
 function _next_stack(t, code, stack) = 
     code == "[" ? concat([t], stack) :
