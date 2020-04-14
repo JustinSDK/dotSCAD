@@ -50,8 +50,7 @@ function _next_t1(t1, t2, code, stack) =
     
 function _next_t2(t, code, angle, leng) = 
     is_undef(code) || code == "[" || code == "]" ? t :
-    code == "F" ? turtle2d("forward", t, leng) :
-    code == "M" ? turtle2d("forward", t, leng) :
+    code == "F" || code == "f" ? turtle2d("forward", t, leng) :
     code == "+" ? turtle2d("turn", t, angle) :
     code == "-" ? turtle2d("turn", t, -angle) : t;    
 

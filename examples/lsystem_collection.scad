@@ -1,7 +1,7 @@
 use <experimental/lsystem2.scad>;
 use <line2d.scad>;
 
-for(line = plant()) {
+for(line = island_curve()) {
     line2d(
         line[0],
         line[1],
@@ -176,8 +176,8 @@ function island_curve(n = 2, angle = 90, leng = 1, heading = 0, start = [0, 0]) 
     let(
         axiom = "F-F-F-F",
         rules = [
-            ["F", "F-M+FF-F-FF-FM-FF+M-FF+F+FF+FM+FFF"],
-            ["M", "MMMMMM"]
+            ["F", "F-f+FF-F-FF-Ff-FF+f-FF+F+FF+Ff+FFF"],
+            ["f", "ffffff"]
         ]
     )
     lsystem2(axiom, rules, n, angle, leng, heading, start);  
