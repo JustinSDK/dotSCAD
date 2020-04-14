@@ -1,9 +1,9 @@
 use <experimental/_impl/_lsystem2_impl.scad>;
 use <turtle/turtle2d.scad>;
 
-function lsystem2(rule, n, angle, leng = 1, heading = 0, start = [0, 0], forward_chars = "F") =
+function lsystem2(rule, n, angle, leng = 1, heading = 0, start = [0, 0], forward_chars = "F", derived_pr) =
     let(
-        derived = derive(rule, n),
+        derived = _lsystem2_derive(rule, n, derived_pr),
         codes = forward_chars == "F" ? derived : _join([
             for(c = derived)
             let(idx = search(c, forward_chars))
