@@ -3,9 +3,9 @@ use <turtle/turtle2d.scad>;
 use <util/rand.scad>;
 
 // It doesn't use recursion to avoid recursion error. 
-function _join(strs) = 
-    let(leng = len(strs))
-    [for(i = 0, s = strs[0]; i < leng; i = i + 1, s = str(s, strs[i])) s][leng - 1];
+function _join(str_lt) = 
+    let(leng = len(str_lt))
+    [for(i = 0, s = str_lt[0]; i < leng; i = i + 1, s = str(s, str_lt[i])) s][leng - 1];
 
 function c_or_v(c, v, rules, rules_pr, leng, i = 0) =
     i == leng ? c : (
