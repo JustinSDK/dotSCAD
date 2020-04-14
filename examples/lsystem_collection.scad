@@ -1,7 +1,7 @@
 use <experimental/lsystem2.scad>;
 use <line2d.scad>;
 
-for(line = gosper_star()) {
+for(line = plant()) {
     line2d(
         line[0],
         line[1],
@@ -28,7 +28,7 @@ function plant(n = 4, angle = 25, leng = 1, heading = 0, start = [0, 0]) =
             ["F", "FF"]
         ]
     )
-    lsystem2(rule, n, angle, leng, heading, start);
+    lsystem2(rule, n, angle, leng, heading, start, rule_pr = [1, 1, 1]);
 
 function koch_curve(n = 4, angle = 60, leng = 1, heading = 0, start = [0, 0]) = 
     let(

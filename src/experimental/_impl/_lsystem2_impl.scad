@@ -13,7 +13,7 @@ function _join(strs) =
 function c_or_v(c, v, rand_n, rule, rule_pr, leng, i = 0) =
     i == leng ? c : (
         let(idx = search([v[i]], rule, num_returns_per_match=0, index_col_num = 1)[0][0])
-        rand_n < rule_pr[idx - 1] ? v[i] : c_or_v(c, v, rand_n, rule, rule_pr, leng, i + 1)
+        rand_n < rule_pr[idx] ? v[i] : c_or_v(c, v, rand_n, rule, rule_pr, leng, i + 1)
     );
 
 function _derive1_p(base, rule, rule_pr) = 
