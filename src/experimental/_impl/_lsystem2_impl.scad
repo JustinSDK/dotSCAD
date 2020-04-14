@@ -1,10 +1,6 @@
 use <experimental/assoc_lookup.scad>;
 use <turtle/turtle2d.scad>;
 
-function _rule_n(range, leng, rand_n, i = 0) = 
-    i == leng ? i : 
-    rand_n < range[i] ? i + 1 : _rule_n(range, leng, rand_n, i + 1);
-
 // It doesn't use recursion to avoid recursion error. 
 function _join(strs) = 
     let(leng = len(strs))
