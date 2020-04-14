@@ -7,35 +7,35 @@ function _join(strs) =
     let(leng = len(strs))
     [for(i = 0, s = strs[0]; i < leng; i = i + 1, s = str(s, strs[i])) s][leng - 1];
 
-function c_or_v(c, v, rule, rule_pr, leng, i = 0) =
+function c_or_v(c, v, rules, rules_pr, leng, i = 0) =
     i == leng ? c : (
-        let(idx = search([v[i]], rule, num_returns_per_match=0, index_col_num = 1)[0][0])
-        rand(0, 1) <= rule_pr[idx] ? v[i] : c_or_v(c, v, rule, rule_pr, leng, i + 1)
+        let(idx = search([v[i]], rules, num_returns_per_match=0, index_col_num = 1)[0][0])
+        rand(0, 1) <= rules_pr[idx] ? v[i] : c_or_v(c, v, rules, rules_pr, leng, i + 1)
     );
 
-function _derive1_p(base, rule, rule_pr) = 
+function _derive1_p(base, rules, rules_pr) = 
     _join([
         for(c = base) 
-        let(v = [for(r = rule) if(r[0] == c) r[1]])
+        let(v = [for(r = rules) if(r[0] == c) r[1]])
         v == [] ? c : 
-        c_or_v(c, v, rule, rule_pr, len(v))
+        c_or_v(c, v, rules, rules_pr, len(v))
     ]);
 
-function _derive_p(base, rule, rule_pr, n, i = 0) =
-    i == n ? base : _derive_p(_derive1_p(base, rule, rule_pr), rule, rule_pr, n, i + 1);
+function _derive_p(base, rules, rules_pr, n, i = 0) =
+    i == n ? base : _derive_p(_derive1_p(base, rules, rules_pr), rules, rules_pr, n, i + 1);
 
-function _derive1(base, rule) = _join([
+function _derive1(base, rules) = _join([
     for(c = base) 
-    let(v = assoc_lookup(rule, c))
+    let(v = assoc_lookup(rules, c))
     is_undef(v) ? c : v
 ]);
 
-function _derive(base, rule, n, i = 0) =
-    i == n ? base : _derive(_derive1(base, rule), rule, n, i + 1);
+function _derive(base, rules, n, i = 0) =
+    i == n ? base : _derive(_derive1(base, rules), rules, n, i + 1);
     
-function _lsystem2_derive(rule, n, rule_pr) =
-    is_undef(rule_pr) ? _derive(rule[0][1], rule, n) : 
-    rand() <= rule_pr[0] ? _derive_p(rule[0][1], rule, rule_pr, n) : "";
+function _lsystem2_derive(rules, n, rules_pr) =
+    is_undef(rules_pr) ? _derive(rules[0][1], rules, n) : 
+    rand() <= rules_pr[0] ? _derive_p(rules[0][1], rules, rules_pr, n) : "";
 
 function _next_stack(t, code, stack) = 
     code == "[" ? concat([t], stack) :
