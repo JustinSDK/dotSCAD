@@ -1,7 +1,7 @@
 use <experimental/lsystem3.scad>;
 use <hull_polyline3d.scad>;
 
-for(line = fern_leaf()) {
+for(line = fern()) {
     hull_polyline3d(
         [line[0], line[1]], 
         thickness = 0.25, 
@@ -30,7 +30,7 @@ function hilbert_curve(n = 3, angle = 90, leng = 1, heading = 0, start = [0, 0, 
     )
     lsystem3(axiom, rules, n, angle, leng, heading, start);  
 
-function fern_leaf(n = 8, angle = 4, leng = 1, heading = 0, start = [0, 0, 0]) = 
+function fern(n = 8, angle = 4, leng = 1, heading = 0, start = [0, 0, 0]) = 
     let(
         axiom = "EEEA",
         rules = [
