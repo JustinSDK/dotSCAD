@@ -9,7 +9,7 @@ use <turtle/turtle3d.scad>;
    -  Turn right
    |  Reverse direction (ie: turn by 180 degrees)
    &  Pitch down
-   ∧  Pitch up
+   ^  Pitch up
    \  Roll left
    /  Roll right       
    [  Push current turtle state onto stack
