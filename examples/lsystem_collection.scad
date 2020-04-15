@@ -1,7 +1,7 @@
 use <experimental/lsystem2.scad>;
 use <line2d.scad>;
 
-for(line = island_curve()) {
+for(line = sierpinski_carpet()) {
     line2d(
         line[0],
         line[1],
@@ -211,6 +211,16 @@ function sierpinski_square(n = 8, angle = 45, leng = 1, heading = 0, start = [0,
         ]
     )
     lsystem2(axiom, rules, n, angle, leng, heading, start);      
+
+function sierpinski_carpet(n = 4, angle = 90, leng = 1, heading = 0, start = [0, 0]) = 
+    let(
+        axiom = "F",
+        rules = [
+            ["F", "F+F-F-F-G+F+F+F-F"],
+            ["G", "GGG"]
+        ]
+    )
+    lsystem2(axiom, rules, n, angle, leng, heading, start, forward_chars = "G");          
     
 function terdragon(n = 5, angle = 120, leng = 1, heading = 0, start = [0, 0]) = 
     let(
