@@ -1,7 +1,7 @@
 use <experimental/lsystem2.scad>;
 use <line2d.scad>;
 
-for(line = tree()) {
+for(line = fern()) {
     line2d(
         line[0],
         line[1],
@@ -10,6 +10,17 @@ for(line = tree()) {
         p2Style =  "CAP_ROUND"
     );
 }
+
+function fern(n = 8, angle = 4, leng = 1, heading = 0, start = [0, 0]) = 
+    let(
+        axiom = "EEEA",
+        rules = [
+            ["A", "[++++++++++++++EC]B+B[--------------ED]B+BA"],
+            ["C", "[---------EE][+++++++++EE]B+C"],
+            ["D", "[---------EE][+++++++++EE]B-D"]
+        ]
+    )
+    lsystem2(axiom, rules, n, angle, leng, heading, start, forward_chars = "ABCDE");  
 
 function tree(n = 2, angle = 36, leng = 1, heading = 0, start = [0, 0]) = 
     let(
