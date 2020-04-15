@@ -20,7 +20,8 @@ function _next_t2(t, code, angle, leng) =
     is_undef(code) || code == "[" || code == "]" ? t :
     code == "F" || code == "f" ? turtle2d("forward", t, leng) :
     code == "+" ? turtle2d("turn", t, angle) :
-    code == "-" ? turtle2d("turn", t, -angle) : t;    
+    code == "-" ? turtle2d("turn", t, -angle) : 
+    code == "|" ? turtle2d("turn", t, 180) : t;    
 
 // It doesn't use recursion to avoid recursion error.    
 function _lines(t, codes, angle, leng) = 

@@ -7,6 +7,7 @@ use <turtle/turtle2d.scad>;
    f  Move forward without drawing a line
    +  Turn left
    -  Turn right
+   |  Reverse direction (ie: turn by 180 degrees)
    [  Push current turtle state onto stack
    ]  Pop current turtle state from the stack
 
