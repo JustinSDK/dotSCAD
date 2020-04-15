@@ -1,7 +1,7 @@
 use <experimental/lsystem2.scad>;
 use <line2d.scad>;
 
-for(line = sierpinski_carpet()) {
+for(line = tree()) {
     line2d(
         line[0],
         line[1],
