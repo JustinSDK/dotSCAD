@@ -1,6 +1,7 @@
 use <experimental/lsystem3.scad>;
 use <hull_polyline3d.scad>;
 
+//  Hilbert curve 3D
 axiom = "A";
 rules = [
     ["A", "B-F+CFC+F-D&F∧D-F+&&CFC+F+B//"],
