@@ -9,12 +9,11 @@ for(line = tree()) {
     );
 }  
 
-function tree(n = 5, angle = 22.5, leng = 1, heading = 0, start = [0, 0, 0]) = 
+function tree(n = 4, angle = 22.5, leng = 1, heading = 0, start = [0, 0, 0]) = 
     let(
-        axiom = "A",
+        axiom = "FFFA",
         rules = [
-            ["A", "F[&FLA]/////[&FLA]///////[&FLA]"],
-            ["F", "/////F"]
+            ["A", "[&FFFA]////[&FFFA]////[&FFFA]"]
         ]
     )
     lsystem3(axiom, rules, n, angle, leng, heading, start);  
