@@ -1,6 +1,8 @@
 use <experimental/_impl/_lsystem_comm.scad>;
 use <turtle/turtle2d.scad>;
-    
+
+function _lsystem2_join(str_lt) = _join(str_lt);
+
 function _lsystem2_derive(axiom, rules, n, rules_pr) =
     is_undef(rules_pr) ? _derive(axiom, rules, n) :
                          _derive_p(axiom, rules, rules_pr, n);

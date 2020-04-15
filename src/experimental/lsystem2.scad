@@ -16,7 +16,7 @@ use <turtle/turtle2d.scad>;
 function lsystem2(axiom, rules, n, angle, leng = 1, heading = 0, start = [0, 0], forward_chars = "F", rules_pr) =
     let(
         derived = _lsystem2_derive(axiom, rules, n, rules_pr),
-        codes = forward_chars == "F" ? derived : _join([
+        codes = forward_chars == "F" ? derived : _lsystem2_join([
             for(c = derived)
             let(idx = search(c, forward_chars))
             idx == [] ? c : "F"
