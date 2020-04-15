@@ -7,7 +7,7 @@ rules = [
     ["A", "B-F+CFC+F-D&F∧D-F+&&CFC+F+B//"],
     ["B", "A&F∧CFB∧F∧D∧∧-F-D∧|F∧B|FC∧F∧A//"],
     ["C", "|D∧|F∧B-F+C∧F∧A&&FA&F∧C+F+B∧F∧D//"],
-    ["D", "|CFB-F+B|FA&F∧A&&FB-F+B|FC//"],
+    ["D", "|CFB-F+B|FA&F∧A&&FB-F+B|FC//"]
 ];
 
 for(line = lsystem3(axiom, rules, 3, 90)) {
