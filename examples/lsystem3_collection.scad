@@ -1,7 +1,7 @@
 use <experimental/lsystem3.scad>;
 use <hull_polyline3d.scad>;
 
-for(line = plant()) {
+for(line = tree2()) {
     hull_polyline3d(
         [line[0], line[1]], 
         thickness = 0.25, 
@@ -9,7 +9,7 @@ for(line = plant()) {
     );
 }  
 
-function tree(n = 4, angle = 22.5, leng = 1, heading = 0, start = [0, 0, 0]) = 
+function tree1(n = 4, angle = 22.5, leng = 1, heading = 0, start = [0, 0, 0]) = 
     let(
         axiom = "FFFA",
         rules = [
@@ -17,6 +17,17 @@ function tree(n = 4, angle = 22.5, leng = 1, heading = 0, start = [0, 0, 0]) =
         ]
     )
     lsystem3(axiom, rules, n, angle, leng, heading, start);  
+
+function tree2(n = 4, angle = 18, leng = 1, heading = 0, start = [0, 0, 0]) = 
+    let(
+        axiom = "BBBBBA",
+        rules = [
+            ["A", "[++BB[--C][++C][&&C][^^C]A]/////+BBB[--C][++C][&&C][^^C]A"],
+            ["B", "\\\\B"],
+            ["C", ""]
+        ]
+    )
+    lsystem3(axiom, rules, n, angle, leng, heading, start, forward_chars = "ABC");  
 
 function plant(n = 4, angle = 30, leng = 1, heading = 0, start = [0, 0, 0]) = 
     let(
