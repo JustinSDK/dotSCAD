@@ -1,7 +1,7 @@
 use <experimental/lsystem3.scad>;
 use <hull_polyline3d.scad>;
 
-for(line = tree2()) {
+for(line = plant()) {
     hull_polyline3d(
         [line[0], line[1]], 
         thickness = 0.25, 
@@ -38,7 +38,7 @@ function plant(n = 4, angle = 30, leng = 1, heading = 0, start = [0, 0, 0]) =
             ["B", "A/B"]
         ]
     )
-    lsystem3(axiom, rules, n, angle, leng, heading, start, forward_chars = "AB", rules_pr = [1, .5, 1]);
+    lsystem3(axiom, rules, n, angle, leng, heading, start, forward_chars = "AB", rules_pr = [1, .5, .5]);
 
 function hilbert_curve(n = 3, angle = 90, leng = 1, heading = 0, start = [0, 0, 0]) = 
     let(
