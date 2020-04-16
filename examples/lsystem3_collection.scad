@@ -1,7 +1,7 @@
 use <experimental/lsystem3.scad>;
 use <hull_polyline3d.scad>;
 
-for(line = fern()) {
+for(line = plant()) {
     hull_polyline3d(
         [line[0], line[1]], 
         thickness = 0.25, 
@@ -40,3 +40,12 @@ function fern(n = 8, angle = 4, leng = 1, heading = 0, start = [0, 0, 0]) =
         ]
     )
     lsystem3(axiom, rules, n, angle, leng, heading, start, forward_chars = "ABCDE");  
+
+function plant(n = 3, angle = 18, leng = 1, heading = 0, start = [0, 0, 0]) = 
+    let(
+        axiom = "--F",
+        rules = [
+            ["F", "/F[++F]-\F[--F]+//F"]
+        ]
+    )
+    lsystem3(axiom, rules, n, angle, leng, heading, start);  
