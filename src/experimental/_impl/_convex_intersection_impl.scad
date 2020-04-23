@@ -1,4 +1,4 @@
-use <experimental/intersection_p.scad>;
+use <intersection_p.scad>;
 
 function _intersection_ps(shape, line_pts, epsilon) = 
     let(
