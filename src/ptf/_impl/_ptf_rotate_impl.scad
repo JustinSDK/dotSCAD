@@ -1,6 +1,6 @@
-use <../__comm__/__to2d.scad>;
-use <../__comm__/__to3d.scad>;
-use <../__comm__/__to_ang_vect.scad>;
+use <../../__comm__/__to2d.scad>;
+use <../../__comm__/__to3d.scad>;
+use <../../__comm__/__to_ang_vect.scad>;
 
 function _q_rotate_p_3d(p, a, v) = 
     let(
