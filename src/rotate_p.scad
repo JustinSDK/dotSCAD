@@ -8,7 +8,7 @@
 *
 **/ 
 
-use <ptf/_impl/_rotate_p_impl.scad>;
+use <ptf/_impl/_ptf_rotate_impl.scad>;
 
 function rotate_p(point, a, v) = 
     let(_ = echo("<b><i>rotate_p</i> is deprecated: use <i>ptf_rotate</i> instead.</b>"))
