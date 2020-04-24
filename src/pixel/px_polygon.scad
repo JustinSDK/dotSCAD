@@ -1,7 +1,7 @@
-use <in_shape.scad>;
-use <util/sort.scad>;
-use <util/dedup.scad>;
-use <pixel/px_polyline.scad>;
+use <../in_shape.scad>;
+use <../util/sort.scad>;
+use <../util/dedup.scad>;
+use <px_polyline.scad>;
 
 function px_polygon(points, filled = false) =
     let(contour = px_polyline(concat(points, [points[0]])))

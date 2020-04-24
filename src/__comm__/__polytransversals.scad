@@ -1,4 +1,4 @@
-use <util/reverse.scad>;
+use <../util/reverse.scad>;
 
 function __polytransversals(transversals) =
     let(

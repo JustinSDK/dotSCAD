@@ -1,4 +1,4 @@
-use <util/_impl/_vt_default_comparator.scad>;
+use <_vt_default_comparator.scad>;
 
 function _vt_sort(lt) = 
     let(leng = len(lt))

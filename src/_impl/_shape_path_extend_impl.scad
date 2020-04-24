@@ -1,6 +1,6 @@
-use <__comm__/__to3d.scad>;
-use <__comm__/__polytransversals.scad>;
-use <rotate_p.scad>;
+use <../__comm__/__to3d.scad>;
+use <../__comm__/__polytransversals.scad>;
+use <../rotate_p.scad>;
 
 function _shape_path_extend_az(p1, p2) = 
     let(

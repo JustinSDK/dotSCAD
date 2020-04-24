@@ -8,12 +8,12 @@
 *
 **/ 
 
-use <__comm__/__to3d.scad>;
-use <__comm__/__to2d.scad>;
-use <__comm__/__lines_from.scad>;
-use <pixel/px_line.scad>;
-use <util/sort.scad>;
-use <util/dedup.scad>;
+use <../__comm__/__to3d.scad>;
+use <../__comm__/__to2d.scad>;
+use <../__comm__/__lines_from.scad>;
+use <../util/sort.scad>;
+use <../util/dedup.scad>;
+use <px_line.scad>;
 
 function px_polyline(points) =
     let(

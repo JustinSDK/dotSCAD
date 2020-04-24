@@ -1,6 +1,6 @@
 
-use <__comm__/__to3d.scad>;
-use <__comm__/__to2d.scad>;
+use <../../__comm__/__to3d.scad>;
+use <../../__comm__/__to2d.scad>;
 
 function _px_line_zsgn(a) = a == 0 ? a : a / abs(a);
     

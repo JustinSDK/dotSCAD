@@ -8,6 +8,6 @@
 *
 **/ 
    
-use <util/_impl/_split_str_impl.scad>;
+use <_impl/_split_str_impl.scad>;
 
 function split_str(t, delimiter) = _split_str_impl(t, delimiter);          

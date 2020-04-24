@@ -8,6 +8,6 @@
 *
 **/ 
 
-use <pixel/_impl/_px_line_impl.scad>;
+use <_impl/_px_line_impl.scad>;
 
 function px_line(p1, p2) = _px_line_impl(p1, p2);

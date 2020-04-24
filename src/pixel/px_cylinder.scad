@@ -8,9 +8,9 @@
 *
 **/ 
 
-use <pixel/_impl/_px_cylinder_impl.scad>; 
-use <util/sort.scad>;
-use <util/dedup.scad>;
+use <_impl/_px_cylinder_impl.scad>; 
+use <../util/sort.scad>;
+use <../util/dedup.scad>;
 
 function px_cylinder(r, h, filled = false, thickness = 1) =
     let(all = _px_cylinder_impl(r, h, filled, thickness))

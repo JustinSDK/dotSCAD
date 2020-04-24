@@ -1,5 +1,5 @@
-use <__comm__/__lines_from.scad>;
-use <__comm__/__line_intersection.scad>;
+use <../__comm__/__lines_from.scad>;
+use <../__comm__/__line_intersection.scad>;
     
 function _bijection_inward_edge_normal(edge) =  
     let(

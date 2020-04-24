@@ -8,8 +8,8 @@
 *
 **/ 
 
-use <ptf/ptf_rotate.scad>;
-use <ptf/ptf_y_twist.scad>;
+use <ptf_rotate.scad>;
+use <ptf_y_twist.scad>;
 
 function ptf_ring(size, point, radius, angle = 360, twist = 0) = 
     let(

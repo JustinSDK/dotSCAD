@@ -8,10 +8,10 @@
 *
 **/ 
 
-use <ptf/ptf_x_twist.scad>;
-use <ptf/ptf_y_twist.scad>;
-use <surface/_impl/_sf_square_surfaces.scad>;
-use <surface/sf_solidify.scad>;
+use <../ptf/ptf_x_twist.scad>;
+use <../ptf/ptf_y_twist.scad>;
+use <_impl/_sf_square_surfaces.scad>;
+use <sf_solidify.scad>;
 
 module sf_square(levels, thickness, depth, x_twist = 0, y_twist = 0, invert = false) {
     size = [len(levels[0]), len(levels)];

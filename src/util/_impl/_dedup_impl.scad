@@ -1,4 +1,4 @@
-use <util/has.scad>;
+use <../has.scad>;
 
 function _dedup_sorted(lt, leng) =
     leng == 0 ? lt : 

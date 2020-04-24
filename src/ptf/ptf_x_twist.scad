@@ -8,7 +8,7 @@
 *
 **/ 
 
-use <ptf/ptf_rotate.scad>;
+use <ptf_rotate.scad>;
 
 function ptf_x_twist(size, point, angle) =
     let(

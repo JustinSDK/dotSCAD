@@ -1,6 +1,6 @@
-use <__comm__/__fast_fibonacci.scad>;
-use <ptf/ptf_rotate.scad>;
-use <shape_circle.scad>;
+use <../__comm__/__fast_fibonacci.scad>;
+use <../ptf/ptf_rotate.scad>;
+use <../shape_circle.scad>;
 
 function _fast_fibonacci_sub(nth) = 
     let(

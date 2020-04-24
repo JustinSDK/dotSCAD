@@ -8,7 +8,7 @@
 *
 **/
 
-use <matrix/_impl/_m_cumulate_impl.scad>;
+use <_impl/_m_cumulate_impl.scad>;
 
 function m_cumulate(matrice) = _m_cumulate_impl(matrice);
     

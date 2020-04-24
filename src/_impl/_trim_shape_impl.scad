@@ -1,6 +1,6 @@
-use <__comm__/__line_intersection.scad>;
-use <__comm__/__in_line.scad>;
-use <__comm__/__lines_from.scad>;
+use <../__comm__/__line_intersection.scad>;
+use <../__comm__/__in_line.scad>;
+use <../__comm__/__lines_from.scad>;
 
 function _trim_shape_any_intersection_sub(lines, line, lines_leng, i, epsilon) =
     let(

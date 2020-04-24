@@ -8,7 +8,7 @@
 *
 **/ 
 
-use <util/_impl/_sort_impl.scad>;
+use <_impl/_sort_impl.scad>;
 
 function sort(lt, by = "idx", idx = 0) = 
     by == "vt" ? _vt_sort(lt) :      // for example, sort by zyx for a list of points

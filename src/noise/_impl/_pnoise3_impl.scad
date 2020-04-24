@@ -1,4 +1,4 @@
-use <noise/_impl/_pnoise_comm.scad>;
+use <_pnoise_comm.scad>;
 
 function _pnoise3_grad3(hashvalue, x, y, z) = 
     let(case = hashvalue % 16)

@@ -8,6 +8,6 @@
 *
 **/ 
 
-use <pixel/_impl/_px_from_impl.scad>;
+use <_impl/_px_from_impl.scad>;
 
 function px_from(binaries, center = false, invert = false) = _px_from_impl(binaries, center, invert);

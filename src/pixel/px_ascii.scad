@@ -8,7 +8,7 @@
 *
 **/ 
 
-use <pixel/px_from.scad>;
+use <px_from.scad>;
 
 function px_ascii(char, center = false, invert = false) = 
     let(code = ord(char))

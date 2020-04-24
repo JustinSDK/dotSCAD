@@ -8,9 +8,9 @@
 *
 **/ 
 
-use <surface/_impl/_sf_square_surfaces.scad>;
-use <surface/sf_solidify.scad>;
-use <ptf/ptf_sphere.scad>;
+use <_impl/_sf_square_surfaces.scad>;
+use <sf_solidify.scad>;
+use <../ptf/ptf_sphere.scad>;
 
 module sf_sphere(levels, radius, thickness, depth, angle = [180, 360], invert = false) {
     dp = is_undef(depth) ? thickness / 2 : depth;

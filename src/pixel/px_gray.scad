@@ -8,7 +8,7 @@
 *
 **/ 
 
-use <pixel/_impl/_px_gray_impl.scad>;
+use <_impl/_px_gray_impl.scad>;
 
 function px_gray(levels, center = false, invert = false, normalize = false) = 
     _px_gray_impl(levels, center, invert, normalize);

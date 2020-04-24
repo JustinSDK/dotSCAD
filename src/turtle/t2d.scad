@@ -8,6 +8,6 @@
 *
 **/ 
 
-use <turtle/_impl/_t2d_impl.scad>;
+use <_impl/_t2d_impl.scad>;
 
 function t2d(t, cmd, point, angle, leng) = _t2d_impl(t, cmd, point, angle, leng);

@@ -8,8 +8,8 @@
 *
 **/
 
-use <util/rand.scad>;
-use <noise/_impl/_pnoise2_impl.scad>;
+use <../util/rand.scad>;
+use <_impl/_pnoise2_impl.scad>;
 
 function nz_perlin2s(points, seed) = 
     let(sd = is_undef(seed) ? floor(rand(0, 256)) : seed % 256)

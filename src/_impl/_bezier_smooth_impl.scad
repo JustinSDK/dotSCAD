@@ -1,7 +1,7 @@
-use <__comm__/__to3d.scad>;
-use <__comm__/__to2d.scad>;
-use <__comm__/__angy_angz.scad>;
-use <bezier_curve.scad>;
+use <../__comm__/__to3d.scad>;
+use <../__comm__/__to2d.scad>;
+use <../__comm__/__angy_angz.scad>;
+use <../bezier_curve.scad>;
 
 function _corner_ctrl_pts(round_d, p1, p2, p3) =
     let(

@@ -1,6 +1,6 @@
-use <ptf/ptf_rotate.scad>;
-use <shape_pie.scad>;
-use <bezier_curve.scad>;
+use <../ptf/ptf_rotate.scad>;
+use <../shape_pie.scad>;
+use <../bezier_curve.scad>;
 
 function _glued2circles_pie_curve(radius, centre_dist, tangent_angle) =
     let(

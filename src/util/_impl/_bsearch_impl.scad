@@ -1,4 +1,4 @@
-use <util/_impl/_vt_default_comparator.scad>;
+use <_vt_default_comparator.scad>;
 
 function _binary_search_by(sorted, elem, low, upper, i) =
     low > upper ? -1 :
