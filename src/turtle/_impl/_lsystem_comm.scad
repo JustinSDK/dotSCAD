@@ -1,5 +1,8 @@
-use <experimental/assoc_lookup.scad>;
-use <util/rand.scad>;
+use <../../util/rand.scad>;
+
+function assoc_lookup(array, key) = 
+    let(idx = search([key], array)[0])
+    array[idx][1];
 
 // It doesn't use recursion to avoid recursion error. 
 function _join(str_lt) = 

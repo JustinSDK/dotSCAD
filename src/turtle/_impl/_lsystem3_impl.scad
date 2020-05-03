@@ -1,5 +1,5 @@
-use <experimental/_impl/_lsystem_comm.scad>;
-use <turtle/turtle3d.scad>;
+use <_lsystem_comm.scad>;
+use <../turtle3d.scad>;
 
 function _lsystem3_join(str_lt) = _join(str_lt);
 

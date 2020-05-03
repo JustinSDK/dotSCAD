@@ -1,5 +1,5 @@
-use <experimental/_impl/_lsystem3_impl.scad>;
-use <turtle/turtle3d.scad>;
+use <_impl/_lsystem3_impl.scad>;
+use <turtle3d.scad>;
 
 /*
 
