@@ -1,6 +1,6 @@
 use <../../util/rand.scad>;
 
-function assoc_lookup(array, key) = 
+function _assoc_lookup(array, key) = 
     let(idx = search([key], array)[0])
     array[idx][1];
 
@@ -28,7 +28,7 @@ function _derive_p(base, rules, rules_pr, n, i = 0) =
 
 function _derive1(base, rules) = _join([
     for(c = base) 
-    let(v = assoc_lookup(rules, c))
+    let(v = _assoc_lookup(rules, c))
     is_undef(v) ? c : v
 ]);
 
