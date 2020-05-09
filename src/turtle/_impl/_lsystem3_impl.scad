@@ -26,8 +26,8 @@ function _next_t2(t, code, angle, leng) =
     code == "|"  ? turtle3d("zu_turn", t, 180) :   
     code == "&"  ? turtle3d("yu_turn", t, angle) :        
     code == "^"  ? turtle3d("yu_turn", t, -angle) :
-    code == "\\" ? turtle3d("xu_turn", t, angle) :             
-    code == "/"  ? turtle3d("xu_turn", t, -angle) : t;       
+    code == "\\" ? turtle3d("xu_turn", t, -angle) :             
+    code == "/"  ? turtle3d("xu_turn", t, angle) : t;       
 
 // It doesn't use recursion to avoid recursion error.    
 function _lines(t, codes, angle, leng) = 

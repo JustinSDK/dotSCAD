@@ -23,7 +23,8 @@ function xy_arc_cmds(radius, angle, steps) =
         ],
         [["forward", leng], ["turn", ta]]
     );
-    
+
+// cmds: "forward" ("xu_move"), "turn" ("zu_turn"), "roll" ("xu_turn"), "pitch" (negative "yu_turn")    
 poly = footprints3(
     concat(
         [
