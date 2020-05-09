@@ -122,7 +122,8 @@ function _turtle3d_chain_move(cmd, arg1, arg2) =
     
 function _turtle3d_chain_turn(cmd, arg1, arg2) = 
     cmd == "xu_turn" || cmd == "roll" ? _turtle3d_xu_turn(arg1, arg2) : 
-    cmd == "yu_turn" || cmd == "pitch" ? _turtle3d_yu_turn(arg1, arg2) : 
+    cmd == "yu_turn" ? _turtle3d_yu_turn(arg1, arg2) : 
+    cmd == "pitch" ? _turtle3d_yu_turn(arg1, -arg2) : 
     cmd == "zu_turn" || cmd == "turn" ? _turtle3d_zu_turn(arg1, arg2) : _turtle3d_chain_one_arg(cmd, arg1);    
 
 function _turtle3d_chain_one_arg(cmd, arg) = 
