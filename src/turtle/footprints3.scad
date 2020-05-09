@@ -33,7 +33,7 @@ poly = footprints3(
         ], 
         xy_arc_cmds(5, 180, 12),
         [
-            ["pitch", -90],
+            ["pitch", 90],
             ["forward", 10],
             ["roll", -90]
         ],
