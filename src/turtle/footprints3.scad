@@ -2,7 +2,7 @@ use <_impl/_footprints3.scad>;
 use <turtle3d.scad>;
 
 /* 
- cmds: "forward" ("xu_move"), "turn" ("zu_turn"), "roll" ("xu_turn"), "pitch" ("yu_turn"), 
+ cmds: "forward" ("xu_move"), "turn" ("zu_turn"), "roll" (negative "xu_turn"), "pitch" (negative "yu_turn"),
        "xu_move", "yu_move", "zu_move", "xu_turn", "yu_turn", "turn"
 
 ```
@@ -24,7 +24,7 @@ function xy_arc_cmds(radius, angle, steps) =
         [["forward", leng], ["turn", ta]]
     );
 
-// cmds: "forward" ("xu_move"), "turn" ("zu_turn"), "roll" ("xu_turn"), "pitch" (negative "yu_turn")    
+// cmds: "forward" ("xu_move"), "turn" ("zu_turn"), "roll" (negative "xu_turn"), "pitch" (negative "yu_turn")    
 poly = footprints3(
     concat(
         [
@@ -36,7 +36,7 @@ poly = footprints3(
         [
             ["pitch", 90],
             ["forward", 10],
-            ["roll", -90]
+            ["roll", 90]
         ],
         xy_arc_cmds(5, 180, 12),
         [
