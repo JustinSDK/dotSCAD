@@ -40,17 +40,15 @@ poly = footprints2(
             ["turn", 90],
             ["forward", 10]
         ]
-    ),
-    start = [10, 10],
-    angle = 90
+    )
 );
 
 hull_polyline2d(poly, width = 1);
 ```
 */
-function footprints2(cmds, start = [0, 0], angle = 0) = 
+function footprints2(cmds, start = [0, 0]) = 
     let(
-        t = turtle2d("create", start[0], start[1], angle),
+        t = turtle2d("create", start[0], start[1], 0),
         leng = len(cmds)
     )
     concat([turtle2d("pt", t)], _footprints2(cmds, t, leng));
