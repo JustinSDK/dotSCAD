@@ -9,3 +9,5 @@ to_do:
 - matrix/m_determinant
 - turtle/lsystem2
 - turtle/lsystem3
+- turtle/footprints2
+- turtle/footprints3
