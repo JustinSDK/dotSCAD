@@ -6,6 +6,7 @@ to_do:
 2.4 preview:
 - intersection_p
 - util/sum
+- util/zip
 - matrix/m_determinant
 - turtle/lsystem2
 - turtle/lsystem3
