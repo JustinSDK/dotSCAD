@@ -1,5 +1,5 @@
-use <util/sort.scad>;
-use <util/dedup.scad>;
+use <../util/sort.scad>;
+use <../util/dedup.scad>;
 
 function px_union(points1, points2) =
     dedup(

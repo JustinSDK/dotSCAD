@@ -1,5 +1,5 @@
-use <util/sort.scad>;
-use <util/has.scad>;
+use <../util/sort.scad>;
+use <../util/has.scad>;
 
 function px_difference(points1, points2) =
     let(sorted = sort(points2, by = "vt"))

@@ -1,5 +1,5 @@
-use <util/sort.scad>;
-use <util/has.scad>;
+use <../util/sort.scad>;
+use <../util/has.scad>;
 
 function px_intersection(points1, points2) =
     let(
