@@ -1,3 +1,13 @@
+/**
+* lines_intersection2.scad
+*
+* @copyright Justin Lin, 2020
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-lines_intersection2.html
+*
+**/
+
 use <__comm__/__line_intersection.scad>;
 use <__comm__/__in_line.scad>;
 
