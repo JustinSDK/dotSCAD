@@ -4,7 +4,7 @@ to_do:
 
 
 2.4 preview:
-- intersection_p
+- lines_intersection2
 - util/sum
 - util/zip
 - matrix/m_determinant
