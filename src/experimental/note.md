@@ -1,9 +1,10 @@
 to_do:
 
 - deprecate `trianglate`, use `tri_ear_clipping`.
-
+- deprecate `pixel`
 
 2.4 preview:
+- voxel/....
 - lines_intersection2
 - util/sum
 - util/zip
