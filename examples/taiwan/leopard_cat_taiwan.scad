@@ -1,4 +1,4 @@
-use <pixel/px_gray.scad>;
+use <voxel/vx_gray.scad>;
 use <shape_taiwan.scad>;
 
 levels = [
@@ -132,7 +132,7 @@ levels = [
 	[196, 188, 193, 191, 185, 194, 191, 190, 196, 191, 194, 195, 162, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ];
 
-dots = px_gray(levels, center = true, invert = true, normalize = true);
+dots = vx_gray(levels, center = true, invert = true, normalize = true);
 linear_extrude(1.5) difference() {
     translate([6.5, -10]) 
 	rotate(22.5) 

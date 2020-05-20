@@ -1,5 +1,5 @@
 use <hull_polyline2d.scad>;
-use <pixel/px_ascii.scad>;
+use <voxel/vx_ascii.scad>;
 
 tx = "3.14159265358979323846264338327950288419716939937510582097494459230781640628620899862803482534211706798214808651328230664709384460955058223172";
 
@@ -9,7 +9,7 @@ linear_extrude(2)
         translate(pts[i]) 
         difference() {
             square(7, center = true);
-            render() for(p = px_ascii(tx[i], center = true)) {
+            render() for(p = vx_ascii(tx[i], center = true)) {
                 translate(p) square(.8);
             }
         } 

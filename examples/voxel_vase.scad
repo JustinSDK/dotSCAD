@@ -1,6 +1,6 @@
 use <bezier_curve.scad>;
-use <pixel/px_polyline.scad>;
-use <pixel/px_cylinder.scad>;
+use <voxel/vx_polyline.scad>;
+use <voxel/vx_cylinder.scad>;
 
 x1 = 5;
 x2 = 20;
@@ -18,18 +18,18 @@ module pixel_vase(x1, x2, x3, thickness) {
         [p0, p1, p2, p3, p4]
     )) [round(pt[0]), round(pt[1]), round(pt[2])]];
 
-    px_path = px_polyline(rounded_points);
-    leng = len(px_path);
+    vx_path = vx_polyline(rounded_points);
+    leng = len(vx_path);
 
-    for(p = px_cylinder(px_path[0][0], 1, true)) { 
+    for(p = vx_cylinder(vx_path[0][0], 1, true)) { 
         linear_extrude(1)
         translate([p[0], p[1]])
             square(1.1, center = true);
     }
 
     for(i = [0:leng - 1]) {
-        r = px_path[i][0];
-        for(p = px_cylinder(r, 1, thickness = thickness)) { 
+        r = vx_path[i][0];
+        for(p = vx_cylinder(r, 1, thickness = thickness)) { 
             translate([0, 0, i]) 
             linear_extrude(1) 
             translate([p[0], p[1]])

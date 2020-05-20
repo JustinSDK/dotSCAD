@@ -69,13 +69,13 @@ include <util/test_sort.scad>;
 include <util/test_reverse.scad>;
 include <util/test_fibseq.scad>;
 
-// Pixel
-include <pixel/test_px_line.scad>;
-include <pixel/test_px_polyline.scad>;
-include <pixel/test_px_circle.scad>;
-include <pixel/test_px_cylinder.scad>;
-include <pixel/test_px_sphere.scad>;
-include <pixel/test_px_polygon.scad>;
+// Voxel
+include <voxel/test_vx_line.scad>;
+include <voxel/test_vx_polyline.scad>;
+include <voxel/test_vx_circle.scad>;
+include <voxel/test_vx_cylinder.scad>;
+include <voxel/test_vx_sphere.scad>;
+include <voxel/test_vx_polygon.scad>;
 
 // Matrix
 include <matrix/test_m_cumulate.scad>;

@@ -1,4 +1,4 @@
-use <pixel/px_gray.scad>;
+use <voxel/vx_gray.scad>;
 use <stereographic_extrude.scad>;
 
 px_width = 0.8;
@@ -107,7 +107,7 @@ levels = [
 ];
 
 module shadow(levels, px_width) {
-    dots = px_gray(levels, center = true, normalize = true);
+    dots = vx_gray(levels, center = true, normalize = true);
     difference() {
         square(len(levels), center = true);
         render() union() {

@@ -1,5 +1,5 @@
-use <pixel/px_circle.scad>;
-use <pixel/px_polygon.scad>;
+use <voxel/vx_circle.scad>;
+use <voxel/vx_polygon.scad>;
 
 w = 5;
 merged_dino = false;
@@ -136,7 +136,7 @@ module cactus(w) {
         translate([2 * w, w * 7]) 
         scale(w) 
             blocks(
-                px_polygon([
+                vx_polygon([
                     [0, 2],
                     [3, 2],
                     [5, 4],
@@ -152,7 +152,7 @@ module cactus(w) {
         translate([-2 * w, w * 5]) 
         scale(w)
             blocks(
-                px_polygon([
+                vx_polygon([
                     [-1, 0],
                     [-3, 0],
                     [-6, 2],
@@ -167,7 +167,7 @@ module cactus(w) {
         
         scale(w) 
             blocks(
-                px_polygon([
+                vx_polygon([
                     [-2, 0],
                     [2, 0],
                     [2, 20],
@@ -187,11 +187,11 @@ module base(w, base_x_blocks, base_y_blocks) {
 
         translate([0, base_y_blocks * w / 2]) 
         scale(w) 
-        blocks(px_circle(base_y_blocks / 2, filled = true));
+        blocks(vx_circle(base_y_blocks / 2, filled = true));
 
         translate([base_x_blocks * w, base_y_blocks * w / 2]) 
         scale(w) 
-            blocks(px_circle(base_y_blocks / 2, filled = true));
+            blocks(vx_circle(base_y_blocks / 2, filled = true));
    }   
 }
 
