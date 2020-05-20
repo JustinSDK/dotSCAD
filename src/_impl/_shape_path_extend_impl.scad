@@ -1,6 +1,6 @@
 use <../__comm__/__to3d.scad>;
 use <../__comm__/__polytransversals.scad>;
-use <../rotate_p.scad>;
+use <../ptf/ptf_rotate.scad>;
 
 function _shape_path_extend_az(p1, p2) = 
     let(
@@ -18,7 +18,7 @@ function _shape_path_first_stroke(stroke_pts, path_pts) =
     )
     [
         for(p = stroke_pts)
-            rotate_p(p, a) + p1
+            ptf_rotate(p, a) + p1
     ];    
 
 function _shape_path_extend_stroke(stroke_pts, p1, p2, scale_step, i) =
@@ -28,7 +28,7 @@ function _shape_path_extend_stroke(stroke_pts, p1, p2, scale_step, i) =
     )
     [
         for(p = stroke_pts)
-            rotate_p(p * (1 + scale_step * i) + [0, leng], a) + p1
+            ptf_rotate(p * (1 + scale_step * i) + [0, leng], a) + p1
     ];
     
 function _shape_path_extend_inner(stroke_pts, path_pts, leng_path_pts, scale_step) =
