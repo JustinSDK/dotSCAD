@@ -3,6 +3,10 @@ to_do:
 - deprecate `trianglate`, use `tri_ear_clipping`.
 - deprecate `pixel`
 
+improved:
+
+- polyline2d: improved middle-point drawing
+
 2.4 preview:
 - voxel/....
 - lines_intersection2
