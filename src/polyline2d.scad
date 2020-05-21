@@ -63,7 +63,7 @@ module polyline2d(points, width, startingStyle = "CAP_SQUARE", endingStyle = "CA
 
             ra = c > 0 ? (-90 + v1a) : (90 + v1a - a);
             if(joinStyle == "JOIN_ROUND") {
-                #translate(p2) 
+                translate(p2) 
                 rotate(ra) 
                 pie(
                     radius = radius, 
@@ -71,7 +71,7 @@ module polyline2d(points, width, startingStyle = "CAP_SQUARE", endingStyle = "CA
                     $fn = $fn * 360 / a
                 );  
             } else { // "JOIN_BEVEL"
-                #translate(p2) 
+                translate(p2) 
                 rotate(ra) 
                 polygon([[0, 0], [radius, 0], [radius * cos(a), radius * sin(a)]]);
             }
