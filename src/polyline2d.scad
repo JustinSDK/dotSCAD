@@ -65,15 +65,19 @@ module polyline2d(points, width, startingStyle = "CAP_SQUARE", endingStyle = "CA
             if(joinStyle == "JOIN_ROUND") {
                 translate(p2) 
                 rotate(ra) 
-                pie(
-                    radius = radius, 
-                    angle = [0, a], 
-                    $fn = $fn * 360 / a
-                );  
+                    pie(
+                        radius = radius, 
+                        angle = [0, a], 
+                        $fn = $fn * 360 / a
+                    ); 
+            } else if(joinStyle == "JOIN_MITER") {
+                translate(p2) 
+                rotate(ra) 
+                    polygon([[0, 0], [radius, 0], [radius, radius * tan(a / 2)], [radius * cos(a), radius * sin(a)]]);    
             } else { // "JOIN_BEVEL"
                 translate(p2) 
                 rotate(ra) 
-                polygon([[0, 0], [radius, 0], [radius * cos(a), radius * sin(a)]]);
+                    polygon([[0, 0], [radius, 0], [radius * cos(a), radius * sin(a)]]);
             }
   
             joins(line, radius, i_end, i + 1);        
