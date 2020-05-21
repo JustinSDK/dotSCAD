@@ -9,13 +9,14 @@
 **/
 
 use <line2d.scad>;
+use <pie.scad>;
 
 module polyline2d(points, width, startingStyle = "CAP_SQUARE", endingStyle = "CAP_SQUARE") {
     leng_pts = len(points);
 
-    s_styles = [startingStyle, "CAP_ROUND"];
+    s_styles = [startingStyle, "CAP_BUTT"];
     e_styles = ["CAP_BUTT", endingStyle];
-    default_styles = ["CAP_BUTT", "CAP_ROUND"];
+    default_styles = ["CAP_BUTT", "CAP_BUTT"];
 
     module line_segment(index) {
         styles = index == 1 ? s_styles : 
@@ -34,14 +35,46 @@ module polyline2d(points, width, startingStyle = "CAP_SQUARE", endingStyle = "CA
         test_polyline2d_line_segment(index, p1, p2, width, p1Style, p2Style);
     }
 
-    module polyline2d_inner(index) {
+    module lines(index) {
         if(index < leng_pts) {
             line_segment(index);
-            polyline2d_inner(index + 1);
+            lines(index + 1);
         } 
     }
 
-    polyline2d_inner(1);
+    function angle(p1, p2, p3) = 
+        let(
+            v1 = p2 - p1,
+            v2 = p3 - p2
+        )
+        acos((v1 * v2) / (norm(v1) * norm(v2)));
+
+    module pies(line, radius, i_end, i) {
+        if(i < i_end) {
+            p1 = line[i];
+            p2 = line[i + 1];
+            p3 = line[i + 2];
+            v1 = p2 - p1;
+            v2 = p3 - p2;
+            c = cross(v1, v2);  // c > 0: ct_clk
+
+            a = angle(p1, p2, p3);
+            v1a = atan2(v1[1], v1[0]);
+
+            translate(p2) 
+            rotate(c > 0 ? (-90 + v1a) : (90 + v1a - a)) 
+            pie(
+                radius = radius, 
+                angle = [0, a], 
+                $fn = $fn * 360 / a
+            );  
+
+            pies(line, radius, i_end, i + 1);        
+        }
+    }
+
+    lines(1);
+    pies(points, width / 2, leng_pts - 2, 0);
 }
 
 // override it to test
