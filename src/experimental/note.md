@@ -5,7 +5,7 @@ to_do:
 
 improved:
 
-- polyline2d: improved middle-point drawing
+- polyline2d: improved middle-point drawing, support joinStyle
 
 2.4 preview:
 - voxel/....
