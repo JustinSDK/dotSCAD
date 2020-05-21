@@ -11,7 +11,7 @@
 use <line2d.scad>;
 use <pie.scad>;
 
-module polyline2d(points, width, startingStyle = "CAP_SQUARE", endingStyle = "CAP_SQUARE") {
+module polyline2d(points, width, startingStyle = "CAP_SQUARE", endingStyle = "CAP_SQUARE", joinStyle = "JOIN_ROUND") {
     leng_pts = len(points);
 
     s_styles = [startingStyle, "CAP_BUTT"];
@@ -49,7 +49,7 @@ module polyline2d(points, width, startingStyle = "CAP_SQUARE", endingStyle = "CA
         )
         acos((v1 * v2) / (norm(v1) * norm(v2)));
 
-    module pies(line, radius, i_end, i) {
+    module joins(line, radius, i_end, i) {
         if(i < i_end) {
             p1 = line[i];
             p2 = line[i + 1];
@@ -61,20 +61,27 @@ module polyline2d(points, width, startingStyle = "CAP_SQUARE", endingStyle = "CA
             a = angle(p1, p2, p3);
             v1a = atan2(v1[1], v1[0]);
 
-            translate(p2) 
-            rotate(c > 0 ? (-90 + v1a) : (90 + v1a - a)) 
-            pie(
-                radius = radius, 
-                angle = [0, a], 
-                $fn = $fn * 360 / a
-            );  
-
-            pies(line, radius, i_end, i + 1);        
+            ra = c > 0 ? (-90 + v1a) : (90 + v1a - a);
+            if(joinStyle == "JOIN_ROUND") {
+                #translate(p2) 
+                rotate(ra) 
+                pie(
+                    radius = radius, 
+                    angle = [0, a], 
+                    $fn = $fn * 360 / a
+                );  
+            } else { // "JOIN_BEVEL"
+                #translate(p2) 
+                rotate(ra) 
+                polygon([[0, 0], [radius, 0], [radius * cos(a), radius * sin(a)]]);
+            }
+  
+            joins(line, radius, i_end, i + 1);        
         }
     }
 
     lines(1);
-    pies(points, width / 2, leng_pts - 2, 0);
+    joins(points, width / 2, leng_pts - 2, 0);
 }
 
 // override it to test
