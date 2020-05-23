@@ -1,4 +1,4 @@
-use <polysections.scad>;
+use <sweep.scad>;
 use <util/reverse.scad>;
 
 thickness = 0.05;
@@ -53,5 +53,5 @@ module rose() {
         )
     ];
     
-    polysections(sections);
+    sweep(sections);
 }

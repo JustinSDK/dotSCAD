@@ -1,7 +1,7 @@
 use <trim_shape.scad>;
 use <bezier_curve.scad>;
 use <path_scaling_sections.scad>;
-use <polysections.scad>;
+use <sweep.scad>;
 use <ptf/ptf_rotate.scad>;
 use <bijection_offset.scad>;
 use <shape_superformula.scad>;
@@ -59,8 +59,8 @@ module superformula_vase(phi_step, m, n, n3, d, r1, r2, h1, h2, t_step, twist) {
     outer_sections = cal_sections(superformula2, edge_path2, twist);
 
     difference() {
-        polysections(outer_sections);
-        polysections(sections);
+        sweep(outer_sections);
+        sweep(sections);
     }
 
     linear_extrude(d) 

@@ -1,6 +1,6 @@
 use <shape_circle.scad>;
 use <ptf/ptf_rotate.scad>;
-use <polysections.scad>;
+use <sweep.scad>;
 
 r1 = 0.1;
 r2 = 50;
@@ -29,7 +29,7 @@ module simple_seashell(r1, r2, a1, a2, steps) {
             
     ];
 
-    rotate([90, 0, 0]) polysections(sections, "HOLLOW");
+    rotate([90, 0, 0]) sweep(sections, "HOLLOW");
 }
 
 simple_seashell(r1, r2, a1, a2, steps);
