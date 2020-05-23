@@ -19,6 +19,7 @@ module voronoi3d(points, spacing = 1) {
 
     space_size = max([max(xs) -  min(xs), max(ys) -  min(ys), max(zs) -  min(zs)]);    
     half_space_size = 0.5 * space_size; 
+    double_space_size = 2 * space_size;
     offset_leng = (spacing + space_size) * 0.5;
 
     function normalize(v) = v / norm(v);
