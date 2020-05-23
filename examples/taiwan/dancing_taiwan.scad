@@ -2,7 +2,7 @@ use <trim_shape.scad>;
 use <bezier_curve.scad>;
 use <shape_taiwan.scad>;
 use <path_scaling_sections.scad>;
-use <polysections.scad>;
+use <sweep.scad>;
 use <ptf/ptf_rotate.scad>;
 use <bijection_offset.scad>;
 
@@ -54,8 +54,8 @@ module dancing_formosan(x1, x2, x3, y1, y2, y3, twist, t_step) {
     sections2 = cal_sections(taiwan2, edge_path2, twist);
 
     difference() {
-        polysections(sections);
-        polysections(sections2);
+        sweep(sections);
+        sweep(sections2);
     }
 
     translate([0, 0, -2]) 

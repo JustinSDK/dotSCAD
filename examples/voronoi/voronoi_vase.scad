@@ -1,7 +1,7 @@
-use <voronoi3d.scad>;
+use <voronoi/vrn3_from.scad>;
 use <bezier_curve.scad>;
 use <hollow_out.scad>;
-use <polysections.scad>;
+use <sweep.scad>;
 
 r = 13;
 h = 60;
@@ -44,13 +44,13 @@ module voronoi_vase(r, h, thickness, num_of_pts, fn, profile_step) {
         
         difference() {
             scale([0.95, 0.95, 1]) 
-                polysections(sections);
+                sweep(sections);
             scale([0.85, 0.85, 1]) 
-                polysections(sections);
+                sweep(sections);
             intersection() {
-                polysections(sections);
+                sweep(sections);
                 render() 
-                    voronoi3d(concat([for(i = indices) pts[i]],  [sections[0][0], sections[0][half_fn], sections[last_section_i][0], sections[last_section_i][half_fn]]));  
+                    vrn3_from(concat([for(i = indices) pts[i]],  [sections[0][0], sections[0][half_fn], sections[last_section_i][0], sections[last_section_i][half_fn]]));  
             }
         }
 

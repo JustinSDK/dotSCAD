@@ -1,9 +1,9 @@
 use <hull_polyline2d.scad>;
-use <experimental/voronoi_square_cells.scad>;
+use <voronoi/vrn2_space_cells.scad>;
 
 size = [20, 20];
 grid_w = 5;
-cells = voronoi_square_cells(size, grid_w);
+cells = vrn2_space_cells(size, grid_w);
 
 for(cell = cells) {
     cell_pt = cell[0];

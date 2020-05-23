@@ -1,4 +1,4 @@
-use <intersection_p.scad>;
+use <lines_intersection.scad>;
 
 function _intersection_ps(shape, line_pts, epsilon) = 
     let(
@@ -7,6 +7,6 @@ function _intersection_ps(shape, line_pts, epsilon) =
     )
     [
         for(i = [0:leng - 1]) 
-        let(p = intersection_p(line_pts, [pts[i], pts[i + 1]], epsilon = epsilon))
+        let(p = lines_intersection(line_pts, [pts[i], pts[i + 1]], epsilon = epsilon))
         if(p != []) p
     ];

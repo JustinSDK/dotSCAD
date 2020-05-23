@@ -1,7 +1,7 @@
 use <golden_spiral.scad>;
 use <ptf/ptf_rotate.scad>;
 use <hollow_out.scad>;
-use <experimental/voronoi_cells.scad>;
+use <voronoi/vrn2_cells_from.scad>;
 
 spirals = 2;     // [2:]
 line_thickness = .5;
@@ -33,7 +33,7 @@ module voronoi_fibonacci() {
     half_line_thicness = line_thickness / 2;
     lst_r = norm(spiral[len(spiral) - 1]) + half_line_thicness;
 
-    cells = voronoi2d_cells(pts);    
+    cells = vrn2_cells_from(pts);    
     for(i = [0:len(pts) - 1]) {
         cell = cells[i];
         

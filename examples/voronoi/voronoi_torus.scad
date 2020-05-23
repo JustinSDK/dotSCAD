@@ -1,10 +1,10 @@
-use <experimental/voronoi_square_cells.scad>;
+use <voronoi/vrn2_space_cells.scad>;
 use <hull_polyline3d.scad>;
 use <ptf/ptf_torus.scad>;
 
 size = [40, 80];
 grid_w = 5;
-cells = voronoi_square_cells(size, grid_w);
+cells = vrn2_space_cells(size, grid_w);
 
 $fn = 4;
 

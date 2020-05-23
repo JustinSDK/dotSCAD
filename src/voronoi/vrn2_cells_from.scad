@@ -1,8 +1,8 @@
-use <experimental/_impl/_voronoi2d_cells_impl.scad>;
-use <experimental/convex_intersection_for.scad>;
-use <shape_square.scad>;
+use <_impl/_vrn2_cells_from_impl.scad>;
+use <_impl/_convex_intersection_for.scad>;
+use <../shape_square.scad>;
 
-function voronoi_cells(points) = 
+function vrn2_cells_from(points) = 
     let(
         size = _default_region_size(points),
         half_size = size * 0.5,
@@ -14,5 +14,5 @@ function voronoi_cells(points) =
     )
     [
         for(regions = regions_lt)
-            convex_intersection_for(regions)
+            _convex_intersection_for(regions)
     ];

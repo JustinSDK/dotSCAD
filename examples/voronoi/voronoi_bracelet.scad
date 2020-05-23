@@ -1,5 +1,5 @@
 use <hollow_out.scad>;
-use <voronoi2d.scad>;
+use <voronoi/vrn2_from.scad>;
 use <bend_extrude.scad>;
 
 r = 35;
@@ -30,7 +30,7 @@ module voronoi_bracelet(r, height, thickness, n, frags, offset_r, region_type) {
     {
         difference() {
             square([x, y]);
-            voronoi2d(points, spacing = thickness, r = offset_r, region_type = region_type);
+            vrn2_from(points, spacing = thickness, r = offset_r, region_type = region_type);
         }
         hollow_out(thickness * 1.5)
             square([x, y]);

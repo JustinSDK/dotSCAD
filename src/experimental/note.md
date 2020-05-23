@@ -1,13 +1,16 @@
 to_do:
 
 - deprecate `trianglate`, use `tri_ear_clipping`.
-- deprecate `pixel`
+
+- deprecate `pixel...`
+- deprecate `voronoi2d`, `voronoi3d`
 
 improved:
 
 - polyline2d: improved middle-point drawing, support joinStyle
 
 2.4 preview:
+- voronoi/...
 - voxel/....
 - lines_intersection2
 - util/sum

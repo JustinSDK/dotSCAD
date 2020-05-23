@@ -1,4 +1,4 @@
-use <experimental/voronoi_square.scad>;
+use <voronoi/vrn2_space.scad>;
 use <bend_extrude.scad>;
 use <arc.scad>;
 
@@ -11,7 +11,7 @@ $fn = 24;
 
 color("black")
 bend_extrude(size, thickness = thickness, angle = 360) 
-    voronoi_square(size, grid_w, seed, spacing);
+    vrn2_space(size, grid_w, seed, spacing);
 
 r = size[0] / (2 * PI);
 linear_extrude(size[1])

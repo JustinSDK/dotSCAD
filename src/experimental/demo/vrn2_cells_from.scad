@@ -1,12 +1,12 @@
 use <hull_polyline2d.scad>;
 use <shape_square.scad>;
-use <experimental/voronoi_cells.scad>;
+use <voronoi/vrn2_cells_from.scad>;
 
 xs1 = rands(-20, 20, 15);
 ys1 = rands(-20, 20, 15);
 points = [for(i = [0:len(xs1) - 1]) [xs1[i], ys1[i]]];
 
-cells = voronoi_cells(points);
+cells = vrn2_cells_from(points);
 for(i = [0:len(points) - 1]) {
     pt = points[i];
     cell = cells[i];

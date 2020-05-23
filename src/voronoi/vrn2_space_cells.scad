@@ -1,8 +1,8 @@
-use <experimental/_impl/_voronoi_square_cells_impl.scad>;
-use <experimental/convex_intersection_for.scad>;
-use <shape_square.scad>;
+use <_impl/_vrn2_space_cells_impl.scad>;
+use <_impl/_convex_intersection_for.scad>;
+use <../shape_square.scad>;
 
-function voronoi_square_cells(size, grid_w, seed) = 
+function vrn2_space_cells(size, grid_w, seed) = 
     let(
         sd = is_undef(seed) ? rands(0, 255, 1)[0] : seed,
         region_size = grid_w * 3,
@@ -35,5 +35,5 @@ function voronoi_square_cells(size, grid_w, seed) =
     )
     [
         for(regions = regions_lt)
-            [regions[0], convex_intersection_for(regions[1])]
+            [regions[0], _convex_intersection_for(regions[1])]
     ];
