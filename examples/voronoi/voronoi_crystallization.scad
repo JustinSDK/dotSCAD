@@ -1,4 +1,4 @@
-use <experimental/voronoi_square_cells.scad>;
+use <voronoi/vrn2_space_cells.scad>;
 
 grid_w = 5;
 spacing = 0.2;
@@ -108,7 +108,7 @@ levels = [
 ];
 
 size = [len(levels[0]), len(levels)];
-cells = voronoi_square_cells(size, grid_w);
+cells = vrn2_space_cells(size, grid_w);
 
 for(cell = cells) {
     level = levels[size[1] - cell[0][1]][cell[0][0]];
