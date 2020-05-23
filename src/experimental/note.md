@@ -17,6 +17,6 @@ improved:
 - turtle/lsystem3
 - turtle/footprints2
 - turtle/footprints3
-- pixel/px_union
-- pixel/px_intersection
-- pixel/px_difference
+- voxel/vx_union
+- voxel/vx_intersection
+- voxel/vx_difference
