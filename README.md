@@ -208,6 +208,9 @@ See [examples](examples).
 
 ### Util
 - [util/sum](https://openhome.cc/eGossip/OpenSCAD/lib2x-sum.html)
+- [util/zip](https://openhome.cc/eGossip/OpenSCAD/lib2x-zip.html)
+
+----
 
 ## Bugs and Feedback
 
