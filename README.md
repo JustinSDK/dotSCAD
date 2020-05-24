@@ -199,6 +199,16 @@ See [examples](examples).
 - [noise/nz_worley3s](https://openhome.cc/eGossip/OpenSCAD/lib2x-nz_worley3s.html)
 - [noise/nz_cell](https://openhome.cc/eGossip/OpenSCAD/lib2x-nz_cell.html)
 
+----
+
+# 2.4 Preview
+
+### 2D Function
+- [lines_intersection](https://openhome.cc/eGossip/OpenSCAD/lib2x-lines_intersection.html)
+
+### Util
+- [util/sum](https://openhome.cc/eGossip/OpenSCAD/lib2x-sum.html)
+
 ## Bugs and Feedback
 
 For bugs, questions and discussions please use the [Github Issues](https://github.com/JustinSDK/dotSCAD/issues).

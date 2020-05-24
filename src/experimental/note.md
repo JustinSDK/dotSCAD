@@ -12,7 +12,7 @@ improved:
 2.4 preview:
 - voronoi/...
 - voxel/....
-- lines_intersection2
+- lines_intersection
 - util/sum
 - util/zip
 - matrix/m_determinant
