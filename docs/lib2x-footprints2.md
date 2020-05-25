@@ -7,7 +7,7 @@ Drive a turtle with `["forward", length]` or `["turn", angle]`. This function is
 ## Parameters
 
 - `cmds` : A list of `["forward", length]`s and `["turn", angle]`s.
-- `start` : Set the start point of the turtle.
+- `start` : Set the start point of the turtle. Default to `[0, 0]`.
 
 ## Examples
 	    
@@ -50,5 +50,5 @@ Drive a turtle with `["forward", length]` or `["turn", angle]`. This function is
 
 	polyline2d(poly, width = 1);
 
-![t3d](images/lib2x-footprints2-1.JPG)
+![footprints2](images/lib2x-footprints2-1.JPG)
 
