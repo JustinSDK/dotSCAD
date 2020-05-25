@@ -210,6 +210,9 @@ See [examples](examples).
 - [util/sum](https://openhome.cc/eGossip/OpenSCAD/lib2x-sum.html)
 - [util/zip](https://openhome.cc/eGossip/OpenSCAD/lib2x-zip.html)
 
+### Turtle
+- [turtle/footprints2](https://openhome.cc/eGossip/OpenSCAD/lib2x-footprints2.html)
+
 ----
 
 ## Bugs and Feedback
