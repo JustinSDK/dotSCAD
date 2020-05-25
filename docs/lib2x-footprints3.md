@@ -51,5 +51,5 @@ A 3D verion of [footprint2](https://openhome.cc/eGossip/OpenSCAD/lib2x-footprint
 
 	hull_polyline3d(poly, thickness = 1);
 
-![footprints3](images/lib2x-footprints2-1.JPG)
+![footprints3](images/lib2x-footprints3-1.JPG)
 
