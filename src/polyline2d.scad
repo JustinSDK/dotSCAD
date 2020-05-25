@@ -18,6 +18,8 @@ module polyline2d(points, width, startingStyle = "CAP_SQUARE", endingStyle = "CA
     e_styles = ["CAP_BUTT", endingStyle];
     default_styles = ["CAP_BUTT", "CAP_BUTT"];
 
+    fn = $fn == 0 ? 12 : $fn;
+
     module line_segment(index) {
         styles = index == 1 ? s_styles : 
                  index == leng_pts - 1 ? e_styles : 
@@ -68,7 +70,7 @@ module polyline2d(points, width, startingStyle = "CAP_SQUARE", endingStyle = "CA
                     pie(
                         radius = radius, 
                         angle = [0, a], 
-                        $fn = $fn * 360 / a
+                        $fn = fn * 360 / a
                     ); 
             } else if(joinStyle == "JOIN_MITER") {
                 translate(p2) 
