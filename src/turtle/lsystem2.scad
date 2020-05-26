@@ -1,21 +1,19 @@
+/**
+* lsystem2.scad
+*
+* @copyright Justin Lin, 2020
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-lsystem2.html
+*
+**/ 
+
 use <_impl/_lsystem2_impl.scad>;
 use <turtle2d.scad>;
 
-/*
-
-   F  Move forward and draw line
-   f  Move forward without drawing a line
-   +  Turn left
-   -  Turn right
-   |  Reverse direction (ie: turn by 180 degrees)
-   [  Push current turtle state onto stack
-   ]  Pop current turtle state from the stack
-
-*/
-
-function lsystem2(axiom, rules, n, angle, leng = 1, heading = 0, start = [0, 0], forward_chars = "F", rules_pr) =
+function lsystem2(axiom, rules, n, angle, leng = 1, heading = 0, start = [0, 0], forward_chars = "F", rule_prs) =
     let(
-        derived = _lsystem2_derive(axiom, rules, n, rules_pr),
+        derived = _lsystem2_derive(axiom, rules, n, rule_prs),
         codes = forward_chars == "F" ? derived : _lsystem2_join([
             for(c = derived)
             let(idx = search(c, forward_chars))
