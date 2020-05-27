@@ -1,25 +1,19 @@
+/**
+* lsystem3.scad
+*
+* @copyright Justin Lin, 2020
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-lsystem3.html
+*
+**/ 
+
 use <_impl/_lsystem3_impl.scad>;
 use <turtle3d.scad>;
 
-/*
-
-   F  Move forward and draw line
-   f  Move forward without drawing a line
-   +  Turn left
-   -  Turn right
-   |  Reverse direction (ie: turn by 180 degrees)
-   &  Pitch down
-   ^  Pitch up
-   \  Roll left
-   /  Roll right       
-   [  Push current turtle state onto stack
-   ]  Pop current turtle state from the stack
-
-*/
-
-function lsystem3(axiom, rules, n, angle, leng = 1, heading = 0, start = [0, 0, 0], forward_chars = "F", rules_pr) =
+function lsystem3(axiom, rules, n, angle, leng = 1, heading = 0, start = [0, 0, 0], forward_chars = "F", rule_prs) =
     let(
-        derived = _lsystem3_derive(axiom, rules, n, rules_pr),
+        derived = _lsystem3_derive(axiom, rules, n, rule_prs),
         codes = forward_chars == "F" ? derived : _lsystem3_join([
             for(c = derived)
             let(idx = search(c, forward_chars))

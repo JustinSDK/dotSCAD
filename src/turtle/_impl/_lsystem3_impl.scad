@@ -3,9 +3,9 @@ use <../turtle3d.scad>;
 
 function _lsystem3_join(str_lt) = _join(str_lt);
 
-function _lsystem3_derive(axiom, rules, n, rules_pr) =
-    is_undef(rules_pr) ? _derive(axiom, rules, n) :
-                         _derive_p(axiom, rules, rules_pr, n);
+function _lsystem3_derive(axiom, rules, n, rule_prs) =
+    is_undef(rule_prs) ? _derive(axiom, rules, n) :
+                         _derive_p(axiom, rules, rule_prs, n);
 
 function _next_stack(t, code, stack) = 
     code == "[" ? concat([t], stack) :
