@@ -226,9 +226,9 @@ See [examples](examples).
 - [voxel/vx_from](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_from.html)
 - [voxel/vx_ascii](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_ascii.html)
 - [voxel/vx_gray](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_gray.html)
-- vx_union
-- vx_intersection
-- vx_difference
+- [voxel/vx_union](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_union.html)
+- voxel/vx_intersection
+- voxel/vx_difference
 
 ----
 
