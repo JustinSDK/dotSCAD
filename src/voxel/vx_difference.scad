@@ -1,3 +1,13 @@
+/**
+* vx_difference.scad
+*
+* @copyright Justin Lin, 2020
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_difference.html
+*
+**/ 
+
 use <../util/sort.scad>;
 use <../util/has.scad>;
 

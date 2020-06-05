@@ -1,6 +1,6 @@
 # vx_intersection
 
-Creates an intersection of two lists of points. 
+It' slow, in case you want to create an intersection of two lists of points directly. 
 
 **Since:** 2.4
 

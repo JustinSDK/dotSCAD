@@ -1,6 +1,6 @@
 # vx_union
 
-Creates a union of two lists of points. 
+It' slow, in case you want to create a union of two lists of points directly. 
 
 **Since:** 2.4
 
