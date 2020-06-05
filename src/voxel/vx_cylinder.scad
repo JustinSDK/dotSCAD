@@ -9,9 +9,6 @@
 **/ 
 
 use <_impl/_vx_cylinder_impl.scad>; 
-use <../util/sort.scad>;
-use <../util/dedup.scad>;
 
 function vx_cylinder(r, h, filled = false, thickness = 1) =
-    let(all = _vx_cylinder_impl(r, h, filled, thickness))
-    dedup(sort(all, by = "vt"), sorted = true);
+    _vx_cylinder_impl(r, h, filled, thickness);
