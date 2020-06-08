@@ -35,3 +35,7 @@ Creates a polyline from a list of `x`, `y` coordinates. When the end points are 
                startingStyle = "CAP_ROUND", endingStyle = "CAP_ROUND");
 
 ![polyline2d](images/lib2x-polyline2d-3.JPG)
+
+About `joinStyle`:
+
+![polyline2d](images/lib2x-polyline2d-4.JPG)
