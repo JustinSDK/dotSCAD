@@ -8,6 +8,7 @@ Creates a polyline from a list of `x`, `y` coordinates. When the end points are 
 - `width` : The line width.
 - `startingStyle` : The end-cap style of the starting point. The value must be `"CAP_BUTT"`, `"CAP_SQUARE"` or `"CAP_ROUND"`. The default value is `"CAP_SQUARE"`. 
 - `endingStyle` : The end-cap style of the ending point. The value must be `"CAP_BUTT"`, `"CAP_SQUARE"` or `"CAP_ROUND"`. The default value is `"CAP_SQUARE"`. 
+- `joinStyle`: Applies to the vertex where two lines join. The value must be `"JOIN_ROUND"`, `"JOIN_MITER"` or `"JOIN_BEVEL"`. The default value is `"JOIN_ROUND"`. Since 2.4.
 - `$fa`, `$fs`, `$fn` : Check [the circle module](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Using_the_2D_Subsystem#circle) for more details. The final fragments of a circle will be a multiple of 4 to fit edges if possible.
 
 ## Examples
