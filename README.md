@@ -230,6 +230,9 @@ See [examples](examples).
 - [voxel/vx_intersection](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_intersection.html)
 - [voxel/vx_difference](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_difference.html)
 
+### Matrix
+- matrix/m_determinant	
+
 ----
 
 ## Bugs and Feedback
