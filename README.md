@@ -233,6 +233,14 @@ See [examples](examples).
 ### Matrix
 - matrix/m_determinant	
 
+### Voronoi
+- voronoi/vrn2_from
+- voronoi/vrn2_space
+- voronoi/vrn2_cells_from
+- voronoi/vrn2_cells_space
+- voronoi/vrn3_from
+- voronoi/vrn3_space
+
 ----
 
 ## Bugs and Feedback
