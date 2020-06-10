@@ -2,7 +2,7 @@ use <_impl/_vrn2_space_cells_impl.scad>;
 use <_impl/_convex_intersection_for.scad>;
 use <../shape_square.scad>;
 
-function vrn2_space_cells(size, grid_w, seed) = 
+function vrn2_cells_space(size, grid_w, seed) = 
     let(
         sd = is_undef(seed) ? rands(0, 255, 1)[0] : seed,
         region_size = grid_w * 3,
