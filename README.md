@@ -231,7 +231,7 @@ See [examples](examples).
 - [voxel/vx_difference](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_difference.html)
 
 ### Matrix
-- matrix/m_determinant	
+- [matrix/m_determinant](https://openhome.cc/eGossip/OpenSCAD/lib2x-m_determinant.html)
 
 ### Voronoi
 - voronoi/vrn2_from
