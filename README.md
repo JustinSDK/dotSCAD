@@ -234,7 +234,7 @@ See [examples](examples).
 - [matrix/m_determinant](https://openhome.cc/eGossip/OpenSCAD/lib2x-m_determinant.html)
 
 ### Voronoi
-- voronoi/vrn2_from
+- [voronoi/vrn2_from](https://openhome.cc/eGossip/OpenSCAD/lib2x-vrn2_from.html)
 - voronoi/vrn2_space
 - voronoi/vrn2_cells_from
 - voronoi/vrn2_cells_space
