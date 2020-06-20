@@ -1,3 +1,14 @@
+/**
+* vrn2_cells_from.scad
+*
+* @copyright Justin Lin, 2020
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-vrn2_cells_from.html
+*
+**/
+
+
 use <_impl/_vrn2_cells_from_impl.scad>;
 use <_impl/_convex_intersection_for.scad>;
 use <../shape_square.scad>;
