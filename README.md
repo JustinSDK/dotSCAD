@@ -235,7 +235,7 @@ See [examples](examples).
 
 ### Voronoi
 - [voronoi/vrn2_from](https://openhome.cc/eGossip/OpenSCAD/lib2x-vrn2_from.html)
-- voronoi/vrn2_space
+- [voronoi/vrn2_space](https://openhome.cc/eGossip/OpenSCAD/lib2x-vrn2_space.html)
 - [voronoi/vrn2_cells_from](https://openhome.cc/eGossip/OpenSCAD/lib2x-vrn2_cells_from.html)
 - voronoi/vrn2_cells_space
 - voronoi/vrn3_from
