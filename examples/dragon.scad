@@ -38,7 +38,7 @@ module one_segment() {
     }
     
     // hair
-    for(i = [0:5]) {
+    for(i = [0:2]) {
         rotate([15 -15 * i, 0, 0]) 
         translate([0, 3, -4]) 
         rotate([45, 0, 0]) 
@@ -47,8 +47,6 @@ module one_segment() {
         scale([3.5, 2, 1]) 
             circle(3, $fn = 3);
     }                
-
-    scale([1, 1, 1.1]) sphere(5); 
 
     // belly
     translate([0, -3, 1]) 
