@@ -1,6 +1,6 @@
 # paths2sections
 
-Given a list of paths, this function will return all cross-sections described by those paths. Combined with the `polysections` module, you can describe a more complex model.
+Given a list of paths, this function will return all cross-sections described by those paths. Combined with the `sweep` module, you can describe a more complex model.
 
 You paths should be indexed count-clockwisely.
 
@@ -12,7 +12,7 @@ You paths should be indexed count-clockwisely.
 
 	use <paths2sections.scad>;
 	use <hull_polyline3d.scad>;
-	use <polysections.scad>;
+	use <sweep.scad>;
 	
 	paths = [
 	    [[5, 0, 5], [15, 10, 10], [25, 20, 5]],
@@ -23,7 +23,7 @@ You paths should be indexed count-clockwisely.
 	
 	sections = paths2sections(paths);
 	
-	polysections(sections);
+	sweep(sections);
 	
 	#for(path = paths) {
 	    hull_polyline3d(path, 0.5);
@@ -34,7 +34,7 @@ You paths should be indexed count-clockwisely.
 	use <bezier_curve.scad>;
 	use <paths2sections.scad>;
 	use <hull_polyline3d.scad>;
-	use <polysections.scad>;
+	use <sweep.scad>;
 	
 	t_step = 0.05;
 	
@@ -56,7 +56,7 @@ You paths should be indexed count-clockwisely.
 	
 	sections = paths2sections(paths);
 	
-	polysections(sections);
+	sweep(sections);
 	
 	#for(path = paths) {
 	    hull_polyline3d(path, 0.5);

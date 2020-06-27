@@ -2,7 +2,7 @@
 
 It extrudes a 2D shape along a path. This module is suitable for a path created by a continuous function.
 
-When using this module, you should use points to represent the 2D shape. If your 2D shape is not solid, indexes of triangles are required. See [polysections](https://openhome.cc/eGossip/OpenSCAD/lib2x-polysections.html) for details.
+When using this module, you should use points to represent the 2D shape. If your 2D shape is not solid, indexes of triangles are required. See [sweep](https://openhome.cc/eGossip/OpenSCAD/lib2x-sweep.html) for details.
 
 ## Parameters
 

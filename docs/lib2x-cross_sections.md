@@ -1,6 +1,6 @@
 # cross_sections
 
-Given a 2D shape, points and angles along the path, this function will return all cross-sections. Combined with the `polysections` module, you can create a specific path extrusion.
+Given a 2D shape, points and angles along the path, this function will return all cross-sections. Combined with the `sweep` module, you can create a specific path extrusion.
 
 ## Parameters
 
@@ -12,7 +12,7 @@ Given a 2D shape, points and angles along the path, this function will return al
 
 ## Examples
 
-	use <polysections.scad>;
+	use <sweep.scad>;
 	use <cross_sections.scad>;
 	use <archimedean_spiral.scad>;
 
@@ -35,7 +35,7 @@ Given a 2D shape, points and angles along the path, this function will return al
 		for(i = [0:len(pts_angles) - 1]) [90, 0, pts_angles[i][1]]
 	];
 
-	polysections(
+	sweep(
 		cross_sections(shape_pts, pts, angles, twist = 180, scale = 0.1)
 	);
 
