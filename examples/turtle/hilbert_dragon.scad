@@ -49,8 +49,6 @@ module hilbert_dragon() {
                 circle(2.5, $fn = 3);
         }                
 
-        //scale([1, 1, 1.1]) sphere(5); 
-
         // belly
         translate([0, -3, 1]) 
         rotate([-10, 0, 0]) 
