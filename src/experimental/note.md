@@ -8,6 +8,7 @@ to_do:
 improved:
 
 - polyline2d: improved middle-point drawing, support joinStyle
+- box_extrude: bottom_thicnkess
 
 2.4 preview:
 - voronoi/...
