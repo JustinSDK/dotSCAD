@@ -9,14 +9,16 @@
 **/
 
 module box_extrude(height, shell_thickness,
-                   bottom_thickness_delta = 0.0,
+                   bottom_thickness,
                    offset_mode = "delta", chamfer = false, convexity = 3,
                    twist, slices, scale) {
-                       
-    linear_extrude(shell_thickness + bottom_thickness_delta, scale = scale / height * shell_thickness, convexity = convexity)
-    offset(delta = -shell_thickness * 0.99999, chamfer = chamfer) 
+
+    btm_thickness = is_undef(bottom_thickness) ? shell_thickness : bottom_thickness;
+
+
+    linear_extrude(btm_thickness, scale = scale / height * btm_thickness, convexity = convexity)
+    offset(delta = -btm_thickness, chamfer = chamfer) 
         children();
-   
 
     linear_extrude(height, convexity = convexity, twist = twist, slices = slices, scale = scale) 
         difference() {
