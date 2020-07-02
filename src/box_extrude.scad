@@ -16,7 +16,7 @@ module box_extrude(height, shell_thickness,
     btm_thickness = is_undef(bottom_thickness) ? shell_thickness : bottom_thickness;
 
 
-    linear_extrude(btm_thickness, scale = scale / height * btm_thickness, convexity = convexity)
+    linear_extrude(btm_thickness, convexity = convexity)
     offset(delta = -btm_thickness, chamfer = chamfer) 
         children();
 
