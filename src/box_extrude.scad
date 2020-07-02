@@ -15,10 +15,13 @@ module box_extrude(height, shell_thickness,
 
     btm_thickness = is_undef(bottom_thickness) ? shell_thickness : bottom_thickness;
 
-
-    linear_extrude(btm_thickness, convexity = convexity)
-    offset(delta = -btm_thickness, chamfer = chamfer) 
-        children();
+    intersection() {
+        linear_extrude(btm_thickness)
+            square(65536, center = true); // 65536: just large enough size to cover the children
+                    
+        linear_extrude(height, convexity = convexity, twist = twist, slices = slices, scale = scale) 
+            children();
+    }
 
     linear_extrude(height, convexity = convexity, twist = twist, slices = slices, scale = scale) 
         difference() {
