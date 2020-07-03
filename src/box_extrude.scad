@@ -17,7 +17,7 @@ module box_extrude(height, shell_thickness,
 
     intersection() {
         linear_extrude(btm_thickness)
-            square(65536, center = true); // 65536: just large enough size to cover the children
+            square(65536, center = true); // 65536: just a large enough size to cover the children
                     
         linear_extrude(height, convexity = convexity, twist = twist, slices = slices, scale = scale) 
             children();
