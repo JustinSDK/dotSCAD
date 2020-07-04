@@ -24,7 +24,6 @@ module vrn3_space(size, grid_w, seed, spacing = 1) {
     ];    
     
     space_size = grid_w * 3;    
-    double_space_size = space_size * 2;
     offset_leng = (spacing + space_size) * 0.5;
 
     function normalize(v) = v / norm(v);
@@ -35,7 +34,7 @@ module vrn3_space(size, grid_w, seed, spacing = 1) {
             ryz = __angy_angz(p, pt);
             translate((pt + p) / 2 - normalize(v) * offset_leng)
             rotate([0, -ryz[0], ryz[1]]) 
-                cube([space_size, double_space_size, double_space_size], center = true); 
+                cube(space_size, center = true); 
         }
     }    
     
