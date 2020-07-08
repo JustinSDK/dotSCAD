@@ -12,13 +12,13 @@
 
 OpenSCAD uses three library locations, the installation library, built-in library, and user defined libraries. It's convenient to set `OPENSCADPATH`. Check [Setting OPENSCADPATH](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries#Setting_OPENSCADPATH) in [OpenSCAD User Manual/Libraries](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries) for details.
 
+**I set `OPENSCADPATH` to the `src` folder of dotSCAD so all examples here start searching modules or functions from `src`.**
+
 Every module or function is located in the file which has the same name as the module or the function. For example, if you want to use the `line2d` module to draw a line, `use <line2d.scad>;` first. 
 
 	use <line2d.scad>;
 
 	line2d(p1 = [0, 0], p2 = [5, 0], width = 1);
-
-**I set `OPENSCADPATH` to the `src` folder of dotSCAD so all examples here start searching modules or functions from `src`. If you put dotSCAD in the `libraries` of OpenSCAD, you'll have to prefix `dotSCAD/src` when using them. For example, `use <dotSCAD/src/line2d.scad>;`**
 
 Some module files are organized in a directory. For example, px_circle.scad exists in `pixel` directory. You have to prefix the directory name when including `px_circle`.
 
