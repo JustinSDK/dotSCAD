@@ -18,7 +18,7 @@ Every module or function is located in the file which has the same name as the m
 
 	line2d(p1 = [0, 0], p2 = [5, 0], width = 1);
 
-I set `OPENSCADPATH` to the `src` folder of dotSCAD so all examples here start searching modules or functions from `src`. If you put dotSCAD in the `libraries` of OpenSCAD, you'll have to prefix `dotSCAD/src` when using them. For example, `use <dotSCAD/src/line2d.scad>;`
+(I set `OPENSCADPATH` to the `src` folder of dotSCAD so all examples here start searching modules or functions from `src`. If you put dotSCAD in the `libraries` of OpenSCAD, you'll have to prefix `dotSCAD/src` when using them. For example, `use <dotSCAD/src/line2d.scad>;`)
 
 Some module files are organized in a directory. For example, px_circle.scad exists in `pixel` directory. You have to prefix the directory name when including `px_circle`.
 
