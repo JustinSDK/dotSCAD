@@ -196,7 +196,7 @@ module dragon() {
     head(angy_angz);
 }
 
-translate([0, 0, 6]) dragon($fn = 12);
+translate([0, 0, 7]) dragon($fn = 12);
 linear_extrude(65, scale = 0.4)  circle(30);
 translate([0, 0, 65]) linear_extrude(15, scale = 0.01) circle(30 * 0.4);
 
