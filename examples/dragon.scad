@@ -38,15 +38,13 @@ module one_segment() {
     }
     
     // hair
-    for(i = [0:2]) {
-        rotate([15 -15 * i, 0, 0]) 
-        translate([0, 3, -4]) 
-        rotate([45, 0, 0]) 
-        rotate([0, 90, 0]) 
-        linear_extrude(2, center = true) 
-        scale([3.5, 2, 1]) 
-            circle(3, $fn = 3);
-    }                
+    translate([0, 1, -4]) 
+    rotate([45, 0, 0]) 
+    rotate([0, 90, 0]) 
+    linear_extrude(2, center = true) 
+    scale([3.5, 2, 1]) 
+        circle(3, $fn = 3);
+            
 
     // belly
     translate([0, -3, 1]) 
@@ -190,7 +188,7 @@ module dragon() {
     
     
     scale(1.1) 
-    along_with(path_pts, scale = 0.7, method = "EULER_ANGLE")    
+    along_with(path_pts, scale = 0.85, method = "EULER_ANGLE")    
         one_segment();
         
     translate([19, 0, 65]) 
