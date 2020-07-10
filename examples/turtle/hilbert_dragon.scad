@@ -40,14 +40,12 @@ module hilbert_dragon() {
         }
         
         // hair
-        for(i = [0:1]) {
-            rotate([15 -15 * i, 0, 0]) 
-            translate([0, 3, -4]) 
-            rotate([45, 90, 0]) 
-            linear_extrude(2, center = true) 
-            scale([2, 2, 1]) 
-                circle(2.5, $fn = 3);
-        }                
+        translate([0, 3, -4]) 
+        rotate([0, 90, 0]) 
+        rotate([0, 0, 25]) 
+        linear_extrude(2, center = true) 
+        scale([2, 2, 1]) 
+            circle(2.5, $fn = 3);              
 
         // belly
         translate([0, -3, 1]) 
