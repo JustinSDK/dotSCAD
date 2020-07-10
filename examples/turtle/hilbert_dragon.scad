@@ -131,19 +131,17 @@ module hilbert_dragon() {
 
             translate([-5.5, 3.5, -2.5]) 
             rotate([-15, 0, 75]) 
-                sphere(0.5, $fn = 12);                      
+                sphere(0.5, $fn = 8);                      
         }
         
         module one_beard() {
             translate([-11, -12, -11])
             rotate(180) 
-            linear_extrude(10, scale = 0, twist = 90) 
+            linear_extrude(10, scale = 0.2, twist = 90) 
             translate([-10, -10, 0]) 
-                circle(0.75, $fn = 6);    
+                circle(1, $fn = 6);    
         }
         
-
-
         rotate([0, angy_angz[0] + 15, angy_angz[1]]) 
         translate([0, 0, -25 / 2]) 
         scale(1.15) {
