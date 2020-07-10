@@ -31,7 +31,7 @@ Some module files are organized in a directory. For example, px_circle.scad exis
 
 ## Examples
 
-See [examples](examples).
+See [examples](examples#dogfooding-examples).
 
 [![examples](examples/images/gallery.JPG)](examples)
 
