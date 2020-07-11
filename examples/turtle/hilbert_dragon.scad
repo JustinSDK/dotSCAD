@@ -49,7 +49,7 @@ module hilbert_dragon() {
             square([2, 14], center = true);            
 
         // belly
-        *translate([0, -3, 1]) 
+        translate([0, -3, 1]) 
         rotate([-10, 0, 0]) 
         scale([1.1, 0.8, 1.25])  
             sphere(5.5, $fn = 8); 
