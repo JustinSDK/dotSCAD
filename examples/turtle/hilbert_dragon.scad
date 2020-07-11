@@ -1,3 +1,4 @@
+use <shear.scad>;
 use <along_with.scad>;
 use <hull_polyline3d.scad>;
 use <bezier_smooth.scad>;
@@ -13,6 +14,7 @@ module hilbert_dragon() {
     module scales(ang, leng, radius, height, thickness) {
         module one_scale() {
             rotate([0, ang, 0]) 
+            shear(sx = [0, -1.5])
             linear_extrude(thickness, center = true) 
             scale([leng, 1]) 
                 circle(1, $fn = 4);    
