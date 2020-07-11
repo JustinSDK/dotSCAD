@@ -2,6 +2,7 @@ use <helix.scad>;
 use <along_with.scad>;
 use <shape_trapezium.scad>;
 use <ellipse_extrude.scad>;
+use <shear.scad>;
 
 r1 = 25;
 r2 = 15;
@@ -11,6 +12,7 @@ level_dist = 20;
 module scales(ang, leng, radius, height, thickness) {
     module one_scale() {
         rotate([0, ang, 0]) 
+        shear(sx = [0, -1.5])
         linear_extrude(thickness, center = true) 
         scale([leng, 1]) 
             circle(1, $fn = 4);    
