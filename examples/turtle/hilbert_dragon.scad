@@ -41,16 +41,15 @@ module hilbert_dragon() {
             scales(120, 2.5, 2, -9, 1);   
         }
         
-        // hair
-        translate([0, 3, -4]) 
-        rotate([0, 90, 0]) 
-        rotate([0, 0, 25]) 
-        linear_extrude(2, center = true) 
-        scale([2, 2, 1]) 
-            circle(2.5, $fn = 3);              
+        // dorsal fin
+        translate([0, 3, -3]) 
+        rotate([-100, 0, 0]) 
+        shear(sy = [0, 3.5])
+        linear_extrude(2.25, scale = 0.2)
+            square([2, 14], center = true);            
 
         // belly
-        translate([0, -3, 1]) 
+        *translate([0, -3, 1]) 
         rotate([-10, 0, 0]) 
         scale([1.1, 0.8, 1.25])  
             sphere(5.5, $fn = 8); 

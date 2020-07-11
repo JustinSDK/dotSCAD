@@ -39,15 +39,13 @@ module one_segment() {
         scales(120, 2.5, 2, -9, 1);   
     }
     
-    // hair
-    translate([0, 1, -4]) 
-    rotate([45, 0, 0]) 
-    rotate([0, 90, 0]) 
-    linear_extrude(2, center = true) 
-    scale([3.5, 2, 1]) 
-        circle(3, $fn = 3);
+    // dorsal fin
+    translate([0, 3, -3]) 
+    rotate([-75, 0, 0]) 
+    shear(sy = [0, 3.5])
+    linear_extrude(2.25, scale = 0.2)
+        square([2, 12], center = true);            
             
-
     // belly
     translate([0, -3, 1]) 
     rotate([-10, 0, 0]) 
