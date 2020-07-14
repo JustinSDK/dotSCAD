@@ -43,8 +43,8 @@ module hilbert_dragon_low_poly() {
     rotate([-90, 0, 90]) 
     dragon_head(); 
     
-    translate([0, 0, -0.5])
-    rotate([0, -8, 0])
+    translate([0, 0, -0.525])
+    rotate([0, -7, 0])
     rotate(90)
     ellipse_extrude(0.5, slices = 4, twist = 15)
     scale(0.9 * 0.007)
