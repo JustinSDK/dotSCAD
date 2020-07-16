@@ -33,14 +33,15 @@ module hilbert_dragon_low_poly() {
         )
     );    
 
+    
     pts = [for(p = body_shape) p * 0.007];
     p = dragon_body_path[0];
-    path_extrude(pts, concat([p + [0, 0, -0.2]], dragon_body_path), scale = 0.9);
-
     
-    translate([0.45, 0, -2.9])        
+    path_extrude(pts, concat([p + [0.0155, 0, 0.175]], [for(i = [1:len(dragon_body_path) - 1]) dragon_body_path[i]]), scale = 0.9);
+
+    translate([0.125, 0, -2.73])        
     scale(0.009)
-    rotate([-90, 0, 90]) 
+    rotate([-60, 0, 90]) 
     dragon_head(); 
     
     translate([0, 0, -0.525])
@@ -227,6 +228,25 @@ module dragon_head() {
             eye();
     }
     
+    module neck() {
+        neck_shape = concat(
+            bezier_curve(0.25, 
+                [
+                    [31, -35], [19, 0], [8, 15], [-8, 12], [-19, 0], [-31, -35]
+                ]
+            ),
+            bezier_curve(0.25, 
+                [[-20, -35], [-8, -20], [8, -20], [20, -35]]
+            )
+        );
+        
+        translate([0, -64.5, -1])
+        rotate([165, 0, 0])
+        linear_extrude(30, scale = 0.9)
+            scale(0.95)
+            polygon(neck_shape);    
+    }
+    
     rotate([-45, 0, 0])
     union() {
         rotate([45, 0, 0])
@@ -234,13 +254,13 @@ module dragon_head() {
             palate();
         
         jaw();
-        
         horns();
-        
         tone();
-        
         eyes();
+        
+        neck();
     }
+
 }
 
 function hilbert_curve() = 
