@@ -33,7 +33,7 @@ Some module files are organized in a directory. For example, px_circle.scad exis
 
 See [examples](examples#dogfooding-examples).
 
-[![examples](examples/images/gallery.JPG)](examples)
+[![examples](examples/images/gallery.JPG)](examples#dogfooding-examples)
 
 ## Documentation
 
@@ -251,6 +251,6 @@ For bugs, questions and discussions please use the [Github Issues](https://githu
 
 ## About dotSCAD
 
-I've been using OpenSCAD for years. Some of [my works](https://github.com/JustinSDK/dotSCAD/tree/master/examples) include reusable implementations so I elaborate them into this library.
+I've been using OpenSCAD for years. Some of [my works](examples#dogfooding-examples) include reusable implementations so I elaborate them into this library.
 
 The idea of the name dotSCAD comes from the filename extension ".scad" of OpenSCAD. 
