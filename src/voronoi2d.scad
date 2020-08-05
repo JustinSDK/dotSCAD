@@ -9,6 +9,8 @@
 **/
 
 module voronoi2d(points, spacing = 1, r = 0, delta = 0, chamfer = false, region_type = "square") {
+    echo("<b><i>voronoi2d</i> is deprecated: use <i>voronoi/vrn2_from</i> instead.</b>");
+
     xs = [for(p = points) p[0]];
     ys = [for(p = points) abs(p[1])];
 

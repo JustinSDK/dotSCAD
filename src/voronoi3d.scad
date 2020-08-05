@@ -13,6 +13,8 @@ use <__comm__/__angy_angz.scad>;
 // slow but workable
 
 module voronoi3d(points, spacing = 1) {
+    echo("<b><i>voronoi3d</i> is deprecated: use <i>voronoi/vrn3_from</i> instead.</b>");
+
     xs = [for(p = points) p[0]];
     ys = [for(p = points) abs(p[1])];
     zs = [for(p = points) abs(p[2])];
