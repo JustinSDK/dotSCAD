@@ -1,5 +1,55 @@
 > Version numbers are based on [Semantic Versioning](https://semver.org/).
 
+# v2.4
+
+Deprecated:
+- Pixel. Use Voxel instead.
+- voronoi2d: use [voronoi/vrn2_from](https://openhome.cc/eGossip/OpenSCAD/lib2x-vrn2_from.html) instead.
+- voronoi3d: use [voronoi/vrn3_from](https://openhome.cc/eGossip/OpenSCAD/lib2x-vrn3_from.html) instead.
+
+Improved:
+- polyline2d: improved middle-point drawing, support `joinStyle` parameter.
+- box_extrude: added `bottom_thicnkess` parameter.
+
+New modules and functions:
+- 2D Function
+  - [lines_intersection](https://openhome.cc/eGossip/OpenSCAD/lib2x-lines_intersection.html)
+
+- Util
+  - [util/sum](https://openhome.cc/eGossip/OpenSCAD/lib2x-sum.html)
+  - [util/zip](https://openhome.cc/eGossip/OpenSCAD/lib2x-zip.html)
+
+- Turtle
+  - [turtle/footprints2](https://openhome.cc/eGossip/OpenSCAD/lib2x-footprints2.html)
+  - [turtle/footprints3](https://openhome.cc/eGossip/OpenSCAD/lib2x-footprints3.html)
+  - [turtle/lsystem2](https://openhome.cc/eGossip/OpenSCAD/lib2x-lsystem2.html)
+  - [turtle/lsystem3](https://openhome.cc/eGossip/OpenSCAD/lib2x-lsystem3.html)
+
+- Voxel
+  - [voxel/vx_line](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_line.html)
+  - [voxel/vx_polyline](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_polyline.html)
+  - [voxel/vx_circle](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_circle.html)
+  - [voxel/vx_cylinder](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_cylinder.html)
+  - [voxel/vx_sphere](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_sphere.html)
+  - [voxel/vx_polygon](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_polygon.html)
+  - [voxel/vx_from](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_from.html)
+  - [voxel/vx_ascii](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_ascii.html)
+  - [voxel/vx_gray](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_gray.html)
+  - [voxel/vx_union](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_union.html)
+  - [voxel/vx_intersection](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_intersection.html)
+  - [voxel/vx_difference](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_difference.html)
+
+- Matrix
+  - [matrix/m_determinant](https://openhome.cc/eGossip/OpenSCAD/lib2x-m_determinant.html)
+
+- Voronoi
+  - [voronoi/vrn2_from](https://openhome.cc/eGossip/OpenSCAD/lib2x-vrn2_from.html)
+  - [voronoi/vrn2_space](https://openhome.cc/eGossip/OpenSCAD/lib2x-vrn2_space.html)
+  - [voronoi/vrn2_cells_from](https://openhome.cc/eGossip/OpenSCAD/lib2x-vrn2_cells_from.html)
+  - [voronoi/vrn2_cells_space](https://openhome.cc/eGossip/OpenSCAD/lib2x-vrn2_cells_space.html)
+  - [voronoi/vrn3_from](https://openhome.cc/eGossip/OpenSCAD/lib2x-vrn3_from.html)
+  - [voronoi/vrn3_space](https://openhome.cc/eGossip/OpenSCAD/lib2x-vrn3_space.html)
+
 # v2.3
 Bugfixes:
 - `helix_extrude`: wrong orientation when `CLK`.
