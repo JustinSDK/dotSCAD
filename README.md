@@ -1,8 +1,8 @@
-# dotSCAD 2.3
+# dotSCAD 2.4
 
 > **Reduce the burden of mathematics when playing OpenSCAD.**
 
-![dotSCAD](featured_img/TaiwanPangolin.JPG)
+![dotSCAD](featured_img/hilbert_dragon.JPG)
 
 [![license/LGPL](LICENSE.svg)](https://github.com/JustinSDK/lib-openscad/blob/master/LICENSE)
 
@@ -47,7 +47,6 @@ See [examples](examples#dogfooding-examples).
 - [hexagons](https://openhome.cc/eGossip/OpenSCAD/lib2x-hexagons.html)
 - [polytransversals](https://openhome.cc/eGossip/OpenSCAD/lib2x-polytransversals.html)
 - [multi_line_text](https://openhome.cc/eGossip/OpenSCAD/lib2x-multi_line_text.html)
-- [voronoi2d](https://openhome.cc/eGossip/OpenSCAD/lib2x-voronoi2d.html)
 
 ### 3D Module
 - [rounded_cube](https://openhome.cc/eGossip/OpenSCAD/lib2x-rounded_cube.html)
@@ -60,7 +59,6 @@ See [examples](examples#dogfooding-examples).
 - [sweep](https://openhome.cc/eGossip/OpenSCAD/lib2x-sweep.html)
 - [loft](https://openhome.cc/eGossip/OpenSCAD/lib2x-loft.html)
 - [starburst](https://openhome.cc/eGossip/OpenSCAD/lib2x-starburst.html)
-- [voronoi3d](https://openhome.cc/eGossip/OpenSCAD/lib2x-voronoi3d.html)
 
 ### Transformation
 - [along_with](https://openhome.cc/eGossip/OpenSCAD/lib2x-along_with.html)
@@ -74,6 +72,7 @@ See [examples](examples#dogfooding-examples).
 - [trim_shape](https://openhome.cc/eGossip/OpenSCAD/lib2x-trim_shape.html)
 - [triangulate](https://openhome.cc/eGossip/OpenSCAD/lib2x-triangulate.html)
 - [contours](https://openhome.cc/eGossip/OpenSCAD/lib2x-contours.html)
+- [lines_intersection](https://openhome.cc/eGossip/OpenSCAD/lib2x-lines_intersection.html)
 
 ### 2D/3D Function
 - [cross_sections](https://openhome.cc/eGossip/OpenSCAD/lib2x-cross_sections.html)
@@ -137,6 +136,8 @@ See [examples](examples#dogfooding-examples).
 - [util/has](https://openhome.cc/eGossip/OpenSCAD/lib2x-has.html)
 - [util/dedup](https://openhome.cc/eGossip/OpenSCAD/lib2x-dedup.html)
 - [util/flat](https://openhome.cc/eGossip/OpenSCAD/lib2x-flat.html)
+- [util/sum](https://openhome.cc/eGossip/OpenSCAD/lib2x-sum.html)
+- [util/zip](https://openhome.cc/eGossip/OpenSCAD/lib2x-zip.html)
 
 ### Matrix
 - [matrix/m_cumulate](https://openhome.cc/eGossip/OpenSCAD/lib2x-m_cumulate.html)	
@@ -145,6 +146,7 @@ See [examples](examples#dogfooding-examples).
 - [matrix/m_scaling](https://openhome.cc/eGossip/OpenSCAD/lib2x-m_scaling.html)
 - [matrix/m_mirror](https://openhome.cc/eGossip/OpenSCAD/lib2x-m_mirror.html)
 - [matrix/m_shearing](https://openhome.cc/eGossip/OpenSCAD/lib2x-m_shearing.html)
+- [matrix/m_determinant](https://openhome.cc/eGossip/OpenSCAD/lib2x-m_determinant.html)
 
 ### Point Transformation
 - [ptf/ptf_rotate](https://openhome.cc/eGossip/OpenSCAD/lib2x-ptf_rotate.html)
@@ -163,17 +165,24 @@ See [examples](examples#dogfooding-examples).
 - [turtle/turtle3d](https://openhome.cc/eGossip/OpenSCAD/lib2x-turtle3d.html)
 - [turtle/t2d](https://openhome.cc/eGossip/OpenSCAD/lib2x-t2d.html)
 - [turtle/t3d](https://openhome.cc/eGossip/OpenSCAD/lib2x-t3d.html)
+- [turtle/footprints2](https://openhome.cc/eGossip/OpenSCAD/lib2x-footprints2.html)
+- [turtle/footprints3](https://openhome.cc/eGossip/OpenSCAD/lib2x-footprints3.html)
+- [turtle/lsystem2](https://openhome.cc/eGossip/OpenSCAD/lib2x-lsystem2.html)
+- [turtle/lsystem3](https://openhome.cc/eGossip/OpenSCAD/lib2x-lsystem3.html)
 
-### Pixel
-- [pixel/px_line](https://openhome.cc/eGossip/OpenSCAD/lib2x-px_line.html)
-- [pixel/px_polyline](https://openhome.cc/eGossip/OpenSCAD/lib2x-px_polyline.html)
-- [pixel/px_circle](https://openhome.cc/eGossip/OpenSCAD/lib2x-px_circle.html)
-- [pixel/px_cylinder](https://openhome.cc/eGossip/OpenSCAD/lib2x-px_cylinder.html)
-- [pixel/px_sphere](https://openhome.cc/eGossip/OpenSCAD/lib2x-px_sphere.html)
-- [pixel/px_polygon](https://openhome.cc/eGossip/OpenSCAD/lib2x-px_polygon.html)
-- [pixel/px_from](https://openhome.cc/eGossip/OpenSCAD/lib2x-px_from.html)
-- [pixel/px_ascii](https://openhome.cc/eGossip/OpenSCAD/lib2x-px_ascii.html)
-- [pixel/px_gray](https://openhome.cc/eGossip/OpenSCAD/lib2x-px_gray.html)
+### Voxel
+- [voxel/vx_line](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_line.html)
+- [voxel/vx_polyline](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_polyline.html)
+- [voxel/vx_circle](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_circle.html)
+- [voxel/vx_cylinder](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_cylinder.html)
+- [voxel/vx_sphere](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_sphere.html)
+- [voxel/vx_polygon](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_polygon.html)
+- [voxel/vx_from](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_from.html)
+- [voxel/vx_ascii](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_ascii.html)
+- [voxel/vx_gray](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_gray.html)
+- [voxel/vx_union](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_union.html)
+- [voxel/vx_intersection](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_intersection.html)
+- [voxel/vx_difference](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_difference.html)
 
 ### Part
 - [part/connector_peg](https://openhome.cc/eGossip/OpenSCAD/lib2x-connector_peg.html)
@@ -201,41 +210,8 @@ See [examples](examples#dogfooding-examples).
 - [noise/nz_worley3s](https://openhome.cc/eGossip/OpenSCAD/lib2x-nz_worley3s.html)
 - [noise/nz_cell](https://openhome.cc/eGossip/OpenSCAD/lib2x-nz_cell.html)
 
-----
-
-# 2.4 Preview
-
-### 2D Function
-- [lines_intersection](https://openhome.cc/eGossip/OpenSCAD/lib2x-lines_intersection.html)
-
-### Util
-- [util/sum](https://openhome.cc/eGossip/OpenSCAD/lib2x-sum.html)
-- [util/zip](https://openhome.cc/eGossip/OpenSCAD/lib2x-zip.html)
-
-### Turtle
-- [turtle/footprints2](https://openhome.cc/eGossip/OpenSCAD/lib2x-footprints2.html)
-- [turtle/footprints3](https://openhome.cc/eGossip/OpenSCAD/lib2x-footprints3.html)
-- [turtle/lsystem2](https://openhome.cc/eGossip/OpenSCAD/lib2x-lsystem2.html)
-- [turtle/lsystem3](https://openhome.cc/eGossip/OpenSCAD/lib2x-lsystem3.html)
-
-### Voxel (Renamed from Pixel. Yes, Pixel will be deprecated in the next release.)
-- [voxel/vx_line](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_line.html)
-- [voxel/vx_polyline](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_polyline.html)
-- [voxel/vx_circle](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_circle.html)
-- [voxel/vx_cylinder](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_cylinder.html)
-- [voxel/vx_sphere](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_sphere.html)
-- [voxel/vx_polygon](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_polygon.html)
-- [voxel/vx_from](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_from.html)
-- [voxel/vx_ascii](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_ascii.html)
-- [voxel/vx_gray](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_gray.html)
-- [voxel/vx_union](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_union.html)
-- [voxel/vx_intersection](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_intersection.html)
-- [voxel/vx_difference](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_difference.html)
-
-### Matrix
-- [matrix/m_determinant](https://openhome.cc/eGossip/OpenSCAD/lib2x-m_determinant.html)
-
 ### Voronoi
+
 - [voronoi/vrn2_from](https://openhome.cc/eGossip/OpenSCAD/lib2x-vrn2_from.html)
 - [voronoi/vrn2_space](https://openhome.cc/eGossip/OpenSCAD/lib2x-vrn2_space.html)
 - [voronoi/vrn2_cells_from](https://openhome.cc/eGossip/OpenSCAD/lib2x-vrn2_cells_from.html)
