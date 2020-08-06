@@ -9,7 +9,10 @@
 **/ 
 
 function px_sphere(radius, filled = false, thickness = 1) = 
-    let(range = [-radius: radius - 1])
+    let(
+        _ = echo("<b><i>pixel/px_sphere</i> is deprecated: use <i>voxel/vx_sphere</i> instead.</b>"),
+        range = [-radius: radius - 1]
+    )
     filled ? [
         for(z = range)
             for(y = range)        

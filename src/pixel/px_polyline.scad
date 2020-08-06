@@ -17,6 +17,7 @@ use <px_line.scad>;
 
 function px_polyline(points) =
     let(
+        _ = echo("<b><i>pixel/px_polyline</i> is deprecated: use <i>voxel/vx_polyline</i> instead.</b>"),
         is_2d = len(points[0]) == 2,
         pts = is_2d ? [for(pt = points) __to3d(pt)] : points,
         polyline = [for(line =  __lines_from(pts)) each px_line(line[0], line[1])]

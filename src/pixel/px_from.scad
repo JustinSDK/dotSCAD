@@ -10,4 +10,8 @@
 
 use <_impl/_px_from_impl.scad>;
 
-function px_from(binaries, center = false, invert = false) = _px_from_impl(binaries, center, invert);
+function px_from(binaries, center = false, invert = false) = 
+    let(
+        _ = echo("<b><i>pixel/px_from</i> is deprecated: use <i>voxel/vx_from</i> instead.</b>")
+    )
+    _px_from_impl(binaries, center, invert);

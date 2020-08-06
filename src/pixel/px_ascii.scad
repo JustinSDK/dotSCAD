@@ -11,7 +11,10 @@
 use <px_from.scad>;
 
 function px_ascii(char, center = false, invert = false) = 
-    let(code = ord(char))
+    let(
+        _ = echo("<b><i>pixel/px_ascii</i> is deprecated: use <i>voxel/vx_ascii</i> instead.</b>"),
+        code = ord(char)
+    )
     assert(code > 31 && code < 127, "not printable character")
     let(
         idx = code - 32,

@@ -11,4 +11,7 @@
 use <_impl/_px_gray_impl.scad>;
 
 function px_gray(levels, center = false, invert = false, normalize = false) = 
+    let(
+        _ = echo("<b><i>pixel/px_gray</i> is deprecated: use <i>voxel/vx_gray</i> instead.</b>")
+    )
     _px_gray_impl(levels, center, invert, normalize);

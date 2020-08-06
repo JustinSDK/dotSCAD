@@ -4,7 +4,10 @@ use <../util/dedup.scad>;
 use <px_polyline.scad>;
 
 function px_polygon(points, filled = false) =
-    let(contour = px_polyline(concat(points, [points[0]])))
+    let(
+        _ = echo("<b><i>pixel/px_polygon</i> is deprecated: use <i>voxel/vx_polygon</i> instead.</b>"),
+        contour = px_polyline(concat(points, [points[0]]))
+    )
     !filled ? contour :
     let(
         sortedXY = sort(contour, by = "vt"),

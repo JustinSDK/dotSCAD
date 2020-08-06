@@ -13,5 +13,8 @@ use <../util/sort.scad>;
 use <../util/dedup.scad>;
 
 function px_cylinder(r, h, filled = false, thickness = 1) =
-    let(all = _px_cylinder_impl(r, h, filled, thickness))
+    let(
+        _ = echo("<b><i>pixel/px_cylinder</i> is deprecated: use <i>voxel/vx_cylinder</i> instead.</b>"),
+        all = _px_cylinder_impl(r, h, filled, thickness)
+    )
     dedup(sort(all, by = "vt"), sorted = true);

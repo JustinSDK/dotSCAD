@@ -13,5 +13,8 @@ use <../util/sort.scad>;
 use <../util/dedup.scad>;
 
 function px_circle(radius, filled = false) = 
-    let(all = _px_circle_impl(radius, filled))
+    let(
+        _ = echo("<b><i>pixel/px_circle</i> is deprecated: use <i>voxel/vx_circle</i> instead.</b>"),
+        all = _px_circle_impl(radius, filled)
+    )
     dedup(sort(all, by = "vt"), sorted = true);
