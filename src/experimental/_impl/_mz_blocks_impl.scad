@@ -63,8 +63,9 @@ _rand_dir_table = [
     [3, 2, 0, 1],
     [3, 2, 1, 0]
 ];
-function rand_dirs() =
-    _rand_dir_table[round(rands(0, 24, 1)[0])]; 
+function rand_dirs(seed) =
+   let(r = is_undef(seed) ? rands(0, 24, 1) : rands(0, 24, 1, seed))
+    _rand_dir_table[round(r[0])]; 
 
 // get x value by dir
 _next_x_table = [1, 0, -1, 0];
@@ -152,32 +153,34 @@ function visitable_dirs_from(x, y, maze, rows, columns, x_circular, y_circular) 
 ];  
     
 // go maze from (x, y)
-function go_maze(x, y, maze, rows, columns, x_circular = false, y_circular = false) = 
+function go_maze(x, y, maze, rows, columns, x_circular = false, y_circular = false, seed) = 
     //  have visitable dirs?
     len(visitable_dirs_from(x, y, maze, rows, columns, x_circular, y_circular)) == 0 ? 
         set_visited(x, y, maze)      // road closed
         : walk_around_from(          
             x, y, 
-            rand_dirs(),             
+            rand_dirs(x + y + seed),             
             set_visited(x, y, maze), 
             rows, columns,
-            x_circular, y_circular
+            x_circular, y_circular,
+            seed = seed
         );
 
 // try four directions
-function walk_around_from(x, y, dirs, maze, rows, columns, x_circular, y_circular, i = 4) =
+function walk_around_from(x, y, dirs, maze, rows, columns, x_circular, y_circular, i = 4, seed) =
     // all done?
     i > 0 ? 
         // not yet
         walk_around_from(x, y, dirs, 
             // try one direction
-            try_routes_from(x, y, dirs[4 - i], maze, rows, columns, x_circular, y_circular),  
+            try_routes_from(x, y, dirs[4 - i], maze, rows, columns, x_circular, y_circular, seed),  
             rows, columns, 
             x_circular, y_circular,
-            i - 1) 
+            i - 1,
+            seed) 
         : maze;
         
-function try_routes_from(x, y, dir, maze, rows, columns, x_circular, y_circular) = 
+function try_routes_from(x, y, dir, maze, rows, columns, x_circular, y_circular, seed) = 
     // is the dir visitable?
     visitable(next_x(x, dir, columns, x_circular), next_y(y, dir, rows, y_circular), maze, rows, columns) ?     
         // try the block 
@@ -185,7 +188,8 @@ function try_routes_from(x, y, dir, maze, rows, columns, x_circular, y_circular)
             next_x(x, dir, columns, x_circular), next_y(y, dir, rows, y_circular), 
             try_block(dir, x, y, maze, rows, columns),
             rows, columns,
-            x_circular, y_circular
+            x_circular, y_circular,
+            seed
         ) 
         // road closed so return maze directly
         : maze; 
