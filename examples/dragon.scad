@@ -19,13 +19,15 @@ module scales(ang, leng, radius, height, thickness) {
     }
 
     for(a = [0:30:330]) {
-        rotate(a) 
-        translate([radius, 0, height]) 
-            one_scale();
-            
-        rotate(a + 15) 
-        translate([radius, 0, height + 1.75]) 
-            one_scale();
+        hull() {
+            rotate(a) 
+            translate([radius, 0, height]) 
+                one_scale();
+                
+            rotate(a + 15) 
+            translate([radius, 0, height + 1.75]) 
+                one_scale();
+        }
     }
 }
 
@@ -47,10 +49,15 @@ module one_segment() {
         square([2, 12], center = true);            
             
     // belly
-    translate([0, -3, 1]) 
+    translate([0, -2.5, 1]) 
     rotate([-10, 0, 0]) 
     scale([1.1, 0.8, 1.25])  
-        sphere(5, $fn = 8); 
+        sphere(5.8, $fn = 8); 
+
+    translate([0, 0, -1.65]) 
+    rotate([-5, 0, 0]) 
+    scale([1, 0.8, 1.6])  
+        sphere(5.5, $fn = 8);  
         
 }
 
@@ -60,34 +67,34 @@ module head(angy_angz) {
             rotate(i * 10) 
             translate([0, -14, 0]) 
             rotate([9, 0, 0]) 
-            linear_extrude(15, scale = 0, twist = 30) 
+            linear_extrude(15, scale = 0.05, twist = 30) 
             translate([0, 10, 0]) 
-                circle(3, $fn = 3);    
+                circle(3, $fn = 4);    
         }       
 
         for(i = [0:35]) {
             rotate(i * 10) 
             translate([0, -12, 0]) 
             rotate([5, 0, 0]) 
-            linear_extrude(20, scale = 0, twist = 30) 
+            linear_extrude(20, scale = 0.05, twist = 30) 
             translate([0, 10, 0]) 
-                circle(2, $fn = 3);    
+                circle(2, $fn = 4);    
         }
         
         for(i = [0:35]) {
             rotate(i * 10) 
             translate([0, -10, 0]) 
             rotate([2, 0, 0]) 
-            linear_extrude(22, scale = 0, twist = -30) 
+            linear_extrude(22, scale = 0.05, twist = -30) 
             translate([0, 10, 0]) 
-                circle(3, $fn = 3);    
+                circle(3, $fn = 4);    
         }     
     }
     
     module one_horn() {        
         translate([-10, -4, -1]) 
         rotate([40, -25, 0]) 
-        linear_extrude(30, scale = 0, twist = -90) 
+        linear_extrude(30, scale = 0.1, twist = -90) 
         translate([7.5, 0, 0]) 
             circle(3, $fn = 4);    
     }
@@ -104,8 +111,8 @@ module head(angy_angz) {
         
         translate([0, 0, -3]) 
         rotate([90, 0, -90]) 
-         ellipse_extrude(6, slices = 4) 
-             polygon(
+            ellipse_extrude(6, slices = 4) 
+                polygon(
                 shape_trapezium([6, 20], 
                 h = 20,
                 corner_r = 0)
@@ -136,20 +143,20 @@ module head(angy_angz) {
     module one_beard() {
         translate([-11, -12, -11])
         rotate(180) 
-        linear_extrude(10, scale = 0.2, twist = 90) 
+        linear_extrude(8, scale = 0.2, twist = 90) 
         translate([-10, -10, 0]) 
-            circle(1, $fn = 6);    
+            circle(1.25, $fn = 6);    
     }
     
     rotate([0, angy_angz[0] + 15, angy_angz[1]]) 
     translate([0, 0, -25 / 2]) 
     scale(1.15) {
-       scale([0.8, 0.9, 1]) hair();
+        scale([0.8, 0.9, 1]) hair();
 
         translate([0, 0, 2]) {
             rotate(-90) {
-                 one_horn();
-                 mirror([-1, 0, 0]) one_horn();       
+                    one_horn();
+                    mirror([-1, 0, 0]) one_horn();       
             }
             
             mouth();
