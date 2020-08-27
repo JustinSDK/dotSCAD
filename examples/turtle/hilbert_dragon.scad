@@ -16,24 +16,26 @@ module hilbert_dragon() {
             rotate([0, ang, 0]) 
             shear(sx = [0, -1.5])
             linear_extrude(thickness, center = true) 
-            scale([leng, 1]) 
+            scale([leng, 1.6]) 
                 circle(1, $fn = 4);    
         }
 
         for(a = [0:45:315]) {
-            rotate(a) 
-            translate([radius, 0, height]) 
-                one_scale();
-                
-            rotate(a + 15) 
-            translate([radius, 0, height + 1.75]) 
-                one_scale();
+            hull() {
+                rotate(a) 
+                translate([radius, 0, height]) 
+                    one_scale();
+                    
+                rotate(a + 15) 
+                translate([radius, 0, height + 1.75]) 
+                    one_scale();
+            }
         }
     }
 
     module one_segment() {
         // scales
-        scale([1,0.85,1]) union() {
+        scale([1, 0.8, 1]) union() {
             scales(60, 4, 5, 0, 1.5);
             scales(75, 2.5, 5, -4, 1.25);
             scales(100, 1.25, 4.5, -7, 1);
@@ -42,16 +44,21 @@ module hilbert_dragon() {
         }
         
         // dorsal fin
-        translate([0, 3, -3]) 
-        rotate([-100, 0, 0]) 
-        shear(sy = [0, 3.5])
-        linear_extrude(2.25, scale = 0.2)
-            square([2, 14], center = true);            
+        translate([0, 4, -1.5]) 
+        rotate([-105, 0, 0]) 
+        shear(sy = [0, .75])
+        linear_extrude(5, scale = 0.15)
+            square([2.5, 4], center = true);            
 
         // belly
-        translate([0, -3, 1]) 
+        translate([0, -2.5, 1]) 
         rotate([-10, 0, 0]) 
         scale([1.1, 0.8, 1.25])  
+            sphere(5.8, $fn = 8); 
+
+        translate([0, 0, -1.65]) 
+        rotate([-5, 0, 0]) 
+        scale([1, 0.8, 1.6])  
             sphere(5.5, $fn = 8); 
             
     }
@@ -62,34 +69,34 @@ module hilbert_dragon() {
                 rotate(i * 10) 
                 translate([0, -14, 0]) 
                 rotate([9, 0, 0]) 
-                linear_extrude(15, scale = 0, twist = 30) 
+                linear_extrude(15, scale = 0.05, twist = 30) 
                 translate([0, 10, 0]) 
-                    circle(3, $fn = 3);    
+                    circle(3, $fn = 4);    
             }       
 
             for(i = [0:35]) {
                 rotate(i * 10) 
                 translate([0, -12, 0]) 
                 rotate([5, 0, 0]) 
-                linear_extrude(20, scale = 0, twist = 30) 
+                linear_extrude(20, scale = 0.05, twist = 30) 
                 translate([0, 10, 0]) 
-                    circle(2, $fn = 3);    
+                    circle(2, $fn = 4);    
             }
             
             for(i = [0:35]) {
                 rotate(i * 10) 
                 translate([0, -10, 0]) 
                 rotate([2, 0, 0]) 
-                linear_extrude(22, scale = 0, twist = -30) 
+                linear_extrude(22, scale = 0.05, twist = -30) 
                 translate([0, 10, 0]) 
-                    circle(3, $fn = 3);    
+                    circle(3, $fn = 4);    
             }     
         }
         
         module one_horn() {        
             translate([-10, -4, -1]) 
             rotate([40, -25, 0]) 
-            linear_extrude(30, scale = 0, twist = -90) 
+            linear_extrude(30, scale = 0.1, twist = -90) 
             translate([7.5, 0, 0]) 
                 circle(3, $fn = 4);    
         }
@@ -138,9 +145,9 @@ module hilbert_dragon() {
         module one_beard() {
             translate([-11, -12, -11])
             rotate(180) 
-            linear_extrude(10, scale = 0.2, twist = 90) 
+            linear_extrude(8, scale = 0.2, twist = 90) 
             translate([-10, -10, 0]) 
-                circle(1, $fn = 6);    
+                circle(1.25, $fn = 6);    
         }
         
         rotate([0, angy_angz[0] + 15, angy_angz[1]]) 
@@ -177,7 +184,7 @@ module hilbert_dragon() {
      
     along_with(dragon_body_path, scale = 0.6)    
     rotate([90, 0, 0]) 
-    scale(0.04)  
+    scale(0.035)  
         one_segment();
 
     translate([0, 0, -2.5])        
