@@ -4,11 +4,12 @@ use <experimental/mz_get.scad>;
 use <util/sort.scad>;
 use <util/dedup.scad>;
 
-function mz_hamiltonian(rows, columns, start) =
+function mz_hamiltonian(rows, columns, start, seed) =
     let(
         blocks = mz_blocks(
             [1, 1],  
-            rows, columns
+            rows, columns,
+            seed = seed
         ),
         all = concat(
             [
