@@ -159,7 +159,7 @@ function go_maze(x, y, maze, rows, columns, x_circular = false, y_circular = fal
         set_visited(x, y, maze)      // road closed
         : walk_around_from(          
             x, y, 
-            rand_dirs(x + y + seed),             
+            rand_dirs(x * rows + y + seed),             
             set_visited(x, y, maze), 
             rows, columns,
             x_circular, y_circular,
