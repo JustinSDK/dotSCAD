@@ -4,31 +4,32 @@ use <polyline2d.scad>;
 
 ball_radius = 15;
 thickness = 2.5;
-magnet_radius = 3;
+magnet_radius = 3.2;
+magnet_height = 1.5;
 
-emoticon(ball_radius, magnet_radius, thickness)
+emoticon(ball_radius, magnet_radius, magnet_height, thickness)
     grinning_face_with_smiling_eyes(ball_radius);
     
 translate([ball_radius * 2.5, 0, 0])
-emoticon(ball_radius, magnet_radius, thickness)
+emoticon(ball_radius, magnet_radius, magnet_height, thickness)
     grinning_squinting_face(ball_radius);
     
 translate([ball_radius * 5, 0, 0])
-emoticon(ball_radius, magnet_radius, thickness)
+emoticon(ball_radius, magnet_radius, magnet_height, thickness)
     persevering_face(ball_radius);
 
 translate([ball_radius * 7.5, 0, 0])    
-emoticon(ball_radius, magnet_radius, thickness)
+emoticon(ball_radius, magnet_radius, magnet_height, thickness)
     smirking_face(ball_radius);
 
-module emoticon(ball_radius, magnet_radius, thickness) {
+module emoticon(ball_radius, magnet_radius, magnet_height, thickness) {
     $fn = 64;
     difference() {
         sphere(ball_radius);
         sphere(ball_radius - thickness);
         
-        translate([0, 0, -ball_radius * 1.5])
-        linear_extrude(ball_radius)
+        translate([0, 0, -ball_radius])
+        linear_extrude(magnet_height)
             circle(magnet_radius);
         
         translate([0, 0, ball_radius])
