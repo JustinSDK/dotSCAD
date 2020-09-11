@@ -7,7 +7,9 @@ thickness = 1;
 thickness_step = true;
 p = 1.272;
 spacing = 0;
-    
+
+// The idea is from: https://www.facebook.com/permalink.php?story_fbid=381947752968951&id=100034611874448
+
 // n: 1 or 2
 module L_piece(n, thickness, p = 1.272, spacing = 0) {
     sides = [for(i = [0:5]) pow(p, n + i) - spacing];
