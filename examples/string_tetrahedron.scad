@@ -6,37 +6,38 @@ segs_per_side = 20;
 line_fn = 5;
 model = "Tetrahedron"; // [Tetrahedron, Base, Both]
 
-module lines_between(side1, side2, thickness, segs) {
-    function pts(p1, p2, segs) =
-        let(
-             p = p2 - p1,
-             dx = p[0] / segs,
-             dy = p[1] / segs,
-             dz = p[2] / segs
-        ) [for(i = [0:segs]) p1 + [dx, dy, dz] * i];
-
-    pts1 = pts(side1[0], side1[1], segs);
-    pts2 = pts(side2[0], side2[1], segs);
-    
-    for(i = [0:len(pts1) - 1]) {
-        hull_polyline3d(points = [pts1[i], pts2[i]], thickness = thickness);
-    }
-}
-
-function height(leng) = 
-    leng * sqrt(1 - 4 / 9 * pow(sin(60), 2));
-
-function vts(leng) = 
-    let(
-        half_leng = leng / 2,
-        center_y = half_leng * tan(30),
-        vt1 = [half_leng, - center_y, 0],
-        vt2 = [0, leng * sin(60) - center_y, 0],
-        vt3 = [-half_leng, -center_y, 0],
-        vt4 = [0, 0, height(leng)]
-    ) [vt1, vt2, vt3, vt4];
 
 module string_tetrahedron(leng, thickness, segs_per_side, line_fn) {
+    module lines_between(side1, side2, thickness, segs) {
+        function pts(p1, p2, segs) =
+            let(
+                 p = p2 - p1,
+                 dx = p[0] / segs,
+                 dy = p[1] / segs,
+                 dz = p[2] / segs
+            ) [for(i = [0:segs]) p1 + [dx, dy, dz] * i];
+
+        pts1 = pts(side1[0], side1[1], segs);
+        pts2 = pts(side2[0], side2[1], segs);
+        
+        for(i = [0:len(pts1) - 1]) {
+            hull_polyline3d(points = [pts1[i], pts2[i]], thickness = thickness);
+        }
+    }
+
+    function height(leng) = 
+        leng * sqrt(1 - 4 / 9 * pow(sin(60), 2));
+
+    function vts(leng) = 
+        let(
+            half_leng = leng / 2,
+            center_y = half_leng * tan(30),
+            vt1 = [half_leng, - center_y, 0],
+            vt2 = [0, leng * sin(60) - center_y, 0],
+            vt3 = [-half_leng, -center_y, 0],
+            vt4 = [0, 0, height(leng)]
+        ) [vt1, vt2, vt3, vt4];
+        
     $fn = line_fn;
     
     half_leng = leng / 2;
