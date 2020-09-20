@@ -29,10 +29,11 @@ function height(leng) =
 function vts(leng) = 
     let(
         half_leng = leng / 2,
-        vt1 = [half_leng, 0, 0],
-        vt2 = [0, leng * sin(60), 0],
-        vt3 = [-half_leng, 0, 0],
-        vt4 = [0, half_leng * tan(30), height(leng)]
+        center_y = half_leng * tan(30),
+        vt1 = [half_leng, - center_y, 0],
+        vt2 = [0, leng * sin(60) - center_y, 0],
+        vt3 = [-half_leng, -center_y, 0],
+        vt4 = [0, 0, height(leng)]
     ) [vt1, vt2, vt3, vt4];
 
 module string_tetrahedron(leng, thickness, segs_per_side, line_fn) {
