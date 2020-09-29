@@ -8,7 +8,7 @@ This module sweeps them to create a 3D object:
 
 ![sweep](images/lib2x-sweep-2.JPG)
 
-When using this module, you should use points to represent a cross section. The points must be count-clockwise indexes. For example:
+When using this module, you should use points to represent a cross section. The points must be counter-clockwise indexes. For example:
 
 ![sweep](images/lib2x-sweep-10.JPG)
 
