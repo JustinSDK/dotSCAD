@@ -1,4 +1,4 @@
-use <experimental/_impl/_mz_comm.scad>;
+use <_mz_comm.scad>;
 
 // create a starting maze for being visited later.
 function starting_maze(rows, columns) =  [

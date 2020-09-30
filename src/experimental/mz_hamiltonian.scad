@@ -1,4 +1,4 @@
-use <experimental/_impl/_mz_hamiltonian_impl.scad>;
+use <_impl/_mz_hamiltonian_impl.scad>;
 use <experimental/mz_blocks.scad>;
 use <experimental/mz_get.scad>;
 use <util/sort.scad>;
