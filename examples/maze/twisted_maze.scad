@@ -1,6 +1,6 @@
 use <hull_polyline3d.scad>;
 use <experimental/mz_blocks.scad>;
-use <experimental/mz_walls.scad>;
+use <experimental/mz_square_walls.scad>;
 use <ptf/ptf_x_twist.scad>;
 use <ptf/ptf_y_twist.scad>;
 
@@ -17,7 +17,7 @@ blocks = mz_blocks(
     rows, columns
 );
 
-walls = mz_walls(blocks, rows, columns, block_width);
+walls = mz_square_walls(blocks, rows, columns, block_width);
 
 size = [columns * block_width, rows * block_width];
 for(wall_pts = walls) {  

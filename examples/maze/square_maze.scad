@@ -1,5 +1,5 @@
 use <experimental/mz_blocks.scad>;
-use <experimental/mz_walls.scad>;
+use <experimental/mz_square_walls.scad>;
 
 module square_maze(start, rows, block_width, wall_thickness) {
     blocks = mz_blocks(
@@ -7,7 +7,7 @@ module square_maze(start, rows, block_width, wall_thickness) {
         rows, rows
     );
 
-    walls = mz_walls(blocks, rows, rows, block_width);
+    walls = mz_square_walls(blocks, rows, rows, block_width);
 
     for(wall = walls) {
         for(i = [0:len(wall) - 2]) {

@@ -1,6 +1,6 @@
 use <matrix/m_rotation.scad>;
 use <experimental/mz_blocks.scad>;
-use <experimental/mz_walls.scad>;
+use <experimental/mz_square_walls.scad>;
 use <ptf/ptf_sphere.scad>;
 
 r = 10;
@@ -60,7 +60,7 @@ module sphere_maze() {
     p_offset = [block_width * rows, pole_offset, 0];
     mr = m_rotation(90);
 
-    walls = mz_walls(blocks, rows, columns, block_width, bottom_border = false);
+    walls = mz_square_walls(blocks, rows, columns, block_width, bottom_border = false);
     for(wall_pts = walls) {  
         rxpts = [
             for(p = wall_pts) 
