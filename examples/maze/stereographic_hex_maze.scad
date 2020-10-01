@@ -1,7 +1,7 @@
 use <polyline2d.scad>;
 use <stereographic_extrude.scad>;
-use <experimental/mz_blocks.scad>;
-use <experimental/mz_get.scad>;
+use <maze/mz_blocks.scad>;
+use <maze/mz_get.scad>;
 
 x_cells = 10;
 cell_radius = 20;

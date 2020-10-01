@@ -1,6 +1,6 @@
 use <matrix/m_rotation.scad>;
-use <experimental/mz_blocks.scad>;
-use <experimental/mz_square_walls.scad>;
+use <maze/mz_blocks.scad>;
+use <maze/mz_square_walls.scad>;
 use <ptf/ptf_sphere.scad>;
 
 r = 10;

@@ -1,6 +1,6 @@
 use <hull_polyline3d.scad>;
-use <experimental/mz_blocks.scad>;
-use <experimental/mz_square_walls.scad>;
+use <maze/mz_blocks.scad>;
+use <maze/mz_square_walls.scad>;
 use <ptf/ptf_ring.scad>;
 
 rows = 48;

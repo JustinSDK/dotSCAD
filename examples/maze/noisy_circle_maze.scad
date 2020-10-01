@@ -1,7 +1,7 @@
 use <hull_polyline2d.scad>;
 use <util/rand.scad>;
-use <experimental/mz_blocks.scad>;
-use <experimental/mz_square_walls.scad>;
+use <maze/mz_blocks.scad>;
+use <maze/mz_square_walls.scad>;
 use <ptf/ptf_circle.scad>;
 use <noise/nz_perlin2.scad>;
 

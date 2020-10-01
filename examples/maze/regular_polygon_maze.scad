@@ -1,7 +1,7 @@
 use <line2d.scad>;
 use <hollow_out.scad>;
-use <experimental/mz_blocks.scad>;
-use <experimental/mz_get.scad>;
+use <maze/mz_blocks.scad>;
+use <maze/mz_get.scad>;
 
 // only for creating a small maze
 
