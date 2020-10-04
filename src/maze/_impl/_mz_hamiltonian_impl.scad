@@ -1,4 +1,4 @@
-use <util/has.scad>;
+use <../../util/has.scad>;
 
 function _mz_hamiltonian_upper(x, y) =
     let(

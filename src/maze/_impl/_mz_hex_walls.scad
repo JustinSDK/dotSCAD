@@ -1,4 +1,4 @@
-use <maze/mz_get.scad>;
+use <../mz_get.scad>;
 
 function _get_x(block) = mz_get(block, "x"); 
 function _get_y(block) = mz_get(block, "y");
