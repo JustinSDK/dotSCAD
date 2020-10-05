@@ -58,7 +58,7 @@ function _convex_hull_upper_chain(points, chain, m, t, i) =
             i - 1
         );
 
-function _convex_hull(points) = 
+function _convex_hull2(points) = 
     let(
         sorted = _convex_hull_sort_by_xy(points),
         leng = len(sorted),
