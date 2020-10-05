@@ -106,7 +106,6 @@ function _convex_hull3(pts) =
         v3 = v3_d[0],
         ___ = assert(v3 < leng, "coplanar points"),
         d = v3_d[1],
-        ______ = echo(v0, v1, v2, v3),
         fst_tetrahedron = d > 0 ? [
                 [v1, v0, v2],
                 [v0, v1, v3],
