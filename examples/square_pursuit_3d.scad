@@ -6,7 +6,7 @@ thickness = 2;
 n = 30;
 $fn = 6;
 
-module square_pursuit_curves_3d(length, diff_scale, thickness, n) {
+module square_pursuit_3d(length, diff_scale, thickness, n) {
     function inter_p(p1, p2, leng, d) = 
         let(
             vp = p2 - p1,
@@ -14,7 +14,7 @@ module square_pursuit_curves_3d(length, diff_scale, thickness, n) {
         )
         p1 + u * d;
 
-    module _square_pursuit_curves_3d(pts, diff_scale, thickness, n) {
+    module _square_pursuit_3d(pts, diff_scale, thickness, n) {
         if(n != 0) {
             vp = pts[1] - pts[0];
             leng = norm(vp);
@@ -24,7 +24,7 @@ module square_pursuit_curves_3d(length, diff_scale, thickness, n) {
             
             hull_polyline3d(concat(npts, [npts[3], npts[0]]), thickness);
             
-            _square_pursuit_curves_3d(npts, diff_scale, thickness, n - 1);
+            _square_pursuit_3d(npts, diff_scale, thickness, n - 1);
         }
     }
 
@@ -38,7 +38,7 @@ module square_pursuit_curves_3d(length, diff_scale, thickness, n) {
     
     hull_polyline3d(concat(pts, [pts[3], pts[0]]), thickness);
     
-    _square_pursuit_curves_3d(pts, diff_scale, thickness, n - 1);
+    _square_pursuit_3d(pts, diff_scale, thickness, n - 1);
 }
 
-square_pursuit_curves_3d(length, diff_scale, thickness, n);
+square_pursuit_3d(length, diff_scale, thickness, n);
