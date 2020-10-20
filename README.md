@@ -31,7 +31,7 @@ Some module files are organized in a directory. For example, px_circle.scad exis
 
 ## Examples
 
-See [examples](examples#dogfooding-examples).
+These examples incubate dotSCAD and dotSCAD refactors these examples. See [examples](examples#dogfooding-examples).
 
 [![examples](examples/images/gallery.JPG)](examples#dogfooding-examples)
 
