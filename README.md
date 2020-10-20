@@ -1,6 +1,6 @@
 # dotSCAD 2.4
 
-> **Reduce the burden of mathematics when playing OpenSCAD.**
+> **Reduce the burden of mathematics/algorithm when playing OpenSCAD.**
 
 ![dotSCAD](featured_img/hilbert_dragon.JPG)
 
@@ -9,6 +9,8 @@
 ## Introduction
 
 **Based on OpenSCAD 2019.05.** 
+
+Some of my [3D models](https://github.com/JustinSDK/dotSCAD#examples) require complex mathematics/algorithm. I extract them into dotSCAD. Hope it helps when you're playing OpenSCAD.
 
 OpenSCAD uses three library locations, the installation library, built-in library, and user defined libraries. It's convenient to set `OPENSCADPATH`. Check [Setting OPENSCADPATH](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries#Setting_OPENSCADPATH) in [OpenSCAD User Manual/Libraries](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries) for details.
 
