@@ -260,7 +260,7 @@ function icy(n = 2, angle = 90, leng = 1, heading = 0, start = [0, 0]) =
     )
     lsystem2(axiom, rules, n, angle, leng, heading, start);        
 
-function round_star(n = 3, angle = 77, leng = 1, heading = 0, start = [0, 0]) = 
+function round_star(n = 6, angle = 77, leng = 10, heading = 0, start = [0, 0]) = 
     let(
         axiom = "F",
         rules = [
