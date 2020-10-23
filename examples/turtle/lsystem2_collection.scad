@@ -116,10 +116,10 @@ function dragon_curve(n = 10, angle = 90, leng = 1, heading = 0, start = [0, 0])
 
 function twin_dragon_curve(n = 8, angle = 90, leng = 1, heading = 0, start = [0, 0]) = 
     let(
-        axiom = "FX+FX+",
+        axiom = "FX+FX",
         rules = [
             ["X", "X+YF"],
-            ["Y", "Y=FX-Y"]
+            ["Y", "FX-Y"]
         ]
     )
     lsystem2(axiom, rules, n, angle, leng, heading, start);    
