@@ -102,7 +102,7 @@ function koch_star(n = 4, angle = 60, leng = 1, heading = 0, start = [0, 0]) =
             ["F", "F+F--F+F"]
         ]
     )
-    lsystem2(axiom, rules, n, angle, leng, heading, start, "6789");   
+    lsystem2(axiom, rules, n, angle, leng, heading, start);   
 
 function dragon_curve(n = 10, angle = 90, leng = 1, heading = 0, start = [0, 0]) = 
     let(
