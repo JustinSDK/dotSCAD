@@ -201,7 +201,7 @@ function sierpinski_triangle(n = 5, angle = 120, leng = 1, heading = 0, start = 
             ["G", "GG"]
         ]
     )
-    lsystem2(axiom, rules, n, angle, leng, heading, start, "FG");  
+    lsystem2(axiom, rules, n, angle, leng, heading, start, "G");  
 
 function sierpinski_arrowhead(n = 6, angle = 60, leng = 1, heading = 0, start = [0, 0]) = 
     let(
