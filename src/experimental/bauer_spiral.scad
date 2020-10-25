@@ -1,4 +1,4 @@
-function bauer_spiral(n, dir = "CT_CLK") = 
+function bauer_spiral(n, radius, dir = "CT_CLK") = 
     let(
         L = sqrt(n * PI),
         toRadians = PI / 180,
@@ -16,5 +16,5 @@ function bauer_spiral(n, dir = "CT_CLK") =
             xk = sin(phikDegrees) * cos(thetakDegrees),
             yk = sin(phikDegrees) * sin(thetakDegrees)
         )
-        [xk, yk, zk]
+        [xk, yk, zk] * radius
     ];
