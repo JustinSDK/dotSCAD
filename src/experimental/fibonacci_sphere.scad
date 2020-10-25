@@ -1,4 +1,4 @@
-function fibonacci_sphere(n, dir = "CT_CLK") =
+function fibonacci_sphere(n, radius, dir = "CT_CLK") =
     let(
         toDegrees = 180 / PI,
         phi = PI * (3 - sqrt(5)),
@@ -13,5 +13,5 @@ function fibonacci_sphere(n, dir = "CT_CLK") =
             x = cos(theta * toDegrees) * r,
             y = sin(theta * toDegrees) * r
         )
-        [x, y, z]
+        [x, y, z] * radius
     ];
