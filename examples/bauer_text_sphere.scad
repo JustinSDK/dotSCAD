@@ -5,17 +5,21 @@ txt = "3.14159265358979323846264338327950288419716939937510582097494459230781640
 radius = 20;
 font_name = "Liberation Sans:style=Bold";
 font_size = 2.5;
+txt_extrude = radius * 0.125;
+txt_scale = 1.15;
+ball = true;
 $fn = 48;
 
-bauer_text_sphere(radius, font_name, font_size);
+bauer_text_sphere(radius, font_name, font_size, txt_extrude, txt_scale, ball);
 
-module bauer_text_sphere(radius, font_name, font_size) {
+module bauer_text_sphere(radius, font_name, font_size, txt_extrude, txt_scale, ball) {
     n = len(txt);
     pts = bauer_spiral(n, radius);
 
-    render() 
-    sphere(radius * 0.9);
-
+    if(ball) {
+        render() 
+        sphere(radius * 0.9);
+    }
     /* 
         Based on Bauer's spiral:
           Bauer R. Distribution of points on a sphere with application to star catalogs. Journal of Guidance, Control, and Dynamics. 2000;23(1):130–137
@@ -31,7 +35,7 @@ module bauer_text_sphere(radius, font_name, font_size) {
         translate(pts[i])
         rotate([0, -ya, za])
         rotate([90, 0, -90])
-        linear_extrude(radius * 0.125, scale = 1.15)
+        linear_extrude(txt_extrude, scale = txt_scale)
         mirror([-1, 0, 0])
             text(txt[i], size = font_size, font = font_name, valign = "center", halign = "center");
     }
