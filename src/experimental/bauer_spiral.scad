@@ -1,4 +1,4 @@
-function bauer_spiral(n, radius, dir = "CT_CLK") = 
+function bauer_spiral(n, radius = 1, dir = "CT_CLK") = 
     let(
         L = sqrt(n * PI),
         toRadians = PI / 180,
