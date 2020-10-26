@@ -7,15 +7,19 @@ font_name = "Liberation Sans:style=Bold";
 font_size = 2.5;
 $fn = 48;
 
-archimedean_text_sphere(radius, font_name, font_size);
+bauer_text_sphere(radius, font_name, font_size);
 
-module archimedean_text_sphere(radius, font_name, font_size) {
+module bauer_text_sphere(radius, font_name, font_size) {
     n = len(txt);
     pts = bauer_spiral(n, radius);
 
     render() 
     sphere(radius * 0.9);
 
+    /* 
+        Based on Bauer's spiral:
+          Bauer R. Distribution of points on a sphere with application to star catalogs. Journal of Guidance, Control, and Dynamics. 2000;23(1):130–137
+    */
     for(i = [0:n - 1]) {
         x = pts[i][0];
         y = pts[i][1];
