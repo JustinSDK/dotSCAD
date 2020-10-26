@@ -1,4 +1,4 @@
-function fibonacci_lattice(n, radius, dir = "CT_CLK") =
+function fibonacci_lattice(n, radius = 1, dir = "CT_CLK") =
     let(
         toDegrees = 180 / PI,
         phi = PI * (3 - sqrt(5)),
