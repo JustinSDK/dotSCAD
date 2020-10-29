@@ -12,9 +12,7 @@ function _catmull_rom_spline_4pts(t_step, points, tightness) =
     bezier_curve(t_step, [points[1], p1x, p2x, points[2]]);
 
 function catmull_rom_spline(t_step, points, tightness = 0) = 
-    let(
-        leng = len(points)
-    )
+    let(leng = len(points))
     concat(
         [
             for(i = [0:leng - 4])
@@ -25,4 +23,28 @@ function catmull_rom_spline(t_step, points, tightness = 0) =
         ],
         [points[leng - 2]]
     );
-    
+
+/*
+use <experimental/catmull_rom_spline.scad>;
+use <hull_polyline3d.scad>;
+
+pts = [
+    [280, 20, 10],
+    [150, 80, -100],
+    [20, 140, 50],
+    [280, 140, 20],
+    [150, 210, 90],
+    [20, 280, 0]
+];
+
+#for(pt = pts) {
+    translate(pt)
+        sphere(10);
+}
+
+t_step = 0.1;    
+tightness = 0;
+points = catmull_rom_spline(t_step, pts, tightness);
+
+hull_polyline3d(points, 5);   
+*/
