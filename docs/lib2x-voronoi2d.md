@@ -1,6 +1,6 @@
 # voronoi2d
 
-Creats a [Voronoi diagram](https://en.wikipedia.org/wiki/Voronoi_diagram). The initial region for each cell is calculated automatically from the given points by the following code: 
+Create a [Voronoi diagram](https://en.wikipedia.org/wiki/Voronoi_diagram). The initial region for each cell is calculated automatically from the given points by the following code: 
 
     xs = [for(p = points) p[0]];
     ys = [for(p = points) abs(p[1])];

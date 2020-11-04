@@ -1,6 +1,6 @@
 # voronoi3d
 
-Creats a 3D version of [Voronoi diagram](https://en.wikipedia.org/wiki/Voronoi_diagram). The initial space for each cell is calculated automatically from the given points by the following code: 
+Create a 3D version of [Voronoi diagram](https://en.wikipedia.org/wiki/Voronoi_diagram). The initial space for each cell is calculated automatically from the given points by the following code: 
 
     xs = [for(p = points) p[0]];
     ys = [for(p = points) abs(p[1])];
