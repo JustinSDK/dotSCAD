@@ -1,6 +1,6 @@
 # vrn2_space
 
-Creats a [Voronoi diagram](https://en.wikipedia.org/wiki/Voronoi_diagram) in the first quadrant. You specify a space and a grid width. The center of each cell will be distributed in each grid randomly.
+Create a [Voronoi diagram](https://en.wikipedia.org/wiki/Voronoi_diagram) in the first quadrant. You specify a space and a grid width. The center of each cell will be distributed in each grid randomly.
 
 **Since:** 2.4
 
