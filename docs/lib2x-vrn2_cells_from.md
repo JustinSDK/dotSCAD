@@ -1,6 +1,6 @@
 # vrn2_cells_from
 
-Creats cell shapes of Voronoi from a list of points. 
+Create cell shapes of Voronoi from a list of points. 
 
 **Since:** 2.4
 

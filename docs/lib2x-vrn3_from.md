@@ -1,6 +1,6 @@
 # vrn3_from
 
-Creats a 3D version of [Voronoi diagram](https://en.wikipedia.org/wiki/Voronoi_diagram).
+Create a 3D version of [Voronoi diagram](https://en.wikipedia.org/wiki/Voronoi_diagram).
 
 **Since:** 2.4
 

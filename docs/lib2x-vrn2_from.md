@@ -1,6 +1,6 @@
 # vrn2_from
 
-Creats a [Voronoi diagram](https://en.wikipedia.org/wiki/Voronoi_diagram) from a list of points. 
+Create a [Voronoi diagram](https://en.wikipedia.org/wiki/Voronoi_diagram) from a list of points. 
 
 **Since:** 2.4
 
