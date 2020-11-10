@@ -90,7 +90,7 @@ function next_y(y, dir, rows, circular) =
         ny;
     
 // go right and carve the right wall
-function go_right_from(x, y, maze) = [
+function visit_right(x, y, maze) = [
     for(b = maze) [get_x(b), get_y(b)] == [x, y] ? (
         top_right_wall(b) ? 
             [x, y, 1, visited(x, y, maze)] : 
@@ -100,7 +100,7 @@ function go_right_from(x, y, maze) = [
 ]; 
 
 // go up and carve the top wall
-function go_up_from(x, y, maze) = [
+function visit_top(x, y, maze) = [
     for(b = maze) [get_x(b), get_y(b)] == [x, y] ? (
         top_right_wall(b) ? 
             [x, y, 2, visited(x, y, maze)] :  
@@ -110,7 +110,7 @@ function go_up_from(x, y, maze) = [
 ]; 
 
 // go left and carve the right wall of the left block
-function go_left_from(x, y, maze, columns) = 
+function visit_left(x, y, maze, columns) = 
     let(
         x_minus_one = x - 1,
         nx = x_minus_one < 1 ? x_minus_one + columns : x_minus_one
@@ -120,7 +120,7 @@ function go_left_from(x, y, maze, columns) =
     ]; 
 
 // go down and carve the top wall of the bottom block
-function go_down_from(x, y, maze, rows) = [
+function visit_bottom(x, y, maze, rows) = [
     let(
         y_minus_one = y - 1,
         ny = y_minus_one < 1 ? y_minus_one + rows : y_minus_one
@@ -130,15 +130,15 @@ function go_down_from(x, y, maze, rows) = [
 
 // 0(right), 1(top), 2(left), 3(bottom)
 function try_block(dir, x, y, maze, rows, columns) =
-    dir == 0 ? go_right_from(x, y, maze) : 
-    dir == 1 ? go_up_from(x, y, maze) : 
-    dir == 2 ? go_left_from(x, y, maze, columns) : 
-    /*dir 3*/  go_down_from(x, y, maze, rows);
+    dir == 0 ? visit_right(x, y, maze) : 
+    dir == 1 ? visit_top(x, y, maze) : 
+    dir == 2 ? visit_left(x, y, maze, columns) : 
+    /*dir 3*/  visit_bottom(x, y, maze, rows);
 
 
 // find out visitable dirs from (x, y)
 _visitable_dir_table = [0, 1, 2, 3];
-function visitable_dirs_from(x, y, maze, rows, columns, x_circular, y_circular) = [
+function visitable_dirs(x, y, maze, rows, columns, x_circular, y_circular) = [
     for(dir = _visitable_dir_table) 
         if(visitable(next_x(x, dir, columns, x_circular), next_y(y, dir, rows, y_circular), maze, rows, columns)) 
             dir
@@ -147,7 +147,7 @@ function visitable_dirs_from(x, y, maze, rows, columns, x_circular, y_circular) 
 // go maze from (x, y)
 function go_maze(x, y, maze, rows, columns, x_circular = false, y_circular = false, seed) = 
     //  have visitable dirs?
-    len(visitable_dirs_from(x, y, maze, rows, columns, x_circular, y_circular)) == 0 ? 
+    len(visitable_dirs(x, y, maze, rows, columns, x_circular, y_circular)) == 0 ? 
         set_visited(x, y, maze)      // road closed
         : walk_around_from(          
             x, y, 
