@@ -1,4 +1,5 @@
 use <regular_polygon_maze.scad>;
+use <hollow_out.scad>;
 
 cblocks = 8; 
 wall_thickness = 1.5;
