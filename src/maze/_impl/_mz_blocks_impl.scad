@@ -137,21 +137,24 @@ function try_block(dir, x, y, maze, rows, columns) =
 
 
 // find out visitable dirs from (x, y)
-_visitable_dir_table = [0, 1, 2, 3];
-function visitable_dirs(x, y, maze, rows, columns, x_circular, y_circular) = [
-    for(dir = _visitable_dir_table) 
+function visitable_dirs(r_dirs, x, y, maze, rows, columns, x_circular, y_circular) = [
+    for(dir = r_dirs) 
         if(visitable(next_x(x, dir, columns, x_circular), next_y(y, dir, rows, y_circular), maze, rows, columns)) 
             dir
 ];  
     
 // go maze from (x, y)
 function go_maze(x, y, maze, rows, columns, x_circular = false, y_circular = false, seed) = 
+    let(
+        r_dirs = rand_dirs(x * rows + y + seed),
+        v_dirs = visitable_dirs(r_dirs, x, y, maze, rows, columns, x_circular, y_circular)
+    )
     //  have visitable dirs?
-    len(visitable_dirs(x, y, maze, rows, columns, x_circular, y_circular)) == 0 ? 
+    len(v_dirs) == 0 ? 
         set_visited(x, y, maze)      // road closed
         : walk_around_from(          
             x, y, 
-            rand_dirs(x * rows + y + seed),             
+            v_dirs,             
             set_visited(x, y, maze), 
             rows, columns,
             x_circular, y_circular,
