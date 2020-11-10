@@ -1,6 +1,6 @@
 use <../../util/has.scad>;
 
-function _mz_hamiltonian_upper(x, y) =
+function _mz_hamiltonian_top(x, y) =
     let(
         nx = (x - 1) * 2,
         ny = (y - 1) * 2
@@ -14,7 +14,7 @@ function _mz_hamiltonian_right(x, y) =
     )
     [[nx + 2, ny + 2], [nx + 2, ny + 1], [nx + 2, ny]];
     
-function _mz_hamiltonian_upper_right(x, y) =
+function _mz_hamiltonian_top_right(x, y) =
     let(
         nx = (x - 1) * 2,
         ny = (y - 1) * 2

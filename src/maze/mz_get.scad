@@ -6,4 +6,4 @@ function mz_get(block, query) =
             ["w", 2]
  	    ])[0]
     )
-    i != 2 ? block[i] : ["NO_WALL", "UPPER_WALL", "RIGHT_WALL", "UPPER_RIGHT_WALL"][block[i]];
+    i != 2 ? block[i] : ["NO_WALL", "TOP_WALL", "RIGHT_WALL", "TOP_RIGHT_WALL"][block[i]];

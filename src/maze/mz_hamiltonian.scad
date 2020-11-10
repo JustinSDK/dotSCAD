@@ -18,9 +18,9 @@ function mz_hamiltonian(rows, columns, start, seed) =
                     x = mz_get(block, "x"),
                     y = mz_get(block, "y"),
                     wall_type = mz_get(block, "w"),
-                    pts = wall_type == "UPPER_WALL" ? _mz_hamiltonian_upper(x, y) :
+                    pts = wall_type == "TOP_WALL" ? _mz_hamiltonian_top(x, y) :
                           wall_type == "RIGHT_WALL" ? _mz_hamiltonian_right(x, y) :
-                          wall_type == "UPPER_RIGHT_WALL" ? _mz_hamiltonian_upper_right(x, y) : []
+                          wall_type == "TOP_RIGHT_WALL" ? _mz_hamiltonian_top_right(x, y) : []
                 )
                 each pts
             ],

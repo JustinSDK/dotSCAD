@@ -11,8 +11,8 @@ function mz_hex_walls(blocks, rows, columns, cell_radius, wall_thickness, left_b
             for(y = [0:rows - 1]) 
             let(
                 cell_p = _cell_position(cell_radius, 0, y),
-                walls1 = _upper_left(cell_radius),
-                walls2 = _down_left(cell_radius)
+                walls1 = _top_left(cell_radius),
+                walls2 = _bottom_left(cell_radius)
             )
             [
                  [walls1[0] + cell_p, walls1[1] + cell_p], 
@@ -28,9 +28,9 @@ function mz_hex_walls(blocks, rows, columns, cell_radius, wall_thickness, left_b
             for(x = [0:columns - 1]) 
             let(
                 cell_p = _cell_position(cell_radius, x, 0),
-                walls1 = _down(cell_radius),
+                walls1 = _bottom(cell_radius),
                 walls2 = [
-                    for(pair = (x % 2 == 0 ? [_down_left(cell_radius), _down_right(cell_radius)] : []))
+                    for(pair = (x % 2 == 0 ? [_bottom_left(cell_radius), _bottom_right(cell_radius)] : []))
                         for(wall = pair)
                             wall
                 ]

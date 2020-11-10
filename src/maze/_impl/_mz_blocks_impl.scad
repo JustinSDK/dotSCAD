@@ -6,7 +6,7 @@ function starting_maze(rows, columns) =  [
         for(x = [1:columns]) 
             block(
                 x, y, 
-                // all blocks have upper and right walls
+                // all blocks have top and right walls
                 3, 
                 // unvisited
                 false 
@@ -36,7 +36,7 @@ function set_visited(x, y, maze) = [
             [x, y, get_wall_type(b), true] : b
 ];
     
-// 0(right), 1(upper), 2(left), 3(down)
+// 0(right), 1(top), 2(left), 3(bottom)
 _rand_dir_table = [
     [0, 1, 2, 3],
     [0, 1, 3, 2],
@@ -92,17 +92,17 @@ function next_y(y, dir, rows, circular) =
 // go right and carve the right wall
 function go_right_from(x, y, maze) = [
     for(b = maze) [get_x(b), get_y(b)] == [x, y] ? (
-        upper_right_wall(b) ? 
+        top_right_wall(b) ? 
             [x, y, 1, visited(x, y, maze)] : 
             [x, y, 0, visited(x, y, maze)]
         
     ) : b
 ]; 
 
-// go up and carve the upper wall
+// go up and carve the top wall
 function go_up_from(x, y, maze) = [
     for(b = maze) [get_x(b), get_y(b)] == [x, y] ? (
-        upper_right_wall(b) ? 
+        top_right_wall(b) ? 
             [x, y, 2, visited(x, y, maze)] :  
             [x, y, 0, visited(x, y, maze)]
         
@@ -117,26 +117,26 @@ function go_left_from(x, y, maze, columns) =
     )
     [
         for(b = maze) [get_x(b), get_y(b)] == [nx, y] ? (
-            upper_right_wall(b) ? 
+            top_right_wall(b) ? 
                 [nx, y, 1, visited(nx, y, maze)] : 
                 [nx, y, 0, visited(nx, y, maze)]
         ) : b
     ]; 
 
-// go down and carve the upper wall of the down block
+// go down and carve the top wall of the bottom block
 function go_down_from(x, y, maze, rows) = [
     let(
         y_minus_one = y - 1,
         ny = y_minus_one < 1 ? y_minus_one + rows : y_minus_one
     )
     for(b = maze) [get_x(b), get_y(b)] == [x, ny] ? (
-        upper_right_wall(b) ? 
+        top_right_wall(b) ? 
             [x, ny, 2, visited(x, ny, maze)] : 
             [x, ny, 0, visited(x, ny, maze)]
     ) : b
 ]; 
 
-// 0(right), 1(upper), 2(left), 3(down)
+// 0(right), 1(top), 2(left), 3(bottom)
 function try_block(dir, x, y, maze, rows, columns) =
     dir == 0 ? go_right_from(x, y, maze) : 
     dir == 1 ? go_up_from(x, y, maze) : 
