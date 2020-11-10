@@ -116,11 +116,7 @@ function go_left_from(x, y, maze, columns) =
         nx = x_minus_one < 1 ? x_minus_one + columns : x_minus_one
     )
     [
-        for(b = maze) [get_x(b), get_y(b)] == [nx, y] ? (
-            top_right_wall(b) ? 
-                [nx, y, 1, visited(nx, y, maze)] : 
-                [nx, y, 0, visited(nx, y, maze)]
-        ) : b
+        for(b = maze) [get_x(b), get_y(b)] == [nx, y] ? [nx, y, 1, visited(nx, y, maze)] : b
     ]; 
 
 // go down and carve the top wall of the bottom block
@@ -129,11 +125,7 @@ function go_down_from(x, y, maze, rows) = [
         y_minus_one = y - 1,
         ny = y_minus_one < 1 ? y_minus_one + rows : y_minus_one
     )
-    for(b = maze) [get_x(b), get_y(b)] == [x, ny] ? (
-        top_right_wall(b) ? 
-            [x, ny, 2, visited(x, ny, maze)] : 
-            [x, ny, 0, visited(x, ny, maze)]
-    ) : b
+    for(b = maze) [get_x(b), get_y(b)] == [x, ny] ? [x, ny, 2, visited(x, ny, maze)] : b
 ]; 
 
 // 0(right), 1(top), 2(left), 3(bottom)
