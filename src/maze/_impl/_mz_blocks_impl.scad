@@ -153,16 +153,16 @@ function go_maze(x, y, maze, rows, columns, x_circular = false, y_circular = fal
         );
 
 // try four directions
-function walk_around_from(x, y, dirs, maze, rows, columns, x_circular, y_circular, i = 4, seed) =
+function walk_around_from(x, y, dirs, maze, rows, columns, x_circular, y_circular, i = 0, seed) =
     // all done?
-    i > 0 ? 
+    i < len(dirs) ? 
         // not yet
         walk_around_from(x, y, dirs, 
             // try one direction
-            try_routes_from(x, y, dirs[4 - i], maze, rows, columns, x_circular, y_circular, seed),  
+            try_routes_from(x, y, dirs[i], maze, rows, columns, x_circular, y_circular, seed),  
             rows, columns, 
             x_circular, y_circular,
-            i - 1,
+            i + 1,
             seed) 
         : maze;
         
