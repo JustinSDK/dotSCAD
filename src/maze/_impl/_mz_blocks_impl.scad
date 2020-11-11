@@ -90,21 +90,21 @@ function next_y(y, dir, rows, circular) =
         ny;
     
 // go right and carve the right wall
-function visit_right(x, y, maze) = [
+function carve_right(x, y, maze) = [
     for(b = maze) [get_x(b), get_y(b)] == [x, y] ? (
         top_right_wall(b) ? [x, y, 1, 1] :  [x, y, 0, 1]
     ) : b
 ]; 
 
 // go up and carve the top wall
-function visit_top(x, y, maze) = [
+function carve_top(x, y, maze) = [
     for(b = maze) [get_x(b), get_y(b)] == [x, y] ? (
         top_right_wall(b) ? [x, y, 2, 1] : [x, y, 0, 1]
     ) : b
 ]; 
 
 // go left and carve the right wall of the left block
-function visit_left(x, y, maze, columns) = 
+function carve_left(x, y, maze, columns) = 
     let(
         x_minus_one = x - 1,
         nx = x_minus_one < 1 ? x_minus_one + columns : x_minus_one
@@ -112,7 +112,7 @@ function visit_left(x, y, maze, columns) =
     [for(b = maze) [get_x(b), get_y(b)] == [nx, y] ? [nx, y, 1, 0] : b]; 
 
 // go down and carve the top wall of the bottom block
-function visit_bottom(x, y, maze, rows) = 
+function carve_bottom(x, y, maze, rows) = 
     let(
         y_minus_one = y - 1,
         ny = y_minus_one < 1 ? y_minus_one + rows : y_minus_one
@@ -121,10 +121,10 @@ function visit_bottom(x, y, maze, rows) =
 
 // 0(right), 1(top), 2(left), 3(bottom)
 function try_block(dir, x, y, maze, rows, columns) =
-    dir == 0 ? visit_right(x, y, maze) : 
-    dir == 1 ? visit_top(x, y, maze) : 
-    dir == 2 ? visit_left(x, y, maze, columns) : 
-    /*dir 3*/  visit_bottom(x, y, maze, rows);
+    dir == 0 ? carve_right(x, y, maze) : 
+    dir == 1 ? carve_top(x, y, maze) : 
+    dir == 2 ? carve_left(x, y, maze, columns) : 
+    /*dir 3*/  carve_bottom(x, y, maze, rows);
 
 
 // find out visitable dirs from (x, y)
