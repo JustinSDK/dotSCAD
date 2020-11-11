@@ -93,8 +93,8 @@ function next_y(y, dir, rows, circular) =
 function visit_right(x, y, maze) = [
     for(b = maze) [get_x(b), get_y(b)] == [x, y] ? (
         top_right_wall(b) ? 
-            [x, y, 1, visited(x, y, maze)] : 
-            [x, y, 0, visited(x, y, maze)]
+            [x, y, 1, 1] : 
+            [x, y, 0, 1]
         
     ) : b
 ]; 
@@ -103,8 +103,8 @@ function visit_right(x, y, maze) = [
 function visit_top(x, y, maze) = [
     for(b = maze) [get_x(b), get_y(b)] == [x, y] ? (
         top_right_wall(b) ? 
-            [x, y, 2, visited(x, y, maze)] :  
-            [x, y, 0, visited(x, y, maze)]
+            [x, y, 2, 1] :  
+            [x, y, 0, 1]
         
     ) : b
 ]; 
