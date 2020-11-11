@@ -120,7 +120,7 @@ function carve_bottom(x, y, maze, rows) =
     [for(b = maze) [get_x(b), get_y(b)] == [x, ny] ? [x, ny, 2, 0] : b]; 
 
 // 0(right), 1(top), 2(left), 3(bottom)
-function try_block(dir, x, y, maze, rows, columns) =
+function carve(dir, x, y, maze, rows, columns) =
     dir == 0 ? carve_right(x, y, maze) : 
     dir == 1 ? carve_top(x, y, maze) : 
     dir == 2 ? carve_left(x, y, maze, columns) : 
@@ -172,7 +172,7 @@ function try_routes_from(x, y, dir, maze, rows, columns, x_circular, y_circular,
         // try the block 
         go_maze(
             next_x(x, dir, columns, x_circular), next_y(y, dir, rows, y_circular), 
-            try_block(dir, x, y, maze, rows, columns),
+            carve(dir, x, y, maze, rows, columns),
             rows, columns,
             x_circular, y_circular,
             seed
