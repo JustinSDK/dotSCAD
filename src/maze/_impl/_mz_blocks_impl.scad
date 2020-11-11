@@ -92,20 +92,14 @@ function next_y(y, dir, rows, circular) =
 // go right and carve the right wall
 function visit_right(x, y, maze) = [
     for(b = maze) [get_x(b), get_y(b)] == [x, y] ? (
-        top_right_wall(b) ? 
-            [x, y, 1, 1] : 
-            [x, y, 0, 1]
-        
+        top_right_wall(b) ? [x, y, 1, 1] :  [x, y, 0, 1]
     ) : b
 ]; 
 
 // go up and carve the top wall
 function visit_top(x, y, maze) = [
     for(b = maze) [get_x(b), get_y(b)] == [x, y] ? (
-        top_right_wall(b) ? 
-            [x, y, 2, 1] :  
-            [x, y, 0, 1]
-        
+        top_right_wall(b) ? [x, y, 2, 1] : [x, y, 0, 1]
     ) : b
 ]; 
 
@@ -115,18 +109,15 @@ function visit_left(x, y, maze, columns) =
         x_minus_one = x - 1,
         nx = x_minus_one < 1 ? x_minus_one + columns : x_minus_one
     )
-    [
-        for(b = maze) [get_x(b), get_y(b)] == [nx, y] ? [nx, y, 1, 0] : b
-    ]; 
+    [for(b = maze) [get_x(b), get_y(b)] == [nx, y] ? [nx, y, 1, 0] : b]; 
 
 // go down and carve the top wall of the bottom block
-function visit_bottom(x, y, maze, rows) = [
+function visit_bottom(x, y, maze, rows) = 
     let(
         y_minus_one = y - 1,
         ny = y_minus_one < 1 ? y_minus_one + rows : y_minus_one
     )
-    for(b = maze) [get_x(b), get_y(b)] == [x, ny] ? [x, ny, 2, 0] : b
-]; 
+    [for(b = maze) [get_x(b), get_y(b)] == [x, ny] ? [x, ny, 2, 0] : b]; 
 
 // 0(right), 1(top), 2(left), 3(bottom)
 function try_block(dir, x, y, maze, rows, columns) =
