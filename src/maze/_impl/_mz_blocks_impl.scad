@@ -1,18 +1,5 @@
 use <_mz_comm.scad>;
 
-// create a starting maze for being visited later.
-function starting_maze(rows, columns) =  [
-    for(y = [1:rows]) 
-        for(x = [1:columns]) 
-            block(
-                x, y, 
-                // all blocks have top and right walls
-                3, 
-                // unvisited
-                false 
-            )
-];
-
 // find out the index of a block with the position (x, y)
 function indexOf(x, y, maze, i = 0) =
     i > len(maze) ? -1 : (
