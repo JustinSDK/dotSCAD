@@ -2,6 +2,7 @@
 // TOP_WALL = 1;    
 // RIGHT_WALL = 2;    
 // TOP_RIGHT_WALL = 3; 
+// MASK = 4;
 
 function no_wall(block) = get_wall_type(block) == 0;
 function top_wall(block) = get_wall_type(block) == 1;
