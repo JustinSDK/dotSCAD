@@ -4,7 +4,10 @@ to_do:
 
 next:
 
-- vx_contour
 - maze/*
+- vx_contour
 - polygon_hull
 - polyhedron_hull
+- catmull_rom_spline
+- bauer_spiral
+- fibonacci_lattice
