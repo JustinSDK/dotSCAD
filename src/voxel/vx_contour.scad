@@ -1,4 +1,4 @@
-use <experimental/_impl/_vx_contour_impl.scad>;
+use <_impl/_vx_contour_impl.scad>;
 use <util/sort.scad>;
 
 function vx_contour(points) = 
