@@ -34,13 +34,13 @@ module maze_masking(start, mask, block_width, wall_thickness, wall_height, base_
         rows, columns,
 		mz_initialize(mask = mask)
     );
-	
+
 	pts = contour ? vx_contour([
 	for(y = [0:rows - 1])
 	    for(x = [0:columns - 1])
-		    if(mask[y][x] == 1)
-			    [x, rows - y - 1]
-	]) : [];	
+		    if(mask[rows - y - 1][x] == 1)
+			    [x, y]
+	], sorted = true) : [];	
 	
     walls = mz_square_walls(blocks, rows, columns, block_width);
 	
