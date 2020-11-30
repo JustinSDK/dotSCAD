@@ -1,6 +1,6 @@
 use <_impl/_catmull_rom_spline.scad>;
 
-function catmull_rom_spline(t_step, points, tightness = 0) = 
+function curve(t_step, points, tightness = 0) = 
     let(leng = len(points))
     concat(
         [
@@ -14,7 +14,7 @@ function catmull_rom_spline(t_step, points, tightness = 0) =
     );
 
 /*
-use <catmull_rom_spline.scad>;
+use <curve.scad>;
 use <hull_polyline3d.scad>;
 
 pts = [
@@ -33,7 +33,7 @@ pts = [
 
 t_step = 0.1;    
 tightness = 0;
-points = catmull_rom_spline(t_step, pts, tightness);
+points = curve(t_step, pts, tightness);
 
 hull_polyline3d(points, 5);   
 */

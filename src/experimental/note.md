@@ -8,6 +8,6 @@ next:
 - vx_contour
 - polygon_hull
 - polyhedron_hull
-- catmull_rom_spline
+- curve
 - bauer_spiral
 - fibonacci_lattice
