@@ -6,6 +6,7 @@ next:
 
 - maze/*
 - vx_contour
+- vx_bezier
 - polygon_hull
 - polyhedron_hull
 - curve
