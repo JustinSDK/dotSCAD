@@ -1,5 +1,5 @@
 use <matrix/m_rotation.scad>;
-use <maze/mz_blocks.scad>;
+use <maze/mz_square_blocks.scad>;
 use <maze/mz_square_walls.scad>;
 use <ptf/ptf_sphere.scad>;
 
@@ -51,7 +51,7 @@ module sphere_maze() {
 
 
     size = [rows * block_width, columns * block_width + pole_offset * 2];
-    blocks = mz_blocks(
+    blocks = mz_square_blocks(
         [1, 1],  
         rows, columns, 
         y_circular = true

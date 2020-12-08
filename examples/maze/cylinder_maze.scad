@@ -1,5 +1,5 @@
 use <bend.scad>;
-use <maze/mz_blocks.scad>;
+use <maze/mz_square_blocks.scad>;
 use <maze/mz_square_walls.scad>;
 
 radius = 30; 
@@ -35,7 +35,7 @@ module cylinder_maze() {
     maze_rows = round(height / block_width);
     maze_columns = round(2 * 3.14159 * radius / block_width);
 
-    maze_blocks = mz_blocks(
+    maze_blocks = mz_square_blocks(
         [1, maze_rows],  
         maze_rows, maze_columns,
         x_circular = true

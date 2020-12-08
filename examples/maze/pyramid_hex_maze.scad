@@ -1,5 +1,5 @@
 use <polyline2d.scad>;
-use <maze/mz_blocks.scad>;
+use <maze/mz_square_blocks.scad>;
 use <maze/mz_hex_walls.scad>;
 
 columns = 10;
@@ -30,7 +30,7 @@ module pyramid_hex_maze(columns, cell_radius, wall_thickness) {
     
     pyramid_height = square_w / sqrt(2);
 
-    blocks = mz_blocks(
+    blocks = mz_square_blocks(
         [1, 1],  
         rows, columns
     );

@@ -1,5 +1,5 @@
 use <hull_polyline3d.scad>;
-use <maze/mz_blocks.scad>;
+use <maze/mz_square_blocks.scad>;
 use <maze/mz_square_walls.scad>;
 use <ptf/ptf_ring.scad>;
 
@@ -14,7 +14,7 @@ leng = rows * block_width;
 radius = 0.5 * leng / PI;
 a_step = 360 / leng;
 
-blocks = mz_blocks(
+blocks = mz_square_blocks(
     [1, 1],  
     rows, columns, 
     y_circular = true

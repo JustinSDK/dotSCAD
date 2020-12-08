@@ -1,12 +1,12 @@
 use <_impl/_mz_hamiltonian_impl.scad>;
-use <mz_blocks.scad>;
+use <mz_square_blocks.scad>;
 use <mz_get.scad>;
 use <../util/sort.scad>;
 use <../util/dedup.scad>;
 
 function mz_hamiltonian(rows, columns, start, seed) =
     let(
-        blocks = mz_blocks(
+        blocks = mz_square_blocks(
             [1, 1],  
             rows, columns,
             seed = seed

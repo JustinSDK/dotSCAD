@@ -2,7 +2,7 @@ use <line2d.scad>;
 use <hollow_out.scad>;
 use <ellipse_extrude.scad>;
 use <arc.scad>;
-use <maze/mz_blocks.scad>;
+use <maze/mz_square_blocks.scad>;
 use <maze/mz_get.scad>;
 
 radius_of_heart = 12;
@@ -106,7 +106,7 @@ module heart_maze(maze, radius, cblocks, levels, thickness = 1) {
 	}
 }
 
-maze = mz_blocks(
+maze = mz_square_blocks(
 	[1, 1],  
 	cblocks, levels, y_circular = true
 );
