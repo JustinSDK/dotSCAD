@@ -1,6 +1,6 @@
 use <maze/mz_square_blocks.scad>;
 use <maze/mz_square_walls.scad>;
-use <maze/mz_initialize.scad>;
+use <maze/mz_square_initialize.scad>;
 use <voxel/vx_contour.scad>;
 
 start = [2, 2];
@@ -32,7 +32,7 @@ module maze_masking(start, mask, block_width, wall_thickness, wall_height, base_
     blocks = mz_square_blocks(
         start,  
         rows, columns,
-		mz_initialize(mask = mask)
+		mz_square_initialize(mask = mask)
     );
 
 	pts = contour ? vx_contour([
