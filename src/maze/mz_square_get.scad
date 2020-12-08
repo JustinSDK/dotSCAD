@@ -1,4 +1,4 @@
-function mz_get(block, query) = 
+function mz_square_get(block, query) = 
     let(
         i = search(query, [
             ["x", 0],

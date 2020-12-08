@@ -1,6 +1,6 @@
 use <polyline2d.scad>;
 use <stereographic_extrude.scad>;
-use <maze/mz_blocks.scad>;
+use <maze/mz_square_blocks.scad>;
 use <maze/mz_hex_walls.scad>;
 
 columns = 10;
@@ -24,7 +24,7 @@ module hex_maze_stereographic_projection(columns, cell_radius, wall_thickness, f
     pyramid_height = square_w / sqrt(2);
   
     // create a maze     
-    blocks = mz_blocks(
+    blocks = mz_square_blocks(
         [1, 1],  
         rows, columns
     );

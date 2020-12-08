@@ -1,5 +1,5 @@
 use <hull_polyline3d.scad>;
-use <maze/mz_blocks.scad>;
+use <maze/mz_square_blocks.scad>;
 use <maze/mz_square_walls.scad>;
 use <ptf/ptf_x_twist.scad>;
 use <ptf/ptf_y_twist.scad>;
@@ -12,7 +12,7 @@ angle = 90;
 axis = "X_AXIS"; // [X_AXIS, Y_AXIS]
 // $fn = 24;
 
-blocks = mz_blocks(
+blocks = mz_square_blocks(
     [1, 1],  
     rows, columns
 );

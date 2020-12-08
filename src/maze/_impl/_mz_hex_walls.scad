@@ -1,8 +1,8 @@
-use <../mz_get.scad>;
+use <../mz_square_get.scad>;
 
-function _get_x(block) = mz_get(block, "x"); 
-function _get_y(block) = mz_get(block, "y");
-function _get_wall_type(block) = mz_get(block, "w");
+function _get_x(block) = mz_square_get(block, "x"); 
+function _get_y(block) = mz_square_get(block, "y");
+function _get_wall_type(block) = mz_square_get(block, "w");
 
 function _is_top_wall(block) = _get_wall_type(block) == "TOP_WALL";
 function _is_right_wall(block) = _get_wall_type(block) == "RIGHT_WALL";
