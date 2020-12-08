@@ -223,6 +223,30 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 
 ----
 
+## 2.5 Preview
+
+### 2D Module
+
+- polygon_hull
+
+### 3D Module
+
+- polyhedron_hull
+
+### Path
+
+- curve
+- bauer_spiral
+- fibonacci_lattice
+
+### Voxel
+
+- vx_contour
+- vx_bezier
+- vx_curve
+
+----
+
 ## Bugs and Feedback
 
 For bugs, questions and discussions please use the [Github Issues](https://github.com/JustinSDK/dotSCAD/issues).
