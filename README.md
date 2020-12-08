@@ -245,6 +245,15 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - vx_bezier
 - vx_curve
 
+### Maze
+
+- mz_square_blocks
+- mz_square_get
+- mz_square_initialize
+- mz_square_walls
+- mz_hex_walls
+- mz_hamiltonian
+
 ----
 
 ## Bugs and Feedback
