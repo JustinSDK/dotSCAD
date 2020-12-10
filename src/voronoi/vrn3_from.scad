@@ -25,15 +25,13 @@ module vrn3_from(points, spacing = 1) {
     function normalize(v) = v / norm(v);
     
     module space(pt) {
-        intersection_for(p = points) {
-            if(pt != p) {
-                v = p - pt;
-                ryz = __angy_angz(p, pt);
+        intersection_for(p = [for(p = points) if(pt != p) p]) {
+            v = p - pt;
+            ryz = __angy_angz(p, pt);
 
-                translate((pt + p) / 2 - normalize(v) * offset_leng)
-                rotate([0, -ryz[0], ryz[1]]) 
-                    cube([space_size, double_space_size, double_space_size], center = true); 
-            }
+            translate((pt + p) / 2 - normalize(v) * offset_leng)
+            rotate([0, -ryz[0], ryz[1]]) 
+                cube([space_size, double_space_size, double_space_size], center = true); 
         }
     }    
     
