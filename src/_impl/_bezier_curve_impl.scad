@@ -18,7 +18,22 @@ function bezier_curve_coordinate(t, pn, n, i = 0) =
         (_combi(n, i) * pn[i] * pow(1 - t, n - i) * pow(t, i) + 
             bezier_curve_coordinate(t, pn, n, i + 1));
         
-function _bezier_curve_point(t, points) = 
+function _bezier_curve_point2(t, points) = 
+    let(n = len(points) - 1) 
+    [
+        bezier_curve_coordinate(
+            t, 
+            [for(p = points) p[0]], 
+            n
+        ),
+        bezier_curve_coordinate(
+            t,  
+            [for(p = points) p[1]], 
+            n
+        )
+    ];
+
+function _bezier_curve_point3(t, points) = 
     let(n = len(points) - 1) 
     [
         bezier_curve_coordinate(
@@ -39,11 +54,13 @@ function _bezier_curve_point(t, points) =
     ];
 
 function _bezier_curve_impl(t_step, points) = 
-    let(
-        t_end = ceil(1 / t_step),
-        pts = concat([
-            for(t = 0; t < t_end; t = t + 1)
-                _bezier_curve_point(t * t_step, points)
-        ], [_bezier_curve_point(1, points)])
-    ) 
-    len(points[0]) == 3 ? pts : [for(pt = pts) __to2d(pt)];
+    let(t_end = ceil(1 / t_step)) 
+    len(points[0]) == 3 ? 
+            concat([
+                for(t = 0; t < t_end; t = t + 1)
+                    _bezier_curve_point3(t * t_step, points)
+            ], [_bezier_curve_point3(1, points)]) :
+            concat([
+                for(t = 0; t < t_end; t = t + 1)
+                    _bezier_curve_point2(t * t_step, points)
+            ], [_bezier_curve_point2(1, points)]);

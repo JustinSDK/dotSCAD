@@ -18,8 +18,8 @@ function _glued2circles_bezier(radius, centre_dist, tangent_angle, t_step, ctrl_
         ctrl_p = ptf_rotate([radius * tan(tangent_angle), -radius], tangent_angle),
         ctrl_p2 = [-ctrl_p[0], ctrl_p[1]] + [centre_dist / 2, 0],
         ctrl_p3 = [-ctrl_p2[0], ctrl_p2[1]],
-        ctrl_p4 = [-ctrl_p1[0], ctrl_p1[1]]            
-    )
+        ctrl_p4 = [-ctrl_p1[0], ctrl_p1[1]]
+    ) 
     bezier_curve(
         t_step,
         [
