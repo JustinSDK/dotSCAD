@@ -50,8 +50,8 @@ _rand_dir_table = [
     [3, 2, 0, 1],
     [3, 2, 1, 0]
 ];
-function rand_dirs(seed) =
-   let(r = is_undef(seed) ? rands(0, 24, 1) : rands(0, 24, 1, seed))
+function rand_dirs(c, seed) =
+   let(r = is_undef(seed) ? rands(0, 24, 1) : rands(0, 24, 1, c + seed))
     _rand_dir_table[round(r[0])]; 
 
 // get x value by dir
@@ -124,7 +124,7 @@ function visitable_dirs(r_dirs, x, y, maze, rows, columns, x_circular, y_circula
 // go maze from (x, y)
 function go_maze(x, y, maze, rows, columns, x_circular = false, y_circular = false, seed) = 
     let(
-        r_dirs = rand_dirs(x * rows + y + seed),
+        r_dirs = rand_dirs(x * rows + y, seed),
         v_dirs = visitable_dirs(r_dirs, x, y, maze, rows, columns, x_circular, y_circular)
     )
     //  have visitable dirs?
