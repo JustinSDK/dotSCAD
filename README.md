@@ -231,7 +231,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 
 ### 3D Module
 
-- polyhedron_hull
+- [polyhedron_hull](https://openhome.cc/eGossip/OpenSCAD/lib2x-polyhedron_hull.html)
 
 ### Path
 

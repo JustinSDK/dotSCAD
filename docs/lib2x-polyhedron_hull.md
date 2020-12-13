@@ -2,6 +2,8 @@
 
 Create a convex polyhedron by hulling a list of points.
 
+**Since:** 2.5
+
 ## Parameters
 
 - `points` : A list of 3D points.
