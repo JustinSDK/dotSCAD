@@ -1,3 +1,13 @@
+/**
+* crystal_ball.scad
+*
+* @copyright Justin Lin, 2020
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-curve.html
+*
+**/ 
+
 use <_impl/_catmull_rom_spline.scad>;
 
 function curve(t_step, points, tightness = 0) = 
@@ -12,28 +22,3 @@ function curve(t_step, points, tightness = 0) =
         ],
         [points[leng - 2]]
     );
-
-/*
-use <curve.scad>;
-use <hull_polyline3d.scad>;
-
-pts = [
-    [280, 20, 10],
-    [150, 80, -100],
-    [20, 140, 50],
-    [280, 140, 20],
-    [150, 210, 90],
-    [20, 280, 0]
-];
-
-#for(pt = pts) {
-    translate(pt)
-        sphere(10);
-}
-
-t_step = 0.1;    
-tightness = 0;
-points = curve(t_step, pts, tightness);
-
-hull_polyline3d(points, 5);   
-*/

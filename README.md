@@ -235,7 +235,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 
 ### Path
 
-- curve
+- [curve](https://openhome.cc/eGossip/OpenSCAD/lib2x-curve.html)
 - bauer_spiral
 - fibonacci_lattice
 
