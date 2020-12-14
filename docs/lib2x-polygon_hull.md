@@ -1,4 +1,4 @@
-# polyhedron_hull
+# polygon_hull
 
 Create a convex polygon by hulling a list of points. It avoids using `hull` and small 2D primitives to create the polygon.
 
