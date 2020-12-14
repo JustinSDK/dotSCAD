@@ -1,6 +1,6 @@
 # polyhedron_hull
 
-Create a convex polyhedron by hulling a list of points.
+Create a convex polyhedron by hulling a list of points. It avoids using `hull` and small 3D primitives to create the polyhedron.
 
 **Since:** 2.5
 
