@@ -227,7 +227,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 
 ### 2D Module
 
-- polygon_hull
+- [polygon_hull](https://openhome.cc/eGossip/OpenSCAD/lib2x-polygon_hull.html)
 
 ### 3D Module
 
