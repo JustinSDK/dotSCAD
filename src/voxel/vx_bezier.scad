@@ -1,3 +1,13 @@
+/**
+* vx_bezier.scad
+*
+* @copyright Justin Lin, 2020
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_bezier.html
+*
+**/ 
+
 use <__comm__/__to2d.scad>;
 use <__comm__/__to3d.scad>;
 use <_impl/_vx_bezier_impl.scad>;
