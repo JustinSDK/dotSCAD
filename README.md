@@ -237,7 +237,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 
 - [curve](https://openhome.cc/eGossip/OpenSCAD/lib2x-curve.html)
 - [bauer_spiral](https://openhome.cc/eGossip/OpenSCAD/lib2x-bauer_spiral.html)
-- fibonacci_lattice
+- [fibonacci_lattice](https://openhome.cc/eGossip/OpenSCAD/lib2x-fibonacci_lattice.html)
 
 ### Voxel
 

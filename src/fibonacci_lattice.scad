@@ -1,3 +1,13 @@
+/**
+* fibonacci_lattice.scad
+*
+* @copyright Justin Lin, 2020
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-fibonacci_lattice.html
+*
+**/
+
 function fibonacci_lattice(n, radius = 1, dir = "CT_CLK") =
     let(
         toDegrees = 180 / PI,
