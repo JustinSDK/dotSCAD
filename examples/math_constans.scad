@@ -24,7 +24,7 @@ module math_constants(n, radius, constants, font_name, font_size, txt_extrude, t
 
 	polyhedron_hull(pts * 0.9);
 
-	spirals = [for(j = [0:9]) 
+	spirals = [for(j = [0:7]) 
 		[for(i = j; i < len(pts); i = i + 8) pts[i]]
 	];
 
@@ -46,11 +46,11 @@ module math_constants(n, radius, constants, font_name, font_size, txt_extrude, t
 		}
 	}
 
-	for(i = [0:2:8]) {
+	for(i = [0:2:6]) {
 		constant_on_spiral(constants[i / 2], spirals[i + 1]);
 	}
 
-	for(i = [0:2:9]) {
+	for(i = [0:2:6]) {
 		hull_polyline3d(spirals[i] * 0.9, 1, $fn = 4); 
 	}
 }
