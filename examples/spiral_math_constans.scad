@@ -16,9 +16,9 @@ font_size = 2.5;
 txt_extrude = radius * 0.5;
 txt_scale = 1.5;
 
-math_constants(n, radius, constants, font_name, font_size, txt_extrude, txt_scale);
+spiral_math_constants(n, radius, constants, font_name, font_size, txt_extrude, txt_scale);
 
-module math_constants(n, radius, constants, font_name, font_size, txt_extrude, txt_scale) {
+module spiral_math_constants(n, radius, constants, font_name, font_size, txt_extrude, txt_scale) {
 
 	pts = fibonacci_lattice(n, radius);
 
