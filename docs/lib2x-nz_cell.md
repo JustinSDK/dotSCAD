@@ -5,7 +5,7 @@ It's an implementation of [Worley noise](https://en.wikipedia.org/wiki/Worley_no
 **Since:** 2.3
 
 ## Parameters
-points, p, dist
+
 - `points` : The feature points, can be 2D or 3D. 
 - `p` : The pixel or voxel coordinate.
 - `dist` : The noise value of each point is based on its distance to other cells. Different distance strategies make different noises. The `dist` parameter accepts `"euclidean"`, `"manhattan"`, `"chebyshev"` or `"border"`.
