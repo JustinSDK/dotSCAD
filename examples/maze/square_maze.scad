@@ -1,9 +1,8 @@
 use <maze/mz_square_blocks.scad>;
 use <maze/mz_square_walls.scad>;
 
-module square_maze(start, rows, block_width, wall_thickness) {
+module square_maze(rows, block_width, wall_thickness) {
     blocks = mz_square_blocks(
-        start,  
         rows, rows
     );
 
@@ -20,7 +19,6 @@ module square_maze(start, rows, block_width, wall_thickness) {
 }
 
 square_maze(
-    start = [1, 1], 
     rows = 10, 
     block_width = 2, 
     wall_thickness = 1

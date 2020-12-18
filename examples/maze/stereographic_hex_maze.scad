@@ -25,7 +25,6 @@ module hex_maze_stereographic_projection(columns, cell_radius, wall_thickness, f
   
     // create a maze     
     blocks = mz_square_blocks(
-        [1, 1],  
         rows, columns
     );
 

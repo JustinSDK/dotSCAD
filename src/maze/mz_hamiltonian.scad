@@ -6,8 +6,7 @@ use <../util/dedup.scad>;
 
 function mz_hamiltonian(rows, columns, start, seed) =
     let(
-        blocks = mz_square_blocks(
-            [1, 1],  
+        blocks = mz_square_blocks(  
             rows, columns,
             seed = seed
         ),

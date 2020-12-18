@@ -32,7 +32,6 @@ module heart_base(name, font_name, font_size, radius, ring_thickness, tip_r_of_h
 
 module heart2heart_maze(names, font_name, font_size, radius_of_heart, tip_r_of_heart, wall_thickness, cblocks, levels, spacing) {
     maze = mz_square_blocks(
-	    [1, 1],  
 	    cblocks, levels, y_wrapping = true
     );
 

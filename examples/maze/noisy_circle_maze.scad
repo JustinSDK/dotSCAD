@@ -5,10 +5,9 @@ use <maze/mz_square_walls.scad>;
 use <ptf/ptf_circle.scad>;
 use <noise/nz_perlin2.scad>;
 
-module noisy_circle_maze(start, r_blocks, block_width, wall_thickness, origin_offset, noisy_factor) {
+module noisy_circle_maze(r_blocks, block_width, wall_thickness, origin_offset, noisy_factor) {
     double_r_blocks = r_blocks * 2;
     blocks = mz_square_blocks(
-        start,  
         double_r_blocks, double_r_blocks
     );
 
@@ -35,7 +34,6 @@ module noisy_circle_maze(start, r_blocks, block_width, wall_thickness, origin_of
 }
 
 noisy_circle_maze(
-    start = [1, 1], 
     r_blocks = 8, 
     block_width = 5, 
     wall_thickness = 2,

@@ -36,7 +36,6 @@ module cylinder_maze() {
     maze_columns = round(2 * 3.14159 * radius / block_width);
 
     maze_blocks = mz_square_blocks(
-        [1, maze_rows],  
         maze_rows, maze_columns,
         x_wrapping = true
     );

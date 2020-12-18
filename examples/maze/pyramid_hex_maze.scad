@@ -31,7 +31,6 @@ module pyramid_hex_maze(columns, cell_radius, wall_thickness) {
     pyramid_height = square_w / sqrt(2);
 
     blocks = mz_square_blocks(
-        [1, 1],  
         rows, columns
     );
 

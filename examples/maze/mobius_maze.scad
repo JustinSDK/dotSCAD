@@ -15,7 +15,6 @@ radius = 0.5 * leng / PI;
 a_step = 360 / leng;
 
 blocks = mz_square_blocks(
-    [1, 1],  
     rows, columns, 
     y_wrapping = true
 );

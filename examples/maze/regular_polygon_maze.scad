@@ -50,7 +50,6 @@ module regular_polygon_maze(radius, cblocks, levels, thickness = 1, sides) {
 	r = radius / (levels + 1);
 	
 	maze = mz_square_blocks(
-		[1, 1],  
 		cblocks, levels, y_wrapping = true
 	);
 

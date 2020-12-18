@@ -13,7 +13,6 @@ axis = "X_AXIS"; // [X_AXIS, Y_AXIS]
 // $fn = 24;
 
 blocks = mz_square_blocks(
-    [1, 1],  
     rows, columns
 );
 

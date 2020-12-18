@@ -52,7 +52,6 @@ module sphere_maze() {
 
     size = [rows * block_width, columns * block_width + pole_offset * 2];
     blocks = mz_square_blocks(
-        [1, 1],  
         rows, columns, 
         y_wrapping = true
     );

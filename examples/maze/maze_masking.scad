@@ -30,8 +30,7 @@ module maze_masking(start, mask, block_width, wall_thickness, wall_height, base_
     columns = len(mask[0]);
 
     blocks = mz_square_blocks(
-        start,  
-        rows, columns,
+        rows, columns, start,
 		mz_square_initialize(mask = mask)
     );
 
