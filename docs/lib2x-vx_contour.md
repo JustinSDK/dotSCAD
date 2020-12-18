@@ -27,9 +27,8 @@ Given a list of points that form a closed area, `vx_contour` returns the contour
     color("black")
     linear_extrude(1)
     for(i = [0:len(t) - 1]) {
-        pts = vx_ascii(t[i]);
         translate([i * 8, 0]) 
-        polygon(vx_contour(pts));
+            polygon(vx_ascii(t[i]));
     }
 
-![vx_curve](images/lib2x-vx_contour-1.JPG)
+![vx_contour](images/lib2x-vx_contour-1.JPG)
