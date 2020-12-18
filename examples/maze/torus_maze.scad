@@ -17,7 +17,7 @@ a_step = 360 / leng;
 blocks = mz_square_blocks(
     [1, 1],  
     rows, columns, 
-    x_circular = true, y_circular = true
+    x_wrapping = true, y_wrapping = true
 );
 
 walls = mz_square_walls(blocks, rows, columns, block_width, left_border = false, bottom_border = false);

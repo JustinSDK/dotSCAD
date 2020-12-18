@@ -38,7 +38,7 @@ module cylinder_maze() {
     maze_blocks = mz_square_blocks(
         [1, maze_rows],  
         maze_rows, maze_columns,
-        x_circular = true
+        x_wrapping = true
     );
 
     walls = mz_square_walls(maze_blocks, maze_rows, maze_columns, block_width, left_border = false);

@@ -56,9 +56,9 @@ function rand_dirs(c, seed) =
 
 // get x value by dir
 _next_x_table = [1, 0, -1, 0];
-function next_x(x, dir, columns, circular) = 
+function next_x(x, dir, columns, wrapping) = 
     let(nx = x + _next_x_table[dir])
-    circular ? 
+    wrapping ? 
         nx < 1 ? nx + columns : (
             nx > columns ? nx % columns : nx
         )
@@ -67,9 +67,9 @@ function next_x(x, dir, columns, circular) =
     
 // get y value by dir
 _next_y_table = [0, 1, 0, -1];
-function next_y(y, dir, rows, circular) = 
+function next_y(y, dir, rows, wrapping) = 
     let(ny = y + _next_y_table[dir])
-    circular ? 
+    wrapping ? 
         ny < 1 ? ny + rows : (
             ny > rows ? ny % rows : ny
         )
@@ -115,17 +115,17 @@ function carve(dir, x, y, maze, rows, columns) =
 
 
 // find out visitable dirs from (x, y)
-function visitable_dirs(r_dirs, x, y, maze, rows, columns, x_circular, y_circular) = [
+function visitable_dirs(r_dirs, x, y, maze, rows, columns, x_wrapping, y_wrapping) = [
     for(dir = r_dirs) 
-        if(visitable(next_x(x, dir, columns, x_circular), next_y(y, dir, rows, y_circular), maze, rows, columns)) 
+        if(visitable(next_x(x, dir, columns, x_wrapping), next_y(y, dir, rows, y_wrapping), maze, rows, columns)) 
             dir
 ];  
     
 // go maze from (x, y)
-function go_maze(x, y, maze, rows, columns, x_circular = false, y_circular = false, seed) = 
+function go_maze(x, y, maze, rows, columns, x_wrapping = false, y_wrapping = false, seed) = 
     let(
         r_dirs = rand_dirs(x * rows + y, seed),
-        v_dirs = visitable_dirs(r_dirs, x, y, maze, rows, columns, x_circular, y_circular)
+        v_dirs = visitable_dirs(r_dirs, x, y, maze, rows, columns, x_wrapping, y_wrapping)
     )
     //  have visitable dirs?
     len(v_dirs) == 0 ? 
@@ -135,33 +135,33 @@ function go_maze(x, y, maze, rows, columns, x_circular = false, y_circular = fal
             v_dirs,             
             set_visited(x, y, maze), 
             rows, columns,
-            x_circular, y_circular,
+            x_wrapping, y_wrapping,
             seed = seed
         );
 
 // try four directions
-function walk_around_from(x, y, dirs, maze, rows, columns, x_circular, y_circular, i = 0, seed) =
+function walk_around_from(x, y, dirs, maze, rows, columns, x_wrapping, y_wrapping, i = 0, seed) =
     // all done?
     i < len(dirs) ? 
         // not yet
         walk_around_from(x, y, dirs, 
             // try one direction
-            try_routes_from(x, y, dirs[i], maze, rows, columns, x_circular, y_circular, seed),  
+            try_routes_from(x, y, dirs[i], maze, rows, columns, x_wrapping, y_wrapping, seed),  
             rows, columns, 
-            x_circular, y_circular,
+            x_wrapping, y_wrapping,
             i + 1,
             seed) 
         : maze;
         
-function try_routes_from(x, y, dir, maze, rows, columns, x_circular, y_circular, seed) = 
+function try_routes_from(x, y, dir, maze, rows, columns, x_wrapping, y_wrapping, seed) = 
     // is the dir visitable?
-    visitable(next_x(x, dir, columns, x_circular), next_y(y, dir, rows, y_circular), maze, rows, columns) ?     
+    visitable(next_x(x, dir, columns, x_wrapping), next_y(y, dir, rows, y_wrapping), maze, rows, columns) ?     
         // try the block 
         go_maze(
-            next_x(x, dir, columns, x_circular), next_y(y, dir, rows, y_circular), 
+            next_x(x, dir, columns, x_wrapping), next_y(y, dir, rows, y_wrapping), 
             carve(dir, x, y, maze, rows, columns),
             rows, columns,
-            x_circular, y_circular,
+            x_wrapping, y_wrapping,
             seed
         ) 
         // road closed so return maze directly

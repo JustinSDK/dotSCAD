@@ -54,7 +54,7 @@ module sphere_maze() {
     blocks = mz_square_blocks(
         [1, 1],  
         rows, columns, 
-        y_circular = true
+        y_wrapping = true
     );
 
     p_offset = [block_width * rows, pole_offset, 0];

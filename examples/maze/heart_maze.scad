@@ -108,7 +108,7 @@ module heart_maze(maze, radius, cblocks, levels, thickness = 1) {
 
 maze = mz_square_blocks(
 	[1, 1],  
-	cblocks, levels, y_circular = true
+	cblocks, levels, y_wrapping = true
 );
 
 intersection() {

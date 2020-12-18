@@ -51,7 +51,7 @@ module regular_polygon_maze(radius, cblocks, levels, thickness = 1, sides) {
 	
 	maze = mz_square_blocks(
 		[1, 1],  
-		cblocks, levels, y_circular = true
+		cblocks, levels, y_wrapping = true
 	);
 
 	difference() {
