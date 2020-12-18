@@ -21,7 +21,7 @@ module random_scala(rows, columns, start, width, height) {
 random_scala(
     rows = 2, 
     columns = 3,
-    start = [0, 0],
+    start = [1, 1],
     width = .5,
     height = .25
 );

@@ -2,7 +2,7 @@ use <maze/mz_hamiltonian.scad>;
 
 rows = 2;
 columns = 2;
-start = [0, 0];
+start = [1, 1];
 width = .5;
 height = .05;
 test_torii = "FALSE"; // [TRUE, FALSE]
