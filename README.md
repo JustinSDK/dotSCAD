@@ -243,7 +243,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 
 - [vx_bezier](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_bezier.html)
 - [vx_curve](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_curve.html)
-- vx_contour
+- [vx_contour](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_contour.html)
 
 ### Maze
 
