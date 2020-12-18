@@ -28,7 +28,7 @@ Given a list of points that form a closed area, `vx_contour` returns the contour
     linear_extrude(1)
     for(i = [0:len(t) - 1]) {
         translate([i * 8, 0]) 
-            polygon(vx_ascii(t[i]));
+            polygon(vx_contour(vx_ascii(t[i])));
     }
 
 ![vx_contour](images/lib2x-vx_contour-1.JPG)
