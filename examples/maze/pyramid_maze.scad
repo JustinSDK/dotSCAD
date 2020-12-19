@@ -17,7 +17,7 @@ module pyramid_maze(maze_rows, block_width, wall_thickness) {
     intersection() {
         linear_extrude(leng * 2) 
         translate([-half_leng, -half_leng]) 
-            square_maze([1, 1], maze_rows, block_width, wall_thickness);
+            square_maze(maze_rows, block_width, wall_thickness);
 
         pyramid(leng + wall_thickness);
     }

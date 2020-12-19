@@ -2,7 +2,7 @@ use <_mz_comm.scad>;
 
 // find out the index of a block with the position (x, y)
 function indexOf(x, y, maze, i = 0) =
-    i > len(maze) ? -1 : (
+    i == len(maze) ? -1 : (
         [get_x(maze[i]), get_y(maze[i])] == [x, y] ? i : 
             indexOf(x, y, maze, i + 1)
     );
@@ -12,8 +12,8 @@ function visited(x, y, maze) = maze[indexOf(x, y, maze)][3];
 
 // is (x, y) visitable?
 function visitable(x, y, maze, rows, columns) = 
-    y > 0 && y <= rows &&     // y bound
-    x > 0 && x <= columns &&  // x bound
+    y >= 0 && y < rows &&     // y bound
+    x >= 0 && x < columns &&  // x bound
     !visited(x, y, maze);     // unvisited
 
 // setting (x, y) as being visited
@@ -58,23 +58,13 @@ function rand_dirs(c, seed) =
 _next_x_table = [1, 0, -1, 0];
 function next_x(x, dir, columns, wrapping) = 
     let(nx = x + _next_x_table[dir])
-    wrapping ? 
-        nx < 1 ? nx + columns : (
-            nx > columns ? nx % columns : nx
-        )
-        :
-        nx;
+    wrapping ? (nx < 0 ? nx + columns : nx % columns) : nx;
     
 // get y value by dir
 _next_y_table = [0, 1, 0, -1];
 function next_y(y, dir, rows, wrapping) = 
     let(ny = y + _next_y_table[dir])
-    wrapping ? 
-        ny < 1 ? ny + rows : (
-            ny > rows ? ny % rows : ny
-        )
-        :
-        ny;
+    wrapping ? (ny < 0 ? ny + rows : ny % rows) : ny;
     
 // go right and carve the right wall
 function carve_right(x, y, maze) = [
@@ -94,7 +84,7 @@ function carve_top(x, y, maze) = [
 function carve_left(x, y, maze, columns) = 
     let(
         x_minus_one = x - 1,
-        nx = x_minus_one < 1 ? x_minus_one + columns : x_minus_one
+        nx = x_minus_one < 0 ? x_minus_one + columns : x_minus_one
     )
     [for(b = maze) [get_x(b), get_y(b)] == [nx, y] ? [nx, y, 1, 0] : b]; 
 
@@ -102,7 +92,7 @@ function carve_left(x, y, maze, columns) =
 function carve_bottom(x, y, maze, rows) = 
     let(
         y_minus_one = y - 1,
-        ny = y_minus_one < 1 ? y_minus_one + rows : y_minus_one
+        ny = y_minus_one < 0 ? y_minus_one + rows : y_minus_one
     )
     [for(b = maze) [get_x(b), get_y(b)] == [x, ny] ? [x, ny, 2, 0] : b]; 
 

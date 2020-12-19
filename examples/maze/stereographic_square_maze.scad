@@ -13,7 +13,7 @@ module stereographic_projection_maze2(maze_rows, block_width, wall_thickness, fn
     
     module maze() {
         translate([-block_width * maze_rows / 2, -block_width * maze_rows / 2, 0]) 
-            square_maze([1, 1], maze_rows, block_width, wall_thickness);
+            square_maze(maze_rows, block_width, wall_thickness);
     }
     
     stereographic_extrude(shadow_side_leng = length, $fn = fn)

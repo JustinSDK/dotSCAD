@@ -21,7 +21,7 @@ module cube_maze(maze_rows, block_width, wall_thickness, inner_cube, travel_all)
         module one_maze() {
             translate([origin, origin, half_cube_size]) 
             linear_extrude(wall_thickness) 
-                square_maze([1, 1], maze_rows, block_width, wall_thickness);
+                square_maze(maze_rows, block_width, wall_thickness);
         }
 
         one_maze();  

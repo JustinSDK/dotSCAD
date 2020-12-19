@@ -28,4 +28,4 @@ function mz_hamiltonian(rows, columns, start, seed) =
         ),
         dot_pts = dedup(sort(all, by = "vt"), sorted = true)
     )
-    _mz_hamiltonian_travel(dot_pts, start + [-1, -1], rows * columns * 4);
+    _mz_hamiltonian_travel(dot_pts, start, rows * columns * 4);

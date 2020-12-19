@@ -2,8 +2,8 @@ use <_mz_comm.scad>;
 
 // create a starting maze for being visited later.
 function _rc_maze(rows, columns) =  [
-    for(y = [1:rows]) 
-        for(x = [1:columns]) 
+    for(y = [0:rows - 1]) 
+        for(x = [0:columns - 1]) 
             block(
                 x, y, 
                 // all blocks have top and right walls
@@ -19,9 +19,9 @@ function _mz_mask(mask) =
         columns = len(mask[0])
     )
     [
-        for(y = [1:rows])
-            for(x = [1:columns])
-                mask[rows - y][x - 1] == 0 ?
+        for(y = [0:rows - 1])
+            for(x = [0:columns - 1])
+                mask[rows - y - 1][x] == 0 ?
                     block(
                         x, y, 						
                         4, // mask
@@ -31,8 +31,7 @@ function _mz_mask(mask) =
                     block(
                         x, y, 
                         // all blocks have top and right walls
-                        3, 
-                        // unvisited
+                        3, // unvisited
                         false 
                     )
     ];

@@ -2,22 +2,22 @@ use <../../util/has.scad>;
 
 function _mz_hamiltonian_top(x, y) =
     let(
-        nx = (x - 1) * 2,
-        ny = (y - 1) * 2
+        nx = x * 2,
+        ny = y * 2
     )
     [[nx, ny + 2], [nx + 1, ny + 2], [nx + 2, ny + 2]];
 
 function _mz_hamiltonian_right(x, y) =
     let(
-        nx = (x - 1) * 2,
-        ny = (y - 1) * 2
+        nx = x * 2,
+        ny = y * 2
     )
     [[nx + 2, ny + 2], [nx + 2, ny + 1], [nx + 2, ny]];
     
 function _mz_hamiltonian_top_right(x, y) =
     let(
-        nx = (x - 1) * 2,
-        ny = (y - 1) * 2
+        nx = x * 2,
+        ny = y * 2
     )
     [[nx, ny + 2], [nx + 1, ny + 2], [nx + 2, ny + 2], [nx + 2, ny + 1], [nx + 2, ny]];
 

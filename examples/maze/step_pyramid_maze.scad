@@ -40,7 +40,7 @@ module step_pyramid_maze(maze_rows, block_width, stairs_width) {
             
             translate([-(maze_rows * block_width) / 2, -(maze_rows * block_width) / 2, 0]) 
             difference() {
-                square_maze([1, 1], maze_rows, block_width, stairs_width);
+                square_maze(maze_rows, block_width, stairs_width);
 
                 // entry
                 translate([0, stairs_width]) 

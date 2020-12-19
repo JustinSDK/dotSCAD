@@ -33,8 +33,8 @@ function _row_wall(cell_radius, x_cell, y_cell) =
     
 function _build_cell(cell_radius, block) = 
     let(
-        x = _get_x(block) - 1,
-        y = _get_y(block) - 1,
+        x = _get_x(block),
+        y = _get_y(block),
         walls = concat(
             _row_wall(cell_radius, x, y),
             [_is_top_wall(block) || _is_top_right_wall(block) ? _top(cell_radius) : []],

@@ -60,9 +60,9 @@ module heart_to_heart_wall(radius, length, angle, thickness) {
 
 module heart_maze(maze, radius, cblocks, levels, thickness = 1) {    
 	function no_wall(block) = get_wall_type(block) == "NO_WALL";
-	function upper_wall(block) = get_wall_type(block) == "UPPER_WALL";
+	function top_wall(block) = get_wall_type(block) == "TOP_WALL";
 	function right_wall(block) = get_wall_type(block) == "RIGHT_WALL";
-	function upper_right_wall(block) = get_wall_type(block) == "UPPER_RIGHT_WALL";
+	function top_right_wall(block) = get_wall_type(block) == "TOP_RIGHT_WALL";
 
 	function get_x(block) = mz_square_get(block, "x"); 
 	function get_y(block) = mz_square_get(block, "y");
@@ -80,12 +80,12 @@ module heart_maze(maze, radius, cblocks, levels, thickness = 1) {
 		  
 			for(i = [0:len(maze) - 1]) { 
 				block = maze[i];
-				cr = get_x(block); 
-				cc = get_y(block) - 1;    
+				cr = get_x(block) + 1; 
+				cc = get_y(block);    
 				
 				angle = cc * arc_angle;
 				 
-				if(upper_wall(block) || upper_right_wall(block)) { 
+				if(top_wall(block) || top_right_wall(block)) { 
 				    heart_to_heart_wall(r * cr, r, cc * arc_angle , thickness);
 				} 
 			}
@@ -95,10 +95,10 @@ module heart_maze(maze, radius, cblocks, levels, thickness = 1) {
 	        // road to the next level
 			for(i = [0:len(maze) - 1]) { 
 				block = maze[i];
-				cr = get_x(block); 
-				cc = get_y(block) - 1;   
+				cr = get_x(block) + 1; 
+				cc = get_y(block);   
 				
-				if(no_wall(block) || upper_wall(block)) { 
+				if(no_wall(block) || top_wall(block)) { 
 				    ring_heart_sector(r * (cr + 1), (cc + 0.5) * arc_angle , thickness, thickness * 0.75);
 				}  
 			}
