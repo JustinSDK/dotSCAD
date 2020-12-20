@@ -20,7 +20,7 @@ function visitable(x, y, cells, rows, columns) =
 function set_visited(x, y, cells) = [
     for(cell = cells) 
         [x, y] == [get_x(cell), get_y(cell)] ? 
-            [x, y, get_wall_type(cell), true] : cell
+            [x, y, get_type(cell), true] : cell
 ];
     
 // 0(right), 1(top), 2(left), 3(bottom)

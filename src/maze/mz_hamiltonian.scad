@@ -16,10 +16,10 @@ function mz_hamiltonian(rows, columns, start, seed) =
                 let(
                     x = mz_square_get(cell, "x"),
                     y = mz_square_get(cell, "y"),
-                    wall_type = mz_square_get(cell, "w"),
-                    pts = wall_type == "TOP_WALL" ? _mz_hamiltonian_top(x, y) :
-                          wall_type == "RIGHT_WALL" ? _mz_hamiltonian_right(x, y) :
-                          wall_type == "TOP_RIGHT_WALL" ? _mz_hamiltonian_top_right(x, y) : []
+                    type = mz_square_get(cell, "t"),
+                    pts = type == "TOP_WALL" ? _mz_hamiltonian_top(x, y) :
+                          type == "RIGHT_WALL" ? _mz_hamiltonian_right(x, y) :
+                          type == "TOP_RIGHT_WALL" ? _mz_hamiltonian_top_right(x, y) : []
                 )
                 each pts
             ],

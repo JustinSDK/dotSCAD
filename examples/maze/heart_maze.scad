@@ -59,14 +59,14 @@ module heart_to_heart_wall(radius, length, angle, thickness) {
 }
 
 module heart_maze(cells, radius, ccells, levels, thickness = 1) {    
-	function no_wall(cell) = get_wall_type(cell) == "NO_WALL";
-	function top_wall(cell) = get_wall_type(cell) == "TOP_WALL";
-	function right_wall(cell) = get_wall_type(cell) == "RIGHT_WALL";
-	function top_right_wall(cell) = get_wall_type(cell) == "TOP_RIGHT_WALL";
+	function no_wall(cell) = get_type(cell) == "NO_WALL";
+	function top_wall(cell) = get_type(cell) == "TOP_WALL";
+	function right_wall(cell) = get_type(cell) == "RIGHT_WALL";
+	function top_right_wall(cell) = get_type(cell) == "TOP_RIGHT_WALL";
 
 	function get_x(cell) = mz_square_get(cell, "x"); 
 	function get_y(cell) = mz_square_get(cell, "y");
-	function get_wall_type(cell) = mz_square_get(cell, "w");
+	function get_type(cell) = mz_square_get(cell, "t");
 	
     arc_angle = 360 / ccells;
 	r = radius / (levels + 1);

@@ -2,11 +2,11 @@ use <../mz_square_get.scad>;
 
 function _get_x(cell) = mz_square_get(cell, "x"); 
 function _get_y(cell) = mz_square_get(cell, "y");
-function _get_wall_type(cell) = mz_square_get(cell, "w");
+function _get_type(cell) = mz_square_get(cell, "t");
 
-function _is_top_wall(cell) = _get_wall_type(cell) == "TOP_WALL";
-function _is_right_wall(cell) = _get_wall_type(cell) == "RIGHT_WALL";
-function _is_top_right_wall(cell) = _get_wall_type(cell) == "TOP_RIGHT_WALL";
+function _is_top_wall(cell) = _get_type(cell) == "TOP_WALL";
+function _is_right_wall(cell) = _get_type(cell) == "RIGHT_WALL";
+function _is_top_right_wall(cell) = _get_type(cell) == "TOP_RIGHT_WALL";
 
 function _cell_position(cell_radius, x_cell, y_cell) =
     let(
