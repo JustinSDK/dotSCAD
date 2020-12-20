@@ -49,7 +49,7 @@ module regular_polygon_maze(radius, ccells, levels, thickness = 1, sides) {
     arc_angle = 360 / ccells;
 	r = radius / (levels + 1);
 	
-	maze = mz_square_cells(
+	cells = mz_square_cells(
 		ccells, levels, y_wrapping = true
 	);
 
@@ -60,8 +60,8 @@ module regular_polygon_maze(radius, ccells, levels, thickness = 1, sides) {
 			}
 		  
 		  
-			for(i = [0:len(maze) - 1]) { 
-				cell = maze[i];
+			for(i = [0:len(cells) - 1]) { 
+				cell = cells[i];
 				cr = get_x(cell) + 1; 
 				cc = get_y(cell);    
 				
@@ -78,8 +78,8 @@ module regular_polygon_maze(radius, ccells, levels, thickness = 1, sides) {
 			// ring_regular_polygon_sector(r, arc_angle / 1.975 , thickness, r / 3, sides);   
 
 	        // road to the next level
-			for(i = [0:len(maze) - 1]) { 
-				cell = maze[i];
+			for(i = [0:len(cells) - 1]) { 
+				cell = cells[i];
 				cr = get_x(cell) + 1; 
 				cc = get_y(cell);   
 				

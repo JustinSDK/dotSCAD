@@ -58,7 +58,7 @@ module heart_to_heart_wall(radius, length, angle, thickness) {
 	}
 }
 
-module heart_maze(maze, radius, ccells, levels, thickness = 1) {    
+module heart_maze(cells, radius, ccells, levels, thickness = 1) {    
 	function no_wall(cell) = get_wall_type(cell) == "NO_WALL";
 	function top_wall(cell) = get_wall_type(cell) == "TOP_WALL";
 	function right_wall(cell) = get_wall_type(cell) == "RIGHT_WALL";
@@ -78,8 +78,8 @@ module heart_maze(maze, radius, ccells, levels, thickness = 1) {
 			}
 		  
 		  
-			for(i = [0:len(maze) - 1]) { 
-				cell = maze[i];
+			for(i = [0:len(cells) - 1]) { 
+				cell = cells[i];
 				cr = get_x(cell) + 1; 
 				cc = get_y(cell);    
 				
@@ -93,8 +93,8 @@ module heart_maze(maze, radius, ccells, levels, thickness = 1) {
 		
 		render() union() {
 	        // road to the next level
-			for(i = [0:len(maze) - 1]) { 
-				cell = maze[i];
+			for(i = [0:len(cells) - 1]) { 
+				cell = cells[i];
 				cr = get_x(cell) + 1; 
 				cc = get_y(cell);   
 				
@@ -106,7 +106,7 @@ module heart_maze(maze, radius, ccells, levels, thickness = 1) {
 	}
 }
 
-maze = mz_square_cells(
+cells = mz_square_cells(
 	ccells, levels, y_wrapping = true
 );
 
@@ -121,7 +121,7 @@ intersection() {
 	}
 
 	linear_extrude(height_of_heart, center = true) 
-	    heart_maze(maze, radius_of_heart, ccells, levels, wall_thickness); 	
+	    heart_maze(cells, radius_of_heart, ccells, levels, wall_thickness); 	
 }
 
 linear_extrude(wall_thickness * 2, center = true) 

@@ -31,13 +31,13 @@ module heart_base(name, font_name, font_size, radius, ring_thickness, tip_r_of_h
 }
 
 module heart2heart_maze(names, font_name, font_size, radius_of_heart, tip_r_of_heart, wall_thickness, ccells, levels, spacing) {
-    maze = mz_square_cells(
+    cells = mz_square_cells(
 	    ccells, levels, y_wrapping = true
     );
 
     translate([0, 0, wall_thickness])
     linear_extrude(wall_thickness)
-        heart_maze(maze, radius_of_heart, ccells, levels, wall_thickness);
+        heart_maze(cells, radius_of_heart, ccells, levels, wall_thickness);
     heart_base(names[0], font_name, font_size, radius_of_heart + wall_thickness / 2, wall_thickness, tip_r_of_heart);
 
     translate([radius_of_heart * 4, 0, 0]) {
@@ -50,7 +50,7 @@ module heart2heart_maze(names, font_name, font_size, radius_of_heart, tip_r_of_h
                 heart(radius_of_heart, tip_r_of_heart); 
             linear_extrude(wall_thickness * 2)
             offset(delta = spacing)
-                heart_maze(maze, radius_of_heart, ccells, levels, wall_thickness);
+                heart_maze(cells, radius_of_heart, ccells, levels, wall_thickness);
         }
     }
 }
