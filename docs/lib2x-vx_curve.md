@@ -2,6 +2,8 @@
 
 Draws a voxel-by-voxel curve from control points. The curve is drawn only from the 2nd control point to the second-last control point. It's a voxel version of [curve](https://openhome.cc/eGossip/OpenSCAD/lib2x-curve.html). 
 
+**Since:** 2.5
+
 ## Parameters
 
 - `points` : A list of `[x, y]` or `[x, y, z]` control points.

@@ -2,6 +2,8 @@
 
 Given 4 control points, returns voxel-by-voxel points of Bézier Curve .
 
+**Since:** 2.5
+
 ## Parameters
 
 - `p1` : The 1st control point.

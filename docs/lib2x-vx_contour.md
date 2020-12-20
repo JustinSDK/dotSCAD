@@ -2,6 +2,8 @@
 
 Given a list of points that form a closed area, `vx_contour` returns the contour which encircles the area.
 
+**Since:** 2.5
+
 ## Parameters
 
 - `points` : A list of `[x, y]` points.

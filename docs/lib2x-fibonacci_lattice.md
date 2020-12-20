@@ -4,6 +4,8 @@ Creates visually even spacing of n points on the surface of the sphere. Nearest-
 
 (It's called "visually even spacing" because only the vertices of the 5 [Platonic solids](https://en.wikipedia.org/wiki/Platonic_solid) can be said to be truly evenly spaced around the surface of a sphere.)
 
+**Since:** 2.5
+
 ## Parameters
 
 - `n` : The number of points.
