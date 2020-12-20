@@ -1,6 +1,6 @@
 use <arc.scad>;
 use <heart_maze.scad>;
-use <maze/mz_square_blocks.scad>;
+use <maze/mz_square_cells.scad>;
 
 names = ["Justin", "Monica"];
 font_name = "Arial Black";
@@ -9,7 +9,7 @@ font_size = 8;
 radius_of_heart = 15;
 tip_r_of_heart = 5;
 wall_thickness = 2.5;
-cblocks = 6;
+ccells = 6;
 levels = 3;
 spacing = 0.4;
 
@@ -30,14 +30,14 @@ module heart_base(name, font_name, font_size, radius, ring_thickness, tip_r_of_h
         arc(radius = radius / 3, angle = [25, 155], width = ring_thickness);        
 }
 
-module heart2heart_maze(names, font_name, font_size, radius_of_heart, tip_r_of_heart, wall_thickness, cblocks, levels, spacing) {
-    maze = mz_square_blocks(
-	    cblocks, levels, y_wrapping = true
+module heart2heart_maze(names, font_name, font_size, radius_of_heart, tip_r_of_heart, wall_thickness, ccells, levels, spacing) {
+    maze = mz_square_cells(
+	    ccells, levels, y_wrapping = true
     );
 
     translate([0, 0, wall_thickness])
     linear_extrude(wall_thickness)
-        heart_maze(maze, radius_of_heart, cblocks, levels, wall_thickness);
+        heart_maze(maze, radius_of_heart, ccells, levels, wall_thickness);
     heart_base(names[0], font_name, font_size, radius_of_heart + wall_thickness / 2, wall_thickness, tip_r_of_heart);
 
     translate([radius_of_heart * 4, 0, 0]) {
@@ -50,9 +50,9 @@ module heart2heart_maze(names, font_name, font_size, radius_of_heart, tip_r_of_h
                 heart(radius_of_heart, tip_r_of_heart); 
             linear_extrude(wall_thickness * 2)
             offset(delta = spacing)
-                heart_maze(maze, radius_of_heart, cblocks, levels, wall_thickness);
+                heart_maze(maze, radius_of_heart, ccells, levels, wall_thickness);
         }
     }
 }
 
-heart2heart_maze(names, font_name, font_size, radius_of_heart, tip_r_of_heart, wall_thickness, cblocks, levels, spacing);
+heart2heart_maze(names, font_name, font_size, radius_of_heart, tip_r_of_heart, wall_thickness, ccells, levels, spacing);

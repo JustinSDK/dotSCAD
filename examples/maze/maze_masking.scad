@@ -1,4 +1,4 @@
-use <maze/mz_square_blocks.scad>;
+use <maze/mz_square_cells.scad>;
 use <maze/mz_square_walls.scad>;
 use <maze/mz_square_initialize.scad>;
 use <voxel/vx_contour.scad>;
@@ -18,18 +18,18 @@ mask = [
 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ];
 
-block_width = 3;
+cell_width = 3;
 wall_thickness = 1;
 wall_height = 2;
 base_height = 1;
 contour = true;
 base = true;
 
-module maze_masking(start, mask, block_width, wall_thickness, wall_height, base_height, contour, base) {
+module maze_masking(start, mask, cell_width, wall_thickness, wall_height, base_height, contour, base) {
     rows = len(mask); 
     columns = len(mask[0]);
 
-    blocks = mz_square_blocks(
+    cells = mz_square_cells(
         rows, columns, start,
 		mz_square_initialize(mask = mask)
     );
@@ -41,7 +41,7 @@ module maze_masking(start, mask, block_width, wall_thickness, wall_height, base_
 			    [x, y]
 	], sorted = true) : [];	
 	
-    walls = mz_square_walls(blocks, rows, columns, block_width);
+    walls = mz_square_walls(cells, rows, columns, cell_width);
 	
 	color("gray")
 	linear_extrude(wall_height)
@@ -62,8 +62,8 @@ module maze_masking(start, mask, block_width, wall_thickness, wall_height, base_
 			for(y = [0:rows - 1]) {
 				for(x = [0:columns - 1]) {
 					if(mask[rows - y - 1][x] == 0) {
-						translate([x * block_width + wall_thickness, y * block_width + wall_thickness])
-						    square(block_width);
+						translate([x * cell_width + wall_thickness, y * cell_width + wall_thickness])
+						    square(cell_width);
 					}
 			    }
 			}
@@ -71,7 +71,7 @@ module maze_masking(start, mask, block_width, wall_thickness, wall_height, base_
 
         if(contour) {
 	        translate([wall_thickness * 2, wall_thickness * 2])
-	            polygon(pts * block_width);	
+	            polygon(pts * cell_width);	
 		}
 	}
 	
@@ -80,15 +80,15 @@ module maze_masking(start, mask, block_width, wall_thickness, wall_height, base_
 			translate([0, 0, -base_height])
 			linear_extrude(base_height)
 			translate([wall_thickness * 2, wall_thickness * 2])
-			   polygon(pts * block_width);	
+			   polygon(pts * cell_width);	
 	    }
 		else {
 		    translate([0, 0, -base_height])
 		    linear_extrude(base_height)
 			translate([wall_thickness, wall_thickness])
-			square([columns, rows] * block_width);
+			square([columns, rows] * cell_width);
 		}
 	}
 }
 
-maze_masking(start, mask, block_width, wall_thickness, wall_height, base_height, contour, base);
+maze_masking(start, mask, cell_width, wall_thickness, wall_height, base_height, contour, base);

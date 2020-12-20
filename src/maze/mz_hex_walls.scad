@@ -1,10 +1,10 @@
 use <_impl/_mz_hex_walls.scad>;
 
-function mz_hex_walls(blocks, rows, columns, cell_radius, wall_thickness, left_border = true, bottom_border = true) = 
+function mz_hex_walls(cells, rows, columns, cell_radius, wall_thickness, left_border = true, bottom_border = true) = 
     let(
         walls = [
-             for(block = blocks)
-                 for(wall = _build_cell(cell_radius, block))
+             for(cell = cells)
+                 for(wall = _build_cell(cell_radius, cell))
                      wall
         ],
         left_pair_walls = left_border ? [

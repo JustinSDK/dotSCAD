@@ -1,15 +1,15 @@
 use <square_maze.scad>;
 
 maze_rows = 8;
-block_width = 2;
+cell_width = 2;
 wall_thickness = 1;
 inner_cube = true;
 travel_all = true;
 
-module cube_maze(maze_rows, block_width, wall_thickness, inner_cube, travel_all) {
-    blocks_size = block_width * maze_rows;
-    cube_size = blocks_size - wall_thickness;
-    maze_size = blocks_size + wall_thickness;
+module cube_maze(maze_rows, cell_width, wall_thickness, inner_cube, travel_all) {
+    cells_size = cell_width * maze_rows;
+    cube_size = cells_size - wall_thickness;
+    maze_size = cells_size + wall_thickness;
     
     half_wall_thickness = wall_thickness / 2;
     half_cube_size = cube_size / 2;
@@ -21,7 +21,7 @@ module cube_maze(maze_rows, block_width, wall_thickness, inner_cube, travel_all)
         module one_maze() {
             translate([origin, origin, half_cube_size]) 
             linear_extrude(wall_thickness) 
-                square_maze(maze_rows, block_width, wall_thickness);
+                square_maze(maze_rows, cell_width, wall_thickness);
         }
 
         one_maze();  
@@ -64,4 +64,4 @@ module cube_maze(maze_rows, block_width, wall_thickness, inner_cube, travel_all)
     }
 }
 
-cube_maze(maze_rows, block_width, wall_thickness, inner_cube, travel_all);
+cube_maze(maze_rows, cell_width, wall_thickness, inner_cube, travel_all);

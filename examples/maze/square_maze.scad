@@ -1,12 +1,12 @@
-use <maze/mz_square_blocks.scad>;
+use <maze/mz_square_cells.scad>;
 use <maze/mz_square_walls.scad>;
 
-module square_maze(rows, block_width, wall_thickness) {
-    blocks = mz_square_blocks(
+module square_maze(rows, cell_width, wall_thickness) {
+    cells = mz_square_cells(
         rows, rows
     );
 
-    walls = mz_square_walls(blocks, rows, rows, block_width);
+    walls = mz_square_walls(cells, rows, rows, cell_width);
 
     for(wall = walls) {
         for(i = [0:len(wall) - 2]) {
@@ -20,6 +20,6 @@ module square_maze(rows, block_width, wall_thickness) {
 
 square_maze(
     rows = 10, 
-    block_width = 2, 
+    cell_width = 2, 
     wall_thickness = 1
 );

@@ -1,15 +1,15 @@
 use <matrix/m_rotation.scad>;
-use <maze/mz_square_blocks.scad>;
+use <maze/mz_square_cells.scad>;
 use <maze/mz_square_walls.scad>;
 use <ptf/ptf_sphere.scad>;
 
 r = 10;
 rows = 24;
 columns = 18;
-block_width = .5;
+cell_width = .5;
 wall_thickness = .5;   
 wall_height = 1.5;
-pole_offset = block_width * 2.5;
+pole_offset = cell_width * 2.5;
 
 module sphere_maze() {
     function _angles(p) = 
@@ -50,16 +50,16 @@ module sphere_maze() {
     }
 
 
-    size = [rows * block_width, columns * block_width + pole_offset * 2];
-    blocks = mz_square_blocks(
+    size = [rows * cell_width, columns * cell_width + pole_offset * 2];
+    cells = mz_square_cells(
         rows, columns, 
         y_wrapping = true
     );
 
-    p_offset = [block_width * rows, pole_offset, 0];
+    p_offset = [cell_width * rows, pole_offset, 0];
     mr = m_rotation(90);
 
-    walls = mz_square_walls(blocks, rows, columns, block_width, bottom_border = false);
+    walls = mz_square_walls(cells, rows, columns, cell_width, bottom_border = false);
     for(wall_pts = walls) {  
         rxpts = [
             for(p = wall_pts) 

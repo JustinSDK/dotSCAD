@@ -4,9 +4,9 @@ use <_mz_comm.scad>;
 function _rc_maze(rows, columns) =  [
     for(y = [0:rows - 1]) 
         for(x = [0:columns - 1]) 
-            block(
+            cell(
                 x, y, 
-                // all blocks have top and right walls
+                // all cells have top and right walls
                 3, 
                 // unvisited
                 false 
@@ -22,15 +22,15 @@ function _mz_mask(mask) =
         for(y = [0:rows - 1])
             for(x = [0:columns - 1])
                 mask[rows - y - 1][x] == 0 ?
-                    block(
+                    cell(
                         x, y, 						
                         4, // mask
                         true // visited
                     )
                     :
-                    block(
+                    cell(
                         x, y, 
-                        // all blocks have top and right walls
+                        // all cells have top and right walls
                         3, // unvisited
                         false 
                     )

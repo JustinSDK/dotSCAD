@@ -1,7 +1,7 @@
 use <square_maze.scad>;
 
 maze_rows = 8;
-block_width = 10;
+cell_width = 10;
 stairs_width = 5;
 
 module pyramid_with_stairs(base_width, stairs_width, rows) {
@@ -29,29 +29,29 @@ module pyramid_with_stairs(base_width, stairs_width, rows) {
     }
 }
 
-module step_pyramid_maze(maze_rows, block_width, stairs_width) {    
+module step_pyramid_maze(maze_rows, cell_width, stairs_width) {    
     intersection() {
         pyramid_with_stairs(
-            maze_rows * block_width, stairs_width, maze_rows);
+            maze_rows * cell_width, stairs_width, maze_rows);
 
-        linear_extrude(maze_rows * block_width * sqrt(2) / 2)  difference() {
+        linear_extrude(maze_rows * cell_width * sqrt(2) / 2)  difference() {
             
-            square([block_width * maze_rows + stairs_width, block_width * maze_rows + stairs_width], center = true);
+            square([cell_width * maze_rows + stairs_width, cell_width * maze_rows + stairs_width], center = true);
             
-            translate([-(maze_rows * block_width) / 2, -(maze_rows * block_width) / 2, 0]) 
+            translate([-(maze_rows * cell_width) / 2, -(maze_rows * cell_width) / 2, 0]) 
             difference() {
-                square_maze(maze_rows, block_width, stairs_width);
+                square_maze(maze_rows, cell_width, stairs_width);
 
                 // entry
                 translate([0, stairs_width]) 
                     square(stairs_width, center = true);
 
                 // exit
-                translate([maze_rows * block_width, maze_rows * block_width - stairs_width]) 
+                translate([maze_rows * cell_width, maze_rows * cell_width - stairs_width]) 
                     square(stairs_width, center = true);
             }
         }
     }
 }
 
-step_pyramid_maze(maze_rows, block_width, stairs_width);
+step_pyramid_maze(maze_rows, cell_width, stairs_width);

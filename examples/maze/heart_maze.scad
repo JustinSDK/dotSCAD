@@ -2,14 +2,14 @@ use <line2d.scad>;
 use <hollow_out.scad>;
 use <ellipse_extrude.scad>;
 use <arc.scad>;
-use <maze/mz_square_blocks.scad>;
+use <maze/mz_square_cells.scad>;
 use <maze/mz_square_get.scad>;
 
 radius_of_heart = 12;
 height_of_heart = 25;
 tip_r_of_heart = 5;
 wall_thickness = 2;
-cblocks = 6;
+ccells = 6;
 levels = 3;
 
 $fn = 36;
@@ -58,17 +58,17 @@ module heart_to_heart_wall(radius, length, angle, thickness) {
 	}
 }
 
-module heart_maze(maze, radius, cblocks, levels, thickness = 1) {    
-	function no_wall(block) = get_wall_type(block) == "NO_WALL";
-	function top_wall(block) = get_wall_type(block) == "TOP_WALL";
-	function right_wall(block) = get_wall_type(block) == "RIGHT_WALL";
-	function top_right_wall(block) = get_wall_type(block) == "TOP_RIGHT_WALL";
+module heart_maze(maze, radius, ccells, levels, thickness = 1) {    
+	function no_wall(cell) = get_wall_type(cell) == "NO_WALL";
+	function top_wall(cell) = get_wall_type(cell) == "TOP_WALL";
+	function right_wall(cell) = get_wall_type(cell) == "RIGHT_WALL";
+	function top_right_wall(cell) = get_wall_type(cell) == "TOP_RIGHT_WALL";
 
-	function get_x(block) = mz_square_get(block, "x"); 
-	function get_y(block) = mz_square_get(block, "y");
-	function get_wall_type(block) = mz_square_get(block, "w");
+	function get_x(cell) = mz_square_get(cell, "x"); 
+	function get_y(cell) = mz_square_get(cell, "y");
+	function get_wall_type(cell) = mz_square_get(cell, "w");
 	
-    arc_angle = 360 / cblocks;
+    arc_angle = 360 / ccells;
 	r = radius / (levels + 1);
 
 	difference() {
@@ -79,13 +79,13 @@ module heart_maze(maze, radius, cblocks, levels, thickness = 1) {
 		  
 		  
 			for(i = [0:len(maze) - 1]) { 
-				block = maze[i];
-				cr = get_x(block) + 1; 
-				cc = get_y(block);    
+				cell = maze[i];
+				cr = get_x(cell) + 1; 
+				cc = get_y(cell);    
 				
 				angle = cc * arc_angle;
 				 
-				if(top_wall(block) || top_right_wall(block)) { 
+				if(top_wall(cell) || top_right_wall(cell)) { 
 				    heart_to_heart_wall(r * cr, r, cc * arc_angle , thickness);
 				} 
 			}
@@ -94,11 +94,11 @@ module heart_maze(maze, radius, cblocks, levels, thickness = 1) {
 		render() union() {
 	        // road to the next level
 			for(i = [0:len(maze) - 1]) { 
-				block = maze[i];
-				cr = get_x(block) + 1; 
-				cc = get_y(block);   
+				cell = maze[i];
+				cr = get_x(cell) + 1; 
+				cc = get_y(cell);   
 				
-				if(no_wall(block) || top_wall(block)) { 
+				if(no_wall(cell) || top_wall(cell)) { 
 				    ring_heart_sector(r * (cr + 1), (cc + 0.5) * arc_angle , thickness, thickness * 0.75);
 				}  
 			}
@@ -106,8 +106,8 @@ module heart_maze(maze, radius, cblocks, levels, thickness = 1) {
 	}
 }
 
-maze = mz_square_blocks(
-	cblocks, levels, y_wrapping = true
+maze = mz_square_cells(
+	ccells, levels, y_wrapping = true
 );
 
 intersection() {
@@ -121,7 +121,7 @@ intersection() {
 	}
 
 	linear_extrude(height_of_heart, center = true) 
-	    heart_maze(maze, radius_of_heart, cblocks, levels, wall_thickness); 	
+	    heart_maze(maze, radius_of_heart, ccells, levels, wall_thickness); 	
 }
 
 linear_extrude(wall_thickness * 2, center = true) 

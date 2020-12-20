@@ -1,14 +1,14 @@
 use <regular_polygon_maze.scad>;
 use <hollow_out.scad>;
 
-cblocks = 8; 
+ccells = 8; 
 wall_thickness = 1.5;
 spacing = 0.6;
 $fn = 48;
 
-gyro_maze(cblocks, wall_thickness, spacing);
+gyro_maze(ccells, wall_thickness, spacing);
 
-module gyro_maze(cblocks, wall_thickness, spacing) {
+module gyro_maze(ccells, wall_thickness, spacing) {
     // Don't change these variables. They require more math.
     radius = 15;
     wall_height = 1;
@@ -20,7 +20,7 @@ module gyro_maze(cblocks, wall_thickness, spacing) {
         linear_extrude(wall_height) 
         scale(1.029) {
             difference() {
-                regular_polygon_maze(radius - wall_thickness, cblocks, levels - 1, wall_thickness, $fn); 
+                regular_polygon_maze(radius - wall_thickness, ccells, levels - 1, wall_thickness, $fn); 
                 circle(radius / 3.5);
             }
             circle(radius / 3.5 - wall_thickness / 1.45);

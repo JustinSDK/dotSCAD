@@ -1,10 +1,10 @@
 use <bend.scad>;
-use <maze/mz_square_blocks.scad>;
+use <maze/mz_square_cells.scad>;
 use <maze/mz_square_walls.scad>;
 
 radius = 30; 
 height = 60;
-block_width = 8;
+cell_width = 8;
 
 wall_thickness = 5;
 wall_height = 5;
@@ -32,19 +32,19 @@ module cylinder_maze() {
         }
     }
 
-    maze_rows = round(height / block_width);
-    maze_columns = round(2 * 3.14159 * radius / block_width);
+    maze_rows = round(height / cell_width);
+    maze_columns = round(2 * 3.14159 * radius / cell_width);
 
-    maze_blocks = mz_square_blocks(
+    maze_cells = mz_square_cells(
         maze_rows, maze_columns,
         x_wrapping = true
     );
 
-    walls = mz_square_walls(maze_blocks, maze_rows, maze_columns, block_width, left_border = false);
+    walls = mz_square_walls(maze_cells, maze_rows, maze_columns, cell_width, left_border = false);
 
-    leng_circumference = block_width * maze_columns + wall_thickness;
+    leng_circumference = cell_width * maze_columns + wall_thickness;
 
-    bend(size = [leng_circumference, block_width * maze_rows + wall_thickness, wall_height], angle = 360 + 360 * wall_thickness / leng_circumference, frags = fn) 
+    bend(size = [leng_circumference, cell_width * maze_rows + wall_thickness, wall_height], angle = 360 + 360 * wall_thickness / leng_circumference, frags = fn) 
     translate([0, wall_thickness / 2])
         for(wall = walls) {
             for(i = [0:len(wall) - 2]) {

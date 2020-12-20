@@ -1,9 +1,9 @@
 use <_mz_comm.scad>;
 
-function _square_walls(block, block_width) = 
+function _square_walls(cell, cell_width) = 
     let(
-        loc = [get_x(block), get_y(block)] * block_width,
-        top = top_wall(block) || top_right_wall(block) ? [[0, block_width] + loc, [block_width, block_width] + loc] : [],
-        right = right_wall(block) || top_right_wall(block) ? [[block_width, block_width] + loc, [block_width, 0] + loc] : []
+        loc = [get_x(cell), get_y(cell)] * cell_width,
+        top = top_wall(cell) || top_right_wall(cell) ? [[0, cell_width] + loc, [cell_width, cell_width] + loc] : [],
+        right = right_wall(cell) || top_right_wall(cell) ? [[cell_width, cell_width] + loc, [cell_width, 0] + loc] : []
     )
     concat(top, right); 
