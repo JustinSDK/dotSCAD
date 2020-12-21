@@ -247,7 +247,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 
 ### Maze
 
-- mz_square_blocks
+- [mz_square_blocks](https://openhome.cc/eGossip/OpenSCAD/lib2x-mz_square_blocks.html)
 - mz_square_get
 - mz_square_initialize
 - mz_square_walls
