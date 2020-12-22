@@ -86,8 +86,13 @@ module polyline2d(points, width, startingStyle = "CAP_SQUARE", endingStyle = "CA
         }
     }
 
-    lines(1);
-    joins(points, width / 2, leng_pts - 2, 0);
+    if(leng_pts == 2) {
+        line2d(points[0], points[1], width, startingStyle, endingStyle);
+    }
+    else {
+        lines(1);
+        joins(points, width / 2, leng_pts - 2, 0);
+    }
 }
 
 // override it to test
