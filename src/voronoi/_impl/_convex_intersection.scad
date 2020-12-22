@@ -1,4 +1,5 @@
 
+use <../../util/dedup.scad>;
 use <../../lines_intersection.scad>;
 use <_convex_ct_clk_order.scad>;
 
@@ -20,11 +21,11 @@ function _intersection_ps(shape, line_pts, epsilon) =
         leng = len(shape),
         pts = concat(shape, [shape[0]])
     )
-    [
+    dedup([
         for(i = [0:leng - 1]) 
         let(p = lines_intersection(line_pts, [pts[i], pts[i + 1]], epsilon = epsilon))
         if(p != []) p
-    ];
+    ]);
 
 function _convex_intersection(shape1, shape2, epsilon = 0.0001) =
     (shape1 == [] || shape2 == []) ? [] :
