@@ -5,7 +5,7 @@ function _default_region_size(points) =
         xs = [for(p = points) p[0]],
         ys = [for(p = points) abs(p[1])]
     )
-    max([(max(xs) -  min(xs) / 2), (max(ys) -  min(ys)) / 2]);
+    max([max(xs) -  min(xs), max(ys) -  min(ys)]);
 
 function _cells_lt_before_intersection(shape, size, points, pt, half_region_size) =
     [
