@@ -1,3 +1,13 @@
+/**
+* mz_square_get.scad
+*
+* @copyright Justin Lin, 2020
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-mz_square_get.html
+*
+**/
+
 function mz_square_get(cell, query) = 
     let(
         i = search(query, [

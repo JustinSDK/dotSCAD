@@ -248,10 +248,10 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 ### Maze
 
 - [mz_square_cells](https://openhome.cc/eGossip/OpenSCAD/lib2x-mz_square_cells.html)
-- mz_square_get
-- mz_square_initialize
+- [mz_square_get](https://openhome.cc/eGossip/OpenSCAD/lib2x-mz_square_get.html)
 - mz_square_walls
 - mz_hex_walls
+- mz_square_initialize
 - mz_hamiltonian
 
 ----
