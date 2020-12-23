@@ -1,3 +1,4 @@
+use <../util/dedup.scad>;
 use <_impl/_mz_square_walls_impl.scad>;
 
 function mz_square_walls(cells, rows, columns, cell_width, left_border = true, bottom_border = true) = 
@@ -8,7 +9,7 @@ function mz_square_walls(cells, rows, columns, cell_width, left_border = true, b
      concat(
         [
             for(cell = cells) 
-            let(pts = _square_walls(cell, cell_width))
+            let(pts = dedup(_square_walls(cell, cell_width)))
             if(pts != []) pts
         ]
         , left_walls, buttom_walls
