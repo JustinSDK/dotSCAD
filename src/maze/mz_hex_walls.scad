@@ -1,3 +1,13 @@
+/**
+* mz_hex_walls.scad
+*
+* @copyright Justin Lin, 2020
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-mz_hex_walls.html
+*
+**/
+
 use <_impl/_mz_hex_walls.scad>;
 
 function mz_hex_walls(cells, rows, columns, cell_radius, wall_thickness, left_border = true, bottom_border = true) = 
