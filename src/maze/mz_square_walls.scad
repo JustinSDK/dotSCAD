@@ -1,3 +1,13 @@
+/**
+* mz_square_walls.scad
+*
+* @copyright Justin Lin, 2020
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-mz_square_walls.html
+*
+**/
+
 use <../util/dedup.scad>;
 use <_impl/_mz_square_walls_impl.scad>;
 
