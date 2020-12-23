@@ -41,7 +41,12 @@ module polyline3d(points, thickness, startingStyle = "CAP_CIRCLE", endingStyle =
         }
     }
 
-    polyline3d_inner(1);
+    if(leng_pts == 2) {
+        line3d(points[0], points[1], thickness, startingStyle, endingStyle);
+    }
+    else {
+        polyline3d_inner(1);
+    }
 }
 
 // override it to test
