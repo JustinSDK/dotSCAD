@@ -4,7 +4,7 @@ use <mz_square_get.scad>;
 use <../util/sort.scad>;
 use <../util/dedup.scad>;
 
-function mz_hamiltonian(rows, columns, start, seed) =
+function mz_hamiltonian(rows, columns, start = [0, 0], seed) =
     let(
         cells = mz_square_cells(  
             rows, columns,
