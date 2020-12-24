@@ -10,7 +10,7 @@
 
 use <_impl/_mz_hex_walls.scad>;
 
-function mz_hex_walls(cells, rows, columns, cell_radius, wall_thickness, left_border = true, bottom_border = true) = 
+function mz_hex_walls(cells, rows, columns, cell_radius, left_border = true, bottom_border = true) = 
     let(
         walls = [
              for(cell = cells)
