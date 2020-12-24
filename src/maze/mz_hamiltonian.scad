@@ -1,3 +1,13 @@
+/**
+* mz_hamiltonian.scad
+*
+* @copyright Justin Lin, 2020
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-mz_hamiltonian.html
+*
+**/
+
 use <_impl/_mz_hamiltonian_impl.scad>;
 use <mz_square_cells.scad>;
 use <mz_square_get.scad>;
