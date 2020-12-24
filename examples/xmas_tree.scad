@@ -34,7 +34,7 @@ module xmas_tree(base, segments) {
 	color("yellow")
 	translate([0, 0, height + dh * 6])
 	rotate([90, 0, 540]) {
-		starburst(seg_w * 2.75, seg_w * 1.25, 8, seg_w);
-		mirror([0, 0, 1]) starburst(seg_w * 2.75, seg_w * 1.25, 8, seg_w);
+		starburst(seg_w * 2.75, seg_w * 1.5, 8, seg_w);
+		mirror([0, 0, 1]) starburst(seg_w * 2.75, seg_w * 1.5, 8, seg_w);
 	}
 }
