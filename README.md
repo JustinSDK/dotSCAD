@@ -12,6 +12,10 @@
 
 Some of my [3D models](https://github.com/JustinSDK/dotSCAD#examples) require complex mathematics/algorithm. I extract them into dotSCAD. Hope it helps when you're playing OpenSCAD.
 
+The idea of the name dotSCAD comes from the filename extension ".scad" of OpenSCAD. 
+
+## Get Started
+
 OpenSCAD uses three library locations, the installation library, built-in library, and user defined libraries. It's convenient to set `OPENSCADPATH`. Check [Setting OPENSCADPATH](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries#Setting_OPENSCADPATH) in [OpenSCAD User Manual/Libraries](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries) for details.
 
 **I set `OPENSCADPATH` to the `src` folder of dotSCAD so all examples here start searching modules or functions from `src`.**
@@ -24,9 +28,9 @@ Every module or function is located in the file which has the same name as the m
 
 Some module files are organized in a directory. For example, px_circle.scad exists in `pixel` directory. You have to prefix the directory name when including `px_circle`.
 
-    use <pixel/px_circle.scad>;
+    use <voxel/vx_circle.scad>;
 	
-	points = px_circle(radius = 10);
+	points = vx_circle(radius = 10);
 	for(pt = points) {
         translate(pt) square(1);
 	}
@@ -259,9 +263,3 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 ## Bugs and Feedback
 
 For bugs, questions and discussions please use the [Github Issues](https://github.com/JustinSDK/dotSCAD/issues).
-
-## About dotSCAD
-
-I've been using OpenSCAD for years. Some of [my works](examples#dogfooding-examples) include reusable implementations so I elaborate them into this library.
-
-The idea of the name dotSCAD comes from the filename extension ".scad" of OpenSCAD. 
