@@ -1,4 +1,4 @@
-# lines_intersection2
+# lines_intersection
 
 Find the intersection of two line segments. Return `[]` if lines don't intersect.
 
