@@ -1,12 +1,11 @@
-function interpolated_pt(p0, p1, sigma) =
-    let(
-        x0 = p0[0],
-        y0 = p0[1],
-        z0 = p0[2],
-        v = p1 - p0,
-        t = (sigma - z0) / v[2]
-    )
-    [x0 + v[0] * t, y0 + v[1] * t, sigma];
+use <util/lerp.scad>;
+
+function interpolated_pt(p0, p1, sigma) = 
+    lerp(
+        [p0[0], p0[1], p0[2]], 
+        [p1[0], p1[1], p1[2]], 
+        (sigma - p0[2]) / (p1[2] - p0[2])
+    );
 
 /*
     Grid indexes
