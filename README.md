@@ -245,7 +245,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 
 ### Util
 
-- [lerp](https://openhome.cc/eGossip/OpenSCAD/lib2x-lerp.html)
+- [util/lerp](https://openhome.cc/eGossip/OpenSCAD/lib2x-lerp.html)
 
 ### Voxel
 
