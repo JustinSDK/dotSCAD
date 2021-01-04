@@ -249,18 +249,18 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 
 ### Voxel
 
-- [vx_bezier](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_bezier.html)
-- [vx_curve](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_curve.html)
-- [vx_contour](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_contour.html)
+- [voxel/vx_bezier](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_bezier.html)
+- [voxel/vx_curve](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_curve.html)
+- [voxel/vx_contour](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_contour.html)
 
 ### Maze
 
-- [mz_square_cells](https://openhome.cc/eGossip/OpenSCAD/lib2x-mz_square_cells.html)
-- [mz_square_get](https://openhome.cc/eGossip/OpenSCAD/lib2x-mz_square_get.html)
-- [mz_square_walls](https://openhome.cc/eGossip/OpenSCAD/lib2x-mz_square_walls.html)
-- [mz_hex_walls](https://openhome.cc/eGossip/OpenSCAD/lib2x-mz_hex_walls.html)
-- [mz_square_initialize](https://openhome.cc/eGossip/OpenSCAD/lib2x-mz_square_initialize.html)
-- [mz_hamiltonian](https://openhome.cc/eGossip/OpenSCAD/lib2x-mz_hamiltonian.html)
+- [maze/mz_square_cells](https://openhome.cc/eGossip/OpenSCAD/lib2x-mz_square_cells.html)
+- [maze/mz_square_get](https://openhome.cc/eGossip/OpenSCAD/lib2x-mz_square_get.html)
+- [maze/mz_square_walls](https://openhome.cc/eGossip/OpenSCAD/lib2x-mz_square_walls.html)
+- [maze/mz_hex_walls](https://openhome.cc/eGossip/OpenSCAD/lib2x-mz_hex_walls.html)
+- [maze/mz_square_initialize](https://openhome.cc/eGossip/OpenSCAD/lib2x-mz_square_initialize.html)
+- [maze/mz_hamiltonian](https://openhome.cc/eGossip/OpenSCAD/lib2x-mz_hamiltonian.html)
 
 ----
 
