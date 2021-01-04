@@ -1,10 +1,10 @@
 use <util/lerp.scad>;
 
-function interpolated_pt(p0, p1, sigma) = 
+function interpolated_pt(p0, p1, threshold) = 
     lerp(
         [p0[0], p0[1], p0[2]], 
         [p1[0], p1[1], p1[2]], 
-        (sigma - p0[2]) / (p1[2] - p0[2])
+        (threshold - p0[2]) / (p1[2] - p0[2])
     );
 
 /*
@@ -18,10 +18,10 @@ function interpolated_pt(p0, p1, sigma) =
     ISOLINES Impl Begin ============================
 */
 
-function _isolines_pn_label(pts, sigma) =
+function _isolines_pn_label(pts, threshold) =
     [
         for(row = pts)
-        [for(p = row) [p[0], p[1], p[2], p[2] - sigma >= 0]]
+        [for(p = row) [p[0], p[1], p[2], p[2] - threshold >= 0]]
     ]; 
     
 function _isolines_corner_value(cell_pts) =
@@ -33,88 +33,88 @@ function _isolines_corner_value(cell_pts) =
     )
     c0 + c1 + c2 + c3;
 
-function _case1_isolines(cell_pts, sigma) = [
-    [interpolated_pt(cell_pts[0], cell_pts[1], sigma), interpolated_pt(cell_pts[0], cell_pts[3], sigma)]
+function _case1_isolines(cell_pts, threshold) = [
+    [interpolated_pt(cell_pts[0], cell_pts[1], threshold), interpolated_pt(cell_pts[0], cell_pts[3], threshold)]
 ];
 
-function _case2_isolines(cell_pts, sigma) = [
-    [interpolated_pt(cell_pts[0], cell_pts[3], sigma), interpolated_pt(cell_pts[2], cell_pts[3], sigma)]
+function _case2_isolines(cell_pts, threshold) = [
+    [interpolated_pt(cell_pts[0], cell_pts[3], threshold), interpolated_pt(cell_pts[2], cell_pts[3], threshold)]
 ];
 
-function _case3_isolines(cell_pts, sigma) = [
-    [interpolated_pt(cell_pts[0], cell_pts[1], sigma), interpolated_pt(cell_pts[2], cell_pts[3], sigma)]
+function _case3_isolines(cell_pts, threshold) = [
+    [interpolated_pt(cell_pts[0], cell_pts[1], threshold), interpolated_pt(cell_pts[2], cell_pts[3], threshold)]
 ];
 
-function _case4_isolines(cell_pts, sigma) = [
-    [interpolated_pt(cell_pts[1], cell_pts[2], sigma), interpolated_pt(cell_pts[2], cell_pts[3], sigma)]
+function _case4_isolines(cell_pts, threshold) = [
+    [interpolated_pt(cell_pts[1], cell_pts[2], threshold), interpolated_pt(cell_pts[2], cell_pts[3], threshold)]
 ];
 
-function _case5_isolines(cell_pts, sigma) = 
+function _case5_isolines(cell_pts, threshold) = 
     let(mdpz = (cell_pts[0][2] + cell_pts[1][2] + cell_pts[2][2] + cell_pts[3][2]) / 4)
-    mdpz >= sigma ?
+    mdpz >= threshold ?
     [
-        [interpolated_pt(cell_pts[0], cell_pts[1], sigma), interpolated_pt(cell_pts[1], cell_pts[2], sigma)],
-        [interpolated_pt(cell_pts[0], cell_pts[3], sigma), interpolated_pt(cell_pts[2], cell_pts[3], sigma)]
+        [interpolated_pt(cell_pts[0], cell_pts[1], threshold), interpolated_pt(cell_pts[1], cell_pts[2], threshold)],
+        [interpolated_pt(cell_pts[0], cell_pts[3], threshold), interpolated_pt(cell_pts[2], cell_pts[3], threshold)]
     ]
     :
     [
-        [interpolated_pt(cell_pts[0], cell_pts[1], sigma), interpolated_pt(cell_pts[0], cell_pts[3], sigma)],
-        [interpolated_pt(cell_pts[1], cell_pts[2], sigma), interpolated_pt(cell_pts[2], cell_pts[3], sigma)]
+        [interpolated_pt(cell_pts[0], cell_pts[1], threshold), interpolated_pt(cell_pts[0], cell_pts[3], threshold)],
+        [interpolated_pt(cell_pts[1], cell_pts[2], threshold), interpolated_pt(cell_pts[2], cell_pts[3], threshold)]
     ];
 
-function _case6_isolines(cell_pts, sigma) = [
-    [interpolated_pt(cell_pts[1], cell_pts[2], sigma), interpolated_pt(cell_pts[0], cell_pts[3], sigma)]
+function _case6_isolines(cell_pts, threshold) = [
+    [interpolated_pt(cell_pts[1], cell_pts[2], threshold), interpolated_pt(cell_pts[0], cell_pts[3], threshold)]
 ];
 
-function _case7_isolines(cell_pts, sigma) = [
-    [interpolated_pt(cell_pts[0], cell_pts[1], sigma), interpolated_pt(cell_pts[1], cell_pts[2], sigma)]
+function _case7_isolines(cell_pts, threshold) = [
+    [interpolated_pt(cell_pts[0], cell_pts[1], threshold), interpolated_pt(cell_pts[1], cell_pts[2], threshold)]
 ];
     
-function _case8_isolines(cell_pts, sigma) = _case7_isolines(cell_pts, sigma);
+function _case8_isolines(cell_pts, threshold) = _case7_isolines(cell_pts, threshold);
 
-function _case9_isolines(cell_pts, sigma) = _case6_isolines(cell_pts, sigma);
+function _case9_isolines(cell_pts, threshold) = _case6_isolines(cell_pts, threshold);
 
-function _case10_isolines(cell_pts, sigma) = 
+function _case10_isolines(cell_pts, threshold) = 
     let(mdpz = (cell_pts[0][2] + cell_pts[1][2] + cell_pts[2][2] + cell_pts[3][2]) / 4)
-    mdpz >= sigma ?
+    mdpz >= threshold ?
         [
-            [interpolated_pt(cell_pts[0], cell_pts[1], sigma), interpolated_pt(cell_pts[0], cell_pts[3], sigma)],
-            [interpolated_pt(cell_pts[1], cell_pts[2], sigma), interpolated_pt(cell_pts[2], cell_pts[3], sigma)]
+            [interpolated_pt(cell_pts[0], cell_pts[1], threshold), interpolated_pt(cell_pts[0], cell_pts[3], threshold)],
+            [interpolated_pt(cell_pts[1], cell_pts[2], threshold), interpolated_pt(cell_pts[2], cell_pts[3], threshold)]
         ]
         :
         [
-            [interpolated_pt(cell_pts[0], cell_pts[1], sigma), interpolated_pt(cell_pts[1], cell_pts[2], sigma)],
-            [interpolated_pt(cell_pts[0], cell_pts[3], sigma), interpolated_pt(cell_pts[2], cell_pts[3], sigma)]
+            [interpolated_pt(cell_pts[0], cell_pts[1], threshold), interpolated_pt(cell_pts[1], cell_pts[2], threshold)],
+            [interpolated_pt(cell_pts[0], cell_pts[3], threshold), interpolated_pt(cell_pts[2], cell_pts[3], threshold)]
         ];
     
-function _case11_isolines(cell_pts, sigma) = _case4_isolines(cell_pts, sigma);
+function _case11_isolines(cell_pts, threshold) = _case4_isolines(cell_pts, threshold);
 
-function _case12_isolines(cell_pts, sigma) = _case3_isolines(cell_pts, sigma);
+function _case12_isolines(cell_pts, threshold) = _case3_isolines(cell_pts, threshold);
 
-function _case13_isolines(cell_pts, sigma) = _case2_isolines(cell_pts, sigma);
+function _case13_isolines(cell_pts, threshold) = _case2_isolines(cell_pts, threshold);
 
-function _case14_isolines(cell_pts, sigma) = _case1_isolines(cell_pts, sigma);
+function _case14_isolines(cell_pts, threshold) = _case1_isolines(cell_pts, threshold);
 
-function _isolines_of(cell_pts, sigma) =
+function _isolines_of(cell_pts, threshold) =
     let(cv = _isolines_corner_value(cell_pts))
     cv == 0 || cv == 15  ? [] :
-    cv == 1  ? _case1_isolines(cell_pts, sigma) :
-    cv == 8  ? _case2_isolines(cell_pts, sigma) :
-    cv == 9  ? _case3_isolines(cell_pts, sigma) :
-    cv == 4  ? _case4_isolines(cell_pts, sigma) :
-    cv == 5  ? _case5_isolines(cell_pts, sigma) :
-    cv == 12 ? _case6_isolines(cell_pts, sigma) :
-    cv == 13 ? _case7_isolines(cell_pts, sigma) :
-    cv == 2  ? _case8_isolines(cell_pts, sigma) :
-    cv == 3  ? _case9_isolines(cell_pts, sigma) :
-    cv == 10 ? _case10_isolines(cell_pts, sigma) :
-    cv == 11 ? _case11_isolines(cell_pts, sigma) :
-    cv == 6  ? _case12_isolines(cell_pts, sigma) :
-    cv == 7  ? _case13_isolines(cell_pts, sigma) :
-               _case14_isolines(cell_pts, sigma);
+    cv == 1  ? _case1_isolines(cell_pts, threshold) :
+    cv == 8  ? _case2_isolines(cell_pts, threshold) :
+    cv == 9  ? _case3_isolines(cell_pts, threshold) :
+    cv == 4  ? _case4_isolines(cell_pts, threshold) :
+    cv == 5  ? _case5_isolines(cell_pts, threshold) :
+    cv == 12 ? _case6_isolines(cell_pts, threshold) :
+    cv == 13 ? _case7_isolines(cell_pts, threshold) :
+    cv == 2  ? _case8_isolines(cell_pts, threshold) :
+    cv == 3  ? _case9_isolines(cell_pts, threshold) :
+    cv == 10 ? _case10_isolines(cell_pts, threshold) :
+    cv == 11 ? _case11_isolines(cell_pts, threshold) :
+    cv == 6  ? _case12_isolines(cell_pts, threshold) :
+    cv == 7  ? _case13_isolines(cell_pts, threshold) :
+               _case14_isolines(cell_pts, threshold);
 
-function _marching_squares_isolines(points, sigma) = 
-    let(labeled_pts = _isolines_pn_label(points, sigma))
+function _marching_squares_isolines(points, threshold) = 
+    let(labeled_pts = _isolines_pn_label(points, threshold))
     [
         for(y = [0:len(labeled_pts) - 2])            
             for(x = [0:len(labeled_pts[0]) - 2])
@@ -124,7 +124,7 @@ function _marching_squares_isolines(points, sigma) =
                 p2 = labeled_pts[y + 1][x + 1],
                 p3 = labeled_pts[y][x + 1],
                 cell_pts = [p0, p1, p2, p3],
-                isolines_lt = _isolines_of(cell_pts, sigma)
+                isolines_lt = _isolines_of(cell_pts, threshold)
             )
             if(isolines_lt != [])
             each isolines_lt
@@ -155,49 +155,49 @@ function _isobands_corner_value(cell_pts) =
     str(cell_pts[1][3], cell_pts[2][3], cell_pts[3][3], cell_pts[0][3]); 
 
 // single triangle
-function _case2221_isobands(cell_pts, sigma) = [
+function _case2221_isobands(cell_pts, threshold) = [
     [
         [cell_pts[0][0], cell_pts[0][1], cell_pts[0][2]],
-        interpolated_pt(cell_pts[0], cell_pts[3], sigma),
-        interpolated_pt(cell_pts[0], cell_pts[1], sigma)
+        interpolated_pt(cell_pts[0], cell_pts[3], threshold),
+        interpolated_pt(cell_pts[0], cell_pts[1], threshold)
     ]
 ];
 
-function _case2212_isobands(cell_pts, sigma) = [
+function _case2212_isobands(cell_pts, threshold) = [
     [
-        interpolated_pt(cell_pts[0], cell_pts[3], sigma),
+        interpolated_pt(cell_pts[0], cell_pts[3], threshold),
         [cell_pts[3][0], cell_pts[3][1], cell_pts[3][2]],
-        interpolated_pt(cell_pts[2], cell_pts[3], sigma)
+        interpolated_pt(cell_pts[2], cell_pts[3], threshold)
     ]
 ];
 
-function _case2122_isobands(cell_pts, sigma) = [
+function _case2122_isobands(cell_pts, threshold) = [
     [
-        interpolated_pt(cell_pts[1], cell_pts[2], sigma),
-        interpolated_pt(cell_pts[2], cell_pts[3], sigma),
+        interpolated_pt(cell_pts[1], cell_pts[2], threshold),
+        interpolated_pt(cell_pts[2], cell_pts[3], threshold),
         [cell_pts[2][0], cell_pts[2][1], cell_pts[2][2]]
     ]
 ];
     
-function _case1222_isobands(cell_pts, sigma) = [
+function _case1222_isobands(cell_pts, threshold) = [
     [
-        interpolated_pt(cell_pts[0], cell_pts[1], sigma),
-        interpolated_pt(cell_pts[1], cell_pts[2], sigma),
+        interpolated_pt(cell_pts[0], cell_pts[1], threshold),
+        interpolated_pt(cell_pts[1], cell_pts[2], threshold),
         [cell_pts[1][0], cell_pts[1][1], cell_pts[1][2]]
     ]
 ];
 
-function _case0001_isobands(cell_pts, sigma) = 
-    _case2221_isobands(cell_pts, sigma);
+function _case0001_isobands(cell_pts, threshold) = 
+    _case2221_isobands(cell_pts, threshold);
     
-function _case0010_isobands(cell_pts, sigma) = 
-    _case2212_isobands(cell_pts, sigma);
+function _case0010_isobands(cell_pts, threshold) = 
+    _case2212_isobands(cell_pts, threshold);
     
-function _case0100_isobands(cell_pts, sigma) = 
-    _case2122_isobands(cell_pts, sigma);
+function _case0100_isobands(cell_pts, threshold) = 
+    _case2122_isobands(cell_pts, threshold);
 
-function _case1000_isobands(cell_pts, sigma) = 
-    _case1222_isobands(cell_pts, sigma);
+function _case1000_isobands(cell_pts, threshold) = 
+    _case1222_isobands(cell_pts, threshold);
     
  // single trapezoid
 function _case2220_isobands(cell_pts, lower, upper) = [
@@ -249,53 +249,53 @@ function _case2000_isobands(cell_pts, lower, upper) =
     _case0222_isobands(cell_pts, upper, lower);
     
 // single rectangle    
-function _case0011_isobands(cell_pts, sigma) = [
+function _case0011_isobands(cell_pts, threshold) = [
     [
         [cell_pts[0][0], cell_pts[0][1], cell_pts[0][2]],
         [cell_pts[3][0], cell_pts[3][1], cell_pts[3][2]],
-        interpolated_pt(cell_pts[2], cell_pts[3], sigma),
-        interpolated_pt(cell_pts[0], cell_pts[1], sigma)
+        interpolated_pt(cell_pts[2], cell_pts[3], threshold),
+        interpolated_pt(cell_pts[0], cell_pts[1], threshold)
     ]
 ];
     
-function _case0110_isobands(cell_pts, sigma) = [
+function _case0110_isobands(cell_pts, threshold) = [
     [
-        interpolated_pt(cell_pts[0], cell_pts[3], sigma),
+        interpolated_pt(cell_pts[0], cell_pts[3], threshold),
         [cell_pts[3][0], cell_pts[3][1], cell_pts[3][2]],
         [cell_pts[2][0], cell_pts[2][1], cell_pts[2][2]],
-        interpolated_pt(cell_pts[1], cell_pts[2], sigma)
+        interpolated_pt(cell_pts[1], cell_pts[2], threshold)
     ]
 ];
 
-function _case1100_isobands(cell_pts, sigma) = [
+function _case1100_isobands(cell_pts, threshold) = [
     [
-        interpolated_pt(cell_pts[0], cell_pts[1], sigma),
-        interpolated_pt(cell_pts[2], cell_pts[3], sigma),
+        interpolated_pt(cell_pts[0], cell_pts[1], threshold),
+        interpolated_pt(cell_pts[2], cell_pts[3], threshold),
         [cell_pts[2][0], cell_pts[2][1], cell_pts[2][2]],
         [cell_pts[1][0], cell_pts[1][1], cell_pts[1][2]]
     ]
 ];
 
-function _case1001_isobands(cell_pts, sigma) = [
+function _case1001_isobands(cell_pts, threshold) = [
     [
         [cell_pts[0][0], cell_pts[0][1], cell_pts[0][2]],
-        interpolated_pt(cell_pts[0], cell_pts[3], sigma),
-        interpolated_pt(cell_pts[1], cell_pts[2], sigma),
+        interpolated_pt(cell_pts[0], cell_pts[3], threshold),
+        interpolated_pt(cell_pts[1], cell_pts[2], threshold),
         [cell_pts[1][0], cell_pts[1][1], cell_pts[1][2]]
     ]
 ];
 
-function _case2211_isobands(cell_pts, sigma) = 
-    _case0011_isobands(cell_pts, sigma);
+function _case2211_isobands(cell_pts, threshold) = 
+    _case0011_isobands(cell_pts, threshold);
     
-function _case2112_isobands(cell_pts, sigma) = 
-    _case0110_isobands(cell_pts, sigma);    
+function _case2112_isobands(cell_pts, threshold) = 
+    _case0110_isobands(cell_pts, threshold);    
 
-function _case1122_isobands(cell_pts, sigma) = 
-    _case1100_isobands(cell_pts, sigma);        
+function _case1122_isobands(cell_pts, threshold) = 
+    _case1100_isobands(cell_pts, threshold);        
 
-function _case1221_isobands(cell_pts, sigma) = 
-    _case1001_isobands(cell_pts, sigma);   
+function _case1221_isobands(cell_pts, threshold) = 
+    _case1001_isobands(cell_pts, threshold);   
         
 function _case2200_isobands(cell_pts, lower, upper) = [
     [
@@ -407,57 +407,57 @@ function _case1210_isobands(cell_pts, lower, upper) =
     _case1012_isobands(cell_pts, upper, lower);   
 
 // single pentagon
-function _case1211_isobands(cell_pts, sigma) = [
+function _case1211_isobands(cell_pts, threshold) = [
     [
         [cell_pts[0][0], cell_pts[0][1], cell_pts[0][2]],
         [cell_pts[3][0], cell_pts[3][1], cell_pts[3][2]],
-        interpolated_pt(cell_pts[2], cell_pts[3], sigma),
-        interpolated_pt(cell_pts[1], cell_pts[2], sigma),
+        interpolated_pt(cell_pts[2], cell_pts[3], threshold),
+        interpolated_pt(cell_pts[1], cell_pts[2], threshold),
         [cell_pts[1][0], cell_pts[1][1], cell_pts[1][2]]
     ]
 ];
 
-function _case2111_isobands(cell_pts, sigma) = [
+function _case2111_isobands(cell_pts, threshold) = [
     [
         [cell_pts[0][0], cell_pts[0][1], cell_pts[0][2]],
         [cell_pts[3][0], cell_pts[3][1], cell_pts[3][2]],
         [cell_pts[2][0], cell_pts[2][1], cell_pts[2][2]],        
-        interpolated_pt(cell_pts[1], cell_pts[2], sigma),
-        interpolated_pt(cell_pts[0], cell_pts[1], sigma)
+        interpolated_pt(cell_pts[1], cell_pts[2], threshold),
+        interpolated_pt(cell_pts[0], cell_pts[1], threshold)
     ]
 ];
 
-function _case1112_isobands(cell_pts, sigma) = [
+function _case1112_isobands(cell_pts, threshold) = [
     [
-        interpolated_pt(cell_pts[0], cell_pts[3], sigma),   
+        interpolated_pt(cell_pts[0], cell_pts[3], threshold),   
         [cell_pts[3][0], cell_pts[3][1], cell_pts[3][2]],
         [cell_pts[2][0], cell_pts[2][1], cell_pts[2][2]],
         [cell_pts[1][0], cell_pts[1][1], cell_pts[1][2]],        
-        interpolated_pt(cell_pts[0], cell_pts[1], sigma)
+        interpolated_pt(cell_pts[0], cell_pts[1], threshold)
     ]
 ];   
 
-function _case1121_isobands(cell_pts, sigma) = [
+function _case1121_isobands(cell_pts, threshold) = [
     [
         [cell_pts[0][0], cell_pts[0][1], cell_pts[0][2]],    
-        interpolated_pt(cell_pts[0], cell_pts[3], sigma),   
-        interpolated_pt(cell_pts[2], cell_pts[3], sigma), 
+        interpolated_pt(cell_pts[0], cell_pts[3], threshold),   
+        interpolated_pt(cell_pts[2], cell_pts[3], threshold), 
         [cell_pts[2][0], cell_pts[2][1], cell_pts[2][2]],
         [cell_pts[1][0], cell_pts[1][1], cell_pts[1][2]]
     ]
 ];   
     
-function _case1011_isobands(cell_pts, sigma) = 
-    _case1211_isobands(cell_pts, sigma);  
+function _case1011_isobands(cell_pts, threshold) = 
+    _case1211_isobands(cell_pts, threshold);  
 
-function _case0111_isobands(cell_pts, sigma) = 
-    _case2111_isobands(cell_pts, sigma);   
+function _case0111_isobands(cell_pts, threshold) = 
+    _case2111_isobands(cell_pts, threshold);   
 
-function _case1110_isobands(cell_pts, sigma) = 
-    _case1112_isobands(cell_pts, sigma);   
+function _case1110_isobands(cell_pts, threshold) = 
+    _case1112_isobands(cell_pts, threshold);   
 
-function _case1101_isobands(cell_pts, sigma) = 
-    _case1121_isobands(cell_pts, sigma);       
+function _case1101_isobands(cell_pts, threshold) = 
+    _case1121_isobands(cell_pts, threshold);       
 
 function _case1200_isobands(cell_pts, lower, upper) = [
     [
@@ -647,99 +647,99 @@ function _case0202_isobands(cell_pts, lower, upper) =
         ]
     ];
 
-function _case0101_isobands(cell_pts, sigma) = 
+function _case0101_isobands(cell_pts, threshold) = 
     let(mdpz = (cell_pts[0][2] + cell_pts[1][2] + cell_pts[2][2] + cell_pts[3][2]) / 4)
-    mdpz < sigma ? [
+    mdpz < threshold ? [
         [
             [cell_pts[0][0], cell_pts[0][1], cell_pts[0][2]],
-            interpolated_pt(cell_pts[0], cell_pts[3], sigma),
-            interpolated_pt(cell_pts[0], cell_pts[1], sigma)
+            interpolated_pt(cell_pts[0], cell_pts[3], threshold),
+            interpolated_pt(cell_pts[0], cell_pts[1], threshold)
         ],
         [
-            interpolated_pt(cell_pts[2], cell_pts[3], sigma),
+            interpolated_pt(cell_pts[2], cell_pts[3], threshold),
             [cell_pts[2][0], cell_pts[2][1], cell_pts[2][2]],
-            interpolated_pt(cell_pts[1], cell_pts[2], sigma)
+            interpolated_pt(cell_pts[1], cell_pts[2], threshold)
         ]        
     ] : [
         [
             [cell_pts[0][0], cell_pts[0][1], cell_pts[0][2]],
-            interpolated_pt(cell_pts[0], cell_pts[3], sigma),
-            interpolated_pt(cell_pts[2], cell_pts[3], sigma),
+            interpolated_pt(cell_pts[0], cell_pts[3], threshold),
+            interpolated_pt(cell_pts[2], cell_pts[3], threshold),
             [cell_pts[2][0], cell_pts[2][1], cell_pts[2][2]],
-            interpolated_pt(cell_pts[1], cell_pts[2], sigma),
-            interpolated_pt(cell_pts[0], cell_pts[1], sigma)
+            interpolated_pt(cell_pts[1], cell_pts[2], threshold),
+            interpolated_pt(cell_pts[0], cell_pts[1], threshold)
         ]
     ];
 
-function _case1010_isobands(cell_pts, sigma) = 
+function _case1010_isobands(cell_pts, threshold) = 
     let(mdpz = (cell_pts[0][2] + cell_pts[1][2] + cell_pts[2][2] + cell_pts[3][2]) / 4)
-    mdpz < sigma ? [
+    mdpz < threshold ? [
         [
-            interpolated_pt(cell_pts[0], cell_pts[1], sigma),
-            interpolated_pt(cell_pts[1], cell_pts[2], sigma),
+            interpolated_pt(cell_pts[0], cell_pts[1], threshold),
+            interpolated_pt(cell_pts[1], cell_pts[2], threshold),
             [cell_pts[1][0], cell_pts[1][1], cell_pts[1][2]]
         ],
         [
-            interpolated_pt(cell_pts[0], cell_pts[3], sigma),
+            interpolated_pt(cell_pts[0], cell_pts[3], threshold),
             [cell_pts[3][0], cell_pts[3][1], cell_pts[3][2]],
-            interpolated_pt(cell_pts[2], cell_pts[3], sigma)
+            interpolated_pt(cell_pts[2], cell_pts[3], threshold)
         ]        
     ] : [
         [
-            interpolated_pt(cell_pts[0], cell_pts[3], sigma),
+            interpolated_pt(cell_pts[0], cell_pts[3], threshold),
             [cell_pts[3][0], cell_pts[3][1], cell_pts[3][2]],
-            interpolated_pt(cell_pts[2], cell_pts[3], sigma),
-            interpolated_pt(cell_pts[1], cell_pts[2], sigma),
+            interpolated_pt(cell_pts[2], cell_pts[3], threshold),
+            interpolated_pt(cell_pts[1], cell_pts[2], threshold),
             [cell_pts[1][0], cell_pts[1][1], cell_pts[1][2]],
-            interpolated_pt(cell_pts[0], cell_pts[1], sigma)
+            interpolated_pt(cell_pts[0], cell_pts[1], threshold)
         ]
     ];    
 
-function _case2121_isobands(cell_pts, sigma) = 
+function _case2121_isobands(cell_pts, threshold) = 
     let(mdpz = (cell_pts[0][2] + cell_pts[1][2] + cell_pts[2][2] + cell_pts[3][2]) / 4)
-    mdpz < sigma ? [
+    mdpz < threshold ? [
         [
             [cell_pts[0][0], cell_pts[0][1], cell_pts[0][2]],
-            interpolated_pt(cell_pts[0], cell_pts[3], sigma),
-            interpolated_pt(cell_pts[2], cell_pts[3], sigma),
+            interpolated_pt(cell_pts[0], cell_pts[3], threshold),
+            interpolated_pt(cell_pts[2], cell_pts[3], threshold),
             [cell_pts[2][0], cell_pts[2][1], cell_pts[2][2]],
-            interpolated_pt(cell_pts[1], cell_pts[2], sigma),
-            interpolated_pt(cell_pts[0], cell_pts[1], sigma)
+            interpolated_pt(cell_pts[1], cell_pts[2], threshold),
+            interpolated_pt(cell_pts[0], cell_pts[1], threshold)
         ]
     ] : [
         [
             [cell_pts[0][0], cell_pts[0][1], cell_pts[0][2]],
-            interpolated_pt(cell_pts[0], cell_pts[3], sigma),
-            interpolated_pt(cell_pts[0], cell_pts[1], sigma)
+            interpolated_pt(cell_pts[0], cell_pts[3], threshold),
+            interpolated_pt(cell_pts[0], cell_pts[1], threshold)
         ],
         [
-            interpolated_pt(cell_pts[2], cell_pts[3], sigma),
+            interpolated_pt(cell_pts[2], cell_pts[3], threshold),
             [cell_pts[2][0], cell_pts[2][1], cell_pts[2][2]],
-            interpolated_pt(cell_pts[1], cell_pts[2], sigma)
+            interpolated_pt(cell_pts[1], cell_pts[2], threshold)
         ]        
     ];        
 
-function _case1212_isobands(cell_pts, sigma) = 
+function _case1212_isobands(cell_pts, threshold) = 
     let(mdpz = (cell_pts[0][2] + cell_pts[1][2] + cell_pts[2][2] + cell_pts[3][2]) / 4)
-    mdpz < sigma ? [
+    mdpz < threshold ? [
         [
-            interpolated_pt(cell_pts[0], cell_pts[3], sigma),
+            interpolated_pt(cell_pts[0], cell_pts[3], threshold),
             [cell_pts[3][0], cell_pts[3][1], cell_pts[3][2]],
-            interpolated_pt(cell_pts[2], cell_pts[3], sigma),
-            interpolated_pt(cell_pts[1], cell_pts[2], sigma),
+            interpolated_pt(cell_pts[2], cell_pts[3], threshold),
+            interpolated_pt(cell_pts[1], cell_pts[2], threshold),
             [cell_pts[1][0], cell_pts[1][1], cell_pts[1][2]],
-            interpolated_pt(cell_pts[0], cell_pts[1], sigma)
+            interpolated_pt(cell_pts[0], cell_pts[1], threshold)
         ]
     ] : [
         [
-            interpolated_pt(cell_pts[0], cell_pts[1], sigma),
-            interpolated_pt(cell_pts[1], cell_pts[2], sigma),
+            interpolated_pt(cell_pts[0], cell_pts[1], threshold),
+            interpolated_pt(cell_pts[1], cell_pts[2], threshold),
             [cell_pts[1][0], cell_pts[1][1], cell_pts[1][2]]
         ],
         [
-            interpolated_pt(cell_pts[0], cell_pts[3], sigma),
+            interpolated_pt(cell_pts[0], cell_pts[3], threshold),
             [cell_pts[3][0], cell_pts[3][1], cell_pts[3][2]],
-            interpolated_pt(cell_pts[2], cell_pts[3], sigma)
+            interpolated_pt(cell_pts[2], cell_pts[3], threshold)
         ]        
     ];            
 
