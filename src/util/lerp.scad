@@ -1,6 +1,6 @@
-function lerp(p0, p1, amt) = 
+function lerp(v1, v2, amt) = 
     let(
-        v = p1 - p0,
-        leng = len(p0)
+        v = v2 - v1,
+        leng = len(v1)
     )
-    [for(i = 0; i < leng; i = i + 1) p0[i] + v[i] * amt];
+    [for(i = 0; i < leng; i = i + 1) v1[i] + v[i] * amt];
