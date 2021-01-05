@@ -145,7 +145,7 @@ function _isobands_tri_label(pts, lower, upper) =
             for(p = row) 
             let(label = 
                 p[2] < lower ? "0" : 
-                p[2] >= lower && p[2] < upper ? "1" : "2"
+                p[2] >= lower && p[2] <= upper ? "1" : "2"
             )
             [p[0], p[1], p[2], label]
         ]
