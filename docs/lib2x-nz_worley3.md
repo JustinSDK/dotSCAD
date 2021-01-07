@@ -1,6 +1,6 @@
 # nz_worley3
 
-Returns the 3D [Worley noise](https://en.wikipedia.org/wiki/Worley_noise) value `[cell_x, cell_y, cell_y, noise]` at the (x, y, z) coordinate. 
+Returns the 3D [Worley noise](https://en.wikipedia.org/wiki/Worley_noise) value `[cell_x, cell_y, cell_z, noise]` at the (x, y, z) coordinate. 
 
 It divides the space into grids. The nucleus of each cell is randomly placed in a grid. 
 
