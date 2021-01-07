@@ -572,38 +572,51 @@ function _case2020_isobands(cell_pts, lower, upper) =
     center_p_z < lower ? [
         [
             interpolated_pt(cell_pts[0], cell_pts[1], lower),
+            interpolated_pt(cell_pts[1], center_p, lower),
             interpolated_pt(cell_pts[1], cell_pts[2], lower),
             interpolated_pt(cell_pts[1], cell_pts[2], upper), 
+            interpolated_pt(cell_pts[1], center_p, upper),
             interpolated_pt(cell_pts[0], cell_pts[1], upper)
         ],
         [
             interpolated_pt(cell_pts[0], cell_pts[3], lower),
             interpolated_pt(cell_pts[0], cell_pts[3], upper),
-            interpolated_pt(cell_pts[2], cell_pts[3], upper), interpolated_pt(cell_pts[2], cell_pts[3], lower)
+            interpolated_pt(cell_pts[1], center_p, upper),
+            interpolated_pt(cell_pts[2], cell_pts[3], upper), 
+            interpolated_pt(cell_pts[2], cell_pts[3], lower),
+            interpolated_pt(cell_pts[3], center_p, lower)
         ]
     ] :
     center_p_z >= lower && center_p_z < upper ? [
         [
             interpolated_pt(cell_pts[0], cell_pts[1], lower),
+            interpolated_pt(cell_pts[0], center_p, lower),
             interpolated_pt(cell_pts[0], cell_pts[3], lower),
             interpolated_pt(cell_pts[0], cell_pts[3], upper),
+            interpolated_pt(cell_pts[3], center_p, upper),
             interpolated_pt(cell_pts[2], cell_pts[3], upper),
             interpolated_pt(cell_pts[2], cell_pts[3], lower),
+            interpolated_pt(cell_pts[2], center_p, lower),
             interpolated_pt(cell_pts[1], cell_pts[2], lower),
             interpolated_pt(cell_pts[1], cell_pts[2], upper),
+            interpolated_pt(cell_pts[1], center_p, upper),
             interpolated_pt(cell_pts[0], cell_pts[1], upper)
         ]
     ] : [
         [
             interpolated_pt(cell_pts[0], cell_pts[1], lower),
+            interpolated_pt(cell_pts[0], center_p, lower),
             interpolated_pt(cell_pts[0], cell_pts[3], lower),
             interpolated_pt(cell_pts[0], cell_pts[3], upper), 
+            interpolated_pt(cell_pts[0], center_p, upper),
             interpolated_pt(cell_pts[0], cell_pts[1], upper)
         ],
         [
             interpolated_pt(cell_pts[1], cell_pts[2], upper),
+            interpolated_pt(cell_pts[2], center_p, upper),
             interpolated_pt(cell_pts[2], cell_pts[3], upper),
             interpolated_pt(cell_pts[2], cell_pts[3], lower), 
+            interpolated_pt(cell_pts[2], center_p, lower),
             interpolated_pt(cell_pts[1], cell_pts[2], lower)
         ]        
     ];
