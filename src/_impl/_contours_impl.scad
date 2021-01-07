@@ -565,7 +565,10 @@ function _case2201_isobands(cell_pts, lower, upper) =
     
 // Saddles
 function _case2020_isobands(cell_pts, lower, upper) = 
-    let(center_p_z = (cell_pts[0][2] + cell_pts[1][2] + cell_pts[2][2] + cell_pts[3][2]) / 4)
+    let(
+        center_p = (cell_pts[0] + cell_pts[1] + cell_pts[2] + cell_pts[3]) / 4,
+        center_p_z = center_p[2]
+    )
     center_p_z < lower ? [
         [
             interpolated_pt(cell_pts[0], cell_pts[1], lower),
@@ -606,7 +609,10 @@ function _case2020_isobands(cell_pts, lower, upper) =
     ];
     
 function _case0202_isobands(cell_pts, lower, upper) = 
-    let(center_p_z = (cell_pts[0][2] + cell_pts[1][2] + cell_pts[2][2] + cell_pts[3][2]) / 4)
+    let(
+        center_p = (cell_pts[0] + cell_pts[1] + cell_pts[2] + cell_pts[3]) / 4,
+        center_p_z = center_p[2]
+    )
     center_p_z < lower ? [
         [
             interpolated_pt(cell_pts[0], cell_pts[1], upper),
@@ -648,7 +654,10 @@ function _case0202_isobands(cell_pts, lower, upper) =
     ];
 
 function _case0101_isobands(cell_pts, threshold) = 
-    let(center_p_z = (cell_pts[0][2] + cell_pts[1][2] + cell_pts[2][2] + cell_pts[3][2]) / 4)
+    let(
+        center_p = (cell_pts[0] + cell_pts[1] + cell_pts[2] + cell_pts[3]) / 4,
+        center_p_z = center_p[2]
+    )
     center_p_z < threshold ? [
         [
             [cell_pts[0][0], cell_pts[0][1], cell_pts[0][2]],
@@ -672,7 +681,10 @@ function _case0101_isobands(cell_pts, threshold) =
     ];
 
 function _case1010_isobands(cell_pts, threshold) = 
-    let(center_p_z = (cell_pts[0][2] + cell_pts[1][2] + cell_pts[2][2] + cell_pts[3][2]) / 4)
+    let(
+        center_p = (cell_pts[0] + cell_pts[1] + cell_pts[2] + cell_pts[3]) / 4,
+        center_p_z = center_p[2]
+    )
     center_p_z < threshold ? [
         [
             interpolated_pt(cell_pts[0], cell_pts[1], threshold),
@@ -696,7 +708,10 @@ function _case1010_isobands(cell_pts, threshold) =
     ];    
 
 function _case2121_isobands(cell_pts, threshold) = 
-    let(center_p_z = (cell_pts[0][2] + cell_pts[1][2] + cell_pts[2][2] + cell_pts[3][2]) / 4)
+    let(
+        center_p = (cell_pts[0] + cell_pts[1] + cell_pts[2] + cell_pts[3]) / 4,
+        center_p_z = center_p[2]
+    )
     center_p_z < threshold ? [
         [
             [cell_pts[0][0], cell_pts[0][1], cell_pts[0][2]],
@@ -720,7 +735,10 @@ function _case2121_isobands(cell_pts, threshold) =
     ];        
 
 function _case1212_isobands(cell_pts, threshold) = 
-    let(center_p_z = (cell_pts[0][2] + cell_pts[1][2] + cell_pts[2][2] + cell_pts[3][2]) / 4)
+    let(
+        center_p = (cell_pts[0] + cell_pts[1] + cell_pts[2] + cell_pts[3]) / 4,
+        center_p_z = center_p[2]
+    )
     center_p_z < threshold ? [
         [
             interpolated_pt(cell_pts[0], cell_pts[3], threshold),
@@ -744,7 +762,10 @@ function _case1212_isobands(cell_pts, threshold) =
     ];            
 
 function _case2120_isobands(cell_pts, lower, upper) = 
-    let(center_p_z = (cell_pts[0][2] + cell_pts[1][2] + cell_pts[2][2] + cell_pts[3][2]) / 4)
+    let(
+        center_p = (cell_pts[0] + cell_pts[1] + cell_pts[2] + cell_pts[3]) / 4,
+        center_p_z = center_p[2]
+    )
     center_p_z < upper ? [
         [
             interpolated_pt(cell_pts[0], cell_pts[3], lower),
@@ -770,7 +791,10 @@ function _case2120_isobands(cell_pts, lower, upper) =
     ];
     
 function _case0102_isobands(cell_pts, lower, upper) = 
-    let(center_p_z = (cell_pts[0][2] + cell_pts[1][2] + cell_pts[2][2] + cell_pts[3][2]) / 4)
+    let(
+        center_p = (cell_pts[0] + cell_pts[1] + cell_pts[2] + cell_pts[3]) / 4,
+        center_p_z = center_p[2]
+    )
     center_p_z < lower ? [
         [
             interpolated_pt(cell_pts[0], cell_pts[3], upper),
@@ -796,7 +820,10 @@ function _case0102_isobands(cell_pts, lower, upper) =
     ];    
 
 function _case2021_isobands(cell_pts, lower, upper) = 
-    let(center_p_z = (cell_pts[0][2] + cell_pts[1][2] + cell_pts[2][2] + cell_pts[3][2]) / 4)
+    let(
+        center_p = (cell_pts[0] + cell_pts[1] + cell_pts[2] + cell_pts[3]) / 4,
+        center_p_z = center_p[2]
+    )
     center_p_z < upper ? [
         [
             [cell_pts[0][0], cell_pts[0][1], cell_pts[0][2]],
@@ -822,7 +849,10 @@ function _case2021_isobands(cell_pts, lower, upper) =
     ];
     
 function _case0201_isobands(cell_pts, lower, upper) = 
-    let(center_p_z = (cell_pts[0][2] + cell_pts[1][2] + cell_pts[2][2] + cell_pts[3][2]) / 4)
+    let(
+        center_p = (cell_pts[0] + cell_pts[1] + cell_pts[2] + cell_pts[3]) / 4,
+        center_p_z = center_p[2]
+    )
     center_p_z < lower ? [
         [
             [cell_pts[0][0], cell_pts[0][1], cell_pts[0][2]],
@@ -848,7 +878,10 @@ function _case0201_isobands(cell_pts, lower, upper) =
     ];    
  
 function _case1202_isobands(cell_pts, lower, upper) = 
-    let(center_p_z = (cell_pts[0][2] + cell_pts[1][2] + cell_pts[2][2] + cell_pts[3][2]) / 4)
+    let(
+        center_p = (cell_pts[0] + cell_pts[1] + cell_pts[2] + cell_pts[3]) / 4,
+        center_p_z = center_p[2]
+    )
     center_p_z < upper ? [
         [
             interpolated_pt(cell_pts[0], cell_pts[3], upper),
@@ -874,7 +907,10 @@ function _case1202_isobands(cell_pts, lower, upper) =
     ];
 
 function _case1020_isobands(cell_pts, lower, upper) = 
-    let(center_p_z = (cell_pts[0][2] + cell_pts[1][2] + cell_pts[2][2] + cell_pts[3][2]) / 4)
+    let(
+        center_p = (cell_pts[0] + cell_pts[1] + cell_pts[2] + cell_pts[3]) / 4,
+        center_p_z = center_p[2]
+    )
     center_p_z < lower ? [
         [
             interpolated_pt(cell_pts[0], cell_pts[1], lower),
@@ -900,7 +936,10 @@ function _case1020_isobands(cell_pts, lower, upper) =
     ];    
     
 function _case0212_isobands(cell_pts, lower, upper) = 
-    let(center_p_z = (cell_pts[0][2] + cell_pts[1][2] + cell_pts[2][2] + cell_pts[3][2]) / 4)
+    let(
+        center_p = (cell_pts[0] + cell_pts[1] + cell_pts[2] + cell_pts[3]) / 4,
+        center_p_z = center_p[2]
+    )
     center_p_z < upper ? [
         [
             interpolated_pt(cell_pts[0], cell_pts[3], upper),
@@ -926,7 +965,10 @@ function _case0212_isobands(cell_pts, lower, upper) =
     ];    
     
 function _case2010_isobands(cell_pts, lower, upper) = 
-    let(center_p_z = (cell_pts[0][2] + cell_pts[1][2] + cell_pts[2][2] + cell_pts[3][2]) / 4)
+    let(
+        center_p = (cell_pts[0] + cell_pts[1] + cell_pts[2] + cell_pts[3]) / 4,
+        center_p_z = center_p[2]
+    )
     center_p_z < lower ? [
         [
             interpolated_pt(cell_pts[0], cell_pts[1], lower),
