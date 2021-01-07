@@ -50,16 +50,16 @@ function _case4_isolines(cell_pts, threshold) = [
 ];
 
 function _case5_isolines(cell_pts, threshold) = 
-    let(center_p_z = (cell_pts[0][2] + cell_pts[1][2] + cell_pts[2][2] + cell_pts[3][2]) / 4)
-    center_p_z >= threshold ?
+    let(center_p = (cell_pts[0] + cell_pts[1] + cell_pts[2] + cell_pts[3]) / 4)
+    center_p[2] >= threshold ?
     [
-        [interpolated_pt(cell_pts[0], cell_pts[1], threshold), interpolated_pt(cell_pts[1], cell_pts[2], threshold)],
-        [interpolated_pt(cell_pts[0], cell_pts[3], threshold), interpolated_pt(cell_pts[2], cell_pts[3], threshold)]
+        [interpolated_pt(cell_pts[0], cell_pts[1], threshold), interpolated_pt(cell_pts[1], center_p, threshold), interpolated_pt(cell_pts[1], cell_pts[2], threshold)],
+        [interpolated_pt(cell_pts[0], cell_pts[3], threshold), interpolated_pt(cell_pts[3], center_p, threshold), interpolated_pt(cell_pts[2], cell_pts[3], threshold)]
     ]
     :
     [
-        [interpolated_pt(cell_pts[0], cell_pts[1], threshold), interpolated_pt(cell_pts[0], cell_pts[3], threshold)],
-        [interpolated_pt(cell_pts[1], cell_pts[2], threshold), interpolated_pt(cell_pts[2], cell_pts[3], threshold)]
+        [interpolated_pt(cell_pts[0], cell_pts[1], threshold), interpolated_pt(cell_pts[0], center_p, threshold), interpolated_pt(cell_pts[0], cell_pts[3], threshold)],
+        [interpolated_pt(cell_pts[1], cell_pts[2], threshold), interpolated_pt(cell_pts[2], center_p, threshold), interpolated_pt(cell_pts[2], cell_pts[3], threshold)]
     ];
 
 function _case6_isolines(cell_pts, threshold) = [
@@ -75,16 +75,16 @@ function _case8_isolines(cell_pts, threshold) = _case7_isolines(cell_pts, thresh
 function _case9_isolines(cell_pts, threshold) = _case6_isolines(cell_pts, threshold);
 
 function _case10_isolines(cell_pts, threshold) = 
-    let(center_p_z = (cell_pts[0][2] + cell_pts[1][2] + cell_pts[2][2] + cell_pts[3][2]) / 4)
-    center_p_z >= threshold ?
+    let(center_p = (cell_pts[0] + cell_pts[1] + cell_pts[2] + cell_pts[3]) / 4)
+    center_p[2] >= threshold ?
         [
-            [interpolated_pt(cell_pts[0], cell_pts[1], threshold), interpolated_pt(cell_pts[0], cell_pts[3], threshold)],
-            [interpolated_pt(cell_pts[1], cell_pts[2], threshold), interpolated_pt(cell_pts[2], cell_pts[3], threshold)]
+            [interpolated_pt(cell_pts[0], cell_pts[1], threshold), interpolated_pt(cell_pts[1], center_p, threshold), interpolated_pt(cell_pts[0], cell_pts[3], threshold)],
+            [interpolated_pt(cell_pts[1], cell_pts[2], threshold), interpolated_pt(cell_pts[2], center_p, threshold), interpolated_pt(cell_pts[2], cell_pts[3], threshold)]
         ]
         :
         [
-            [interpolated_pt(cell_pts[0], cell_pts[1], threshold), interpolated_pt(cell_pts[1], cell_pts[2], threshold)],
-            [interpolated_pt(cell_pts[0], cell_pts[3], threshold), interpolated_pt(cell_pts[2], cell_pts[3], threshold)]
+            [interpolated_pt(cell_pts[0], cell_pts[1], threshold), interpolated_pt(cell_pts[1], center_p, threshold), interpolated_pt(cell_pts[1], cell_pts[2], threshold)],
+            [interpolated_pt(cell_pts[0], cell_pts[3], threshold), interpolated_pt(cell_pts[3], center_p, threshold), interpolated_pt(cell_pts[2], cell_pts[3], threshold)]
         ];
     
 function _case11_isolines(cell_pts, threshold) = _case4_isolines(cell_pts, threshold);
