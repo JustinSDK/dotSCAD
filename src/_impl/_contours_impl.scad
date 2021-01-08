@@ -815,7 +815,7 @@ function _case2121_isobands(cell_pts, lower, upper) =
         [
             [cell_pts[0][0], cell_pts[0][1], cell_pts[0][2]],
             interpolated_pt(cell_pts[0], cell_pts[3], upper),
-            interpolated_pt(cell_pts[0], center_p, upper),
+            interpolated_pt(cell_pts[3], center_p, upper),
             interpolated_pt(cell_pts[2], cell_pts[3], upper),
             [cell_pts[2][0], cell_pts[2][1], cell_pts[2][2]],
             interpolated_pt(cell_pts[1], cell_pts[2], upper),
