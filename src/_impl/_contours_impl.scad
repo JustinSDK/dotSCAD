@@ -1051,24 +1051,46 @@ function _case0201_isobands(cell_pts, lower, upper) =
         [
             [cell_pts[0][0], cell_pts[0][1], cell_pts[0][2]],
             interpolated_pt(cell_pts[0], cell_pts[3], lower),
+            interpolated_pt(cell_pts[0], center_p, lower),
             interpolated_pt(cell_pts[0], cell_pts[1], lower)
         ],
         [
             interpolated_pt(cell_pts[2], cell_pts[3], lower),
             interpolated_pt(cell_pts[2], cell_pts[3], upper),
+            interpolated_pt(cell_pts[2], center_p, upper),
             interpolated_pt(cell_pts[1], cell_pts[2], upper),
-            interpolated_pt(cell_pts[1], cell_pts[2], lower)
+            interpolated_pt(cell_pts[1], cell_pts[2], lower),
+            interpolated_pt(cell_pts[2], center_p, lower)
         ]
-    ] : [
+    ] :
+    center_p_z >= lower && center_p_z <= upper ? [
         [
             [cell_pts[0][0], cell_pts[0][1], cell_pts[0][2]],
             interpolated_pt(cell_pts[0], cell_pts[3], lower),
+            interpolated_pt(cell_pts[3], center_p, lower),
             interpolated_pt(cell_pts[2], cell_pts[3], lower),
             interpolated_pt(cell_pts[2], cell_pts[3], upper),
+            interpolated_pt(cell_pts[2], center_p, lower),
             interpolated_pt(cell_pts[1], cell_pts[2], upper),
             interpolated_pt(cell_pts[1], cell_pts[2], lower),
+            interpolated_pt(cell_pts[1], center_p, lower),
             interpolated_pt(cell_pts[0], cell_pts[1], lower)
         ]     
+    ] : [
+        [
+            interpolated_pt(cell_pts[1], cell_pts[2], lower),
+            interpolated_pt(cell_pts[1], center_p, lower),
+            interpolated_pt(cell_pts[0], cell_pts[1], lower),
+            [cell_pts[0][0], cell_pts[0][1], cell_pts[0][2]],
+            interpolated_pt(cell_pts[0], cell_pts[3], lower),
+            interpolated_pt(cell_pts[3], center_p, lower),
+            interpolated_pt(cell_pts[2], cell_pts[3], lower),
+            interpolated_pt(cell_pts[2], cell_pts[3], upper),
+            interpolated_pt(cell_pts[3], center_p, upper),
+            interpolated_pt(cell_pts[0], center_p, upper),
+            interpolated_pt(cell_pts[1], center_p, upper),
+            interpolated_pt(cell_pts[1], cell_pts[2], upper)
+        ]
     ];    
  
 function _case1202_isobands(cell_pts, lower, upper) = 
