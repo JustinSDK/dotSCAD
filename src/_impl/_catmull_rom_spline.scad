@@ -1,4 +1,4 @@
-use <bezier_curve.scad>;
+use <../bezier_curve.scad>;
 
 function _catmull_rom_spline_4pts(t_step, points, tightness) = 
     let(
