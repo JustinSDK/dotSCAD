@@ -261,9 +261,3 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [maze/mz_hex_walls](https://openhome.cc/eGossip/OpenSCAD/lib2x-mz_hex_walls.html)
 - [maze/mz_square_initialize](https://openhome.cc/eGossip/OpenSCAD/lib2x-mz_square_initialize.html)
 - [maze/mz_hamiltonian](https://openhome.cc/eGossip/OpenSCAD/lib2x-mz_hamiltonian.html)
-
-----
-
-## Bugs and Feedback
-
-For bugs, questions and discussions please use the [Github Issues](https://github.com/JustinSDK/dotSCAD/issues).
