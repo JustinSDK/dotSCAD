@@ -219,6 +219,6 @@ module path_tile(n, width) {
 	    rotate(270) tile7();
 	}
 	else if(n == 15) {
-	    rotate(270) tile15();
+	    tile15();
 	}
 }
