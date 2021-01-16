@@ -29,7 +29,6 @@ $fn = 24;
 translate([0, tile_width * (rows + 1)]) {
     color("LightGrey")
     linear_extrude(tile_thickness / 2)
-    translate([-tile_width / 2, -tile_width / 2])
         square([columns * tile_width, rows * tile_width]);
 	
 	color("green")
