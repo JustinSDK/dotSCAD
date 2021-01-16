@@ -13,26 +13,26 @@ module tube_box(rows, columns, tile_width) {
 	quarter_w = tile_width / 4;
 	eighth_w = tile_width / 8;
 
-	2_edge_wang_tiles(rows, columns, tile_width) {
-		tube_tile(0, tile_width);
-		tube_tile(1, tile_width);
-		tube_tile(2, tile_width);
-		tube_tile(3, tile_width);
-		tube_tile(4, tile_width);
-		tube_tile(5, tile_width);
-		tube_tile(6, tile_width);
-		tube_tile(7, tile_width);
-		tube_tile(8, tile_width);
-		tube_tile(9, tile_width);
-		tube_tile(10, tile_width);
-		tube_tile(11, tile_width);
-		tube_tile(12, tile_width);
-		tube_tile(13, tile_width);
-		tube_tile(14, tile_width);
-		tube_tile(15, tile_width);
-	}
+    translate([eighth_w, eighth_w, -eighth_w])
+		2_edge_wang_tiles(rows, columns, tile_width) {
+			tube_tile(0, tile_width);
+			tube_tile(1, tile_width);
+			tube_tile(2, tile_width);
+			tube_tile(3, tile_width);
+			tube_tile(4, tile_width);
+			tube_tile(5, tile_width);
+			tube_tile(6, tile_width);
+			tube_tile(7, tile_width);
+			tube_tile(8, tile_width);
+			tube_tile(9, tile_width);
+			tube_tile(10, tile_width);
+			tube_tile(11, tile_width);
+			tube_tile(12, tile_width);
+			tube_tile(13, tile_width);
+			tube_tile(14, tile_width);
+			tube_tile(15, tile_width);
+		}
 
-	translate([-half_w - eighth_w, -half_w - eighth_w, -eighth_w])
 	box_extrude(height = tile_width, shell_thickness = eighth_w)
 		square([columns * tile_width + quarter_w, rows * tile_width + quarter_w]);
 }
