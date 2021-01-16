@@ -1,3 +1,4 @@
+use <experimental/2_edge_wang_tiles.scad>;
 use <box_extrude.scad>;
 
 rows = 8;
@@ -12,7 +13,7 @@ module tube_box(rows, columns, tile_width) {
 	quarter_w = tile_width / 4;
 	eighth_w = tile_width / 8;
 
-	two_edge_wang_tiles(rows, columns, tile_width) {
+	2_edge_wang_tiles(rows, columns, tile_width) {
 		tube_tile(0, tile_width);
 		tube_tile(1, tile_width);
 		tube_tile(2, tile_width);
@@ -34,27 +35,6 @@ module tube_box(rows, columns, tile_width) {
 	translate([-half_w - eighth_w, -half_w - eighth_w, -eighth_w])
 	box_extrude(height = tile_width, shell_thickness = eighth_w)
 		square([columns * tile_width + quarter_w, rows * tile_width + quarter_w]);
-}
-
-module two_edge_wang_tiles(rows, columns, tile_width) {
-	edges = [
-		for(y = [0:rows])
-		[
-			for(x = [0:columns]) 
-			[round(rands(0, 1, 1)[0]), round(rands(0, 1, 1)[0])]
-		]
-	];
-
-	for(y = [0:rows - 1]) {
-		for(x = [0:columns - 1]) {
-			i = (edges[y + 1][x][0] == 1 ? 1 : 0) +
-			(edges[y][x + 1][1] == 1 ? 2 : 0) +
-			(edges[y][x][0] == 1 ? 4 : 0) +
-			(edges[y][x][1] == 1 ? 8 : 0);
-			translate([x, y] * tile_width)
-				children(i);
-		}
-	}
 }
 
 module tube_tile(n, width) {
