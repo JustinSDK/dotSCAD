@@ -7,6 +7,8 @@ module 2_edge_wang_tiles(rows, columns, tile_width) {
 		]
 	];
 
+    half_w = tile_width / 2;
+    translate([half_w, half_w])
 	for(y = [0:rows - 1]) {
 		for(x = [0:columns - 1]) {
 			i = (edges[y + 1][x][0] == 1 ? 1 : 0) +
