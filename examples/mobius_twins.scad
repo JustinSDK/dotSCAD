@@ -1,4 +1,4 @@
-use <shape_glued2circles.scad>;
+use <shape_liquid_splitting.scad>;
 use <ring_extrude.scad>;
 
 $fn = 48;
@@ -14,7 +14,7 @@ module mobius_twins() {
         difference() {
             rotate(-a_step)
             ring_extrude(
-                shape_glued2circles(5, half_r, 35), radius = r, twist = 180
+                shape_liquid_splitting(5, half_r, 35), radius = r, twist = 180
             );
             union() {
                 for(angle = [0: a_step: 360 - a_step]) {
