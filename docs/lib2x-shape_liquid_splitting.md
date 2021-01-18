@@ -2,6 +2,8 @@
 
 Returns shape points of two splitting liquid shapes, kind of how cells divide. They can be used with xxx_extrude modules of dotSCAD. The shape points can be also used with the built-in polygon module. 
 
+**Since:** 2.5
+
 ## Parameters
 
 - `radius` : The radius of two circles.
