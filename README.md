@@ -243,6 +243,9 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [bauer_spiral](https://openhome.cc/eGossip/OpenSCAD/lib2x-bauer_spiral.html)
 - [fibonacci_lattice](https://openhome.cc/eGossip/OpenSCAD/lib2x-fibonacci_lattice.html)
 
+### 2D Shape
+- [shape_liquid_splitting](https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_liquid_splitting.html)
+
 ### Util
 
 - [util/lerp](https://openhome.cc/eGossip/OpenSCAD/lib2x-lerp.html)
