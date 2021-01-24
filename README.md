@@ -2,7 +2,7 @@
 
 > **Reduce the burden of mathematics/algorithm when playing OpenSCAD.**
 
-![dotSCAD](featured_img/hilbert_dragon.JPG)
+![dotSCAD](featured_img/RandomCityTaiwan.JPG)
 
 [![license/LGPL](LICENSE.svg)](https://github.com/JustinSDK/lib-openscad/blob/master/LICENSE)
 
