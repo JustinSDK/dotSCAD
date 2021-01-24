@@ -5,14 +5,26 @@ use <shear.scad>;
 use <util/rand.scad>;
 use <experimental/2_edge_wang_tiles.scad>;
 
-rows = 6;
-columns = 6;
+mask = [
+    [0, 1, 1, 0, 0, 0, 1, 1, 0],
+    [1, 1, 1, 1, 0, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [0, 1, 1, 1, 1, 1, 1, 1, 0],
+    [0, 0, 1, 1, 1, 1, 1, 0, 0],
+    [0, 0, 0, 1, 1, 1, 0, 0, 0]
+];
 
-random_city(rows, columns);
+rows = len(mask);
+columns = len(mask[0]);
 
-module random_city(rows, columns) {
+random_city(rows, columns, mask);
+
+module random_city(rows, columns, mask) {
     tile_width = 30;
-    2_edge_wang_tiles(rows, columns, tile_width) {
+    2_edge_wang_tiles(rows, columns, tile_width, mask) {
         tile00();
         tile01();
         tile02();
