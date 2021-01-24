@@ -8,7 +8,7 @@
 
 ## Introduction
 
-**Based on OpenSCAD 2019.05.** 
+**This library requires OpenSCAD 2019.05 or later.** 
 
 Some of my [3D models](https://github.com/JustinSDK/dotSCAD#examples) require complex mathematics/algorithm. I extract them into dotSCAD. Hope it helps when you're playing OpenSCAD.
 
