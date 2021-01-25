@@ -23,6 +23,14 @@ module 2_edge_wang_tiles(rows, columns, tile_width, mask, seed) {
 		    [for(x = [0:columns - 1]) mask[y][x]]
 	];
 
+	/*
+		  1
+		. － .
+	  8 |    | 2
+		. － .
+		   4
+	*/
+
     half_w = tile_width / 2;
     translate([half_w, half_w])
 	for(y = [0:rows - 1]) {
