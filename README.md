@@ -1,4 +1,4 @@
-# dotSCAD 2.4
+# dotSCAD 2.5
 
 > **Reduce the burden of mathematics/algorithm when playing OpenSCAD.**
 
@@ -51,8 +51,8 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [polyline2d](https://openhome.cc/eGossip/OpenSCAD/lib2x-polyline2d.html)
 - [hull_polyline2d](https://openhome.cc/eGossip/OpenSCAD/lib2x-hull_polyline2d.html)
 - [hexagons](https://openhome.cc/eGossip/OpenSCAD/lib2x-hexagons.html)
-- [polytransversals](https://openhome.cc/eGossip/OpenSCAD/lib2x-polytransversals.html)
 - [multi_line_text](https://openhome.cc/eGossip/OpenSCAD/lib2x-multi_line_text.html)
+- [polygon_hull](https://openhome.cc/eGossip/OpenSCAD/lib2x-polygon_hull.html)
 
 ### 3D Module
 - [rounded_cube](https://openhome.cc/eGossip/OpenSCAD/lib2x-rounded_cube.html)
@@ -65,6 +65,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [sweep](https://openhome.cc/eGossip/OpenSCAD/lib2x-sweep.html)
 - [loft](https://openhome.cc/eGossip/OpenSCAD/lib2x-loft.html)
 - [starburst](https://openhome.cc/eGossip/OpenSCAD/lib2x-starburst.html)
+- [polyhedron_hull](https://openhome.cc/eGossip/OpenSCAD/lib2x-polyhedron_hull.html)
 
 ### Transformation
 - [along_with](https://openhome.cc/eGossip/OpenSCAD/lib2x-along_with.html)
@@ -98,6 +99,9 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [archimedean_spiral](https://openhome.cc/eGossip/OpenSCAD/lib2x-archimedean_spiral.html)
 - [sphere_spiral](https://openhome.cc/eGossip/OpenSCAD/lib2x-sphere_spiral.html)
 - [torus_knot](https://openhome.cc/eGossip/OpenSCAD/lib2x-torus_knot.html)
+- [curve](https://openhome.cc/eGossip/OpenSCAD/lib2x-curve.html)
+- [bauer_spiral](https://openhome.cc/eGossip/OpenSCAD/lib2x-bauer_spiral.html)
+- [fibonacci_lattice](https://openhome.cc/eGossip/OpenSCAD/lib2x-fibonacci_lattice.html)
 
 ### Extrusion
 - [box_extrude](https://openhome.cc/eGossip/OpenSCAD/lib2x-box_extrude.html)
@@ -118,8 +122,8 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [shape_pentagram](https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_pentagram.html)	
 - [shape_starburst](https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_starburst.html)	    
 - [shape_superformula](https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_superformula.html)
-- [shape_glued2circles](https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_glued2circles.html)
 - [shape_path_extend](https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_path_extend.html)
+- [shape_liquid_splitting](https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_liquid_splitting.html)
 
 ### 2D Shape Extrusion
 - [path_extrude](https://openhome.cc/eGossip/OpenSCAD/lib2x-path_extrude.html)
@@ -144,6 +148,8 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [util/flat](https://openhome.cc/eGossip/OpenSCAD/lib2x-flat.html)
 - [util/sum](https://openhome.cc/eGossip/OpenSCAD/lib2x-sum.html)
 - [util/zip](https://openhome.cc/eGossip/OpenSCAD/lib2x-zip.html)
+- [util/lerp](https://openhome.cc/eGossip/OpenSCAD/lib2x-lerp.html)
+- [util/choose](https://openhome.cc/eGossip/OpenSCAD/lib2x-choose.html)
 
 ### Matrix
 - [matrix/m_cumulate](https://openhome.cc/eGossip/OpenSCAD/lib2x-m_cumulate.html)	
@@ -189,6 +195,9 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [voxel/vx_union](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_union.html)
 - [voxel/vx_intersection](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_intersection.html)
 - [voxel/vx_difference](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_difference.html)
+- [voxel/vx_bezier](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_bezier.html)
+- [voxel/vx_curve](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_curve.html)
+- [voxel/vx_contour](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_contour.html)
 
 ### Part
 - [part/connector_peg](https://openhome.cc/eGossip/OpenSCAD/lib2x-connector_peg.html)
@@ -224,38 +233,6 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [voronoi/vrn2_cells_space](https://openhome.cc/eGossip/OpenSCAD/lib2x-vrn2_cells_space.html)
 - [voronoi/vrn3_from](https://openhome.cc/eGossip/OpenSCAD/lib2x-vrn3_from.html)
 - [voronoi/vrn3_space](https://openhome.cc/eGossip/OpenSCAD/lib2x-vrn3_space.html)
-
-----
-
-## 2.5 Preview
-
-### 2D Module
-
-- [polygon_hull](https://openhome.cc/eGossip/OpenSCAD/lib2x-polygon_hull.html)
-
-### 3D Module
-
-- [polyhedron_hull](https://openhome.cc/eGossip/OpenSCAD/lib2x-polyhedron_hull.html)
-
-### Path
-
-- [curve](https://openhome.cc/eGossip/OpenSCAD/lib2x-curve.html)
-- [bauer_spiral](https://openhome.cc/eGossip/OpenSCAD/lib2x-bauer_spiral.html)
-- [fibonacci_lattice](https://openhome.cc/eGossip/OpenSCAD/lib2x-fibonacci_lattice.html)
-
-### 2D Shape
-- [shape_liquid_splitting](https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_liquid_splitting.html)
-
-### Util
-
-- [util/lerp](https://openhome.cc/eGossip/OpenSCAD/lib2x-lerp.html)
-- [util/choose](https://openhome.cc/eGossip/OpenSCAD/lib2x-choose.html)
-
-### Voxel
-
-- [voxel/vx_bezier](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_bezier.html)
-- [voxel/vx_curve](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_curve.html)
-- [voxel/vx_contour](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_contour.html)
 
 ### Maze
 

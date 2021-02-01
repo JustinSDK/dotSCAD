@@ -11,6 +11,7 @@
 use <__comm__/__polytransversals.scad>;
 
 module polytransversals(transversals) {
+    echo("<b><i>polytransversals</i> is deprecated.</b>");
     polygon(
         __polytransversals(transversals)
     );

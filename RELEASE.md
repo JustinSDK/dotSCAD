@@ -1,5 +1,44 @@
 > Version numbers are based on [Semantic Versioning](https://semver.org/).
 
+# v2.5
+
+Deprecated:
+- `polytransversals`
+- `shape_glued2circles`. Use `shape_liquid_splitting` instead.
+
+New modules and functions:
+
+- 2D Module
+  - [polygon_hull](https://openhome.cc/eGossip/OpenSCAD/lib2x-polygon_hull.html)
+
+- 3D Module
+  - [polyhedron_hull](https://openhome.cc/eGossip/OpenSCAD/lib2x-polyhedron_hull.html)
+
+- Path
+  - [curve](https://openhome.cc/eGossip/OpenSCAD/lib2x-curve.html)
+  - [bauer_spiral](https://openhome.cc/eGossip/OpenSCAD/lib2x-bauer_spiral.html)
+  - [fibonacci_lattice](https://openhome.cc/eGossip/OpenSCAD/lib2x-fibonacci_lattice.html)
+
+- 2D Shape
+  - [shape_liquid_splitting](https://openhome.cc/eGossip/OpenSCAD/lib2x-shape_liquid_splitting.html)
+
+- Util
+  - [util/lerp](https://openhome.cc/eGossip/OpenSCAD/lib2x-lerp.html)
+  - [util/choose](https://openhome.cc/eGossip/OpenSCAD/lib2x-choose.html)
+
+- Voxel
+  - [voxel/vx_bezier](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_bezier.html)
+  - [voxel/vx_curve](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_curve.html)
+  - [voxel/vx_contour](https://openhome.cc/eGossip/OpenSCAD/lib2x-vx_contour.html)
+
+- Maze
+  - [maze/mz_square_cells](https://openhome.cc/eGossip/OpenSCAD/lib2x-mz_square_cells.html)
+  - [maze/mz_square_get](https://openhome.cc/eGossip/OpenSCAD/lib2x-mz_square_get.html)
+  - [maze/mz_square_walls](https://openhome.cc/eGossip/OpenSCAD/lib2x-mz_square_walls.html)
+  - [maze/mz_hex_walls](https://openhome.cc/eGossip/OpenSCAD/lib2x-mz_hex_walls.html)
+  - [maze/mz_square_initialize](https://openhome.cc/eGossip/OpenSCAD/lib2x-mz_square_initialize.html)
+  - [maze/mz_hamiltonian](https://openhome.cc/eGossip/OpenSCAD/lib2x-mz_hamiltonian.html)
+
 # v2.4
 
 Deprecated:
