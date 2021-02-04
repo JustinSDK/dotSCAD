@@ -3,6 +3,9 @@ piece_side_length = 25;
 n = 9; // [1:9]
 spacing = 0.5;
 
+same_height = "YES"; // [YES, NO]
+height = 1;       // workable when same_height is "YES"
+
 module puzzle_piece(side_length, spacing) {
 	$fn = 48;
 
@@ -59,7 +62,7 @@ module puzzle_piece_with_text(side_length, text, spacing) {
 	}
 }
 
-module multiplication_puzzle(n, piece_side_length, spacing) {
+module multiplication_puzzle(n, piece_side_length, spacing, same_height = false, height = 1) {
     $fn = 48;
 	circle_radius = piece_side_length / 10;
 	half_circle_radius = circle_radius / 2;
@@ -71,7 +74,7 @@ module multiplication_puzzle(n, piece_side_length, spacing) {
 			for(y = [0 : n_minus_one]) {
                 pos = [piece_side_length * x, piece_side_length * y];
 			    r = (x + 1) * (y + 1);
-				linear_extrude(r) union() {
+				linear_extrude(same_height ? height : r) union() {
 					translate(pos) 
 						puzzle_piece_with_text(piece_side_length, str(r), spacing);
 						
@@ -93,15 +96,15 @@ module multiplication_puzzle(n, piece_side_length, spacing) {
 
 					}
 				}
-                linear_extrude(r - 0.6) 
+                linear_extrude((same_height ? height : r) - 0.6) 
                 translate(pos) 
                     puzzle_piece(piece_side_length, spacing);
 			}
 		}
 		
-		linear_extrude(n * n) 
+		linear_extrude(same_height ? height : n * n) 
             square(piece_side_length * n - spacing * 1.5);
 	}
 }
 
-multiplication_puzzle(n, piece_side_length, spacing);
+multiplication_puzzle(n, piece_side_length, spacing, same_height == "YES", height);
