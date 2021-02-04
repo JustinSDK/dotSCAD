@@ -3,7 +3,7 @@ piece_side_length = 25;
 n = 9; // [1:9]
 spacing = 0.5;
 
-same_height = "YES"; // [YES, NO]
+same_height = "NO"; // [YES, NO]
 height = 1;       // workable when same_height is "YES"
 
 module puzzle_piece(side_length, spacing) {
