@@ -10,7 +10,7 @@ module 2_edge_wang_tiles(rows, columns, tile_width, mask, seed) {
 		for(y = [0:rows])
 		[
 			for(x = [0:columns]) 
-			let(rs = rands(0, 1, 2, 10 + y * columns + x))
+			let(rs = rands(0, 1, 2, seed + y * columns + x))
 			[round(rs[0]), round(rs[1])]
 		]
 	];
