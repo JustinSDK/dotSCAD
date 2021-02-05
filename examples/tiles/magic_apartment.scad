@@ -74,7 +74,8 @@ module magic_apartment(width, rows, columns, floors, up_down_rand) {
 
 	// tiles, just quick and dirty 
 	module tile(width, edges, up_down_rand) {
-		symbols = ["", "", "", "", ""];
+		// Webdings
+		symbols = ["", "", "", "", "", "", ""];
 		half_w = width / 2;
 		one_third_w = width / 3;
 		one_sixth_w = width / 6;
