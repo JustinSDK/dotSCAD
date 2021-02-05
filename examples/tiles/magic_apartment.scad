@@ -7,10 +7,11 @@ rows = 1;
 columns = 3;
 floors = 2;
 up_down_rand = true;
+people = true;
 
-magic_apartment(width, rows, columns, floors, up_down_rand);
+magic_apartment(width, rows, columns, floors, up_down_rand, people);
 
-module magic_apartment(width, rows, columns, floors, up_down_rand) {
+module magic_apartment(width, rows, columns, floors, up_down_rand, people) {
     // based on wang tiles, 3D version
 	edges = [
 		for(z = [0:floors])
@@ -165,13 +166,15 @@ module magic_apartment(width, rows, columns, floors, up_down_rand) {
 			linear_extrude(t * 3, center = true)
 				rounded_square(size = [one_third_w + double_t, one_third_w + double_t, t], corner_r = 2, center = true, $fn = 24);
 			
-			// people
-			mirror([0, 0, up_down_rand && choose([true, false]) ? 1 : 0])
-			translate([0, 0, t * 1.5])
-			rotate([90, 0, rand(0, 359)])
-			linear_extrude(half_t)
-			scale([1, 2])
-				text(font = "Webdings", choose(symbols), size = width / 5.5, halign = "center");
+			if(people) {
+				// people
+				mirror([0, 0, up_down_rand && choose([true, false]) ? 1 : 0])
+				translate([0, 0, t * 1.5])
+				rotate([90, 0, rand(0, 359)])
+				linear_extrude(half_t)
+				scale([1, 2])
+					text(font = "Webdings", choose(symbols), size = width / 5.5, halign = "center");
+			}
 		}
 	}
 }
