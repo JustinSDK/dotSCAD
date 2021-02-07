@@ -142,7 +142,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [util/sort](https://openhome.cc/eGossip/OpenSCAD/lib3x-sort.html)
 - [util/rand](https://openhome.cc/eGossip/OpenSCAD/lib2x-rand.html)
 - [util/fibseq](https://openhome.cc/eGossip/OpenSCAD/lib2x-fibseq.html)	
-- [util/bsearch](https://openhome.cc/eGossip/OpenSCAD/lib2x-bsearch.html)	
+- [util/bsearch](https://openhome.cc/eGossip/OpenSCAD/lib3x-bsearch.html)	
 - [util/has](https://openhome.cc/eGossip/OpenSCAD/lib2x-has.html)
 - [util/dedup](https://openhome.cc/eGossip/OpenSCAD/lib2x-dedup.html)
 - [util/flat](https://openhome.cc/eGossip/OpenSCAD/lib2x-flat.html)
