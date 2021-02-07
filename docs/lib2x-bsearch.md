@@ -13,7 +13,6 @@ The `bsearch` function is a general-purpose function to find a value or a list o
 
 ## Examples
 
-	use <pixel/px_circle.scad>;
 	use <util/sort.scad>;
 	use <util/bsearch.scad>;
 

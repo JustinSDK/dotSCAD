@@ -11,11 +11,11 @@ Eliminating duplicate copies of repeating vectors. If `lt` has a large number of
 
 ## Examples
 
-    use <pixel/px_circle.scad>;
+    use <voxel/vx_circle.scad>;
     use <util/dedup.scad>;
 
-    pts1 = px_circle(10, filled = true);
-    pts2 = [for(p = px_circle(5, filled = true)) p + [10, 0]];
+    pts1 = vx_circle(10, filled = true);
+    pts2 = [for(p = vx_circle(5, filled = true)) p + [10, 0]];
 
     // simple union
     pts3 = dedup(concat(pts1, pts2));
@@ -26,12 +26,12 @@ Eliminating duplicate copies of repeating vectors. If `lt` has a large number of
 
 ![dedup](images/lib2x-dedup-1.JPG)
 
-    use <pixel/px_circle.scad>;
+    use <voxel/vx_circle.scad>;
     use <util/sort.scad>;
     use <util/dedup.scad>;
 
-    pts1 = px_circle(20, filled = true);
-    pts2 = [for(p = px_circle(10, filled = true)) p + [20, 0]];
+    pts1 = vx_circle(20, filled = true);
+    pts2 = [for(p = vx_circle(10, filled = true)) p + [20, 0]];
 
     sorted_pts = sort(concat(pts1, pts2), by = "vt");
     

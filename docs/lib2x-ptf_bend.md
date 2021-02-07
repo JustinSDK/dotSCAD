@@ -13,7 +13,7 @@ Transforms a point inside a rectangle to a point of an arc.
 
 ## Examples
 
-    use <pixel/px_ascii.scad>;
+    use <voxel/vx_ascii.scad>;
     use <ptf/ptf_bend.scad>;
 
     t = "dotSCAD";
@@ -22,7 +22,7 @@ Transforms a point inside a rectangle to a point of an arc.
     angle = 180;
 
     for(i = [0:len(t) - 1]) {
-        for(pt = px_ascii(t[i], invert = true)) {
+        for(pt = vx_ascii(t[i], invert = true)) {
             bended = ptf_bend(size, pt + [i * 8, 0], radius, angle);
             translate(bended)
                 sphere(0.5, $fn = 24);

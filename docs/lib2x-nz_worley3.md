@@ -17,14 +17,14 @@ It divides the space into grids. The nucleus of each cell is randomly placed in 
 
 ## Examples
 
-    use <pixel/px_sphere.scad>;
+    use <voxel/vx_sphere.scad>;
     use <noise/nz_worley3.scad>;
 
     grid_w = 10;
     dist = "border"; // [euclidean, manhattan, chebyshev, border] 
     seed = 51;
 
-    points = px_sphere(20);
+    points = vx_sphere(20);
 
     cells = [for(p = points) nz_worley3(p[0], p[1], p[2], seed, grid_w, dist)];
 
