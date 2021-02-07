@@ -139,7 +139,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [util/parse_number](https://openhome.cc/eGossip/OpenSCAD/lib2x-parse_number.html)
 - [util/reverse](https://openhome.cc/eGossip/OpenSCAD/lib2x-reverse.html)
 - [util/slice](https://openhome.cc/eGossip/OpenSCAD/lib2x-slice.html)
-- [util/sort](https://openhome.cc/eGossip/OpenSCAD/lib2x-sort.html)
+- [util/sort](https://openhome.cc/eGossip/OpenSCAD/lib3x-sort.html)
 - [util/rand](https://openhome.cc/eGossip/OpenSCAD/lib2x-rand.html)
 - [util/fibseq](https://openhome.cc/eGossip/OpenSCAD/lib2x-fibseq.html)	
 - [util/bsearch](https://openhome.cc/eGossip/OpenSCAD/lib2x-bsearch.html)	
