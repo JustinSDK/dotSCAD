@@ -1,4 +1,3 @@
-use <unittest.scad>;
 use <util/sort.scad>;
 
 module test_sort() {
