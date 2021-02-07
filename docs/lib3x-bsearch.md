@@ -7,7 +7,7 @@ The `bsearch` function is a general-purpose function to search a value in a list
 ## Parameters
 
 - `sorted` : The sorted list.
-- `target` : The target vector or a function literal. 
+- `target` : The target vector or a function literal that returns a negative integer, zero, or a positive integer as the element is less than, equal to, or greater than the value you want to search.
 
 ## Examples
 
