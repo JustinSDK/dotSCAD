@@ -26,3 +26,13 @@ function _sort_by(lt, by, idx) =
         i = dict[search(by == "idx" ? "i" : by, dict)[0]][1]
     )
     _sort_by_idx(lt, i);
+
+function _sort_by_comp(lt, comp) = 
+    let(leng = len(lt))
+    leng <= 1 ? lt : 
+        let(
+            pivot = lt[0],
+            before = [for(j = 1; j < leng; j = j + 1) if(comp(lt[j], pivot) < 0) lt[j]],
+            after =  [for(j = 1; j < leng; j = j + 1) if(comp(lt[j], pivot) >= 0) lt[j]]
+        )
+        concat(_sort_by_comp(before, comp), [pivot], _sort_by_comp(after, comp));
