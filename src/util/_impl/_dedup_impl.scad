@@ -1,13 +1,31 @@
-use <../has.scad>;
-
-function _dedup_sorted(lt, leng) =
+function _dedup_sorted(lt, leng, eq) =
     leng == 0 ? lt : 
-    concat(
-        [lt[0]],
-        [for(i = [1:leng - 1]) if(lt[i] != lt[i - 1]) lt[i]]
-    );
+        is_function(eq) ?      
+            concat(
+                [lt[0]],
+                [for(i = [1:leng - 1]) if(!eq(lt[i], lt[i - 1])) lt[i]]
+            ) :
+            concat(
+                [lt[0]],
+                [for(i = [1:leng - 1]) if(lt[i] != lt[i - 1]) lt[i]]
+            );  
 
-function _dedup(src, dest, leng, i = 0) = 
+function _some(dest, assert_func, leng, i = 0) = 
+    i == leng ? false :
+        assert_func(dest[i]) ? true : _some(dest, assert_func, leng, i + 1);
+
+function some(dest, assert_func) = _some(dest, assert_func, len(dest));
+
+function _dedup_vt(src, dest, leng, i = 0) = 
     i == leng ? dest :
-    has(dest, src[i]) ? _dedup(src, dest, leng, i + 1) : 
-                        _dedup(src, concat(dest, [src[i]]), leng, i + 1);
+    // src[i] in dest ?
+    search([src[i]], dest) != [[]] ? _dedup_vt(src, dest, leng, i + 1) : 
+                                     _dedup_vt(src, concat(dest, [src[i]]), leng, i + 1);
+
+function _dedup_eq(src, dest, eq, leng, i = 0) = 
+    i == leng ? dest :
+    some(dest, function(el) eq(el, src[i])) ? _dedup_eq(src, dest, eq, leng, i + 1) : 
+                                                 _dedup_eq(src, concat(dest, [src[i]]), eq, leng, i + 1);
+
+function _dedup(src, dest, leng, eq) = 
+    is_function(eq) ? _dedup_eq(src, dest, eq, leng) : _dedup_vt(src, dest, leng);

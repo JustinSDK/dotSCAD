@@ -144,7 +144,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [util/fibseq](https://openhome.cc/eGossip/OpenSCAD/lib2x-fibseq.html)	
 - [util/bsearch](https://openhome.cc/eGossip/OpenSCAD/lib3x-bsearch.html)	
 - [util/has](https://openhome.cc/eGossip/OpenSCAD/lib2x-has.html)
-- [util/dedup](https://openhome.cc/eGossip/OpenSCAD/lib2x-dedup.html)
+- [util/dedup](https://openhome.cc/eGossip/OpenSCAD/lib3x-dedup.html)
 - [util/flat](https://openhome.cc/eGossip/OpenSCAD/lib2x-flat.html)
 - [util/sum](https://openhome.cc/eGossip/OpenSCAD/lib2x-sum.html)
 - [util/zip](https://openhome.cc/eGossip/OpenSCAD/lib2x-zip.html)
