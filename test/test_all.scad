@@ -69,6 +69,7 @@ include <util/test_reverse.scad>;
 include <util/test_fibseq.scad>;
 include <util/test_bsearch.scad>;
 include <util/test_choose.scad>;
+include <util/test_dedup.scad>;
 
 // Voxel
 include <voxel/test_vx_line.scad>;
