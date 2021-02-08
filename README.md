@@ -149,7 +149,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [util/sum](https://openhome.cc/eGossip/OpenSCAD/lib2x-sum.html)
 - [util/zip](https://openhome.cc/eGossip/OpenSCAD/lib2x-zip.html)
 - [util/lerp](https://openhome.cc/eGossip/OpenSCAD/lib2x-lerp.html)
-- [util/choose](https://openhome.cc/eGossip/OpenSCAD/lib2x-choose.html)
+- [util/choose](https://openhome.cc/eGossip/OpenSCAD/lib3x-choose.html)
 
 ### Matrix
 - [matrix/m_cumulate](https://openhome.cc/eGossip/OpenSCAD/lib2x-m_cumulate.html)	
