@@ -1,6 +1,7 @@
-use <__comm__/__angy_angz.scad>;
-
 function spherical_coordinate(point) = 
-    let(ayz = __angy_angz([0, 0, 0], point))
-    // mathematics, r, theta, phi 
-    [norm(point), ayz[1], ayz[0]];
+    // mathematics [r, theta, phi]
+    [
+        norm(point), 
+        atan2(point[1], point[0]), 
+        atan2(point[2], sqrt(point[0]^2 + point[1]^2))
+    ];
