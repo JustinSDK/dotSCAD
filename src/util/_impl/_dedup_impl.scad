@@ -1,3 +1,5 @@
+use <../some.scad> ;
+
 function _dedup_sorted(lt, leng, eq) =
     leng == 0 ? lt : 
         is_function(eq) ?      
@@ -9,12 +11,6 @@ function _dedup_sorted(lt, leng, eq) =
                 [lt[0]],
                 [for(i = [1:leng - 1]) if(lt[i] != lt[i - 1]) lt[i]]
             );  
-
-function _some(dest, assert_func, leng, i = 0) = 
-    i == leng ? false :
-        assert_func(dest[i]) ? true : _some(dest, assert_func, leng, i + 1);
-
-function some(dest, assert_func) = _some(dest, assert_func, len(dest));
 
 function _dedup_vt(src, dest, leng, i = 0) = 
     i == leng ? dest :
