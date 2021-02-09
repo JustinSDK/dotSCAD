@@ -10,4 +10,5 @@ dotSCAD 3.0 Dev
 
 New modules/functions
 
-- `some`
+- `spherical_coordinate`
+- `util/some`
