@@ -11,8 +11,10 @@
 use <util/reverse.scad>;
 use <polyline3d.scad>;
 use <hull_polyline3d.scad>;
+use <path_extrude.scad>;
+use <shape_circle.scad>;
 
-module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
+module function_grapher(points, thickness, style = "FACES") {
 
     rows = len(points);
     columns = len(points[0]);
@@ -221,59 +223,12 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
        hull_pts(tri1);
        hull_pts(tri2);
     }    
-
-    module tri_to_graph(twintri_lt) {
-        if(style == "LINES") {
-            if(slicing == "SLASH") {
-                for(twintri = twintri_lt) {
-                    tri_to_slash_lines(twintri[0], twintri[1]);
-                }
-            }
-            else {
-                for(twintri = twintri_lt) {
-                    tri_to_backslash_lines(twintri[0], twintri[1]);
-                }                
-            }
-        } else if(style == "HULL_FACES") {  // Warning: May be very slow!!
-            for(twintri = twintri_lt) {
-                tri_to_hull_faces(twintri[0], twintri[1]);
-            }                  
-        } else if(style == "HULL_LINES") {  // Warning: May be very slow!!
-            if(slicing == "SLASH") {
-                for(twintri = twintri_lt) {
-                    tri_to_slash_hull_lines(twintri[0], twintri[1]);
-                }                  
-            }
-            else {
-                for(twintri = twintri_lt) {
-                    tri_to_backslash_hull_lines(twintri[0], twintri[1]);
-                }                    
-            }
-        }
-    }
-        
     
     if(style == "FACES") {
         faces();
-    } else {
-        twintri_lt = slicing == "SLASH" ? 
-            [
-                for(yi = yi_range)
-                    for(xi = xi_range)
-                        [
-                            [
-                                points[yi][xi], 
-                                points[yi][xi + 1], 
-                                points[yi + 1][xi + 1]
-                            ],
-                            [
-                                points[yi][xi], 
-                                points[yi + 1][xi + 1], 
-                                points[yi + 1][xi]                            
-                            ]
-                        ]
-            ]
-            :
+    }
+    else if(style == "HULL_FACES") {
+        twintri_lt = 
             [
                 for(yi = yi_range)
                     for(xi = xi_range)
@@ -291,7 +246,44 @@ module function_grapher(points, thickness, style = "FACES", slicing = "SLASH") {
                         ]
             ];
         
-        tri_to_graph(twintri_lt);
+        for(twintri = twintri_lt) {
+            tri_to_hull_faces(twintri[0], twintri[1]);
+        }  
+    }
+    else {
+        if(style == "LINES") {
+            for(row = points) {
+                polyline3d(row, thickness);
+            }
+
+            for(x = [0:columns - 1]) {
+                polyline3d([for(y = [0:rows - 1]) points[y][x]], thickness);
+            }
+
+            for(c = [0:columns - 1]) {
+                polyline3d([for(r = [0:rows - 1 - c]) points[r + c][r]], thickness);
+            }
+            for(c = [0:columns - 1]) {
+                polyline3d([for(r = [0:rows - 1 - c]) points[r][r + c]], thickness);
+            }
+        }
+        else {
+            for(row = points) {
+                hull_polyline3d(row, thickness);
+            }
+
+            for(x = [0:columns - 1]) {
+                hull_polyline3d([for(y = [0:rows - 1]) points[y][x]], thickness);
+            }
+
+            for(c = [0:columns - 1]) {
+                hull_polyline3d([for(r = [0:rows - 1 - c]) points[r + c][r]], thickness);
+            }
+            
+            for(c = [0:columns - 1]) {
+                hull_polyline3d([for(r = [0:rows - 1 - c]) points[r][r + c]], thickness);
+            }
+        }
     }
 }
 
