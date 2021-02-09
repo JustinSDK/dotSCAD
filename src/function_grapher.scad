@@ -192,19 +192,19 @@ module function_grapher(points, thickness, style = "FACES") {
         if(style == "LINES") {
             section = shape_circle(radius = half_thickness);
             for(row = points) {
-                path_extrude(section, row, method = "AXIS_ANGLE");
+                path_extrude(section, row);
             }
 
             for(x = [0:columns - 1]) {
-                path_extrude(section, [for(y = [0:rows - 1]) points[y][x]], method = "AXIS_ANGLE");
+                path_extrude(section, [for(y = [0:rows - 1]) points[y][x]]);
             }
 
             for(c = [0:columns - 2]) {
-                path_extrude(section, [for(r = [0:rows - 1 - c]) points[r + c][r]], method = "AXIS_ANGLE");
+                path_extrude(section, [for(r = [0:rows - 1 - c]) points[r + c][r]]);
             }
 
             for(c = [0:columns - 2]) {
-                path_extrude(section, [for(r = [0:rows - 1 - c]) points[r][r + c]], method = "AXIS_ANGLE");
+                path_extrude(section, [for(r = [0:rows - 1 - c]) points[r][r + c]]);
             }
         }
         else {
