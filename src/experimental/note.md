@@ -10,6 +10,8 @@ dotSCAD 3.0 Dev
 
 New modules/functions
 
+- `degrees`
+- `radians`
 - `angle_between`
 - `polar_coordinate`
 - `spherical_coordinate`

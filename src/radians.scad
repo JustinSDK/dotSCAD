@@ -1,0 +1,1 @@
+function radians(degrees) = PI / 180 * degrees;
