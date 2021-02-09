@@ -10,5 +10,6 @@ dotSCAD 3.0 Dev
 
 New modules/functions
 
+- `angles_between`
 - `spherical_coordinate`
 - `util/some`
