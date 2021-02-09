@@ -1,0 +1,1 @@
+function angles_between(vt1, vt2) = acos((vt1 * vt2) / (norm(vt1) * norm(vt2)));
