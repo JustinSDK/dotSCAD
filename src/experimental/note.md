@@ -12,4 +12,6 @@ New modules/functions
 
 - `angles_between`
 - `spherical_coordinate`
+- `util/every`
 - `util/some`
+
