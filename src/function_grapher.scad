@@ -4,12 +4,11 @@
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *
-* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-function_grapher.html
+* @see https://openhome.cc/eGossip/OpenSCAD/lib3x-function_grapher.html
 *
 **/ 
 
 use <util/reverse.scad>;
-use <polyline3d.scad>;
 use <hull_polyline3d.scad>;
 use <path_extrude.scad>;
 use <shape_circle.scad>;
@@ -21,6 +20,8 @@ module function_grapher(points, thickness, style = "FACES") {
 
     yi_range = [0:rows - 2];
     xi_range =  [0:columns - 2];
+
+    half_thickness = thickness / 2;
 
     // Increasing $fn will be slow when you use "LINES", "HULL_FACES" or "HULL_LINES".
     
@@ -40,7 +41,7 @@ module function_grapher(points, thickness, style = "FACES") {
         
         leng_pts = len(top_pts);
                 
-        top_tri_faces1 = slicing == "SLASH" ? [
+        top_tri_faces1 = [
             for(yi = yi_range) 
                 for(xi = xi_range)
                     [
@@ -48,31 +49,15 @@ module function_grapher(points, thickness, style = "FACES") {
                         xy_to_index(xi + 1, yi + 1, columns),
                         xy_to_index(xi + 1, yi, columns)
                     ]    
-        ] : [
-            for(yi = yi_range)
-                for(xi = xi_range)
-                    [
-                        xy_to_index(xi, yi, columns),
-                        xy_to_index(xi, yi + 1, columns),
-                        xy_to_index(xi + 1, yi, columns)
-                    ]    
         ];
 
-        top_tri_faces2 = slicing == "SLASH" ? [
+        top_tri_faces2 = [
             for(yi = yi_range) 
                 for(xi = xi_range)
                     [
                         xy_to_index(xi, yi, columns),
                         xy_to_index(xi, yi + 1, columns),
                         xy_to_index(xi + 1, yi + 1, columns)
-                    ]    
-        ] : [
-            for(yi = yi_range) 
-                for(xi = xi_range)
-                    [
-                        xy_to_index(xi, yi + 1, columns),
-                        xy_to_index(xi + 1, yi + 1, columns),
-                        xy_to_index(xi + 1, yi, columns)
                     ]    
         ];        
 
@@ -164,54 +149,7 @@ module function_grapher(points, thickness, style = "FACES") {
         test_function_grapher_faces(pts, face_idxs);
     }
 
-    module tri_to_slash_lines(tri1, tri2) {
-        polyline3d(concat(tri1, [tri1[0]]), thickness);
-        if(tri2[0][0] == points[0][0][0]) {
-            polyline3d([tri2[0], tri2[2]], thickness);
-        }
-
-        if(tri2[1][1] == points[rows - 1][0][1]) {
-            polyline3d([tri2[1], tri2[2]], thickness);
-        }
-    }
-
-    module tri_to_backslash_lines(tri1, tri2) {
-        polyline3d(concat(tri1, [tri1[0]]), thickness);
-        if(tri2[1][0] == points[0][columns - 1][0]) {
-            polyline3d([tri2[1], tri2[2]], thickness);
-        }
-
-        if(tri2[2][1] == points[rows - 1][columns - 1][1]) {
-            polyline3d([tri2[0], tri2[2]], thickness);
-        }
-    }
-
-    module tri_to_slash_hull_lines(tri1, tri2) {
-        hull_polyline3d(concat(tri1, [tri1[0]]), thickness);
-
-        if(tri2[0][0] == points[0][0][0]) {
-            hull_polyline3d([tri2[0], tri2[2]], thickness);
-        }
-
-        if(tri2[1][1] == points[rows - 1][0][1]) {
-            hull_polyline3d([tri2[1], tri2[2]], thickness);
-        }
-    }  
-
-    module tri_to_backslash_hull_lines(tri1, tri2) {
-        hull_polyline3d(concat(tri1, [tri1[0]]), thickness);
-
-        if(tri2[1][0] == points[0][columns - 1][0]) {
-            hull_polyline3d([tri2[1], tri2[2]], thickness);
-        }
-
-        if(tri2[2][1] == points[rows - 1][columns - 1][1]) {
-            hull_polyline3d([tri2[0], tri2[2]], thickness);
-        }
-    }        
-
     module hull_pts(tri) {
-       half_thickness = thickness / 2;
        hull() {
            translate(tri[0]) sphere(half_thickness);
            translate(tri[1]) sphere(half_thickness);
@@ -252,19 +190,21 @@ module function_grapher(points, thickness, style = "FACES") {
     }
     else {
         if(style == "LINES") {
+            section = shape_circle(radius = half_thickness);
             for(row = points) {
-                polyline3d(row, thickness);
+                path_extrude(section, row, method = "AXIS_ANGLE");
             }
 
             for(x = [0:columns - 1]) {
-                polyline3d([for(y = [0:rows - 1]) points[y][x]], thickness);
+                path_extrude(section, [for(y = [0:rows - 1]) points[y][x]], method = "AXIS_ANGLE");
             }
 
-            for(c = [0:columns - 1]) {
-                polyline3d([for(r = [0:rows - 1 - c]) points[r + c][r]], thickness);
+            for(c = [0:columns - 2]) {
+                path_extrude(section, [for(r = [0:rows - 1 - c]) points[r + c][r]], method = "AXIS_ANGLE");
             }
-            for(c = [0:columns - 1]) {
-                polyline3d([for(r = [0:rows - 1 - c]) points[r][r + c]], thickness);
+
+            for(c = [0:columns - 2]) {
+                path_extrude(section, [for(r = [0:rows - 1 - c]) points[r][r + c]], method = "AXIS_ANGLE");
             }
         }
         else {
@@ -276,11 +216,11 @@ module function_grapher(points, thickness, style = "FACES") {
                 hull_polyline3d([for(y = [0:rows - 1]) points[y][x]], thickness);
             }
 
-            for(c = [0:columns - 1]) {
+            for(c = [0:columns - 2]) {
                 hull_polyline3d([for(r = [0:rows - 1 - c]) points[r + c][r]], thickness);
             }
             
-            for(c = [0:columns - 1]) {
+            for(c = [0:columns - 2]) {
                 hull_polyline3d([for(r = [0:rows - 1 - c]) points[r][r + c]], thickness);
             }
         }
