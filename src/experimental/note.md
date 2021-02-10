@@ -19,4 +19,5 @@ New modules/functions
 - `util/every`
 - `util/some`
 
+- delete `m_cumulate`
 - delete `trianglate`, use `tri_ear_clipping`?
