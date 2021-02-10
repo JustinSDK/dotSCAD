@@ -14,5 +14,5 @@ Returns the part of the string from `begin` to `end`, or to the `end` of the str
 
     use <util/sub_str.scad>;
     
-	echo(sub_str("helloworld", 0, 5)); // ECHO: "hello"
-	echo(sub_str("helloworld", 5));    // ECHO: "world"
+	assert(sub_str("helloworld", 0, 5) == "hello");
+	assert(sub_str("helloworld", 5) == "world"); 
