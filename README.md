@@ -153,7 +153,6 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [util/zip](https://openhome.cc/eGossip/OpenSCAD/lib2x-zip.html)
 
 ### Matrix
-- [matrix/m_cumulate](https://openhome.cc/eGossip/OpenSCAD/lib2x-m_cumulate.html)	
 - [matrix/m_determinant](https://openhome.cc/eGossip/OpenSCAD/lib2x-m_determinant.html)
 - [matrix/m_mirror](https://openhome.cc/eGossip/OpenSCAD/lib2x-m_mirror.html)
 - [matrix/m_rotation](https://openhome.cc/eGossip/OpenSCAD/lib2x-m_rotation.html)
