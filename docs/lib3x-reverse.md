@@ -12,5 +12,5 @@ Reverse a list.
     
 	use <util/reverse.scad>;
 	
-	echo(reverse([1, 2, 3]));  // ECHO: [3, 2, 1]
+	assert(reverse([1, 2, 3]) == [3, 2, 1]); 
 
