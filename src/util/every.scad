@@ -1,3 +1,3 @@
 use <_impl/_every.scad>;
 
-function every(lt, assert_func) = _every(lt, assert_func, len(lt));
+function every(lt, test) = _every(lt, test, len(lt));

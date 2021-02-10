@@ -1,3 +1,3 @@
 use <_impl/_some.scad>;
 
-function some(lt, assert_func) = _some(lt, assert_func, len(lt));
+function some(lt, test) = _some(lt, test, len(lt));

@@ -1,3 +1,3 @@
-function _some(lt, assert_func, leng, i = 0) = 
+function _some(lt, test, leng, i = 0) = 
     i == leng ? false :
-        assert_func(lt[i]) ? true : _some(lt, assert_func, leng, i + 1);
+        test(lt[i]) ? true : _some(lt, test, leng, i + 1);
