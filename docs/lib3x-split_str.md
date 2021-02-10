@@ -13,5 +13,5 @@ Splits the given string around matches of the given delimiting character.
     
 	use <util/split_str.scad>;
 	
-	echo(split_str("hello,world", ","));  // ECHO: ["hello", "world"]
+	assert(split_str("hello,world", ",") == ["hello", "world"]);
 
