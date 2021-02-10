@@ -138,7 +138,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [util/dedup](https://openhome.cc/eGossip/OpenSCAD/lib3x-dedup.html)
 - [util/every](https://openhome.cc/eGossip/OpenSCAD/lib3x-every.html)
 - [util/fibseq](https://openhome.cc/eGossip/OpenSCAD/lib3x-fibseq.html)	
-- [util/flat](https://openhome.cc/eGossip/OpenSCAD/lib2x-flat.html)
+- [util/flat](https://openhome.cc/eGossip/OpenSCAD/lib3x-flat.html)
 - [util/has](https://openhome.cc/eGossip/OpenSCAD/lib2x-has.html)
 - [util/lerp](https://openhome.cc/eGossip/OpenSCAD/lib2x-lerp.html)
 - [util/parse_number](https://openhome.cc/eGossip/OpenSCAD/lib2x-parse_number.html)

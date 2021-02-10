@@ -7,7 +7,7 @@ returns a new list with all sub-list elements concatenated into it recursively u
 ## Parameters
 
 - `lt` : The original list.
-- `depth` : Defaults to 1. The depth level specifying how deep a nested list should be flattened. 
+- `depth` : Default to 1. The depth level specifying how deep a nested list should be flattened. 
 
 ## Examples
 
