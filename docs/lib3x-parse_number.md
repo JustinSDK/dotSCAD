@@ -12,5 +12,5 @@ Parses the string argument as an number.
 
     use <util/parse_number.scad>;
     
-	echo(parse_number("10") + 1);    // ECHO: 11
-	echo(parse_number("-1.1") + 1);  // ECHO: -0.1
+	assert((parse_number("10") + 1) == 11);
+	assert((parse_number("-1.1") + 1) == -0.1);

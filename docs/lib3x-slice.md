@@ -14,5 +14,5 @@ Returns a list selected from `begin` to `end`, or to the `end` of the list (`end
 
     use <util/slice.scad>;
     
-	echo(slice([for(c = "helloworld") c], 0, 5)); // ECHO: ["h", "e", "l", "l", "o"]
-	echo(slice([for(c = "helloworld") c], 5));    // ECHO: ["w", "o", "r", "l", "d"]
+	assert(slice([for(c = "helloworld") c], 0, 5) == ["h", "e", "l", "l", "o"]);
+	assert(slice([for(c = "helloworld") c], 5) == ["w", "o", "r", "l", "d"]);
