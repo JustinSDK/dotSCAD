@@ -21,7 +21,6 @@ include <test_ptf_rotate.scad>;
 include <test_cross_sections.scad>;
 include <test_paths2sections.scad>;
 include <test_in_polyline.scad>;
-include <test_triangulate.scad>;
 include <test_trim_shape.scad>;
 include <test_midpt_smooth.scad>;
 
