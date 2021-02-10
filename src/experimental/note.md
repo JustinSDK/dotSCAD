@@ -1,6 +1,6 @@
 to_do:
 
-- deprecate `trianglate`, use `tri_ear_clipping`.
+
 
 dotSCAD 3.0 Dev
 
@@ -19,3 +19,4 @@ New modules/functions
 - `util/every`
 - `util/some`
 
+- delete `trianglate`, use `tri_ear_clipping`?

@@ -79,7 +79,6 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [in_shape](https://openhome.cc/eGossip/OpenSCAD/lib2x-in_shape.html)
 - [lines_intersection](https://openhome.cc/eGossip/OpenSCAD/lib2x-lines_intersection.html)	
 - [trim_shape](https://openhome.cc/eGossip/OpenSCAD/lib2x-trim_shape.html)
-- [triangulate](https://openhome.cc/eGossip/OpenSCAD/lib2x-triangulate.html)
 
 ### 2D/3D Function
 - [bezier_surface](https://openhome.cc/eGossip/OpenSCAD/lib2x-bezier_surface.html)	
