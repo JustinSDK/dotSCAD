@@ -82,7 +82,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 
 ### 2D/3D Function
 - [bezier_surface](https://openhome.cc/eGossip/OpenSCAD/lib2x-bezier_surface.html)	
-- [bezier_smooth](https://openhome.cc/eGossip/OpenSCAD/lib2x-bezier_smooth.html)	
+- [bezier_smooth](https://openhome.cc/eGossip/OpenSCAD/lib3x-bezier_smooth.html)	
 - [cross_sections](https://openhome.cc/eGossip/OpenSCAD/lib2x-cross_sections.html)
 - [in_polyline](https://openhome.cc/eGossip/OpenSCAD/lib2x-in_polyline.html)
 - [paths2sections](https://openhome.cc/eGossip/OpenSCAD/lib2x-paths2sections.html)
