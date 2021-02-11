@@ -131,11 +131,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [path_extrude](https://openhome.cc/eGossip/OpenSCAD/lib2x-path_extrude.html)
 - [ring_extrude](https://openhome.cc/eGossip/OpenSCAD/lib2x-ring_extrude.html)
 - [sphere_spiral_extrude](https://openhome.cc/eGossip/OpenSCAD/lib2x-sphere_spiral_extrude.html)
-- `util/degrees`
-- `util/radians`
-- `util/angle_between`
-- `util/polar_coordinate`
-- `util/spherical_coordinate`
+
 ### Util
 - util/angle_between
 - [util/bsearch](https://openhome.cc/eGossip/OpenSCAD/lib3x-bsearch.html)	
