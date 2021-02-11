@@ -12,11 +12,11 @@ dotSCAD 3.0 Dev
 
 New modules/functions
 
-- `degrees`
-- `radians`
-- `angle_between`
-- `polar_coordinate`
-- `spherical_coordinate`
+- `util/degrees`
+- `util/radians`
+- `util/angle_between`
+- `util/polar_coordinate`
+- `util/spherical_coordinate`
 - `util/every`
 - `util/some`
 
