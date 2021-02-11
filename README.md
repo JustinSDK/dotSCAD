@@ -149,7 +149,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [util/sort](https://openhome.cc/eGossip/OpenSCAD/lib3x-sort.html)
 - [util/sub_str](https://openhome.cc/eGossip/OpenSCAD/lib3x-sub_str.html)
 - [util/split_str](https://openhome.cc/eGossip/OpenSCAD/lib3x-split_str.html)
-- [util/sum](https://openhome.cc/eGossip/OpenSCAD/lib2x-sum.html)
+- [util/sum](https://openhome.cc/eGossip/OpenSCAD/lib3x-sum.html)
 - [util/zip](https://openhome.cc/eGossip/OpenSCAD/lib2x-zip.html)
 
 ### Matrix
