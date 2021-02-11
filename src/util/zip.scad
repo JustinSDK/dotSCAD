@@ -10,4 +10,4 @@
 
 use <_impl/_zip_impl.scad>;
 
-function zip(lts, zipper) = is_function(zipper) ? _zipAll(lts, zipper) : _zipAll(lts);
+function zip(lts, head) = is_function(head) ? _zipAll(lts, head) : _zipAll(lts);
