@@ -6,7 +6,8 @@ Make a list that aggregates elements from each of the lists. Returns a list of l
 
 ## Parameters
 
-- `lts` : a list of lists.
+- `lts` : A list of lists.
+- `head` : Rather than listing the elements, the elements are combined using the function. **Since:** 3.0
 
 ## Examples
 
@@ -17,3 +18,6 @@ Make a list that aggregates elements from each of the lists. Returns a list of l
     zs = [2.5, 7.5, 12.4];
 
     assert(zip([xs, ys, zs]) == [[10, 5, 2.5], [20, 15, 7.5], [30, 25, 12.4]]);
+
+    sum_up = function(elems) sum(elems);
+    assert(zip([xs, ys, zs], sum_up) == [17.5, 42.5, 67.4]);
