@@ -10,5 +10,5 @@
 
 use <_impl/_bezier_smooth_impl.scad>;
     
-function bezier_smooth(path_pts, round_d, t_step = 0.1, closed = false) =
-    _bezier_smooth_impl(path_pts, round_d, t_step, closed);
+function bezier_smooth(path_pts, round_d, t_step = 0.1, closed = false, angle_threshold = 0) =
+    _bezier_smooth_impl(path_pts, round_d, t_step, closed, angle_threshold);

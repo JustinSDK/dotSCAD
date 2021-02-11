@@ -39,5 +39,21 @@ module test_bezier_smooth_closed() {
     assertEqualPoints(expected, actual);
 }
 
+module test_bezier_smooth_angle_threshold() {
+    echo("==== test_bezier_smooth_angle_threshold ====");
+
+    round_d = 15;
+
+    path_pts = [
+        [0, 0, 0],
+        [0, 40, 0],
+        [0, 60, 0],
+        [0, 70, 1]
+    ];
+
+    assert(path_pts == bezier_smooth(path_pts, round_d, angle_threshold = 15));
+}
+
 test_bezier_smooth_no_closed();
 test_bezier_smooth_closed();
+test_bezier_smooth_angle_threshold();
