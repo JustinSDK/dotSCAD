@@ -78,6 +78,3 @@ include <voxel/test_vx_circle.scad>;
 include <voxel/test_vx_cylinder.scad>;
 include <voxel/test_vx_sphere.scad>;
 include <voxel/test_vx_polygon.scad>;
-
-// Matrix
-include <matrix/test_m_cumulate.scad>;
