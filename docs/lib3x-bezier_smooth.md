@@ -8,6 +8,7 @@ Given a path, the `bezier_smooth` function uses bazier curves to smooth all corn
 - `round_d` : Used to create the other two control points at the corner.
 - `t_step` : The distance between two points of the Bézier path at the corner. It defaults to 0.1.
 - `closed` : It defaults to `false`. If you have a closed path, set it to `true`.
+- `angle_threshold` : Default to 0. If the angle between two line segments is bigger than `angle_threshold`, smooth those two segments. **Since:** 3.0
 
 ## Examples
 
@@ -34,7 +35,7 @@ Given a path, the `bezier_smooth` function uses bazier curves to smooth all corn
 		smoothed_path_pts, width
 	);
 
-![bezier_smooth](images/lib2x-bezier_smooth-1.JPG)
+![bezier_smooth](images/lib3x-bezier_smooth-1.JPG)
 
 	use <bezier_smooth.scad>;
 
@@ -52,4 +53,4 @@ Given a path, the `bezier_smooth` function uses bazier curves to smooth all corn
 
 	translate([50, 0, 0]) polygon(smoothed_path_pts);
 
-![bezier_smooth](images/lib2x-bezier_smooth-2.JPG)
+![bezier_smooth](images/lib3x-bezier_smooth-2.JPG)
