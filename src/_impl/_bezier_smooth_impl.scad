@@ -2,6 +2,7 @@ use <../__comm__/__to3d.scad>;
 use <../__comm__/__to2d.scad>;
 use <../__comm__/__angy_angz.scad>;
 use <../bezier_curve.scad>;
+use <../angle_between.scad>;
 
 function _corner_ctrl_pts(round_d, p1, p2, p3) =
     let(
@@ -24,32 +25,34 @@ function _corner_ctrl_pts(round_d, p1, p2, p3) =
         p2 - [dx2, dy2, dz2]
     ];
     
-    
 function _bezier_corner(round_d, t_step, p1, p2, p3) =
     bezier_curve(t_step, _corner_ctrl_pts(round_d, p1, p2, p3));
 
-function _recursive_bezier_smooth(pts, round_d, t_step, leng) =
+function _recursive_bezier_smooth(pts, round_d, t_step, leng, angle_threshold) =
     let(end_i = leng - 2)
     [
         for(i = 0; i < end_i; i = i + 1) 
-            each _bezier_corner(round_d, t_step, pts[i], pts[i + 1], pts[i + 2])
+            each 
+                angle_between(pts[i] - pts[i + 1], pts[i + 1] - pts[i + 2]) > angle_threshold  ? 
+                    _bezier_corner(round_d, t_step, pts[i], pts[i + 1], pts[i + 2]) :
+                    [pts[i + 1]]
     ];
 
-function _bezier_smooth_impl(path_pts, round_d, t_step, closed) =
+function _bezier_smooth_impl(path_pts, round_d, t_step, closed, angle_threshold) =
     let(
         pts = len(path_pts[0]) == 3 ? path_pts : [for(p = path_pts) __to3d(p)],
         leng = len(pts),
-        middle_pts = _recursive_bezier_smooth(pts, round_d, t_step, leng),
+        middle_pts = _recursive_bezier_smooth(pts, round_d, t_step, leng, angle_threshold),
         pth_pts = closed ?
             concat(
                 _recursive_bezier_smooth(
                     [pts[leng - 1], pts[0], pts[1]],
-                    round_d, t_step, 3
+                    round_d, t_step, 3, angle_threshold
                 ),
                 middle_pts,
                 _recursive_bezier_smooth(
                     [pts[leng - 2], pts[leng - 1], pts[0]],
-                    round_d, t_step, 3
+                    round_d, t_step, 3, angle_threshold
                 )  
             ) :
             concat(
