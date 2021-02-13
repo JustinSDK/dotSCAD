@@ -6,7 +6,7 @@ Converts from Cartesian to Polar coordinates. It returns `[radius, theta]`.
 
 ## Parameters
 
-- `point` : The Cartesian coordinates (also called rectangular coordinates) of a point.
+- `point` : The Cartesian coordinates of a point.
 
 ## Examples
 
