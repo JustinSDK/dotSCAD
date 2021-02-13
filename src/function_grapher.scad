@@ -13,7 +13,7 @@ use <hull_polyline3d.scad>;
 use <path_extrude.scad>;
 use <shape_circle.scad>;
 
-module function_grapher(points, thickness, style = "FACES") {
+module function_grapher(points, thickness = 1, style = "FACES") {
 
     rows = len(points);
     columns = len(points[0]);
