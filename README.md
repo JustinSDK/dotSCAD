@@ -44,8 +44,8 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 ## Documentation
 
 ### 2D Module
-- [arc](https://openhome.cc/eGossip/OpenSCAD/lib2x-arc.html)
-- [hexagons](https://openhome.cc/eGossip/OpenSCAD/lib2x-hexagons.html)
+- [arc](https://openhome.cc/eGossip/OpenSCAD/lib3x-arc.html)
+- [hexagons](https://openhome.cc/eGossip/OpenSCAD/lib3x-hexagons.html)
 - [hull_polyline2d](https://openhome.cc/eGossip/OpenSCAD/lib2x-hull_polyline2d.html)
 - [line2d](https://openhome.cc/eGossip/OpenSCAD/lib2x-line2d.html)
 - [multi_line_text](https://openhome.cc/eGossip/OpenSCAD/lib2x-multi_line_text.html)
