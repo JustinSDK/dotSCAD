@@ -144,7 +144,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [util/has](https://openhome.cc/eGossip/OpenSCAD/lib3x-has.html)
 - [util/lerp](https://openhome.cc/eGossip/OpenSCAD/lib3x-lerp.html)
 - [util/parse_number](https://openhome.cc/eGossip/OpenSCAD/lib3x-parse_number.html)
-- util/polar_coordinate
+- [util/polar_coordinate](https://openhome.cc/eGossip/OpenSCAD/lib3x-polar_coordinate.html)
 - [util/radians](https://openhome.cc/eGossip/OpenSCAD/lib3x-radians.html)
 - [util/rand](https://openhome.cc/eGossip/OpenSCAD/lib3x-rand.html)
 - [util/reverse](https://openhome.cc/eGossip/OpenSCAD/lib3x-reverse.html)
