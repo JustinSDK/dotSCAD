@@ -1,6 +1,6 @@
 # spherical_coordinate
 
-Converts from Cartesian to Polar coordinates. It returns `[radius, theta, phi]`.
+Converts from Cartesian to Spherical coordinates (used in mathematics). It returns `[radius, theta, phi]`.
 
 **Since:** 3.0
 
