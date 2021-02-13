@@ -1,6 +1,6 @@
 # polar_coordinate
 
-Converts from Cartesian to Polar coordinates.
+Converts from Cartesian to Polar coordinates. It returns `[radius, theta]`.
 
 **Since:** 3.0
 
