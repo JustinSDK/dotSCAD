@@ -19,7 +19,7 @@ Creates an arc. You can pass a 2 element vector to define the central angle. Its
     arc(radius = 20, angle = [45, 290], width = 2);
     %circle(r = 20); 
 
-![arc](images/lib2x-arc-1.JPG)
+![arc](images/lib3x-arc-1.JPG)
 
     use <arc.scad>;
     
@@ -27,7 +27,7 @@ Creates an arc. You can pass a 2 element vector to define the central angle. Its
     arc(radius = 20, angle = [45, 290], width = 2, width_mode = "LINE_OUTWARD");
     %circle(r = 20); 
 
-![arc](images/lib2x-arc-2.JPG)
+![arc](images/lib3x-arc-2.JPG)
 
     use <arc.scad>;
     
@@ -35,7 +35,7 @@ Creates an arc. You can pass a 2 element vector to define the central angle. Its
     arc(radius = 20, angle = [45, 290], width = 2, width_mode = "LINE_INWARD");
     %circle(r = 20); 
 
-![arc](images/lib2x-arc-3.JPG)
+![arc](images/lib3x-arc-3.JPG)
 
 
 
