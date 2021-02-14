@@ -5,7 +5,7 @@ Creates a 2D polyline from a list of `[x, y]` coordinates. As the name says, it 
 ## Parameters
 
 - `points` : The list of `[x, y]` points of the polyline. The points are indexed from 0 to n-1.
-- `width` : The line width.
+- `width` : The line width. Default to 1.
 - `$fa`, `$fs`, `$fn` : Check [the circle module](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Using_the_2D_Subsystem#circle) for more details.
 
 ## Examples

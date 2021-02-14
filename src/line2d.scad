@@ -11,7 +11,7 @@
 use <__comm__/__frags.scad>;
 use <__comm__/__nearest_multiple_of_4.scad>;
 
-module line2d(p1, p2, width, p1Style = "CAP_SQUARE", p2Style =  "CAP_SQUARE") {
+module line2d(p1, p2, width = 1, p1Style = "CAP_SQUARE", p2Style =  "CAP_SQUARE") {
     half_width = 0.5 * width;    
 
     atan_angle = atan2(p2[1] - p1[1], p2[0] - p1[0]);

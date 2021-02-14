@@ -8,7 +8,7 @@
 *
 **/
 
-module hull_polyline2d(points, width) {
+module hull_polyline2d(points, width = 1) {
     half_width = width / 2;
     leng = len(points);
     
