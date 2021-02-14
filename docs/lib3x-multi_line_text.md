@@ -18,5 +18,5 @@ Creates multi-line text from a list of strings. Parameters are the same as the b
 		halign = "center"
 	);
 
-![multi_line_text](images/lib2x-multi_line_text-1.JPG)
+![multi_line_text](images/lib3x-multi_line_text-1.JPG)
 
