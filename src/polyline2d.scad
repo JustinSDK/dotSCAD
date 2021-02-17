@@ -4,14 +4,14 @@
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *
-* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-polyline2d.html
+* @see https://openhome.cc/eGossip/OpenSCAD/lib3x-polyline2d.html
 *
 **/
 
 use <line2d.scad>;
 use <pie.scad>;
 
-module polyline2d(points, width, startingStyle = "CAP_SQUARE", endingStyle = "CAP_SQUARE", joinStyle = "JOIN_ROUND") {
+module polyline2d(points, width = 1, startingStyle = "CAP_SQUARE", endingStyle = "CAP_SQUARE", joinStyle = "JOIN_ROUND") {
     leng_pts = len(points);
 
     s_styles = [startingStyle, "CAP_BUTT"];

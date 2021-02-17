@@ -49,9 +49,9 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [hull_polyline2d](https://openhome.cc/eGossip/OpenSCAD/lib3x-hull_polyline2d.html)
 - [line2d](https://openhome.cc/eGossip/OpenSCAD/lib3x-line2d.html)
 - [multi_line_text](https://openhome.cc/eGossip/OpenSCAD/lib3x-multi_line_text.html)
-- [pie](https://openhome.cc/eGossip/OpenSCAD/lib2x-pie.html)
-- [polyline2d](https://openhome.cc/eGossip/OpenSCAD/lib2x-polyline2d.html)
-- [polygon_hull](https://openhome.cc/eGossip/OpenSCAD/lib2x-polygon_hull.html)
+- [pie](https://openhome.cc/eGossip/OpenSCAD/lib3x-pie.html)
+- [polyline2d](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyline2d.html)
+- [polygon_hull](https://openhome.cc/eGossip/OpenSCAD/lib3x-polygon_hull.html)
 - [rounded_square](https://openhome.cc/eGossip/OpenSCAD/lib2x-rounded_square.html)
 
 ### 3D Module

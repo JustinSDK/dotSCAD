@@ -20,4 +20,4 @@ Create a convex polygon by hulling a list of points. It avoids using `hull` and 
 		[-1, -1]
 	]);
 
-![polygon_hull](images/lib2x-polygon_hull-1.JPG)
+![polygon_hull](images/lib3x-polygon_hull-1.JPG)
