@@ -1,6 +1,6 @@
 # pie
 
-Creates a pie (circular sector). You can pass a 2 element vector to define the central angle. Its `$fa`, `$fs` and `$fn` parameters are consistent with the `circle` module.
+Creates a pie (circular sector). Its `$fa`, `$fs` and `$fn` are consistent with the `circle` module.
 
 ## Parameters
 
@@ -16,5 +16,5 @@ Creates a pie (circular sector). You can pass a 2 element vector to define the c
     translate([-15, 0, 0]) pie(radius = 20, angle = [45, 135]);  
     translate([15, 0, 0]) pie(radius = 20, angle = [45, 135], $fn = 12);  
 
-![pie](images/lib2x-pie-1.JPG)
+![pie](images/lib3x-pie-1.JPG)
 
