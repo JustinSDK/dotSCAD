@@ -1,6 +1,6 @@
 # rounded_square
 
-Creates a rounded square or rectangle in the first quadrant. When `center` is `true` the square is centered on the origin.
+Creates a rounded square or rectangle in the first quadrant. 
 
 ## Parameters
 
@@ -15,7 +15,7 @@ Creates a rounded square or rectangle in the first quadrant. When `center` is `t
 
     rounded_square(size = 50, corner_r = 5);
 
-![rounded_square](images/lib2x-rounded_square-1.JPG)
+![rounded_square](images/lib3x-rounded_square-1.JPG)
 
 	use <rounded_square.scad>;
 	
@@ -25,7 +25,7 @@ Creates a rounded square or rectangle in the first quadrant. When `center` is `t
 	    center = true
 	);
 
-![rounded_square](images/lib2x-rounded_square-2.JPG)
+![rounded_square](images/lib3x-rounded_square-2.JPG)
 
 	use <rounded_square.scad>;
 	
@@ -36,7 +36,7 @@ Creates a rounded square or rectangle in the first quadrant. When `center` is `t
 	    center = true
 	);
 
-![rounded_square](images/lib2x-rounded_square-3.JPG)
+![rounded_square](images/lib3x-rounded_square-3.JPG)
 
 
 
