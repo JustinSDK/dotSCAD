@@ -4,15 +4,15 @@
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *
-* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-line3d.html
+* @see https://openhome.cc/eGossip/OpenSCAD/lib3x-line3d.html
 *
 **/
 
 use <__comm__/__frags.scad>;
 use <__comm__/__nearest_multiple_of_4.scad>;
 
-module line3d(p1, p2, thickness, p1Style = "CAP_CIRCLE", p2Style = "CAP_CIRCLE") {
-    r = thickness / 2;
+module line3d(p1, p2, diameter = 1, p1Style = "CAP_CIRCLE", p2Style = "CAP_CIRCLE") {
+    r = diameter / 2;
 
     frags = __nearest_multiple_of_4(__frags(r));
     half_fa = 180 / frags;
