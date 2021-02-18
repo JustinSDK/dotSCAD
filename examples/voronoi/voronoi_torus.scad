@@ -11,5 +11,5 @@ $fn = 4;
 for(cell = cells) {
     cell_poly = [for(p = cell[1]) ptf_torus(size, p, [10, 5], [360, 360])];
 
-    hull_polyline3d(cell_poly, thickness = 1);
+    hull_polyline3d(cell_poly, diameter = 1);
 }

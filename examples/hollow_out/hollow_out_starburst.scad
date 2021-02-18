@@ -6,10 +6,10 @@ r1 = 30;
 r2 = 12;
 h = 10;
 n = 5;
-thickness = 1.75;
+line_diameter = 1.75;
 half = true;
 
-module hollow_out_starburst(r1, r2, h, n, thickness, half = false) {
+module hollow_out_starburst(r1, r2, h, n, line_diameter, half = false) {
     star = [for(p = shape_starburst(r1, r2, n)) [p[0], p[1], 0]];
     leng = len(star);
     tris = concat(
@@ -19,9 +19,9 @@ module hollow_out_starburst(r1, r2, h, n, thickness, half = false) {
     
     module half_star() {
         for(tri = tris) {
-            hull_polyline3d(concat(tri, [tri[0]]), thickness = thickness);
+            hull_polyline3d(concat(tri, [tri[0]]), line_diameter = line_diameter);
             for(line = tri_bisectors(tri)) {
-                hull_polyline3d(concat(line, [line[0]]), thickness = thickness);
+                hull_polyline3d(concat(line, [line[0]]), line_diameter = line_diameter);
             }
         }    
     }
@@ -32,4 +32,4 @@ module hollow_out_starburst(r1, r2, h, n, thickness, half = false) {
     }
 }
 
-hollow_out_starburst(r1, r2, h, n, thickness, half);
+hollow_out_starburst(r1, r2, h, n, line_diameter, half);

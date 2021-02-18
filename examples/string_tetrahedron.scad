@@ -1,14 +1,14 @@
 use <hull_polyline3d.scad>;
 
 leng = 50;
-thickness = 5;
+diameter = 5;
 segs_per_side = 20;
 line_fn = 5;
 model = "Tetrahedron"; // [Tetrahedron, Base, Both]
 
 
-module string_tetrahedron(leng, thickness, segs_per_side, line_fn) {
-    module lines_between(side1, side2, thickness, segs) {
+module string_tetrahedron(leng, diameter, segs_per_side, line_fn) {
+    module lines_between(side1, side2, diameter, segs) {
         function pts(p1, p2, segs) =
             let(
                  p = p2 - p1,
@@ -21,7 +21,7 @@ module string_tetrahedron(leng, thickness, segs_per_side, line_fn) {
         pts2 = pts(side2[0], side2[1], segs);
         
         for(i = [0:len(pts1) - 1]) {
-            hull_polyline3d(points = [pts1[i], pts2[i]], thickness = thickness);
+            hull_polyline3d(points = [pts1[i], pts2[i]], diameter = diameter);
         }
     }
 
@@ -49,15 +49,15 @@ module string_tetrahedron(leng, thickness, segs_per_side, line_fn) {
     vt3 = vts[2];
     vt4 = vts[3];
 
-    lines_between([vt1, vt2], [vt3, vt4], thickness, segs_per_side);
-    lines_between([vt2, vt3], [vt1, vt4], thickness, segs_per_side);
-    lines_between([vt3, vt1], [vt2, vt4], thickness, segs_per_side);
+    lines_between([vt1, vt2], [vt3, vt4], diameter, segs_per_side);
+    lines_between([vt2, vt3], [vt1, vt4], diameter, segs_per_side);
+    lines_between([vt3, vt1], [vt2, vt4], diameter, segs_per_side);
 }
 
-module base(leng, thickness, line_fn) {
+module base(leng, diameter, line_fn) {
     vts = vts(leng);
     r = leng / 4;
-    half_th = thickness / 2;
+    half_th = diameter / 2;
 
     difference() {
         sphere(r, $fn = 48);
@@ -83,15 +83,15 @@ module base(leng, thickness, line_fn) {
 }
 
 if(model == "Tetrahedron") {
-    string_tetrahedron(leng, thickness, segs_per_side, line_fn);
+    string_tetrahedron(leng, diameter, segs_per_side, line_fn);
 } else if(model == "Base") {
-    base(leng, thickness, line_fn);
+    base(leng, diameter, line_fn);
 } else {
     translate([0, 0, height(leng) + half_th])
     rotate([0, 180, 0]) 
     translate([0, -leng / 2 * tan(30), 0]) 
-        string_tetrahedron(leng, thickness, segs_per_side, line_fn);
+        string_tetrahedron(leng, diameter, segs_per_side, line_fn);
         
-    base(leng, thickness, line_fn);
+    base(leng, diameter, line_fn);
 }
 
