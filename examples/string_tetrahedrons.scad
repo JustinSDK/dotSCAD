@@ -2,12 +2,12 @@ use <hull_polyline3d.scad>;
 
 level = 1;
 leng = 50;
-thickness = 5;
+diameter = 5;
 segs_per_side = 10;
 center = false;
 
-module string_tetrahedron(leng, thickness, segs_per_side, line_fn) {
-    module lines_between(side1, side2, thickness, segs) {
+module string_tetrahedron(leng, diameter, segs_per_side, line_fn) {
+    module lines_between(side1, side2, diameter, segs) {
         function pts(p1, p2, segs) =
             let(
                  p = p2 - p1,
@@ -20,12 +20,12 @@ module string_tetrahedron(leng, thickness, segs_per_side, line_fn) {
         pts2 = pts(side2[0], side2[1], segs);
         
         leng = len(pts1);
-        hull_polyline3d(points = [pts1[0], pts2[0]], thickness = thickness);
+        hull_polyline3d(points = [pts1[0], pts2[0]], diameter = diameter);
         for(i = [1:leng - 2]) {
-            hull_polyline3d(points = [pts1[i], pts2[i]], thickness = thickness);
+            hull_polyline3d(points = [pts1[i], pts2[i]], diameter = diameter);
         }
         end = leng - 1;
-        hull_polyline3d(points = [pts1[end], pts2[end]], thickness = thickness);
+        hull_polyline3d(points = [pts1[end], pts2[end]], diameter = diameter);
     }
 
     function height(leng) = 
@@ -52,18 +52,18 @@ module string_tetrahedron(leng, thickness, segs_per_side, line_fn) {
     vt3 = vts[2];
     vt4 = vts[3];
 
-    lines_between([vt1, vt2], [vt3, vt4], thickness, segs_per_side);
-    lines_between([vt2, vt3], [vt1, vt4], thickness, segs_per_side);
-    lines_between([vt3, vt1], [vt2, vt4], thickness, segs_per_side);
+    lines_between([vt1, vt2], [vt3, vt4], diameter, segs_per_side);
+    lines_between([vt2, vt3], [vt1, vt4], diameter, segs_per_side);
+    lines_between([vt3, vt1], [vt2, vt4], diameter, segs_per_side);
 }
 
-module string_tetrahedrons(level, leng, thickness, segs_per_side, center) {
+module string_tetrahedrons(level, leng, diameter, segs_per_side, center) {
 
     function height(leng) = 
         leng * sqrt(1 - 4 / 9 * pow(sin(60), 2));
         
     if(level == 0) {
-        string_tetrahedron(leng * 2, thickness, segs_per_side, 6);
+        string_tetrahedron(leng * 2, diameter, segs_per_side, 6);
     }
     else {
     
@@ -71,21 +71,21 @@ module string_tetrahedrons(level, leng, thickness, segs_per_side, center) {
         center_y = half_leng * tan(30);
 
         translate([0, center_y * 2])
-            string_tetrahedrons(level - 1, half_leng, thickness, segs_per_side, center);
+            string_tetrahedrons(level - 1, half_leng, diameter, segs_per_side, center);
 
         translate([half_leng, -center_y])
-            string_tetrahedrons(level - 1, half_leng, thickness, segs_per_side, center);
+            string_tetrahedrons(level - 1, half_leng, diameter, segs_per_side, center);
 
         translate([-half_leng, -center_y])
-            string_tetrahedrons(level - 1, half_leng, thickness, segs_per_side, center);
+            string_tetrahedrons(level - 1, half_leng, diameter, segs_per_side, center);
 
         translate([0, 0, height(leng)])
-            string_tetrahedrons(level - 1, half_leng, thickness, segs_per_side, center);
+            string_tetrahedrons(level - 1, half_leng, diameter, segs_per_side, center);
 
 
         if(center) {
             rotate(60)
-                  string_tetrahedrons(level - 1, half_leng, thickness, segs_per_side, center);
+                  string_tetrahedrons(level - 1, half_leng, diameter, segs_per_side, center);
 
             a = atan(height(leng * 2) / (2 * center_y));
 
@@ -97,12 +97,12 @@ module string_tetrahedrons(level, leng, thickness, segs_per_side, center) {
                 translate([0, center_y * 2])
                 rotate([180, 0, 0])
                     scale(0.9427)
-                    string_tetrahedrons(level - 1, half_leng, thickness, segs_per_side, center);
+                    string_tetrahedrons(level - 1, half_leng, diameter, segs_per_side, center);
             }  
         }        
     }
 }
 
-string_tetrahedrons(level, leng, thickness, segs_per_side, center);
+string_tetrahedrons(level, leng, diameter, segs_per_side, center);
 
 

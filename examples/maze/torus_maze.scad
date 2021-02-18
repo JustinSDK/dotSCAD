@@ -6,7 +6,7 @@ use <maze/mz_square_walls.scad>;
 rows = 36;
 columns = 12;
 cell_width = 2;
-wall_thickness = 1;   
+line_diameter = 1;   
 angle = 180;
 twist = 360;
 
@@ -24,7 +24,7 @@ walls = mz_square_walls(cells, rows, columns, cell_width, left_border = false, b
 size = [columns * cell_width, rows * cell_width];
 for(wall_pts = walls) {  
    transformed = [for(pt = wall_pts) ptf_torus(size, pt, [radius, radius / 2], twist = twist)];
-   hull_polyline3d(transformed, wall_thickness, $fn = 4);
+   hull_polyline3d(transformed, line_diameter, $fn = 4);
 }
 
 color("black")

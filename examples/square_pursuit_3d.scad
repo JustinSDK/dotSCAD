@@ -2,11 +2,11 @@ use <hull_polyline3d.scad>;
 
 length = 100;
 diff_scale = 0.125;
-thickness = 2;
+diameter = 2;
 n = 30;
 $fn = 6;
 
-module square_pursuit_3d(length, diff_scale, thickness, n) {
+module square_pursuit_3d(length, diff_scale, diameter, n) {
     function inter_p(p1, p2, leng, d) = 
         let(
             vp = p2 - p1,
@@ -14,7 +14,7 @@ module square_pursuit_3d(length, diff_scale, thickness, n) {
         )
         p1 + u * d;
 
-    module _square_pursuit_3d(pts, diff_scale, thickness, n) {
+    module _square_pursuit_3d(pts, diff_scale, diameter, n) {
         if(n != 0) {
             vp = pts[1] - pts[0];
             leng = norm(vp);
@@ -22,9 +22,9 @@ module square_pursuit_3d(length, diff_scale, thickness, n) {
             
             npts = [for(i = [0:3]) inter_p(pts[i], pts[(i + 1) % 4], leng, d)];
             
-            hull_polyline3d(concat(npts, [npts[3], npts[0]]), thickness);
+            hull_polyline3d(concat(npts, [npts[3], npts[0]]), diameter);
             
-            _square_pursuit_3d(npts, diff_scale, thickness, n - 1);
+            _square_pursuit_3d(npts, diff_scale, diameter, n - 1);
         }
     }
 
@@ -36,9 +36,9 @@ module square_pursuit_3d(length, diff_scale, thickness, n) {
         [0, length, 0]
     ];    
     
-    hull_polyline3d(concat(pts, [pts[3], pts[0]]), thickness);
+    hull_polyline3d(concat(pts, [pts[3], pts[0]]), diameter);
     
-    _square_pursuit_3d(pts, diff_scale, thickness, n - 1);
+    _square_pursuit_3d(pts, diff_scale, diameter, n - 1);
 }
 
-square_pursuit_3d(length, diff_scale, thickness, n);
+square_pursuit_3d(length, diff_scale, diameter, n);

@@ -9,11 +9,11 @@ module test_hull_polyline3d_line_segment(index, point1, point2, radius) {
         [0, 0, 0]
     ];
         
-    thickness = 1;
+    diameter = 1;
 
     assertEqualPoint(points[index - 1], point1);
     assertEqualPoint(points[index], point2);
-    assertEqualNum(thickness, radius * 2);    
+    assertEqualNum(diameter, radius * 2);    
 } 
 
 module test_hull_polyline3d() {
@@ -26,11 +26,11 @@ module test_hull_polyline3d() {
         [0, 0, 0]
     ];
         
-    thickness = 1;
+    diameter = 1;
 
     hull_polyline3d(
         points = points, 
-        thickness = thickness, 
+        diameter = diameter, 
         $fn = 3
     );
 }

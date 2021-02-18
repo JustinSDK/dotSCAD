@@ -6,7 +6,7 @@ use <ptf/ptf_ring.scad>;
 rows = 48;
 columns = 8;
 cell_width = 2;
-wall_thickness = 1;   
+line_diameter = 1;   
 angle = 180;
 // $fn = 24;
 
@@ -24,5 +24,5 @@ walls = mz_square_walls(cells, rows, columns, cell_width, bottom_border = false)
 size = [columns * cell_width, rows * cell_width];
 for(wall_pts = walls) {  
    transformed = [for(pt = wall_pts) ptf_ring(size, pt, radius, 360, angle)];
-   hull_polyline3d(transformed, wall_thickness);
+   hull_polyline3d(transformed, line_diameter);
 }

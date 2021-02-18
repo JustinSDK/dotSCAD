@@ -6,7 +6,7 @@ use <experimental/hollow_out_sweep.scad>;
 use <experimental/tri_bisectors.scad>;
 
 t_step = 0.1;
-width = 3;
+line_diameter = 3;
 fn = 18;
 line_style = "HULL_LINES"; // [LINES, HULL_LINES]
 
@@ -16,9 +16,9 @@ p2 = [0, 0, 60];
 p3 = [25, 0, 120];
 p4 = [35, 0, 130];
 
-hollow_out_vase([p0, p1, p2, p3, p4], t_step, width, fn, line_style);
+hollow_out_vase([p0, p1, p2, p3, p4], t_step, line_diameter, fn, line_style);
 
-module hollow_out_vase(ctrl_pts, t_step, width, fn, line_style) {
+module hollow_out_vase(ctrl_pts, t_step, line_diameter, fn, line_style) {
     bezier = bezier_curve(t_step, 
         ctrl_pts
     );
@@ -32,7 +32,7 @@ module hollow_out_vase(ctrl_pts, t_step, width, fn, line_style) {
     ]);
     
     // body
-    hollow_out_sweep(sects, thickness = width, style = line_style, $fn = 4);
+    hollow_out_sweep(sects, diameter = line_diameter, style = line_style, $fn = 4);
 
     leng_sect = len(sects[0]);
 
@@ -45,9 +45,9 @@ module hollow_out_vase(ctrl_pts, t_step, width, fn, line_style) {
     for(tri = fst_tris) {
         lines = tri_bisectors(tri);
         for(line = lines) {
-            hull_polyline3d(line, thickness = width, $fn = 4);
+            hull_polyline3d(line, diameter = line_diameter, $fn = 4);
         }
-        hull_polyline3d([lines[2][1], [0, 0, 0]], thickness = width, $fn = 4);
+        hull_polyline3d([lines[2][1], [0, 0, 0]], diameter = line_diameter, $fn = 4);
     }
 
     // mouth
@@ -57,9 +57,9 @@ module hollow_out_vase(ctrl_pts, t_step, width, fn, line_style) {
         [[[0, 0,  fpt[2]], lst_sect[leng_sect - 1], lst_sect[0]]]
     );
     dangling_pts = [for(tri = lst_tris) tri_bisectors(tri)[1][1]];
-    offset_z = [0, 0, width];
+    offset_z = [0, 0, line_diameter];
     for(i = [0: leng_sect - 1]) {
-       hull_polyline3d([lst_sect[i] + offset_z, dangling_pts[i]], thickness = width, $fn = 4);
-       hull_polyline3d([lst_sect[(i + 1) % leng_sect] + offset_z, dangling_pts[i]], thickness = width, $fn = 4);   
+       hull_polyline3d([lst_sect[i] + offset_z, dangling_pts[i]], diameter = line_diameter, $fn = 4);
+       hull_polyline3d([lst_sect[(i + 1) % leng_sect] + offset_z, dangling_pts[i]], diameter = line_diameter, $fn = 4);   
     }
 }

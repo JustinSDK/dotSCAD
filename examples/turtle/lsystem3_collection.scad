@@ -4,7 +4,7 @@ use <hull_polyline3d.scad>;
 for(line = hilbert_curve()) {
     hull_polyline3d(
         [line[0], line[1]], 
-        thickness = 0.5, 
+        diameter = 0.5, 
         $fn = 4
     );
 }  

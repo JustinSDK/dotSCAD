@@ -2,12 +2,12 @@ use <hull_polyline3d.scad>;
 
 side_leng = 100;
 min_leng = 5;
-thickness = 2.5;
+diameter = 2.5;
 
-sierpinski_pyramid(side_leng, min_leng, thickness, $fn = 4);
+sierpinski_pyramid(side_leng, min_leng, diameter, $fn = 4);
 
-module sierpinski_pyramid(side_leng, min_leng, thickness) {
-    pyramid_frame(side_leng, thickness);    
+module sierpinski_pyramid(side_leng, min_leng, diameter) {
+    pyramid_frame(side_leng, diameter);    
     if(side_leng > min_leng){
         half_leng = side_leng / 2;
         h = half_leng * 0.707107;
@@ -15,25 +15,25 @@ module sierpinski_pyramid(side_leng, min_leng, thickness) {
         for(i=[0:3]) {
             rotate([0, 0, i * 90])
             translate(pt)
-                sierpinski_pyramid(half_leng, min_leng, thickness);
+                sierpinski_pyramid(half_leng, min_leng, diameter);
         }
         translate([0, 0, h]) 
-            sierpinski_pyramid(half_leng, min_leng, thickness);
+            sierpinski_pyramid(half_leng, min_leng, diameter);
     }
 }
 
-module pyramid_frame(side_leng, thickness) {
+module pyramid_frame(side_leng, diameter) {
     half_leng = side_leng / 2;
     h = half_leng * 1.414214;
     
     tri_pts = [[0, 0, h], [half_leng, half_leng, 0], [half_leng, -half_leng, 0], [0, 0, h]];
     line_pts = [[half_leng, half_leng, 0], [-half_leng, half_leng, 0]];
     
-    hull_polyline3d(tri_pts, thickness);
+    hull_polyline3d(tri_pts, diameter);
     mirror([1, 0, 0]) 
-        hull_polyline3d(tri_pts, thickness);
+        hull_polyline3d(tri_pts, diameter);
     
-    hull_polyline3d(line_pts, thickness);
+    hull_polyline3d(line_pts, diameter);
     mirror([0, 1, 0]) 
-        hull_polyline3d(line_pts, thickness);
+        hull_polyline3d(line_pts, diameter);
 }

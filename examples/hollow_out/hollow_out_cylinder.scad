@@ -5,7 +5,7 @@ use <ptf/ptf_bend.scad>;
 
 size = [100, 40];
 pt_nums = 20;
-thickness = 1;
+line_diameter = 1;
 radius = 15;
 fn = 12;
 
@@ -35,7 +35,7 @@ for(line = bisectors) {
     pts = [for(p = line) ptf_bend(size, p, radius, 360)];
     hull_polyline3d(
         concat(pts, [pts[0]]), 
-        thickness = thickness,
+        line_diameter = line_diameter,
         $fn = 4
     );
 }

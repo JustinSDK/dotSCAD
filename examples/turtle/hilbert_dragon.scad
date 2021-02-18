@@ -1,6 +1,5 @@
 use <shear.scad>;
 use <along_with.scad>;
-use <hull_polyline3d.scad>;
 use <bezier_smooth.scad>;
 use <ellipse_extrude.scad>;
 use <shape_trapezium.scad>;
