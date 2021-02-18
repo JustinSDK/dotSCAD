@@ -4,12 +4,12 @@
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *
-* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-hull_polyline3d.html
+* @see https://openhome.cc/eGossip/OpenSCAD/lib3x-hull_polyline3d.html
 *
 **/
 
-module hull_polyline3d(points, thickness) {
-    half_thickness = thickness / 2;
+module hull_polyline3d(points, diameter = 1) {
+    radius = diameter / 2;
     leng = len(points);
     
     module hull_line3d(index) {
@@ -18,13 +18,13 @@ module hull_polyline3d(points, thickness) {
 
         hull() {
             translate(point1) 
-                sphere(half_thickness);
+                sphere(radius);
             translate(point2) 
-                sphere(half_thickness);
+                sphere(radius);
         }
 
         // hook for testing
-        test_hull_polyline3d_line_segment(index, point1, point2, half_thickness);        
+        test_hull_polyline3d_line_segment(index, point1, point2, radius);        
     }
 
     module polyline3d_inner(index) {

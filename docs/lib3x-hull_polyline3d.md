@@ -5,7 +5,7 @@ Creates a 3D polyline from a list of `[x, y, z]` coordinates. As the name says, 
 ## Parameters
 
 - `points` : The list of `[x, y, z]` points of the polyline. The points are indexed from 0 to n-1.
-- `thickness` : The line thickness.
+- `diameter` : The line diameter. Default to 1.
 - `$fa`, `$fs`, `$fn` : Check [the sphere module](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Primitive_Solids#sphere) for more details.
 
 ## Examples
@@ -19,11 +19,11 @@ Creates a 3D polyline from a list of `[x, y, z]` coordinates. As the name says, 
 	        [-1, -3, -5], 
 	        [0, 0, 0]
 	    ], 
-	    thickness = 1, 
+	    diameter = 1, 
 	    $fn = 3
 	);
 
-![polyline3d](images/lib2x-hull_polyline3d-1.JPG)
+![polyline3d](images/lib3x-hull_polyline3d-1.JPG)
 
     use <hull_polyline3d.scad>;
     
@@ -42,4 +42,4 @@ Creates a 3D polyline from a list of `[x, y, z]` coordinates. As the name says, 
 	        hull_polyline3d(points, 2, $fn = 3);
 	}
 
-![polyline3d](images/lib2x-hull_polyline3d-2.JPG)
+![polyline3d](images/lib3x-hull_polyline3d-2.JPG)

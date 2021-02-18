@@ -57,7 +57,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 ### 3D Module
 - [crystal_ball](https://openhome.cc/eGossip/OpenSCAD/lib3x-crystal_ball.html)
 - [function_grapher](https://openhome.cc/eGossip/OpenSCAD/lib3x-function_grapher.html)
-- [hull_polyline3d](https://openhome.cc/eGossip/OpenSCAD/lib2x-hull_polyline3d.html)
+- [hull_polyline3d](https://openhome.cc/eGossip/OpenSCAD/lib3x-hull_polyline3d.html)
 - [line3d](https://openhome.cc/eGossip/OpenSCAD/lib2x-line3d.html)
 - [loft](https://openhome.cc/eGossip/OpenSCAD/lib2x-loft.html)
 - [polyhedron_hull](https://openhome.cc/eGossip/OpenSCAD/lib2x-polyhedron_hull.html)
