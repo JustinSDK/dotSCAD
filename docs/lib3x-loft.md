@@ -43,7 +43,7 @@ When having uniform cross sections, you can use [sweep](https://openhome.cc/eGos
 		);    
 	}
 
-![loft](images/lib2x-loft-1.JPG)
+![loft](images/lib3x-loft-1.JPG)
 
 
 

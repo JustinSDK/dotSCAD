@@ -4,13 +4,13 @@
 * @copyright Justin Lin, 2017
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *
-* @see https://openhome.cc/eGossip/OpenSCAD/lib2x-polyline3d.html
+* @see https://openhome.cc/eGossip/OpenSCAD/lib3x-polyline3d.html
 *
 **/
 
 use <line3d.scad>;
 
-module polyline3d(points, thickness, startingStyle = "CAP_CIRCLE", endingStyle = "CAP_CIRCLE") {
+module polyline3d(points, diameter, startingStyle = "CAP_CIRCLE", endingStyle = "CAP_CIRCLE") {
     leng_pts = len(points);
     
     s_styles = [startingStyle, "CAP_BUTT"];
@@ -27,11 +27,11 @@ module polyline3d(points, thickness, startingStyle = "CAP_CIRCLE", endingStyle =
         p1Style = styles[0];
         p2Style = styles[1];        
         
-        line3d(p1, p2, thickness, 
+        line3d(p1, p2, diameter, 
                p1Style = p1Style, p2Style = p2Style);
 
         // hook for testing
-        test_polyline3d_line3d_segment(index, p1, p2, thickness, p1Style, p2Style);               
+        test_polyline3d_line3d_segment(index, p1, p2, diameter, p1Style, p2Style);               
     }
 
     module polyline3d_inner(index) {
@@ -42,7 +42,7 @@ module polyline3d(points, thickness, startingStyle = "CAP_CIRCLE", endingStyle =
     }
 
     if(leng_pts == 2) {
-        line3d(points[0], points[1], thickness, startingStyle, endingStyle);
+        line3d(points[0], points[1], diameter, startingStyle, endingStyle);
     }
     else {
         polyline3d_inner(1);
@@ -50,6 +50,6 @@ module polyline3d(points, thickness, startingStyle = "CAP_CIRCLE", endingStyle =
 }
 
 // override it to test
-module test_polyline3d_line3d_segment(index, point1, point2, thickness, p1Style, p2Style) {
+module test_polyline3d_line3d_segment(index, point1, point2, diameter, p1Style, p2Style) {
 
 }

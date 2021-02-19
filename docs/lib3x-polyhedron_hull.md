@@ -22,4 +22,4 @@ Create a convex polyhedron by hulling a list of points. It avoids using `hull` a
 		[0, 0, -1]
 	]);
 
-![polyhedron_hull](images/lib2x-polyhedron_hull-1.JPG)
+![polyhedron_hull](images/lib3x-polyhedron_hull-1.JPG)
