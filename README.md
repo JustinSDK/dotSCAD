@@ -62,10 +62,10 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [loft](https://openhome.cc/eGossip/OpenSCAD/lib3x-loft.html)
 - [polyhedron_hull](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedron_hull.html)
 - [polyline3d](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyline3d.html)
-- [rounded_cube](https://openhome.cc/eGossip/OpenSCAD/lib2x-rounded_cube.html)
-- [rounded_cylinder](https://openhome.cc/eGossip/OpenSCAD/lib2x-rounded_cylinder.html)
-- [starburst](https://openhome.cc/eGossip/OpenSCAD/lib2x-starburst.html)
-- [sweep](https://openhome.cc/eGossip/OpenSCAD/lib2x-sweep.html)
+- [rounded_cube](https://openhome.cc/eGossip/OpenSCAD/lib3x-rounded_cube.html)
+- [rounded_cylinder](https://openhome.cc/eGossip/OpenSCAD/lib3x-rounded_cylinder.html)
+- [starburst](https://openhome.cc/eGossip/OpenSCAD/lib3x-starburst.html)
+- [sweep](https://openhome.cc/eGossip/OpenSCAD/lib3x-sweep.html)
 
 ### Transformation
 - [along_with](https://openhome.cc/eGossip/OpenSCAD/lib2x-along_with.html)

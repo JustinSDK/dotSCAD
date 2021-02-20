@@ -21,4 +21,4 @@ Creates a rounded cylinder.
 		round_r = 3
 	);    
 
-![rounded_cylinder](images/lib2x-rounded_cylinder-1.JPG)
+![rounded_cylinder](images/lib3x-rounded_cylinder-1.JPG)

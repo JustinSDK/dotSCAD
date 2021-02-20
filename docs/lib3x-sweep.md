@@ -2,23 +2,23 @@
 
 This module sweeps multiple cross-sections to create a 3D object. For example, imagine that you have the following cross-sections:
 
-![sweep](images/lib2x-sweep-1.JPG)
+![sweep](images/lib3x-sweep-1.JPG)
 
 This module sweeps them to create a 3D object:
 
-![sweep](images/lib2x-sweep-2.JPG)
+![sweep](images/lib3x-sweep-2.JPG)
 
 When using this module, you should use points to represent a cross section. The points must be counter-clockwise indexes. For example:
 
-![sweep](images/lib2x-sweep-10.JPG)
+![sweep](images/lib3x-sweep-10.JPG)
 
 If your cross section is hollow, set the `triangles` parameter to `"HOLLOW"` and index the points as the following:
 
-![sweep](images/lib2x-sweep-5.JPG)
+![sweep](images/lib3x-sweep-5.JPG)
 
 You can cut triangles by yourself. For example, the above shape can be cut into triangles such as:
 
-![sweep](images/lib2x-sweep-6.JPG)
+![sweep](images/lib3x-sweep-6.JPG)
 
 The indexes of the above triangles is:
 
@@ -62,7 +62,7 @@ The indexes of the above triangles is:
 
 	sweep(sections);
 
-![sweep](images/lib2x-sweep-7.JPG)
+![sweep](images/lib3x-sweep-7.JPG)
 
 	use <rotate_p.scad>;
 	use <sweep.scad>;
@@ -92,7 +92,7 @@ The indexes of the above triangles is:
 	    
 	sweep(sections, "HOLLOW");
 
-![sweep](images/lib2x-sweep-8.JPG)
+![sweep](images/lib3x-sweep-8.JPG)
 
 	use <rotate_p.scad>;
 	use <sweep.scad>;
@@ -130,7 +130,7 @@ The indexes of the above triangles is:
         ]
 	);
 
-![sweep](images/lib2x-sweep-9.JPG)
+![sweep](images/lib3x-sweep-9.JPG)
 
 
 
