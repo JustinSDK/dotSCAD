@@ -68,10 +68,10 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [sweep](https://openhome.cc/eGossip/OpenSCAD/lib3x-sweep.html)
 
 ### Transformation
-- [along_with](https://openhome.cc/eGossip/OpenSCAD/lib2x-along_with.html)
-- [bend](https://openhome.cc/eGossip/OpenSCAD/lib2x-bend.html)
-- [hollow_out](https://openhome.cc/eGossip/OpenSCAD/lib2x-hollow_out.html)
-- [shear](https://openhome.cc/eGossip/OpenSCAD/lib2x-shear.html)
+- [along_with](https://openhome.cc/eGossip/OpenSCAD/lib3x-along_with.html)
+- [bend](https://openhome.cc/eGossip/OpenSCAD/lib3x-bend.html)
+- [hollow_out](https://openhome.cc/eGossip/OpenSCAD/lib3x-hollow_out.html)
+- [shear](https://openhome.cc/eGossip/OpenSCAD/lib3x-shear.html)
 
 ### 2D Function
 - [bijection_offset](https://openhome.cc/eGossip/OpenSCAD/lib2x-bijection_offset.html)

@@ -48,5 +48,5 @@ Shear all child elements along the X-axis, Y-axis, or Z-axis in 3D.
 			cube(1);
 	}
 
-![shear](images/lib2x-shear-1.JPG)
+![shear](images/lib3x-shear-1.JPG)
 
