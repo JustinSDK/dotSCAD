@@ -215,7 +215,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [surface/sf_solidify](https://openhome.cc/eGossip/OpenSCAD/lib2x-sf_solidify.html)
 - [surface/sf_sphere](https://openhome.cc/eGossip/OpenSCAD/lib2x-sf_sphere.html)
 - [surface/sf_square](https://openhome.cc/eGossip/OpenSCAD/lib2x-sf_square.html)
-- [surface/sf_torus](https://openhome.cc/eGossip/OpenSCAD/lib2x-sf_torus.html
+- [surface/sf_torus](https://openhome.cc/eGossip/OpenSCAD/lib2x-sf_torus.html)
 
 ### Noise
 - [noise/nz_cell](https://openhome.cc/eGossip/OpenSCAD/lib2x-nz_cell.html)
