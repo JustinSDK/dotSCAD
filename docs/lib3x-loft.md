@@ -1,6 +1,6 @@
 # loft
 
-When having uniform cross sections, you can use [sweep](https://openhome.cc/eGossip/OpenSCAD/lib2x-sweep.html) to create a model. The `loft` here is best when you have a body with multiple crosssections with different geometries. 
+When having uniform cross sections, you can use [sweep](https://openhome.cc/eGossip/OpenSCAD/lib3x-sweep.html) to create a model. The `loft` here is best when you have a body with multiple crosssections with different geometries. 
 
 **Since:** 2.3
 
