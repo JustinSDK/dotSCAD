@@ -7,7 +7,7 @@ Make a list that aggregates elements from each of the lists. Returns a list of l
 ## Parameters
 
 - `lts` : A list of lists.
-- `slider` : Rather than listing the elements, the elements are combined using the function. **Since:** 3.0
+- `combine` : Rather than listing the elements, the elements are combined using the function. **Since:** 3.0
 
 ## Examples
 

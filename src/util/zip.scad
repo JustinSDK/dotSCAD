@@ -10,4 +10,4 @@
 
 use <_impl/_zip_impl.scad>;
 
-function zip(lts, slider) = is_function(slider) ? _zipAll(lts, slider) : _zipAll(lts);
+function zip(lts, combine) = is_function(combine) ? _zipAll(lts, combine) : _zipAll(lts);
