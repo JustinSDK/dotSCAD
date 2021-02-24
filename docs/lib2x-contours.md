@@ -6,7 +6,7 @@ Computes contour polygons by applying [marching squares](https://en.wikipedia.or
 
 ## Parameters
 
-- `points` : 2 value array `[x, y]`, rectangle with dimensions `x` and `y`.
+- `points` : A list of points `[x, y, z]`. See examples below.
 - `threshold` : When applying a threshold value, the function returns isolines. When applying upper and lower threshold values, it returns isobands.
 
 ## Examples
