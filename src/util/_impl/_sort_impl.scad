@@ -35,4 +35,8 @@ function _sort_by_cmp(lt, cmp) =
             before = [for(j = 1; j < leng; j = j + 1) if(cmp(lt[j], pivot) < 0) lt[j]],
             after =  [for(j = 1; j < leng; j = j + 1) if(cmp(lt[j], pivot) >= 0) lt[j]]
         )
+<<<<<<< HEAD
         concat(_sort_by_cmp(before, cmp), [pivot], _sort_by_cmp(after, cmp));
+=======
+        concat(_sort_by_cmp(before, cmp), [pivot], _sort_by_cmp(after, cmp));
+>>>>>>> 04a802bfb911930423c0e24af5370bc91b96e8f5
