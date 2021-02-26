@@ -70,6 +70,8 @@ include <util/test_bsearch.scad>;
 include <util/test_choose.scad>;
 include <util/test_dedup.scad>;
 include <util/test_zip.scad>;
+include <util/test_some.scad>;
+include <util/test_every.scad>;
 
 // Voxel
 include <voxel/test_vx_line.scad>;
