@@ -22,8 +22,8 @@ New modules/functions
 - `util/spherical_coordinate`
 - `util/every`
 - `util/some`
-- `util/swap`?
-- `util/shuffle`?
+- `util/swap`
+- `util/shuffle`
 
 - delete `m_cumulate`
 - delete `trianglate`, use `tri_ear_clipping`?
