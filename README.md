@@ -148,6 +148,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [util/radians](https://openhome.cc/eGossip/OpenSCAD/lib3x-radians.html)
 - [util/rand](https://openhome.cc/eGossip/OpenSCAD/lib3x-rand.html)
 - [util/reverse](https://openhome.cc/eGossip/OpenSCAD/lib3x-reverse.html)
+- `util/shuffle`
 - [util/slice](https://openhome.cc/eGossip/OpenSCAD/lib3x-slice.html)
 - [util/some](https://openhome.cc/eGossip/OpenSCAD/lib3x-some.html)
 - [util/sort](https://openhome.cc/eGossip/OpenSCAD/lib3x-sort.html)
@@ -155,6 +156,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [util/sub_str](https://openhome.cc/eGossip/OpenSCAD/lib3x-sub_str.html)
 - [util/split_str](https://openhome.cc/eGossip/OpenSCAD/lib3x-split_str.html)
 - [util/sum](https://openhome.cc/eGossip/OpenSCAD/lib3x-sum.html)
+- `util/swap`
 - [util/zip](https://openhome.cc/eGossip/OpenSCAD/lib3x-zip.html)
 
 ### Matrix
