@@ -1,4 +1,5 @@
 function swap(lt, i, j) =
+    i == j ? lt :
     let(
 	    leng = len(lt),
 		a = min([i, j]),
