@@ -1,4 +1,4 @@
-use <_mz_comm.scad>;
+use <_mz_square_comm.scad>;
 
 function _square_walls(cell, cell_width) = 
     let(

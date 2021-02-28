@@ -1,4 +1,4 @@
-use <_mz_comm.scad>;
+use <_mz_square_comm.scad>;
 
 // create a starting maze for being visited later.
 function _rc_maze(rows, columns) =  [

@@ -8,7 +8,7 @@
 *
 **/
 
-use <_impl/_mz_cells_impl.scad>;
+use <_impl/_mz_square_cells_impl.scad>;
 use <mz_square_initialize.scad>;
 
 function mz_square_cells(rows, columns, start = [0, 0], init_cells, x_wrapping = false, y_wrapping = false, seed) = 

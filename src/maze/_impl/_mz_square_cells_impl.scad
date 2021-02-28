@@ -1,4 +1,4 @@
-use <_mz_comm.scad>;
+use <_mz_square_comm.scad>;
 
 // find out the index of a cell with the position (x, y)
 function indexOf(x, y, cells, i = 0) =
