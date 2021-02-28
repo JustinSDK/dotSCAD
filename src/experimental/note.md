@@ -24,6 +24,8 @@ New modules/functions
 - `util/some`
 - `util/swap`
 - `util/shuffle`
+- `maze/mz_theta_cells`
+- `maze/mz_theta_get`
 
 - delete `m_cumulate`
 - delete `trianglate`, use `tri_ear_clipping`?
