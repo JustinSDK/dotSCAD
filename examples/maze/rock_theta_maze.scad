@@ -8,8 +8,9 @@ begining_columns = 6;
 cell_width = 12;
 rock_size = 4;
 height_scale = 3;
+flat_base = false;
 
-rock_theta_maze(rows, begining_columns, cell_width, rock_size, height_scale);
+rock_theta_maze(rows, begining_columns, cell_width, rock_size, height_scale, flat_base);
 
 module rock(width = 1) {
 	n = 15 * rands(1, 1.25, 1)[0];
@@ -35,7 +36,7 @@ module rock_wall(p1, p2, size) {
 	    rock(size * 0.875);
 }
 
-module rock_theta_maze(rows, begining_columns, cell_width, rock_size, height_scale) {
+module rock_theta_maze(rows, begining_columns, cell_width, rock_size, height_scale, flat_base) {
 	function vt_from_angle(theta, r) = [r * cos(theta), r * sin(theta)];
 
 	maze = mz_theta_cells(rows, begining_columns);
@@ -79,7 +80,9 @@ module rock_theta_maze(rows, begining_columns, cell_width, rock_size, height_sca
 				rock_wall(vt1, vt2, rock_size);
 			} 
 		}
-	    translate([0, 0, -cell_width * rows * 2])
-		    cube(cell_width * rows * 4, center = true);
+		if(flat_base) {
+			translate([0, 0, -cell_width * rows * 2])
+				cube(cell_width * rows * 4, center = true);
+		}
 	}
 }
