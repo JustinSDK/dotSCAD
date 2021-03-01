@@ -32,8 +32,8 @@ function set_outwards(cell, outwards) = [
 
 function get_outwards(cell) = cell[5];
 
-function add_outward(cell, ri, ci) = [
-	cell[0], cell[1], cell[2], cell[3], cell[4], concat(get_outwards(cell), [[ri, ci]]), cell[6], cell[7]
+function add_outward(cell, outward) = [
+	cell[0], cell[1], cell[2], cell[3], cell[4], concat(get_outwards(cell), [outward]), cell[6], cell[7]
 ];
 
 function columnLengOfRow(ri, cellWidth, previousColumnLeng, dividedRatio) = 
@@ -79,21 +79,23 @@ function update_maze(maze, cell) =
 function config_outwards(maze, cell_outwards_lt) = 
 	_config_outwards(maze, cell_outwards_lt, len(cell_outwards_lt));
 
+function cell_from(maze, cell_idx) = maze[cell_idx[0]][cell_idx[1]]; 
+
 function _config_outwards(maze, cell_outwards_lt, leng, i = 0) = 
     i == leng ? maze :
 	let(
-	    ci = cell_outwards_lt[i][0],
-		oi = cell_outwards_lt[i][1],
-		c = maze[ci[0]][ci[1]],
-		nc = add_outward(c, oi[0], oi[1]),
-		nm = update_maze(maze, nc)
+		c = add_outward(
+			cell_from(maze, cell_outwards_lt[i][0]), 
+			cell_outwards_lt[i][1]
+		),
+		mz = update_maze(maze, c)
 	)
-	_config_outwards(nm, cell_outwards_lt, leng, i + 1);
+	_config_outwards(mz, cell_outwards_lt, leng, i + 1);
 
 function config_nbrs(maze) =
 	let(
 		outmost = len(maze) - 1,
-		maze2 = [ // config empty outwards except outmost row
+		mz_empty_outs = [ // config empty outwards except outmost row
 			for(row = maze)
 			[
 				for(c = row)
@@ -101,33 +103,33 @@ function config_nbrs(maze) =
 			]
 		],
 		cell_outwards_lt = [
-			for(row = maze2)
+			for(row = mz_empty_outs)
 				for(c = row)
 				let(
 					ri = get_ri(c),
 					ci = get_ci(c),
-					r_leng = len(maze2[ri])
+					r_leng = len(mz_empty_outs[ri])
 				)
 				if(ri > 0) 
 					[
-					    [ri - 1, floor(ci / (r_leng / len(maze2[ri - 1])))], 
+					    [ri - 1, floor(ci / (r_leng / len(mz_empty_outs[ri - 1])))], 
 						[ri, ci]
 					]
 		],
-		maze3 = [ // config cw, ccw, inward nbrs
-			for(row = maze2)
+		mz_cw_ccw_inward = [ // config cw, ccw, inward nbrs
+			for(row = mz_empty_outs)
 			[
 				for(c = row)
 				let(
 					ri = get_ri(c),
 					ci = get_ci(c),
-					r_leng = len(maze2[ri]),
+					r_leng = len(mz_empty_outs[ri]),
 					cw = [ri, ci > 0 ? (ci - 1) : (ci - 1 + r_leng)],
 					ccw = [ri, (ci + 1) % r_leng]
 				)
 				ri > 0 ? 
 					let(
-						ratio = r_leng / len(maze2[ri - 1]),
+						ratio = r_leng / len(mz_empty_outs[ri - 1]),
 						inward = [ri - 1, floor(ci / ratio)]
 					)
 					[ri, ci, c[2], c[3], inward, c[5], cw, ccw] : 
@@ -135,7 +137,7 @@ function config_nbrs(maze) =
 			]
 		]
 	)
-	config_outwards(maze3, cell_outwards_lt);
+	config_outwards(mz_cw_ccw_inward, cell_outwards_lt);
 
 // function isVisitable(cell) = cell[3];
 isVisitable = function(cell) cell[3];
@@ -193,20 +195,23 @@ function nextCells(maze, cell, dir) =
 		ccw = get_ccw(cell)
 	)
 	[
-		is_undef(inward) ? [] : [maze[inward[0]][inward[1]]],
-		is_undef(outwards) ? [] : [for(outward = outwards) maze[outward[0]][outward[1]]],
-		is_undef(cw) ? [] : [maze[cw[0]][cw[1]]],
-		is_undef(ccw) ? [] : [maze[ccw[0]][ccw[1]]]
+		is_undef(inward) ? [] : [cell_from(maze, inward)],
+		is_undef(outwards) ? [] : [for(outward = outwards) cell_from(maze, outward)],
+		is_undef(cw) ? [] : [cell_from(maze, cw)],
+		is_undef(ccw) ? [] : [cell_from(maze, ccw)]
 	][dir];
 
 function visitIN(maze, next, currentCell) =
-    let(
-	    wallType = get_wallType(currentCell),
-		m1 = update_maze(maze, 
-			    set_wallType(currentCell, wallType == INWARD_CCW_WALL ? CCW_WALL : NO_WALL)
-		)
-	)
-	update_maze(m1, set_visited(next));
+	update_maze(
+		update_maze(
+		    maze, 
+			set_wallType(
+				currentCell, 
+				get_wallType(currentCell) == INWARD_CCW_WALL ? CCW_WALL : NO_WALL
+			)
+		), 
+		set_visited(next)
+	);
 
 function visitOUT(maze, next, currentCell) = update_maze(
     maze, 
@@ -219,53 +224,55 @@ function visitCW(maze, next, currentCell) = update_maze(
 );
 
 function visitCCW(maze, next, currentCell) = 
-    let(
-	    wallType = get_wallType(currentCell),
-		m1 = update_maze(maze, 
-			    set_wallType(currentCell, wallType == INWARD_CCW_WALL ? INWARD_WALL : NO_WALL)
-		)
-	)
-	update_maze(m1, set_visited(next));
+	update_maze(
+		update_maze(
+			maze, 
+			set_wallType(
+				currentCell, 
+				get_wallType(currentCell) == INWARD_CCW_WALL ? INWARD_WALL : NO_WALL
+			)
+		), 
+		set_visited(next)
+	);
 	
 function visitNext(maze, next, currentCell, dir) = 
     dir == IN ? visitIN(maze, next, currentCell) :
 	dir == OUT ? visitOUT(maze, next, currentCell) :
 	dir == CW ? visitCW(maze, next, currentCell) :
 	dir == CCW ? visitCCW(maze, next, currentCell) : maze;
-				
-function backtracker(maze, currentIndices, rows, seed) =
+
+function backtracker(maze, current_idx, rows, seed) =
     let(
-	    rdirs = rand_dirs(currentIndices[0] * rows + currentIndices[1], seed),
-		vdirs = visitable_dirs(maze, rdirs, maze[currentIndices[0]][ currentIndices[1]]),
+	    rdirs = rand_dirs(current_idx[0] * rows + current_idx[1], seed),
+		vdirs = visitable_dirs(maze, rdirs, cell_from(maze, current_idx)),
 		vdirs_leng = len(vdirs)
 	)
-	vdirs_leng == 0 ? maze : // 完全沒有可造訪的方向就回溯
-	                  visit_dirs(maze, currentIndices, vdirs, vdirs_leng, rows, seed); // go maze
+	vdirs_leng == 0 ? maze :
+	                  visit_dirs(maze, current_idx, vdirs, vdirs_leng, rows, seed); // go maze
 
-
-function visit_dirs(maze, currentIndices, dirs, dirs_leng, rows, seed, i = 0) = 
+function visit_dirs(maze, current_idx, dirs, dirs_leng, rows, seed, i = 0) = 
     i == dirs_leng ? maze :
     let(
 	    dir = dirs[i],
-		cells_indices = [for(c = nextCells(maze, maze[currentIndices[0]][currentIndices[1]], dir)) [c[0], c[1]]],
-		cells_leng = len(cells_indices),
-		m = visit_cells(maze, currentIndices, dir, cells_indices, cells_leng, rows, seed)
+		cell_idxs = [for(c = nextCells(maze, cell_from(maze, current_idx), dir)) [c[0], c[1]]],
+		cells_leng = len(cell_idxs),
+		m = visit_cells(maze, current_idx, dir, cell_idxs, cells_leng, rows, seed)
 	)
-	visit_dirs(m, currentIndices, dirs, dirs_leng, rows, seed, i + 1);
-	
-function visit_cells(maze, currentIndices, dir, cells_indices, cells_leng, rows, seed, i = 0) = 
+	visit_dirs(m, current_idx, dirs, dirs_leng, rows, seed, i + 1);
+
+function visit_cells(maze, current_idx, dir, cell_idxs, cells_leng, rows, seed, i = 0) = 
     i == cells_leng ? maze :
-	let(indices = cells_indices[i])
-	isVisitable(maze[indices[0]][indices[1]]) ? 
-	    let(m = visitNext(maze, maze[indices[0]][indices[1]], maze[currentIndices[0]][currentIndices[1]], dir))
+	let(cell_idx = cell_idxs[i])
+	isVisitable(cell_from(maze, cell_idx)) ? 
+	    let(mz = visitNext(maze, cell_from(maze, cell_idx), cell_from(maze, current_idx), dir))
 	    visit_cells(
 		    backtracker(
-			    m, 
-				m[indices[0]][indices[1]],
+			    mz, 
+				cell_from(mz, cell_idx),
 				rows,
 				seed
 		    ), 
-			maze[currentIndices[0]][currentIndices[1]], dir, cells_indices, cells_leng, rows, i + 1
+			cell_from(maze, current_idx), dir, cell_idxs, cells_leng, rows, i + 1
 		) : 
-		visit_cells(maze, maze[currentIndices[0]][currentIndices[1]], dir, cells_indices, cells_leng, rows, seed, i + 1);
+		visit_cells(maze, cell_from(maze, current_idx), dir, cell_idxs, cells_leng, rows, seed, i + 1);
 	
