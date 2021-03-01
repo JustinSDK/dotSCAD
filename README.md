@@ -81,6 +81,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [trim_shape](https://openhome.cc/eGossip/OpenSCAD/lib3x-trim_shape.html)
 
 ### 2D/3D Function
+- [angle_between](https://openhome.cc/eGossip/OpenSCAD/lib3x-angle_between.html)
 - [bezier_surface](https://openhome.cc/eGossip/OpenSCAD/lib3x-bezier_surface.html)	
 - [bezier_smooth](https://openhome.cc/eGossip/OpenSCAD/lib3x-bezier_smooth.html)	
 - [cross_sections](https://openhome.cc/eGossip/OpenSCAD/lib3x-cross_sections.html)
@@ -133,7 +134,6 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [sphere_spiral_extrude](https://openhome.cc/eGossip/OpenSCAD/lib3x-sphere_spiral_extrude.html)
 
 ### Util
-- [util/angle_between](https://openhome.cc/eGossip/OpenSCAD/lib3x-angle_between.html)
 - [util/bsearch](https://openhome.cc/eGossip/OpenSCAD/lib3x-bsearch.html)	
 - [util/choose](https://openhome.cc/eGossip/OpenSCAD/lib3x-choose.html)
 - [util/dedup](https://openhome.cc/eGossip/OpenSCAD/lib3x-dedup.html)
