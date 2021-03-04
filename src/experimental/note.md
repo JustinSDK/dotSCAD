@@ -13,6 +13,7 @@ dotSCAD 3.0 Dev
 - `util/dedup`: add the `eq` parameter.
 - `util/zip`: add the `combine` parameter.
 - `lines_intersection` supports 3D
+- `vx_union`, `vx_circle`, `vx_bezier`, `vx_polygon` performance improved.
 
 New modules/functions
 
