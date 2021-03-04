@@ -59,12 +59,10 @@ function hashset_del(set, elem, hash = df_hash, eq = df_eq) =
 		slice(set, bidx + 1)
 	);
 
-
 function _find(lt, elem, eq, leng, i = 0) =
     i == leng ? -1 :
     eq(lt[i], elem) ? i : _find(lt, elem, eq, leng, i + 1);
 
-	
 function hashset_list(set) = [
     for(bucket = set) 
         for(elem = bucket)
