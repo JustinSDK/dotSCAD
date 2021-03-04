@@ -186,8 +186,6 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [turtle/lsystem3](https://openhome.cc/eGossip/OpenSCAD/lib3x-lsystem3.html)
 - [turtle/t2d](https://openhome.cc/eGossip/OpenSCAD/lib3x-t2d.html)
 - [turtle/t3d](https://openhome.cc/eGossip/OpenSCAD/lib3x-t3d.html)
-- [turtle/turtle2d](https://openhome.cc/eGossip/OpenSCAD/lib3x-turtle2d.html)
-- [turtle/turtle3d](https://openhome.cc/eGossip/OpenSCAD/lib3x-turtle3d.html)
 
 ### Voxel
 - [voxel/vx_ascii](https://openhome.cc/eGossip/OpenSCAD/lib3x-vx_ascii.html)
