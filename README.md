@@ -134,30 +134,34 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [sphere_spiral_extrude](https://openhome.cc/eGossip/OpenSCAD/lib3x-sphere_spiral_extrude.html)
 
 ### Util
-- [util/bsearch](https://openhome.cc/eGossip/OpenSCAD/lib3x-bsearch.html)	
-- [util/choose](https://openhome.cc/eGossip/OpenSCAD/lib3x-choose.html)
-- [util/dedup](https://openhome.cc/eGossip/OpenSCAD/lib3x-dedup.html)
-- [util/degrees](https://openhome.cc/eGossip/OpenSCAD/lib3x-degrees.html)
-- [util/every](https://openhome.cc/eGossip/OpenSCAD/lib3x-every.html)
-- [util/fibseq](https://openhome.cc/eGossip/OpenSCAD/lib3x-fibseq.html)	
-- [util/flat](https://openhome.cc/eGossip/OpenSCAD/lib3x-flat.html)
-- [util/has](https://openhome.cc/eGossip/OpenSCAD/lib3x-has.html)
-- [util/lerp](https://openhome.cc/eGossip/OpenSCAD/lib3x-lerp.html)
-- [util/parse_number](https://openhome.cc/eGossip/OpenSCAD/lib3x-parse_number.html)
-- [util/polar_coordinate](https://openhome.cc/eGossip/OpenSCAD/lib3x-polar_coordinate.html)
-- [util/radians](https://openhome.cc/eGossip/OpenSCAD/lib3x-radians.html)
-- [util/rand](https://openhome.cc/eGossip/OpenSCAD/lib3x-rand.html)
-- [util/reverse](https://openhome.cc/eGossip/OpenSCAD/lib3x-reverse.html)
-- `util/shuffle`
-- [util/slice](https://openhome.cc/eGossip/OpenSCAD/lib3x-slice.html)
-- [util/some](https://openhome.cc/eGossip/OpenSCAD/lib3x-some.html)
-- [util/sort](https://openhome.cc/eGossip/OpenSCAD/lib3x-sort.html)
-- [util/spherical_coordinate](https://openhome.cc/eGossip/OpenSCAD/lib3x-spherical_coordinate.html)
-- [util/sub_str](https://openhome.cc/eGossip/OpenSCAD/lib3x-sub_str.html)
-- [util/split_str](https://openhome.cc/eGossip/OpenSCAD/lib3x-split_str.html)
-- [util/sum](https://openhome.cc/eGossip/OpenSCAD/lib3x-sum.html)
-- `util/swap`
-- [util/zip](https://openhome.cc/eGossip/OpenSCAD/lib3x-zip.html)
+- list
+	- [util/bsearch](https://openhome.cc/eGossip/OpenSCAD/lib3x-bsearch.html)
+	- [util/dedup](https://openhome.cc/eGossip/OpenSCAD/lib3x-dedup.html)	
+	- [util/flat](https://openhome.cc/eGossip/OpenSCAD/lib3x-flat.html)
+	- [util/has](https://openhome.cc/eGossip/OpenSCAD/lib3x-has.html)
+	- [util/reverse](https://openhome.cc/eGossip/OpenSCAD/lib3x-reverse.html)
+	- [util/slice](https://openhome.cc/eGossip/OpenSCAD/lib3x-slice.html)
+	- [util/sort](https://openhome.cc/eGossip/OpenSCAD/lib3x-sort.html)
+	- [util/sum](https://openhome.cc/eGossip/OpenSCAD/lib3x-sum.html)
+	- `util/swap`
+	- [util/zip](https://openhome.cc/eGossip/OpenSCAD/lib3x-zip.html)
+	- [util/every](https://openhome.cc/eGossip/OpenSCAD/lib3x-every.html)
+	- [util/some](https://openhome.cc/eGossip/OpenSCAD/lib3x-some.html)
+- random
+	- `util/shuffle`
+	- [util/choose](https://openhome.cc/eGossip/OpenSCAD/lib3x-choose.html)
+	- [util/rand](https://openhome.cc/eGossip/OpenSCAD/lib3x-rand.html)
+- string
+	- [util/parse_number](https://openhome.cc/eGossip/OpenSCAD/lib3x-parse_number.html)
+	- [util/sub_str](https://openhome.cc/eGossip/OpenSCAD/lib3x-sub_str.html)
+	- [util/split_str](https://openhome.cc/eGossip/OpenSCAD/lib3x-split_str.html)
+- others
+	- [util/degrees](https://openhome.cc/eGossip/OpenSCAD/lib3x-degrees.html)
+	- [util/radians](https://openhome.cc/eGossip/OpenSCAD/lib3x-radians.html)
+	- [util/polar_coordinate](https://openhome.cc/eGossip/OpenSCAD/lib3x-polar_coordinate.html)
+	- [util/spherical_coordinate](https://openhome.cc/eGossip/OpenSCAD/lib3x-spherical_coordinate.html)
+	- [util/lerp](https://openhome.cc/eGossip/OpenSCAD/lib3x-lerp.html)
+	- [util/fibseq](https://openhome.cc/eGossip/OpenSCAD/lib3x-fibseq.html)	
 
 ### Matrix
 - [matrix/m_determinant](https://openhome.cc/eGossip/OpenSCAD/lib3x-m_determinant.html)
