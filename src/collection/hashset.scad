@@ -22,14 +22,14 @@ echo(hashset_list(hashset_del(s2, 2)));
 df_hash = function(e) _str_hash(e);
 df_eq = function(e1, e2) e1 == e2;
 	
-function hashset(elems, hash = df_hash, eq = df_eq, bucket_size = 16) =
+function hashset(lt, hash = df_hash, eq = df_eq, bucket_size = 16) =
     let(
-	    elems_undef = is_undef(elems),
-	    size = elems_undef ? bucket_size : len(elems),
+	    lt_undef = is_undef(lt),
+	    size = lt_undef ? bucket_size : len(lt),
 	    buckets = [for(i = [0:bucket_size - 1]) []]
 	)
-	elems_undef ? buckets :
-	_hashset(elems, len(elems), buckets, hash, eq);
+	lt_undef ? buckets :
+	_hashset(lt, len(lt), buckets, hash, eq);
 
 function hashset_has(set, elem, hash = df_hash, eq = df_eq) =
     some(set[hash(elem) % len(set)], function(e) eq(e, elem));
