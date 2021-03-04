@@ -12,6 +12,7 @@ dotSCAD 3.0 Dev
 - `util/bsearch`: only supports `sorted` and `target` parameters. I view it as a new function.
 - `util/dedup`: add the `eq` parameter.
 - `util/zip`: add the `combine` parameter.
+- `lines_intersection` supports 3D
 
 New modules/functions
 
