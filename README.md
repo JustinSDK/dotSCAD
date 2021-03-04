@@ -148,13 +148,13 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 	- [util/every](https://openhome.cc/eGossip/OpenSCAD/lib3x-every.html)
 	- [util/some](https://openhome.cc/eGossip/OpenSCAD/lib3x-some.html)
 - random
-	- `util/shuffle`
 	- [util/choose](https://openhome.cc/eGossip/OpenSCAD/lib3x-choose.html)
 	- [util/rand](https://openhome.cc/eGossip/OpenSCAD/lib3x-rand.html)
+	- `util/shuffle`
 - string
 	- [util/parse_number](https://openhome.cc/eGossip/OpenSCAD/lib3x-parse_number.html)
-	- [util/sub_str](https://openhome.cc/eGossip/OpenSCAD/lib3x-sub_str.html)
 	- [util/split_str](https://openhome.cc/eGossip/OpenSCAD/lib3x-split_str.html)
+	- [util/sub_str](https://openhome.cc/eGossip/OpenSCAD/lib3x-sub_str.html)
 - others
 	- [util/degrees](https://openhome.cc/eGossip/OpenSCAD/lib3x-degrees.html)
 	- [util/radians](https://openhome.cc/eGossip/OpenSCAD/lib3x-radians.html)
