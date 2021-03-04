@@ -44,7 +44,7 @@ function hashset_del(set, elem, hash = df_hash, eq = df_eq) =
 		leng = len(bucket)
 	)
 	leng == 0 ? set :
-	let(i = _find(bucket, elem, eq, leng), _ = echo(i))
+	let(i = _find(bucket, elem, eq, leng))
 	i == -1 ? set : 
 	concat(
 	    slice(set, 0, bidx), 
