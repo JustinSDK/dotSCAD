@@ -9,9 +9,10 @@
 **/ 
 
 use <_impl/_vx_circle_impl.scad>;
-use <../util/sort.scad>;
-use <../util/dedup.scad>;
+use <collection/hashset.scad>;
 
 function vx_circle(radius, filled = false) = 
     let(all = _vx_circle_impl(radius, filled))
-    dedup(sort(all, by = "vt"), sorted = true);
+    hashset_list(
+        hashset(all)
+    );

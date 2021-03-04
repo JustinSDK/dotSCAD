@@ -1,7 +1,7 @@
 use <../in_shape.scad>;
 use <../util/sort.scad>;
-use <../util/dedup.scad>;
 use <vx_polyline.scad>;
+use <collection/hashset.scad>;
 
 function vx_polygon(points, filled = false) =
     let(contour = vx_polyline(concat(points, [points[0]])))
@@ -28,4 +28,4 @@ function vx_polygon(points, filled = false) =
             ]
         )
     )
-    dedup(sort(all, by = "vt"), sorted = true);
+    hashset_list(hashset(all));

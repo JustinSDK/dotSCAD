@@ -8,11 +8,9 @@
 *
 **/ 
 
-use <../util/sort.scad>;
-use <../util/dedup.scad>;
+use <collection/hashset.scad>;
 
 function vx_union(points1, points2) =
-    dedup(
-        sort(concat(points1, points2), by = "vt"), 
-        sorted = true
+    hashset_list(
+        hashset(concat(points1, points2))
     );
