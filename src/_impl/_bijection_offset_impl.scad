@@ -38,7 +38,7 @@ function _bijection_offset_impl(pts, d, epsilon) =
         offset_es = _bijection__bijection_offset_edges(es, d),
         leng = len(offset_es),
         leng_minus_one = leng - 1,
-        last_p = __line_intersection(offset_es[leng_minus_one], offset_es[0], epsilon)
+        last_p = __line_intersection2(offset_es[leng_minus_one], offset_es[0], epsilon)
     )
     concat(
         last_p != [] && last_p == last_p ? [last_p] : [],
@@ -47,7 +47,7 @@ function _bijection_offset_impl(pts, d, epsilon) =
             let(
                 this_edge = offset_es[i],
                 next_edge = offset_es[i + 1],
-                p = __line_intersection(this_edge, next_edge, epsilon)
+                p = __line_intersection2(this_edge, next_edge, epsilon)
             )
             // p == p to avoid [nan, nan], because [nan, nan] != [nan, nan]
             if(p != [] && p == p) p

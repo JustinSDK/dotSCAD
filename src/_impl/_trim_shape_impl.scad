@@ -4,7 +4,7 @@ use <../__comm__/__lines_from.scad>;
 
 function _trim_shape_any_intersection_sub(lines, line, lines_leng, i, epsilon) =
     let(
-        p = __line_intersection(lines[i], line, epsilon)
+        p = __line_intersection2(lines[i], line, epsilon)
     )
     (p != [] && __in_line(line, p, epsilon) && __in_line(lines[i], p, epsilon)) ? [i, p] : _trim_shape_any_intersection(lines, line, lines_leng, i + 1, epsilon);
 

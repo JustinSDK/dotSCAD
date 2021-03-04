@@ -76,8 +76,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 ### 2D Function
 - [bijection_offset](https://openhome.cc/eGossip/OpenSCAD/lib3x-bijection_offset.html)
 - [contours](https://openhome.cc/eGossip/OpenSCAD/lib3x-contours.html)
-- [in_shape](https://openhome.cc/eGossip/OpenSCAD/lib3x-in_shape.html)
-- [lines_intersection](https://openhome.cc/eGossip/OpenSCAD/lib3x-lines_intersection.html)	
+- [in_shape](https://openhome.cc/eGossip/OpenSCAD/lib3x-in_shape.html)	
 - [trim_shape](https://openhome.cc/eGossip/OpenSCAD/lib3x-trim_shape.html)
 
 ### 2D/3D Function
@@ -86,6 +85,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [bezier_smooth](https://openhome.cc/eGossip/OpenSCAD/lib3x-bezier_smooth.html)	
 - [cross_sections](https://openhome.cc/eGossip/OpenSCAD/lib3x-cross_sections.html)
 - [in_polyline](https://openhome.cc/eGossip/OpenSCAD/lib3x-in_polyline.html)
+- [lines_intersection](https://openhome.cc/eGossip/OpenSCAD/lib3x-lines_intersection.html)
 - [paths2sections](https://openhome.cc/eGossip/OpenSCAD/lib3x-paths2sections.html)
 - [path_scaling_sections](https://openhome.cc/eGossip/OpenSCAD/lib3x-path_scaling_sections.html)
 - [midpt_smooth](https://openhome.cc/eGossip/OpenSCAD/lib3x-midpt_smooth.html)
