@@ -13,9 +13,9 @@ use <_impl/_dedup_impl.scad>;
 use <sort.scad>;
 
 function dedup(lt, eq = function(e1, e2) e1 == e2, hash = function(e) _str_hash(e)) =
-    lt == [] ? [] :
-    let(
-		leng_lt = len(lt),
+    let(leng_lt = len(lt))
+    leng_lt < 2 ? lt :
+	let(
 		bucket_numbers = ceil(sqrt(leng_lt)),
 	    buckets = [for(i = [0:bucket_numbers - 1]) []],
 		deduped = _dedup(lt, leng_lt, buckets, eq, hash, bucket_numbers),
