@@ -1,7 +1,7 @@
 use <../../util/slice.scad>;
 use <../../util/some.scad>;
 
-function _hashset_add(set, elem, hash, eq) =
+function _hashset_add(set, elem, eq, hash) =
     let(
 	    idx = hash(elem) % len(set),
 		bucket = set[idx]
@@ -14,9 +14,9 @@ function _hashset_add(set, elem, hash, eq) =
 		slice(set, idx + 1)
 	);
 
-function _hashset(elems, leng, buckets, hash, eq, i = 0) = 
+function _hashset(elems, leng, buckets, eq, hash, i = 0) = 
     i == leng ? buckets :
-	_hashset(elems, leng, _hashset_add(buckets, elems[i], hash, eq), hash, eq, i + 1);
+	_hashset(elems, leng, _hashset_add(buckets, elems[i], eq, hash), eq, hash, i + 1);
 
 function _find(lt, elem, eq, leng, i = 0) =
     i == leng ? -1 :

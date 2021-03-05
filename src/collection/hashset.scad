@@ -22,22 +22,22 @@ echo(hashset_list(hashset_del(s2, 2)));
 df_hash = function(e) _str_hash(e);
 df_eq = function(e1, e2) e1 == e2;
 	
-function hashset(lt, hash = df_hash, eq = df_eq, bucket_size = 16) =
+function hashset(lt, eq = df_eq, hash = df_hash, bucket_size = 16) =
     let(
 	    lt_undef = is_undef(lt),
 	    size = lt_undef ? bucket_size : len(lt),
 	    buckets = [for(i = [0:bucket_size - 1]) []]
 	)
 	lt_undef ? buckets :
-	_hashset(lt, len(lt), buckets, hash, eq);
+	_hashset(lt, len(lt), buckets, eq, hash);
 
-function hashset_has(set, elem, hash = df_hash, eq = df_eq) =
+function hashset_has(set, elem, eq = df_eq, hash = df_hash) =
     some(set[hash(elem) % len(set)], function(e) eq(e, elem));
 	
-function hashset_add(set, elem, hash = df_hash, eq = df_eq) =
-    _hashset_add(set, elem, hash, eq);
+function hashset_add(set, elem, eq = df_eq, hash = df_hash) =
+    _hashset_add(set, elem, eq, hash);
 	
-function hashset_del(set, elem, hash = df_hash, eq = df_eq) =
+function hashset_del(set, elem, eq = df_eq, hash = df_hash) =
     let(
 	    bidx = hash(elem) % len(set),
 		bucket = set[bidx],
