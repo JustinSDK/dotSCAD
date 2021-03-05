@@ -8,10 +8,6 @@
 *
 **/ 
 
-use <collection/hashset.scad>;
-use <collection/hashset_list.scad>;
+use <../util/dedup.scad>;
 
-function vx_union(points1, points2) =
-    hashset_list(
-        hashset(concat(points1, points2))
-    );
+function vx_union(points1, points2) = dedup(concat(points1, points2));

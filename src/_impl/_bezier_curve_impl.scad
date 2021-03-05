@@ -1,5 +1,3 @@
-use <../__comm__/__to2d.scad>;
-
 function _combi(n, k) =
     let(  
         bi_coef = [      

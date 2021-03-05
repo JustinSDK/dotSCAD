@@ -9,7 +9,6 @@
 **/ 
 
 use <_impl/_vx_curve_impl.scad>;
-use <../util/sort.scad>;
 use <../util/dedup.scad>;
 
 function vx_curve(points, tightness = 0) = 
@@ -26,4 +25,4 @@ function vx_curve(points, tightness = 0) =
             [points[leng - 2]]
         )
     )
-    dedup(sort(pts, by = "vt"), sorted = true);
+    dedup(pts);
