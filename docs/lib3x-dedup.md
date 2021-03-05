@@ -24,13 +24,3 @@ Eliminating duplicate copies of repeating vectors.
         dedup([[1, 1, 2], [3, 4, 2], [7, 2, 2], [3, 4, 2], [1, 2, 3]], eq = eq) 
             == [[1, 1, 2], [3, 4, 2], [7, 2, 2], [1, 2, 3]]
     );
-
-    sorted = sort([[1, 1, 2], [3, 4, 2], [7, 2, 2], [3, 4, 2], [1, 2, 3]]);
-
-    assert(
-        dedup(sorted, sorted = true) == [[1, 1, 2], [1, 2, 3], [3, 4, 2], [7, 2, 2]]
-    );
-
-    assert(
-        dedup(sorted, sorted = true, eq = eq) == [[1, 1, 2], [1, 2, 3], [3, 4, 2], [7, 2, 2]]
-    );
