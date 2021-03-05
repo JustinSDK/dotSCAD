@@ -12,6 +12,7 @@ use <__comm__/__to2d.scad>;
 use <__comm__/__to3d.scad>;
 use <_impl/_vx_bezier_impl.scad>;
 use <collection/hashset.scad>;
+use <collection/hashset_list.scad>;
 
 function vx_bezier(p1, p2, p3, p4) = 
     let(

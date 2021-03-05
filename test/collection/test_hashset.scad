@@ -1,5 +1,6 @@
 use <unittest.scad>;
 use <collection/hashset.scad>;
+use <collection/hashset_list.scad>;
 
 module test_hashset() {
     echo("==== test_hashset ====");

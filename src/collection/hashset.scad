@@ -38,9 +38,3 @@ function hashset_del(set, elem, eq = df_eq, hash = df_hash) =
 		[concat(slice(bucket, 0, i), slice(bucket, i + 1))],
 		slice(set, bidx + 1)
 	);
-
-function hashset_list(set) = [
-    for(bucket = set) 
-        for(elem = bucket)
-            elem		
-];

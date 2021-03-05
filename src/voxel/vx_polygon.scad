@@ -2,6 +2,7 @@ use <../in_shape.scad>;
 use <../util/sort.scad>;
 use <vx_polyline.scad>;
 use <collection/hashset.scad>;
+use <collection/hashset_list.scad>;
 
 function vx_polygon(points, filled = false) =
     let(contour = vx_polyline(concat(points, [points[0]])))

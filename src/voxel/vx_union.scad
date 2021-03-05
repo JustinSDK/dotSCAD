@@ -9,6 +9,7 @@
 **/ 
 
 use <collection/hashset.scad>;
+use <collection/hashset_list.scad>;
 
 function vx_union(points1, points2) =
     hashset_list(
