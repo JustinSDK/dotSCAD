@@ -80,3 +80,6 @@ include <voxel/test_vx_circle.scad>;
 include <voxel/test_vx_cylinder.scad>;
 include <voxel/test_vx_sphere.scad>;
 include <voxel/test_vx_polygon.scad>;
+
+// Collection
+include <collection/test_hashset.scad>;
