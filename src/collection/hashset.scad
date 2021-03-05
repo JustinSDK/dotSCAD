@@ -8,14 +8,15 @@ use <../util/some.scad>;
 df_hash = function(e) _str_hash(e);
 df_eq = function(e1, e2) e1 == e2;
 	
-function hashset(lt, eq = df_eq, hash = df_hash, bucket_numbers = 16) =
+function hashset(lt, eq = df_eq, hash = df_hash, bucket_numbers) =
     let(
 	    lt_undef = is_undef(lt),
-	    size = lt_undef ? bucket_numbers : len(lt),
-	    buckets = [for(i = [0:bucket_numbers - 1]) []]
+		bucket_numbers_undef = is_undef(bucket_numbers),
+		b_numbers = bucket_numbers_undef ? 
+		               (lt_undef ? 16 : len(lt)) : bucket_numbers,
+	    buckets = [for(i = [0:b_numbers - 1]) []]
 	)
-	lt_undef ? buckets :
-	_hashset(lt, len(lt), buckets, eq, hash);
+	lt_undef ? buckets : _hashset(lt, len(lt), buckets, eq, hash);
 
 function hashset_has(set, elem, eq = df_eq, hash = df_hash) =
     some(set[hash(elem) % len(set)], function(e) eq(e, elem));

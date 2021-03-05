@@ -8,11 +8,11 @@ module test_hashset() {
     assert(hashset_list(s) == [1, 2, 3, 4, 5]);
 
     s2 = hashset_add(s, 9);
-    assert(hashset_list(s2) == [1, 2, 3, 4, 5, 9]);
+    assert(hashset_list(s2) == [1, 9, 2, 3, 4, 5]);
 
     assert(!hashset_has(s2, 13));
 
-    assert(hashset_list(hashset_del(s2, 2)) == [1, 3, 4, 5, 9]);
+    assert(hashset_list(hashset_del(s2, 2)) == [1, 9, 3, 4, 5]);
 }
 
 test_hashset();
