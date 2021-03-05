@@ -136,9 +136,10 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 ### Util
 - list
 	- [util/bsearch](https://openhome.cc/eGossip/OpenSCAD/lib3x-bsearch.html)
+	- [util/has](https://openhome.cc/eGossip/OpenSCAD/lib3x-has.html)
+	- `util/find_index`
 	- [util/dedup](https://openhome.cc/eGossip/OpenSCAD/lib3x-dedup.html)	
 	- [util/flat](https://openhome.cc/eGossip/OpenSCAD/lib3x-flat.html)
-	- [util/has](https://openhome.cc/eGossip/OpenSCAD/lib3x-has.html)
 	- [util/reverse](https://openhome.cc/eGossip/OpenSCAD/lib3x-reverse.html)
 	- [util/slice](https://openhome.cc/eGossip/OpenSCAD/lib3x-slice.html)
 	- [util/sort](https://openhome.cc/eGossip/OpenSCAD/lib3x-sort.html)

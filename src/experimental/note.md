@@ -26,6 +26,7 @@ New modules/functions
 - `util/some`
 - `util/swap`
 - `util/shuffle`
+- `util/find_index`
 - `maze/mz_theta_cells`
 - `maze/mz_theta_get`
 
