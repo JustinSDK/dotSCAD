@@ -7,8 +7,8 @@ Eliminating duplicate copies of repeating vectors. If `lt` has a large number of
 ## Parameters
 
 - `lt` : A list of vectors.
-- `sorted` : If `false` (default), use native `search`. If `true`, `lt` must be sorted by zyx (from the last index to the first one) and `dedup` will use binary search internally.
 - `eq` : A equality function. If it's ignored, use `==` to compare elements. **Since: ** 3.0
+- `hash` : A hash function. If it's ignored, convert each element to a string and hash it. **Since: ** 3.0
 
 ## Examples
 
