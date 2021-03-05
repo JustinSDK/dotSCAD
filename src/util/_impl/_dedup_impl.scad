@@ -1,27 +1,22 @@
-use <../some.scad> ;
 
-function _dedup_sorted(lt, leng, eq) =
-    leng == 0 ? lt : 
-        is_function(eq) ?      
-            concat(
-                [lt[0]],
-                [for(i = [1:leng - 1]) if(!eq(lt[i], lt[i - 1])) lt[i]]
-            ) :
-            concat(
-                [lt[0]],
-                [for(i = [1:leng - 1]) if(lt[i] != lt[i - 1]) lt[i]]
-            );  
+use <../slice.scad>;
+use <../some.scad>;
 
-function _dedup_vt(src, dest, leng, i = 0) = 
-    i == leng ? dest :
-    // src[i] in dest ?
-    search([src[i]], dest) != [[]] ? _dedup_vt(src, dest, leng, i + 1) : 
-                                     _dedup_vt(src, concat(dest, [src[i]]), leng, i + 1);
+function _dedup(elems, leng, buckets, eq, hash, bucket_numbers, i = 0) = 
+    i == leng ? buckets :
+	_dedup(elems, leng, _dedup_add(buckets, [i, elems[i]], eq, hash, bucket_numbers), eq, hash, bucket_numbers, i + 1);
 
-function _dedup_eq(src, dest, eq, leng, i = 0) = 
-    i == leng ? dest :
-    some(dest, function(el) eq(el, src[i])) ? _dedup_eq(src, dest, eq, leng, i + 1) : 
-                                                 _dedup_eq(src, concat(dest, [src[i]]), eq, leng, i + 1);
-
-function _dedup(src, dest, leng, eq) = 
-    is_function(eq) ? _dedup_eq(src, dest, eq, leng) : _dedup_vt(src, dest, leng);
+function _dedup_add(buckets, i_elem, eq, hash, bucket_numbers) =
+    let(
+		i =  i_elem[0],
+		elem = i_elem[1],
+	    b_idx = hash(elem) % bucket_numbers,
+		bucket = buckets[b_idx]
+	)
+	len(bucket) == 0 ? concat(slice(buckets, 0, b_idx), [[i_elem]], slice(buckets, b_idx + 1)) :
+	some(bucket, function(i_e) eq(i_e[1], elem)) ? buckets :
+	concat(
+	    slice(buckets, 0, b_idx), 
+		[concat(bucket, [i_elem])], 
+		slice(buckets, b_idx + 1)
+	);
