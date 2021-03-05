@@ -1,4 +1,4 @@
-use <__comm__/_str_hash.scad>;
+use <../__comm__/_str_hash.scad>;
 use <../util/slice.scad>;
 
 function _find(lt, elem, eq, leng, i = 0) =
