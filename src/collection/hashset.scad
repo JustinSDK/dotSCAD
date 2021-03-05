@@ -5,28 +5,14 @@ use <../util/some.scad>;
 
 // public functions: hashset, hashset_has, hashset_add, hashset_del, hashset_list
 
-/*
-use <collection/hashset.scad>;
-
-s = hashset([1, 2, 3, 4, 5, 2, 3, 5]);
-echo(hashset_list(s));
-s2 = hashset_add(s, 9);
-echo(hashset_list(s2));
-
-echo(hashset_has(s2, 13));
-
-echo(hashset_list(hashset_del(s2, 2)));
-*/
-
-
 df_hash = function(e) _str_hash(e);
 df_eq = function(e1, e2) e1 == e2;
 	
-function hashset(lt, eq = df_eq, hash = df_hash, bucket_size = 16) =
+function hashset(lt, eq = df_eq, hash = df_hash, bucket_numbers = 16) =
     let(
 	    lt_undef = is_undef(lt),
-	    size = lt_undef ? bucket_size : len(lt),
-	    buckets = [for(i = [0:bucket_size - 1]) []]
+	    size = lt_undef ? bucket_numbers : len(lt),
+	    buckets = [for(i = [0:bucket_numbers - 1]) []]
 	)
 	lt_undef ? buckets :
 	_hashset(lt, len(lt), buckets, eq, hash);
