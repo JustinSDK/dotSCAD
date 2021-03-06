@@ -156,13 +156,27 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 	- [util/parse_number](https://openhome.cc/eGossip/OpenSCAD/lib3x-parse_number.html)
 	- [util/split_str](https://openhome.cc/eGossip/OpenSCAD/lib3x-split_str.html)
 	- [util/sub_str](https://openhome.cc/eGossip/OpenSCAD/lib3x-sub_str.html)
-- others
+- math
 	- [util/degrees](https://openhome.cc/eGossip/OpenSCAD/lib3x-degrees.html)
 	- [util/radians](https://openhome.cc/eGossip/OpenSCAD/lib3x-radians.html)
 	- [util/polar_coordinate](https://openhome.cc/eGossip/OpenSCAD/lib3x-polar_coordinate.html)
 	- [util/spherical_coordinate](https://openhome.cc/eGossip/OpenSCAD/lib3x-spherical_coordinate.html)
 	- [util/lerp](https://openhome.cc/eGossip/OpenSCAD/lib3x-lerp.html)
 	- [util/fibseq](https://openhome.cc/eGossip/OpenSCAD/lib3x-fibseq.html)	
+- set
+    - `util/set/hashset`
+	- `util/set/hashset_add`
+	- `util/set/hashset_has`
+	- `util/set/hashset_del`
+	- `util/set/hashset_len`
+	- `util/set/hashset_list`
+- map
+    - `util/map/hashmap`
+	- `util/map/hashmap_put`
+	- `util/map/hashmap_get`
+	- `util/map/hashmap_del`
+	- `util/map/hashmap_len`
+	- `util/map/hashmap_list`
 
 ### Matrix
 - [matrix/m_determinant](https://openhome.cc/eGossip/OpenSCAD/lib3x-m_determinant.html)
