@@ -1,6 +1,6 @@
-use <../../util/slice.scad>;
-use <../../util/some.scad>;
-use <../../util/find_index.scad>;
+use <../../slice.scad>;
+use <../../some.scad>;
+use <../../find_index.scad>;
 
 function _hashmap_put(map, key, value, eq, hash) =
     let(

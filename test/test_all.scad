@@ -72,6 +72,8 @@ include <util/test_dedup.scad>;
 include <util/test_zip.scad>;
 include <util/test_some.scad>;
 include <util/test_every.scad>;
+include <util/set/test_hashset.scad>;
+include <util/map/test_hashmap.scad>;
 
 // Voxel
 include <voxel/test_vx_line.scad>;
@@ -81,6 +83,3 @@ include <voxel/test_vx_cylinder.scad>;
 include <voxel/test_vx_sphere.scad>;
 include <voxel/test_vx_polygon.scad>;
 
-// Collection
-include <collection/test_hashset.scad>;
-include <collection/test_hashmap.scad>;

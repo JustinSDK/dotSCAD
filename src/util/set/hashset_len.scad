@@ -1,4 +1,4 @@
-use <../util/sum.scad>;
+use <../sum.scad>;
 
 function hashset_len(set) = sum([
     for(bucket = set) 

@@ -1,9 +1,9 @@
-use <collection/hashmap.scad>;
-use <collection/hashmap_list.scad>;
-use <collection/hashmap_put.scad>;
-use <collection/hashmap_len.scad>;
-use <collection/hashmap_del.scad>;
-use <collection/hashmap_get.scad>;
+use <util/map/hashmap.scad>;
+use <util/map/hashmap_list.scad>;
+use <util/map/hashmap_put.scad>;
+use <util/map/hashmap_len.scad>;
+use <util/map/hashmap_del.scad>;
+use <util/map/hashmap_get.scad>;
 
 module test_hashmap() {
     echo("==== test_hashmap ====");

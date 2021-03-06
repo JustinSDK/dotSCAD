@@ -1,9 +1,9 @@
-use <collection/hashset.scad>;
-use <collection/hashset_list.scad>;
-use <collection/hashset_add.scad>;
-use <collection/hashset_del.scad>;
-use <collection/hashset_has.scad>;
-use <collection/hashset_len.scad>;
+use <util/set/hashset.scad>;
+use <util/set/hashset_list.scad>;
+use <util/set/hashset_add.scad>;
+use <util/set/hashset_del.scad>;
+use <util/set/hashset_has.scad>;
+use <util/set/hashset_len.scad>;
 
 module test_hashset() {
     echo("==== test_hashset ====");

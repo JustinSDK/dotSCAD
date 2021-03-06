@@ -1,5 +1,5 @@
-use <../../util/slice.scad>;
-use <../../util/some.scad>;
+use <../../slice.scad>;
+use <../../some.scad>;
 
 function _hashset_add(set, elem, eq, hash) =
     let(

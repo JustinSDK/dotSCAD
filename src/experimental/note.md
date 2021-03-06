@@ -29,6 +29,8 @@ New modules/functions
 - `util/find_index`
 - `maze/mz_theta_cells`
 - `maze/mz_theta_get`
+- `util/set/hashset` ...
+- `util/map/hashmap` ...
 
 - delete `m_cumulate`
 - delete `trianglate`, use `tri_ear_clipping`?
