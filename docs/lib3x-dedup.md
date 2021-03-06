@@ -9,6 +9,7 @@ Eliminating duplicate copies of repeating vectors.
 - `lt` : A list of vectors.
 - `eq` : A equality function. If it's ignored, use `==` to compare elements. **Since: ** 3.0
 - `hash` : A hash function. If it's ignored, convert each element to a string and hash it. **Since: ** 3.0
+- `number_of_buckets` : The function uses a hash table internally. Change the number of buckets if you're trying to do optimization. **Since: ** 3.0
 
 ## Examples
 

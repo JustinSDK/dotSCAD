@@ -12,13 +12,13 @@ use <../__comm__/_str_hash.scad>;
 use <_impl/_dedup_impl.scad>;
 use <sort.scad>;
 
-function dedup(lt, eq = function(e1, e2) e1 == e2, hash = function(e) _str_hash(e)) =
+function dedup(lt, eq = function(e1, e2) e1 == e2, hash = function(e) _str_hash(e), number_of_buckets) =
     let(leng_lt = len(lt))
     leng_lt < 2 ? lt :
 	let(
-		bucket_numbers = ceil(sqrt(leng_lt)),
-	    buckets = [for(i = [0:bucket_numbers - 1]) []],
-		deduped = _dedup(lt, leng_lt, buckets, eq, hash, bucket_numbers),
+		b_numbers = is_undef(number_of_buckets) ? ceil(sqrt(leng_lt)) : number_of_buckets,
+	    buckets = [for(i = [0:b_numbers - 1]) []],
+		deduped = _dedup(lt, leng_lt, buckets, eq, hash, b_numbers),
 		i_elem_lt = [
 			for(bucket = deduped) 
 				for(i_elem = bucket)
