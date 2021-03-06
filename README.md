@@ -169,14 +169,16 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 	- `util/set/hashset_has`
 	- `util/set/hashset_del`
 	- `util/set/hashset_len`
-	- `util/set/hashset_list`
+	- `util/set/hashset_elems`
 - map
     - `util/map/hashmap`
 	- `util/map/hashmap_put`
 	- `util/map/hashmap_get`
 	- `util/map/hashmap_del`
 	- `util/map/hashmap_len`
-	- `util/map/hashmap_list`
+	- `util/map/hashmap_keys`
+	- `util/map/hashmap_values`
+	- `util/map/hashmap_entries`
 
 ### Matrix
 - [matrix/m_determinant](https://openhome.cc/eGossip/OpenSCAD/lib3x-m_determinant.html)
