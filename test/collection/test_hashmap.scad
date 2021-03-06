@@ -3,6 +3,8 @@ use <collection/hashmap.scad>;
 use <collection/hashmap_list.scad>;
 use <collection/hashmap_add.scad>;
 use <collection/hashmap_len.scad>;
+use <collection/hashmap_del.scad>;
+use <collection/hashmap_get.scad>;
 
 module test_hashmap() {
     echo("==== test_hashmap ====");
@@ -23,6 +25,13 @@ module test_hashmap() {
 
     s3 = hashmap_add(s2, "k5678", 200);
     assert(hashmap_list(s3) == [["k9876", 3], ["k4444", 3], ["k1234", 1], ["k5678", 200], ["k1357", 100]]);
+
+    s4 = hashmap_del(s3, "k4444");
+    assert(hashmap_list(s4) == [["k9876", 3], ["k1234", 1], ["k5678", 200], ["k1357", 100]]);
+    assert(hashmap_list(hashmap_del(s4, "k4444")) == [["k9876", 3], ["k1234", 1], ["k5678", 200], ["k1357", 100]]);    
+
+    assert(hashmap_get(s4, "k1234") == 1);
+    assert(hashmap_get(s4, "k0000") == undef);
 }
 
 test_hashmap();
