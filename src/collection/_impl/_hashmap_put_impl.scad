@@ -2,14 +2,14 @@ use <../../util/slice.scad>;
 use <../../util/some.scad>;
 use <../../util/find_index.scad>;
 
-function _hashmap_add(map, key, value, eq, hash) =
+function _hashmap_put(map, key, value, eq, hash) =
     let(
 	    b_idx = hash(key) % len(map),
 		bucket = map[b_idx],
 		k_idx = find_index(bucket, function(kv) eq(kv[0], key))
 	)
 	k_idx != -1 ? _replace(map, bucket, key, value, b_idx, k_idx) : 
-	              _add(map, bucket, key, value, b_idx);
+	              _put(map, bucket, key, value, b_idx);
 
 function _replace(map, bucket, key, value, b_idx, k_idx) = 
     let(
@@ -25,7 +25,7 @@ function _replace(map, bucket, key, value, b_idx, k_idx) =
 		slice(map, b_idx + 1)
 	);
 
-function _add(map, bucket, key, value, b_idx) = concat(
+function _put(map, bucket, key, value, b_idx) = concat(
 	slice(map, 0, b_idx), 
 	[concat(bucket, [[key, value]])], 
 	slice(map, b_idx + 1)
