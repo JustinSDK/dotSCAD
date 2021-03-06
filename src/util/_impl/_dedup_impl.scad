@@ -13,10 +13,10 @@ function _dedup_add(buckets, i_elem, eq, hash, bucket_numbers) =
 	    b_idx = hash(elem) % bucket_numbers,
 		bucket = buckets[b_idx]
 	)
-	len(bucket) == 0 ? concat(slice(buckets, 0, b_idx), [[i_elem]], slice(buckets, b_idx + 1)) :
-	some(bucket, function(i_e) eq(i_e[1], elem)) ? buckets :
-	concat(
-	    slice(buckets, 0, b_idx), 
-		[concat(bucket, [i_elem])], 
-		slice(buckets, b_idx + 1)
-	);
+	some(bucket, function(i_e) eq(i_e[1], elem)) ? buckets : _add(buckets, bucket, i_elem, b_idx);
+
+function _add(buckets, bucket, i_elem, b_idx) = concat(
+	slice(buckets, 0, b_idx), 
+	[concat(bucket, [i_elem])], 
+	slice(buckets, b_idx + 1)
+);
