@@ -1,4 +1,3 @@
-use <unittest.scad>;
 use <collection/hashset.scad>;
 use <collection/hashset_list.scad>;
 use <collection/hashset_add.scad>;

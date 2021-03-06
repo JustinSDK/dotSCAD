@@ -1,4 +1,3 @@
-use <unittest.scad>;
 use <collection/hashmap.scad>;
 use <collection/hashmap_list.scad>;
 use <collection/hashmap_put.scad>;

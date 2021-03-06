@@ -83,3 +83,4 @@ include <voxel/test_vx_polygon.scad>;
 
 // Collection
 include <collection/test_hashset.scad>;
+include <collection/test_hashmap.scad>;
