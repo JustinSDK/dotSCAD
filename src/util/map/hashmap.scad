@@ -2,13 +2,13 @@ use <../../__comm__/_str_hash.scad>;
 use <_impl/_hashmap_impl.scad>;
 use <_impl/_hashmap_put_impl.scad>;
 	
-function hashmap(kv_lt, eq = function(e1, e2) e1 == e2, hash = function(e) _str_hash(e), bucket_numbers) =
+function hashmap(kv_lt, eq = function(e1, e2) e1 == e2, hash = function(e) _str_hash(e), number_of_buckets) =
     let(
 	    kv_lt_undef = is_undef(kv_lt),
 		leng_kv_lt = kv_lt_undef ? -1 : len(kv_lt),
-		bucket_numbers_undef = is_undef(bucket_numbers),
-		b_numbers = bucket_numbers_undef ? 
-		               (kv_lt_undef || leng_kv_lt < 256 ? 16 : ceil(sqrt(leng_kv_lt))) : bucket_numbers,
+		number_of_buckets_undef = is_undef(number_of_buckets),
+		b_numbers = number_of_buckets_undef ? 
+		               (kv_lt_undef || leng_kv_lt < 256 ? 16 : ceil(sqrt(leng_kv_lt))) : number_of_buckets,
 	    buckets = [for(i = [0:b_numbers - 1]) []]
 	)
 	kv_lt_undef ? buckets : _hashmap(kv_lt, leng_kv_lt, buckets, eq, hash);
