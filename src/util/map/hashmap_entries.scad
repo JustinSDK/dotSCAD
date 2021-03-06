@@ -1,4 +1,4 @@
-function hashmap_list(map) = [
+function hashmap_entries(map) = [
     for(bucket = map) 
         for(kv = bucket)
             kv
