@@ -10,7 +10,7 @@ dotSCAD 3.0 Dev
 - `polyline3d`: Rename the parameter `thickness` to `diameter`.
 - `util/sort`: `by` accepts a function literal.
 - `util/bsearch`: only supports `sorted` and `target` parameters. I view it as a new function.
-- `util/dedup`: delete `sorted` parameter. add the `eq` and `hash` parameters.
+- `util/dedup`: delete `sorted` parameter. add the `eq`,`hash` and `number_of_buckets` parameters.
 - `util/zip`: add the `combine` parameter.
 - `lines_intersection` supports 3D
 - `vx_union`, `vx_circle`, `vx_bezier`, `vx_polygon` performance improved.
