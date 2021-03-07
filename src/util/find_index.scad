@@ -1,5 +1,13 @@
-function find_index(lt, test) = _find_index(lt, test, len(lt));
+/**
+* find_index.scad
+*
+* @copyright Justin Lin, 2021
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib3x-find_index.html
+*
+**/ 
 
-function _find_index(lt, test, leng, i = 0) =
-    i == leng ? -1 :
-    test(lt[i]) ? i : _find_index(lt, test, leng, i + 1);
+use <_impl/_find_index_impl.scad>;
+
+function find_index(lt, test) = _find_index(lt, test, len(lt));
