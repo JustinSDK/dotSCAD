@@ -1,3 +1,13 @@
+/**
+* mz_hex_walls.scad
+*
+* @copyright Justin Lin, 2020
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_theta_cells.html
+*
+**/
+
 use <_impl/_mz_theta_cells.scad>;
 
 function mz_theta_cells(rows, beginning_number, start = [0, 0], seed) =
