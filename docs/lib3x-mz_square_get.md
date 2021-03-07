@@ -1,13 +1,13 @@
 # mz_square_get
 
-It's a helper for getting data from a maze cell.
+It's a helper for getting data from a square-maze cell.
 
 **Since:** 2.5
 
 ## Parameters
 
 - `cell` : A maze cell.
-- `query` : Accepts `"x"`, `"y"` or `"t"`. `"x"` for the cell's x coordinate. `"y"` for the cell's y coordinate. `"t"` for the cell's type. The returned type will be `"NO_WALL"`, `"TOP_WALL"`, `"RIGHT_WALL"`, `"TOP_RIGHT_WALL"` or `"MASK"`.
+- `query` : Accepts `"x"`, `"y"` or `"t"`. `"x"` for the cell's x coordinate. `"y"` for the cell's y coordinate. `"t"` for the cell's `type`. The returned type will be `"NO_WALL"`, `"TOP_WALL"`, `"RIGHT_WALL"`, `"TOP_RIGHT_WALL"` or `"MASK"`.
 
 ## Examples
     

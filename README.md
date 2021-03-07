@@ -269,4 +269,4 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [maze/mz_square_initialize](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_square_initialize.html)
 - [maze/mz_hamiltonian](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_hamiltonian.html)
 - [maze/mz_theta_cells](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_theta_cells.html)
-- `maze/mz_theta_get`
+- [maze/mz_theta_get](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_theta_get.html)

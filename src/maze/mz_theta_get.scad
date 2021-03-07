@@ -1,3 +1,13 @@
+/**
+* mz_theta_get.scad
+*
+* @copyright Justin Lin, 2020
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_theta_get.html
+*
+**/
+
 function mz_theta_get(cell, query) = 
     let(
         i = search(query, [
