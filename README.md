@@ -137,21 +137,21 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - list
 	- [util/bsearch](https://openhome.cc/eGossip/OpenSCAD/lib3x-bsearch.html)
 	- [util/has](https://openhome.cc/eGossip/OpenSCAD/lib3x-has.html)
-	- `util/find_index`
+	- [util/find_index](https://openhome.cc/eGossip/OpenSCAD/lib3x-find_index.html)
 	- [util/dedup](https://openhome.cc/eGossip/OpenSCAD/lib3x-dedup.html)	
 	- [util/flat](https://openhome.cc/eGossip/OpenSCAD/lib3x-flat.html)
 	- [util/reverse](https://openhome.cc/eGossip/OpenSCAD/lib3x-reverse.html)
 	- [util/slice](https://openhome.cc/eGossip/OpenSCAD/lib3x-slice.html)
 	- [util/sort](https://openhome.cc/eGossip/OpenSCAD/lib3x-sort.html)
 	- [util/sum](https://openhome.cc/eGossip/OpenSCAD/lib3x-sum.html)
-	- `util/swap`
+	- [util/swap](https://openhome.cc/eGossip/OpenSCAD/lib3x-swap.html)
 	- [util/zip](https://openhome.cc/eGossip/OpenSCAD/lib3x-zip.html)
 	- [util/every](https://openhome.cc/eGossip/OpenSCAD/lib3x-every.html)
 	- [util/some](https://openhome.cc/eGossip/OpenSCAD/lib3x-some.html)
 - random
 	- [util/choose](https://openhome.cc/eGossip/OpenSCAD/lib3x-choose.html)
 	- [util/rand](https://openhome.cc/eGossip/OpenSCAD/lib3x-rand.html)
-	- `util/shuffle`
+	- [util/shuffle](https://openhome.cc/eGossip/OpenSCAD/lib3x-shuffle.html)
 - string
 	- [util/parse_number](https://openhome.cc/eGossip/OpenSCAD/lib3x-parse_number.html)
 	- [util/split_str](https://openhome.cc/eGossip/OpenSCAD/lib3x-split_str.html)
