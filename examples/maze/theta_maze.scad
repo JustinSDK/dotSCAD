@@ -2,19 +2,19 @@ use <maze/mz_theta_cells.scad>;
 use <maze/mz_theta_get.scad>;
 use <hull_polyline2d.scad>;
 
-rows = 16;
-begining_columns = 8;
+rows = 5;
+beginning_number = 8;
 cell_width = 10;
 wall_thickness = 2;
 wall_height = 5;
 
-theta_maze(rows, begining_columns, cell_width, wall_thickness, wall_height);
+theta_maze(rows, beginning_number, cell_width, wall_thickness, wall_height);
 
-module theta_maze(rows, begining_columns, cell_width, wall_thickness, wall_height) {
+module theta_maze(rows, beginning_number, cell_width, wall_thickness, wall_height) {
 
 	function vt_from_angle(theta, r) = [r * cos(theta), r * sin(theta)];
 
-	maze = mz_theta_cells(rows, begining_columns);
+	maze = mz_theta_cells(rows, beginning_number);
 
 	linear_extrude(wall_height) {
 		for(rows = maze) {
