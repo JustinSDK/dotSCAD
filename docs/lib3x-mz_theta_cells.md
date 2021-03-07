@@ -4,7 +4,7 @@ This function returns cell data of a theta maze. The data is a two-dimensional l
 
 ![mz_theta_cells](images/lib3x-mz_theta_cells-1.JPG)
 
-The value of `type` is the wall type of the cell. It can be `0`, `1`, ``2` or `3`. Setting them to constants is convenient.
+The value of `type` is the wall type of the cell. It can be `0`, `1`, `2` or `3`. Setting them to constants is convenient.
 
 	NO_WALL = 0;           // the cell has no wall
 	INWARD_WALL = 1;       // the cell has an inward wall
