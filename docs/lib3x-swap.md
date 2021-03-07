@@ -7,7 +7,7 @@ Swaps two elements in a list.
 ## Parameters
 
 - `lt` : The list.
-- `i` : The index of an element.
+- `i` : The index of one element.
 - `j` : The index of the other element
 
 ## Examples
