@@ -16,7 +16,7 @@ The value of `type` is the wall type of the cell. It can be `0`, `1`, `2` or `3`
 **Since:** 3.0
 
 ## Parameters
-rows, begining_columns
+
 - `rows` : The number of rings.
 - `beginning_number` : The number of cells in the first row.
 - `start` : The start point to travel the maze. Default to `[0, 0]`.
