@@ -1,6 +1,6 @@
 # mz_square_cells
 
-This function returns cell data of a square maze. The data is a list of cells. A cell has the data structure `[x, y, type]`. `x` and `y` are 0-based. `x` means the x-th column and `y` means y-th row for a cell. The value of `type` can be `0`, `1`, ``2`, `3` or `4`. Setting them to constants is convenient.
+This function returns cell data of a square maze. The data is a list of cells. A cell has the data structure `[x, y, type]`. `x` and `y` are 0-based. `x` means the x-th column and `y` means y-th row for a cell. The value of `type` can be `0`, `1`, `2`, `3` or `4`. Setting them to constants is convenient.
 
 	NO_WALL = 0;          // the cell has no wall
 	TOP_WALL = 1;         // the cell has a top wall
