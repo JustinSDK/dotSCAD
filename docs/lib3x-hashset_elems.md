@@ -1,4 +1,4 @@
-# hashset_has
+# hashset_elems
 
 Returns a list containing all elements in a [util/set/hashset](https://openhome.cc/eGossip/OpenSCAD/lib3x-hashset.html). No guarantees to the order.
 
