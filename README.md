@@ -164,12 +164,12 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 	- [util/lerp](https://openhome.cc/eGossip/OpenSCAD/lib3x-lerp.html)
 	- [util/fibseq](https://openhome.cc/eGossip/OpenSCAD/lib3x-fibseq.html)	
 - set
-    - `util/set/hashset`
-	- `util/set/hashset_add`
-	- `util/set/hashset_has`
-	- `util/set/hashset_del`
-	- `util/set/hashset_len`
-	- `util/set/hashset_elems`
+    - [util/set/hashset](https://openhome.cc/eGossip/OpenSCAD/lib3x-hashset.html)
+	- [util/set/hashset_add](https://openhome.cc/eGossip/OpenSCAD/lib3x-hashset_add.html)
+	- [util/set/hashset_has](https://openhome.cc/eGossip/OpenSCAD/lib3x-hashset_has.html)
+	- [util/set/hashset_del](https://openhome.cc/eGossip/OpenSCAD/lib3x-hashset_del.html)
+	- [util/set/hashset_len](https://openhome.cc/eGossip/OpenSCAD/lib3x-hashset_len.html)
+	- [util/set/hashset_elems](https://openhome.cc/eGossip/OpenSCAD/lib3x-hashset_elems.html)
 - map
     - `util/map/hashmap`
 	- `util/map/hashmap_put`
