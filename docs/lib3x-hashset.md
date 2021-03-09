@@ -12,7 +12,7 @@ This function models the mathematical set, backed by a hash table. You can use t
 
 ## Parameters
 
-- `lt` : Constructs a new set containing the elements in the specified list.
+- `lt` : Constructs a new set containing the elements in the specified list. It can be ignored if you want an empty set.
 - `eq` : A equality function. If it's ignored, use `==` to compare elements.
 - `hash` : A hash function. If it's ignored, convert each element to a string and hash it. 
 - `number_of_buckets` : The function uses a hash table internally. Change the number of buckets if you're trying to do optimization. 
