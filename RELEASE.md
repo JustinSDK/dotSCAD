@@ -1,5 +1,62 @@
 > Version numbers are based on [Semantic Versioning](https://semver.org/).
 
+# v3.0
+
+**It's a version that Breaks Backward Compatibility!!**
+
+This version removed all deprecated modules/functions in previous versions. 
+
+Function signature changed:
+- `function_grapher`: delete `slicing` parameter. 
+- `hull_polyline3d`: Rename the parameter `thickness` to `diameter`.
+- `line3d`: Rename the parameter `thickness` to `diameter`.
+- `polyline3d`: Rename the parameter `thickness` to `diameter`.
+- `util/bsearch`: only supports `sorted` and `target` parameters. 
+- `util/dedup`: delete `sorted` parameter. add the `eq`,`hash` and `number_of_buckets` parameters.
+
+Deleted:
+- `m_cumulate` deleted.
+- `trianglate` deleted.
+- `turtle/turtle2d` and `turtle/turtle3d` are used internally.
+
+**This version, however, has some new features.**
+
+Enhanced:
+- `lines_intersection`: Supports 3D lines.
+- `util/sort`: `by` accepts a function literal.
+- `util/zip`: Adds the `combine` parameter.
+- `function_grapher`: `"LINES"`、`"HULL_LINES"` performance improved.
+- `vx_union`, `vx_circle`, `vx_bezier`, `vx_polygon`: Performance improved.
+- `util/dedup`: Performance improved.
+
+New modules/functions:
+- `angle_between`
+- `util/degrees`
+- `util/radians`
+- `util/polar_coordinate`
+- `util/spherical_coordinate`
+- `util/every`
+- `util/some`
+- `util/swap`
+- `util/shuffle`
+- `util/find_index`
+- `util/set/hashset`
+- `util/set/hashset_add`
+- `util/set/hashset_has`
+- `util/set/hashset_del`
+- `util/set/hashset_len`
+- `util/set/hashset_elems`
+- `util/map/hashmap`
+- `util/map/hashmap_put`
+- `util/map/hashmap_get`
+- `util/map/hashmap_del`
+- `util/map/hashmap_len`
+- `util/map/hashmap_keys`
+- `util/map/hashmap_values`
+- `util/map/hashmap_entries`
+- `maze/mz_theta_cells`
+- `maze/mz_theta_get`
+
 # v2.5
 
 Deprecated:
