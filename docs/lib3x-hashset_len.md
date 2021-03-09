@@ -1,4 +1,4 @@
-# hashset_elems
+# hashset_len
 
 Returns the length of the elements in a [util/set/hashset](https://openhome.cc/eGossip/OpenSCAD/lib3x-hashset.html).
 
