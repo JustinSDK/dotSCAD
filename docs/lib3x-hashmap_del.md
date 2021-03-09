@@ -1,4 +1,4 @@
-# hashmap_put
+# hashmap_del
 
 This function deletes the mapping for the specified key from a [util/map/hashmap](https://openhome.cc/eGossip/OpenSCAD/lib3x-hashmap.html) if present. It returns a new map without the key/value.
 
