@@ -2,7 +2,7 @@
 
 This function models the mathematical set, backed by a hash table. You can use the following to process the returned set. 
 
-- [util/set/hashset_add](https://openhome.cc/eGossip/OpenSCAD/lib3x-hashset_add.html) : Add an element to the set. It returns a new set.
+- [util/set/hashset_add](https://openhome.cc/eGossip/OpenSCAD/lib3x-hashset_add.html) : Adds an element to the set. It returns a new set.
 - [util/set/hashset_has](https://openhome.cc/eGossip/OpenSCAD/lib3x-hashset_has.html) : Returns `true` if the set contains the specified element. 
 - [util/set/hashset_del](https://openhome.cc/eGossip/OpenSCAD/lib3x-hashset_del.html) : Deletes the specified element. It returns a new set.
 - [util/set/hashset_len](https://openhome.cc/eGossip/OpenSCAD/lib3x-hashset_len.html) : Returns the length of the set.
