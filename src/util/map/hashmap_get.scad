@@ -1,3 +1,13 @@
+/**
+* hashmap_get.scad
+*
+* @copyright Justin Lin, 2021
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib3x-hashmap_get.html
+*
+**/
+
 use <../../__comm__/_str_hash.scad>;
 use <../slice.scad>;
 use <../find_index.scad>;

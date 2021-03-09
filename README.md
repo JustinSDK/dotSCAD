@@ -171,14 +171,14 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 	- [util/set/hashset_len](https://openhome.cc/eGossip/OpenSCAD/lib3x-hashset_len.html)
 	- [util/set/hashset_elems](https://openhome.cc/eGossip/OpenSCAD/lib3x-hashset_elems.html)
 - map
-    - `util/map/hashmap`
-	- `util/map/hashmap_put`
-	- `util/map/hashmap_get`
-	- `util/map/hashmap_del`
-	- `util/map/hashmap_len`
-	- `util/map/hashmap_keys`
-	- `util/map/hashmap_values`
-	- `util/map/hashmap_entries`
+    - [util/map/hashmap](https://openhome.cc/eGossip/OpenSCAD/lib3x-hashmap.html)
+	- [util/map/hashmap_put](https://openhome.cc/eGossip/OpenSCAD/lib3x-hashmap_put.html)
+	- [util/map/hashmap_get](https://openhome.cc/eGossip/OpenSCAD/lib3x-hashmap_get.html)
+	- [util/map/hashmap_del](https://openhome.cc/eGossip/OpenSCAD/lib3x-hashmap_del.html)
+	- [util/map/hashmap_len](https://openhome.cc/eGossip/OpenSCAD/lib3x-hashmap_len.html)
+	- [util/map/hashmap_keys](https://openhome.cc/eGossip/OpenSCAD/lib3x-hashmap_keys.html)
+	- [util/map/hashmap_values](https://openhome.cc/eGossip/OpenSCAD/lib3x-hashmap_values.html)
+	- [util/map/hashmap_entries](https://openhome.cc/eGossip/OpenSCAD/lib3x-hashmap_entries.html)
 
 ### Matrix
 - [matrix/m_determinant](https://openhome.cc/eGossip/OpenSCAD/lib3x-m_determinant.html)
