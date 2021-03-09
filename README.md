@@ -1,4 +1,4 @@
-# dotSCAD 3.0 Dev
+# dotSCAD 3.0 RC
 
 > **Reduce the burden of mathematics/algorithm when playing OpenSCAD.**
 
@@ -8,7 +8,7 @@
 
 ## Introduction
 
-**This library requires OpenSCAD 2021.01 or later.** 
+**This library requires OpenSCAD 2021.01 or later.** Please see [Release Notes](RELEASE.md).
 
 Some of my [3D models](https://github.com/JustinSDK/dotSCAD#examples) require complex mathematics/algorithm. I extract them into dotSCAD. Hope it helps when you're playing OpenSCAD.
 
