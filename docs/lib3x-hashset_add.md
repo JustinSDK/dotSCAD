@@ -1,6 +1,6 @@
 # hashset_add
 
-This function adds an element to a [util/set/hashset](https://openhome.cc/eGossip/OpenSCAD/lib3x-hashset.html).It returns a new set containing the added element.
+This function adds an element to a [util/set/hashset](https://openhome.cc/eGossip/OpenSCAD/lib3x-hashset.html). It returns a new set containing the added element.
 
 **Since:** 3.0
 
