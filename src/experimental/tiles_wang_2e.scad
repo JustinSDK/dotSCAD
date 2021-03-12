@@ -1,4 +1,5 @@
-module 2_edge_wang_tiles(rows, columns, tile_width, mask, seed) {
+// wang tiles - 2 edges
+module tiles_wang_2e(rows, columns, tile_width, mask, seed) {
 	edges = is_undef(seed) ? [
 		for(y = [0:rows])
 		[

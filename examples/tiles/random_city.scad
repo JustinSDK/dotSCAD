@@ -3,7 +3,7 @@ use <shape_trapezium.scad>;
 use <arc.scad>;
 use <shear.scad>;
 use <util/rand.scad>;
-use <experimental/2_edge_wang_tiles.scad>;
+use <experimental/tiles_wang_2e.scad>;
 
 mask = [
     [0, 1, 1, 0, 0, 0, 1, 1, 0],
@@ -24,7 +24,7 @@ random_city(rows, columns, mask);
 
 module random_city(rows, columns, mask) {
     tile_width = 30;
-    2_edge_wang_tiles(rows, columns, tile_width, mask) {
+    tiles_wang_2e(rows, columns, tile_width, mask) {
         tile00();
         tile01();
         tile02();

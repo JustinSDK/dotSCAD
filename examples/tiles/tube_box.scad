@@ -1,4 +1,4 @@
-use <experimental/2_edge_wang_tiles.scad>;
+use <experimental/tiles_wang_2e.scad>;
 use <box_extrude.scad>;
 
 rows = 8;
@@ -14,7 +14,7 @@ module tube_box(rows, columns, tile_width) {
 	eighth_w = tile_width / 8;
 
     translate([eighth_w, eighth_w, -eighth_w])
-		2_edge_wang_tiles(rows, columns, tile_width) {
+		tiles_wang_2e(rows, columns, tile_width) {
 			tube_tile(0, tile_width);
 			tube_tile(1, tile_width);
 			tube_tile(2, tile_width);

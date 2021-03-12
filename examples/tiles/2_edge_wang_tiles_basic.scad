@@ -1,4 +1,4 @@
-use <experimental/2_edge_wang_tiles.scad>;
+use <experimental/tiles_wang_2e.scad>;
 use <arc.scad>;
 
 rows = 10;
@@ -7,7 +7,7 @@ tile_width = 10;
 tile_thickness = 2;
 $fn = 24;
 
-2_edge_wang_tiles(rows, columns, tile_width) {
+tiles_wang_2e(rows, columns, tile_width) {
     sample_tile(0, tile_width, tile_thickness);
 	sample_tile(1, tile_width, tile_thickness);
 	sample_tile(2, tile_width, tile_thickness);
@@ -33,7 +33,7 @@ translate([0, tile_width * (rows + 1)]) {
 	
 	color("green")
 	linear_extrude(tile_thickness)
-		2_edge_wang_tiles(rows, columns, tile_width) {
+		tiles_wang_2e(rows, columns, tile_width) {
 			path_tile(0, tile_width);
 			path_tile(1, tile_width);
 			path_tile(2, tile_width);
