@@ -99,6 +99,25 @@ function _wf_collapse(wf, x, y, states_weights, leng, threshold, i = 0) =
 
 function _oneStateAt(wf, x, y, state) = _replaceStatesAt(wf, x, y, [state]);
 
+function wf_entropy(wf, x, y) = 
+    let(
+		states = wf_eigenstates_at(wf, x, y),
+		weights = wf_weights(wf),
+		state_leng = len(states),
+		sumOfWeights_sumOfWeightLogWeights = _wf_entropy(weights, states, state_leng, 0, 0),
+		sumOfWeights = sumOfWeights_sumOfWeightLogWeights[0],
+		sumOfWeightLogWeights = sumOfWeights_sumOfWeightLogWeights[1]
+	)
+	ln(sumOfWeights) - (sumOfWeightLogWeights / sumOfWeights);
+
+function _wf_entropy(weights, states, state_leng, sumOfWeights, sumOfWeightLogWeights, i = 0) =
+i == state_leng ? [sumOfWeights, sumOfWeightLogWeights] :
+let(
+	opt = states[i],
+	weight = hashmap_get(weights, opt)
+)
+_wf_entropy(weights, states, state_leng, sumOfWeights + weight, sumOfWeightLogWeights + weight * ln(weight), i + 1);
+
 function _replaceStatesAt(wf, x, y, states) = 
     let(
 	    eigenstates = wf_eigenstates(wf),
@@ -124,6 +143,8 @@ function _replaceStatesAt(wf, x, y, states) =
 		)
 	];
 
+
+
 width = len(sample[0]);
 height = len(sample);
 weights = weightsOfTiles(sample);
@@ -141,4 +162,4 @@ for(y = [0:height - 1]) {
 		assert(len(wf_eigenstates_at(wf_collapse(wf, x, y), x, y)) == 1);
 	}
 }
-
+assert(wf_entropy(wf, 0, 0) == 1.458879520793018);
