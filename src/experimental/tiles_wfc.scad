@@ -44,17 +44,30 @@ function _weightsOfTiles(weights, symbols, leng, i = 0) =
         w == undef ? 
 		    _weightsOfTiles(hashmap_put(weights, tile, 1), symbols, leng, i + 1) :
 			_weightsOfTiles(hashmap_put(weights, tile, w + 1), symbols, leng, i + 1);
-			
-function initialEigenstates(width, height, weights) =
+
+/* 
+    oo-style
+
+    wave_function(width, height, weights)
+	    - wf_width(wf)
+        - wf_height(wf)
+        - wf_weights(wf)
+		- wf_eigenstates(wf)
+		- wf_eigenstates_at(wf, x, y)
+		- wf_isAllCollapsed(wf)
+		- wf_remove(wf, x, y, removedStates)
+		- wf_collapse(wf, x, y)
+		- wf_entropy(wf, x, y)
+*/
+function wave_function(width, height, weights) = 
+    [width, height, weights, _initialEigenstates(width, height, weights)];	
+
+function _initialEigenstates(width, height, weights) =
 	let(
 	    keys = hashmap_keys(weights),
         row = [for(x = [0:width - 1]) keys]
 	)	
 	[for(y = [0:height - 1]) row];
-
-// wave function
-function waveFunction(width, height, weights) = 
-    [width, height, weights, initialEigenstates(width, height, weights)];	
 
 function wf_width(wf) = wf[0];
 function wf_height(wf) = wf[1];
@@ -99,6 +112,7 @@ function _wf_collapse(wf, x, y, states_weights, leng, threshold, i = 0) =
 
 function _oneStateAt(wf, x, y, state) = _replaceStatesAt(wf, x, y, [state]);
 
+// Shannon entropy
 function wf_entropy(wf, x, y) = 
     let(
 		states = wf_eigenstates_at(wf, x, y),
@@ -147,13 +161,12 @@ function _replaceStatesAt(wf, x, y, states) =
 
 width = len(sample[0]);
 height = len(sample);
-weights = weightsOfTiles(sample);
 
-wf = waveFunction(width, height, weights);
+weights = weightsOfTiles(sample);
+wf = wave_function(width, height, weights);
 
 assert(wf_width(wf) == width);
 assert(wf_height(wf) == height);
-assert(wf_eigenstates(wf) == initialEigenstates(width, height, weights));
 assert(wf_isAllCollapsed(wf) == false);
 assert(wf_remove(wf, 0, 0, []) == wf);
 assert(wf_eigenstates_at(wf_remove(wf, 0, 0, ["CE"]), 0, 0) == ["C0", "C1", "CS", "C2", "C3", "S", "CW", "CN", "L"]);
