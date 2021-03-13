@@ -67,31 +67,11 @@ function wf_isAllCollapsed(wf) = every(
 	function(row) every(row, function(states) len(states) == 1)
 );
 
-function wf_remove(wf, x, y, removedStates) =
-    let(
-	    eigenstates = wf_eigenstates(wf),
-		rowsBeforeY = slice(eigenstates, 0, y),
-		rowY = eigenstates[y],
-		rowsAfterY = slice(eigenstates, y + 1),
-		statesBeforeX = slice(rowY, 0, x),
-		states = rowY[x],
-		statesAfterX = slice(rowY, x + 1),
-		newRowY = concat(
-		    statesBeforeX,
-		    [[for(state = states) if(!has(removedStates, state)) state]],
-			statesAfterX
-		)
-	)
-	[
-	    wf_width(wf),
-		wf_height(wf),
-		wf_weights(wf),
-		concat(
-		    rowsBeforeY,
-			[newRowY],
-			rowsAfterY
-		)
-	];
+function wf_remove(wf, x, y, removedStates) = _replaceStatesAt(wf, x, y, [
+	for(state = wf_eigenstates_at(wf, x, y)) 
+	    if(!has(removedStates, state)) 
+		    state
+]);
 
 function wf_collapse(wf, x, y) =
     let(
@@ -117,18 +97,19 @@ function _wf_collapse(wf, x, y, states_weights, leng, threshold, i = 0) =
 	)
 	t < 0 ? _oneStateAt(wf, x, y, state) :  _wf_collapse(wf, x, y, states_weights, leng, t, i + 1);
 
-function _oneStateAt(wf, x, y, state) = 
+function _oneStateAt(wf, x, y, state) = _replaceStatesAt(wf, x, y, [state]);
+
+function _replaceStatesAt(wf, x, y, states) = 
     let(
 	    eigenstates = wf_eigenstates(wf),
 		rowsBeforeY = slice(eigenstates, 0, y),
 		rowY = eigenstates[y],
 		rowsAfterY = slice(eigenstates, y + 1),	
 		statesBeforeX = slice(rowY, 0, x),
-		states = [state],
 		statesAfterX = slice(rowY, x + 1),	
 		newRowY = concat(
 		    statesBeforeX,
-		    [[state]],
+		    [states],
 			statesAfterX
 		)		
 	)
