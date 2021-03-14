@@ -58,6 +58,8 @@ function _weightsOfTiles(weights, symbols, leng, i = 0) =
 		- wf_remove(wf, x, y, removedStates)
 		- wf_collapse(wf, x, y)
 		- wf_entropy(wf, x, y)
+		- wf_coord_min_entropy(wf)
+		- wf_not_collapsed_coords(wf)
 */
 function wave_function(width, height, weights) = 
     [width, height, weights, _initialEigenstates(width, height, weights)];	
