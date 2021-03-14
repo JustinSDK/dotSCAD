@@ -2,13 +2,13 @@
 
 > **Reduce the burden of mathematics/algorithm when playing OpenSCAD.**
 
-![dotSCAD](featured_img/RockThetaMaze.JPG)
+![dotSCAD](featured_img/RandomCityTaiwan.JPG)
 
 [![license/LGPL](LICENSE.svg)](https://github.com/JustinSDK/lib-openscad/blob/master/LICENSE)
 
 ## Introduction
 
-**This library requires OpenSCAD 2021.01 or later. Please see [Release Notes](RELEASE.md)**.
+**This version Breaks Backward Compatibility and requires OpenSCAD 2021.01 or later!! Please see [Release Notes](RELEASE.md). You can still download v2.5 or older versions from [Releases](https://github.com/JustinSDK/dotSCAD/tags).**
 
 Some of my [3D models](https://github.com/JustinSDK/dotSCAD#examples) require complex mathematics/algorithm. I extract them into dotSCAD. Hope it helps when you're playing OpenSCAD.
 
