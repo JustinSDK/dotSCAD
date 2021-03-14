@@ -157,6 +157,30 @@ function _replaceStatesAt(wf, x, y, states) =
 		)
 	];
 
+function wf_not_collapsed_coords(wf) = [
+	for(y = [0:wf_height(wf) - 1])
+		for(x = [0:wf_width(wf) - 1])
+			if(len(wf_eigenstates_at(wf, x, y)) != 1)
+				[x, y]
+];
+
+function coord_min_entropy(wf) = 
+    let(
+		coords = wf_not_collapsed_coords(wf),
+		coords_leng = len(coords),
+		entropyCoord = coords[0],
+		entropy = wf_entropy(wf, entropyCoord[0], entropyCoord[1]) - (rand() / 1000)
+	)
+	_coord_min_entropy(wf, coords, coords_leng, entropy, entropyCoord);
+
+function _coord_min_entropy(wf, coords, coords_leng, entropy, entropyCoord, i = 1) = 
+    i == coords_leng ? entropyCoord :
+	let(
+		coord = coords[i],
+		noisedEntropy = wf_entropy(wf, coord[0], coord[1]) - (rand() / 1000)
+	)
+	noisedEntropy < entropy ? _coord_min_entropy(wf, coords, coords_leng, noisedEntropy, coord, i + 1) :
+	                          _coord_min_entropy(wf, coords, coords_leng, entropy, entropyCoord, i + 1);
 
 
 width = len(sample[0]);
@@ -176,3 +200,4 @@ for(y = [0:height - 1]) {
 	}
 }
 assert(wf_entropy(wf, 0, 0) == 1.458879520793018);
+assert(coord_min_entropy(wf_collapse(wf, 0, 0)) != [0, 0]);
