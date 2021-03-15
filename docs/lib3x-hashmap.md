@@ -42,3 +42,28 @@ This function maps keys to values. You can use the following to process the retu
     echo(hashmap_keys(m3));    // a list contains "k2", "k2", "k3"
     echo(hashmap_values(m3));  // a list contains 20, 30, 40
     echo(hashmap_entries(m3)); // a list contains ["k2", 20], ["k3", 30], ["k4", 40]
+
+Want to simulate class-based OO in OpenSCAD? Here's my experiment.
+
+    use <util/map/hashmap.scad>;
+    use <util/map/hashmap_get.scad>;
+
+    function methods(mths) = hashmap(mths);
+    function _(name, instance) = hashmap_get(instance, name);
+
+    function clz_list(data) = function(name) _(name,
+        methods([
+            ["get", function(i) data[i]],
+            ["append", function(n) clz_list(concat(data, [n]))]
+        ])
+    );
+
+    lt1 = clz_list([10, 20]);
+    assert(lt1("get")(0) == 10);
+    assert(lt1("get")(1) == 20);
+
+    lt2 = lt1("append")(30);
+    assert(lt2("get")(0) == 10);
+    assert(lt2("get")(1) == 20);
+    assert(lt2("get")(2) == 30);
+
