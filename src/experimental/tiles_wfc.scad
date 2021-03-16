@@ -13,7 +13,7 @@ use <util/map/hashmap_keys.scad>;
 use <util/map/hashmap_values.scad>;
 use <util/map/hashmap_entries.scad>;
 use <util/set/hashset.scad>;
-use <util/set/hashset_elems.scad>;
+use <util/set/hashset_len.scad>;
 
 sample = [
     ["S",  "S",  "S",  "S",  "S",  "S",  "S",  "S",  "S",  "S",  "S",  "S",  "S"],
@@ -260,4 +260,4 @@ assert(wf_entropy(wf, 0, 0) == 1.458879520793018);
 assert(wf_coord_min_entropy(wf_collapse(wf, 0, 0)) != [0, 0]);
 
 assert(neighbor_compatibilities(sample, 0, 0, width, height) ==  [["S", "S", [1, 0]], ["S", "S", [0, 1]]]);
-assert(len(hashset_elems(compatibilities_of_tiles(sample, width, height))) == 64);
+assert(hashset_len(compatibilities_of_tiles(sample, width, height)) == 64);
