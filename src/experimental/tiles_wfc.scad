@@ -217,4 +217,4 @@ for(y = [0:height - 1]) {
 }
 assert(wf_entropy(wf, 0, 0) == 1.458879520793018);
 assert(wf_coord_min_entropy(wf_collapse(wf, 0, 0)) != [0, 0]);
-echo(neighbor_compatibilities(sample, 0, 0, width, height));
+assert(neighbor_compatibilities(sample, 0, 0, width, height) ==  [["S", "S", [1, 0]], ["S", "S", [0, 1]]]);
