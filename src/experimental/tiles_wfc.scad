@@ -12,6 +12,8 @@ use <util/map/hashmap_del.scad>;
 use <util/map/hashmap_keys.scad>;
 use <util/map/hashmap_values.scad>;
 use <util/map/hashmap_entries.scad>;
+use <util/set/hashset.scad>;
+use <util/set/hashset_elems.scad>;
 
 sample = [
     ["S",  "S",  "S",  "S",  "S",  "S",  "S",  "S",  "S",  "S",  "S",  "S",  "S"],
@@ -199,6 +201,17 @@ function neighbor_compatibilities(sample, x, y, width, height) =
     let(me = sample[y][x])
 	[for(dir = neighbor_dirs(x, y, width, height)) [me, sample[y + dir[1]][x + dir[0]], dir]];
 
+function compatibilities_of_tiles(sample, width, height) =
+    let(
+		neighbor_compatibilities_lt = [
+			for(y = [0:height - 1])
+			    for(x = [0:width - 1])
+				    for(c = neighbor_compatibilities(sample, x, y, width, height))
+					    c
+		]
+	)
+	hashset(neighbor_compatibilities_lt);
+
 width = len(sample[0]);
 height = len(sample);
 
@@ -217,4 +230,6 @@ for(y = [0:height - 1]) {
 }
 assert(wf_entropy(wf, 0, 0) == 1.458879520793018);
 assert(wf_coord_min_entropy(wf_collapse(wf, 0, 0)) != [0, 0]);
+
 assert(neighbor_compatibilities(sample, 0, 0, width, height) ==  [["S", "S", [1, 0]], ["S", "S", [0, 1]]]);
+assert(len(hashset_elems(compatibilities_of_tiles(sample, width, height))) == 64);
