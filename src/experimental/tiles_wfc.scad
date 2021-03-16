@@ -185,6 +185,20 @@ function _wf_coord_min_entropy(wf, coords, coords_leng, entropy, entropyCoord, i
 	                          _wf_coord_min_entropy(wf, coords, coords_leng, entropy, entropyCoord, i + 1);
 
 
+// TileMap 
+
+function neighbor_dirs(x, y, width, height) =
+    concat(
+		x > 0          ? [[-1,  0]] : [],  // left
+		x < width - 1  ? [[ 1,  0]] : [],  // right 
+		y > 0          ? [[ 0, -1]] : [],  // top
+		y < height - 1 ? [[ 0,  1]] : []   // bottom
+	);
+
+function neighbor_compatibilities(sample, x, y, width, height) = 
+    let(me = sample[y][x])
+	[for(dir = neighbor_dirs(x, y, width, height)) [me, sample[y + dir[1]][x + dir[0]], dir]];
+
 width = len(sample[0]);
 height = len(sample);
 
@@ -203,3 +217,4 @@ for(y = [0:height - 1]) {
 }
 assert(wf_entropy(wf, 0, 0) == 1.458879520793018);
 assert(wf_coord_min_entropy(wf_collapse(wf, 0, 0)) != [0, 0]);
+echo(neighbor_compatibilities(sample, 0, 0, width, height));
