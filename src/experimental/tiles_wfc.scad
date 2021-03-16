@@ -202,15 +202,12 @@ function neighbor_compatibilities(sample, x, y, width, height) =
 	[for(dir = neighbor_dirs(x, y, width, height)) [me, sample[y + dir[1]][x + dir[0]], dir]];
 
 function compatibilities_of_tiles(sample, width, height) =
-    let(
-		neighbor_compatibilities_lt = [
-			for(y = [0:height - 1])
-			    for(x = [0:width - 1])
-				    for(c = neighbor_compatibilities(sample, x, y, width, height))
-					    c
-		]
-	)
-	hashset(neighbor_compatibilities_lt);
+	hashset([
+		for(y = [0:height - 1])
+			for(x = [0:width - 1])
+				for(c = neighbor_compatibilities(sample, x, y, width, height))
+					c
+	]);
 
 width = len(sample[0]);
 height = len(sample);
