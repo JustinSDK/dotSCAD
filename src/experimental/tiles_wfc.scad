@@ -29,23 +29,23 @@ sample = [
     ["S",  "S",  "S",  "S",  "S",  "S",  "S",  "S",  "S",  "S",  "S",  "S",  "S"]
 ];
 
-function weightsOfTiles(sample) = 
+function weights_of_tiles(sample) = 
     let(
 	    symbols = flat(sample),
 		leng = len(symbols),
 		weights = hashmap(number_of_buckets = sqrt(leng))
 	)
-    _weightsOfTiles(weights, symbols, leng);
+    _weights_of_tiles(weights, symbols, leng);
 
-function _weightsOfTiles(weights, symbols, leng, i = 0) =
+function _weights_of_tiles(weights, symbols, leng, i = 0) =
     i == leng ? weights :
 	    let(
 		    tile = symbols[i],
 			w = hashmap_get(weights, tile)
 	    )
         w == undef ? 
-		    _weightsOfTiles(hashmap_put(weights, tile, 1), symbols, leng, i + 1) :
-			_weightsOfTiles(hashmap_put(weights, tile, w + 1), symbols, leng, i + 1);
+		    _weights_of_tiles(hashmap_put(weights, tile, 1), symbols, leng, i + 1) :
+			_weights_of_tiles(hashmap_put(weights, tile, w + 1), symbols, leng, i + 1);
 
 /* 
     oo-style
@@ -187,7 +187,25 @@ function _wf_coord_min_entropy(wf, coords, coords_leng, entropy, entropyCoord, i
 	                          _wf_coord_min_entropy(wf, coords, coords_leng, entropy, entropyCoord, i + 1);
 
 
-// TileMap 
+/*
+	- tilemap(width, height, sample)
+		- tilemap_width(tm)
+		- tilemap_height(tm)
+		- tilemap_compatibilities(tm)
+		- tilemap_wave_function(tm)
+*/
+
+function tilemap(width, height, sample) = [
+	width, 
+	height, 
+	compatibilities_of_tiles(sample, width, height), 
+	wave_function(width, height, weights_of_tiles(sample))
+];
+
+function tilemap_width(tm) = tm[0];
+function tilemap_height(tm) = tm[1];
+function tilemap_compatibilities(tm) = tm[2];
+function tilemap_wf(tm) = tm[3];
 
 function neighbor_dirs(x, y, width, height) =
     concat(
@@ -209,10 +227,23 @@ function compatibilities_of_tiles(sample, width, height) =
 					c
 	]);
 
+function collapsedTiles(wf) =
+    let(
+		wf_h = wf_height(wf),
+		wf_w = wf_width(wf)
+	)
+	[
+		for(y = [0:wf_h - 1])
+		[
+			for(x = [0:wf_w - 1])
+			    wf_eigenstates_at(wf, x, y)[0]
+		]
+	];
+
 width = len(sample[0]);
 height = len(sample);
 
-weights = weightsOfTiles(sample);
+weights = weights_of_tiles(sample);
 wf = wave_function(width, height, weights);
 
 assert(wf_width(wf) == width);
