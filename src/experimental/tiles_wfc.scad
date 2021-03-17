@@ -6,15 +6,12 @@ use <util/slice.scad>;
 use <util/some.scad>;
 use <util/every.scad>;
 use <util/map/hashmap.scad>;
-use <util/map/hashmap_len.scad>;
 use <util/map/hashmap_put.scad>;
 use <util/map/hashmap_get.scad>;
-use <util/map/hashmap_del.scad>;
 use <util/map/hashmap_keys.scad>;
 use <util/map/hashmap_values.scad>;
 use <util/map/hashmap_entries.scad>;
 use <util/set/hashset.scad>;
-use <util/set/hashset_len.scad>;
 use <util/set/hashset_has.scad>;
 
 sample = [
@@ -319,11 +316,16 @@ function not_compatible_nbr_tile(tm, current_tiles, nbr_tile, dir) =
 function push(stack, elem) = concat([elem], stack);
 function pop(stack) = [stack[0], slice(stack, 1)];
 
+function tiles_wfc(width, height, sample) =
+    tilemap_generate(tilemap(width, height, sample));
+
+/*
 width = 20;
 height = 20;
 
 tm = tilemap(width, height, sample);
 echo(tilemap_generate(tm));
+*/
 
 /*
 wf = wave_function(width, height, weights);
