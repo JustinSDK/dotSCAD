@@ -14,6 +14,7 @@ use <util/map/hashmap_values.scad>;
 use <util/map/hashmap_entries.scad>;
 use <util/set/hashset.scad>;
 use <util/set/hashset_len.scad>;
+use <util/set/hashset_has.scad>;
 
 sample = [
     ["S",  "S",  "S",  "S",  "S",  "S",  "S",  "S",  "S",  "S",  "S",  "S",  "S"],
@@ -193,12 +194,13 @@ function _wf_coord_min_entropy(wf, coords, coords_leng, entropy, entropyCoord, i
 		- tilemap_height(tm)
 		- tilemap_compatibilities(tm)
 		- tilemap_wave_function(tm)
+		- tilemap_check_compatibilities(tm, tile1, tile2, direction)
 */
 
 function tilemap(width, height, sample) = [
 	width, 
 	height, 
-	compatibilities_of_tiles(sample, width, height), 
+	compatibilities_of_tiles(sample), 
 	wave_function(width, height, weights_of_tiles(sample))
 ];
 
@@ -206,6 +208,10 @@ function tilemap_width(tm) = tm[0];
 function tilemap_height(tm) = tm[1];
 function tilemap_compatibilities(tm) = tm[2];
 function tilemap_wf(tm) = tm[3];
+
+function tilemap_check_compatibilities(tm, tile1, tile2, direction) = 
+    let(compatibilities = tilemap_compatibilities(tm))
+	hashset_has(compatibilities, [tile1, tile2, direction]);
 
 function neighbor_dirs(x, y, width, height) =
     concat(
@@ -219,7 +225,11 @@ function neighbor_compatibilities(sample, x, y, width, height) =
     let(me = sample[y][x])
 	[for(dir = neighbor_dirs(x, y, width, height)) [me, sample[y + dir[1]][x + dir[0]], dir]];
 
-function compatibilities_of_tiles(sample, width, height) =
+function compatibilities_of_tiles(sample) =
+    let(
+		width = len(sample[0]), 
+		height = len(sample)
+	)
 	hashset([
 		for(y = [0:height - 1])
 			for(x = [0:width - 1])
@@ -227,7 +237,7 @@ function compatibilities_of_tiles(sample, width, height) =
 					c
 	]);
 
-function collapsedTiles(wf) =
+function collapsed_tiles(wf) =
     let(
 		wf_h = wf_height(wf),
 		wf_w = wf_width(wf)
@@ -240,8 +250,11 @@ function collapsedTiles(wf) =
 		]
 	];
 
-width = len(sample[0]);
-height = len(sample);
+function not_compatible_nbr_tile(tm, current_tiles, nbr_tile, dir) =
+    !some(current_tiles, function(tile) tilemap_check_compatibilities(tm, tile, nbr_tile, dir));
+
+width = 30;
+height = 30;
 
 weights = weights_of_tiles(sample);
 wf = wave_function(width, height, weights);
@@ -259,5 +272,5 @@ for(y = [0:height - 1]) {
 assert(wf_entropy(wf, 0, 0) == 1.458879520793018);
 assert(wf_coord_min_entropy(wf_collapse(wf, 0, 0)) != [0, 0]);
 
-assert(neighbor_compatibilities(sample, 0, 0, width, height) ==  [["S", "S", [1, 0]], ["S", "S", [0, 1]]]);
-assert(hashset_len(compatibilities_of_tiles(sample, width, height)) == 64);
+assert(neighbor_compatibilities(sample, 0, 0, len(sample[0]), len(sample)) ==  [["S", "S", [1, 0]], ["S", "S", [0, 1]]]);
+assert(hashset_len(compatibilities_of_tiles(sample)) == 64);
