@@ -58,7 +58,7 @@ function _weights_of_tiles(weights, symbols, leng, i = 0) =
         - wf_weights(wf)
 		- wf_eigenstates(wf)
 		- wf_eigenstates_at(wf, x, y)
-		- wf_isAllCollapsed(wf)
+		- wf_is_all_collapsed(wf)
 		- wf_remove(wf, x, y, removedStates)
 		- wf_collapse(wf, x, y)
 		- wf_entropy(wf, x, y)
@@ -81,7 +81,7 @@ function wf_weights(wf) = wf[2];
 function wf_eigenstates(wf) = wf[3];
 function wf_eigenstates_at(wf, x, y) = wf_eigenstates(wf)[y][x];
 
-function wf_isAllCollapsed(wf) = every(
+function wf_is_all_collapsed(wf) = every(
     wf_eigenstates(wf), 
 	function(row) every(row, function(states) len(states) == 1)
 );
@@ -197,6 +197,7 @@ function _wf_coord_min_entropy(wf, coords, coords_leng, entropy, entropyCoord, i
 		- tilemap_wf(tm)
 		- tilemap_check_compatibilities(tm, tile1, tile2, direction)
 		- tilemap_propagate(tm, x, y)
+		- tilemap_generate(tm)
 */
 
 function tilemap(width, height, sample) = [
@@ -255,6 +256,23 @@ function _doDirs(tm, stack, cx, cy, current_tiles, dirs, leng, i = 0) =
 		)
 	    _doDirs(ntm, nstack, cx, cy, current_tiles, dirs, leng, i + 1);
 
+function tilemap_generate(tm) =
+    let(wf = tilemap_wf(tm))
+	wf_is_all_collapsed(wf) ? collapsed_tiles(wf) :
+	let(
+		coord = wf_coord_min_entropy(wf),
+		x = coord[0],
+		y = coord[1],
+		ntm = tilemap_propagate([
+			tilemap_width(tm),
+			tilemap_height(tm),
+			tilemap_compatibilities(tm),
+			wf_collapse(wf, x, y)
+		], x, y)
+	)
+	tilemap_generate(ntm);
+
+
 function neighbor_dirs(x, y, width, height) =
     concat(
 		x > 0          ? [[-1,  0]] : [],  // left
@@ -298,15 +316,15 @@ function not_compatible_nbr_tile(tm, current_tiles, nbr_tile, dir) =
 function push(stack, elem) = concat([elem], stack);
 function pop(stack) = [stack[0], slice(stack, 1)];
 
-width = 30;
-height = 30;
-
+width = 15;
+height = 15;
+/*
 weights = weights_of_tiles(sample);
 wf = wave_function(width, height, weights);
 
 assert(wf_width(wf) == width);
 assert(wf_height(wf) == height);
-assert(wf_isAllCollapsed(wf) == false);
+assert(wf_is_all_collapsed(wf) == false);
 assert(wf_remove(wf, 0, 0, []) == wf);
 assert(wf_eigenstates_at(wf_remove(wf, 0, 0, ["CE"]), 0, 0) == ["C0", "C1", "CS", "C2", "C3", "S", "CW", "CN", "L"]);
 for(y = [0:height - 1]) {
@@ -321,9 +339,10 @@ assert(neighbor_compatibilities(sample, 0, 0, len(sample[0]), len(sample)) ==  [
 assert(hashset_len(compatibilities_of_tiles(sample)) == 64);
 
 assert(push([1, 2, 3], 0) == [0, 1, 2, 3]);
-assert(pop([1, 2, 3]) == [1, [2, 3]]);
+assert(pop([1, 2, 3]) == [1, [2, 3]]);*/
 
 tm = tilemap(width, height, sample);
+/*
 assert(tilemap_check_compatibilities(tm, "S", "C0", [ 1,  0]));
 assert(!tilemap_check_compatibilities(tm, "S", "L", [ 1,  0]));
 
@@ -335,4 +354,6 @@ ntm = tilemap_propagate([
 	wf_collapse(wf, 0, 0)
 ], 0, 0);
 
-assert(wf_eigenstates_at(tilemap_wf(ntm), 0, 1) != wf_eigenstates_at(wf, 0, 1));
+assert(wf_eigenstates_at(tilemap_wf(ntm), 0, 1) != wf_eigenstates_at(wf, 0, 1));*/
+
+echo(tilemap_generate(tm));
