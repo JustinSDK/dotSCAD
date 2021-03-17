@@ -3,6 +3,7 @@ use <util/has.scad>;
 use <util/sum.scad>;
 use <util/rand.scad>;
 use <util/slice.scad>;
+use <util/some.scad>;
 use <util/every.scad>;
 use <util/map/hashmap.scad>;
 use <util/map/hashmap_len.scad>;
@@ -193,8 +194,9 @@ function _wf_coord_min_entropy(wf, coords, coords_leng, entropy, entropyCoord, i
 		- tilemap_width(tm)
 		- tilemap_height(tm)
 		- tilemap_compatibilities(tm)
-		- tilemap_wave_function(tm)
+		- tilemap_wf(tm)
 		- tilemap_check_compatibilities(tm, tile1, tile2, direction)
+		- tilemap_propagate(tm, x, y)
 */
 
 function tilemap(width, height, sample) = [
@@ -212,6 +214,46 @@ function tilemap_wf(tm) = tm[3];
 function tilemap_check_compatibilities(tm, tile1, tile2, direction) = 
     let(compatibilities = tilemap_compatibilities(tm))
 	hashset_has(compatibilities, [tile1, tile2, direction]);
+
+function tilemap_propagate(tm, x, y) = 
+    let(stack = [[x, y]]) 
+	_tilemap_propagate(tm, stack);
+
+function _tilemap_propagate(tm, stack) =
+    len(stack) == 0 ? tm :
+	let(
+		v_stack = pop(stack),
+		current_coord = v_stack[0],
+		cs = v_stack[1],
+		cx = current_coord[0], 
+		cy = current_coord[1],
+		current_tiles = wf_eigenstates_at(tilemap_wf(tm), cx, cy),
+		dirs = neighbor_dirs(cx, cy, tilemap_width(tm), tilemap_height(tm)),
+		tm_stack = _doDirs(tm, cs, cx, cy, current_tiles, dirs, len(dirs))
+	)
+    _tilemap_propagate(tm_stack[0], tm_stack[1]);
+
+function _doDirs(tm, stack, cx, cy, current_tiles, dirs, leng, i = 0) = 
+    i == leng ? [tm, stack] :
+	let(
+		dir = dirs[i],
+		nbrx = cx + dir[0],
+		nbry = cy + dir[1],
+		wf = tilemap_wf(tm),
+		nbr_tiles = wf_eigenstates_at(wf, nbrx, nbry),
+		not_compatible_nbr_tiles = [for(nbr_tile = nbr_tiles) if(not_compatible_nbr_tile(tm, current_tiles, nbr_tile, dir)) nbr_tile]
+	)
+	len(not_compatible_nbr_tiles) == 0 ? _doDirs(tm, stack, cx, cy, current_tiles, dirs, leng, i + 1) :
+		let(
+			nstack = push(stack, [nbrx, nbry]),
+			ntm = [
+			    tilemap_width(tm), 
+				tilemap_height(tm), 
+				tilemap_compatibilities(tm),
+				wf_remove(wf, nbrx, nbry, not_compatible_nbr_tiles)
+			]
+		)
+	    _doDirs(ntm, nstack, cx, cy, current_tiles, dirs, leng, i + 1);
 
 function neighbor_dirs(x, y, width, height) =
     concat(
@@ -253,6 +295,9 @@ function collapsed_tiles(wf) =
 function not_compatible_nbr_tile(tm, current_tiles, nbr_tile, dir) =
     !some(current_tiles, function(tile) tilemap_check_compatibilities(tm, tile, nbr_tile, dir));
 
+function push(stack, elem) = concat([elem], stack);
+function pop(stack) = [stack[0], slice(stack, 1)];
+
 width = 30;
 height = 30;
 
@@ -274,3 +319,20 @@ assert(wf_coord_min_entropy(wf_collapse(wf, 0, 0)) != [0, 0]);
 
 assert(neighbor_compatibilities(sample, 0, 0, len(sample[0]), len(sample)) ==  [["S", "S", [1, 0]], ["S", "S", [0, 1]]]);
 assert(hashset_len(compatibilities_of_tiles(sample)) == 64);
+
+assert(push([1, 2, 3], 0) == [0, 1, 2, 3]);
+assert(pop([1, 2, 3]) == [1, [2, 3]]);
+
+tm = tilemap(width, height, sample);
+assert(tilemap_check_compatibilities(tm, "S", "C0", [ 1,  0]));
+assert(!tilemap_check_compatibilities(tm, "S", "L", [ 1,  0]));
+
+
+ntm = tilemap_propagate([
+	tilemap_width(tm),
+	tilemap_height(tm),
+	tilemap_compatibilities(tm),
+	wf_collapse(wf, 0, 0)
+], 0, 0);
+
+assert(wf_eigenstates_at(tilemap_wf(ntm), 0, 1) != wf_eigenstates_at(wf, 0, 1));
