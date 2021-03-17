@@ -323,8 +323,7 @@ function tiles_wfc(width, height, sample) =
 width = 20;
 height = 20;
 
-tm = tilemap(width, height, sample);
-echo(tilemap_generate(tm));
+echo(tiles_wfc(width, height, sample));
 */
 
 /*
