@@ -234,11 +234,15 @@ function _doDirs(tm, stack, cx, cy, current_tiles, dirs, leng, i = 0) =
 	len(not_compatible_nbr_tiles) == 0 ? _doDirs(tm, stack, cx, cy, current_tiles, dirs, leng, i + 1) :
 		let(
 			nstack = push(stack, [nbrx, nbry]),
+			nwf = wf_remove(wf, nbrx, nbry, not_compatible_nbr_tiles),
 			ntm = [
 			    tilemap_width(tm), 
 				tilemap_height(tm), 
 				tilemap_compatibilities(tm),
-				wf_remove(wf, nbrx, nbry, not_compatible_nbr_tiles)
+				wf_eigenstates_at(nwf, nbrx, nbrx) != [] ? nwf :
+				    assert(false,
+				        str("(", nbrx, ", ", nbry, ")", 
+						    " reaches a contradiction. Tiles have all been ruled out by your previous choices. Please try again."))
 			]
 		)
 	    _doDirs(ntm, nstack, cx, cy, current_tiles, dirs, leng, i + 1);
