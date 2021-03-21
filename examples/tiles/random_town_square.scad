@@ -6,6 +6,7 @@ use <util/choose.scad>;
 use <experimental/tiles_wfc.scad>;
 use <rounded_square.scad>;
 use <box_extrude.scad>;
+use <polyhedron_hull.scad>;
 
 rows = 6;
 columns = 6;
@@ -89,6 +90,27 @@ module random_town_square(rows, columns, tileW, layerH) {
             square(tileW);
     }
 
+    module rock(width = 1) {
+        n = 10 * rands(1, 1.25, 1)[0];
+        r = width / 2 * rands(1, 1.25, 1)[0];
+        theta = rands(0, 359, n);
+        phi = rands(0, 359, n);
+
+        polyhedron_hull([
+            for(i = [0:n - 1]) 
+            let(z = r * cos(phi[i]))
+            [r * cos(theta[i]), r * sin(theta[i]), z >= 0 ? z : 0]]);
+    }    
+
+    module df_door(h) {
+        dim = [(tileW + rand()) * 0.2, tileW];
+        linear_extrude(h * 0.8) {
+            square(dim, center = true);
+            rotate(90)
+                square(dim, center = true);
+        }
+    }
+
     // F
     module floor(tileW, height) {
         base(tileW, height);
@@ -99,24 +121,28 @@ module random_town_square(rows, columns, tileW, layerH) {
         if(choose([true, false, false])) {
             translate([halfW, halfW, 0])
             rotate(choose([0, 90]))
-            difference() {
-                translate([0, 0, h])
-                mirror([0, 0, 1]) 
-                if(choose([true, false])) {
+
+            if(choose([true, false])) {
+                difference() {
+                    translate([0, 0, h])
+                    mirror([0, 0, 1]) 
                     box_extrude(h, shell_thickness  = tileW / 10)
                         rounded_square(tileW * 0.8, 1, center = true);
+                    df_door(h);
                 }
-                else {
+            }
+            else if(choose([true, false])) {
+                difference() {
+                    translate([0, 0, h])
+                    mirror([0, 0, 1]) 
                     linear_extrude(h)
                         circle(tileW * 0.5, $fn = choose([4, 8, 12, 48]));
+                    df_door(h);
                 }
-                
-                linear_extrude(h * 0.8)
-                    square([tileW * 0.2 + rand() * 0.2, tileW], center = true);
-                
-                rotate(90)
-                linear_extrude(h * 0.8)
-                    square([tileW * 0.2 + rand() * 0.2, tileW], center = true);
+            }
+            else {
+                translate([0, 0, height])
+                    rock(halfW * 1.5);
             }
         }
     }
