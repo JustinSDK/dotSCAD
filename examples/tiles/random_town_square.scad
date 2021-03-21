@@ -8,8 +8,8 @@ use <rounded_square.scad>;
 use <box_extrude.scad>;
 use <polyhedron_hull.scad>;
 
-rows = 6;
-columns = 8;
+rows = 5;
+columns = 5;
 tileW = 10;
 layerH = 1;
 
@@ -141,7 +141,7 @@ module random_town_square(rows, columns, tileW, layerH) {
                 }
             }
             else if(height == 4) {
-                translate([0, 0, height])
+                translate([0, 0, height * 0.99])
                     rock(halfW * 1.5);
             }
         }
