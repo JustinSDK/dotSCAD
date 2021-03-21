@@ -15,8 +15,8 @@ This function maps keys to values. You can use the following to process the retu
 ## Parameters
 
 - `kv_lt` : Constructs a new map containing the `[key, value]`s in the specified list. It can be ignored if you want an empty map.
-- `eq` : A equality function. If it's ignored, use `==` to compare elements.
-- `hash` : A hash function. If it's ignored, convert each element to a string and hash it. 
+- `eq` : A equality function. If it's ignored, use `==` to compare keys.
+- `hash` : A hash function. If it's ignored, convert each key to a string and hash it. 
 - `number_of_buckets` : The function uses a hash table internally. Change the number of buckets if you're trying to do optimization. 
 
 ## Examples
