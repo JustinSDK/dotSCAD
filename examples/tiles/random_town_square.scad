@@ -9,7 +9,7 @@ use <box_extrude.scad>;
 use <polyhedron_hull.scad>;
 
 rows = 6;
-columns = 6;
+columns = 8;
 tileW = 10;
 layerH = 1;
 
@@ -17,17 +17,17 @@ random_town_square(rows, columns, tileW, layerH);
 
 module random_town_square(rows, columns, tileW, layerH) {
     sample = [
-        ["F4", "CCRS1", "SS22", "CCRS0", "SS32", "F2", "SS14", "FW3", "SS04", "SS04"],
-        ["F4", "SS32", "F2", "SS12", "SS32", "F2", "SS14", "FW3", "SS24", "SS24"],
-        ["F4", "CCRS2", "SS02", "CCRS3", "SS32", "F2", "VCRS14", "VCRS04", "SS04", "SS04"],
-        ["F4", "F4", "CCRS1", "CCRS0", "CCRS2", "VCRS02", "VCRS24", "VCRS34", "FW2", "FW2"],
-        ["F4", "F4", "CCRS2", "CCRS3", "F4", "SS32", "FW1", "SS34", "FW0", "FW0"],
-        ["SS22", "SS22", "SS22", "SS22", "SS22", "VCRS32", "FW1", "SS34", "SS24", "SS24"],
-        ["SS14", "SS34", "VCRS14", "SS04", "SS04", "VCRS04", "VCRS12", "VCRS02", "F2", "F2"],
-        ["SS14", "SS34", "VCRS24", "SS24", "SS24", "VCRS34", "VCRS22", "VCRS32", "F2", "F2"],
-        ["SS14", "SS34", "VCRS14", "SS04", "SS04", "VCRS04", "VCRS12", "VCRS02", "F2", "F2"],
-        ["SS14", "SS34", "SS14", "F6", "F6", "SS34", "SS12", "SS32", "VCRS14", "VCRS04"],
-        ["F2", "F2", "VCRS24", "SS24", "SS24", "VCRS34", "VCRS22", "VCRS32", "VCRS24", "VCRS34"]
+        ["SS12", "CCRS1", "SS22", "CCRS0", "SS32", "F2", "SS14", "FW3", "SS04", "SS04"],
+        ["SS12", "SS32", "F4", "SS12", "SS32", "F2", "SS14", "FW3", "SS24", "SS24"],
+        ["SS12", "CCRS2", "SS02", "CCRS3", "SS32", "F2", "VCRS14", "VCRS04", "SS04", "SS04"],
+        ["VCRS22", "CCRS0", "CCRS1", "CCRS0", "CCRS2", "VCRS02", "VCRS24", "VCRS34", "FW2", "FW2"],
+        ["VCRS12", "CCRS3", "CCRS2", "CCRS3", "F4", "SS32", "FW1", "SS34", "FW0", "FW0"],
+        ["VCRS22", "SS22", "SS22", "SS22", "SS22", "VCRS32", "FW1", "SS34", "SS24", "SS24"],
+        ["SS14", "SS34", "VCRS14", "SS04", "SS04", "VCRS04", "VCRS12", "VCRS02", "F4", "F2"],
+        ["SS14", "SS34", "VCRS24", "SS24", "SS24", "VCRS34", "VCRS22", "VCRS32", "F2", "F4"],
+        ["F2", "F2", "VCRS14", "SS04", "SS04", "VCRS04", "VCRS12", "VCRS02", "F2", "F2"],
+        ["F4", "F2", "SS14", "F4", "F4", "SS34", "SS12", "SS32", "VCRS14", "VCRS04"],
+        ["F2", "F4", "VCRS24", "SS24", "SS24", "VCRS34", "VCRS22", "VCRS32", "VCRS24", "VCRS34"]
     ];
 
 
@@ -116,7 +116,7 @@ module random_town_square(rows, columns, tileW, layerH) {
         base(tileW, height);
         
         halfW = tileW / 2;
-        h = height * 2 + height * rand() * 10;
+        h = height * 2 + height * rand() * 4;
         
         if(choose([true, false, false])) {
             translate([halfW, halfW, 0])
@@ -126,8 +126,8 @@ module random_town_square(rows, columns, tileW, layerH) {
                 difference() {
                     translate([0, 0, h])
                     mirror([0, 0, 1]) 
-                    box_extrude(h, shell_thickness  = tileW / 10)
-                        rounded_square(tileW * 0.8, 1, center = true);
+                    box_extrude(h, shell_thickness  = (rand() / 10 + 0.1) * tileW)
+                        rounded_square(tileW * (0.6 + rand() * 0.3), 1, center = true);
                     df_door(h);
                 }
             }
@@ -136,11 +136,11 @@ module random_town_square(rows, columns, tileW, layerH) {
                     translate([0, 0, h])
                     mirror([0, 0, 1]) 
                     linear_extrude(h)
-                        circle(tileW * 0.5, $fn = choose([4, 8, 12, 48]));
+                        circle(tileW * 0.4, $fn = choose([4, 8, 12, 48]));
                     df_door(h);
                 }
             }
-            else {
+            else if(height == 4) {
                 translate([0, 0, height])
                     rock(halfW * 1.5);
             }
