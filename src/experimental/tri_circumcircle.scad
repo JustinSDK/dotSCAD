@@ -9,10 +9,13 @@ function tri_circumcircle(points) =
       d1 = (p2 + p1) / 2 * v1,
       det = -cross(v0 , v1)
    )
-   det == 0? [] : 
+   det == 0 ? undef : 
              let(
                  x = (d1 * v0[1] - d0 * v1[1]) / det,
                  y = (d0 * v1[0] - d1 * v0[0]) / det,
-                 r = norm(p0 - [x,y])
+                 center = [x, y],
+                 v = p0 - center,
+                 r = norm(v),
+                 rr = pow(v[0], 2) + pow(v[1], 2)
              )
-             [[x,y], r];
+             [center, r, rr];
