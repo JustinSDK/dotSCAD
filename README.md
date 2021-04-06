@@ -48,9 +48,9 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [`hexagons(radius, spacing, levels)`](https://openhome.cc/eGossip/OpenSCAD/lib3x-hexagons.html)
 - [`hull_polyline2d(points, width = 1)`](https://openhome.cc/eGossip/OpenSCAD/lib3x-hull_polyline2d.html)
 - [`line2d(p1, p2, width = 1, p1Style = "CAP_SQUARE", p2Style =  "CAP_SQUARE")`](https://openhome.cc/eGossip/OpenSCAD/lib3x-line2d.html)
-- [`multi_line_text(lines, line_spacing = 15, size = 10, font = "Arial", halign = "left", valign = "baseline", ...)`](https://openhome.cc/eGossip/OpenSCAD/lib3x-multi_line_text.html)
+- [`multi_line_text(lines, line_spacing = 15, size = 10, font = "Arial", ...)`](https://openhome.cc/eGossip/OpenSCAD/lib3x-multi_line_text.html)
 - [`pie(radius, angle)`](https://openhome.cc/eGossip/OpenSCAD/lib3x-pie.html)
-- [`polyline2d(points, width = 1, startingStyle = "CAP_SQUARE", endingStyle = "CAP_SQUARE", joinStyle = "JOIN_ROUND")`](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyline2d.html)
+- [`polyline2d(points, width = 1, startingStyle = "CAP_SQUARE", endingStyle = "CAP_SQUARE", ...)`](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyline2d.html)
 - [`polygon_hull(points)`](https://openhome.cc/eGossip/OpenSCAD/lib3x-polygon_hull.html)
 - [`rounded_square(size, corner_r, center = false)`](https://openhome.cc/eGossip/OpenSCAD/lib3x-rounded_square.html)
 
@@ -100,7 +100,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [`fibonacci_lattice(n, radius = 1, dir = "CT_CLK")`](https://openhome.cc/eGossip/OpenSCAD/lib3x-fibonacci_lattice.html)
 - [`golden_spiral(from, to, point_distance, rt_dir = "CT_CLK")`](https://openhome.cc/eGossip/OpenSCAD/lib3x-golden_spiral.html)
 - [`helix(radius, levels, level_dist, vt_dir = "SPI_DOWN", rt_dir = "CT_CLK")`](https://openhome.cc/eGossip/OpenSCAD/lib3x-helix.html)
-- [`sphere_spiral(radius, za_step, z_circles = 1, begin_angle = 0, end_angle = 0, vt_dir = "SPI_DOWN", rt_dir = "CT_CLK")`](https://openhome.cc/eGossip/OpenSCAD/lib3x-sphere_spiral.html)
+- [`sphere_spiral(radius, za_step, z_circles = 1, begin_angle = 0, end_angle = 0, ...)`](https://openhome.cc/eGossip/OpenSCAD/lib3x-sphere_spiral.html)
 - [`torus_knot(p, q, phi_step)`](https://openhome.cc/eGossip/OpenSCAD/lib3x-torus_knot.html)
 
 ### Extrusion
@@ -131,7 +131,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 - [`helix_extrude(shape_pts, radius, levels, level_dist, ...)`](https://openhome.cc/eGossip/OpenSCAD/lib3x-helix_extrude.html)
 - [`path_extrude(shape_pts, path_pts, ...)`](https://openhome.cc/eGossip/OpenSCAD/lib3x-path_extrude.html)
 - [`ring_extrude(shape_pts, radius, angle = 360, ...)`](https://openhome.cc/eGossip/OpenSCAD/lib3x-ring_extrude.html)
-- [`sphere_spiral_extrude(shape_pts, radius, za_step, z_circles = 1, begin_angle = 0, end_angle = 0, ...)`](https://openhome.cc/eGossip/OpenSCAD/lib3x-sphere_spiral_extrude.html)
+- [`sphere_spiral_extrude(shape_pts, radius, za_step, ...)`](https://openhome.cc/eGossip/OpenSCAD/lib3x-sphere_spiral_extrude.html)
 
 ### Util
 - list
@@ -203,8 +203,8 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 ### Turtle
 - [`turtle/footprints2(cmds, start = [0, 0])`](https://openhome.cc/eGossip/OpenSCAD/lib3x-footprints2.html)
 - [`turtle/footprints3(cmds, start = [0, 0, 0])`](https://openhome.cc/eGossip/OpenSCAD/lib3x-footprints3.html)
-- [`turtle/lsystem2(axiom, rules, n, angle, leng = 1, heading = 0, start = [0, 0], forward_chars = "F", rule_prs = undef)`](https://openhome.cc/eGossip/OpenSCAD/lib3x-lsystem2.html)
-- [`turtle/lsystem3(axiom, rules, n, angle, leng = 1, heading = 0, start = [0, 0, 0], forward_chars = "F", rule_prs = undef)`](https://openhome.cc/eGossip/OpenSCAD/lib3x-lsystem3.html)
+- [`turtle/lsystem2(axiom, rules, n, angle, leng = 1, heading = 0, ...)`](https://openhome.cc/eGossip/OpenSCAD/lib3x-lsystem2.html)
+- [`turtle/lsystem3(axiom, rules, n, angle, leng = 1, heading = 0, ...)`](https://openhome.cc/eGossip/OpenSCAD/lib3x-lsystem3.html)
 - [`turtle/t2d(t, cmd, point, angle, leng)`](https://openhome.cc/eGossip/OpenSCAD/lib3x-t2d.html)
 - [`turtle/t3d(t, cmd, point, unit_vectors, leng, angle)`](https://openhome.cc/eGossip/OpenSCAD/lib3x-t3d.html)
 
@@ -262,7 +262,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 
 ### Maze
 
-- [`maze/mz_square_cells(rows, columns, start = [0, 0], init_cells = undef, x_wrapping = false, y_wrapping = false, seed = undef)`](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_square_cells.html)
+- [`maze/mz_square_cells(rows, columns, start = [0, 0], ...)`](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_square_cells.html)
 - [`maze/mz_square_get(cell, query)`](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_square_get.html)
 - [`maze/mz_square_walls(cells, rows, columns, cell_width, left_border = true, bottom_border = true)`](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_square_walls.html)
 - [`maze/mz_hex_walls(cells, rows, columns, cell_radius, left_border = true, bottom_border = true)`](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_hex_walls.html)
