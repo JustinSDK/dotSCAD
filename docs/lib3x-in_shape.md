@@ -1,6 +1,6 @@
 # in_shape
 
-Checks wether a point is inside a shape.
+Checks whether a point is inside a shape.
 
 **Since:** 1.3
 
