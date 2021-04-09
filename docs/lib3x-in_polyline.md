@@ -1,6 +1,6 @@
 # in_polyline
 
-Checks wether a point is on a line.
+Checks whether a point is on a line.
 
 **Since:** 1.3
 
