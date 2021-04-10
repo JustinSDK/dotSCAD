@@ -1,7 +1,5 @@
 # m_translation
 
-The dir changed since 2.0. 
-
 Generate a 4x4 transformation matrix which can pass into `multmatrix` to translates (moves) its child elements along the specified vector.
 
 **Since:** 1.1

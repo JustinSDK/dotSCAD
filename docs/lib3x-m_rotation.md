@@ -1,7 +1,5 @@
 # m_rotation
 
-The dir changed since 2.0. 
-
 Generate a 4x4 transformation matrix which can pass into `multmatrix` to rotate the child element about the axis of the coordinate system or around an arbitrary axis. 
 
 **Since:** 1.1

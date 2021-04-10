@@ -1,7 +1,5 @@
 # m_mirror
 
-The dir changed since 2.0. 
-
 Generate a 4x4 transformation matrix which can pass into `multmatrix` to mirror the child element on a plane through the origin. 
 
 **Since:** 1.1
