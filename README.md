@@ -43,8 +43,6 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 
 # API Documentation
 
----
-
 ## 2D Module
 
  Signature | Description
