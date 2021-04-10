@@ -1,7 +1,5 @@
 # split_str
 
-The dir changed since 2.0. 
-
 Splits the given string around matches of the given delimiting character. 
 
 ## Parameters
