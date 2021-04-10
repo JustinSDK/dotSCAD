@@ -45,13 +45,6 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 
 ---
 
-<style>
-table{
-    width:100%;
-    table-layout:fixed;
-}
-</style>
-
 ## 2D Module
 
  Signature | Description
