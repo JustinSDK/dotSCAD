@@ -45,6 +45,13 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 
 ---
 
+<style>
+table{
+    width:100%;
+    table-layout:fixed;
+}
+</style>
+
 ## 2D Module
 
  Signature | Description
@@ -54,7 +61,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 [**hull_polyline2d**(points, width = 1)](https://openhome.cc/eGossip/OpenSCAD/lib3x-hull_polyline2d.html) | create a 2D polyline from a list of `[x, y]`.
 [**line2d**(p1, p2, width = 1, p1Style = "CAP_SQUARE", p2Style = "CAP_SQUARE")](https://openhome.cc/eGossip/OpenSCAD/lib3x-line2d.html) | create a line from two points. 
 [**multi_line_text**(lines, line_spacing = 15, size = 10, font = "Arial", ...)](https://openhome.cc/eGossip/OpenSCAD/lib3x-multi_line_text.html) | create multi-line text from a list of strings.
-[**pie**(radius, angle)](https://openhome.cc/eGossip/OpenSCAD/lib3x-pie.html) | creatpolyline2de a pie (circular sector).
+[**pie**(radius, angle)](https://openhome.cc/eGossip/OpenSCAD/lib3x-pie.html) | create polyline2de a pie (circular sector).
 [**polyline2d**(points, width = 1, startingStyle = "CAP_SQUARE", endingStyle = "CAP_SQUARE", ...)](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyline2d.html) | create a polyline from a list of `[x, y]` coordinates.
 [**polygon_hull**(points)](https://openhome.cc/eGossip/OpenSCAD/lib3x-polygon_hull.html) | create a convex polygon by hulling a list of points. It avoids using hull and small 2D primitives to create the polygon.
 [**rounded_square**(size, corner_r, center = false)](https://openhome.cc/eGossip/OpenSCAD/lib3x-rounded_square.html) | create a rounded square in the first quadrant.
