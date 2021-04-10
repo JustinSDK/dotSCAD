@@ -1,6 +1,6 @@
 # hashmap_put
 
-This function returns the length of a [util/map/hashmap](https://openhome.cc/eGossip/OpenSCAD/lib3x-hashmap.html).
+Puts a key/value pair to a [util/map/hashmap](https://openhome.cc/eGossip/OpenSCAD/lib3x-hashmap.html).
 
 **Since:** 3.0
 
