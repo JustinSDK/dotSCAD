@@ -1,6 +1,6 @@
 # hashmap_get
 
-This function gets the value of the specified key from a [util/map/hashmap](https://openhome.cc/eGossip/OpenSCAD/lib3x-hashmap.html).
+This function gets the value of the specified key from a [util/map/hashmap](https://openhome.cc/eGossip/OpenSCAD/lib3x-hashmap.html). If the key doesn't exist, return `undef`.
 
 **Since:** 3.0
 
