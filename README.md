@@ -167,7 +167,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
  Signature | Description
 --|--
 [**util/bsearch**(sorted, target)](https://openhome.cc/eGossip/OpenSCAD/lib3x-bsearch.html) | search a value in a list whose elements must be sorted by zyx.
-[**util/has**(lt, elem, sorted = false)](https://openhome.cc/eGossip/OpenSCAD/lib3x-has.html) | return `true` If `lt` contains elem.
+[**util/has**(lt, elem, sorted = false)](https://openhome.cc/eGossip/OpenSCAD/lib3x-has.html) | return `true` if `lt` contains elem.
 [**util/find_index**(lt, test)](https://openhome.cc/eGossip/OpenSCAD/lib3x-find_index.html) | return the index of the first element that satisfies the testing function. 
 [**util/dedup**(lt, ...)](https://openhome.cc/eGossip/OpenSCAD/lib3x-dedup.html) | eliminate duplicate vectors.
 [**util/flat**(lt, depth = 1)](https://openhome.cc/eGossip/OpenSCAD/lib3x-flat.html) | return a new list with all sub-list elements concatenated into it recursively up to the specified depth.
