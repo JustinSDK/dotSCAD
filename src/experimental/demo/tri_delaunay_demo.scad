@@ -10,7 +10,7 @@ module drawTris(pointsOfTriangles) {
 	}	
 }
 
-drawTris2(points, tri_delaunay(points, ret = "INDICES"));
+drawTris2(points, tri_delaunay(points, ret = "TRI_INDICES"));
 module drawTris2(points, indices) {
     pointsOfTriangles = [for(i = indices) [points[i[0]], points[i[1]], points[i[2]]]];
 	%for(t = pointsOfTriangles) {
