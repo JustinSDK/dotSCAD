@@ -1,18 +1,8 @@
-use <experimental/_impl/_tri_delaunay_impl.scad>;
-use <util/flat.scad>;
+use<experimental/_impl/_tri_delaunay_impl.scad>;
 
-function tri_delaunay(points)=
-   let(
-      leng = len(points),
-      indices_lt = [for(i=[0:leng - 3]) for(j = [i + 1:leng - 2]) [i, j]],
-      indices_boundIndices_lt = [
-          for(indices = indices_lt) 
-              [indices, _tri_delaunay_boundIndices(points, leng, indices)]
-      ]
-   )
-   flat(
-       [
-           for(indices_boundIndices = indices_boundIndices_lt) 
-               _tri_delaunay_triangleIndices(points, leng, indices_boundIndices, [])
-       ]
-   );
+// ret: "SHAPES", "INDICES", "DELAUNAY"
+function tri_delaunay(points, ret = "SHAPES") = 
+    let(d = _tri_delaunay(delaunay_init(points), points, len(points)))
+    ret == "SHAPES" ?  tri_delaunay_shapes(d) : 
+    ret == "INDICES" ? tri_delaunay_indices(d) :
+    d; // [coords(list), triangles(hashmap), circles(hashmap)]
