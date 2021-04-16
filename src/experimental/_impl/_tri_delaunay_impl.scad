@@ -83,7 +83,6 @@ function adjustNeighbors(d, newTriangles) =
 		leng = len(newTriangles),
 		aDtrid = _adjustNeighborsDtri(nd, newTriangles, leng)
 	)
-	// aDtrid;
 	_adjustNeighborsOtri(aDtrid, newTriangles, leng);
 
 function _adjustNeighborsOtri(d, newTriangles, leng, i = 0) = 
@@ -99,7 +98,6 @@ function _adjustNeighborsOtri(d, newTriangles, leng, i = 0) =
 	)
 	_adjustNeighborsOtri(nd, newTriangles, leng, i + 1);
  
-
 function _adjustNeighborsDtri(d, newTriangles, leng, i = 0) =
     i == leng ? d :
     let(
@@ -207,8 +205,6 @@ function delBadTriangles(d, badTriangles) =
 		])
 	)
 	[delaunay_coords(d), nTriangles, nCircles];
-
-
 	
 function _tri_delaunay(d, points, leng, i = 0) =
     i == leng ? d :
