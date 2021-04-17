@@ -1,5 +1,5 @@
 use <experimental/tri_delaunay.scad>;
-use <experimental/tri_delaunay2voronoi.scad>;
+use <experimental/tri_delaunay_voronoi.scad>;
 use <hull_polyline2d.scad>;
 
 points = [for(i = [0:20]) rands(-100, 100, 2)]; 
@@ -13,7 +13,7 @@ for(p = points) {
 %draw(tri_delaunay(points));
 
 d = tri_delaunay(points, ret = "DELAUNAY");
-#draw(tri_delaunay2voronoi(d));
+#draw(tri_delaunay_voronoi(d));
 
 module draw(pointsOfTriangles) {
 	for(t = pointsOfTriangles) {

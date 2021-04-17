@@ -1,9 +1,9 @@
-use <experimental/_impl/_tri_delaunay2voronoi_impl.scad>;
+use <experimental/_impl/_tri_delaunay_voronoi_impl.scad>;
 use <util/map/hashmap.scad>;
 use <util/map/hashmap_keys.scad>;
 use <util/map/hashmap_get.scad>;
 
-function tri_delaunay2voronoi(d) = 
+function tri_delaunay_voronoi(d) = 
     let(
 	    coords = delaunay_coords(d),
 		coords_leng = len(coords),
