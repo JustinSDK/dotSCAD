@@ -1,4 +1,5 @@
 use <experimental/tri_delaunay.scad>;
+use <experimental/tri_delaunay_shapes.scad>;
 use <experimental/tri_delaunay_voronoi.scad>;
 use <hull_polyline2d.scad>;
 
@@ -10,10 +11,10 @@ for(p = points) {
 	circle(2);
 }
 
-%draw(tri_delaunay(points));
+delaunay = tri_delaunay(points, ret = "DELAUNAY");
 
-d = tri_delaunay(points, ret = "DELAUNAY");
-#draw(tri_delaunay_voronoi(d));
+%draw(tri_delaunay_shapes(delaunay));
+#draw(tri_delaunay_voronoi(delaunay));
 
 module draw(pointsOfTriangles) {
 	for(t = pointsOfTriangles) {
