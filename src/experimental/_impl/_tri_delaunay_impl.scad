@@ -76,9 +76,7 @@ function adjustNeighbors(d, newTriangles) =
 	)
 	_adjustNeighborsOtri(aDtrid, newTriangles, leng);
 
-function hashmap_puts(m, kv_lt) =
-    let(leng = len(kv_lt))
-	_hashmap_puts(m, kv_lt, leng);
+function hashmap_puts(m, kv_lt) = _hashmap_puts(m, kv_lt, len(kv_lt));
 
 function _hashmap_puts(m, kv_lt, leng, i = 0) =
     i == leng ? m :
@@ -186,22 +184,18 @@ function _delaunayBoundaries(d, badTriangles, boundaries, t, vi) =
 		v1 == v2 ? nboundaries : _delaunayBoundaries(d, badTriangles, nboundaries, t, nvi);
 
 function delBadTriangles(d, badTriangles) = 
-    let(
-	    triangles = delaunay_triangles(d),
-		circles = delaunay_circles(d),
-		nTriangles = hashmap([
-		     for(t = hashmap_keys(triangles))
-			 if(!has(badTriangles, t))
-			 [t, hashmap_get(triangles, t)]
-		]),
-		nCircles = hashmap([
-		     for(t = hashmap_keys(circles))
-			 if(!has(badTriangles, t))
-			 [t, hashmap_get(circles, t)]
-		])
-	)
-	[delaunay_coords(d), nTriangles, nCircles];
+	[
+		delaunay_coords(d), 
+		hashmap_dels(delaunay_triangles(d), badTriangles), 
+		hashmap_dels(delaunay_circles(d), badTriangles)
+	];
 	
+function hashmap_dels(m, keys) = _hashmap_dels(m, keys, len(keys));
+
+function _hashmap_dels(m, keys, leng, i = 0) = 
+    i == leng ? m :
+	_hashmap_dels(hashmap_del(m, keys[i]), keys, leng, i + 1);
+
 function _tri_delaunay(d, points, leng, i = 0) =
     i == leng ? d :
 	_tri_delaunay(delaunay_addpoint(d, points[i]), points, leng, i + 1);
