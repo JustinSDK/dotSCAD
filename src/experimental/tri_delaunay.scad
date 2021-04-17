@@ -1,4 +1,6 @@
-use <experimental/_impl/_tri_delaunay_impl.scad>;
+use <_impl/_tri_delaunay_impl.scad>;
+use <tri_delaunay_shapes.scad>;
+use <tri_delaunay_indices.scad>;
 
 // ret: "TRI_SHAPES", "TRI_INDICES", "DELAUNAY"
 function tri_delaunay(points, ret = "TRI_SHAPES") = 

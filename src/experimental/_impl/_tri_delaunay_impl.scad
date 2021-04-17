@@ -199,17 +199,3 @@ function delBadTriangles(d, badTriangles) =
 function _tri_delaunay(d, points, leng, i = 0) =
     i == leng ? d :
 	_tri_delaunay(delaunay_addpoint(d, points[i]), points, leng, i + 1);
-
-function tri_delaunay_shapes(d) = 
-    let(coords = delaunay_coords(d))
-	[
-		for(tri = hashmap_keys(delaunay_triangles(d))) 
-		if(tri[0] > 3 && tri[1] > 3 && tri[2] > 3)
-		[coords[tri[0]], coords[tri[1]], coords[tri[2]]]
-	];
-
-function tri_delaunay_indices(d) =	[
-	for(tri = hashmap_keys(delaunay_triangles(d))) 
-	if(tri[0] > 3 && tri[1] > 3 && tri[2] > 3)
-	[tri[0] - 4, tri[1] - 4, tri[2] - 4]
-];
