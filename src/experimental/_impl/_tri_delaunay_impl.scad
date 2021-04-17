@@ -2,8 +2,9 @@ use <_tri_delaunay_comm_impl.scad>;
 use <experimental/tri_circumcircle.scad>;
 use <util/map/hashmap.scad>;
 use <util/map/hashmap_get.scad>;
+use <util/map/hashmap_del.scad>;
 use <util/map/hashmap_keys.scad>;
-use <util/map/hashmap_entries.scad>;
+use <util/map/hashmap_put.scad>;
 use <util/some.scad>;
 use <util/has.scad>;
 use <util/slice.scad>;
@@ -67,13 +68,22 @@ function adjustNeighbors(d, newTriangles) =
 		],
 		nd = [
 		    coords, 
-			hashmap(concat(hashmap_entries(delaunay_triangles(d)), nts)),
-			hashmap(concat(hashmap_entries(delaunay_circles(d)), ncs))
+			hashmap_puts(delaunay_triangles(d), nts), 
+			hashmap_puts(delaunay_circles(d), ncs),
 		],
 		leng = len(newTriangles),
 		aDtrid = _adjustNeighborsDtri(nd, newTriangles, leng)
 	)
 	_adjustNeighborsOtri(aDtrid, newTriangles, leng);
+
+function hashmap_puts(m, kv_lt) =
+    let(leng = len(kv_lt))
+	_hashmap_puts(m, kv_lt, leng);
+
+function _hashmap_puts(m, kv_lt, leng, i = 0) =
+    i == leng ? m :
+	let(kv = kv_lt[i])
+	_hashmap_puts(hashmap_put(m, kv[0], kv[1]), kv_lt, leng, i + 1);
 
 function _adjustNeighborsOtri(d, newTriangles, leng, i = 0) = 
     i == leng ? d :
@@ -82,8 +92,8 @@ function _adjustNeighborsOtri(d, newTriangles, leng, i = 0) =
 		nbr1 = newTriangles[(i + 1) % leng][0],
 		nbr2 = newTriangles[i > 0 ? i - 1 : leng + i - 1][0],
 		triangles = delaunay_triangles(d),
-        entries = hashmap_entries(triangles),
-		nTriangles = hashmap([for(entry = entries) entry[0] == t ? [t, [entry[1][0], nbr1, nbr2]] : entry]),
+		v = hashmap_get(triangles, t),
+		nTriangles = hashmap_put(hashmap_del(triangles, t), t, [v[0], nbr1, nbr2]),
 		nd = [delaunay_coords(d), nTriangles, delaunay_circles(d)]
 	)
 	_adjustNeighborsOtri(nd, newTriangles, leng, i + 1);
@@ -109,11 +119,7 @@ function updateNbrs(d, delaunayTri, neighbors) =
 	    coords = delaunay_coords(d),
 	    triangles = delaunay_triangles(d),
 		circles = delaunay_circles(d),
-		tri_entries = hashmap_entries(triangles),
-		nTriangles = hashmap([
-		    for(entry = tri_entries)
-			entry[0] == delaunayTri ? [delaunayTri, neighbors] : entry
-		])
+		nTriangles = hashmap_put(hashmap_del(triangles, delaunayTri), delaunayTri, neighbors)
 	)
 	[coords, nTriangles, circles];
 	
