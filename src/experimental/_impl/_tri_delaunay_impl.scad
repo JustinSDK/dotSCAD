@@ -1,3 +1,4 @@
+use <_tri_delaunay_comm_impl.scad>;
 use <experimental/tri_circumcircle.scad>;
 use <util/map/hashmap.scad>;
 use <util/map/hashmap_get.scad>;
@@ -35,10 +36,6 @@ function delaunay_init(center, width, height) =
 		)
 	)
 	[coords, triangles, circles];
-	
-function delaunay_coords(d) = d[0];
-function delaunay_triangles(d) = d[1];
-function delaunay_circles(d) = d[2];
 
 function delaunay_addpoint(d, p) =
     let(

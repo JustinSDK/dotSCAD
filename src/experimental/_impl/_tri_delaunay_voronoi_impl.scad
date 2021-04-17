@@ -2,10 +2,6 @@ use <experimental/tri_delaunay.scad>;
 use <util/map/hashmap_get.scad>;
 use <util/find_index.scad>;
 
-function delaunay_coords(d) = d[0];
-function delaunay_triangles(d) = d[1];
-function delaunay_circles(d) = d[2];
-	
 function indicesOfCell(iTris, triIndices) = 
     let(
 	    vi = iTris[0][0],
