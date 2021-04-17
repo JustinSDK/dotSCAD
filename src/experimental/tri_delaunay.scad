@@ -1,8 +1,9 @@
 use <_impl/_tri_delaunay_impl.scad>;
 use <tri_delaunay_shapes.scad>;
 use <tri_delaunay_indices.scad>;
+use <tri_delaunay_voronoi.scad>;
 
-// ret: "TRI_SHAPES", "TRI_INDICES", "DELAUNAY"
+// ret: "TRI_SHAPES", "TRI_INDICES", "VORONOI_CELLS", "DELAUNAY"
 function tri_delaunay(points, ret = "TRI_SHAPES") = 
     let(
 		xs = [for(p = points) p[0]],
@@ -18,4 +19,5 @@ function tri_delaunay(points, ret = "TRI_SHAPES") =
     )
     ret == "TRI_SHAPES" ?  tri_delaunay_shapes(d) : 
     ret == "TRI_INDICES" ? tri_delaunay_indices(d) :
+	ret == "VORONOI_CELLS" ? tri_delaunay_voronoi(d) :
     d; // "DELAUNAY": [coords(list), triangles(hashmap), circles(hashmap)]
