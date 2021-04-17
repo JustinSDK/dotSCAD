@@ -11,17 +11,10 @@ use <util/find_index.scad>;
 function cc_center(cc) = cc[0];
 function cc_rr(cc) = cc[2];
 
-function delaunay_init(points) =
+function delaunay_init(center, width, height) =
     let(
-		xs = [for(p = points) p[0]],
-		ys = [for(p = points) p[1]],
-		max_x = max(xs),
-		min_x = min(xs),
-		max_y = max(ys),
-		min_y = min(ys),
-		center = [max_x + min_x, max_y + min_y] / 2,
-		halfW = abs(max_x - center[0]) * 2,
-		halfH = abs(max_y - center[1]) * 2,
+		halfW = width * 0.5,
+		halfH = height * 0.5,
 		coords = [
 		    center + [-halfW, -halfH],
 			center + [-halfW,  halfH],
