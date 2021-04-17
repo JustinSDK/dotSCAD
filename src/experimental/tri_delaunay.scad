@@ -4,7 +4,7 @@ use <tri_delaunay_indices.scad>;
 use <tri_delaunay_voronoi.scad>;
 
 // ret: "TRI_SHAPES", "TRI_INDICES", "VORONOI_CELLS", "DELAUNAY"
-function tri_delaunay(points, ret = "TRI_SHAPES") = 
+function tri_delaunay(points, ret = "TRI_INDICES") = 
     let(
 		xs = [for(p = points) p[0]],
 		ys = [for(p = points) p[1]],
@@ -17,7 +17,7 @@ function tri_delaunay(points, ret = "TRI_SHAPES") =
 		height = abs(max_y - center[1]) * 4,
         d = _tri_delaunay(delaunay_init(center, width, height), points, len(points))
     )
+	ret == "TRI_INDICES" ? tri_delaunay_indices(d) :
     ret == "TRI_SHAPES" ?  tri_delaunay_shapes(d) : 
-    ret == "TRI_INDICES" ? tri_delaunay_indices(d) :
 	ret == "VORONOI_CELLS" ? tri_delaunay_voronoi(d) :
     d; // "DELAUNAY": [coords(list), triangles(hashmap), circles(hashmap)]
