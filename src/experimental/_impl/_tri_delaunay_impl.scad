@@ -13,7 +13,7 @@ use <util/find_index.scad>;
 function cc_center(cc) = cc[0];
 function cc_rr(cc) = cc[2];
 
-function delaunay_init(center, width, height) =
+function delaunay_init(center, width, height, leng_points) =
     let(
 		halfW = width * 0.5,
 		halfH = height * 0.5,
@@ -25,15 +25,18 @@ function delaunay_init(center, width, height) =
 		],
 		t1 = [0, 1, 3], // indices
 		t2 = [2, 3, 1],
+		number_of_buckets = leng_points * 0.5,
 		triangles = hashmap([
 		        [t1, [t2, undef, undef]],
 				[t2, [t1, undef, undef]]
-		    ]
+		    ],
+			number_of_buckets = number_of_buckets
 		),
 		circles = hashmap([
 		        [t1, tri_circumcircle([for(i = t1) coords[i]])],
 				[t2, tri_circumcircle([for(i = t2) coords[i]])]
-		    ]
+		    ],
+			number_of_buckets = number_of_buckets
 		)
 	)
 	[coords, triangles, circles];

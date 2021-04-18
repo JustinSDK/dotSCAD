@@ -15,7 +15,8 @@ function tri_delaunay(points, ret = "TRI_INDICES") =
 		center = [max_x + min_x, max_y + min_y] / 2,
 		width = abs(max_x - center[0]) * 4,
 		height = abs(max_y - center[1]) * 4,
-        d = _tri_delaunay(delaunay_init(center, width, height), points, len(points))
+		leng_pts = len(points),
+        d = _tri_delaunay(delaunay_init(center, width, height, leng_pts), points, leng_pts)
     )
 	ret == "TRI_INDICES" ? tri_delaunay_indices(d) :
     ret == "TRI_SHAPES" ?  tri_delaunay_shapes(d) : 
