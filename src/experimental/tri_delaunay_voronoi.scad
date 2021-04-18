@@ -3,6 +3,7 @@ use <_impl/_tri_delaunay_voronoi_impl.scad>;
 use <util/map/hashmap.scad>;
 use <util/map/hashmap_keys.scad>;
 use <util/map/hashmap_get.scad>;
+use <util/reverse.scad>;
 
 function tri_delaunay_voronoi(d) = 
     let(
@@ -42,7 +43,7 @@ function tri_delaunay_voronoi(d) =
 		]),
 		cells = [
 		    for(i = [4:coords_leng - 1])
-			indicesOfCell(connectedTris[i], triIndices)
+			reverse(indicesOfCell(connectedTris[i], triIndices)) // counter-clockwise
 		]
     )
 	[for(cell = cells) [for(i = cell) vertices[i]]];

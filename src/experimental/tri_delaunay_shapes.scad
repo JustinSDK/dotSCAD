@@ -6,5 +6,5 @@ function tri_delaunay_shapes(d) =
 	[
 		for(tri = hashmap_keys(delaunay_triangles(d))) 
 		if(tri[0] > 3 && tri[1] > 3 && tri[2] > 3)
-		[coords[tri[0]], coords[tri[1]], coords[tri[2]]]
+		[coords[tri[2]], coords[tri[1]], coords[tri[0]]] // counter-clockwise
 	];
