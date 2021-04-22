@@ -9,8 +9,6 @@ use <util/map/hashmap.scad>;
 use <util/map/hashmap_put.scad>;
 use <util/map/hashmap_get.scad>;
 use <util/map/hashmap_keys.scad>;
-use <util/map/hashmap_values.scad>;
-use <util/map/hashmap_entries.scad>;
 use <util/set/hashset.scad>;
 use <util/set/hashset_has.scad>;
 
