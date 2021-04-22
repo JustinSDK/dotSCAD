@@ -16,7 +16,7 @@ function weights_of_tiles(sample) =
     let(
 	    symbols = flat(sample),
 		leng = len(symbols),
-		weights = hashmap(number_of_buckets = sqrt(leng))
+		weights = hashmap(number_of_buckets = leng)
 	)
     _weights_of_tiles(weights, symbols, leng);
 
@@ -284,7 +284,7 @@ function compatibilities_of_tiles(sample) =
 			for(x = [0:width - 1])
 				for(c = neighbor_compatibilities(sample, x, y, width, height))
 					c
-	]);
+	], number_of_buckets = width * height);
 
 function collapsed_tiles(wf) =
     let(
