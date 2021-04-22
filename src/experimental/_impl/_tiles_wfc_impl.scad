@@ -113,12 +113,12 @@ function wf_entropy(wf, x, y) =
 	ln(sumOfWeights) - (sumOfWeightLogWeights / sumOfWeights);
 
 function _wf_entropy(weights, states, state_leng, sumOfWeights, sumOfWeightLogWeights, i = 0) =
-i == state_leng ? [sumOfWeights, sumOfWeightLogWeights] :
-let(
-	opt = states[i],
-	weight = hashmap_get(weights, opt)
-)
-_wf_entropy(weights, states, state_leng, sumOfWeights + weight, sumOfWeightLogWeights + weight * ln(weight), i + 1);
+	i == state_leng ? [sumOfWeights, sumOfWeightLogWeights] :
+	let(
+		opt = states[i],
+		weight = hashmap_get(weights, opt)
+	)
+	_wf_entropy(weights, states, state_leng, sumOfWeights + weight, sumOfWeightLogWeights + weight * ln(weight), i + 1);
 
 function _replaceStatesAt(wf, x, y, states) = 
     let(
