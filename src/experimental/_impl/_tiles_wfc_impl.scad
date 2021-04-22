@@ -78,10 +78,11 @@ function wf_collapse(wf, x, y) =
 		weights = wf_weights(wf),
 		states_xy = wf_eigenstates_at(wf, x, y),
 		weights_xy = [
-			for(state = hashmap_keys(weights))
-				if(has(states_xy, state))
-					[state, hashmap_get(weights, state)]
-	    ],
+			for(state = states_xy)
+			let(w = hashmap_get(weights, state))
+			if(w != undef)
+			[state, w]
+		],
 		totalWeights = sum([for(w = weights_xy) w[1]]),
 		threshold = rand() * totalWeights,
 		states_weights = weights_xy
