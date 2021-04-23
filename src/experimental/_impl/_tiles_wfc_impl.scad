@@ -208,9 +208,8 @@ function tilemap_propagate(tm, x, y) =
 function _tilemap_propagate(tm, stack) =
     stack_len(stack) == 0 ? tm :
 	let(
-		v_stack = stack_pop(stack),
-		current_coord = v_stack[0],
-		cs = v_stack[1],
+		current_coord = stack[0],
+		cs = stack[1],
 		cx = current_coord[0], 
 		cy = current_coord[1],
 		current_tiles = wf_eigenstates_at(tilemap_wf(tm), cx, cy),
@@ -307,6 +306,6 @@ function not_compatible_nbr_tile(tm, current_tiles, nbr_tile, dir) =
 
 function create_stack(elem) = [elem, []];
 function stack_push(stack, elem) = [elem, stack];
-function stack_pop(stack) = [stack[0], stack[1]];
+// function stack_pop(stack) = stack;
 function stack_len(stack) = 
     stack[0] == undef ? 0 : (1 + stack_len(stack[1])); 
