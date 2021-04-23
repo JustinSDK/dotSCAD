@@ -20,13 +20,13 @@ OpenSCAD uses three library locations, the installation library, built-in librar
 
 **I set `OPENSCADPATH` to the `src` folder of dotSCAD so all examples here start searching modules or functions from `src`.**
 
-Every module or function is located in the file which has the same name as the module or the function. For example, if you want to use the `line2d` module to draw a line, `use <line2d.scad>;` first. 
+Every public module/function is in the .scad whose filename is the same as the module/function name. Here's an example using the `line2d` module: 
 
 	use <line2d.scad>;
 
 	line2d(p1 = [0, 0], p2 = [5, 0], width = 1);
 
-Some module files are organized in a directory. For example, vx_circle.scad exists in `voxel` directory. You have to prefix the directory name when using `vx_circle`.
+Some modules/functions are organized in a directory. For example, vx_circle.scad exists in `voxel` directory. You have to prefix the directory name when using `vx_circle`.
 
     use <voxel/vx_circle.scad>;
 	
