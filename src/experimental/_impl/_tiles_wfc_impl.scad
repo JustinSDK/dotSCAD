@@ -1,7 +1,6 @@
 use <util/flat.scad>;
 use <util/has.scad>;
 use <util/rand.scad>;
-use <util/slice.scad>;
 use <util/some.scad>;
 use <util/every.scad>;
 use <util/map/hashmap.scad>;
@@ -125,26 +124,16 @@ function _wf_entropy(weights, states, state_leng, sumOfWeights, sumOfWeightLogWe
 function _replaceStatesAt(wf, x, y, states) = 
     let(
 	    eigenstates = wf_eigenstates(wf),
-		rowsBeforeY = slice(eigenstates, 0, y),
 		rowY = eigenstates[y],
-		rowsAfterY = slice(eigenstates, y + 1),	
-		statesBeforeX = slice(rowY, 0, x),
-		statesAfterX = slice(rowY, x + 1),	
-		newRowY = concat(
-		    statesBeforeX,
-		    [states],
-			statesAfterX
-		)		
+		leng_rowY = len(rowY),	
+		leng_eigenstates = len(eigenstates),
+		newRowY = [for(i = 0; i < leng_rowY; i = i + 1) i == x ? states : rowY[i]]	
 	)
 	[
 	    wf_width(wf),
 		wf_height(wf),
 		wf_weights(wf),
-		concat(
-		    rowsBeforeY,
-			[newRowY],
-			rowsAfterY
-		)
+		[for(i = 0; i < leng_eigenstates; i = i + 1) i == y ? newRowY : eigenstates[i]]
 	];
 
 function wf_not_collapsed_coords(wf) = [
