@@ -26,7 +26,7 @@ Every module or function is located in the file which has the same name as the m
 
 	line2d(p1 = [0, 0], p2 = [5, 0], width = 1);
 
-Some module files are organized in a directory. For example, px_circle.scad exists in `pixel` directory. You have to prefix the directory name when including `px_circle`.
+Some module files are organized in a directory. For example, vx_circle.scad exists in `voxel` directory. You have to prefix the directory name when using `vx_circle`.
 
     use <voxel/vx_circle.scad>;
 	
