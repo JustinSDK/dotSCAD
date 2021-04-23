@@ -7,7 +7,6 @@ use <util/map/hashmap_keys.scad>;
 use <util/map/hashmap_put.scad>;
 use <util/some.scad>;
 use <util/has.scad>;
-use <util/slice.scad>;
 use <util/find_index.scad>;
 
 function cc_center(cc) = cc[0];
@@ -109,8 +108,12 @@ function _adjustNeighborsDtri(d, newTriangles, leng, i = 0) =
 	delaunayTri != undef ? 
 	let(
 	    neighbors = hashmap_get(delaunay_triangles(d), delaunayTri),
+		leng_nbrs = len(neighbors),
 		nbri = find_index(neighbors, function(nbr) nbr != undef && has(nbr, edge[1]) && has(nbr, edge[0])),
-		nd = nbri == -1 ? d : updateNbrs(d, delaunayTri, concat(slice(neighbors, 0, nbri), [t], slice(neighbors, nbri + 1)))
+		nd = nbri == -1 ? d : updateNbrs(d, delaunayTri, [
+			for(j = 0; j < leng_nbrs; j = j + 1)
+			    j == nbri ? t : neighbors[j]
+		])
 	)
     _adjustNeighborsDtri(nd, newTriangles, leng, i + 1) :
 	_adjustNeighborsDtri(d, newTriangles, leng, i + 1);
