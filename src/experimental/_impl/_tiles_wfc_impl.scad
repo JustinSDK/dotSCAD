@@ -1,6 +1,5 @@
 use <util/flat.scad>;
 use <util/has.scad>;
-use <util/sum.scad>;
 use <util/rand.scad>;
 use <util/slice.scad>;
 use <util/some.scad>;
@@ -83,11 +82,15 @@ function wf_collapse(wf, x, y) =
 			if(w != undef)
 			[state, w]
 		],
-		totalWeights = sum([for(w = weights_xy) w[1]]),
+		totalWeights = _totalWeights(weights_xy, len(weights_xy)),
 		threshold = rand() * totalWeights,
 		states_weights = weights_xy
 	)		
 	_wf_collapse(wf, x, y, states_weights, len(states_weights), threshold);
+
+function _totalWeights(weights_xy, leng, i = 0) =
+    i == leng ? 0 :
+	weights_xy[i][1] + _totalWeights(weights_xy, leng, i + 1);
 
 function _wf_collapse(wf, x, y, states_weights, leng, threshold, i = 0) =
     i == leng ? wf : 
