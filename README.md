@@ -18,7 +18,7 @@ The idea of the name dotSCAD comes from the filename extension ".scad" of OpenSC
 
 OpenSCAD uses three library locations, the installation library, built-in library, and user defined libraries. It's convenient to set `OPENSCADPATH`. Check [Setting OPENSCADPATH](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries#Setting_OPENSCADPATH) in [OpenSCAD User Manual/Libraries](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries) for details.
 
-**I set `OPENSCADPATH` to the `src` folder of dotSCAD so all examples here start searching modules or functions from `src`.**
+**I set `OPENSCADPATH` to the `src` folder of dotSCAD so all examples here start searching modules/functions from `src`.**
 
 Every public module/function is in the .scad whose filename is the same as the module/function name. Here's an example using the `line2d` module: 
 
