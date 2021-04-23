@@ -1,5 +1,4 @@
 use <../../util/rand.scad>;
-use <../../util/slice.scad>;
 use <../../util/some.scad>;
 
 NO_WALL = 0;
@@ -67,14 +66,16 @@ function _init_theta_maze(ri, maze, totalRows, dividedRatio, cellWidth) =
 		_init_theta_maze(ri + 1, concat(maze, [row]), totalRows, dividedRatio, cellWidth);
 
 function update_maze_row(row, cell) =
-    concat(slice(row, 0, cell[1]), [cell], slice(row, cell[1] + 1));
+    let(leng = len(row))
+    [for(i = 0; i < leng; i = i + 1) i == cell[1] ? cell : row[i]];
 
 function update_maze(maze, cell) = 
     let(
 	    row = maze[cell[0]],
-		u_row = update_maze_row(row, cell)
+		u_row = update_maze_row(row, cell),
+		leng = len(maze)
 	)
-    concat(slice(maze, 0, cell[0]), [u_row], slice(maze, cell[0] + 1));
+	[for(i = 0; i < leng; i = i + 1) i == cell[0] ? u_row : maze[i]];
 
 function config_outwards(maze, cell_outwards_lt) = 
 	_config_outwards(maze, cell_outwards_lt, len(cell_outwards_lt));
