@@ -1,4 +1,3 @@
-use <../../slice.scad>;
 use <../../some.scad>;
 use <../../find_index.scad>;
 
@@ -13,20 +12,12 @@ function _hashmap_put(map, key, value, eq, hash) =
 
 function _replace(map, bucket, key, value, b_idx, k_idx) = 
     let(
-		n_bucket = concat(
-			slice(bucket, 0, k_idx),
-			[[key, value]],
-			slice(bucket, k_idx + 1)
-		)
+	    leng_bucket = len(bucket),
+		n_bucket = [for(i = 0; i < leng_bucket; i = i + 1) i == k_idx ? [key, value] : bucket[i]],
+		leng_map = len(map)
 	)
-	concat(
-		slice(map, 0, b_idx), 
-		[n_bucket], 
-		slice(map, b_idx + 1)
-	);
+	[for(i = 0; i < leng_map; i = i + 1) i == b_idx ? n_bucket : map[i]];
 
-function _put(map, bucket, key, value, b_idx) = concat(
-	slice(map, 0, b_idx), 
-	[concat(bucket, [[key, value]])], 
-	slice(map, b_idx + 1)
-);
+function _put(map, bucket, key, value, b_idx) = 
+    let(leng_map = len(map))
+    [for(i = 0; i < leng_map; i = i + 1) i == b_idx ? concat(bucket, [[key, value]]) : map[i]];

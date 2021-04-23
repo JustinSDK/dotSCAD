@@ -1,5 +1,3 @@
-
-use <../slice.scad>;
 use <../some.scad>;
 
 function _dedup(elems, leng, buckets, eq, hash, bucket_numbers, i = 0) = 
@@ -15,8 +13,6 @@ function _dedup_add(buckets, i_elem, eq, hash, bucket_numbers) =
 	)
 	some(bucket, function(i_e) eq(i_e[1], elem)) ? buckets : _add(buckets, bucket, i_elem, b_idx);
 
-function _add(buckets, bucket, i_elem, b_idx) = concat(
-	slice(buckets, 0, b_idx), 
-	[concat(bucket, [i_elem])], 
-	slice(buckets, b_idx + 1)
-);
+function _add(buckets, bucket, i_elem, b_idx) = 
+    let(leng = len(buckets))
+	[for(i = 0; i < leng; i = i + 1) i == b_idx ? concat(bucket, [i_elem]) : buckets[i]];
