@@ -83,10 +83,9 @@ function wf_collapse(wf, x, y) =
 			[state, w]
 		],
 		totalWeights = _totalWeights(weights_xy, len(weights_xy)),
-		threshold = rand() * totalWeights,
-		states_weights = weights_xy
+		threshold = rand() * totalWeights
 	)		
-	_wf_collapse(wf, x, y, states_weights, len(states_weights), threshold);
+	_wf_collapse(wf, x, y, weights_xy, len(weights_xy), threshold);
 
 function _totalWeights(weights_xy, leng, i = 0) =
     i == leng ? 0 :
