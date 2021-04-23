@@ -202,13 +202,13 @@ function tilemap_check_compatibilities(tm, tile1, tile2, direction) =
 	hashset_has(compatibilities, [tile1, tile2, direction]);
 
 function tilemap_propagate(tm, x, y) = 
-    let(stack = [[x, y]]) 
+    let(stack = create_stack([x, y])) 
 	_tilemap_propagate(tm, stack);
 
 function _tilemap_propagate(tm, stack) =
-    len(stack) == 0 ? tm :
+    stack_len(stack) == 0 ? tm :
 	let(
-		v_stack = pop(stack),
+		v_stack = stack_pop(stack),
 		current_coord = v_stack[0],
 		cs = v_stack[1],
 		cx = current_coord[0], 
@@ -235,7 +235,7 @@ function _doDirs(tm, stack, cx, cy, current_tiles, dirs, leng, i = 0) =
 	)
 	len(not_compatible_nbr_tiles) == 0 ? _doDirs(tm, stack, cx, cy, current_tiles, dirs, leng, i + 1) :
 		let(
-			nstack = push(stack, [nbrx, nbry]),
+			nstack = stack_push(stack, [nbrx, nbry]),
 			nwf = wf_remove(wf, nbrx, nbry, not_compatible_nbr_tiles),
 			ntm = [
 			    tilemap_width(tm), 
@@ -305,53 +305,8 @@ function collapsed_tiles(wf) =
 function not_compatible_nbr_tile(tm, current_tiles, nbr_tile, dir) =
     !some(current_tiles, function(tile) tilemap_check_compatibilities(tm, tile, nbr_tile, dir));
 
-function push(stack, elem) = concat([elem], stack);
-function pop(stack) = [stack[0], slice(stack, 1)];
-
-/*
-sample = [
-    ["S",  "S",  "S",  "S",  "S",  "S",  "S",  "S",  "S",  "S",  "S",  "S",  "S"],
-    ["S",  "S", "C0", "CN", "CN", "CN", "CN", "CN", "CN", "CN", "C3",  "S",  "S"],
-    ["S",  "S", "CW",  "L",  "L",  "L",  "L",  "L",  "L",  "L", "CE",  "S",  "S"],
-    ["S",  "S", "CW",  "L",  "L",  "L",  "L",  "L",  "L",  "L", "CE",  "S",  "S"],
-    ["S",  "S", "CW",  "L",  "L",  "L",  "L",  "L",  "L",  "L", "CE",  "S",  "S"],
-    ["S",  "S", "CW",  "L",  "L",  "L",  "L",  "L",  "L",  "L", "CE",  "S",  "S"],
-    ["S",  "S", "CW",  "L",  "L",  "L",  "L",  "L",  "L",  "L", "CE",  "S",  "S"],
-    ["S",  "S", "CW",  "L",  "L",  "L",  "L",  "L",  "L",  "L", "CE",  "S",  "S"],
-    ["S",  "S", "CW",  "L",  "L",  "L",  "L",  "L",  "L",  "L", "CE",  "S",  "S"],    
-    ["S",  "S", "C1", "CS", "CS", "CS", "CS", "CS", "CS", "CS", "C2",  "S",  "S"],
-    ["S",  "S",  "S",  "S",  "S",  "S",  "S",  "S",  "S",  "S",  "S",  "S",  "S"]
-];
-
-width = 20;
-height = 20;
-
-wf = wave_function(width, height, weights);
-assert(wf_width(wf) == width);
-assert(wf_height(wf) == height);
-assert(wf_is_all_collapsed(wf) == false);
-assert(wf_remove(wf, 0, 0, []) == wf);
-assert(wf_eigenstates_at(wf_remove(wf, 0, 0, ["CE"]), 0, 0) == ["C0", "C1", "CS", "C2", "C3", "S", "CW", "CN", "L"]);
-for(y = [0:height - 1]) {
-	for(x = [0:width - 1]) {
-		assert(len(wf_eigenstates_at(wf_collapse(wf, x, y), x, y)) == 1);
-	}
-}
-assert(wf_entropy(wf, 0, 0) == 1.458879520793018);
-assert(wf_coord_min_entropy(wf_collapse(wf, 0, 0)) != [0, 0]);
-*/
-
-
-/*
-tm = tilemap(width, height, sample);
-assert(tilemap_check_compatibilities(tm, "S", "C0", [ 1,  0]));
-assert(!tilemap_check_compatibilities(tm, "S", "L", [ 1,  0]));
-ntm = tilemap_propagate([
-	tilemap_width(tm),
-	tilemap_height(tm),
-	tilemap_compatibilities(tm),
-	wf_collapse(wf, 0, 0)
-], 0, 0);
-
-assert(wf_eigenstates_at(tilemap_wf(ntm), 0, 1) != wf_eigenstates_at(wf, 0, 1));
-*/
+function create_stack(elem) = [elem, []];
+function stack_push(stack, elem) = [elem, stack];
+function stack_pop(stack) = [stack[0], stack[1]];
+function stack_len(stack) = 
+    stack[0] == undef ? 0 : (1 + stack_len(stack[1])); 
