@@ -16,6 +16,6 @@ function tri_circumcircle(points) =
                  center = [x, y],
                  v = p0 - center,
                  r = norm(v),
-                 rr = pow(v[0], 2) + pow(v[1], 2)
+                 rr = v[0] ^ 2 + v[1] ^ 2
              )
              [center, r, rr];
