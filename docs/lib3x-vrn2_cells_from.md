@@ -13,9 +13,7 @@ Create cell shapes of Voronoi from a list of points.
     use <hull_polyline2d.scad>;
     use <voronoi/vrn2_cells_from.scad>;
 
-    xs1 = rands(-20, 20, 15);
-    ys1 = rands(-20, 20, 15);
-    points = [for(i = [0:len(xs1) - 1]) [xs1[i], ys1[i]]];
+    points = [for(i = [0:50]) rands(-100, 100, 2)]; 
 
     cells = vrn2_cells_from(points);
     for(i = [0:len(points) - 1]) {
