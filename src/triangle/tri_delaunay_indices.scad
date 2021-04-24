@@ -1,5 +1,5 @@
 use <_impl/_tri_delaunay_comm_impl.scad>;
-use <util/map/hashmap_keys.scad>;
+use <../util/map/hashmap_keys.scad>;
 
 function tri_delaunay_indices(d) =	[
 	for(tri = hashmap_keys(delaunay_triangles(d))) 

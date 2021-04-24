@@ -1,13 +1,13 @@
 use <_tri_delaunay_comm_impl.scad>;
-use <experimental/tri_circumcircle.scad>;
-use <util/map/hashmap.scad>;
-use <util/map/hashmap_get.scad>;
-use <util/map/hashmap_del.scad>;
-use <util/map/hashmap_keys.scad>;
-use <util/map/hashmap_put.scad>;
-use <util/some.scad>;
-use <util/has.scad>;
-use <util/find_index.scad>;
+use <../tri_circumcircle.scad>;
+use <../../util/map/hashmap.scad>;
+use <../../util/map/hashmap_get.scad>;
+use <../../util/map/hashmap_del.scad>;
+use <../../util/map/hashmap_keys.scad>;
+use <../../util/map/hashmap_put.scad>;
+use <../../util/some.scad>;
+use <../../util/has.scad>;
+use <../../util/find_index.scad>;
 
 function cc_center(cc) = cc[0];
 function cc_rr(cc) = cc[2];
