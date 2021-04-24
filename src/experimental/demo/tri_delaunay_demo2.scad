@@ -1,6 +1,6 @@
-use <experimental/tri_delaunay.scad>;
-use <experimental/tri_delaunay_shapes.scad>;
-use <experimental/tri_delaunay_voronoi.scad>;
+use <triangle/tri_delaunay.scad>;
+use <triangle/tri_delaunay_shapes.scad>;
+use <triangle/tri_delaunay_voronoi.scad>;
 use <hull_polyline2d.scad>;
 
 points = [for(i = [0:20]) rands(-100, 100, 2)]; 
