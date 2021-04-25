@@ -1,5 +1,4 @@
 use <_tri_delaunay_comm_impl.scad>;
-use <../tri_circumcircle.scad>;
 use <../../util/map/hashmap.scad>;
 use <../../util/map/hashmap_get.scad>;
 use <../../util/map/hashmap_del.scad>;
@@ -9,8 +8,29 @@ use <../../util/some.scad>;
 use <../../util/has.scad>;
 use <../../util/find_index.scad>;
 
+function _tri_circumcircle(shape_pts) =
+   let(
+      p0 = shape_pts[0],
+      p1 = shape_pts[1],
+      p2 = shape_pts[2],
+      v0 = p1 - p0,
+      d0 = (p1 + p0) / 2 * v0,
+      v1 = p2 - p1,
+      d1 = (p2 + p1) / 2 * v1,
+      det = -cross(v0 , v1)
+   )
+   det == 0 ? undef : 
+             let(
+                 x = (d1 * v0[1] - d0 * v1[1]) / det,
+                 y = (d0 * v1[0] - d1 * v0[0]) / det,
+                 center = [x, y],
+                 v = p0 - center,
+                 rr = v[0] ^ 2 + v[1] ^ 2
+             )
+             [center, rr];
+
 function cc_center(cc) = cc[0];
-function cc_rr(cc) = cc[2];
+function cc_rr(cc) = cc[1];
 
 function delaunay_init(center, width, height, leng_points) =
     let(
@@ -32,8 +52,8 @@ function delaunay_init(center, width, height, leng_points) =
 			number_of_buckets = number_of_buckets
 		),
 		circles = hashmap([
-		        [t1, tri_circumcircle([for(i = t1) coords[i]])],
-				[t2, tri_circumcircle([for(i = t2) coords[i]])]
+		        [t1, _tri_circumcircle([for(i = t1) coords[i]])],
+				[t2, _tri_circumcircle([for(i = t2) coords[i]])]
 		    ],
 			number_of_buckets = number_of_buckets
 		)
@@ -66,7 +86,7 @@ function adjustNeighbors(d, newTriangles) =
 		],
 	    ncs = [
 		    for(nt = newTriangles)
-			[nt[0], tri_circumcircle([for(i = nt[0]) coords[i]])]
+			[nt[0], _tri_circumcircle([for(i = nt[0]) coords[i]])]
 		],
 		nd = [
 		    coords, 
