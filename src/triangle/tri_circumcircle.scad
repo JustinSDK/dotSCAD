@@ -5,7 +5,7 @@ function tri_circumcircle(shape_pts) =
       p2 = shape_pts[2],
       v0 = p1 - p0,
       d0 = (p1 + p0) / 2 * v0,
-      v1 = p2 - p1,
+      v1 = p2 - p1,  
       d1 = (p2 + p1) / 2 * v1,
       det = -cross(v0 , v1)
    )
