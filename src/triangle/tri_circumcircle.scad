@@ -1,8 +1,8 @@
-function tri_circumcircle(points) =
+function tri_circumcircle(shape_pts) =
    let(
-      p0 = points[0],
-      p1 = points[1],
-      p2 = points[2],
+      p0 = shape_pts[0],
+      p1 = shape_pts[1],
+      p2 = shape_pts[2],
       v0 = p1 - p0,
       d0 = (p1 + p0) / 2 * v0,
       v1 = p2 - p1,
