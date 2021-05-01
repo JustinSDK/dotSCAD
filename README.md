@@ -346,3 +346,19 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 [**maze/mz_hamiltonian**(rows, columns, start = [0, 0], seed = undef)](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_hamiltonian.html) | create a hamiltonian path from a maze.
 [**maze/mz_theta_cells**(rows, beginning_number, start = [0, 0], seed = undef)](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_theta_cells.html) | return cell data of a theta maze.
 [**maze/mz_theta_get**(cell, query)](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_theta_get.html) | a helper for getting data from a theta-maze cell.
+
+----
+
+# Preview
+
+## Triangle
+
+ Signature | Description
+--|--
+**tri_circumcenter**(shape_pts) | return the circumcenter of a triangle.
+**tri_incenter**(shape_pts) | return the incenter of a triangle.
+**tri_ear_clipping**(shape_pts,  ret = "TRI_INDICES", ...) |  triangulate a simple polygon.
+**tri_delaunay**(points, ret = "TRI_INDICES") | return the delaunay triangulation of the points.
+**tri_delaunay_indices**(d) | return triangle indices from a delaunay object.
+**tri_delaunay_shapes**(d) | return triangle shapes from a delaunay object.
+**tri_delaunay_voronoi**(d) | return voronoi cells from a delaunay object.
