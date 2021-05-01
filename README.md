@@ -357,8 +357,8 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 --|--
 **tri_circumcenter**(shape_pts) | return the circumcenter of a triangle.
 **tri_incenter**(shape_pts) | return the incenter of a triangle.
-**tri_ear_clipping**(shape_pts,  ret = "TRI_INDICES", ...) |  triangulate a simple polygon.
-**tri_delaunay**(points, ret = "TRI_INDICES") | return the delaunay triangulation of the points.
+**tri_ear_clipping**(shape_pts,  ret = "TRI_INDICES", ...) |  triangulation by [ear clipping](https://en.wikipedia.org/wiki/Polygon_triangulation#Ear_clipping_method).
+**tri_delaunay**(points, ret = "TRI_INDICES") | return the [Delaunay triangulation](https://en.wikipedia.org/wiki/Delaunay_triangulation) of the points.
 **tri_delaunay_indices**(d) | return triangle indices from a delaunay object.
 **tri_delaunay_shapes**(d) | return triangle shapes from a delaunay object.
-**tri_delaunay_voronoi**(d) | return voronoi cells from a delaunay object.
+**tri_delaunay_voronoi**(d) | return [Voronoi](https://en.wikipedia.org/wiki/Voronoi_diagram) cells from a delaunay object.
