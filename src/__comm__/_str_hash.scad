@@ -7,5 +7,5 @@ function _str_hash(value) =
 	)
 	sum([
 	    for(i = [0:leng - 1])
-		ord(s[i]) * pow(31, leng - 1 - i)
+		ord(s[i]) * 31 ^ (leng - 1 - i)
 	]);
