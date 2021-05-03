@@ -1,5 +1,6 @@
 use <_hashset_add_impl.scad>;
 
-function _hashset(lt, leng, buckets, eq, hash, i = 0) = 
+function _hashset(lt, leng, buckets, b_numbers, eq, hash, i = 0) = 
     i == leng ? buckets :
-	_hashset(lt, leng, _hashset_add(buckets, lt[i], eq, hash), eq, hash, i + 1);
+    let(n_buckets = _hashset_add(buckets, b_numbers, lt[i], eq, hash))
+	_hashset(lt, leng, n_buckets, b_numbers, eq, hash, i + 1);

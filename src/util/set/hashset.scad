@@ -21,4 +21,4 @@ function hashset(lt, eq = function(e1, e2) e1 == e2, hash = function(e) _str_has
 		               (lt_undef || leng_lt < 256 ? 16 : ceil(sqrt(leng_lt))) : number_of_buckets,
 	    buckets = [for(i = [0:b_numbers - 1]) []]
 	)
-	lt_undef ? buckets : _hashset(lt, leng_lt, buckets, eq, hash);
+	lt_undef ? buckets : _hashset(lt, leng_lt, buckets, b_numbers, eq, hash);
