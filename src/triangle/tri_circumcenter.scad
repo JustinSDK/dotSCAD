@@ -1,3 +1,13 @@
+/**
+* tri_circumcenter.scad
+*
+* @copyright Justin Lin, 2021
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib3x-tri_circumcenter.html
+*
+**/
+
 function tri_circumcenter(shape_pts) =
    let(
       p0 = shape_pts[0],

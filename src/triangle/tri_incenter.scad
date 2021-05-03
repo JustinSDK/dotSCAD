@@ -1,3 +1,13 @@
+/**
+* tri_incenter.scad
+*
+* @copyright Justin Lin, 2021
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib3x-tri_incenter.html
+*
+**/
+
 function tri_incenter(shape_pts) = 
     let(
         pa = shape_pts[0],
