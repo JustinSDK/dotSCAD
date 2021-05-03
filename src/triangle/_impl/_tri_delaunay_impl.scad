@@ -44,7 +44,7 @@ function delaunay_init(center, width, height, leng_points) =
 		],
 		t1 = [0, 1, 3], // indices
 		t2 = [2, 3, 1],
-		number_of_buckets = leng_points * 0.5,
+		number_of_buckets = ceil(leng_points * 0.5),
 		triangles = hashmap([
 		        [t1, [t2, undef, undef]],
 				[t2, [t1, undef, undef]]
