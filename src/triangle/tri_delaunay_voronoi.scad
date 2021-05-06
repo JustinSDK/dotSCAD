@@ -7,12 +7,13 @@ use <../util/reverse.scad>;
 
 function tri_delaunay_voronoi(d) = 
     let(
+		_indices_hash = function(indices) indices[0] * 961 + indices[1] * 31 + indices[2],
 	    coords = delaunay_coords(d),
 		coords_leng = len(coords),
 		circles = delaunay_circles(d),
 		tris = hashmap_keys(delaunay_triangles(d)),
         // circumcircle centers
-        vertices = [for(t = tris) hashmap_get(circles, t)[0]],
+        vertices = [for(t = tris) hashmap_get(circles, t, hash = _indices_hash)[0]],
 		i_rts = [
 			for(i = [0:len(tris) - 1])
 			let(
@@ -40,10 +41,10 @@ function tri_delaunay_voronoi(d) =
 			    rt3 = [a, b, c]
 			) 
 			each [[rt1, i], [rt2, i], [rt3, i]]
-		]),
+		], hash = _indices_hash),
 		cells = [
 		    for(i = [4:coords_leng - 1])
-			reverse(indicesOfCell(connectedTris[i], triIndices)) // counter-clockwise
+			reverse(indicesOfCell(connectedTris[i], triIndices, _indices_hash)) // counter-clockwise
 		]
     )
 	[for(cell = cells) [for(i = cell) vertices[i]]];
