@@ -8,7 +8,7 @@ use <../../util/some.scad>;
 use <../../util/has.scad>;
 use <../../util/find_index.scad>;
 
-_indices_hash = function(indices) indices[0] * 31 ^ 2 + indices[1] * 31 ^ 1 + indices[2];
+_indices_hash = function(indices) indices[0] * 961 + indices[1] * 31 + indices[2];
 
 function _tri_circumcircle(shape_pts) =
    let(
