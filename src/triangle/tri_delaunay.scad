@@ -6,7 +6,7 @@ use <tri_delaunay_voronoi.scad>;
 // ret: "TRI_SHAPES", "TRI_INDICES", "VORONOI_CELLS", "DELAUNAY"
 function tri_delaunay(points, ret = "TRI_INDICES") = 
     let(
-		_indices_hash = function(indices) indices[0] * 961 + indices[1] * 31 + indices[2],
+		_indices_hash = function(indices) indices[3],
 		xs = [for(p = points) p[0]],
 		ys = [for(p = points) p[1]],
 		max_x = max(xs),

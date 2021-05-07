@@ -8,6 +8,8 @@ use <../../util/some.scad>;
 use <../../util/has.scad>;
 use <../../util/find_index.scad>;
 
+function ihash(a, b, c) = a * 961 + b * 31 + c;
+
 function _tri_circumcircle(shape_pts) =
    let(
       p0 = shape_pts[0],
@@ -42,8 +44,8 @@ function delaunay_init(center, width, height, leng_points, _indices_hash) =
 			center + [ halfW,  halfH],
 			center + [ halfW, -halfH],
 		],
-		t1 = [0, 1, 3], // indices
-		t2 = [2, 3, 1],
+		t1 = [0, 1, 3, ihash(0, 1, 3)], // indices
+		t2 = [2, 3, 1, ihash(2, 3, 1)],
 		number_of_buckets = ceil(leng_points * 0.5),
 		triangles = hashmap([
 		        [t1, [t2, undef, undef]],
@@ -53,8 +55,8 @@ function delaunay_init(center, width, height, leng_points, _indices_hash) =
 			number_of_buckets = number_of_buckets
 		),
 		circles = hashmap([
-		        [t1, _tri_circumcircle([for(i = t1) coords[i]])],
-				[t2, _tri_circumcircle([for(i = t2) coords[i]])]
+		        [t1, _tri_circumcircle([for(i = [0:2]) coords[t1[i]]])],
+				[t2, _tri_circumcircle([for(i = [0:2]) coords[t2[i]]])]
 		    ],
 			hash = _indices_hash,
 			number_of_buckets = number_of_buckets
@@ -71,7 +73,7 @@ function delaunay_addpoint(d, p, _indices_hash) =
 		ndelaunay2 = delBadTriangles(ndelaunay, badTriangles, _indices_hash),
 		newTriangles = [
 		    for(b = boundaries) [
-			    [idx, b[0][0], b[0][1]], // t
+			    [idx, b[0][0], b[0][1], ihash(idx, b[0][0], b[0][1])], // t
 				b[0],                    // edge
 				b[1]                     // delaunayTri
 			]
@@ -88,7 +90,7 @@ function adjustNeighbors(d, newTriangles, _indices_hash) =
 		],
 	    ncs = [
 		    for(nt = newTriangles)
-			[nt[0], _tri_circumcircle([for(i = nt[0]) coords[i]])]
+			[nt[0], _tri_circumcircle([for(i = [0:2]) coords[nt[0][i]]])]
 		],
 		nd = [
 		    coords, 
