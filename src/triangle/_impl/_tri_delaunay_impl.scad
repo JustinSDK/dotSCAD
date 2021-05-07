@@ -180,8 +180,8 @@ function delaunayBadTriangles(d, p, _indices_hash) =
 function inCircumcircle(t, p, circles, _indices_hash) = 
     let(
 	    c = hashmap_get(circles, t, hash = _indices_hash),
-		v = cc_center(c) - p,
-		rr = v[0] ^ 2 + v[1] ^ 2
+		ct = cc_center(c),
+		rr = (ct[0] - p[0]) ^ 2 + (ct[1] - p[1]) ^ 2
 	)
 	rr <= cc_rr(c);
 
