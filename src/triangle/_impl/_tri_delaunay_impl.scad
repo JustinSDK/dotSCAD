@@ -8,8 +8,6 @@ use <../../util/some.scad>;
 use <../../util/has.scad>;
 use <../../util/find_index.scad>;
 
-_indices_hash = function(indices) indices[0] * 961 + indices[1] * 31 + indices[2];
-
 function _tri_circumcircle(shape_pts) =
    let(
       p0 = shape_pts[0],
@@ -34,7 +32,7 @@ function _tri_circumcircle(shape_pts) =
 function cc_center(cc) = cc[0];
 function cc_rr(cc) = cc[1];
 
-function delaunay_init(center, width, height, leng_points) =
+function delaunay_init(center, width, height, leng_points, _indices_hash) =
     let(
 		halfW = width * 0.5,
 		halfH = height * 0.5,
@@ -64,13 +62,13 @@ function delaunay_init(center, width, height, leng_points) =
 	)
 	[coords, triangles, circles];
 
-function delaunay_addpoint(d, p) =
+function delaunay_addpoint(d, p, _indices_hash) =
     let(
 	    idx = len(delaunay_coords(d)),
 		ndelaunay = delaunayAddCoords(d, p),
-		badTriangles = delaunayBadTriangles(ndelaunay, p),
-		boundaries = delaunayBoundaries(ndelaunay, badTriangles),
-		ndelaunay2 = delBadTriangles(ndelaunay, badTriangles),
+		badTriangles = delaunayBadTriangles(ndelaunay, p, _indices_hash),
+		boundaries = delaunayBoundaries(ndelaunay, badTriangles, _indices_hash),
+		ndelaunay2 = delBadTriangles(ndelaunay, badTriangles, _indices_hash),
 		newTriangles = [
 		    for(b = boundaries) [
 			    [idx, b[0][0], b[0][1]], // t
@@ -79,9 +77,9 @@ function delaunay_addpoint(d, p) =
 			]
 		]
 	)
-	adjustNeighbors(ndelaunay2, newTriangles);
+	adjustNeighbors(ndelaunay2, newTriangles, _indices_hash);
 
-function adjustNeighbors(d, newTriangles) = 
+function adjustNeighbors(d, newTriangles, _indices_hash) = 
     let(
 	    coords = delaunay_coords(d),
 		nts = [
@@ -94,22 +92,22 @@ function adjustNeighbors(d, newTriangles) =
 		],
 		nd = [
 		    coords, 
-			hashmap_puts(delaunay_triangles(d), nts), 
-			hashmap_puts(delaunay_circles(d), ncs),
+			hashmap_puts(delaunay_triangles(d), nts, _indices_hash), 
+			hashmap_puts(delaunay_circles(d), ncs, _indices_hash),
 		],
 		leng = len(newTriangles),
-		aDtrid = _adjustNeighborsDtri(nd, newTriangles, leng)
+		aDtrid = _adjustNeighborsDtri(nd, newTriangles, leng, _indices_hash)
 	)
-	_adjustNeighborsOtri(aDtrid, newTriangles, leng);
+	_adjustNeighborsOtri(aDtrid, newTriangles, leng, _indices_hash);
 
-function hashmap_puts(m, kv_lt) = _hashmap_puts(m, kv_lt, len(kv_lt));
+function hashmap_puts(m, kv_lt, _indices_hash) = _hashmap_puts(m, kv_lt, len(kv_lt), _indices_hash);
 
-function _hashmap_puts(m, kv_lt, leng, i = 0) =
+function _hashmap_puts(m, kv_lt, leng, _indices_hash, i = 0) =
     i == leng ? m :
 	let(kv = kv_lt[i])
-	_hashmap_puts(hashmap_put(m, kv[0], kv[1], hash = _indices_hash), kv_lt, leng, i + 1);
+	_hashmap_puts(hashmap_put(m, kv[0], kv[1], hash = _indices_hash), kv_lt, leng, _indices_hash, i + 1);
 
-function _adjustNeighborsOtri(d, newTriangles, leng, i = 0) = 
+function _adjustNeighborsOtri(d, newTriangles, leng, _indices_hash, i = 0) = 
     i == leng ? d :
 	let(
 	    t = newTriangles[i][0],
@@ -120,9 +118,9 @@ function _adjustNeighborsOtri(d, newTriangles, leng, i = 0) =
 		nTriangles = hashmap_put(hashmap_del(triangles, t, hash = _indices_hash), t, [v[0], nbr1, nbr2], hash = _indices_hash),
 		nd = [delaunay_coords(d), nTriangles, delaunay_circles(d)]
 	)
-	_adjustNeighborsOtri(nd, newTriangles, leng, i + 1);
+	_adjustNeighborsOtri(nd, newTriangles, leng, _indices_hash, i + 1);
  
-function _adjustNeighborsDtri(d, newTriangles, leng, i = 0) =
+function _adjustNeighborsDtri(d, newTriangles, leng, _indices_hash, i = 0) =
     i == leng ? d :
     let(
 	    t = newTriangles[i][0],
@@ -137,17 +135,20 @@ function _adjustNeighborsDtri(d, newTriangles, leng, i = 0) =
 		nd = nbri == -1 ? d : updateNbrs(d, delaunayTri, [
 			for(j = 0; j < leng_nbrs; j = j + 1)
 			    j == nbri ? t : neighbors[j]
-		])
+		], _indices_hash)
 	)
-    _adjustNeighborsDtri(nd, newTriangles, leng, i + 1) :
-	_adjustNeighborsDtri(d, newTriangles, leng, i + 1);
+    _adjustNeighborsDtri(nd, newTriangles, leng, _indices_hash, i + 1) :
+	_adjustNeighborsDtri(d, newTriangles, leng, _indices_hash, i + 1);
 	
-function updateNbrs(d, delaunayTri, neighbors) =
+function updateNbrs(d, delaunayTri, neighbors, _indices_hash) =
     let(
 	    coords = delaunay_coords(d),
 	    triangles = delaunay_triangles(d),
 		circles = delaunay_circles(d),
-		nTriangles = hashmap_put(hashmap_del(triangles, delaunayTri, hash = _indices_hash), delaunayTri, neighbors, hash = _indices_hash)
+		nTriangles = hashmap_put(
+			hashmap_del(triangles, delaunayTri, hash = _indices_hash), 
+			delaunayTri, neighbors, hash = _indices_hash
+		)
 	)
 	[coords, nTriangles, circles];
 	
@@ -158,14 +159,14 @@ function delaunayAddCoords(d, p) =
 		delaunay_circles(d)
 	];
 
-function delaunayBadTriangles(d, p) = 
+function delaunayBadTriangles(d, p, _indices_hash) = 
     let(
 	     triangles = delaunay_triangles(d),
 		 circles = delaunay_circles(d)
 	) 
 	[
         for(t = hashmap_keys(triangles))
-	        if(inCircumcircle(t, p, circles))
+	        if(inCircumcircle(t, p, circles, _indices_hash))
 	            t
     ];
 
@@ -174,7 +175,7 @@ function delaunayBadTriangles(d, p) =
     t: triangle indices
 	circles: a hashmap
 */
-function inCircumcircle(t, p, circles) = 
+function inCircumcircle(t, p, circles, _indices_hash) = 
     let(
 	    c = hashmap_get(circles, t, hash = _indices_hash),
 		v = cc_center(c) - p,
@@ -182,15 +183,15 @@ function inCircumcircle(t, p, circles) =
 	)
 	rr <= cc_rr(c);
 
-function delaunayBoundaries(d, badTriangles) = 
+function delaunayBoundaries(d, badTriangles, _indices_hash) = 
     let(
 	    boundaries = [],
 		t = badTriangles[0],
 		vi = 0
 	)
-	_delaunayBoundaries(d, badTriangles, boundaries, t, vi);
+	_delaunayBoundaries(d, badTriangles, boundaries, t, vi, _indices_hash);
 
-function _delaunayBoundaries(d, badTriangles, boundaries, t, vi) = 
+function _delaunayBoundaries(d, badTriangles, boundaries, t, vi, _indices_hash) = 
     let(
 	    triangles = delaunay_triangles(d),
 	    opTri = hashmap_get(triangles, t, hash = _indices_hash)[vi]
@@ -201,7 +202,7 @@ function _delaunayBoundaries(d, badTriangles, boundaries, t, vi) =
 			nvi = (i + 1) % 3,
 			nt = opTri
 		)
-		_delaunayBoundaries(d, badTriangles, boundaries, nt, nvi) : 
+		_delaunayBoundaries(d, badTriangles, boundaries, nt, nvi, _indices_hash) : 
 	    let(
 		    nboundaries = concat(boundaries, [[
 			    [t[(vi + 1) % 3], t[vi > 0 ? vi - 1 : (vi + 2)]], // edge
@@ -211,21 +212,23 @@ function _delaunayBoundaries(d, badTriangles, boundaries, t, vi) =
 			v1 = nboundaries[0][0][0],
 			v2 = nboundaries[len(nboundaries) - 1][0][1]
 		)
-		v1 == v2 ? nboundaries : _delaunayBoundaries(d, badTriangles, nboundaries, t, nvi);
+		v1 == v2 ? nboundaries : _delaunayBoundaries(d, badTriangles, nboundaries, t, nvi, _indices_hash);
 
-function delBadTriangles(d, badTriangles) = 
+function delBadTriangles(d, badTriangles, _indices_hash) = 
 	[
 		delaunay_coords(d), 
-		hashmap_dels(delaunay_triangles(d), badTriangles), 
-		hashmap_dels(delaunay_circles(d), badTriangles)
+		hashmap_dels(delaunay_triangles(d), badTriangles, _indices_hash), 
+		hashmap_dels(delaunay_circles(d), badTriangles, _indices_hash)
 	];
 	
-function hashmap_dels(m, keys) = _hashmap_dels(m, keys, len(keys));
+function hashmap_dels(m, keys, _indices_hash) = _hashmap_dels(m, keys, len(keys), _indices_hash);
 
-function _hashmap_dels(m, keys, leng, i = 0) = 
+function _hashmap_dels(m, keys, leng, _indices_hash, i = 0) = 
     i == leng ? m :
-	_hashmap_dels(hashmap_del(m, keys[i], hash = _indices_hash), keys, leng, i + 1);
+	_hashmap_dels(hashmap_del(m, keys[i], hash = _indices_hash), keys, leng, _indices_hash, i + 1);
 
-function _tri_delaunay(d, points, leng, i = 0) =
+function _tri_delaunay(d, points, leng, _indices_hash, i = 0) =
     i == leng ? d :
-	_tri_delaunay(delaunay_addpoint(d, points[i]), points, leng, i + 1);
+	_tri_delaunay(
+		delaunay_addpoint(d, points[i], _indices_hash), 
+	points, leng, _indices_hash, i + 1);
