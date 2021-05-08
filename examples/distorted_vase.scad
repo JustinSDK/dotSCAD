@@ -7,23 +7,25 @@ use <util/rand.scad>;
 use <noise/nz_perlin2s.scad>;
 use <noise/nz_perlin3s.scad>;
 
-beginning_radius = 20;
+beginning_radius = 15;
 thickness = 2;
 fn = 180;
-amplitude = 15;
+amplitude = 10;
+curve_step = 0.02;
 smoothness = 15;
 // Perlin noise 2D or 3D
 perlin = 2; // [2, 3]
+bottom = "NO"; // ["YES", "NO"]
 epsilon = 0.000001;
 
-distorted_vase(beginning_radius, thickness, fn, amplitude, smoothness, perlin, epsilon);
+distorted_vase(beginning_radius, thickness, fn, amplitude, curve_step, smoothness, perlin, epsilon);
 
-module distorted_vase(beginning_radius, thickness, fn, amplitude, smoothness, perlin, epsilon) {
+module distorted_vase(beginning_radius, thickness, fn, amplitude,curve_step, smoothness, perlin, epsilon) {
 	seed = rand() * 1000;
 	section = shape_circle(radius = beginning_radius, $fn = fn);
 	pt = [beginning_radius, 0, 0];
 
-	edge_path = bezier_curve(0.02, [
+	edge_path = bezier_curve(curve_step, [
 		pt,
 		pt + [15, 0, 20],
 		pt + [45, 0, 50],
@@ -74,6 +76,8 @@ module distorted_vase(beginning_radius, thickness, fn, amplitude, smoothness, pe
 
 	sweep(all, triangles = "HOLLOW");
 	
-	linear_extrude(thickness)
-	    polygon([for(p = offset_noisy[len(offset_noisy) - 1]) [p[0], p[1]]]);
+	if(bottom == "YES") {
+	    linear_extrude(thickness)
+	        polygon([for(p = offset_noisy[len(offset_noisy) - 1]) [p[0], p[1]]]);
+	}
 }
