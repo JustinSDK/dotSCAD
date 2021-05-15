@@ -18,7 +18,7 @@ Join a set of points to make a [Delaunay triangulation](https://en.wikipedia.org
 
     tris = [for(ti = tri_delaunay(points)) [for(i = ti) points[i]]];
 	linear_extrude(1)
-	for(t = tri_delaunay(points, ret = "TRI_SHAPES")) {
+	for(t = tris) {
 		polygon(t);
 	}	
 	
