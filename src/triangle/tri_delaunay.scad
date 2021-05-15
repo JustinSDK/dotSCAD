@@ -1,3 +1,13 @@
+/**
+* tri_circumcenter.scad
+*
+* @copyright Justin Lin, 2021
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib3x-tri_delaunay.html
+*
+**/
+
 use <_impl/_tri_delaunay_impl.scad>;
 use <tri_delaunay_shapes.scad>;
 use <tri_delaunay_indices.scad>;

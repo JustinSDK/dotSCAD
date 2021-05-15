@@ -358,7 +358,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 [**triangle/tri_circumcenter**(shape_pts)](https://openhome.cc/eGossip/OpenSCAD/lib3x-tri_circumcenter.html) | return the circumcenter of a triangle.
 [**triangle/tri_incenter**(shape_pts)](https://openhome.cc/eGossip/OpenSCAD/lib3x-tri_incenter.html) | return the incenter of a triangle.
 [**triangle/tri_ear_clipping**(shape_pts,  ret = "TRI_INDICES", ...)](https://openhome.cc/eGossip/OpenSCAD/lib3x-tri_ear_clipping.html) | triangulation by [ear clipping](https://en.wikipedia.org/wiki/Polygon_triangulation#Ear_clipping_method).
-**triangle/tri_delaunay**(points, ret = "TRI_INDICES") | return the [Delaunay triangulation](https://en.wikipedia.org/wiki/Delaunay_triangulation) of the points.
+[**triangle/tri_delaunay**(points, ret = "TRI_INDICES")](https://openhome.cc/eGossip/OpenSCAD/lib3x-tri_delaunay.html) | Join a set of points to make a [Delaunay triangulation](https://en.wikipedia.org/wiki/Delaunay_triangulation).
 **triangle/tri_delaunay_indices**(d) | return triangle indices from a delaunay object.
 **triangle/tri_delaunay_shapes**(d) | return triangle shapes from a delaunay object.
 **triangle/tri_delaunay_voronoi**(d) | return [Voronoi](https://en.wikipedia.org/wiki/Voronoi_diagram) cells from a delaunay object.
