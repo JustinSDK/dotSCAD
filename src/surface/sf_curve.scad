@@ -32,7 +32,7 @@ module sf_curve(levels, points, thickness, depth, invert = false) {
 		for(y = [0:rows - 1])
 		[
 			for(x = [0:columns - 1]) 
-			let(p = pts[x])
+			let(p = (pts[x] + pts[x + 1]) / 2)
 			[p[0], y, p[2]] + normal_vts[x] * s[y][x][2]
 		]
 	];
