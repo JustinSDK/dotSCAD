@@ -33,7 +33,7 @@ module sf_curve(levels, points, thickness, depth, invert = false) {
 		[
 			for(x = [0:columns - 1]) 
 			let(p = (pts[x] + pts[x + 1]) / 2)
-			[p[0], y, p[2]] + normal_vts[x] * s[y][x][2]
+			p + [0, y, 0] + normal_vts[x] * s[y][x][2]
 		]
 	];
 	
@@ -156,17 +156,18 @@ invert = false;
 points = bezier_curve(1 / len(levels[0]) * 0.5, 
 	[
 		[-20, 0, 0],
-		[40, 0, 155],
-		[50, 0, -30],
+		[40, 20, 155],
+		[50, 50, -30],
 		[-20, 0, 35],
-		[130, 0, -20],
-		[150, 0, 168],
-		[180, 0, 0]
+		[130, -70, -20],
+		[150, 0, 100],
+		[180, 30, 0]
 	]
 );
 
 sf_curve(levels, points, thickness, depth, invert);
 
 #hull_polyline3d(points);      
+
 
 */
