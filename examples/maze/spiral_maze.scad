@@ -35,9 +35,9 @@ module spiral_maze() {
                 let(
                     x = p[0],
                     y = p[1],
-                    p = (pts3d[x] + pts3d[x + 1]) / 2
+                    cp = (pts3d[x] + pts3d[x + 1]) / 2
                 )
-                p + [0, y, 0]
+                cp + [0, y, 0]
             ],
             wall_thickness, 
             $fn = 5
