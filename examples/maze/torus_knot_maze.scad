@@ -51,7 +51,7 @@ module torus_knot_maze() {
                 )
                 path[x] + ptf_rotate(
 				    ptf_rotate(
-					    [y - half_row, 0, 0], 
+					    [-y + half_row, 0, 0], 
 						[0, 0, -90]
 					), 
 					[0, angle_yz[x][0], angle_yz[x][1]]
