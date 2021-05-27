@@ -11,8 +11,9 @@ p = 2;
 q = 3;
 phi_step = 0.05;
 rows = 6;
-wall_thickness = 1;
+wall_thickness = 1.25;
 filled = true;
+filled_thicnkess = wall_thickness * .25;
 
 torus_knot_maze();
 
@@ -64,7 +65,7 @@ module torus_knot_maze() {
 
     if(filled) {
 		path_extrude(
-			shape_square(size = [rows, wall_thickness * .05]), 
+			shape_square(size = [rows, filled_thicnkess]), 
 			path, 
 			closed = true,
 			method = "EULER_ANGLE"
