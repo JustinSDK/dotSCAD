@@ -2,21 +2,21 @@ use <_impl/_sf_square_surfaces.scad>;
 use <sf_solidify.scad>;
 use <ptf/ptf_rotate.scad>;
 
-module sf_curve(levels, points, thickness, depth, invert = false) {
+module sf_curve(levels, curve_path, thickness, depth, invert = false) {
     rows = len(levels);
     columns = len(levels[0]);
-    leng_points = len(points);
+    leng_curve_path = len(curve_path);
 
-    assert(leng_points > columns, "The length of `points` must be greater than the column length of `levels`");
+    assert(leng_curve_path > columns, "The length of `curve_path` must be greater than the column length of `levels`");
     
-    to = leng_points - 1;
-    pts = (leng_points + 1 == columns) ? points :
+    to = leng_curve_path - 1;
+    pts = (leng_curve_path + 1 == columns) ? curve_path :
         // resample 
-        let(diff = leng_points / columns)
+        let(diff = leng_curve_path / columns)
         [
             for(i = [0:columns]) 
             let(idx = floor(diff * i))
-            points[idx > to ? to : idx]
+            curve_path[idx > to ? to : idx]
         ];
 
     normal_vts = [
@@ -153,7 +153,7 @@ thickness = 5;
 depth = 5;
 invert = false;
 
-points = bezier_curve(1 / len(levels[0]) * 0.5, 
+curve_path = bezier_curve(1 / len(levels[0]) * 0.5, 
 	[
 		[-20, 0, 0],
 		[40, 20, 155],
@@ -165,9 +165,9 @@ points = bezier_curve(1 / len(levels[0]) * 0.5,
 	]
 );
 
-sf_curve(levels, points, thickness, depth, invert);
+sf_curve(levels, curve_path, thickness, depth, invert);
 
-#hull_polyline3d(points);      
+#hull_polyline3d(curve_path);      
 
 
 */
