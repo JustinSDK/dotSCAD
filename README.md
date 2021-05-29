@@ -355,7 +355,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 
  Signature | Description
 --|--
-[**surface/sf_curve**(levels, curve_path, ...) | curve a photo.
+**surface/sf_curve**(levels, curve_path, ...) | curve a photo.
 
 ## Triangle
 
