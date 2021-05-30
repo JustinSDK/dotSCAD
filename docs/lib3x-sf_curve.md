@@ -8,7 +8,7 @@ Follow the steps described in [img2gray](https://github.com/JustinSDK/img2gray).
 
 ![sf_curve](images/lib3x-sf_curve-1.JPG)
 
-**Since:** 3.0
+**Since:** 3.1
 
 ## Parameters
 
