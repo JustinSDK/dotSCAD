@@ -17,7 +17,7 @@ function _packing_circles_overlapping(circles, c, i = 0) =
             x = c[0] - circles[i][0],
             y = c[1] - circles[i][1],
             a = c[2] + circles[i][2],
-            collision = a >= sqrt(x * x + y * y)
+            collision = a ^ 2 >= x ^2 + y ^ 2
         )
         collision || _packing_circles_overlapping(circles, c, i + 1);
     
