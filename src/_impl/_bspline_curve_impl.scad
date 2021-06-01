@@ -25,7 +25,7 @@ function _bspline_curve_nvi(v, i, l, t, degree, knots) =
     let(
         alpha = _bspline_curve_alpha(i, l, t, degree, knots)
     )
-    [[for(j = 0; j< 4; j = j + 1) ((1 - alpha) * v[i - 1][j] + alpha * v[i][j])]];
+    [[for(j = 0; j< degree + 1; j = j + 1) ((1 - alpha) * v[i - 1][j] + alpha * v[i][j])]];
 
 function _bspline_curve_nvl(v, l, s, t, degree, knots, i) = 
     i == (s - degree - 1 + l) ? v :
