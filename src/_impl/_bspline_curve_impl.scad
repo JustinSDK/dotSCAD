@@ -21,29 +21,29 @@ function _bspline_curve_s(s, end, t, knots) =
 function _bspline_curve_alpha(i, l, t, degree, knots) = 
     (t - knots[i]) / (knots[i + degree + 1 - l] - knots[i]);
 
-function _bspline_curve_nvi(v, i, l, t, degree, knots) =
+function _bspline_curve_nvi(v, i, l, t, degree, knots, d) =
     let(
         alpha = _bspline_curve_alpha(i, l, t, degree, knots)
     )
-    [[for(j = 0; j< degree + 1; j = j + 1) ((1 - alpha) * v[i - 1][j] + alpha * v[i][j])]];
+    [[for(j = 0; j< d + 1; j = j + 1) ((1 - alpha) * v[i - 1][j] + alpha * v[i][j])]];
 
-function _bspline_curve_nvl(v, l, s, t, degree, knots, i) = 
+function _bspline_curve_nvl(v, l, s, t, degree, knots, d, i) = 
     i == (s - degree - 1 + l) ? v :
     let(
         leng_v = len(v),
-        nvi = _bspline_curve_nvi(v, i, l, t, degree, knots),
+        nvi = _bspline_curve_nvi(v, i, l, t, degree, knots, d),
         nv = concat(
             [for(j = 0; j < i; j = j + 1) v[j]],
             nvi,
             [for(j = i + 1; j < leng_v; j = j + 1) v[j]]
         )
     )
-    _bspline_curve_nvl(nv, l, s, t, degree, knots, i - 1);
+    _bspline_curve_nvl(nv, l, s, t, degree, knots, d, i - 1);
 
-function _bspline_curve_v(v, s, t, degree, knots, l = 1) = 
+function _bspline_curve_v(v, s, t, degree, knots, d, l = 1) = 
     l > degree + 1 ? v : 
-      let(nv = _bspline_curve_nvl(v, l, s, t, degree, knots, s))
-      _bspline_curve_v(nv, s, t, degree, knots, l + 1);
+      let(nv = _bspline_curve_nvl(v, l, s, t, degree, knots, d, s))
+      _bspline_curve_v(nv, s, t, degree, knots, d, l + 1);
         
 function _bspline_curve_interpolate(t, degree, points, knots, weights) =
     let(
@@ -58,7 +58,7 @@ function _bspline_curve_interpolate(t, degree, points, knots, weights) =
         ],
         ts = _bspline_curve_ts(t, degree, kts),
         s = ts[1],
-        nv = _bspline_curve_v(v, s, ts[0], degree, kts)
+        nv = _bspline_curve_v(v, s, ts[0], degree, kts, d)
     )
     [for(i = 0; i < d; i = i + 1) nv[s][i] / nv[s][d]];
     
