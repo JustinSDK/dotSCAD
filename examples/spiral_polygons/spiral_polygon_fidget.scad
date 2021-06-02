@@ -3,7 +3,7 @@ use <util/sum.scad>;
 
 beginning_radius = 7.5;
 fn = 4;
-number_of_polygons = 2;
+number_of_polygons = 10;
 height = 30;
 thickness = 1.5;
 thickness_offset_factor = 1.5;
@@ -40,7 +40,7 @@ module spiral_polygon_fidget(beginning_radius, fn, n, height, thickness, thickne
 				drawPolygon(beginning_radius - thickness);
 			}
 				
-			%for(i = [1:n - 1]) {
+			for(i = [1:n - 1]) {
 				//rotate(as[i] * 2)
 				linear_extrude(half_height, scale = s[i])
 				difference() {
