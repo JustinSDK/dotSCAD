@@ -2,18 +2,21 @@ use <ellipse_extrude.scad>;
 use <util/sum.scad>;
 
 beginning_radius = 7.5;
-fn = 5;
-number_of_polygons = 10;
+fn = 4;
+number_of_polygons = 2;
 height = 30;
 thickness = 1.5;
+thickness_offset_factor = 1.5;
 
-spiral_plate(beginning_radius, fn, number_of_polygons, height);
+spiral_polygon_fidget(beginning_radius, fn, number_of_polygons, height, thickness, thickness_offset_factor);
 
-module spiral_plate(beginning_radius, fn, n, height) {
+module spiral_polygon_fidget(beginning_radius, fn, n, height, thickness, thickness_offset_factor) {
     theta = 180 / fn;
-	
+
+	thickness_offset = thickness * thickness_offset_factor;
+
 	y = beginning_radius - beginning_radius * cos(theta);
-	dr = y / cos(theta) + thickness * 1.5;
+	dr = y / cos(theta) + thickness_offset;
 	pw = pow((beginning_radius + dr) * sin(theta), 2);
 	
 	function a(ri, ro, i) = acos((pow(ro, 2) + pow(ri, 2) - pw * pow(0.985, i)) / (2 * ro * ri));
@@ -25,7 +28,7 @@ module spiral_plate(beginning_radius, fn, n, height) {
 	rs = [for(i = [0: n]) beginning_radius + i * dr];
 	//as = [for(i = [1: n]) a(rs[i - 1], rs[i], i) / 2];
 
-	s = [for(i = [1: n]) (rs[i] * 1.2) / rs[i - 1]];
+	s = [for(i = [1: n]) (rs[i] + thickness_offset) / rs[i - 1]];
 	
 	half_height = height / 2;
 	
@@ -37,7 +40,7 @@ module spiral_plate(beginning_radius, fn, n, height) {
 				drawPolygon(beginning_radius - thickness);
 			}
 				
-			for(i = [1:n - 1]) {
+			%for(i = [1:n - 1]) {
 				//rotate(as[i] * 2)
 				linear_extrude(half_height, scale = s[i])
 				difference() {
