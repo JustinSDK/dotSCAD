@@ -4,7 +4,7 @@ use <util/sum.scad>;
 beginning_radius = 7.5;
 fn = 4;
 number_of_polygons = 10;
-height = 30;
+height = 20;
 thickness = 1.5;
 thickness_offset_factor = 1.5;
 
