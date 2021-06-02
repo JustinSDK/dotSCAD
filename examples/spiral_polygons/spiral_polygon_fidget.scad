@@ -1,6 +1,3 @@
-use <ellipse_extrude.scad>;
-use <util/sum.scad>;
-
 beginning_radius = 7.5;
 fn = 4;
 number_of_polygons = 10;
