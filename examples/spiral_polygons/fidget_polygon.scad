@@ -5,9 +5,9 @@ height = 20;
 thickness = 1.5;
 thickness_offset_factor = 1.5;
 
-spiral_polygon_fidget(beginning_radius, fn, number_of_polygons, height, thickness, thickness_offset_factor);
+fidget_polygon(beginning_radius, fn, number_of_polygons, height, thickness, thickness_offset_factor);
 
-module spiral_polygon_fidget(beginning_radius, fn, n, height, thickness, thickness_offset_factor) {
+module fidget_polygon(beginning_radius, fn, n, height, thickness, thickness_offset_factor) {
     theta = 180 / fn;
 
 	thickness_offset = thickness * thickness_offset_factor;
