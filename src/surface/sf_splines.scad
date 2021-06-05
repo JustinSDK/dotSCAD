@@ -1,17 +1,17 @@
-function sf_splines(ctrl_pts, rspline, cspline) =
+function sf_splines(ctrl_pts, row_spline, column_spline) =
     let(
         leng_ctrl_pts = len(ctrl_pts),
-        cspl = is_undef(cspline) ? rspline : cspline,
+        cspline = is_undef(column_spline) ? row_spline : column_spline,
         r_pts = [
 		    for(r = 0; r < leng_ctrl_pts; r = r + 1)
-				rspline(ctrl_pts[r])
+				row_spline(ctrl_pts[r])
 		],
         leng_r_pts0 = len(r_pts[0]),
         leng_r_pts = len(r_pts)
 	)
     [
 	    for(c = 0; c < leng_r_pts0; c = c + 1)
-            cspl([for(r = 0; r < leng_r_pts; r = r + 1) r_pts[r][c]]) 
+            cspline([for(r = 0; r < leng_r_pts; r = r + 1) r_pts[r][c]]) 
     ];
 
 /*
@@ -30,10 +30,10 @@ thickness = 2;
 t_step = 0.05;
 degrees = 2;
 
-rspline = function(points) bspline_curve(t_step, degrees, points);
-cspline = function(points) bspline_curve(t_step, degrees, points);
+row_spline = function(points) bspline_curve(t_step, degrees, points);
+column_spline = function(points) bspline_curve(t_step, degrees, points);
 
-function_grapher(sf_splines(ctrl_pts, rspline, cspline), thickness);
+function_grapher(sf_splines(ctrl_pts, row_spline, column_spline), thickness);
 */
 
 /*
@@ -52,10 +52,10 @@ ctrl_pts = [
 thickness = 2;
 t_step = 0.05;
 
-rspline = function(points) bezier_curve(t_step, points);
-cspline = function(points) bezier_curve(t_step, points);
+row_spline = function(points) bezier_curve(t_step, points);
+column_spline = function(points) bezier_curve(t_step, points);
 
-function_grapher(sf_splines(ctrl_pts, rspline, cspline), thickness);
+function_grapher(sf_splines(ctrl_pts, row_spline, column_spline), thickness);
 
 */
 
@@ -77,10 +77,10 @@ ctrl_pts = [
 thickness = 2;
 t_step = 0.05;
 
-rspline = function(points) curve(t_step, points);
-cspline = function(points) curve(t_step, points);
+row_spline = function(points) curve(t_step, points);
+column_spline = function(points) curve(t_step, points);
 
-function_grapher(sf_splines(ctrl_pts, rspline, cspline), thickness);
+function_grapher(sf_splines(ctrl_pts, row_spline, column_spline), thickness);
 
 for(i = [0:3]) {
     %hull_polyline3d(ctrl_pts[i]);
