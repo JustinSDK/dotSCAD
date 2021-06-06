@@ -4,11 +4,11 @@ number_of_polygons = 10;
 height = 20;
 thickness = 1.5;
 spacing = 0.5 * thickness;
-extrude_ratio = 1;
+slope = 1.2;
 
-fidget_polygon(beginning_radius, fn, number_of_polygons, height, thickness, spacing, extrude_ratio);
+fidget_polygon(beginning_radius, fn, number_of_polygons, height, thickness, spacing, slope);
 
-module fidget_polygon(beginning_radius, fn, n, height, thickness, spacing, extrude_ratio) {
+module fidget_polygon(beginning_radius, fn, n, height, thickness, spacing, slope) {
     theta = 180 / fn;
 
 	y = beginning_radius - beginning_radius * cos(theta);
@@ -23,10 +23,10 @@ module fidget_polygon(beginning_radius, fn, n, height, thickness, spacing, extru
 	
 	rs = [for(i = [0: n]) beginning_radius + i * dr];
 	//as = [for(i = [1: n]) a(rs[i - 1], rs[i], i) / 2];
-
-	s = [for(i = [1: n]) (rs[i] + thickness + spacing) / rs[i - 1]] * extrude_ratio;
 	
 	half_height = height / 2;
+
+	s = [for(i = [1: n]) (rs[i] + slope * half_height) / rs[i]];
 
 	module half() {
 	    translate([0, 0, -half_height]) {
