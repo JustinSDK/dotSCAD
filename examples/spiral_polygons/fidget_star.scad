@@ -3,11 +3,11 @@ use <shape_starburst.scad>;
 r1 = 12;
 r2 = 8;
 n = 6;
-number_of_stars = 10;
+number_of_stars = 2;
 height = 20;
-thickness = 1.5;
-spacing = 0.5 * thickness;
-slope = 0.375;
+thickness = 1;
+spacing = thickness;
+slope = 0.35;
 
 /*
 r1 = 12;
@@ -15,9 +15,9 @@ r2 = 9.55;
 n = 8;
 number_of_stars = 10;
 height = 20;
-thickness = 1.5;
-spacing = 0.5 * thickness;
-slope = 0.25;
+thickness = 1;
+spacing = thickness;
+slope = 0.26;
 */
 
 fidget_star(r1, r2, n, number_of_stars, height, thickness, spacing, slope);
