@@ -31,7 +31,7 @@ module fidget_star(r1, r2, n, number_of_stars, height, thickness, spacing, slope
 	
 	r_ratio = r1 / r2;
 
-	module drawPolygon(r1, r2) {
+	module star(r1, r2) {
 	    polygon(shape_starburst(r1, r2, n));
 	}
 	
@@ -46,17 +46,17 @@ module fidget_star(r1, r2, n, number_of_stars, height, thickness, spacing, slope
 	    translate([0, 0, -half_height]) {
 			linear_extrude(half_height, scale = s[0])
 			difference() {
-				drawPolygon(r1, r2);
+				star(r1, r2);
 				offset(delta = -thickness)
-				    drawPolygon(r1, r2);
+				    star(r1, r2);
 			}
 				
 			for(i = [1:number_of_stars - 1]) {
 				linear_extrude(half_height, scale = s[i])
 				difference() {
-					drawPolygon(rs1[i], rs2[i]);
+					star(rs1[i], rs2[i]);
 					offset(delta = -thickness)
-					    drawPolygon(rs1[i], rs2[i]);
+					    star(rs1[i], rs2[i]);
 				}					
 			}
 		}
