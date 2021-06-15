@@ -14,7 +14,7 @@ use <../ptf/ptf_sphere.scad>;
 
 module sf_sphere(levels, radius, thickness, depth, angle = [180, 360], invert = false) {
     dp = is_undef(depth) ? thickness / 2 : depth;
-    surface = _sf_square_surfaces(levels, thickness, dp, invert);
+    faces = _sf_square_surfaces(levels, thickness, dp, invert);
     rows = len(levels);
     columns = len(levels[0]);
     size = [columns - 1, rows - 1];
@@ -23,14 +23,14 @@ module sf_sphere(levels, radius, thickness, depth, angle = [180, 360], invert = 
     r = radius + offset_z;
     sf_solidify(
         [
-            for(row = surface[0]) 
+            for(row = faces[0]) 
             [
                 for(p = row) ptf_sphere(size, p, r, angle)
             ]
         ]
         ,
         [
-            for(row = surface[1]) 
+            for(row = faces[1]) 
             [
                 for(p = row) ptf_sphere(size, p, radius, angle)
             ]
