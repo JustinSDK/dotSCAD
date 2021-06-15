@@ -3,9 +3,9 @@ beginning_radius = 7.5;
 fn = 4;
 number_of_polygons = 10;
 height = 20;
-thickness = 1.5;
-spacing = 0.5 * thickness;
-slope = 1.2;
+thickness = 1;
+spacing = thickness;
+slope = 0.825;
 base_height = height * 1.75;
 
 fidget_polygon(model, beginning_radius, fn, number_of_polygons, height, thickness, spacing, slope, base_height);
