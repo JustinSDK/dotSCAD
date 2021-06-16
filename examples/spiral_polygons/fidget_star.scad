@@ -1,7 +1,7 @@
 use <shape_starburst.scad>;
 
 r1 = 12;
-r2 = 8;
+r2 = 9.5;
 n = 6;
 number_of_stars = 10;
 height = 20;
@@ -11,7 +11,7 @@ slope = 0.35;
 
 /*
 r1 = 12;
-r2 = 9.55;
+r2 = 10;
 n = 8;
 number_of_stars = 10;
 height = 20;
