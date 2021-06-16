@@ -1,6 +1,6 @@
 model = "POLYGON"; // [POLYGON, BASE, BOTH]
 beginning_radius = 7.5;
-fn = 4;
+fn = 5;
 number_of_polygons = 10;
 height = 20;
 thickness = 1;
@@ -97,7 +97,7 @@ module fidget_polygon(model, beginning_radius, fn, n, height, thickness, spacing
 			stick_h = base_height - ring_thickness;
 			for(i = [0:fn - 1]) {
 				rotate(360 / fn * i)
-				translate([d, 0, off_h]) 
+				translate([d + thickness * 1.5, 0, off_h]) 
 				rotate(a) {
 					linear_extrude(stick_h)
 						circle(stick_r, $fn = fn);
