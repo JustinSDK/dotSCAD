@@ -84,7 +84,7 @@ module fidget_polygon(model, beginning_radius, fn, n, height, thickness, spacing
 			mirror([0, 0, 1])
 				base_ring();
 
-			translate([0, 0, -base_height + ring_thickness])
+			*translate([0, 0, -base_height + ring_thickness])
 			mirror([0, 0, 1])
 			scale([1, 1, 1.5])
 				base_ring();
@@ -93,7 +93,7 @@ module fidget_polygon(model, beginning_radius, fn, n, height, thickness, spacing
 			d = rs[n] * s[n];
 			off_h = -base_height + ring_thickness;
 			a = 180 / fn;
-			stick_r = thickness * 2;
+			stick_r = thickness * 5;
 			stick_h = base_height - ring_thickness;
 			for(i = [0:fn - 1]) {
 				rotate(360 / fn * i)
