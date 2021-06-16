@@ -105,7 +105,7 @@ module fidget_star(model, r1, r2, n, number_of_stars, height, thickness, spacing
 			mirror([0, 0, 1])
 				base_ring();
 
-			translate([0, 0, -base_height + ring_thickness])
+			*translate([0, 0, -base_height + ring_thickness])
 			mirror([0, 0, 1])
 			scale([1, 1, 1.5])
 				base_ring();
@@ -114,11 +114,11 @@ module fidget_star(model, r1, r2, n, number_of_stars, height, thickness, spacing
 			d = rs1[number_of_stars] * s[number_of_stars];
 			off_h = -base_height + ring_thickness;
 			a = 180 / n;
-			stick_r = thickness * 2;
+			stick_r = thickness * 5;
 			stick_h = base_height - ring_thickness;
 			for(i = [0:n - 1]) {
 				rotate(360 / n * i)
-				translate([d, 0, off_h]) 
+				translate([d + thickness * 1.25, 0, off_h]) 
 				rotate(a) {
 					linear_extrude(stick_h)
 						circle(stick_r, $fn = n);
