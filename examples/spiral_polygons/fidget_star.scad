@@ -114,7 +114,7 @@ module fidget_star(model, r1, r2, n, number_of_stars, height, thickness, spacing
 			d = rs1[number_of_stars] * s[number_of_stars];
 			off_h = -base_height + ring_thickness;
 			a = 180 / n;
-			stick_r = thickness * 1.75;
+			stick_r = thickness * 2;
 			stick_h = base_height - ring_thickness;
 			for(i = [0:n - 1]) {
 				rotate(360 / n * i)
