@@ -1,6 +1,6 @@
 model = "POLYGON"; // [POLYGON, BASE, BOTH]
 beginning_radius = 7.5;
-fn = 5;
+fn = 4;
 number_of_polygons = 10;
 height = 20;
 thickness = 1;
