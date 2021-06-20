@@ -16,12 +16,12 @@ module sf_thicken(points, thickness, direction = undef, slicing = "SLASH") {
                     vi0 = xy,
                     vi1 = vi[i],
                     vi2 = vi[(i + 1) % 4],
-                    v1 = sf[vi0[1]][vi0[0]], 
-                    v2 = sf[vi1[1]][vi1[0]], 
-                    v3 = sf[vi2[1]][vi2[0]]
+                    v0= sf[vi0[1]][vi0[0]], 
+                    v1 = sf[vi1[1]][vi1[0]], 
+                    v2 = sf[vi2[1]][vi2[0]]
                 )
-                if(v1 != undef && v2 != undef && v3 != undef) 
-                    tri_normal([v1, v2, v3])
+                if(!(is_undef(v0) || is_undef(v1) || is_undef(v2))) 
+                    tri_normal([v0, v1, v2])
             ]
         )
         sum(normals) / len(normals);
