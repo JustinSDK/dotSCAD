@@ -2,8 +2,8 @@ use <shape_taiwan.scad>;
 use <golden_spiral.scad>;
 use <golden_spiral_extrude.scad>;
 use <bezier_surface.scad>;
-use <function_grapher.scad>;
 use <util/reverse.scad>;
+use <surface/sf_solidify.scad>;
 
 // smaller values are better
 taiwan_fineness = 5;  
@@ -38,16 +38,20 @@ module golden_taiwan(taiwan_fineness, wave_fineness) {
 
         g = bezier_surface(t_step, ctrl_pts);
 
-        difference() {
-            function_grapher(g, thickness);
-            translate([-1, -1, -120]) cube([220, 130, 110]);
-        }    
+        bottom = [
+            for(y = [0:len(g) - 1])
+            [
+                for(x = [0:len(g[0]) - 1])
+                let(p = g[y][x])
+                [p[0], p[1], -10]
+            ]
+        ];
+
+        sf_solidify(g, bottom);
     }
 
-        taiwan();
-
-        wave();
-    
+    taiwan();
+    wave();
 }
 
 golden_taiwan(taiwan_fineness, wave_fineness);
