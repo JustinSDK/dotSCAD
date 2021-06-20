@@ -1,8 +1,9 @@
 use <shape_taiwan.scad>;
 use <golden_spiral.scad>;
 use <golden_spiral_extrude.scad>;
-use <bezier_surface.scad>;
+use <bezier_curve.scad>;
 use <util/reverse.scad>;
+use <surface/sf_splines.scad>;
 use <surface/sf_solidify.scad>;
 
 // smaller values are better
@@ -36,7 +37,8 @@ module golden_taiwan(taiwan_fineness, wave_fineness) {
             [[0, 123, 0], [60, 123, -35], [90, 123, 60],  [200, 123, 45]]
         ]);
 
-        g = bezier_surface(t_step, ctrl_pts);
+        bezier = function(points) bezier_curve(t_step, points);
+        g = sf_splines(ctrl_pts, bezier);
 
         bottom = [
             for(y = [0:len(g) - 1])
