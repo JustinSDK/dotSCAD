@@ -41,14 +41,14 @@ module sf_thicken(points, thickness, direction = undef, slicing = "SLASH") {
     }
     else {
         dir_v = direction / norm(direction);
-        sf = points + thickness * [
+        surface_bottom = points + thickness * [
             for(y = [0:len(points) - 1])
             [
                 for(x = [0:len(points[0]) - 1])
                     dir_v
             ]
         ];
-        sf_solidify(points, sf, slicing);
+        sf_solidify(points, surface_bottom, slicing);
     }
 }
 
