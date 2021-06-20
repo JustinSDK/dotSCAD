@@ -1,10 +1,11 @@
-use <bezier_surface.scad>;
-use <surface/sf_thicken.scad>;
+use <bezier_curve.scad>;
 use <hollow_out.scad>;
 use <rounded_extrude.scad>;
 use <bend_extrude.scad>;
 use <ellipse_extrude.scad>;
 use <shape_ellipse.scad>;
+use <surface/sf_splines.scad>;
+use <surface/sf_thicken.scad>;
 
 holder_height = 80;
 holder_round_r = 5;
@@ -57,7 +58,8 @@ module vampire_pen_holder() {
             [[0, 70, 100], [30, 80, 90], [90, 80, 90],  [150, 80, 90]]
         ];
 
-        g = bezier_surface(t_step, ctrl_pts);
+        bezier = function(points) bezier_curve(t_step, points);
+        g = sf_splines(ctrl_pts, bezier);
         
         rotate([-90, 0, 0])  
             sf_thicken(g, thickness);       
