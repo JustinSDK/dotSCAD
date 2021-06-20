@@ -10,7 +10,6 @@ include <test_rounded_cylinder.scad>;
 include <test_crystal_ball.scad>;
 include <test_line3d.scad>;
 include <test_hull_polyline3d.scad>;
-include <test_function_grapher.scad>;
 
 // Transformation
 include <test_bend.scad>;
@@ -26,7 +25,6 @@ include <test_midpt_smooth.scad>;
 
 // Path
 include <test_bezier_curve.scad>;
-include <test_bezier_surface.scad>;
 include <test_bezier_smooth.scad>;
 include <test_helix.scad>;
 include <test_golden_spiral.scad>;
