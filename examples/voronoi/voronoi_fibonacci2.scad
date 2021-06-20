@@ -1,6 +1,6 @@
 use <noise/nz_cell.scad>;
 use <golden_spiral.scad>;
-use <function_grapher.scad>;
+use <surface/sf_thicken.scad>;
 use <ptf/ptf_rotate.scad>;
 
 size = [150, 150];
@@ -36,4 +36,4 @@ noised = [
         ]
 ];
 
-function_grapher(noised, thickness);
+sf_thicken(noised, thickness);
