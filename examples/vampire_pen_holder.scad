@@ -1,5 +1,5 @@
 use <bezier_surface.scad>;
-use <function_grapher.scad>;
+use <surface/sf_thicken.scad>;
 use <hollow_out.scad>;
 use <rounded_extrude.scad>;
 use <bend_extrude.scad>;
@@ -60,7 +60,7 @@ module vampire_pen_holder() {
         g = bezier_surface(t_step, ctrl_pts);
         
         rotate([-90, 0, 0])  
-            function_grapher(g, thickness, style = "HULL_FACES", $fn = 3);       
+            sf_thicken(g, thickness);       
     }
 
     color("black") 
