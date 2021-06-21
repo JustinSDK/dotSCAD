@@ -351,13 +351,6 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 
 # Preview
 
-# Deprecated
-
- Name | Description
---|--
-**bezier_surface** | use **surface/sf_splines** instead.
-**function_grapher** | use **surface/sf_thicken** instead.
-
 ## Matrix
 
  Signature | Description
@@ -383,3 +376,10 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 [**triangle/tri_delaunay_indices**(d)](https://openhome.cc/eGossip/OpenSCAD/lib3x-tri_delaunay_indices.html) | return triangle indices from a delaunay object.
 [**triangle/tri_delaunay_shapes**(d)](https://openhome.cc/eGossip/OpenSCAD/lib3x-tri_delaunay_shapes.html) | return triangle shapes from a delaunay object.
 [**triangle/tri_delaunay_voronoi**(d)](https://openhome.cc/eGossip/OpenSCAD/lib3x-tri_delaunay_voronoi.html) | return [Voronoi](https://en.wikipedia.org/wiki/Voronoi_diagram) cells from a delaunay object.
+
+# Deprecated
+
+ Name | Description
+--|--
+**bezier_surface** | use **surface/sf_splines** instead.
+**function_grapher** | use **surface/sf_thicken** instead.
