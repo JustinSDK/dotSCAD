@@ -351,12 +351,19 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 
 # Preview
 
+## Matrix
+
+ Signature | Description
+--|--
+**maxtrix/m_transpose**(m)) | transpose a matrix.
+
 ## Surface
 
  Signature | Description
 --|--
 [**surface/sf_curve**(levels, curve_path, ...)](https://openhome.cc/eGossip/OpenSCAD/lib3x-sf_curve.html) | curve a photo.
 [**surface/sf_splines**(ctrl_pts, row_spline, column_spline)](https://openhome.cc/eGossip/OpenSCAD/lib3x-sf_splines.html) | generalized-spline surface.
+**surface/sf_thicken**(points, thickness, ...) | thicken a surface.
 
 ## Triangle
 
