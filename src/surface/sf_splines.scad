@@ -17,9 +17,16 @@ function sf_splines(ctrl_pts, row_spline, column_spline) =
 				row_spline(ctrl_pts[r])
 		],
         leng_r_pts0 = len(r_pts[0]),
-        leng_r_pts = len(r_pts)
+        leng_r_pts = len(r_pts),
+        sf = [
+            for(c = 0; c < leng_r_pts0; c = c + 1)
+                cspline([for(r = 0; r < leng_r_pts; r = r + 1) r_pts[r][c]]) 
+        ]
 	)
     [
-	    for(c = 0; c < leng_r_pts0; c = c + 1)
-            cspline([for(r = 0; r < leng_r_pts; r = r + 1) r_pts[r][c]]) 
+        for(y = 0; y < len(sf[0]); y = y + 1)
+        [
+            for(x = 0; x < len(sf); x = x + 1)
+            sf[x][y]
+        ]
     ];
