@@ -1,7 +1,7 @@
 use <sf_solidify.scad>;
 use <util/sum.scad>;
 
-module sf_thicken(points, thickness, direction = undef, swap_surface = false, slicing = "SLASH") {
+module sf_thicken(points, thickness, direction = undef, swap_surface = false) {
     function tri_normal(tri) =
         let(v = cross(tri[2] - tri[0], tri[1] - tri[0])) v / norm(v);    
 
@@ -37,7 +37,7 @@ module sf_thicken(points, thickness, direction = undef, swap_surface = false, sl
         half_thickness = thickness / 2;
         surface_top = points + half_thickness * vertex_normals;
         surface_bottom = points - half_thickness * vertex_normals;    
-        sf_solidify(surface_top, surface_bottom, slicing);
+        sf_solidify(surface_top, surface_bottom);
     }
     else {
         dir_v = direction / norm(direction);
@@ -49,10 +49,10 @@ module sf_thicken(points, thickness, direction = undef, swap_surface = false, sl
             ]
         ];
         if(swap_surface) {
-            sf_solidify(surface_bottom, points, slicing);
+            sf_solidify(surface_bottom, points);
         }
         else {
-            sf_solidify(points, surface_bottom, slicing);
+            sf_solidify(points, surface_bottom);
         }
     }
 }
