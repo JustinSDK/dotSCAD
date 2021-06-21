@@ -42,8 +42,3 @@ module sf_hull(points, thickness) {
         tri_to_hull_faces(twintri[0], twintri[1]);
     }  
 }
-
-// override it to test
-module test_function_grapher_faces(points, faces) {
-
-}
