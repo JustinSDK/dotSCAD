@@ -351,11 +351,18 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 
 # Preview
 
+# Deprecated
+
+ Name | Description
+--|--
+**bezier_surface** | use **surface/sf_splines** instead.
+**function_grapher** | use **surface/sf_thicken** instead.
+
 ## Matrix
 
  Signature | Description
 --|--
-**maxtrix/m_transpose**(m)) | transpose a matrix.
+**maxtrix/m_transpose**(m) | transpose a matrix.
 
 ## Surface
 
