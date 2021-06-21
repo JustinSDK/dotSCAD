@@ -53,5 +53,5 @@ module rose() {
         )
     ];
     
-    sweep(sections);
+    sweep(reverse(sections));
 }
