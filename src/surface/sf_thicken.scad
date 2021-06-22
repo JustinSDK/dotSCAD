@@ -11,7 +11,7 @@
 use <../util/sum.scad>;
 use <sf_solidify.scad>;
 
-module sf_thicken(points, thickness, direction = "BOTH", swap_surface = false) {
+module sf_thicken(points, thickness, direction = "BOTH") {
     function tri_normal(tri) =
         let(v = cross(tri[2] - tri[0], tri[1] - tri[0])) v / norm(v);    
 
@@ -45,7 +45,12 @@ module sf_thicken(points, thickness, direction = "BOTH", swap_surface = false) {
                     dir_v
             ]
         ];
-        if(swap_surface) {
+
+        midy = len(points) / 2;
+        midx = len(points[0]) / 2;
+        nv = tri_normal([points[midy][midx], points[midy + 1][midx], points[midy][midx + 1]]);
+
+        if(nv * dir_v > 0) {
             sf_solidify(surface_bottom, points);
         }
         else {
