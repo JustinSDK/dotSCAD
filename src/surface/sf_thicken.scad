@@ -1,7 +1,17 @@
-use <sf_solidify.scad>;
-use <../util/sum.scad>;
+/**
+* sf_thicken.scad
+*
+* @copyright Justin Lin, 2021
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib3x-sf_thicken.html
+*
+**/ 
 
-module sf_thicken(points, thickness, direction = undef, swap_surface = false) {
+use <../util/sum.scad>;
+use <sf_solidify.scad>;
+
+module sf_thicken(points, thickness, direction = "BOTH", swap_surface = false) {
     function tri_normal(tri) =
         let(v = cross(tri[2] - tri[0], tri[1] - tri[0])) v / norm(v);    
 
@@ -26,20 +36,7 @@ module sf_thicken(points, thickness, direction = undef, swap_surface = false) {
         )
         sum(normals) / len(normals);
 
-    if(direction == undef) {
-        vertex_normals = [
-            for(y = [0:len(points) - 1])
-            [
-                for(x = [0:len(points[0]) - 1])
-                    vertex_normal(points, x, y)
-            ]
-        ];        
-        half_thickness = thickness / 2;
-        surface_top = points + half_thickness * vertex_normals;
-        surface_bottom = points - half_thickness * vertex_normals;    
-        sf_solidify(surface_top, surface_bottom);
-    }
-    else {
+    if(is_list(direction)) {
         dir_v = direction / norm(direction);
         surface_bottom = points + thickness * [
             for(y = [0:len(points) - 1])
@@ -53,6 +50,31 @@ module sf_thicken(points, thickness, direction = undef, swap_surface = false) {
         }
         else {
             sf_solidify(points, surface_bottom);
+        }
+    }
+    else {
+        vertex_normals = [
+            for(y = [0:len(points) - 1])
+            [
+                for(x = [0:len(points[0]) - 1])
+                    vertex_normal(points, x, y)
+            ]
+        ];        
+        half_thickness = thickness / 2;
+        if(direction == "BOTH") {
+            surface_top = points + half_thickness * vertex_normals;
+            surface_bottom = points - half_thickness * vertex_normals;    
+            sf_solidify(surface_top, surface_bottom);
+        }
+        else if(direction == "FORWARD") {
+            surface_top = points + thickness * vertex_normals;
+            surface_bottom = points;    
+            sf_solidify(surface_top, surface_bottom);
+        }
+        else {
+            surface_top = points;
+            surface_bottom = points - thickness * vertex_normals;    
+            sf_solidify(surface_top, surface_bottom);
         }
     }
 }
