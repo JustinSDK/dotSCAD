@@ -1,5 +1,5 @@
 use <sf_solidify.scad>;
-use <util/sum.scad>;
+use <../util/sum.scad>;
 
 module sf_thicken(points, thickness, direction = undef, swap_surface = false) {
     function tri_normal(tri) =
