@@ -3,7 +3,7 @@ use <crystal_ball.scad>;
 leng = 30;
 leng_diff = 3;
 min_leng = 2;
-model = "Cube"; // [Cube, Base]
+model = "Cube"; // [Cube, Base, Both]
 
 module spiral_cube(leng, leng_diff, min_leng) {
     thickness = leng_diff / 3;
@@ -82,5 +82,10 @@ if(model == "Cube") {
     spiral_cube(leng, leng_diff, min_leng);
 } else if(model == "Base") {
     base(leng);
-} 
+} else {    
+    translate([0, 0, leng * sqrt(3) / 2 + leng / 15]) 
+        rotate([45, atan2(1, sqrt(2)), 0]) 
+    spiral_cube(leng, leng_diff, min_leng);
+    base(leng);
+}
 
