@@ -355,7 +355,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 
  Signature | Description
 --|--
-**maxtrix/m_transpose**(m) | transpose a matrix.
+[**maxtrix/m_transpose**(m)](https://openhome.cc/eGossip/OpenSCAD/lib3x-m_transpose.html) | transpose a matrix.
 
 ## Surface
 
