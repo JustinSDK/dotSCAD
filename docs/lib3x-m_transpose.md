@@ -2,7 +2,7 @@
 
 It transposes a matrix.
 
-**Since:** 2.4
+**Since:** 3.1
 
 ## Parameters
 
