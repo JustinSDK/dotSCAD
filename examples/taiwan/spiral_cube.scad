@@ -78,10 +78,16 @@ if(model == "Cube") {
     spiral_cube(leng, leng_diff, min_leng);
 } else if(model == "Base") {
     base(leng);
-} else {    
+} else {
     translate([0, 0, leng * sqrt(3) / 2 + leng / 15]) 
-    rotate([45, atan2(1, sqrt(2)), 0]) 
+    rotate([45, atan2(1, sqrt(2)), 0])  
+    // render first to avoid bugs
+    render() {
         spiral_cube(leng, leng_diff, min_leng);
-    base(leng);
+        rotate([-45, 0, 0])
+        rotate([0, -atan2(1, sqrt(2)), 0])
+        translate([0, 0, -(leng * sqrt(3) / 2 + leng / 15)])
+            base(leng);
+    }
 }
 
