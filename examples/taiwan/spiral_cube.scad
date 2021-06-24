@@ -37,11 +37,7 @@ module spiral_cube(leng, leng_diff, min_leng) {
             translate([0, 0, -half_leng]) 
             spiral_stack(leng)
             translate([0, 0, thickness / 2]) 
-                cube([leng , leng, thickness], center = true);
-
-            translate([0, 0, 0.001]) 
-            linear_extrude(leng) 
-                square(leng, center = true);    
+                cube([leng , leng, thickness * 1.01], center = true);
         }
     }
 
@@ -84,8 +80,8 @@ if(model == "Cube") {
     base(leng);
 } else {    
     translate([0, 0, leng * sqrt(3) / 2 + leng / 15]) 
-        rotate([45, atan2(1, sqrt(2)), 0]) 
-    spiral_cube(leng, leng_diff, min_leng);
+    rotate([45, atan2(1, sqrt(2)), 0]) 
+        spiral_cube(leng, leng_diff, min_leng);
     base(leng);
 }
 
