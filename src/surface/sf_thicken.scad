@@ -38,7 +38,7 @@ module sf_thicken(points, thickness, direction = "BOTH") {
 
     if(is_list(direction)) {
         dir_v = direction / norm(direction);
-        surface_bottom = points + thickness * [
+        surface_another = points + thickness * [
             for(y = [0:len(points) - 1])
             [
                 for(x = [0:len(points[0]) - 1])
@@ -51,10 +51,10 @@ module sf_thicken(points, thickness, direction = "BOTH") {
         nv = tri_normal([points[midy][midx], points[midy + 1][midx], points[midy][midx + 1]]);
 
         if(nv * dir_v > 0) {
-            sf_solidify(surface_bottom, points);
+            sf_solidify(surface_another, points);
         }
         else {
-            sf_solidify(points, surface_bottom);
+            sf_solidify(points, surface_another);
         }
     }
     else {
