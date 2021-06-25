@@ -32,13 +32,12 @@ module spiral_cube(leng, leng_diff, min_leng) {
         }
     }
     
-    module spiral_squares() {
-        difference() {
-            translate([0, 0, -half_leng]) 
-            spiral_stack(leng)
-            translate([0, 0, thickness / 2]) 
-                cube([leng , leng, thickness * 1.01], center = true);
-        }
+    module spiral_squares() {     
+        translate([0, 0, -half_leng]) 
+        spiral_stack(leng)
+        translate([0, 0, thickness / 2]) 
+            cube([leng , leng, thickness * 1.01], center = true);
+       
     }
 
     module pair_spiral_squares() {
