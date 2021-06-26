@@ -25,7 +25,7 @@ It thickens a surface, described by a m * n list of `[x, y, z]`s.
 
 ![sf_thicken](images/lib3x-sf_thicken-1.JPG)
 
-use <surface/sf_thicken.scad>;
+	use <surface/sf_thicken.scad>;
 
 	function f(x, y) = 
 		30 * (
