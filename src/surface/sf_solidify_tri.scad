@@ -1,8 +1,8 @@
-use <util/set/hashset.scad>;
-use <util/set/hashset_has.scad>;
-use <util/set/hashset_add.scad>;
-use <util/set/hashset_del.scad>;
-use <util/set/hashset_elems.scad>;
+use <../util/set/hashset.scad>;
+use <../util/set/hashset_has.scad>;
+use <../util/set/hashset_add.scad>;
+use <../util/set/hashset_del.scad>;
+use <../util/set/hashset_elems.scad>;
 
 module sf_solidify_tri(points1, points2, triangles) {
     // triangles : clockwise
