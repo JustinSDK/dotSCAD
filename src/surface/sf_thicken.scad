@@ -83,27 +83,3 @@ module sf_thicken(points, thickness, direction = "BOTH") {
         }
     }
 }
-
-/*
-use <surface/sf_thicken.scad>;
-
-function f(x, y) = 
-	30 * (
-		cos(sqrt(pow(x, 2) + pow(y, 2))) + 
-		cos(3 * sqrt(pow(x, 2) + pow(y, 2)))
-	);
-
-thickness = 3;
-min_value =  -200;
-max_value = 200;
-resolution = 10;
-
-surface1 = [
-    for(y = [min_value:resolution:max_value])
-        [
-            for(x = [min_value:resolution:max_value]) 
-                [x, y, f(x, y) + 100]
-        ]
-];
-sf_thicken(surface1, thickness);
-*/
