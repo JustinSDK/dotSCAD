@@ -4,7 +4,7 @@ use <../util/slice.scad>;
 use <../util/sum.scad>;
 use <../surface/sf_solidify_tri.scad>;
 
-module sf_thicken_tri(points, triangles, thickness, direction = "BOTH") {
+module sf_thicken_tri(points, thickness, triangles = undef, direction = "BOTH") {
     // triangles : counter-clockwise
     tris = [for(tri = triangles) [tri[2], tri[1], tri[0]]];
 
@@ -117,7 +117,8 @@ for(tri = shapes) {
 pts = [for(p = points) [p[0], p[1], rands(100, 120, 1)[0]]];
 thickness = 5;
 
-sf_thicken_tri(pts, indices, thickness);
+sf_thicken_tri(pts, thickness, indices);
+
 
 
 
