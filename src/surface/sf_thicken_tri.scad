@@ -3,10 +3,13 @@ use <../util/find_index.scad>;
 use <../util/slice.scad>;
 use <../util/sum.scad>;
 use <../surface/sf_solidify_tri.scad>;
+use <../triangle/tri_delaunay.scad>;
 
 module sf_thicken_tri(points, thickness, triangles = undef, direction = "BOTH") {
     // triangles : counter-clockwise
-    tris = [for(tri = triangles) [tri[2], tri[1], tri[0]]];
+    real_triangles = is_undef(triangles) ? tri_delaunay([for(p = points) [p[0], p[1]]]) : triangles;
+
+    tris = [for(tri = real_triangles) [tri[2], tri[1], tri[0]]];
 
 	ascending = function(e1, e2) e1 - e2;
 
@@ -79,17 +82,17 @@ module sf_thicken_tri(points, thickness, triangles = undef, direction = "BOTH") 
             half_thickness = thickness / 2;
             pts1 = points + vertex_normals * half_thickness;
             pts2 = points - vertex_normals * half_thickness;
-            sf_solidify_tri(pts1, pts2, triangles);
+            sf_solidify_tri(pts1, pts2, real_triangles);
         }
         else if(direction == "FORWARD") {
             pts1 = points + vertex_normals * thickness;
             pts2 = points;
-            sf_solidify_tri(pts1, pts2, triangles);
+            sf_solidify_tri(pts1, pts2, real_triangles);
         }
         else {
             pts1 = points;
             pts2 = points - vertex_normals * thickness;
-            sf_solidify_tri(pts1, pts2, triangles);
+            sf_solidify_tri(pts1, pts2, real_triangles);
         }
     }
 }
@@ -119,7 +122,18 @@ thickness = 5;
 
 sf_thicken_tri(pts, thickness, indices);
 
+*/
 
+/*
+use <triangle/tri_delaunay.scad>;
+use <triangle/tri_delaunay_indices.scad>;
+use <triangle/tri_delaunay_shapes.scad>;
 
+use <surface/sf_thicken_tri.scad>;
 
+points = [for(i = [0:50]) rands(-200, 200, 3)]; 
+pts = [for(p = points) [p[0], p[1], rands(100, 120, 1)[0]]];
+thickness = 5;
+
+sf_thicken_tri(pts, thickness);
 */
