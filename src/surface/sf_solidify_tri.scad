@@ -32,23 +32,22 @@ module sf_solidify_tri(points1, points2, triangles) {
 		]
 	];	
 	
-	edges = de_pairs(tri_edges);
 	side_faces = [
-	    for(edge = edges)
+	    for(edge = de_pairs(tri_edges))
 		each [
 		    [edge[1] + leng, edge[1], edge[0]],
 			[edge[0] + leng, edge[1] + leng, edge[0]]
 		]
 	];
 	
-	points = concat(points1, points2);
-	faces = concat(
-	    triangles, 
-		[for(tri = triangles) [tri[2], tri[1], tri[0]] + [leng, leng, leng]],
-		side_faces
-	);
-	
-	polyhedron(points = points, faces = faces);
+	polyhedron(
+        points = concat(points1, points2), 
+        faces = concat(
+            triangles, 
+            [for(tri = triangles) [tri[2], tri[1], tri[0]] + [leng, leng, leng]],
+            side_faces
+        )
+    );
 }
 
 /*
