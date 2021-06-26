@@ -5,10 +5,12 @@ use <../util/set/hashset_del.scad>;
 use <../util/set/hashset_elems.scad>;
 
 module sf_solidify_tri(points1, points2, triangles) {
-    // triangles : clockwise
+    // triangles : counter-clockwise
     leng = len(points1);
 	assert(leng == len(points2), "The length of points1 must equal to the length of points2");
 		
+	tris = [for(tri = triangles) [tri[2], tri[1], tri[0]]];
+
 	function de_pairs(tri_edges) = 
 		let(
 			leng = len(tri_edges),
@@ -24,7 +26,7 @@ module sf_solidify_tri(points1, points2, triangles) {
 			_de_pairs(tri_edges, leng, hashset_add(edges, edge), i + 1);	
 			
 	tri_edges = [
-		for(tri = triangles)
+		for(tri = tris)
 		each [
 			[tri[0], tri[1]],
 			[tri[1], tri[2]],
@@ -43,8 +45,8 @@ module sf_solidify_tri(points1, points2, triangles) {
 	polyhedron(
         points = concat(points1, points2), 
         faces = concat(
-            triangles, 
-            [for(tri = triangles) [tri[2], tri[1], tri[0]] + [leng, leng, leng]],
+            tris, 
+            [for(tri = triangles) tri + [leng, leng, leng]],
             side_faces
         )
     );
@@ -61,10 +63,9 @@ points = [for(i = [0:50]) rands(-200, 200, 2)];
 
 delaunay = tri_delaunay(points, ret = "DELAUNAY");
 
-// count-clockwise (dotSCAD 2D polygon convention)
+// count-clockwise 
 indices = tri_delaunay_indices(delaunay);
 shapes = tri_delaunay_shapes(delaunay);
-
 
 for(t = shapes) {
     offset(-1)
@@ -74,8 +75,6 @@ for(t = shapes) {
 pts = [for(p = points) [p[0], p[1], rands(100, 150, 1)[0]]];
 pts2 = [for(p = pts) [p[0], p[1], p[2] - 10]];
 
-// triangles: clockwise (openscad 3D face convention)
-sf_solidify_tri(pts, pts2, 
-    triangles = [for(tri = indices) [tri[2], tri[1], tri[0]]]);	
+sf_solidify_tri(pts, pts2, triangles = indices);	
 
 */
