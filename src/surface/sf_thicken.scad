@@ -65,8 +65,9 @@ module sf_thicken(points, thickness, direction = "BOTH") {
                     vertex_normal(points, x, y)
             ]
         ];        
-        half_thickness = thickness / 2;
+        
         if(direction == "BOTH") {
+            half_thickness = thickness / 2;
             surface_top = points + half_thickness * vertex_normals;
             surface_bottom = points - half_thickness * vertex_normals;    
             sf_solidify(surface_top, surface_bottom);
