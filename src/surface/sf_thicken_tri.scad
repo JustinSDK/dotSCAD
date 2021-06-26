@@ -5,6 +5,9 @@ use <../util/sum.scad>;
 use <../surface/sf_solidify_tri.scad>;
 
 module sf_thicken_tri(points, triangles, thickness, direction = "BOTH") {
+    // triangles : counter-clockwise
+    tris = [for(tri = triangles) [tri[2], tri[1], tri[0]]];
+
 	ascending = function(e1, e2) e1 - e2;
 
 	function connected_tris(leng_pts, triangles) =
@@ -40,7 +43,7 @@ module sf_thicken_tri(points, triangles, thickness, direction = "BOTH") {
 		let(v = cross(tri[2] - tri[0], tri[1] - tri[0])) v / norm(v); 
 
     leng_pts = len(points);
-    cnn_tris = connected_tris(leng_pts, triangles);
+    cnn_tris = connected_tris(leng_pts, tris);
 
     if(is_list(direction)) {
         dir_v = direction / norm(direction);
@@ -103,7 +106,6 @@ points = [for(i = [0:50]) rands(-200, 200, 2)];
 
 delaunay = tri_delaunay(points, ret = "DELAUNAY");
 
-// count-clockwise (dotSCAD 2D polygon convention)
 indices = tri_delaunay_indices(delaunay);
 shapes = tri_delaunay_shapes(delaunay);
 
@@ -112,12 +114,11 @@ for(tri = shapes) {
         polygon(tri);
 }
 
-// triangles: clockwise (openscad 3D face convention)
-triangles = [for(tri = indices) [tri[2], tri[1], tri[0]]];
 pts = [for(p = points) [p[0], p[1], rands(100, 120, 1)[0]]];
 thickness = 5;
 
-sf_thicken_tri(pts, triangles, thickness);
+sf_thicken_tri(pts, indices, thickness);
+
 
 
 */
