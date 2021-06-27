@@ -56,10 +56,10 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH") {
         pts = [for(p = points) p + dir_v * thickness];
 
         if(nv * dir_v > 0) {
-            sf_solidify_tri(pts, points, triangles);
+            sf_solidifyT(pts, points, real_triangles);
         }
         else {
-            sf_solidify_tri(points, pts, triangles);
+            sf_solidifyT(points, pts, real_triangles);
         }
     }
     else {
