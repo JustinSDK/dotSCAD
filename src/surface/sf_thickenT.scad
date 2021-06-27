@@ -2,10 +2,10 @@ use <../util/sort.scad>;
 use <../util/find_index.scad>;
 use <../util/slice.scad>;
 use <../util/sum.scad>;
-use <../surface/sf_solidify_tri.scad>;
+use <../surface/sf_solidifyT.scad>;
 use <../triangle/tri_delaunay.scad>;
 
-module sf_thicken_tri(points, thickness, triangles = undef, direction = "BOTH") {
+module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH") {
     // triangles : counter-clockwise
     real_triangles = is_undef(triangles) ? tri_delaunay([for(p = points) [p[0], p[1]]]) : triangles;
 
@@ -82,17 +82,17 @@ module sf_thicken_tri(points, thickness, triangles = undef, direction = "BOTH") 
             half_thickness = thickness / 2;
             pts1 = points + vertex_normals * half_thickness;
             pts2 = points - vertex_normals * half_thickness;
-            sf_solidify_tri(pts1, pts2, real_triangles);
+            sf_solidifyT(pts1, pts2, real_triangles);
         }
         else if(direction == "FORWARD") {
             pts1 = points + vertex_normals * thickness;
             pts2 = points;
-            sf_solidify_tri(pts1, pts2, real_triangles);
+            sf_solidifyT(pts1, pts2, real_triangles);
         }
         else {
             pts1 = points;
             pts2 = points - vertex_normals * thickness;
-            sf_solidify_tri(pts1, pts2, real_triangles);
+            sf_solidifyT(pts1, pts2, real_triangles);
         }
     }
 }
@@ -103,7 +103,7 @@ use <triangle/tri_delaunay.scad>;
 use <triangle/tri_delaunay_indices.scad>;
 use <triangle/tri_delaunay_shapes.scad>;
 
-use <surface/sf_thicken_tri.scad>;
+use <surface/sf_thickenT.scad>;
 
 points = [for(i = [0:50]) rands(-200, 200, 2)]; 
 
@@ -120,7 +120,7 @@ for(tri = shapes) {
 pts = [for(p = points) [p[0], p[1], rands(100, 120, 1)[0]]];
 thickness = 5;
 
-sf_thicken_tri(pts, thickness, indices);
+sf_thickenT(pts, thickness, indices);
 
 */
 
@@ -129,11 +129,11 @@ use <triangle/tri_delaunay.scad>;
 use <triangle/tri_delaunay_indices.scad>;
 use <triangle/tri_delaunay_shapes.scad>;
 
-use <surface/sf_thicken_tri.scad>;
+use <surface/sf_thickenT.scad>;
 
 points = [for(i = [0:50]) rands(-200, 200, 3)]; 
 pts = [for(p = points) [p[0], p[1], rands(100, 120, 1)[0]]];
 thickness = 5;
 
-sf_thicken_tri(pts, thickness);
+sf_thickenT(pts, thickness);
 */

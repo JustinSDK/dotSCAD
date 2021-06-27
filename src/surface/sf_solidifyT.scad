@@ -4,7 +4,7 @@ use <../util/set/hashset_add.scad>;
 use <../util/set/hashset_del.scad>;
 use <../util/set/hashset_elems.scad>;
 
-module sf_solidify_tri(points1, points2, triangles) {
+module sf_solidifyT(points1, points2, triangles) {
     // triangles : counter-clockwise
     leng = len(points1);
 	assert(leng == len(points2), "The length of points1 must equal to the length of points2");
@@ -59,7 +59,7 @@ use <triangle/tri_delaunay.scad>;
 use <triangle/tri_delaunay_indices.scad>;
 use <triangle/tri_delaunay_shapes.scad>;
 
-use <surface/sf_solidify_tri.scad>;
+use <surface/sf_solidifyT.scad>;
 
 points = [for(i = [0:50]) rands(-200, 200, 2)]; 
 
@@ -77,6 +77,6 @@ for(t = shapes) {
 pts = [for(p = points) [p[0], p[1], rands(100, 150, 1)[0]]];
 pts2 = [for(p = pts) [p[0], p[1], p[2] - 10]];
 
-sf_solidify_tri(pts, pts2, triangles = indices);	
+sf_solidifyT(pts, pts2, triangles = indices);	
 
 */
