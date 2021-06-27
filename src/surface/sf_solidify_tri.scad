@@ -11,19 +11,21 @@ module sf_solidify_tri(points1, points2, triangles) {
 		
 	tris = [for(tri = triangles) [tri[2], tri[1], tri[0]]];
 
+    hash = function(e) e[0] + e[1] * 31; 
+
 	function de_pairs(tri_edges) = 
 		let(
 			leng = len(tri_edges),
-			edges = hashset([tri_edges[0], tri_edges[1], tri_edges[2]], number_of_buckets = round(sqrt(leng)))
+			edges = hashset([tri_edges[0], tri_edges[1], tri_edges[2]], hash = hash, number_of_buckets = round(sqrt(leng)))
 		)
 		_de_pairs(tri_edges, leng, edges);
 		
 	function _de_pairs(tri_edges, leng, edges, i = 3) =
 		i == leng ? hashset_elems(edges) :
 		let(edge = tri_edges[i], pair = [edge[1], edge[0]])
-		hashset_has(edges, pair) ? 
-			_de_pairs(tri_edges, leng, hashset_del(edges, pair), i + 1) :
-			_de_pairs(tri_edges, leng, hashset_add(edges, edge), i + 1);	
+		hashset_has(edges, pair, hash = hash) ? 
+			_de_pairs(tri_edges, leng, hashset_del(edges, pair, hash = hash), i + 1) :
+			_de_pairs(tri_edges, leng, hashset_add(edges, edge, hash = hash), i + 1);	
 			
 	tri_edges = [
 		for(tri = tris)
