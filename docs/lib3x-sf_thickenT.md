@@ -40,12 +40,12 @@ It thickens a surface with triangular mesh.
 	use <surface/sf_thickenT.scad>;
 
 	u_step = 10;
-	r_step = 0.2;
+	v_step = 0.2;
 	thickness = .2;
 
 	points = [
 		for(u = [0:u_step:360])
-			for(v = [-1:r_step:1])
+			for(v = [-1:v_step:1])
 			let(
 				x = (1 + v / 2 * cos(u / 2)) * cos(u),
 				y = (1 + v / 2 * cos(u / 2)) * sin(u),
@@ -56,7 +56,7 @@ It thickens a surface with triangular mesh.
 
 	triangles = tri_delaunay([
 		for(u = [0:u_step:360])
-			for(v = [-1:r_step:1])
+			for(v = [-1:v_step:1])
 			[v, u]
 	]);
 
