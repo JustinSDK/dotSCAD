@@ -1,6 +1,6 @@
 # sf_solidify
 
-It solidifies two square surfaces, described as a m * n list of `[x, y, z]`s. 
+It solidifies two square surfaces, described by a m * n list of `[x, y, z]`s. 
 
 **Since:** 2.3
 
