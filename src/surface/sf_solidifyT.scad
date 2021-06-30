@@ -1,3 +1,13 @@
+/**
+* sf_solidifyT.scad
+*
+* @copyright Justin Lin, 2021
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib3x-sf_solidifyT.html
+*
+**/ 
+
 use <../util/set/hashset.scad>;
 use <../util/set/hashset_has.scad>;
 use <../util/set/hashset_add.scad>;
@@ -53,30 +63,3 @@ module sf_solidifyT(points1, points2, triangles) {
         )
     );
 }
-
-/*
-use <triangle/tri_delaunay.scad>;
-use <triangle/tri_delaunay_indices.scad>;
-use <triangle/tri_delaunay_shapes.scad>;
-
-use <surface/sf_solidifyT.scad>;
-
-points = [for(i = [0:50]) rands(-200, 200, 2)]; 
-
-delaunay = tri_delaunay(points, ret = "DELAUNAY");
-
-// count-clockwise 
-indices = tri_delaunay_indices(delaunay);
-shapes = tri_delaunay_shapes(delaunay);
-
-for(t = shapes) {
-    offset(-1)
-        polygon(t);
-}
-
-pts = [for(p = points) [p[0], p[1], rands(100, 150, 1)[0]]];
-pts2 = [for(p = pts) [p[0], p[1], p[2] - 10]];
-
-sf_solidifyT(pts, pts2, triangles = indices);	
-
-*/

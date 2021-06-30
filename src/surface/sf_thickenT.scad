@@ -1,3 +1,13 @@
+/**
+* sf_thickenT.scad
+*
+* @copyright Justin Lin, 2021
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib3x-sf_thickenT.html
+*
+**/ 
+
 use <../util/sort.scad>;
 use <../util/find_index.scad>;
 use <../util/slice.scad>;
@@ -96,69 +106,3 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH") {
         }
     }
 }
-
-/*
-
-use <triangle/tri_delaunay.scad>;
-use <triangle/tri_delaunay_indices.scad>;
-use <triangle/tri_delaunay_shapes.scad>;
-
-use <surface/sf_thickenT.scad>;
-
-points = [for(i = [0:50]) rands(-200, 200, 2)]; 
-
-delaunay = tri_delaunay(points, ret = "DELAUNAY");
-
-indices = tri_delaunay_indices(delaunay);
-shapes = tri_delaunay_shapes(delaunay);
-
-for(tri = shapes) {
-    offset(-1)
-        polygon(tri);
-}
-
-pts = [for(p = points) [p[0], p[1], rands(100, 120, 1)[0]]];
-thickness = 5;
-
-sf_thickenT(pts, thickness, indices);
-
-*/
-
-/*
-use <triangle/tri_delaunay.scad>;
-use <triangle/tri_delaunay_indices.scad>;
-use <triangle/tri_delaunay_shapes.scad>;
-
-use <surface/sf_thickenT.scad>;
-
-points = [for(i = [0:50]) rands(-200, 200, 3)]; 
-pts = [for(p = points) [p[0], p[1], rands(100, 120, 1)[0]]];
-thickness = 5;
-
-sf_thickenT(pts, thickness);
-*/
-
-/*
-use <surface/sf_thickenT.scad>;
-
-radius = 100;
-width = 2;
-thickness = .2;
-
-a_step = 10;
-r_step = 0.2;
-
-function f(x, y) = (pow(y,2)/pow(2, 2))-(pow(x,2)/pow(2, 2));
-
-points = [
-    for(a = [a_step:a_step:360])
-	    for(r = [r_step:r_step:2])
-		let(
-		    x = round(r * cos(a) * 100) / 100, 
-			y = round(r * sin(a) * 100) / 100
-		)
-		[x, y, f(x, y)] 
-];
-
-sf_thickenT(points, thickness, direction = [0, 0, 1]);
-*/
