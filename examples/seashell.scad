@@ -1,3 +1,5 @@
+// The math of the shells: https://www.youtube.com/watch?v=pKHWzmxw_NI
+
 use <surface/sf_thickenT.scad>;
 
 alpha = 85; 
