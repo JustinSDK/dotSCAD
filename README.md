@@ -1,4 +1,4 @@
-# dotSCAD 3.0
+# dotSCAD 3.1 Preview
 
 > **Reduce the burden of mathematics/algorithm when playing OpenSCAD.**
 
