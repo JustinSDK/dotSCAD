@@ -13,6 +13,7 @@ use <matrix/m_transpose.scad>;
 
 function bezier_surface(t_step, ctrl_pts) =
     let(
+        _ = echo("`bezier_surface` is deprecated since 3.1. Use `sf_splines` instead."),
         leng_ctrl_pts = len(ctrl_pts),
         pts =  [
         for(i = 0; i < leng_ctrl_pts; i = i + 1)
