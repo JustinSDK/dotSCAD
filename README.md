@@ -8,8 +8,6 @@
 
 ## Introduction
 
-**This version Breaks Backward Compatibility and requires OpenSCAD 2021.01 or later!! Please see [Release Notes](RELEASE.md). You can still download v2.5 or older versions from [Releases](https://github.com/JustinSDK/dotSCAD/tags).**
-
 Some of my [3D models](https://github.com/JustinSDK/dotSCAD#examples) require complex mathematics/algorithm. I extract them into dotSCAD. Hope it helps when you're playing OpenSCAD.
 
 The idea of the name dotSCAD comes from the filename extension ".scad" of OpenSCAD. 
