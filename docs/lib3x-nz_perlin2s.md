@@ -12,10 +12,7 @@ Returns 2D [Perlin noise](https://en.wikipedia.org/wiki/Perlin_noise) values at 
 ## Examples
 
     use <util/rand.scad>;
-    use <hull_polyline2d.scad>;
-    use <function_grapher.scad>;
     use <noise/nz_perlin2s.scad>;
-    use <contours.scad>;
 
     seed = rand(0, 255);
 

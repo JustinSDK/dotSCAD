@@ -12,7 +12,7 @@ Computes contour polygons by applying [marching squares](https://en.wikipedia.or
 ## Examples
 
     use <hull_polyline2d.scad>;
-    use <function_grapher.scad>;
+	use <surface/sf_thicken.scad>;
     use <contours.scad>;
 
     min_value =  1;
@@ -29,7 +29,7 @@ Computes contour polygons by applying [marching squares](https://en.wikipedia.or
             ]
     ];
 
-    function_grapher(points, 1);
+    sf_thicken(points, 1);
 
     translate([max_value, 0, 0]) 
     for(z = [-30:5:30]) {

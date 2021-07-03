@@ -14,7 +14,7 @@ Returns the 2D [Perlin noise](https://en.wikipedia.org/wiki/Perlin_noise) value 
 
     use <util/rand.scad>;
     use <hull_polyline2d.scad>;
-    use <function_grapher.scad>;
+    use <surface/sf_thicken.scad>;
     use <noise/nz_perlin2.scad>;
     use <contours.scad>;
 
@@ -27,11 +27,11 @@ Returns the 2D [Perlin noise](https://en.wikipedia.org/wiki/Perlin_noise) value 
         ]
     ];
 
-    function_grapher(points, 1);
+    sf_thicken(points, .1);
 
     translate([11, 0])
     for(isoline = contours(points, 0)) {
         hull_polyline2d(isoline, width = .1);
-    }  
+    }   
 
 ![nz_perlin2](images/lib3x-nz_perlin2-1.JPG)
