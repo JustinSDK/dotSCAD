@@ -241,6 +241,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 [**matrix/m_scaling**(s)](https://openhome.cc/eGossip/OpenSCAD/lib3x-m_scaling.html) | generate a transformation matrix which can pass into `multmatrix` to scale its child elements using the specified vector.
 [**matrix/m_shearing**(sx = [0, 0], sy = [0, 0], sz = [0, 0])](https://openhome.cc/eGossip/OpenSCAD/lib3x-m_shearing.html) | generate a transformation matrix which can pass into `multmatrix` to shear all child elements along the X-axis, Y-axis, or Z-axis in 3D.
 [**matrix/m_translation**(v)](https://openhome.cc/eGossip/OpenSCAD/lib3x-m_translation.html) | generate a transformation matrix which can pass into multmatrix to translates (moves) its child elements along the specified vector.
+[**maxtrix/m_transpose**(m)](https://openhome.cc/eGossip/OpenSCAD/lib3x-m_transpose.html) | transpose a matrix.
 
 ## Point Transformation
 
@@ -254,6 +255,18 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 [**ptf/ptf_torus**(size, point, radius, angle = [360, 360], twist = 0)](https://openhome.cc/eGossip/OpenSCAD/lib3x-ptf_torus.html) | transform a point inside a rectangle to a point of a torus.
 [**ptf/ptf_x_twist**(size, point, angle)](https://openhome.cc/eGossip/OpenSCAD/lib3x-ptf_x_twist.html) | twist a point along the x-axis.
 [**ptf/ptf_y_twist**(size, point, angle)](https://openhome.cc/eGossip/OpenSCAD/lib3x-ptf_y_twist.html) | twist a point along the y-axis.
+
+## Triangle
+
+ Signature | Description
+--|--
+[**triangle/tri_circumcenter**(shape_pts)](https://openhome.cc/eGossip/OpenSCAD/lib3x-tri_circumcenter.html) | return the circumcenter of a triangle.
+[**triangle/tri_incenter**(shape_pts)](https://openhome.cc/eGossip/OpenSCAD/lib3x-tri_incenter.html) | return the incenter of a triangle.
+[**triangle/tri_ear_clipping**(shape_pts,  ret = "TRI_INDICES", ...)](https://openhome.cc/eGossip/OpenSCAD/lib3x-tri_ear_clipping.html) | triangulation by [ear clipping](https://en.wikipedia.org/wiki/Polygon_triangulation#Ear_clipping_method).
+[**triangle/tri_delaunay**(points, ret = "TRI_INDICES")](https://openhome.cc/eGossip/OpenSCAD/lib3x-tri_delaunay.html) | Join a set of points to make a [Delaunay triangulation](https://en.wikipedia.org/wiki/Delaunay_triangulation).
+[**triangle/tri_delaunay_indices**(d)](https://openhome.cc/eGossip/OpenSCAD/lib3x-tri_delaunay_indices.html) | return triangle indices from a delaunay object.
+[**triangle/tri_delaunay_shapes**(d)](https://openhome.cc/eGossip/OpenSCAD/lib3x-tri_delaunay_shapes.html) | return triangle shapes from a delaunay object.
+[**triangle/tri_delaunay_voronoi**(d)](https://openhome.cc/eGossip/OpenSCAD/lib3x-tri_delaunay_voronoi.html) | return [Voronoi](https://en.wikipedia.org/wiki/Voronoi_diagram) cells from a delaunay object.
 
 ----
 
@@ -306,6 +319,11 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 [**surface/sf_sphere**(levels, radius, thickness, depth, angle = [180, 360], invert = false)](https://openhome.cc/eGossip/OpenSCAD/lib3x-sf_sphere.html) | map a photo onto a sphere.
 [**surface/sf_square**(levels, thickness, depth, x_twist = 0, y_twist = 0, invert = false)](https://openhome.cc/eGossip/OpenSCAD/lib3x-sf_square.html) | turn a photo into a twistable square.
 [**surface/sf_torus**(levels, radius, thickness, depth, angle = [360, 360], twist = 0, invert = false)](https://openhome.cc/eGossip/OpenSCAD/lib3x-sf_torus.html) | turn a photo to a torus.
+[**surface/sf_curve**(levels, curve_path, ...)](https://openhome.cc/eGossip/OpenSCAD/lib3x-sf_curve.html) | curve a photo.
+[**surface/sf_splines**(ctrl_pts, row_spline, column_spline)](https://openhome.cc/eGossip/OpenSCAD/lib3x-sf_splines.html) | generalized-spline surface.
+[**surface/sf_thicken**(points, thickness, ...)](https://openhome.cc/eGossip/OpenSCAD/lib3x-sf_thicken.html) | thicken a surface.
+[**surface/sf_solidifyT**(points1, points2, triangles)](https://openhome.cc/eGossip/OpenSCAD/lib3x-sf_solidifyT.html) | solidify two surfaces with triangular mesh.
+[**surface/sf_thickenT**(points, thickness, ...)](https://openhome.cc/eGossip/OpenSCAD/lib3x-sf_thickenT.html) | thicken a surface with triangular mesh.
 
 ## Noise
 
@@ -346,42 +364,3 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 [**maze/mz_hamiltonian**(rows, columns, start = [0, 0], seed = undef)](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_hamiltonian.html) | create a hamiltonian path from a maze.
 [**maze/mz_theta_cells**(rows, beginning_number, start = [0, 0], seed = undef)](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_theta_cells.html) | return cell data of a theta maze.
 [**maze/mz_theta_get**(cell, query)](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_theta_get.html) | a helper for getting data from a theta-maze cell.
-
-----
-
-# Preview
-
-## Matrix
-
- Signature | Description
---|--
-[**maxtrix/m_transpose**(m)](https://openhome.cc/eGossip/OpenSCAD/lib3x-m_transpose.html) | transpose a matrix.
-
-## Surface
-
- Signature | Description
---|--
-[**surface/sf_curve**(levels, curve_path, ...)](https://openhome.cc/eGossip/OpenSCAD/lib3x-sf_curve.html) | curve a photo.
-[**surface/sf_splines**(ctrl_pts, row_spline, column_spline)](https://openhome.cc/eGossip/OpenSCAD/lib3x-sf_splines.html) | generalized-spline surface.
-[**surface/sf_thicken**(points, thickness, ...)](https://openhome.cc/eGossip/OpenSCAD/lib3x-sf_thicken.html) | thicken a surface.
-[**surface/sf_solidifyT**(points1, points2, triangles)](https://openhome.cc/eGossip/OpenSCAD/lib3x-sf_solidifyT.html) | solidify two surfaces with triangular mesh.
-[**surface/sf_thickenT**(points, thickness, ...)](https://openhome.cc/eGossip/OpenSCAD/lib3x-sf_thickenT.html) | thicken a surface with triangular mesh.
-
-## Triangle
-
- Signature | Description
---|--
-[**triangle/tri_circumcenter**(shape_pts)](https://openhome.cc/eGossip/OpenSCAD/lib3x-tri_circumcenter.html) | return the circumcenter of a triangle.
-[**triangle/tri_incenter**(shape_pts)](https://openhome.cc/eGossip/OpenSCAD/lib3x-tri_incenter.html) | return the incenter of a triangle.
-[**triangle/tri_ear_clipping**(shape_pts,  ret = "TRI_INDICES", ...)](https://openhome.cc/eGossip/OpenSCAD/lib3x-tri_ear_clipping.html) | triangulation by [ear clipping](https://en.wikipedia.org/wiki/Polygon_triangulation#Ear_clipping_method).
-[**triangle/tri_delaunay**(points, ret = "TRI_INDICES")](https://openhome.cc/eGossip/OpenSCAD/lib3x-tri_delaunay.html) | Join a set of points to make a [Delaunay triangulation](https://en.wikipedia.org/wiki/Delaunay_triangulation).
-[**triangle/tri_delaunay_indices**(d)](https://openhome.cc/eGossip/OpenSCAD/lib3x-tri_delaunay_indices.html) | return triangle indices from a delaunay object.
-[**triangle/tri_delaunay_shapes**(d)](https://openhome.cc/eGossip/OpenSCAD/lib3x-tri_delaunay_shapes.html) | return triangle shapes from a delaunay object.
-[**triangle/tri_delaunay_voronoi**(d)](https://openhome.cc/eGossip/OpenSCAD/lib3x-tri_delaunay_voronoi.html) | return [Voronoi](https://en.wikipedia.org/wiki/Voronoi_diagram) cells from a delaunay object.
-
-# Deprecated
-
- Name | Description
---|--
-**bezier_surface** | use **surface/sf_splines** instead.
-**function_grapher** | use **surface/sf_thicken** instead.
