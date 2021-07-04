@@ -60,7 +60,6 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
  Signature | Description
 --|--
 [**crystal_ball**(radius, theta = 360, phi = 180, thickness = undef)](https://openhome.cc/eGossip/OpenSCAD/lib3x-crystal_ball.html) | create a crystal ball based on [spherical coordinates (r, θ, φ) used in mathematics](https://en.wikipedia.org/wiki/Spherical_coordinate_system).
-[**function_grapher**(points, thickness = 1, style = "FACES")](https://openhome.cc/eGossip/OpenSCAD/lib3x-function_grapher.html) | create the graph of `f(x, y)` from a list of `[x, y, f(x, y)]`.
 [**hull_polyline3d**(points, diameter = 1)](https://openhome.cc/eGossip/OpenSCAD/lib3x-hull_polyline3d.html) | create a 3D polyline from a list of `[x, y, z]`.
 [**line3d**(p1, p2, diameter = 1, p1Style = "CAP_CIRCLE", p2Style = "CAP_CIRCLE")](https://openhome.cc/eGossip/OpenSCAD/lib3x-line3d.html) | create a 3D line from two points.
 [**loft**(sections, slices = 1)](https://openhome.cc/eGossip/OpenSCAD/lib3x-loft.html) | develop a smooth skin between crosssections with different geometries.
@@ -94,7 +93,6 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
  Signature | Description
 --|--
 [**angle_between**(vt1, vt2)](https://openhome.cc/eGossip/OpenSCAD/lib3x-angle_between.html) | return the angle between two vectors.
-[**bezier_surface**(t_step, ctrl_pts)](https://openhome.cc/eGossip/OpenSCAD/lib3x-bezier_surface.html) | given a set of control points, this function returns points of the Bézier surface.
 [**bezier_smooth**(path_pts, round_d, t_step = 0.1, closed = false, angle_threshold = 0)](https://openhome.cc/eGossip/OpenSCAD/lib3x-bezier_smooth.html) | use bazier curves to smooth a path.
 [**cross_sections**(shape_pts, path_pts, angles, twist = 0, scale = 1.0)](https://openhome.cc/eGossip/OpenSCAD/lib3x-cross_sections.html) | given a 2D shape, points and angles along the path, this function returns all cross-sections.
 [**in_polyline**(line_pts, pt, epsilon = 0.0001)](https://openhome.cc/eGossip/OpenSCAD/lib3x-in_polyline.html) | check whether a point is on a line.
