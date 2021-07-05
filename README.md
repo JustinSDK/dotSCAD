@@ -14,17 +14,17 @@ The idea of the name dotSCAD comes from the filename extension ".scad" of OpenSC
 
 ## Get Started
 
-OpenSCAD uses three library locations, the installation library, built-in library, and user defined libraries. It's convenient to set `OPENSCADPATH`. Check [Setting OPENSCADPATH](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries#Setting_OPENSCADPATH) in [OpenSCAD User Manual/Libraries](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries) for details.
+OpenSCAD uses three library locations, the installation library, built-in library, and user defined libraries. Check [Setting OPENSCADPATH](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries#Setting_OPENSCADPATH) in [OpenSCAD User Manual/Libraries](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries) for details.
 
 **I set `OPENSCADPATH` to the `src` folder of dotSCAD so all examples here start searching modules/functions from `src`.**
 
-Every public module/function is in the .scad whose filename is the same as the module/function name. Here's an example using the `line2d` module: 
+Every public module/function has the same name as the .scad file. Here's an example using the `line2d` module: 
 
 	use <line2d.scad>;
 
 	line2d(p1 = [0, 0], p2 = [5, 0], width = 1);
 
-Some modules/functions are organized in a directory. For example, vx_circle.scad exists in `voxel` directory. You have to prefix the directory name when using `vx_circle`.
+The library uses directories to categorize some modules/functions. For example, vx_circle.scad exists in `voxel` directory. Prefix the directory name when using `vx_circle`.
 
     use <voxel/vx_circle.scad>;
 	
