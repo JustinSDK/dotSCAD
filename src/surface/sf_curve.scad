@@ -10,7 +10,7 @@
 
 use <_impl/_sf_square_surfaces.scad>;
 use <sf_solidify.scad>;
-use <ptf/ptf_rotate.scad>;
+use <../ptf/ptf_rotate.scad>;
 
 module sf_curve(levels, curve_path, thickness, depth, invert = false) {
     rows = len(levels);
