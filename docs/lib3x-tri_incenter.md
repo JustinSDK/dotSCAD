@@ -6,7 +6,7 @@ The `tri_incenter` function returns the incenter of a 2D triangle.
 
 ## Parameters
 
-- `shape_pts` : the vertices of a 2D triangle.
+- `shape_pts` : the vertices of a 2D or 3D triangle.
 
 ## Examples
 
