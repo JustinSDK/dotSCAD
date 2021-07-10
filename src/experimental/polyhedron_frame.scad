@@ -141,30 +141,14 @@ module polyhedron_frame(points, faces, deep, thickness) {
 }
 
 /*
-use <__comm__/_convex_hull3.scad>;
-use <polyhedron_hull.scad>;
-use <experimental/convex_offset.scad>;
 use <experimental/polyhedron_frame.scad>;
 
-pts = [
-    [1, 1, 1],
-    [1, 1, 0],
-    [-1, 1, 0],
-    [-1, -1, 0],
-    [1, -1, 0],
-    [0, 0, 1],
-    [0, 0, -1]
-];
+points = [[-1, -1, 0], [-1, 1, 0], [0, 0, -1], [0, 0, 1], [1, -1, 0], [1, 1, 0], [1, 1, 1]];
 
-vts_faces = _convex_hull3(pts);
-
-// ===
+faces = [[2, 1, 0], [3, 0, 1], [4, 2, 0], [4, 0, 3], [5, 1, 2], [5, 2, 4], [6, 3, 1], [6, 1, 5], [6, 4, 3], [6, 5, 4]];
 
 deep = 0.2;
 thickness = 0.2;
-
-points = vts_faces[0];
-faces = vts_faces[1];
 
 polyhedron_frame(points, faces, deep, thickness);
 
@@ -186,4 +170,4 @@ cubeFaces = [
   [6,7,3,2],  // back
   [7,4,0,3]]; // left
   
-polyhedron_frame( cubePoints, cubeFaces, deep * 5, thickness * 5);*/
+*polyhedron_frame( cubePoints, cubeFaces, deep * 5, thickness * 5);*/
