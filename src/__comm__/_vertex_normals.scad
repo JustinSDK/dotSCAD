@@ -1,4 +1,5 @@
 
+use <_face_normal.scad>;
 use <../util/slice.scad>;
 use <../util/sort.scad>;
 use <../util/find_index.scad>;
@@ -23,9 +24,6 @@ function _connected_faces(faces, leng, leng_pts, cnt_faces, i = 0) =
 		]
 	)
 	_connected_faces(faces, leng, leng_pts, n_cnt_faces, i + 1);
-
-function face_normal(points) =
-	let(v = cross(points[2] - points[0], points[1] - points[0])) v / norm(v); 
 	
 function _vertex_normals(points, faces) = 
     let(
@@ -37,7 +35,7 @@ function _vertex_normals(points, faces) =
 		let(
 			face_normals = [
 				for(face = cnn_faces[i])
-					face_normal([for(i = face) points[i]])
+					_face_normal([for(i = face) points[i]])
 			]
 		)
 		sum(face_normals) / len(face_normals)

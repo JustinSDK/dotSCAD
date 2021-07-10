@@ -8,6 +8,7 @@
 *
 **/ 
 
+use <../__comm__/_face_normal.scad>;
 use <../util/sort.scad>;
 use <../util/find_index.scad>;
 use <../util/sum.scad>;
@@ -40,9 +41,6 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH") {
 		)
 		_connected_tris(triangles, leng, leng_pts, n_cnt_tris, i + 1);
 
-	function tri_normal(tri) =
-		let(v = cross(tri[2] - tri[0], tri[1] - tri[0])) v / norm(v); 
-
     leng_pts = len(points);
     cnn_tris = connected_tris(leng_pts, tris);
 
@@ -50,7 +48,7 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH") {
         dir_v = direction / norm(direction);
         mid = sort(points)[leng_pts / 2];
         tri = cnn_tris[find_index(points, function(p) p == mid)][0];
-        nv = tri_normal([points[tri[0]], points[tri[1]], points[tri[2]]]);
+        nv = _face_normal([points[tri[0]], points[tri[1]], points[tri[2]]]);
         pts = [for(p = points) p + dir_v * thickness];
 
         if(nv * dir_v > 0) {
@@ -66,7 +64,7 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH") {
             let(
                 normals = [
                     for(tri = cnn_tris[i])
-                    tri_normal([
+                    _face_normal([
                         points[tri[0]], 
                         points[tri[1]], 
                         points[tri[2]]]
