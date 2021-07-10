@@ -8,11 +8,13 @@ function convex_offset(vertices, d) =
 		    curr_p = vertices[i],
 			next_p = vertices[(i + 1) % leng_vertices],
 			pre_p = vertices[(i + leng_vertices - 1) % leng_vertices],
-		    v1 = pre_p - curr_p,
+			c = tri_incenter([curr_p, next_p, pre_p]),
+		    v1 = c - curr_p,
 			v2 = next_p - curr_p,
-			a = acos((v1 * v2) / (norm(v1) * norm(v2))),
-			leng = -d * sin(a / 2),
-			v = tri_incenter([curr_p, next_p, pre_p]) - curr_p
+			leng_v1 = norm(v1),
+			leng_v2 = norm(v2),
+			a = acos((v1 * v2) / (leng_v1 * leng_v2)),
+			leng = -d / sin(a) 
 		)
-		v / norm(v) * leng + curr_p
+		v1 / leng_v1 * leng + curr_p
     ];
