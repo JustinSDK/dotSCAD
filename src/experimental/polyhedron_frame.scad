@@ -143,24 +143,24 @@ module polyhedron_frame(points, faces, deep, thickness) {
 /*
 use <experimental/polyhedron_frame.scad>;
 
+deep = 0.2;
+thickness = 0.2;
+
 points = [[-1, -1, 0], [-1, 1, 0], [0, 0, -1], [0, 0, 1], [1, -1, 0], [1, 1, 0], [1, 1, 1]];
 
 faces = [[2, 1, 0], [3, 0, 1], [4, 2, 0], [4, 0, 3], [5, 1, 2], [5, 2, 4], [6, 3, 1], [6, 1, 5], [6, 4, 3], [6, 5, 4]];
 
-deep = 0.2;
-thickness = 0.2;
-
 polyhedron_frame(points, faces, deep, thickness);
 
 cubePoints = [
-  [  0,  0,  0 ],  //0
-  [ 10,  0,  0 ],  //1
-  [ 10,  7,  0 ],  //2
-  [  0,  7,  0 ],  //3
-  [  0,  0,  5 ],  //4
-  [ 10,  0,  5 ],  //5
-  [ 10,  7,  5 ],  //6
-  [  0,  7,  5 ]]; //7
+  [ 0,  0,  0],  //0
+  [ 2,  0,  0],  //1
+  [ 2,  1.4, 0],  //2
+  [ 0,  1.4, 0],  //3
+  [ 0,  0,  1],  //4
+  [ 2,  0,  1],  //5
+  [ 2,  1.4, 1],  //6
+  [ 0,  1.4, 1]]; //7
   
 cubeFaces = [
   [0,1,2,3],  // bottom
@@ -169,5 +169,6 @@ cubeFaces = [
   [5,6,2,1],  // right
   [6,7,3,2],  // back
   [7,4,0,3]]; // left
-  
-*polyhedron_frame( cubePoints, cubeFaces, deep * 5, thickness * 5);*/
+
+translate([2, 0, 0])
+    polyhedron_frame( cubePoints, cubeFaces, deep, thickness);*/
