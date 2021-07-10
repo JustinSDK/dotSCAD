@@ -108,12 +108,12 @@ module polyhedron_frame(points, faces, deep, outer_thickness, inner_thickness = 
 	];
 	offset_face_inner_pts = [ 
 		for(face = faces)
-        inner_thickness == 0 ? reverse([for(i = face) inner_pts[i]]) :
+        inner_thickness == 0 ? [for(i = face) inner_pts[i]] :
 		                       reverse(convex_offset([for(i = face) inner_pts[i]], -inner_thickness))
 	];
 
 	outer = hollow_faces(face_pts, offset_face_pts);
-	inner = hollow_faces(face_inner_pts, offset_face_inner_pts);
+	inner = inner_thickness == 0 ? [[], []] : hollow_faces(face_inner_pts, offset_face_inner_pts);
 
 	outer_inner_pts = concat(outer[0], inner[0]);
 	leng_outer = len(outer[0]);
@@ -123,10 +123,12 @@ module polyhedron_frame(points, faces, deep, outer_thickness, inner_thickness = 
 	]);
 
 	// offset_face_pts
-	offset_face_inner_pts2 = [ 
-		for(face_pts = offset_face_inner_pts)
-		reverse(face_pts)
-	];
+	offset_face_inner_pts2 = inner_thickness == 0 ? 
+		offset_face_inner_pts :
+		[ 
+			for(face_pts = offset_face_inner_pts)
+			reverse(face_pts)
+		];
 
 	hollow_sides = sides(offset_face_pts, offset_face_inner_pts2);
 
