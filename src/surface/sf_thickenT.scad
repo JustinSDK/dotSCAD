@@ -10,7 +10,6 @@
 
 use <../util/sort.scad>;
 use <../util/find_index.scad>;
-use <../util/slice.scad>;
 use <../util/sum.scad>;
 use <../surface/sf_solidifyT.scad>;
 use <../triangle/tri_delaunay.scad>;
@@ -28,29 +27,18 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH") {
 			leng = len(triangles),
 			cnt_tris = [for(i = [0:leng_pts - 1]) []]
 		)
-		_connected_tris(triangles, leng, cnt_tris);
+		_connected_tris(triangles, leng, leng_pts, cnt_tris);
 		
-	function _connected_tris(triangles, leng, cnt_tris, i = 0) = 
+	function _connected_tris(triangles, leng, leng_pts, cnt_tris, i = 0) = 
 		i == leng ? cnt_tris :
 		let(
 			tri = sort(triangles[i], by = ascending),
-			b0 = cnt_tris[tri[0]],
-			b1 = cnt_tris[tri[1]],
-			b2 = cnt_tris[tri[2]],
-			nb0 = concat(b0, [triangles[i]]),
-			nb1 = concat(b1, [triangles[i]]),
-			nb2 = concat(b2, [triangles[i]]),
-			n_cnt_tris = concat(
-				slice(cnt_tris, 0, tri[0]),
-				[nb0],
-				slice(cnt_tris, tri[0] + 1, tri[1]),
-				[nb1],
-				slice(cnt_tris, tri[1] + 1, tri[2]),
-				[nb2],
-				slice(cnt_tris, tri[2] + 1)
-			)
+            n_cnt_tris = [
+                for(k = [0:leng_pts - 1])
+                find_index(tri, function(e) e == k) != -1 ? concat(cnt_tris[k], [triangles[i]]) : cnt_tris[k]
+            ]
 		)
-		_connected_tris(triangles, leng, n_cnt_tris, i + 1);
+		_connected_tris(triangles, leng, leng_pts, n_cnt_tris, i + 1);
 
 	function tri_normal(tri) =
 		let(v = cross(tri[2] - tri[0], tri[1] - tri[0])) v / norm(v); 
