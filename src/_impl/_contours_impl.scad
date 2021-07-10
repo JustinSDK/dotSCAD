@@ -1,4 +1,4 @@
-use <util/lerp.scad>;
+use <../util/lerp.scad>;
 
 function interpolated_pt(p0, p1, threshold) = 
     lerp(

@@ -1,4 +1,4 @@
-use <util/slice.scad>;
+use <../util/slice.scad>;
 
 function _convex_hull_lt_than_by_xy(p1, p2) =
     p1[0] < p2[0] || (p1[0] == p2[0] && p1[1] < p2[1]);
