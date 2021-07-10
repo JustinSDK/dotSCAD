@@ -118,7 +118,7 @@ module polyhedron_frame(points, faces, deep, outer_thickness, inner_thickness = 
 	outer_inner_pts = concat(outer[0], inner[0]);
 	leng_outer = len(outer[0]);
 	outer_inner_faces = concat(outer[1], [
-		for(face = outer[1])
+		for(face = inner[1])
 		[for(i = face) leng_outer + i]
 	]);
 
