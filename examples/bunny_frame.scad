@@ -12,6 +12,7 @@ function bunny() =
 
 
 points_faces = bunny();
+// debug
 *for(i = [0:len(points_faces[0]) - 1]) {
     #
     translate(points_faces[0][i]) {
