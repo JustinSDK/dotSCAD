@@ -140,7 +140,12 @@ module polyhedron_frame(points, faces, deep, outer_thickness, inner_thickness = 
 		[for(i = face) leng_outer_inner + i]
 	]);
 
-	polyhedron(all_points, all_faces);
+    if(deep > 0) {
+	    polyhedron(all_points, all_faces);
+	}
+	else {
+		polyhedron(all_points, [for(f = all_faces) reverse(f)]);
+	}
 }
 
 /*
