@@ -4,11 +4,11 @@ $fn = 96;
 arc_a = 120;
 arc_r = 15;
 inner_r = 12;
-twisted_circles = 1;
+number_of_turns = 1;
 
-twisted_donut(arc_a, arc_r, inner_r, twisted_circles) ;
+cutted_donut(arc_a, arc_r, inner_r, number_of_turns) ;
 
-module twisted_donut(arc_a, arc_r, inner_r, twisted_circles) {
+module cutted_donut(arc_a, arc_r, inner_r, number_of_turns) {
 
 	arc_step = 360 / $fn;
 	for(init_a = [0, 180]) {
@@ -19,7 +19,7 @@ module twisted_donut(arc_a, arc_r, inner_r, twisted_circles) {
 		ring_extrude(
 			sh, 
 			radius = arc_r + inner_r, 
-			twist = 180 + 360 * twisted_circles, 
+			twist = 180 + 360 * number_of_turns, 
 			angle = 360
 		);
 	}
