@@ -1,21 +1,15 @@
 use <ring_extrude.scad>;
+use <arc_path.scad>;
 
 $fn = 96;
-inner_r = 12;
+r = 20;
 number_of_turns = 1;
 
+shape = arc_path(radius = 15, angle = [0, 120]);
 
-arc_a = 120;
-arc_r = 15;
-shape = [
-	for(a = [0:360 / $fn:arc_a]) 
-		[arc_r * cos(a) , arc_r * sin(a)]
-];
-
-cutted_donut(shape, inner_r, number_of_turns) ;
+cutted_donut(shape, r, number_of_turns) ;
 
 module cutted_donut(shape, inner_r, number_of_turns) {
-	r = arc_r + inner_r;
 	t = 180 + 360 * number_of_turns;
 	for(s = [shape, shape * -1]) {
 		ring_extrude(s, radius = r, twist = t, angle = 360);
