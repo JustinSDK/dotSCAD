@@ -24,9 +24,6 @@ twice_ring_extrude(
 	shape_turns = 3
 );
 
-function y_offset(shape, d) =
-    [for(p = shape) [p[0], p[1] + d]];
-
 module twice_ring_extrude(shape, r, shape_turns) {
 	t = 360 * shape_turns;
 	ring_extrude(shape, radius = r, twist = t, angle = 720);
