@@ -26,7 +26,6 @@ module maze_tower() {
 	mz_leng = len(mz);
 	outThetaStep = 360 / len(mz[rows - 1]);
 	r = cell_width * (rows + 1);
-	outfa = outThetaStep / r;
 
 	module maze() {
 		for(rows = mz) {
