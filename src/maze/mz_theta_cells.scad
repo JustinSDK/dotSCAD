@@ -17,4 +17,4 @@ function mz_theta_cells(rows, beginning_number, start = [0, 0], seed) =
         s = set_visited(before_traveled[start[0]][start[1]])
 	)
 	backtracker(
-	    update_maze(before_traveled, s), start, rows);
+	    update_maze(before_traveled, s), start, rows, seed);
