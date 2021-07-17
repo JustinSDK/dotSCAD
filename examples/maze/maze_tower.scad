@@ -5,7 +5,7 @@ use <polyline2d.scad>;
 
 $fn = 48;
 
-rows = 4;
+rows = 6;
 beginning_number = 5;
 cell_width = 2;
 
@@ -83,7 +83,7 @@ module maze_tower() {
 		theta1 = outThetaStep * ci;
 		theta2 = outThetaStep * (ci + 1);
 		linear_extrude(wall_height)
-			arc(r * 0.9999, [theta1 + 2, theta2 - 2], wall_thickness);
+			arc(r * 0.9999, [theta1 + outThetaStep * 0.1, theta1 + outThetaStep * 0.75], wall_thickness);
 	}
 
 	module d_stairs() {
