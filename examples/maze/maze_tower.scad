@@ -54,7 +54,7 @@ module maze_tower() {
 			} 
 		} 
 
-		arc(r, [0, 360], wall_thickness);
+		arc(r, 360, wall_thickness);
 	}
 
 	module maze_floors() {
@@ -78,9 +78,7 @@ module maze_tower() {
 		}
 		last_rows = mz[mz_leng - 1];
 		i = find_index(last_rows, function(cell) cell[2] == CCW_WALL || cell[2] == INWARD_CCW_WALL);
-		ci = last_rows[i][1];
-		theta1 = outThetaStep * ci;
-		theta2 = outThetaStep * (ci + 1);
+		theta1 = outThetaStep * last_rows[i][1];
 		linear_extrude(wall_height)
 			arc(r * 0.9999, [theta1 + outThetaStep * 0.1, theta1 + outThetaStep * 0.75], wall_thickness);
 	}
@@ -88,26 +86,20 @@ module maze_tower() {
 	module d_stairs() {
 		num_stairs = 4;
 		half_wall_thickness = wall_thickness / 2;
+		stair_thickness = wall_thickness / 3;
 		or = r + half_wall_thickness;
 		for(ri = [0:2:rows * 2]) {
 			for(si = [0:2]) {
-				r_off = wall_thickness / 3 * si;
-				r1 = or - wall_thickness / 3 * si - wall_thickness * ri;
-				r2 = or - wall_thickness / 3 * (si + 1) - wall_thickness * ri;
-				
+				r = or - stair_thickness * si - wall_thickness * ri;
 				translate([0, 0, wall_height * ri / 2 + wall_height / num_stairs * (si + 1)])
 				linear_extrude(wall_height / num_stairs * (3 - si))
-				
-				difference() {
-					circle(r1);
-					circle(r2);
-				}
+				    arc(r, 360, stair_thickness, width_mode = "LINE_INWARD");
 			}
 		}
 	}
 
 	difference() {
-		maze_floors();
+        maze_floors();
 		d_stairs();
 	}
 }
