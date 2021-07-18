@@ -14,6 +14,7 @@ maze_tower();
 module maze_tower() {
 	wall_thickness = cell_width / 2;
 	wall_height = cell_width * 0.75;
+    half_wall_thickness = wall_thickness / 2;
 
 	NO_WALL = 0;           
 	INWARD_WALL = 1;      
@@ -49,7 +50,13 @@ module maze_tower() {
 				}
 
 				if(type == CCW_WALL || type == INWARD_CCW_WALL) {
-					polyline2d([innerVt2, outerVt2], width = wall_thickness);
+					intersection() {
+						difference() {
+						    circle(outerR + half_wall_thickness);
+							circle(innerR - half_wall_thickness);
+						}
+						polyline2d([innerVt2 * 0.9, outerVt2], width = wall_thickness);
+					}
 				}
 			} 
 		} 
@@ -71,10 +78,7 @@ module maze_tower() {
 			}
 			translate([0, 0, -0.1])
 			linear_extrude(wall_height * (mz_leng + 2)) 
-			difference() {
-				maze();
-				circle(cell_width * 0.79);
-			}
+			    maze();
 		}
 		last_rows = mz[mz_leng - 1];
 		i = find_index(last_rows, function(cell) cell[2] == CCW_WALL || cell[2] == INWARD_CCW_WALL);
@@ -85,7 +89,6 @@ module maze_tower() {
 
 	module d_stairs() {
 		num_stairs = 4;
-		half_wall_thickness = wall_thickness / 2;
 		stair_thickness = wall_thickness / 3;
 		or = r + half_wall_thickness;
 		for(ri = [0:2:rows * 2]) {
@@ -100,6 +103,6 @@ module maze_tower() {
 
 	difference() {
         maze_floors();
-		d_stairs();
+        d_stairs();
 	}
 }
