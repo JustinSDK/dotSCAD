@@ -64,31 +64,31 @@ module hilbert_dragon() {
 
     module head(angy_angz) {
         module hair() {
-            for(i = [18:35]) {
+            for(i = [16:36]) {
                 rotate(i * 10) 
-                translate([0, -14, 0]) 
+                translate([0, -13, 0]) 
                 rotate([9, 0, 0]) 
-                linear_extrude(15, scale = 0.05, twist = 30) 
+                linear_extrude(15, scale = 0.05, twist = 50 - rands(0, 100, 1, seed = i)[0]) 
                 translate([0, 10, 0]) 
                     circle(3, $fn = 4);    
             }       
 
             for(i = [0:35]) {
-                rotate(i * 10) 
-                translate([0, -12, 0]) 
+                rotate(i * 12) 
+                translate([0, -11.5, 0]) 
                 rotate([5, 0, 0]) 
-                linear_extrude(20, scale = 0.05, twist = 30) 
+                linear_extrude(20, scale = 0.05, twist = 50 - rands(0, 100, 1, seed = i + 1)[0]) 
                 translate([0, 10, 0]) 
-                    circle(2, $fn = 4);    
+                    circle(3.2, $fn = 5);    
             }
             
             for(i = [0:35]) {
                 rotate(i * 10) 
                 translate([0, -10, 0]) 
                 rotate([2, 0, 0]) 
-                linear_extrude(22, scale = 0.05, twist = -30) 
+                linear_extrude(22, scale = 0.05, twist = 50 - rands(0, 100, 1, seed = i + 2)[0]) 
                 translate([0, 10, 0]) 
-                    circle(3, $fn = 4);    
+                    circle(3, $fn = 5);    
             }     
         }
         
