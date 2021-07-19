@@ -9,9 +9,9 @@ $fn = 48;
 t_step = 0.05;
 
 rotate([90, 0, 0])
-    ms_paperclip_meme();
+    ms_clippy();
 
-module ms_paperclip_meme() {
+module ms_clippy() {
     clip_path = curve(t_step, [[15, 15, 0], [5.75, 14.5, 1], [2, 4.5, 0], [-3.5, 8, 0.25],  [-1.5, 24, 0.75], [4, 25.5, 0], [2.5, 18, 1], [1.5, 9, 0], [-1.5, 9.75, 0],  [-1, 16.5, 1], [-2, 22, 1]]);
 
     color("Gainsboro")
