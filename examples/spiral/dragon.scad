@@ -211,7 +211,7 @@ module dragon() {
 }
 
 module flame_mountain(beginning_radius, fn, amplitude,curve_step, smoothness) {
-	seed = rand() * 1000;
+	seed = 1000;
 	section = shape_circle(radius = beginning_radius, $fn = fn);
 	pt = [beginning_radius, 0, 0];
 
@@ -253,7 +253,7 @@ rotate(60)
     flame_mountain(
         beginning_radius = 26, 
         fn = 18, 
-        amplitude = 8, 
+        amplitude = 7, 
         curve_step = 0.04, 
         smoothness = 10
     );
