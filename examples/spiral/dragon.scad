@@ -7,6 +7,11 @@ use <curve.scad>;
 use <sweep.scad>;
 use <paths2sections.scad>;
 use <ptf/ptf_rotate.scad>;
+use <shape_circle.scad>;
+use <bezier_curve.scad>;
+use <path_scaling_sections.scad>;
+use <util/rand.scad>;
+use <noise/nz_perlin2s.scad>;
 
 r1 = 25;
 r2 = 15;
@@ -205,7 +210,50 @@ module dragon() {
     head(angy_angz);
 }
 
-translate([0, 0, 7]) dragon($fn = 12);
-linear_extrude(65, scale = 0.4)  circle(30);
-translate([0, 0, 65]) linear_extrude(15, scale = 0.01) circle(30 * 0.4);
+module flame_mountain(beginning_radius, fn, amplitude,curve_step, smoothness) {
+	seed = rand() * 1000;
+	section = shape_circle(radius = beginning_radius, $fn = fn);
+	pt = [beginning_radius, 0, 0];
 
+	edge_path = bezier_curve(curve_step, [
+		pt,
+		pt + [-6, 0, 20],
+		pt + [-7, 0, 50],
+		pt + [-9, 0, 60],
+		pt + [-26, 0, 72],
+		pt * 0.9 + [-23.25, 0, 85]
+	]);
+
+
+	sections = path_scaling_sections(section, edge_path);
+
+    noise = function(pts, seed) nz_perlin2s(pts, seed);
+
+	noisy = [
+		for(section = sections)
+		let(nz = noise(section / smoothness, seed))
+		[
+			for(i = [0:len(nz) - 1])
+			let(
+				p = section[i],
+				p2d = [p[0], p[1]],
+				noisyP = p2d + p2d / norm(p2d) * nz[i] * amplitude
+			)
+			[noisyP[0], noisyP[1], p[2]]
+		]
+	];
+
+
+	sweep(noisy);
+}
+
+translate([0, 0, 7]) 
+    dragon($fn = 12);
+rotate(60)
+    flame_mountain(
+        beginning_radius = 26, 
+        fn = 18, 
+        amplitude = 8, 
+        curve_step = 0.04, 
+        smoothness = 10
+    );
