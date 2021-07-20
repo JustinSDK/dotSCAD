@@ -115,23 +115,23 @@ module hilbert_dragon() {
             rotate([90, 0, -90]) 
                 sweep(paths2sections([path1, path2, path3, path4, path5]));
 
-            translate([0, 0, -3]) 
+            translate([0, 0, -4]) 
             rotate([90, 0, -90]) 
                 ellipse_extrude(5.5, slices = 4) 
                     polygon(
-                    shape_trapezium([6, 20], 
-                    h = 20,
-                    corner_r = 0)
-                );    
+                    shape_trapezium([5, 18], 
+                        h = 20,
+                        corner_r = 3.25, $fn = 5)
+                    );    
                         
             mirror([1, 0, 0]) 
             translate([0, 0, -3]) 
             rotate([85, 0, -90])
             ellipse_extrude(4, slices = 2) 
                 polygon(
-                    shape_trapezium([6, 19], 
+                    shape_trapezium([5, 18], 
                     h = 20,
-                    corner_r = 0)
+                    corner_r = 3.25, $fn = 5)
                 );       
         }
         
@@ -147,11 +147,11 @@ module hilbert_dragon() {
         }
         
         module one_beard() {
-            translate([-11, -12, -11])
+            translate([-11.25, -12, -11])
             rotate(180) 
             linear_extrude(8, scale = 0.2, twist = 90) 
             translate([-10, -10, 0]) 
-                circle(1.25, $fn = 6);    
+                circle(1, $fn = 6);    
         }
         
         rotate([0, angy_angz[0] + 15, angy_angz[1]]) 
