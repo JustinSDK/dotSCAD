@@ -101,8 +101,8 @@ module head(angy_angz) {
     }
     
     module one_horn() {        
-        translate([-10, -4, -1]) 
-        rotate([40, -25, 0]) 
+        translate([-9, -4, -2]) 
+        rotate([45, -25, 0]) 
         linear_extrude(30, scale = 0.1, twist = -90) 
         translate([7.5, 0, 0]) 
             circle(3, $fn = 4);    
@@ -119,13 +119,13 @@ module head(angy_angz) {
         rotate([90, 0, -90]) 
             sweep(paths2sections([path1, path2, path3, path4, path5]));
 
-        translate([0, 0, -4]) 
+        translate([0, 0, -3.25]) 
         rotate([90, 0, -90]) 
-            ellipse_extrude(5.5, slices = 4) 
+            ellipse_extrude(5.5, slices = 2) 
                 polygon(
-                shape_trapezium([5, 18], 
+                    shape_trapezium([5, 18], 
                     h = 20,
-                    corner_r = 3.25, $fn = 5)
+                    corner_r = 2, $fn = 4)
                 );    
                     
         mirror([1, 0, 0]) 
@@ -135,23 +135,23 @@ module head(angy_angz) {
             polygon(
                 shape_trapezium([5, 18], 
                 h = 20,
-                corner_r = 3.25, $fn = 5)
+                corner_r = 2, $fn = 5)
             );       
     }
     
     module one_eye() {
-        translate([-5, 2.6, -2]) 
-        rotate([-10, 0, -25]) 
-        scale([1, 1, 2]) 
-            sphere(1.75, $fn = 5);      
+        translate([-5, 2.5, -2]) 
+        rotate([-5, -8, -10]) 
+        scale([1, 1, 1.75]) 
+            sphere(1.75, $fn = 6);      
 
-        translate([-5.25, 3.5, -2.5]) 
-        rotate([-15, 0, 75]) 
-            sphere(0.65, $fn = 7);                      
+        translate([-5.1, 3.75, -2.25]) 
+        rotate([-25, 0, 75]) 
+            sphere(0.65, $fn = 6);                      
     }
     
     module one_beard() {
-        translate([-11.25, -12, -11])
+        translate([-11.15, -12, -10])
         rotate(180) 
         linear_extrude(8, scale = 0.2, twist = 90) 
         translate([-10, -10, 0]) 

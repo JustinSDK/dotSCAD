@@ -97,8 +97,8 @@ module hilbert_dragon() {
         }
         
         module one_horn() {        
-            translate([-10, -4, -1]) 
-            rotate([40, -25, 0]) 
+            translate([-9, -4, -2]) 
+            rotate([45, -25, 0]) 
             linear_extrude(30, scale = 0.1, twist = -90) 
             translate([7.5, 0, 0]) 
                 circle(3, $fn = 4);    
@@ -115,13 +115,13 @@ module hilbert_dragon() {
             rotate([90, 0, -90]) 
                 sweep(paths2sections([path1, path2, path3, path4, path5]));
 
-            translate([0, 0, -4]) 
+            translate([0, 0, -3.25]) 
             rotate([90, 0, -90]) 
-                ellipse_extrude(5.5, slices = 4) 
+                ellipse_extrude(5.5, slices = 2) 
                     polygon(
-                    shape_trapezium([5, 18], 
+                        shape_trapezium([5, 18], 
                         h = 20,
-                        corner_r = 3.25, $fn = 5)
+                        corner_r = 2, $fn = 4)
                     );    
                         
             mirror([1, 0, 0]) 
@@ -131,23 +131,23 @@ module hilbert_dragon() {
                 polygon(
                     shape_trapezium([5, 18], 
                     h = 20,
-                    corner_r = 3.25, $fn = 5)
+                    corner_r = 2, $fn = 5)
                 );       
         }
         
         module one_eye() {
-            translate([-5, 2.6, -2]) 
-            rotate([-10, 0, -25]) 
-            scale([1, 1, 2]) 
-                sphere(1.75, $fn = 5);      
+            translate([-5, 2.5, -2]) 
+            rotate([-5, -8, -10]) 
+            scale([1, 1, 1.75]) 
+                sphere(1.75, $fn = 6);      
 
-            translate([-5.25, 3.5, -2.5]) 
-            rotate([-15, 0, 75]) 
-                sphere(0.65, $fn = 7);                      
+            translate([-5.1, 3.75, -2.25]) 
+            rotate([-25, 0, 75]) 
+                sphere(0.65, $fn = 6);                      
         }
         
         module one_beard() {
-            translate([-11.25, -12, -11])
+            translate([-11.15, -12, -10])
             rotate(180) 
             linear_extrude(8, scale = 0.2, twist = 90) 
             translate([-10, -10, 0]) 
@@ -174,6 +174,36 @@ module hilbert_dragon() {
                 mirror([0, 1, 0]) one_beard();
             }        
         }
+    }
+
+    module dragon() {
+        path_pts = helix(
+            radius = [r1, r2], 
+            levels = levels, 
+            level_dist = level_dist, 
+            vt_dir = "SPI_DOWN", 
+            rt_dir = "CLK", 
+            $fn = 36
+        );
+
+        function __angy_angz(p1, p2) = 
+            let(
+                dx = p2[0] - p1[0],
+                dy = p2[1] - p1[1],
+                dz = p2[2] - p1[2],
+                ya = atan2(dz, sqrt(dx * dx + dy * dy)),
+                za = atan2(dy, dx)
+            ) [ya, za];
+            
+        angy_angz = __angy_angz(path_pts[0], path_pts[1]);
+        
+        scale(1.1) 
+        along_with(path_pts, scale = 0.85, method = "EULER_ANGLE")    
+            one_segment();
+            
+        translate([19, 0, 65]) 
+        rotate([95, 0, 0]) 
+            head(angy_angz);
     }
 
     lines = hilbert_curve();
