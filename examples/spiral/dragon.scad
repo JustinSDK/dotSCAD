@@ -5,7 +5,6 @@ use <ellipse_extrude.scad>;
 use <shear.scad>;
 use <curve.scad>;
 use <sweep.scad>;
-use <sweep.scad>;
 use <paths2sections.scad>;
 use <ptf/ptf_rotate.scad>;
 
