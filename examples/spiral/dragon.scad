@@ -3,6 +3,11 @@ use <along_with.scad>;
 use <shape_trapezium.scad>;
 use <ellipse_extrude.scad>;
 use <shear.scad>;
+use <curve.scad>;
+use <sweep.scad>;
+use <sweep.scad>;
+use <paths2sections.scad>;
+use <ptf/ptf_rotate.scad>;
 
 r1 = 25;
 r2 = 15;
@@ -100,18 +105,19 @@ module head(angy_angz) {
     }
     
     module mouth() {
+        path1 = curve(0.4, [[0, -8, -1], [0, -11, 0], [0, -12, 5], [0, -9, 5], [0, -4, 6], [0, -0.5, 8], [0, 5, 6.5], [0, 8, 6], [0, 12, 0], [0, 16, 0]]);
+        path2 = [for(p = path1) ptf_rotate(p, [0, -12, 0]) * 0.9 + [-2, 0, 0]];
+        path3 = [for(i = [0:len(path1) - 1]) [-i / 6 - 1.5, i / 1.65 - 9, 0]];
+        path4 = [for(p = path3) [-p[0], p[1], p[2]]];
+        path5 = [for(p = path2) [-p[0], p[1], p[2]]];
+
         translate([0, 0, -2]) 
         rotate([90, 0, -90]) 
-        ellipse_extrude(8, slices = 2) 
-            polygon(
-                shape_trapezium([4, 15], 
-                h = 22,
-                corner_r = 0)
-            );       
-        
+            sweep(paths2sections([path1, path2, path3, path4, path5]));
+
         translate([0, 0, -3]) 
         rotate([90, 0, -90]) 
-            ellipse_extrude(6, slices = 4) 
+            ellipse_extrude(5.5, slices = 4) 
                 polygon(
                 shape_trapezium([6, 20], 
                 h = 20,
@@ -130,14 +136,14 @@ module head(angy_angz) {
     }
     
     module one_eye() {
-        translate([-5, 3, -2]) 
-        rotate([-15, 0, 75]) 
-        scale([1, 1, 1.5]) 
-            sphere(1.5, $fn = 5);      
+        translate([-5, 2.6, -2]) 
+        rotate([-10, 0, -25]) 
+        scale([1, 1, 2]) 
+            sphere(1.75, $fn = 5);      
 
-        translate([-5.5, 3.5, -2.5]) 
+        translate([-5.25, 3.5, -2.5]) 
         rotate([-15, 0, 75]) 
-            sphere(0.5, $fn = 8);                      
+            sphere(0.65, $fn = 7);                      
     }
     
     module one_beard() {
