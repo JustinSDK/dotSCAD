@@ -58,16 +58,17 @@ module one_segment() {
         square([2, 12], center = true);            
             
     // belly
-    translate([0, -2.5, 1]) 
-    rotate([-10, 0, 0]) 
-    scale([1.1, 0.8, 1.25])  
-        sphere(5.8, $fn = 8); 
+    hull() {
+        translate([0, -2.5, 1]) 
+        rotate([-10, 0, 0]) 
+        scale([1.1, 0.8, 1.25])  
+            sphere(5.8, $fn = 8); 
 
-    translate([0, 0, -1.65]) 
-    rotate([-5, 0, 0]) 
-    scale([1, 0.8, 1.6])  
-        sphere(5.5, $fn = 8);  
-        
+        translate([0, 0, -1.65]) 
+        rotate([-5, 0, 0]) 
+        scale([1, 0.8, 1.6])  
+            sphere(5.5, $fn = 8);  
+    } 
 }
 
 module tail() {
