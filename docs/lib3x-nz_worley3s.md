@@ -18,12 +18,12 @@ It divides the space into grids. The nucleus of each cell is randomly placed in 
     use <voxel/vx_sphere.scad>;
     use <noise/nz_worley3s.scad>;
 
-    tile_w = 10;
+    grid_w = 10;
     dist = "euclidean"; // [euclidean, manhattan, chebyshev, border] 
     seed = 51;
 
     points = vx_sphere(20);
-    cells = nz_worley3s(points, seed, tile_w, dist);
+    cells = nz_worley3s(points, seed, grid_w, dist);
 
     for(i = [0:len(cells) - 1]) {
         c = (norm([cells[i][0], cells[i][1], cells[i][2]]) % 20) / 20;
