@@ -79,11 +79,11 @@ module one_segment() {
     }
     
     // dorsal fin
-    translate([0, 3, -3]) 
-    rotate([-75, 0, 0]) 
-    shear(sy = [0, 3.5])
-    linear_extrude(2.25, scale = 0.2)
-        square([2, 12], center = true);            
+    translate([0, 2.5, -3]) 
+    rotate([-65, 0, 0]) 
+    shear(sy = [0, 2])
+    linear_extrude(4, scale = 0.2)
+        square([2, 10], center = true);            
             
     // belly
     hull() {
