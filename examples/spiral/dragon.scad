@@ -46,8 +46,8 @@ module one_segment() {
         scales(60, 4, 5, 0, 1.5);
         scales(75, 2.5, 5, -4, 1.25);
         scales(100, 1.25, 4.5, -7, 1);
-        scales(110, 1.25, 3, -9, 1);
-        scales(120, 2.5, 2, -9, 1);   
+        // %scales(110, 1.25, 3, -9, 1);
+        // %scales(120, 2.5, 2, -9, 1);   
     }
     
     // dorsal fin
@@ -68,6 +68,16 @@ module one_segment() {
     scale([1, 0.8, 1.6])  
         sphere(5.5, $fn = 8);  
         
+}
+
+module tail() {
+    scale([1,0.85,1]) union() {
+        // scales(60, 4, 5, 0, 1.5);
+        scales(75, 2.5, 5, -4, 1.25);
+        scales(100, 1.25, 4.5, -7, 1);
+        scales(110, 1.25, 3, -9, 1);
+        scales(120, 2.5, 2, -9, 1);   
+    }
 }
 
 module head(angy_angz) {
@@ -204,7 +214,13 @@ module dragon() {
     scale(1.1) 
     along_with(path_pts, scale = 0.85, method = "EULER_ANGLE")    
         one_segment();
-        
+    
+    translate([28, 1, -1.6])
+    rotate([-88, 0, 0])
+    rotate([0, 0, 15])
+    scale([.975, .975, 1.2])
+        tail();
+
     translate([19, 0, 65]) 
     rotate([95, 0, 0]) 
         head(angy_angz);
@@ -247,13 +263,15 @@ module flame_mountain(beginning_radius, fn, amplitude,curve_step, smoothness) {
 	sweep(noisy);
 }
 
-translate([0, 0, 7]) 
-    dragon($fn = 12);
-rotate(60)
-    flame_mountain(
-        beginning_radius = 26, 
-        fn = 18, 
-        amplitude = 7, 
-        curve_step = 0.04, 
-        smoothness = 10
-    );
+rotate(180) {
+    translate([0, 0, 7]) 
+        dragon($fn = 12);
+    rotate(60)
+        flame_mountain(
+            beginning_radius = 26, 
+            fn = 18, 
+            amplitude = 7, 
+            curve_step = 0.04, 
+            smoothness = 10
+        );
+}
