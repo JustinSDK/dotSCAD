@@ -334,8 +334,8 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 [**noise/nz_perlin3s**(points, seed = undef)](https://openhome.cc/eGossip/OpenSCAD/lib3x-nz_perlin3s.html) | return 3D [Perlin noise](https://en.wikipedia.org/wiki/Perlin_noise) values at (x, y, z) coordinates.
 [**noise/nz_worley2**(x, y, seed = undef, grid_w = 10, dist = "euclidean")](https://openhome.cc/eGossip/OpenSCAD/lib3x-nz_worley2.html) | return the 2D [Worley noise](https://en.wikipedia.org/wiki/Worley_noise) value at the (x, y) coordinate.
 [**noise/nz_worley2s**(points, seed = undef, grid_w = 10, dist = "euclidean")](https://openhome.cc/eGossip/OpenSCAD/lib3x-nz_worley2s.html) | return 2D [Worley noise](https://en.wikipedia.org/wiki/Worley_noise) values at (x, y) coordinates.
-[**noise/nz_worley3**(x, y, z, seed = undef, tile_w = 10, dist = "euclidean")](https://openhome.cc/eGossip/OpenSCAD/lib3x-nz_worley3.html) | return the 3D [Worley noise](https://en.wikipedia.org/wiki/Worley_noise) value at the (x, y, z) coordinate.
-[**noise/nz_worley3s**(points, seed = undef, tile_w = 10, dist = "euclidean")](https://openhome.cc/eGossip/OpenSCAD/lib3x-nz_worley3s.html) | return 3D [Worley noise](https://en.wikipedia.org/wiki/Worley_noise) values at (x, y, z) coordinates.
+[**noise/nz_worley3**(x, y, z, seed = undef, grid_w = 10, dist = "euclidean")](https://openhome.cc/eGossip/OpenSCAD/lib3x-nz_worley3.html) | return the 3D [Worley noise](https://en.wikipedia.org/wiki/Worley_noise) value at the (x, y, z) coordinate.
+[**noise/nz_worley3s**(points, seed = undef, grid_w = 10, dist = "euclidean")](https://openhome.cc/eGossip/OpenSCAD/lib3x-nz_worley3s.html) | return 3D [Worley noise](https://en.wikipedia.org/wiki/Worley_noise) values at (x, y, z) coordinates.
 
 ## Voronoi
 
