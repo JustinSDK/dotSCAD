@@ -43,7 +43,7 @@ module hilbert_dragon() {
             scales(75, 2.5, 5, -4, 1.25);
             scales(100, 1.25, 4.5, -7, 1);
             scales(110, 1.25, 3, -9, 1);
-            scales(120, 2.5, 2, -9, 1);   
+//            scales(120, 2.5, 2, -9, 1);   
         }
         
         // dorsal fin
@@ -53,16 +53,18 @@ module hilbert_dragon() {
         linear_extrude(5, scale = 0.15)
             square([2.5, 4], center = true);            
 
-        // belly
-        translate([0, -2.5, 1]) 
-        rotate([-10, 0, 0]) 
-        scale([1.1, 0.8, 1.25])  
-            sphere(5.8, $fn = 8); 
+        hull() {
+            // belly
+            translate([0, -2.5, 1]) 
+            rotate([-10, 0, 0]) 
+            scale([1.1, 0.8, 1.25])  
+                sphere(5.8, $fn = 8); 
 
-        translate([0, 0, -1.65]) 
-        rotate([-5, 0, 0]) 
-        scale([1, 0.8, 1.6])  
-            sphere(5.5, $fn = 8); 
+            translate([0, 0, -1.65]) 
+            rotate([-5, 0, 0]) 
+            scale([1, 0.8, 1.6])  
+                sphere(5.5, $fn = 8); 
+        }
             
     }
 
@@ -176,36 +178,6 @@ module hilbert_dragon() {
         }
     }
 
-    module dragon() {
-        path_pts = helix(
-            radius = [r1, r2], 
-            levels = levels, 
-            level_dist = level_dist, 
-            vt_dir = "SPI_DOWN", 
-            rt_dir = "CLK", 
-            $fn = 36
-        );
-
-        function __angy_angz(p1, p2) = 
-            let(
-                dx = p2[0] - p1[0],
-                dy = p2[1] - p1[1],
-                dz = p2[2] - p1[2],
-                ya = atan2(dz, sqrt(dx * dx + dy * dy)),
-                za = atan2(dy, dx)
-            ) [ya, za];
-            
-        angy_angz = __angy_angz(path_pts[0], path_pts[1]);
-        
-        scale(1.1) 
-        along_with(path_pts, scale = 0.85, method = "EULER_ANGLE")    
-            one_segment();
-            
-        translate([19, 0, 65]) 
-        rotate([95, 0, 0]) 
-            head(angy_angz);
-    }
-
     lines = hilbert_curve();
     hilbert_path = dedup(
         concat(
@@ -220,6 +192,13 @@ module hilbert_dragon() {
     rotate([90, 0, 0]) 
     scale(0.035)  
         one_segment();
+    
+    // tail
+    translate([0, 0, -0.62])
+    rotate(-5)
+    scale(0.0285)
+    mirror([0, 0, 1]) 
+        scales(120, 2.5, 2, -9, 1);
 
     translate([0, 0, -2.5])        
     scale(0.035)         
