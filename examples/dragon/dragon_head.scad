@@ -86,10 +86,10 @@ module dragon_head(angy_angz) {
     }
     
     module one_beard() {
-        translate([-11.15, -12, -10])
+        translate([-10, -12, -10])
         rotate(180) 
-        linear_extrude(8, scale = 0.2, twist = 90) 
-        translate([-10, -10, 0]) 
+        linear_extrude(8, scale = 0.2, twist = 45) 
+        translate([-9, -10, 0]) 
             circle(1, $fn = 6);    
     }
     
