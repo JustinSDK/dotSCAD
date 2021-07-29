@@ -1,4 +1,4 @@
-use <experimental/tiles_wang_2e.scad>;
+use <experimental/tile_w2e.scad>;
 use <arc.scad>;
 
 rows = 10;
@@ -7,51 +7,24 @@ tile_width = 10;
 tile_thickness = 2;
 $fn = 24;
 
-tiles_wang_2e(rows, columns, tile_width) {
-    sample_tile(0, tile_width, tile_thickness);
-	sample_tile(1, tile_width, tile_thickness);
-	sample_tile(2, tile_width, tile_thickness);
-	sample_tile(3, tile_width, tile_thickness);
-	sample_tile(4, tile_width, tile_thickness);
-	sample_tile(5, tile_width, tile_thickness);
-	sample_tile(6, tile_width, tile_thickness);
-	sample_tile(7, tile_width, tile_thickness);
-	sample_tile(8, tile_width, tile_thickness);
-	sample_tile(9, tile_width, tile_thickness);
-	sample_tile(10, tile_width, tile_thickness);
-	sample_tile(11, tile_width, tile_thickness);
-	sample_tile(12, tile_width, tile_thickness);
-	sample_tile(13, tile_width, tile_thickness);
-	sample_tile(14, tile_width, tile_thickness);
-	sample_tile(15, tile_width, tile_thickness);
-}
-
-translate([0, tile_width * (rows + 1)]) {
-    color("LightGrey")
-    linear_extrude(tile_thickness / 2)
-        square([columns * tile_width, rows * tile_width]);
+translate([tile_width, tile_width] / 2)
+	for(tile = tile_w2e(rows, columns)) {
+		x = tile[0];
+		y = tile[1];
+		i = tile[2];
+		translate([x, y] * tile_width)
+			sample_tile(i, tile_width, tile_thickness);
+	}
 	
+translate([0, tile_width * (rows + 1)] + [tile_width, tile_width] / 2)
 	color("green")
-	linear_extrude(tile_thickness)
-		tiles_wang_2e(rows, columns, tile_width) {
-			path_tile(0, tile_width);
-			path_tile(1, tile_width);
-			path_tile(2, tile_width);
-			path_tile(3, tile_width);
-			path_tile(4, tile_width);
-			path_tile(5, tile_width);
-			path_tile(6, tile_width);
-			path_tile(7, tile_width);
-			path_tile(8, tile_width);
-			path_tile(9, tile_width);
-			path_tile(10, tile_width);
-			path_tile(11, tile_width);
-			path_tile(12, tile_width);
-			path_tile(13, tile_width);
-			path_tile(14, tile_width);
-			path_tile(15, tile_width);
-		}
-}
+	for(tile = tile_w2e(rows, columns)) {
+		x = tile[0];
+		y = tile[1];
+		i = tile[2];
+		translate([x, y] * tile_width)
+			path_tile(i, tile_width);
+	}
 
 module sample_tile(n, width, thickness) {
     half_w = width / 2;
