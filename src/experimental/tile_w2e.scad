@@ -2,42 +2,49 @@
 
 function tile_w2e(rows, columns, mask, seed) =
     let(
+		y_range = [0:rows - 1],
+		x_range = [0:columns - 1],
+		/*
+		     1 |
+		       |___
+			(x,y)  0
+		*/
 		edges = is_undef(seed) ? [
-			for(y = [0:rows])
+			for(y = y_range)
 			[
-				for(x = [0:columns]) 
+				for(x = x_range) 
 				let(rs = rands(0, 1, 2))
 				[round(rs[0]), round(rs[1])]
 			]
 		] : [
-			for(y = [0:rows])
+			for(y = y_range)
 			[
-				for(x = [0:columns]) 
+				for(x = x_range) 
 				let(rs = rands(0, 1, 2, seed + y * columns + x))
 				[round(rs[0]), round(rs[1])]
 			]
 		],
 		m = is_undef(mask) ? [
-			for(y = [0:rows - 1])
-				[for(x = [0:columns - 1]) 1]
+			for(y = y_range)
+				[for(x = x_range) 1]
 		] : [
 			for(y = rows - 1; y > -1; y = y - 1)
-				[for(x = [0:columns - 1]) mask[y][x]]
+				[for(x = x_range) mask[y][x]]
 		],
 		/*
 			1
-			. － .
+		  . － .
 		8 |    | 2
-			. － .
+		  . － .
 			4
 		*/
 		tiles = [
-			for(y = [0:rows - 1])
-				for(x = [0:columns - 1])
+			for(y = y_range)
+				for(x = x_range)
 				if(m[y][x] == 1)
 					[x, y, 
-						(edges[y + 1][x][0] == 1 ? 1 : 0) +
-						(edges[y][x + 1][1] == 1 ? 2 : 0) +
+						(edges[(y + 1) % rows][x][0] == 1 ? 1 : 0) +
+						(edges[y][(x + 1) % columns][1] == 1 ? 2 : 0) +
 						(edges[y][x][0] == 1 ? 4 : 0) +
 						(edges[y][x][1] == 1 ? 8 : 0)
 					]
