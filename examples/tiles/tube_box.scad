@@ -1,4 +1,4 @@
-use <experimental/tiles_wang_2e.scad>;
+use <experimental/tile_w2e.scad>;
 use <box_extrude.scad>;
 
 rows = 8;
@@ -12,25 +12,14 @@ module tube_box(rows, columns, tile_width) {
     half_w = tile_width / 2;
 	quarter_w = tile_width / 4;
 	eighth_w = tile_width / 8;
-
-    translate([eighth_w, eighth_w, -eighth_w])
-		tiles_wang_2e(rows, columns, tile_width) {
-			tube_tile(0, tile_width);
-			tube_tile(1, tile_width);
-			tube_tile(2, tile_width);
-			tube_tile(3, tile_width);
-			tube_tile(4, tile_width);
-			tube_tile(5, tile_width);
-			tube_tile(6, tile_width);
-			tube_tile(7, tile_width);
-			tube_tile(8, tile_width);
-			tube_tile(9, tile_width);
-			tube_tile(10, tile_width);
-			tube_tile(11, tile_width);
-			tube_tile(12, tile_width);
-			tube_tile(13, tile_width);
-			tube_tile(14, tile_width);
-			tube_tile(15, tile_width);
+	
+    translate([eighth_w, eighth_w, -eighth_w] + [tile_width, tile_width] / 2)
+		for(tile = tile_w2e(rows, columns)) {
+			x = tile[0];
+			y = tile[1];
+			i = tile[2];
+			translate([x, y] * tile_width)
+				tube_tile(i, tile_width);
 		}
 
 	box_extrude(height = tile_width, shell_thickness = eighth_w)
