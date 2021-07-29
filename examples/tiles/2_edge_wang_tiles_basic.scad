@@ -124,53 +124,27 @@ module path_tile(n, width) {
 			}
 		}
 	}
-	
-	if(n == 0) {
-	    square(width, center = true);
+
+	module select_child(n) {
+		children(n);
 	}
-	else if(n == 1) {
+
+	select_child(n) {
+		square(width, center = true);
 		tile1();
-	}
-	else if(n == 2) {
-	    rotate(-90) tile1();
-	}
-	else if(n == 3) {
-	    tile3();
-	}
-	else if(n == 4) {
-	    rotate(-180) tile1();
-	}
-	else if(n == 5) {
-	    tile5();
-	}
-	else if(n == 6) {
-	    rotate(-90) tile3();
-	}
-	else if(n == 7) {
-	    tile7();
-	}
-	else if(n == 8) {
-	    rotate(90) tile1();
-	}
-	else if(n == 9) {
-	    rotate(90) tile3();
-	}
-	else if(n == 10) {
-	    rotate(90) tile5();
-	}
-	else if(n == 11) {
-	    rotate(90) tile7();
-	}
-	else if(n == 12) {
-	    rotate(-180) tile3();
-	}
-	else if(n == 13) {
-	    rotate(180) tile7();
-	}
-	else if(n == 14) {
-	    rotate(270) tile7();
-	}
-	else if(n == 15) {
-	    tile15();
+		rotate(-90) tile1();
+		tile3();
+		rotate(-180) tile1();
+		tile5();
+		rotate(-90) tile3();
+		tile7();
+		rotate(90) tile1();
+		rotate(90) tile3();
+		rotate(90) tile5();
+		rotate(90) tile7();
+		rotate(-180) tile3();
+		rotate(180) tile7();
+		rotate(270) tile7();
+		tile15();
 	}
 }

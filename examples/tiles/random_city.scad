@@ -25,33 +25,33 @@ random_city(rows, columns, mask);
 module random_city(rows, columns, mask) {
     tile_width = 30;
 
-    module tiles() {
-        for(tile = tile_w2e(rows, columns, mask)) {
-            x = tile[0];
-            y = tile[1];
-            i = tile[2];
-            translate([x, y] * tile_width)
-                children(i);
-        }
-    }
+	module select_child(n) {
+		children(n);
+	}
 
-    tiles() {
-        tile00();
-        tile01();
-        tile02();
-        tile03();
-        tile04();
-        tile05();
-        tile06();
-        tile07();
-        tile08();
-        tile09();
-        tile10();
-        tile11();
-        tile12();
-        tile13();
-        tile14();
-        tile15();
+    for(tile = tile_w2e(rows, columns, mask)) {
+        x = tile[0];
+        y = tile[1];
+        i = tile[2];
+        translate([x, y] * tile_width)
+        select_child(i) {
+            tile00();
+            tile01();
+            tile02();
+            tile03();
+            tile04();
+            tile05();
+            tile06();
+            tile07();
+            tile08();
+            tile09();
+            tile10();
+            tile11();
+            tile12();
+            tile13();
+            tile14();
+            tile15();
+        }
     }
 
     // tiles, quick and dirty code
