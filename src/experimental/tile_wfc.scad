@@ -1,7 +1,7 @@
 use <_impl/_tiles_wfc_impl.scad>;
 
 // An implementation of [Wave Function Collapse](https://github.com/mxgmn/WaveFunctionCollapse)
-function tiles_wfc(width, height, sample) =
+function tile_wfc(width, height, sample) =
     tilemap_generate(tilemap(width, height, sample));
 
 /*
@@ -23,7 +23,7 @@ sample = [
 width = 20;
 height = 20;
 
-echo(tiles_wfc(width, height, sample));
+echo(tile_wfc(width, height, sample));
 */
 
 

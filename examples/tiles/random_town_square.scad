@@ -3,7 +3,7 @@ use <util/parse_number.scad>;
 use <util/has.scad>;
 use <util/rand.scad>;
 use <util/choose.scad>;
-use <experimental/tiles_wfc.scad>;
+use <experimental/tile_wfc.scad>;
 use <rounded_square.scad>;
 use <box_extrude.scad>;
 use <polyhedron_hull.scad>;
@@ -31,7 +31,7 @@ module random_town_square(rows, columns, tileW, layerH) {
     ];
 
 
-    generated = tiles_wfc(rows, columns, sample);
+    generated = tile_wfc(rows, columns, sample);
 
     color("Gainsboro")
     draw_tiles(generated);

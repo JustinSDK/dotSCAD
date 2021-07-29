@@ -1,4 +1,4 @@
-use <experimental/tiles_wfc.scad>;
+use <experimental/tile_wfc.scad>;
 
 sample = [
     [ 6, 12,  0,  0,  0,  0,  0,  0, 0,   6, 12],
@@ -25,7 +25,7 @@ translate([-len(sample) * tileW, 0]) {
 width = 20;
 height = 20;
 draw_tubes(
-    tiles_wfc(width, height, sample), 
+    tile_wfc(width, height, sample), 
     tileW
 );
 
