@@ -11,7 +11,6 @@ for(tile = tile_truchet(size)) {
     x = tile[0];
 	y = tile[1];
 	i = tile[2];
-	echo(i);
 	if(i <= 1) {
 	    translate([x, y] * tile_width)
 	        arc(0.5 * tile_width, [0, 90], line_width);
