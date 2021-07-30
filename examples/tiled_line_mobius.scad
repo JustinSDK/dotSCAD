@@ -1,33 +1,30 @@
-use <util/rand.scad>;
+use <experimental/tile_truchet.scad>;
 use <hull_polyline3d.scad>;
 use <ptf/ptf_ring.scad>;
 
 size = [20, 100];
 line_diameter = 1;
-step = 1; 
 twist = 180;
 $fn = 8;
 
-module tiled_line_mobius(size, twist, step, line_diameter = 1) {
-    sizexy = is_num(size) ? [size, size] : size;
-    s = is_undef(step) ? line_diameter * 2 : step;
- 
-    function rand_diagonal_line_pts(x, y, size) = 
-        rand(0, 1) >= 0.5 ? [[x, y], [x + size, y + size]] : [[x + size, y], [x, y + size]];
-        
+module tiled_line_mobius(size, twist, line_diameter = 1) {
     lines = concat(
         [
-            for(x = [0:s:sizexy[0] - s]) 
-                for(y = [0:s:sizexy[1] - s]) 
-                    rand_diagonal_line_pts(x, y, s)
+            for(tile = tile_truchet(size)) 
+            let(
+			    x = tile[0],
+				y = tile[1],
+				i = tile[2]
+			)
+            i <= 1 ? [[x, y], [x + 1, y + 1]] : [[x + 1, y], [x, y + 1]]  
         ],
         [
-            for(i = [0:step:size[1] - 1])
-                [[0, i], [0, i + step]]
+            for(i = [0:size[1] - 1])
+                [[0, i], [0, i + 1]]
         ],
         [
-            for(i = [0:step:size[1] - 1])
-                [[size[0], i], [size[0], i + step]]
+            for(i = [0:size[1] - 1])
+                [[size[0], i], [size[0], i + 1]]
         ]
     );
             
@@ -37,4 +34,4 @@ module tiled_line_mobius(size, twist, step, line_diameter = 1) {
     }
 }
 
-tiled_line_mobius(size, twist, step, line_diameter);
+tiled_line_mobius(size, twist, line_diameter);
