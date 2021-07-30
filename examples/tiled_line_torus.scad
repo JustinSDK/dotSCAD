@@ -1,27 +1,22 @@
-use <util/rand.scad>;
+use <experimental/tile_truchet.scad>;
 use <hull_polyline3d.scad>;
 use <ptf/ptf_torus.scad>;
 
 size = [20, 50];
 line_diameter = 1;
-step = 1; 
 twist = 180;
 $fn = 4;
 
-module tiled_line_torus(size, twist, step, line_diameter = 1) {
-    sizexy = is_num(size) ? [size, size] : size;
-    s = is_undef(step) ? line_diameter * 2 : step;
- 
-    function rand_diagonal_line_pts(x, y, size) = 
-        rand(0, 1) >= 0.5 ? [[x, y], [x + size, y + size]] : [[x + size, y], [x, y + size]];
-        
-    lines = concat(
-        [
-            for(x = [0:s:sizexy[0] - s]) 
-                for(y = [0:s:sizexy[1] - s]) 
-                    rand_diagonal_line_pts(x, y, s)
-        ]
-    );
+module tiled_line_torus(size, twist, line_diameter = 1) {
+    lines = [
+            for(tile = tile_truchet(size)) 
+            let(
+			    x = tile[0],
+				y = tile[1],
+				i = tile[2]
+			)
+            i <= 1 ? [[x, y], [x + 1, y + 1]] : [[x + 1, y], [x, y + 1]]  
+        ];
             
     for(line = lines) {
         pts = [for(p = line) ptf_torus(size, p, [size[0], size[0] / 2], twist = twist)];
@@ -29,7 +24,7 @@ module tiled_line_torus(size, twist, step, line_diameter = 1) {
     }
 }
 
-tiled_line_torus(size, twist, step, line_diameter);
+tiled_line_torus(size, twist, line_diameter);
 color("black")
 rotate_extrude($fn = 36)
 translate([size[0] * 1.5, 0, 0])
