@@ -1,14 +1,13 @@
 use <experimental/tile_w2e.scad>;
 use <arc.scad>;
 
-rows = 10;
-columns = 15;
+size = [15, 10];
 tile_width = 10;
 tile_thickness = 2;
 $fn = 24;
 
 translate([tile_width, tile_width] / 2)
-	for(tile = tile_w2e(rows, columns)) {
+	for(tile = tile_w2e(size)) {
 		x = tile[0];
 		y = tile[1];
 		i = tile[2];
@@ -16,9 +15,9 @@ translate([tile_width, tile_width] / 2)
 			sample_tile(i, tile_width, tile_thickness);
 	}
 	
-translate([0, tile_width * (rows + 1)] + [tile_width, tile_width] / 2)
+translate([0, tile_width * (size[1] + 1)] + [tile_width, tile_width] / 2)
 	color("green")
-	for(tile = tile_w2e(rows, columns)) {
+	for(tile = tile_w2e(size)) {
 		x = tile[0];
 		y = tile[1];
 		i = tile[2];

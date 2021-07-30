@@ -8,14 +8,13 @@ use <rounded_square.scad>;
 use <box_extrude.scad>;
 use <polyhedron_hull.scad>;
 
-rows = 5;
-columns = 5;
+size = [5, 5];
 tileW = 10;
 layerH = 1;
 
-random_town_square(rows, columns, tileW, layerH);
+random_town_square(size, tileW, layerH);
 
-module random_town_square(rows, columns, tileW, layerH) {
+module random_town_square(size, tileW, layerH) {
     sample = [
         ["SS12", "CCRS1", "SS22", "CCRS0", "SS32", "F2", "SS14", "FW3", "SS04", "SS04"],
         ["SS12", "SS32", "F4", "SS12", "SS32", "F2", "SS14", "FW3", "SS24", "SS24"],
@@ -31,7 +30,7 @@ module random_town_square(rows, columns, tileW, layerH) {
     ];
 
 
-    generated = tile_wfc(rows, columns, sample);
+    generated = tile_wfc(size, sample);
 
     color("Gainsboro")
     draw_tiles(generated);

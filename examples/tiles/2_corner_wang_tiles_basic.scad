@@ -1,14 +1,13 @@
 use <experimental/tile_w2c.scad>;
 use <arc.scad>;
 
-rows = 10;
-columns = 15;
+size = [15, 10];
 tile_width = 10;
 tile_thickness = 2;
 $fn = 24;
 
 translate([tile_width, tile_width] / 2)
-	for(tile = tile_w2c(rows, columns)) {
+	for(tile = tile_w2c(size)) {
 		x = tile[0];
 		y = tile[1];
 		i = tile[2];

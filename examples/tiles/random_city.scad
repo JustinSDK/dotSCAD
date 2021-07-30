@@ -29,7 +29,7 @@ module random_city(rows, columns, mask) {
 		children(n);
 	}
 
-    for(tile = tile_w2e(rows, columns, mask)) {
+    for(tile = tile_w2e([columns, rows], mask)) {
         x = tile[0];
         y = tile[1];
         i = tile[2];

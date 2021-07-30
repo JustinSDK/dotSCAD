@@ -1,7 +1,9 @@
 // wang tiles - 2 corners
 
-function tile_w2c(rows, columns, mask, seed) =
+function tile_w2c(size, mask, seed) =
     let(
+		rows = size[1], 
+		columns = size[0],
 		y_range = [0:rows - 1],
 		x_range = [0:columns - 1],
 		corners = is_undef(seed) ? [

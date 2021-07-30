@@ -1,20 +1,19 @@
 use <experimental/tile_w2e.scad>;
 use <box_extrude.scad>;
 
-rows = 8;
-columns = 15;
+size = [15, 8];
 tile_width = 10;
 $fn = 12;
 
-tube_box(rows, columns, tile_width);
+tube_box(size, tile_width);
 
-module tube_box(rows, columns, tile_width) {
+module tube_box(size, tile_width) {
     half_w = tile_width / 2;
 	quarter_w = tile_width / 4;
 	eighth_w = tile_width / 8;
 	
     translate([eighth_w, eighth_w, eighth_w] + [tile_width, tile_width, 0] / 2)
-		for(tile = tile_w2e(rows, columns)) {
+		for(tile = tile_w2e(size)) {
 			x = tile[0];
 			y = tile[1];
 			i = tile[2];
@@ -23,7 +22,7 @@ module tube_box(rows, columns, tile_width) {
 		}
 
 	box_extrude(height = tile_width, shell_thickness = eighth_w)
-		square([columns * tile_width + quarter_w, rows * tile_width + quarter_w]);
+		square([size[0] * tile_width + quarter_w, size[1] * tile_width + quarter_w]);
 }
 
 module tube_tile(n, width) {

@@ -22,10 +22,9 @@ translate([-len(sample) * tileW, 0]) {
     draw_tubes(sample, tileW);
 }
 
-width = 20;
-height = 20;
+size = [20, 20];
 draw_tubes(
-    tile_wfc(width, height, sample), 
+    tile_wfc(size, sample), 
     tileW
 );
 
