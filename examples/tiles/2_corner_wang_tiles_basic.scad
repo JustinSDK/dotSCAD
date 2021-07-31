@@ -1,5 +1,6 @@
 use <experimental/tile_w2c.scad>;
 use <arc.scad>;
+use <experimental/choose_children.scad>;
 
 size = [15, 10];
 tile_width = 10;
