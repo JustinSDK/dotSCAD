@@ -1,4 +1,5 @@
 use <experimental/tile_wfc.scad>;
+use <experimental/select.scad>;
 
 sample = [
     [ 6, 12,  0,  0,  0,  0,  0,  0, 0,   6, 12],
@@ -104,53 +105,27 @@ module tube_tile(n, width) {
 		rotate(90)
 		tile5();
 	}
+
+	module tile0() {
+		// nope
+	}
 	
-	if(n == 0) {
-	    // no tube
-	}
-	else if(n == 1) {
+    select(n) {
+		tile0();
 		tile1();
-	}
-	else if(n == 2) {
 	    rotate(-90) tile1();
-	}
-	else if(n == 3) {
 	    tile3();
-	}
-	else if(n == 4) {
 	    rotate(-180) tile1();
-	}
-	else if(n == 5) {
 	    tile5();
-	}
-	else if(n == 6) {
 	    rotate(-90) tile3();
-	}
-	else if(n == 7) {
 	    tile7();
-	}
-	else if(n == 8) {
 	    rotate(90) tile1();
-	}
-	else if(n == 9) {
 	    rotate(90) tile3();
-	}
-	else if(n == 10) {
 	    rotate(90) tile5();
-	}
-	else if(n == 11) {
 	    rotate(90) tile7();
-	}
-	else if(n == 12) {
 	    rotate(-180) tile3();
-	}
-	else if(n == 13) {
 	    rotate(180) tile7();
-	}
-	else if(n == 14) {
 	    rotate(270) tile7();
-	}
-	else if(n == 15) {
 	    tile15();
 	}
 }
