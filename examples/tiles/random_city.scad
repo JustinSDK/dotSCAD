@@ -4,7 +4,7 @@ use <arc.scad>;
 use <shear.scad>;
 use <util/rand.scad>;
 use <experimental/tile_w2e.scad>;
-use <experimental/choose_children.scad>;
+use <experimental/select.scad>;
 
 mask = [
     [0, 1, 1, 0, 0, 0, 1, 1, 0],
@@ -31,7 +31,7 @@ module random_city(rows, columns, mask) {
         y = tile[1];
         i = tile[2];
         translate([x, y] * tile_width)
-        choose_children(i) {
+        select(i) {
             tile00();
             tile01();
             tile02();

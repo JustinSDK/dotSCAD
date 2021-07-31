@@ -1,5 +1,5 @@
 use <experimental/tile_w2e.scad>;
-use <experimental/choose_children.scad>;
+use <experimental/select.scad>;
 use <box_extrude.scad>;
 
 size = [15, 8];
@@ -112,7 +112,7 @@ module tube_tile(n, width) {
 		tile5();
 	}
 
-	choose_children(n) {
+	select(n) {
 		tile0();
 		tile1();
 		rotate(-90) tile1();

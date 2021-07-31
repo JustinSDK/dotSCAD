@@ -1,5 +1,5 @@
 use <experimental/tile_w2e.scad>;
-use <experimental/choose_children.scad>;
+use <experimental/select.scad>;
 use <arc.scad>;
 
 size = [15, 10];
@@ -125,7 +125,7 @@ module path_tile(n, width) {
 		}
 	}
 
-	choose_children(n) {
+	select(n) {
 		square(width, center = true);
 		tile1();
 		rotate(-90) tile1();
