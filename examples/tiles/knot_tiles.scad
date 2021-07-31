@@ -16,34 +16,34 @@ for(tile = tile_truchet(size)) {
 
     translate([x, y] * tile_width)
 	select(i) {
-		tile00(x, y, tile_width, line_width);
-		tile01(x, y, tile_width, line_width);
-		tile02(x, y, tile_width, line_width);
-		tile03(x, y, tile_width, line_width);
+		tile00(tile_width, line_width);
+		tile01(tile_width, line_width);
+		tile02(tile_width, line_width);
+		tile03(tile_width, line_width);
 	};
 }
 
-module tile00(x, y, tile_width, line_width) {
+module tile00(tile_width, line_width) {
 	arc(0.5 * tile_width, [0, 90], line_width);
 	translate([tile_width, tile_width])
 		arc(0.5 * tile_width, [180, 270], line_width);
 }
 
-module tile01(x, y, tile_width, line_width) {
+module tile01(tile_width, line_width) {
 	translate([0, tile_width])
 		arc(0.5 * tile_width, [270, 360], line_width);
 	translate([tile_width, 0])
 		arc(0.5 * tile_width, [90, 180], line_width);
 }
 
-module tile02(x, y, tile_width, line_width) {
+module tile02(tile_width, line_width) {
 	half_width = tile_width * 0.5; 
 	line2d([half_width, 0], [half_width, tile_width], line_width, p1Style = "CAP_BUTT", p2Style = "CAP_BUTT");
 	line2d([0, half_width], [half_width - line_width, half_width], line_width, p1Style = "CAP_BUTT", p2Style = "CAP_BUTT");
 	line2d([half_width + line_width, half_width], [tile_width, half_width], line_width, p1Style = "CAP_BUTT", p2Style = "CAP_BUTT");
 }
 
-module tile03(x, y, tile_width, line_width) {
+module tile03(tile_width, line_width) {
 	half_width = tile_width * 0.5; 
 	line2d([0, half_width], [tile_width, half_width], line_width, p1Style = "CAP_BUTT", p2Style = "CAP_BUTT");
 	line2d([half_width, 0], [half_width, half_width - line_width], line_width, p1Style = "CAP_BUTT", p2Style = "CAP_BUTT");
