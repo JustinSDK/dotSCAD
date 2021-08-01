@@ -88,9 +88,9 @@ module dragon_head(angy_angz) {
     module one_beard() {
         translate([-10, -12, -10])
         rotate(180) 
-        linear_extrude(8, scale = 0.2, twist = 45) 
+        linear_extrude(8, scale = 0.15, twist = 35) 
         translate([-9, -10, 0]) 
-            circle(1, $fn = 6);    
+            circle(1, $fn = 8);    
     }
     
     rotate([0, angy_angz[0] + 15, angy_angz[1]]) 
