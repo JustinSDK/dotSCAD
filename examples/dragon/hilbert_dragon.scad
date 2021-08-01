@@ -12,8 +12,6 @@ hilbert_dragon();
 
 module hilbert_dragon() {
     module one_segment(body_r, body_fn, one_scale_data) {
-        // scales
-        //scale([1, 1, 1.25])
         rotate([-90, 0, 0])
             dragon_body_scales(body_r, body_fn, one_scale_data);
 
