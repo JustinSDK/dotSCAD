@@ -8,13 +8,14 @@ use <bezier_curve.scad>;
 use <path_scaling_sections.scad>;
 use <noise/nz_perlin2s.scad>;
 use <dragon_head.scad>;
+use <dragon_body_scales.scad>;
 
 r1 = 25;
 r2 = 15;
 levels = 3;
 level_dist = 20;
 
-module scales(ang, leng, radius, height, thickness) {
+module tail_scales(ang, leng, radius, height, thickness) {
     module one_scale() {
         rotate([0, ang, 0]) 
         shear(sx = [0, -1.5])
@@ -36,44 +37,32 @@ module scales(ang, leng, radius, height, thickness) {
     }
 }
 
-module one_segment() {
+module one_segment(body_r, body_fn, one_scale_data) {
     // scales
-    scale([1,0.85,1]) union() {
-        scales(60, 4, 5, 0, 1.5);
-        scales(75, 2.5, 5, -4, 1.25);
-        scales(100, 1.25, 4.5, -7, 1);
-        // %scales(110, 1.25, 3, -9, 1);
-        // %scales(120, 2.5, 2, -9, 1);   
-    }
-    
+    rotate([-90, 0, 0])
+        dragon_body_scales(body_r, body_fn, one_scale_data);
+
     // dorsal fin
     translate([0, 3, -3]) 
     rotate([-75, 0, 0]) 
-    shear(sy = [0, 3.5])
+    shear(sy = [0, 3])
     linear_extrude(2.25, scale = 0.2)
         square([2, 12], center = true);            
             
-    // belly
-    hull() {
-        translate([0, -2.5, 1]) 
-        rotate([-10, 0, 0]) 
-        scale([1.1, 0.8, 1.25])  
-            sphere(5.8, $fn = 8); 
-
-        translate([0, 0, -1.65]) 
-        rotate([-5, 0, 0]) 
-        scale([1, 0.8, 1.6])  
-            sphere(5.5, $fn = 8);  
-    } 
+    // belly    
+    translate([0, -2.5, .8]) 
+    rotate([-5, 0, 0]) 
+    scale([1, 1, 1.4])  
+        sphere(body_r * 0.966, $fn = 8); 
+    
 }
 
 module tail() {
-    scale([1,0.85,1]) union() {
-        // scales(60, 4, 5, 0, 1.5);
-        scales(75, 2.5, 5, -4, 1.25);
-        scales(100, 1.25, 4.5, -7, 1);
-        scales(110, 1.25, 3, -9, 1);
-        scales(120, 2.5, 2, -9, 1);   
+    scale([1,0.85, 1]) union() {
+        tail_scales(75, 2.5, 4.25, -4, 1.25);
+        tail_scales(100, 1.25, 4.5, -7, 1);
+        tail_scales(110, 1.25, 3, -9, 1);
+        tail_scales(120, 2.5, 2, -9, 1);   
     }
 }
 
@@ -84,7 +73,7 @@ module spiral_dragon() {
         level_dist = level_dist, 
         vt_dir = "SPI_DOWN", 
         rt_dir = "CLK", 
-        $fn = 36
+        $fn = 32
     );
 
     function __angy_angz(p1, p2) = 
@@ -98,14 +87,20 @@ module spiral_dragon() {
         
     angy_angz = __angy_angz(path_pts[0], path_pts[1]);
     
+    body_r = 5.25;
+    body_fn = 12;
+    scale_fn = 4;
+    scale_tilt_a = 6;
+
+    one_body_scale_data = one_body_scale(body_r, body_fn, scale_fn, scale_tilt_a);
     scale(1.1) 
     along_with(path_pts, scale = 0.85, method = "EULER_ANGLE")    
-        one_segment();
+        one_segment(body_r, body_fn, one_body_scale_data);
     
-    translate([28, 1, -1.6])
+    translate([27.75, 3, -1.2])
     rotate([-88, 0, 0])
-    rotate([0, 0, 15])
-    scale([.975, .975, 1.2])
+    rotate([0, 0, 10])
+    scale([.95, 1.2, 1.4])
         tail();
 
     translate([19, 0, 65]) 
