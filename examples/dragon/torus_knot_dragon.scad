@@ -3,7 +3,7 @@ use <shear.scad>;
 use <along_with.scad>;
 use <util/reverse.scad>;
 use <dragon_head.scad>;
-use <dragon_body_scales.scad>;
+use <dragon_scales.scad>;
 
 torus_knot_dragon();
 
@@ -41,33 +41,11 @@ module torus_knot_dragon() {
 		
 	t_angy_angz = __angy_angz(d_path[1], d_path[0]);	
 	
-	translate([2.17, 1.53, -.775])
+	translate([2.1, 1.55, -.80])
 	rotate([0, t_angy_angz[0], t_angy_angz[1]])
-	rotate([0, -85, -90])
-	scale(0.055)
+	rotate([0, -95, -75])
+	scale([0.055, 0.055, 0.065])
 	    tail();
-}
-
-module tail_scales(ang, leng, radius, height, thickness) {
-    module one_scale() {
-        rotate([0, ang, 0]) 
-        shear(sx = [0, -1.5])
-        linear_extrude(thickness, center = true) 
-        scale([leng, 1]) 
-            circle(1, $fn = 8);    
-    }
-
-    for(a = [0:30:330]) {
-        hull() {
-            rotate(a) 
-            translate([radius, 0, height]) 
-                one_scale();
-                
-            rotate(a + 15) 
-            translate([radius, 0, height + 1.75]) 
-                one_scale();
-        }
-    }
 }
 
 module one_segment(body_r, body_fn, one_scale_data) {
@@ -91,6 +69,7 @@ module one_segment(body_r, body_fn, one_scale_data) {
 }
 
 module tail() {
+    $fn = 8;
     tail_scales(75, 2.5, 5, -4, 1.25);
     tail_scales(100, 1.25, 4.5, -7, 1);
     tail_scales(110, 1.25, 3, -9, 1);

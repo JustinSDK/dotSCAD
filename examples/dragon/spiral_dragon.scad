@@ -8,34 +8,12 @@ use <bezier_curve.scad>;
 use <path_scaling_sections.scad>;
 use <noise/nz_perlin2s.scad>;
 use <dragon_head.scad>;
-use <dragon_body_scales.scad>;
+use <dragon_scales.scad>;
 
 r1 = 25;
 r2 = 15;
 levels = 3;
 level_dist = 20;
-
-module tail_scales(ang, leng, radius, height, thickness) {
-    module one_scale() {
-        rotate([0, ang, 0]) 
-        shear(sx = [0, -1.5])
-        linear_extrude(thickness, center = true) 
-        scale([leng, 1]) 
-            circle(1, $fn = 4);    
-    }
-
-    for(a = [0:30:330]) {
-        hull() {
-            rotate(a) 
-            translate([radius, 0, height]) 
-                one_scale();
-                
-            rotate(a + 15) 
-            translate([radius, 0, height + 1.75]) 
-                one_scale();
-        }
-    }
-}
 
 module one_segment(body_r, body_fn, one_scale_data) {
     // scales
@@ -58,6 +36,7 @@ module one_segment(body_r, body_fn, one_scale_data) {
 }
 
 module tail() {
+    $fn = 4;
     scale([1,0.85, 1]) union() {
         tail_scales(75, 2.5, 4.25, -4, 1.25);
         tail_scales(100, 1.25, 4.5, -7, 1);

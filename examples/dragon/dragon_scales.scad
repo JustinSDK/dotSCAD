@@ -1,4 +1,5 @@
 use <shape_circle.scad>;
+use <shear.scad>;
 use <polyhedron_hull.scad>;
 use <ptf/ptf_rotate.scad>;
 use <experimental/convex_hull3.scad>;
@@ -40,4 +41,26 @@ module dragon_body_scales(body_r, body_fn, one_scale_points_faces) {
 		rotate([0, (y % 2) * a])
 		    ring_scales();
 	}	
+}
+
+module tail_scales(ang, leng, radius, height, thickness) {
+    module one_scale() {
+        rotate([0, ang, 0]) 
+        shear(sx = [0, -1.5])
+        linear_extrude(thickness, center = true) 
+        scale([leng, 1]) 
+            circle(1);    
+    }
+
+    for(a = [0:30:330]) {
+        hull() {
+            rotate(a) 
+            translate([radius, 0, height]) 
+                one_scale();
+                
+            rotate(a + 15) 
+            translate([radius, 0, height + 1.75]) 
+                one_scale();
+        }
+    }
 }
