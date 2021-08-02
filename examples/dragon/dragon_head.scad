@@ -8,30 +8,30 @@ use <ptf/ptf_rotate.scad>;
 module dragon_head(angy_angz) {
     module hair() {
         for(i = [16:36]) {
-            rotate(i * 10) 
+            rotate(i * 10 + rands(0, 5, 1, i)[0]) 
             translate([0, -13, 0]) 
-            rotate([9, 0, 0]) 
-            linear_extrude(15, scale = 0.05, twist = 50 - rands(0, 100, 1, seed = i)[0]) 
+            rotate([8 + rands(0, 2, 1, i)[0], 0, 0]) 
+            linear_extrude(12 + rands(0, 5, 1, i)[0], scale = 0.05, twist = 50 - rands(0, 100, 1, seed = i)[0]) 
             translate([0, 10, 0]) 
-                circle(3, $fn = 4);    
+                circle(3, $fn = 5);    
         }       
 
         for(i = [0:35]) {
-            rotate(i * 12) 
+            rotate(i * 12 + rands(0, 5, 1, i)[0]) 
             translate([0, -11.5, 0]) 
-            rotate([5, 0, 0]) 
-            linear_extrude(20, scale = 0.05, twist = 50 - rands(0, 100, 1, seed = i + 1)[0]) 
+            rotate([4 + rands(0, 2, 1, i)[0], 0, 0]) 
+            linear_extrude(14 + rands(0, 5, 1, i)[0], scale = 0.05, twist = 50 - rands(0, 100, 1, seed = i + 1)[0]) 
             translate([0, 10, 0]) 
-                circle(3.2, $fn = 5);    
+                circle(3.5, $fn = 6);    
         }
         
         for(i = [0:35]) {
             rotate(i * 10) 
             translate([0, -10, 0]) 
             rotate([2, 0, 0]) 
-            linear_extrude(22, scale = 0.05, twist = 50 - rands(0, 100, 1, seed = i + 2)[0]) 
+            linear_extrude(16 + rands(0, 5, 1, i)[0], scale = 0.05, twist = 50 - rands(0, 100, 1, seed = i + 2)[0]) 
             translate([0, 10, 0]) 
-                circle(3, $fn = 5);    
+                circle(3.5, $fn = 5);    
         }         
     }
     
