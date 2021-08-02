@@ -72,7 +72,7 @@ module spiral_dragon() {
     scale_tilt_a = 6;
 
     one_body_scale_data = one_body_scale(body_r, body_fn, scale_fn, scale_tilt_a);
-    scale(1.1) 
+    scale(1.075) 
     along_with(path_pts, scale = 0.85, method = "EULER_ANGLE")    
         one_segment(body_r, body_fn, one_body_scale_data);
     
@@ -82,8 +82,8 @@ module spiral_dragon() {
     scale([.95, 1.2, 1.4])
         tail();
 
-    translate([19, 0, 65]) 
-    rotate([95, 0, 0]) 
+    translate([17.5, 0, 63]) 
+    rotate([95, 0, -10]) 
         dragon_head(angy_angz);
 }
 
@@ -127,7 +127,7 @@ module flame_mountain(beginning_radius, fn, amplitude,curve_step, smoothness) {
 rotate(180) {
     translate([0, 0, 7]) 
         spiral_dragon($fn = 12);
-    rotate(60)
+    rotate(95)
         flame_mountain(
             beginning_radius = 26, 
             fn = 18, 
