@@ -5,15 +5,15 @@ use <util/dedup.scad>;
 
 module dragon_claw() {
 	pts = [
-		[0, 0.55], [1, 0.45], [2.5, 0.375], [6, 0.825], [8, 0], 
-		[8, 0.375], [6, 1.875], [4, 1.6], [1.8, 2.5], [1.5, 2.8], [1.2, 3.3], [1.05, 3.8], [1, 4], [0, 8]
+		[0, 0.55], [1, 0.45], [2.5, 0.375], [6, 0.825], [8, -0.375], 
+		[8, -0.375], [6, 1.875], [4, 1.6], [1.8, 2.5], [1.5, 2.8], [1.2, 3.3], [1.05, 3.8], [1, 4], [0, 8]
 	];
 
 	$fn = 16;
 
 	a = 360 / $fn;
-	x = 7 * cos(a);
-	y = 7 * sin(a);
+	x = 6.2 * cos(a);
+	y = 6.2 * sin(a);
 	path = [
 		[0, 0], [2.5, 0], [x, y], [x + 1, y + 1]
 	];
@@ -28,15 +28,15 @@ module dragon_claw() {
 	claw_path2 = [for(p = claw_path_basic) ptf_rotate(p * 1.2, a * 2)];
 	claw_path3 = [for(p = claw_path_basic) ptf_rotate(p * 1.15, a * 4)];
 	claw_path4 = [for(p = claw_path_basic) ptf_rotate(p * 1.1, a * 6)];
-	claw_path5 = [for(p = claw_path_basic) ptf_rotate(p * 0.975, a * 11)];
+	claw_path5 = [for(p = claw_path_basic) ptf_rotate(p, a * 11)];
 
 	rotate(-15)
-	scale([1.1, 1.25, 1]) 
+	scale([1.15, 1.3, 1]) 
 	rotate(15)
 	intersection() {
-		rotate_extrude()
+		rotate_extrude($fn = 7)
 			polygon(pts);
 		linear_extrude(5)
-			polygon(dedup(concat(claw_path1, claw_path2, claw_path3, claw_path4, claw_path5)));
+			polygon(dedup(concat(claw_path1, claw_path2, claw_path3, claw_path4, [[-2, -.75], [-1.45, -1.45]], claw_path5, [[1.45, -1.45], [2, -.75]])));
 	}
 }
