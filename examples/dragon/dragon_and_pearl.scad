@@ -16,11 +16,11 @@ module one_segment(body_r, body_fn, one_scale_data) {
         dragon_body_scales(body_r, body_fn, one_scale_data);
 
     // dorsal fin
-    translate([0, 4, -1]) 
-    rotate([-65, 0, 0]) 
-    shear(sy = [0, 1.75])
-    linear_extrude(3, scale = 0.3)
-        square([1.5, 12], center = true);            
+    translate([0, 3.2, -3]) 
+    rotate([-61, 0, 0]) 
+    shear(sy = [0, 2.25])
+    linear_extrude(3.25, scale = 0.3)
+        square([1.5, 10], center = true);            
             
     // belly    
     translate([0, -2.5, .8]) 
