@@ -41,12 +41,10 @@ module one_segment(body_r, body_fn, one_scale_data) {
 
 module tail() {
     $fn = 4;
-    scale([1, 1, 1]) union() {
-        tail_scales(75, 2.5, 4.25, -4, 1.25);
-        tail_scales(100, 1.25, 4.5, -7, 1);
-        tail_scales(110, 1.25, 3, -9, 1);
-        tail_scales(120, 2.5, 2, -9, 1);   
-    }
+    tail_scales(75, 2.5, 4.25, -4, 1.25);
+    tail_scales(100, 1.25, 4.5, -7, 1);
+    tail_scales(110, 1.25, 3, -9, 1);
+    tail_scales(120, 2.5, 2, -9, 1);   
 }
 
 module knee_scales(ang, leng, radius, height, thickness) {
@@ -145,7 +143,7 @@ module dragon() {
     rotate([0, ayz[0] + 90, ayz[1]])
     mirror([0, 0, 1])
     rotate(-12)
-    scale(0.775)
+    scale(0.7)
         tail();
 
     translate([-5, 25, -14]) 
