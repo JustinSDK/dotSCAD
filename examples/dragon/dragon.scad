@@ -1,10 +1,11 @@
-use <dragon_head.scad>;
-use <dragon_scales.scad>;
 use <bezier_curve.scad>;
 use <shear.scad>;
 use <along_with.scad>;
-use <hull_polyline3d.scad>;
 use <bezier_smooth.scad>;
+use <fibonacci_lattice.scad>;
+use <polyhedron_hull.scad>;
+use <dragon_head.scad>;
+use <dragon_scales.scad>;
 use <dragon_claw.scad>;
 
 dragon();
@@ -123,8 +124,8 @@ module dragon() {
     ]);
     leng_body_path = len(body_path);
 
-    translate([0, -2, 16])
-    rotate([-115, 0, 0])
+    translate([1, -2, 16])
+    rotate([-115, 0, 3])
     scale(1.15)
         dragon_head(__angy_angz(body_path[0], body_path[1]));
 
@@ -155,7 +156,7 @@ module dragon() {
     mirror([1, 0, 0])
         foot();
 
-    translate([13, 110, -5]) 
+    translate([12, 110, -5]) 
     rotate([-10, 20, -50]) 
     scale(0.75)
         foot();
@@ -166,4 +167,7 @@ module dragon() {
     scale(0.75)
     mirror([1, 0, 0])
         foot();
+
+    translate([-30, 11.5, -15])
+        polyhedron_hull(fibonacci_lattice(60, 7));
 }
