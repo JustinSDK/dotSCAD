@@ -167,6 +167,6 @@ module dragon_and_perl() {
     mirror([1, 0, 0])
         foot();
 
-    translate([-30, 11.5, -15])
+    translate([-28.5, 11.5, -15])
         polyhedron_hull(fibonacci_lattice(60, 7));
 }
