@@ -110,21 +110,21 @@ module dragon_and_perl() {
             za = atan2(dy, dx)
         ) [ya, za];
         
-    body_path = bezier_curve(0.0225, [
-        [0, 0, 15],
+    body_path = bezier_curve(0.02, [
+        [0, 7.5, 15],
         [0, 30, 0],
         [-30, 50, -55],
         [-50, 70, 0],
         [20, 90, 60],
         [50, 110, 0],
-        [0, 120, -30],
-        [-10, 130, 0],
-        [-10, 155, 0]
+        [0, 130, -30],
+        [-10, 150, 0],
+        [-5, 170, 0]
     ]);
     leng_body_path = len(body_path);
 
-    translate([1, -2, 16])
-    rotate([-115, 0, 3])
+    translate([1, 7, 14])
+    rotate([-135, 0, 3])
     scale(1.15)
         dragon_head(__angy_angz(body_path[0], body_path[1]));
 
@@ -140,33 +140,33 @@ module dragon_and_perl() {
     ayz = __angy_angz(body_path[leng_body_path - 2], body_path[leng_body_path - 1]);
 
     translate(body_path[leng_body_path - 1])
-    rotate([0, ayz[0] + 90, ayz[1]])
+    rotate([0, ayz[0] + 85, ayz[1]])
     mirror([0, 0, 1])
     rotate(-12)
     scale(0.6)
         tail();
 
-    translate([-5, 25, -14]) 
+    translate([-5, 25, -13]) 
     rotate([-20, 0, -15]) 
         foot();
 
-    translate([-12, 15, -8]) 
+    translate([-10, 15, -7]) 
     rotate([-60, 45, 25]) 
     mirror([1, 0, 0])
         foot();
 
-    translate([12, 110, -5]) 
+    translate([11.5, 110, -3]) 
     rotate([-10, 20, -50]) 
     scale(0.75)
         foot();
 
-    translate([7, 108, -2]) 
+    translate([7, 108, -1]) 
     rotate([5, 20, 60]) 
     rotate([10, -30, 0]) 
     scale(0.75)
     mirror([1, 0, 0])
         foot();
 
-    translate([-28.5, 11.5, -15])
+    translate([-27.5, 11.5, -14])
         polyhedron_hull(fibonacci_lattice(60, 7));
 }
