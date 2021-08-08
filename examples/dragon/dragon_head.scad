@@ -5,7 +5,7 @@ use <paths2sections.scad>;
 use <shape_trapezium.scad>;
 use <ptf/ptf_rotate.scad>;
 
-module dragon_head(angy_angz) {
+module dragon_head() {
     module hair() {
         for(i = [16:36]) {
             rotate(i * 10 + rands(0, 5, 1, i)[0]) 
@@ -93,7 +93,7 @@ module dragon_head(angy_angz) {
             circle(1, $fn = 8);    
     }
     
-    rotate([0, angy_angz[0] + 15, angy_angz[1]]) 
+    rotate([0, 15, 0]) 
     translate([0, 0, -25 / 2]) 
     scale(1.15) {
         scale([0.8, 0.9, 1]) hair();

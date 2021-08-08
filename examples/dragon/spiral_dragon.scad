@@ -84,7 +84,8 @@ module spiral_dragon() {
 
     translate([17.5, 0, 63]) 
     rotate([95, 0, -10]) 
-        dragon_head(angy_angz);
+    rotate([0, angy_angz[0], angy_angz[1]])
+        dragon_head();
 }
 
 module flame_mountain(beginning_radius, fn, amplitude,curve_step, smoothness) {

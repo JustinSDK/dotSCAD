@@ -122,11 +122,13 @@ module dragon_and_perl() {
         [-5, 170, 0]
     ]);
     leng_body_path = len(body_path);
+    angy_angz = __angy_angz(body_path[0], body_path[1]);
 
     translate([1, 7, 14])
     rotate([-135, 0, 3])
     scale(1.15)
-        dragon_head(__angy_angz(body_path[0], body_path[1]));
+    rotate([0, angy_angz[0], angy_angz[1]])
+        dragon_head();
 
     body_r = 6;
     body_fn = 12;

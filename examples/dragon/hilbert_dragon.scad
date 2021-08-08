@@ -59,7 +59,7 @@ module hilbert_dragon() {
 
     translate([0, 0, -2.5])        
     scale(0.035)         
-        dragon_head([0, 0]);     
+        dragon_head();     
 }
    
 
