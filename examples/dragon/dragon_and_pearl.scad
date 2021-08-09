@@ -77,7 +77,7 @@ module foot() {
     scale_tilt_a = 6;
 
     upper_arm_path = [[.5, 1, 10], [1.25, 6.25, 11.25], [2, 11.5, 12.5], [2, 16.75, 13.75], [1.9, 20, 14.25]];
-    lower_arm_path = [[2, 22, 14],  [3.5, 21, 10], [4.5, 20.3, 6.5]];
+    lower_arm_path = [[2, 22, 14],  [3.5, 21, 10], [4.5, 20.3, 7]];
 
     upper_arm_scale_data = one_body_scale(upper_arm_r, arm_fn, scale_fn, scale_tilt_a);
     lower_arm_scale_data = one_body_scale(lower_arm_r, arm_fn, scale_fn, scale_tilt_a);
@@ -85,7 +85,7 @@ module foot() {
     along_with(upper_arm_path, scale = 0.75, method = "EULER_ANGLE") 
         rotate([-90, 0, 0])
             dragon_body_scales(upper_arm_r, arm_fn, upper_arm_scale_data);
-    along_with(lower_arm_path, scale = 0.6, method = "EULER_ANGLE") 
+    along_with(lower_arm_path, scale = 0.7, method = "EULER_ANGLE") 
         rotate([-90, 0, 0])
             dragon_body_scales(lower_arm_r, arm_fn, lower_arm_scale_data);
     
@@ -94,9 +94,9 @@ module foot() {
     rotate([108, 9, 1])
         knee();
 
-    translate([6, 19.25, 0])
-    rotate([10, 10, 185])
-    scale([1.1, 1.1, 1.2])
+    translate([6.4, 18.95, .25])
+    rotate([11, 13, 185])
+    scale([1.2, 1.2, 1.2])
         dragon_claw();
 }
 
@@ -169,6 +169,6 @@ module dragon_and_perl() {
     mirror([1, 0, 0])
         foot();
 
-    translate([-27.5, 11.5, -14])
+    translate([-27.5, 11.75, -14])
         polyhedron_hull(fibonacci_lattice(66, 7));
 }
