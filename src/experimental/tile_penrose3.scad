@@ -42,7 +42,7 @@ function tile_penrose3(n) =
 				i % 2 == 0 ? ["acute", t[0], t[1], t[2]] : ["acute", t[0], t[2], t[1]]
 		], n)
 	)
-    [for(t = tris) [t[0], t[2], t[1], t[3]]];
+    [for(t = tris) [t[0], t[3], t[1], t[2]]];
 
 module draw(tris) {
 	for(t = tris) {
