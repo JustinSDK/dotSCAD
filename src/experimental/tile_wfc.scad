@@ -22,7 +22,7 @@ sample = [
 
 size = [20, 20];
 
-echo(tile_wfc(width, height, sample));
+echo(tile_wfc(size, sample));
 */
 
 
