@@ -35,21 +35,22 @@ function _penrose3(triangles, n, i = 0) =
 function tile_penrose3(n) = 
     let(
 		acute = 360 / $fn,
-		shape_tri0 = [[0, 0], [1, 0], ptf_rotate([1, 0], acute)]
+		shape_tri0 = [[0, 0], [1, 0], ptf_rotate([1, 0], acute)],
+		tris = _penrose3([
+			for(i = [0:$fn - 1]) 
+			let(t = [for(p = shape_tri0) ptf_rotate(p, i * acute)])
+				i % 2 == 0 ? ["acute", t[0], t[1], t[2]] : ["acute", t[0], t[2], t[1]]
+		], n)
 	)
-    _penrose3([
-		for(i = [0:$fn - 1]) 
-		let(t = [for(p = shape_tri0) ptf_rotate(p, i * acute)])
-		    i % 2 == 0 ? ["acute", t[0], t[1], t[2]] : ["acute", t[0], t[2], t[1]]
-	], n);
+    [for(t = tris) [t[0], t[2], t[1], t[3]]];
 
 module draw(tris) {
 	for(t = tris) {
 		color(t[0] == "obtuse" ? "white" : "black")
 		linear_extrude(.5)
-			polygon([t[2], t[1], t[3]] * radius);
+			polygon([t[1], t[2], t[3]] * radius);
 		linear_extrude(1)
-		    hull_polyline2d([t[2], t[1], t[3]] * radius, .1);
+		    hull_polyline2d([t[1], t[2], t[3]] * radius, .1);
 	}
 }
 
