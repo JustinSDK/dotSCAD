@@ -10,17 +10,17 @@ function _subdivide(triangles) =
 			b = tri[2],
 			c = tri[3]
 		)
-		each (type ? _sub_a1(a, b, c) : _sub_a0(a, b, c))
+		each (type ? _sub_obtuse(a, b, c) : _sub_acute(a, b, c))
 	];
 
-function _sub_a0(a, b, c) =
+function _sub_acute(a, b, c) =
 	let(
 		PHI = 1.618033988749895,
 		p = a + (b - a) / PHI
 	)
 	[[false, c, p, b], [true, p, c, a]];	
 	
-function _sub_a1(a, b, c) =
+function _sub_obtuse(a, b, c) =
 	let(
 		PHI = 1.618033988749895,
 		q = b + (a - b) / PHI,
@@ -34,13 +34,12 @@ function _penrose3(triangles, n, i = 0) =
 			
 function tile_penrose3(n) = 
     let(
-		a0 = 360 / $fn,
-	    a2 = 180 - a0 * 2,
-		shape_tri0 = [[0, 0], [1, 0], ptf_rotate([1, 0], a0)]
+		acute = 360 / $fn,
+		shape_tri0 = [[0, 0], [1, 0], ptf_rotate([1, 0], acute)]
 	)
     _penrose3([
 		for(i = [0:$fn - 1]) 
-		let(t = [for(p = shape_tri0) ptf_rotate(p, i * a0)])
+		let(t = [for(p = shape_tri0) ptf_rotate(p, i * acute)])
 		    i % 2 == 0 ? [false, t[0], t[1], t[2]] : [false, t[0], t[2], t[1]]
 	], n);
 
