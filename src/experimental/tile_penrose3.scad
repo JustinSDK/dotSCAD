@@ -47,7 +47,7 @@ function tile_penrose3(n) =
 module draw(tris) {
 	for(t = tris) {
 		color(t[0] ? "white" : "black")
-		linear_extrude(.5))
+		linear_extrude(.5)
 			polygon([t[2], t[1], t[3]]);
 		linear_extrude(1)
 		    hull_polyline2d([t[2], t[1], t[3]], .1);
