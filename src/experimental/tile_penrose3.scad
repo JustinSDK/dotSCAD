@@ -25,8 +25,8 @@ function _sub_obtuse(a, b, c) =
 		PHI = 1.618033988749895,
 		q = b + (a - b) / PHI,
 		r = b + (c - b) / PHI
-	)
-	[["obtuse", r, c, a], ["obtuse", q, r, b], ["acute", r, q, a]];
+	) 
+	concat([["obtuse", r, c, a]], _sub_acute(b, a, r));
 
 function _penrose3(triangles, n, i = 0) = 
 	i == n ? triangles :
