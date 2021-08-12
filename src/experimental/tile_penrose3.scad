@@ -23,7 +23,6 @@ function _sub_acute(a, b, c) =
 function _sub_obtuse(a, b, c) =
 	let(
 		PHI = 1.618033988749895,
-		q = b + (a - b) / PHI,
 		r = b + (c - b) / PHI
 	) 
 	concat([["obtuse", r, c, a]], _sub_acute(b, a, r));
