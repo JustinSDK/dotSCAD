@@ -33,10 +33,11 @@ function _penrose3(triangles, n, i = 0) =
 			
 function tile_penrose3(n) = 
     let(
-		acute = 360 / $fn,
+		fn = 10,
+		acute = 360 / fn,
 		shape_tri0 = [[0, 0], [1, 0], ptf_rotate([1, 0], acute)],
 		tris = _penrose3([
-			for(i = [0:$fn - 1]) 
+			for(i = [0:fn - 1]) 
 			let(t = [for(p = shape_tri0) ptf_rotate(p, i * acute)])
 				i % 2 == 0 ? ["acute", t[0], t[1], t[2]] : ["acute", t[0], t[2], t[1]]
 		], n)
@@ -54,7 +55,6 @@ module draw(tris) {
 }
 
 radius = 10;
-$fn = 12;
 
 draw(tile_penrose3(0));
 
