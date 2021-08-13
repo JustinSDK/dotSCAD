@@ -42,33 +42,33 @@ function tile_penrose3(n) =
 				i % 2 == 0 ? ["acute", t[0], t[1], t[2]] : ["acute", t[0], t[2], t[1]]
 		], n)
 	)
-    [for(t = tris) [t[0], t[3], t[1], t[2]]];
+    [for(t = tris) [t[0], [t[3], t[1], t[2]]]];
 
-module draw(tris) {
+module draw(tris, radius) {
 	for(t = tris) {
 		color(t[0] == "obtuse" ? "white" : "black")
 		linear_extrude(.5)
-			polygon([t[1], t[2], t[3]] * radius);
+			polygon(t[1] * radius);
 		linear_extrude(1)
-		    hull_polyline2d([t[1], t[2], t[3]] * radius, .1);
+		    hull_polyline2d(t[1] * radius, .1);
 	}
 }
 
 radius = 10;
 
-draw(tile_penrose3(0));
+draw(tile_penrose3(0), radius);
 
 translate([30, 0])
-    draw(tile_penrose3(1));
+    draw(tile_penrose3(1), radius);
 
 translate([60, 0])
-    draw(tile_penrose3(2));
+    draw(tile_penrose3(2), radius);
 
 translate([0, -30])
-    draw(tile_penrose3(3));
+    draw(tile_penrose3(3), radius);
 
 translate([30, -30])
-    draw(tile_penrose3(4));
+    draw(tile_penrose3(4), radius);
 
 translate([60, -30])
-    draw(tile_penrose3(5));
+    draw(tile_penrose3(5), radius);
