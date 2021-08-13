@@ -11,11 +11,11 @@ beginning_radius = 15;
 thickness = 2;
 fn = 180;
 amplitude = 10;
-curve_step = 0.02;
+curve_step = 0.01;
 smoothness = 15;
 // Perlin noise 2D or 3D
 perlin = 2; // [2, 3]
-bottom = "NO"; // ["YES", "NO"]
+bottom = "YES"; // ["YES", "NO"]
 epsilon = 0.000001;
 
 distorted_vase(beginning_radius, thickness, fn, amplitude, curve_step, smoothness, perlin, epsilon);
@@ -77,7 +77,10 @@ module distorted_vase(beginning_radius, thickness, fn, amplitude,curve_step, smo
 	sweep(all, triangles = "HOLLOW");
 	
 	if(bottom == "YES") {
-	    linear_extrude(thickness)
-	        polygon([for(p = offset_noisy[len(offset_noisy) - 1]) [p[0], p[1]]]);
+	    sweep([
+			for(section = noisy)
+			if(section[0][2] < thickness) 
+			section
+		]);
 	}
 }
