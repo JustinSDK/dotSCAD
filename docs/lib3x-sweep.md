@@ -40,7 +40,7 @@ The indexes of the above triangles is:
 
 ## Examples
 
-	use <rotate_p.scad>;
+	use <ptf/ptf_rotate.scad>;
 	use <sweep.scad>;
 
 	section1 = [
@@ -55,7 +55,7 @@ The indexes of the above triangles is:
 		for(i = [0:55]) 
 			[
 				for(p = section1)
-					let(pt = rotate_p(p, [90, 0, 10 * i]))
+					let(pt = ptf_rotate(p, [90, 0, 10 * i]))
 					[pt[0], pt[1] , pt[2] + i]
 			]
 	];
@@ -64,7 +64,7 @@ The indexes of the above triangles is:
 
 ![sweep](images/lib3x-sweep-7.JPG)
 
-	use <rotate_p.scad>;
+	use <ptf/ptf_rotate.scad>;
 	use <sweep.scad>;
 	
 	section1 = [
@@ -85,7 +85,7 @@ The indexes of the above triangles is:
 	    for(i = [0:55]) 
 	        [
 	            for(p = section1)
-	                let(pt = rotate_p(p, [90, 0, 10 * i]))
+	                let(pt = ptf_rotate(p, [90, 0, 10 * i]))
 	                [pt[0], pt[1] , pt[2] + i]
 	        ]
 	];
@@ -94,7 +94,7 @@ The indexes of the above triangles is:
 
 ![sweep](images/lib3x-sweep-8.JPG)
 
-	use <rotate_p.scad>;
+	use <ptf/ptf_rotate.scad>;
 	use <sweep.scad>;
 	
 	section1 = [
@@ -113,7 +113,7 @@ The indexes of the above triangles is:
 	    for(i = [0:55]) 
 	        [
 	            for(p = section1)
-	                let(pt = rotate_p(p, [90, 0, 10 * i]))
+	                let(pt = ptf_rotate(p, [90, 0, 10 * i]))
 	                [pt[0], pt[1] , pt[2] + i]
 	        ]
 	];

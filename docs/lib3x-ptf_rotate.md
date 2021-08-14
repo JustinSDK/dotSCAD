@@ -26,7 +26,7 @@ Rotates a point `a` degrees around the axis of the coordinate system or an arbit
 	           sphere(1);   
 	}  
 
-![ptf_rotate](images/lib3x-rotate_p-1.JPG)
+![ptf_rotate](images/lib3x-ptf_rotate-1.JPG)
 
     use <ptf/ptf_rotate.scad>;
 
@@ -48,7 +48,7 @@ Rotates a point `a` degrees around the axis of the coordinate system or an arbit
 	
 	%sphere(radius);
 
-![ptf_rotate](images/lib3x-rotate_p-2.JPG)
+![ptf_rotate](images/lib3x-ptf_rotate-2.JPG)
 
 	use <ptf/ptf_rotate.scad>;
 
@@ -66,4 +66,4 @@ Rotates a point `a` degrees around the axis of the coordinate system or an arbit
 			sphere(1);  
 	}
 	
-![ptf_rotate](images/lib3x-rotate_p-3.JPG)
+![ptf_rotate](images/lib3x-ptf_rotate-3.JPG)

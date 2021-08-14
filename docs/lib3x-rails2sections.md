@@ -4,6 +4,8 @@ It returns all cross-sections described by rails. Combined with the `sweep` modu
 
 Rails should be indexed count-clockwisely.
 
+**Since:** 3.2
+
 ## Parameters
 
 - `rails` : A list of rails used to describe the surface of the model.
