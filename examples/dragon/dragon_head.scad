@@ -1,7 +1,7 @@
 use <ellipse_extrude.scad>;
 use <curve.scad>;
 use <sweep.scad>;
-use <paths2sections.scad>;
+use <rails2sections.scad>;
 use <shape_trapezium.scad>;
 use <ptf/ptf_rotate.scad>;
 
@@ -52,7 +52,7 @@ module dragon_head() {
 
         translate([0, 0, -2]) 
         rotate([90, 0, -90]) 
-            sweep(paths2sections([path1, path2, path3, path4, path5]));
+            sweep(rails2sections([path1, path2, path3, path4, path5]));
 
         translate([0, 0, -3.25]) 
         rotate([90, 0, -90]) 

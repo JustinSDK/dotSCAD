@@ -4,7 +4,7 @@ use <hull_polyline3d.scad>;
 use <experimental/tri_bisectors.scad>;
 
 // style: LINES or HULL_LINES
-module hollow_out_sweep(sections, thickness, closed = false, style = "LINES") {
+module hollow_out_sweep(sections, diameter, closed = false, style = "LINES") {
     function rects(sects) = 
         let(
             sects_leng = len(sects),
@@ -41,7 +41,7 @@ module hollow_out_sweep(sections, thickness, closed = false, style = "LINES") {
             line3d(
                 p1 = line[0], 
                 p2 = line[1],
-                thickness = thickness, 
+                diameter = diameter, 
                 p1Style = "CAP_SPHERE", 
                 p2Style = "CAP_SPHERE"
             );
@@ -49,7 +49,7 @@ module hollow_out_sweep(sections, thickness, closed = false, style = "LINES") {
     }   
     else if(style == "HULL_LINES") { 
         for(line = lines) {
-            hull_polyline3d(line, thickness = thickness);
+            hull_polyline3d(line, diameter = diameter);
         }
     }
 }

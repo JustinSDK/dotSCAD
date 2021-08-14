@@ -1,7 +1,7 @@
 use <hull_polyline3d.scad>;
 use <bezier_curve.scad>;
 use <ptf/ptf_rotate.scad>;
-use <paths2sections.scad>;
+use <rails2sections.scad>;
 use <experimental/hollow_out_sweep.scad>;
 use <experimental/tri_bisectors.scad>;
 
@@ -26,7 +26,7 @@ module hollow_out_vase(ctrl_pts, t_step, line_diameter, fn, line_style) {
     fpt = ctrl_pts[len(ctrl_pts) - 1];
 
     a_step = 360 / fn;
-    sects = paths2sections([
+    sects = rails2sections([
         for(a = [0:a_step:360 - a_step])
         [for(p = bezier) ptf_rotate(p, [0, 0, a])]
     ]);
