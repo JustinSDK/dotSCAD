@@ -5,7 +5,7 @@ use <curve.scad>;
 use <sweep.scad>;
 use <shape_circle.scad>;
 use <bezier_curve.scad>;
-use <path_scaling_sections.scad>;
+use <rail_extruded_sections.scad>;
 use <noise/nz_perlin2s.scad>;
 use <dragon_head.scad>;
 use <dragon_scales.scad>;
@@ -103,7 +103,7 @@ module flame_mountain(beginning_radius, fn, amplitude,curve_step, smoothness) {
 	]);
 
 
-	sections = path_scaling_sections(section, edge_path);
+	sections = rail_extruded_sections(section, edge_path);
 
     noise = function(pts, seed) nz_perlin2s(pts, seed);
 

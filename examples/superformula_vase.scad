@@ -1,6 +1,6 @@
 use <trim_shape.scad>;
 use <bezier_curve.scad>;
-use <path_scaling_sections.scad>;
+use <rail_extruded_sections.scad>;
 use <sweep.scad>;
 use <ptf/ptf_rotate.scad>;
 use <bijection_offset.scad>;
@@ -27,7 +27,7 @@ module superformula_vase(phi_step, m, n, n3, d, r1, r2, h1, h2, t_step, twist) {
 
     function cal_sections(shapt_pts, edge_path, twist) =
         let(
-            sects = path_scaling_sections(shapt_pts, edge_path),
+            sects = rail_extruded_sections(shapt_pts, edge_path),
             leng = len(sects),
             twist_step = twist / leng
         )
@@ -50,7 +50,7 @@ module superformula_vase(phi_step, m, n, n3, d, r1, r2, h1, h2, t_step, twist) {
         [r2, 0, h2],
     ]);
 
-    offseted = bijection_offset(superformula, d);
+    offseted = bijection_offset(superformula, d, epsilon = 0.0000001);
 
     edge_path2 = [for(p = edge_path) p + [d, 0, 0]];
     superformula2 = trim_shape(offseted, 3, len(offseted) - 1, epsilon = 0.0001);

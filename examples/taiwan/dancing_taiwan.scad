@@ -1,7 +1,7 @@
 use <trim_shape.scad>;
 use <bezier_curve.scad>;
 use <shape_taiwan.scad>;
-use <path_scaling_sections.scad>;
+use <rail_extruded_sections.scad>;
 use <sweep.scad>;
 use <ptf/ptf_rotate.scad>;
 use <bijection_offset.scad>;
@@ -19,7 +19,7 @@ module dancing_formosan(x1, x2, x3, y1, y2, y3, twist, t_step) {
 
     function cal_sections(shapt_pts, edge_path, twist) =
         let(
-            sects = path_scaling_sections(shapt_pts, edge_path),
+            sects = rail_extruded_sections(shapt_pts, edge_path),
             leng = len(sects),
             twist_step = twist / leng
         )
