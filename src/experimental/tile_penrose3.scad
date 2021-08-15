@@ -10,7 +10,7 @@ function _subdivide(triangles) =
 			b = tri[2],
 			c = tri[3]
 		)
-		each (type == "obtuse" ? _sub_obtuse(a, b, c) : _sub_acute(a, b, c))
+		each (type == "OBTUSE" ? _sub_obtuse(a, b, c) : _sub_acute(a, b, c))
 	];
 
 function _sub_acute(a, b, c) =
@@ -18,35 +18,39 @@ function _sub_acute(a, b, c) =
 		PHI = 1.618033988749895,
 		p = a + (b - a) / PHI
 	)
-	[["acute", c, p, b], ["obtuse", p, c, a]];	
+	[["ACUTE", c, p, b], ["OBTUSE", p, c, a]];	
 	
 function _sub_obtuse(a, b, c) =
 	let(
 		PHI = 1.618033988749895,
 		r = b + (c - b) / PHI
 	) 
-	concat([["obtuse", r, c, a]], _sub_acute(b, a, r));
+	concat([["OBTUSE", r, c, a]], _sub_acute(b, a, r));
 
 function _penrose3(triangles, n, i = 0) = 
 	i == n ? triangles :
 			_penrose3(_subdivide(triangles), n, i+ 1);
 			
-function tile_penrose3(n) = 
+function tile_penrose3(n, triangles) = 
     let(
 		fn = 10,
 		acute = 360 / fn,
 		shape_tri0 = [[0, 0], [1, 0], ptf_rotate([1, 0], acute)],
-		tris = _penrose3([
-			for(i = [0:fn - 1]) 
-			let(t = [for(p = shape_tri0) ptf_rotate(p, i * acute)])
-				i % 2 == 0 ? ["acute", t[0], t[1], t[2]] : ["acute", t[0], t[2], t[1]]
-		], n)
+		tris = _penrose3(
+		    is_undef(triangles) ? [
+				for(i = [0:fn - 1]) 
+				let(t = [for(p = shape_tri0) ptf_rotate(p, i * acute)])
+					i % 2 == 0 ? ["ACUTE", t[0], t[1], t[2]] : ["ACUTE", t[0], t[2], t[1]]
+		    ] :
+            [for(tri = triangles) [tri[0], tri[1][0], tri[1][1], tri[1][2]]],
+		    n
+		)
 	)
     [for(t = tris) [t[0], [t[3], t[1], t[2]]]];
 
 module draw(tris, radius) {
 	for(t = tris) {
-		color(t[0] == "obtuse" ? "white" : "black")
+		color(t[0] == "OBTUSE" ? "white" : "black")
 		linear_extrude(.5)
 			polygon(t[1] * radius);
 		linear_extrude(1)
@@ -56,7 +60,7 @@ module draw(tris, radius) {
 
 radius = 10;
 
-draw(tile_penrose3(0), radius);
+draw(tile_penrose3(6, [["ACUTE", [[0, 0], [1, 0], ptf_rotate([1, 0], 36)]]]), radius);
 
 translate([30, 0])
     draw(tile_penrose3(1), radius);
