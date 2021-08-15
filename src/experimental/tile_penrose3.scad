@@ -42,16 +42,13 @@ function tri2tile(type, tri) =
 function tile_penrose3(n, triangles) = 
     let(
 		fn = 10,
-		acute = 360 / fn,
-		shape_tri0 = [[0, 0], [1, 0], ptf_rotate([1, 0], acute)],
+		a = 720 / fn,
+		shape_tri0 = [[1, 0], [1, 0] + ptf_rotate([-1, 0], -180 + a), [0, 0]],
 		tris = _penrose3(
 		    is_undef(triangles) ? [
-				for(i = [0:fn - 1]) 
-				let(t = [for(p = shape_tri0) ptf_rotate(p, i * acute)])
-					each (i % 2 == 0 ? 
-					         tri2tile("ACUTE", [t[0], t[1], t[2]]): 
-						     tri2tile("ACUTE", [t[0], t[2], t[1]])
-					     )
+				for(i = [0:fn / 2 - 1]) 
+				let(t = [for(p = shape_tri0) ptf_rotate(p, i * a)])
+					each tri2tile("OBTUSE", [t[0], t[1], t[2]])
 		    ] :
             [for(tri = triangles) each tri2tile(tri[0], [tri[1][1], tri[1][2], tri[1][0]])],
 		    n
@@ -70,6 +67,7 @@ module draw(tris, radius) {
 }
 
 radius = 10;
+$fn = 12;
 
 draw(tile_penrose3(5, [
     ["OBTUSE", [ptf_rotate([2, 0], 108), [0, 0], [2, 0]]]
