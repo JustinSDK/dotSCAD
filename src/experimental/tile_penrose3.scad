@@ -77,13 +77,13 @@ translate([40, 0])
     draw(tile_penrose3(0), radius);
 
 translate([80, 0])
-    draw(tile_penrose3(2), radius);
+    draw(tile_penrose3(1), radius);
 
 translate([0, -40])
-    draw(tile_penrose3(3), radius);
+    draw(tile_penrose3(2), radius);
 
 translate([40, -40])
-    draw(tile_penrose3(4), radius);
+    draw(tile_penrose3(3), radius);
 
 translate([80, -40])
-    draw(tile_penrose3(5), radius);
+    draw(tile_penrose3(4), radius);

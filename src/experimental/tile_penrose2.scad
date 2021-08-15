@@ -147,23 +147,23 @@ $fn = 12;
 
 radius = 7;
 
-draw(tile_penrose2(3,
+draw(tile_penrose2(5,
 	[
 		[KITE, [[0, 0], [1, 0], ptf_rotate([1, 0], 36)]]
 	]
 ), radius);
 
 translate([30, 0])
-    draw(tile_penrose2(1), radius);
+    draw(tile_penrose2(0), radius);
 
 translate([60, 0])
-    draw(tile_penrose2(2), radius);
+    draw(tile_penrose2(1), radius);
 
 translate([0, -30])
-    draw(tile_penrose2(3), radius);
+    draw(tile_penrose2(2), radius);
 
 translate([30, -30])
-    draw(tile_penrose2(4), radius);
+    draw(tile_penrose2(3), radius);
 
 translate([60, -30])
-    draw(tile_penrose2(5), radius);
+    draw(tile_penrose2(4), radius);
