@@ -31,6 +31,14 @@ function _penrose3(triangles, n, i = 0) =
 	i == n ? triangles :
 			_penrose3(_subdivide(triangles), n, i+ 1);
 			
+function tri2tile(type, tri) =
+    let(
+	    c = (tri[1] + tri[2]) / 2,
+		v = c - tri[0],
+		m = c + v
+	)
+	[[type, tri[0], tri[1], tri[2]], [type, m, tri[1], tri[2]]];
+			
 function tile_penrose3(n, triangles) = 
     let(
 		fn = 10,
@@ -40,9 +48,12 @@ function tile_penrose3(n, triangles) =
 		    is_undef(triangles) ? [
 				for(i = [0:fn - 1]) 
 				let(t = [for(p = shape_tri0) ptf_rotate(p, i * acute)])
-					i % 2 == 0 ? ["ACUTE", t[0], t[1], t[2]] : ["ACUTE", t[0], t[2], t[1]]
+					each (i % 2 == 0 ? 
+					         tri2tile("ACUTE", [t[0], t[1], t[2]]): 
+						     tri2tile("ACUTE", [t[0], t[2], t[1]])
+					     )
 		    ] :
-            [for(tri = triangles) [tri[0], tri[1][0], tri[1][1], tri[1][2]]],
+            [for(tri = triangles) each tri2tile(tri[0], [tri[1][1], tri[1][2], tri[1][0]])],
 		    n
 		)
 	)
@@ -60,19 +71,21 @@ module draw(tris, radius) {
 
 radius = 10;
 
-draw(tile_penrose3(6, [["ACUTE", [[0, 0], [1, 0], ptf_rotate([1, 0], 36)]]]), radius);
+draw(tile_penrose3(5, [
+    ["OBTUSE", [ptf_rotate([2, 0], 108), [0, 0], [2, 0]]]
+]), radius);
 
-translate([30, 0])
-    draw(tile_penrose3(1), radius);
+translate([40, 0])
+    draw(tile_penrose3(0), radius);
 
-translate([60, 0])
+translate([80, 0])
     draw(tile_penrose3(2), radius);
 
-translate([0, -30])
+translate([0, -40])
     draw(tile_penrose3(3), radius);
 
-translate([30, -30])
+translate([40, -40])
     draw(tile_penrose3(4), radius);
 
-translate([60, -30])
+translate([80, -40])
     draw(tile_penrose3(5), radius);
