@@ -1,4 +1,5 @@
 use <hull_polyline2d.scad>;
+use <ptf/ptf_rotate.scad>;
 use <util/dedup.scad>;
 
 // tile type
@@ -86,13 +87,24 @@ function subdivide(tiles) = [
 	each (tile_type(tile) == DART ? sub_dart(tile) : sub_kite(tile))
 ];
 
+function tri2tile(type, tri) =
+    let(
+		v = tri[1] - tri[0],
+		a = atan2(v[1], v[0]) + 36
+	)
+	tile(type, tri[0][0], tri[0][1], a, 1);
+
 function _penrose2(tiles, n, i = 0) = 
 	i == n ? tiles :
 			_penrose2(dedup(subdivide(tiles), eq = tile_eq, hash = tile_hash), n, i + 1);
 			
-function tile_penrose2(n) = 
+function tile_penrose2(n, triangles) = 
     let(
-	    tiles = _penrose2([for(i = [0:4]) tile(KITE, 0, 0, 36 * (1 + 2 * i), 1)], n),
+	    tiles = _penrose2(
+		    is_undef(triangles) ?
+		        [for(i = [0:4]) tile(KITE, 0, 0, 36 * (1 + 2 * i), 1)] : [for(tri = triangles) tri2tile(tri[0], tri[1])], 
+			n
+		),
 		PHI = 1.618033988749895,
 	    dist = [[PHI, PHI, PHI], [-PHI, -1, -PHI]]
 	)
@@ -131,9 +143,15 @@ module draw(tris, radius) {
 	}
 }
 
+$fn = 12;
+
 radius = 7;
 
-draw(tile_penrose2(0), radius);
+draw(tile_penrose2(3,
+	[
+		[KITE, [[0, 0], [1, 0], ptf_rotate([1, 0], 36)]]
+	]
+), radius);
 
 translate([30, 0])
     draw(tile_penrose2(1), radius);
