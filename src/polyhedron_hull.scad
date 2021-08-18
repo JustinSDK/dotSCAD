@@ -10,7 +10,15 @@
 
 use <__comm__/_convex_hull3.scad>;
 
-module polyhedron_hull(points) {
-    vts_faces = _convex_hull3(points);
-    polyhedron(vts_faces[0], vts_faces[1]);
+module polyhedron_hull(points, polyhedron_abuse = false) {
+    if(polyhedron_abuse) {
+        // It's workable only because `polyhedron` doesn't complain about mis-ordered faces.
+        // It's fast but might be invalid in later versions.
+        hull()
+        polyhedron(points, [[for(i = [0:len(points) - 1]) i]]);
+    }
+    else {
+        vts_faces = _convex_hull3(points);
+        polyhedron(vts_faces[0], vts_faces[1]);        
+    }
 }
