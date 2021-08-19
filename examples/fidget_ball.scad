@@ -6,12 +6,12 @@ radius = 40;
 thickness = 2;
 layers = 5;
 spacing = 2.5;
-support_thickness = 1;
 drill_angle = 36;
+support_thickness = 1;
 
-fidget_ball(radius, thickness, layers, spacing, support_thickness);
+fidget_ball(radius, thickness, layers, spacing, drill_angle, support_thickness);
 
-module fidget_ball(radius, thickness, layers, spacing, support_thickness) {
+module fidget_ball(radius, thickness, layers, spacing, drill_angle, support_thickness) {
 	module drill(deep, drill_angle) {
 		a = drill_angle / 2;
 		r = deep * tan(a);
