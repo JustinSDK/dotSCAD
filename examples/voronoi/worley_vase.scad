@@ -18,9 +18,9 @@ dist = "border"; // [euclidean, manhattan, chebyshev, border]
 bottom = "YES"; // ["YES", "NO"]
 epsilon = 0.0000001;
 
-worley_vase(beginning_radius, height, fn, amplitude, curve_step, smoothness, dist, bottom, epsilon);
+worley_vase(beginning_radius, height, thickness, fn, amplitude, curve_step, smoothness, dist, bottom, epsilon);
 
-module worley_vase(beginning_radius, height, fn, amplitude,curve_step, smoothness, dist, bottom, epsilon) {
+module worley_vase(beginning_radius, height, thickness, fn, amplitude,curve_step, smoothness, dist, bottom, epsilon) {
     grid_width = 1.25;
     seed = rand() * 1000;
 	section = shape_circle(radius = beginning_radius, $fn = fn);
