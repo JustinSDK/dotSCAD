@@ -12,16 +12,16 @@ thickness = 2;
 fn = 180;
 amplitude = 20;
 curve_step = 0.01;
-smoothness = 30;
+sample_scale = 0.04;
+grid_w = 1;
 dist = "border"; // [euclidean, manhattan, chebyshev, border]
 
 bottom = "YES"; // ["YES", "NO"]
 epsilon = 0.0000001;
 
-worley_vase(beginning_radius, height, thickness, fn, amplitude, curve_step, smoothness, dist, bottom, epsilon);
+worley_vase(beginning_radius, height, thickness, fn, amplitude, curve_step, sample_scale, grid_w, dist, bottom, epsilon);
 
-module worley_vase(beginning_radius, height, thickness, fn, amplitude,curve_step, smoothness, dist, bottom, epsilon) {
-    grid_width = 1.25;
+module worley_vase(beginning_radius, height, thickness, fn, amplitude,curve_step, sample_scale, grid_w, dist, bottom, epsilon) {
     seed = rand() * 1000;
 	section = shape_circle(radius = beginning_radius, $fn = fn);
 	pt = [beginning_radius, 0, 0];
@@ -40,7 +40,7 @@ module worley_vase(beginning_radius, height, thickness, fn, amplitude,curve_step
 
 	noisy = [
 		for(section = sections)
-		let(nz = nz_worley3s(section / smoothness, seed, grid_width, dist))
+		let(nz = nz_worley3s(section * sample_scale, seed, grid_w, dist))
 		[
 			for(i = [0:len(nz) - 1])
 			let(
