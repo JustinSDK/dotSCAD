@@ -15,7 +15,7 @@ use <../util/sum.scad>;
 use <../surface/sf_solidifyT.scad>;
 use <../triangle/tri_delaunay.scad>;
 
-module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH") {
+module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH", convexity = 1) {
     // triangles : counter-clockwise
     real_triangles = is_undef(triangles) ? tri_delaunay([for(p = points) [p[0], p[1]]]) : triangles;
 
@@ -52,10 +52,10 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH") {
         pts = [for(p = points) p + dir_v * thickness];
 
         if(nv * dir_v > 0) {
-            sf_solidifyT(pts, points, real_triangles);
+            sf_solidifyT(pts, points, real_triangles, convexity = convexity);
         }
         else {
-            sf_solidifyT(points, pts, real_triangles);
+            sf_solidifyT(points, pts, real_triangles, convexity = convexity);
         }
     }
     else {
@@ -78,17 +78,17 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH") {
             half_thickness = thickness / 2;
             pts1 = points + vertex_normals * half_thickness;
             pts2 = points - vertex_normals * half_thickness;
-            sf_solidifyT(pts1, pts2, real_triangles);
+            sf_solidifyT(pts1, pts2, real_triangles, convexity = convexity);
         }
         else if(direction == "FORWARD") {
             pts1 = points + vertex_normals * thickness;
             pts2 = points;
-            sf_solidifyT(pts1, pts2, real_triangles);
+            sf_solidifyT(pts1, pts2, real_triangles, convexity = convexity);
         }
         else {
             pts1 = points;
             pts2 = points - vertex_normals * thickness;
-            sf_solidifyT(pts1, pts2, real_triangles);
+            sf_solidifyT(pts1, pts2, real_triangles, convexity = convexity);
         }
     }
 }

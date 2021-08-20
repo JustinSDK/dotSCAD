@@ -14,7 +14,7 @@ use <../util/set/hashset_add.scad>;
 use <../util/set/hashset_del.scad>;
 use <../util/set/hashset_elems.scad>;
 
-module sf_solidifyT(points1, points2, triangles) {
+module sf_solidifyT(points1, points2, triangles, convexity = 1) {
     // triangles : counter-clockwise
     leng = len(points1);
 	assert(leng == len(points2), "The length of points1 must equal to the length of points2");
@@ -60,6 +60,7 @@ module sf_solidifyT(points1, points2, triangles) {
             tris, 
             [for(tri = triangles) tri + [leng, leng, leng]],
             side_faces
-        )
+        ),
+		convexity = convexity
     );
 }

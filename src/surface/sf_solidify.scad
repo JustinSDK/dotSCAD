@@ -11,7 +11,7 @@
 use <../util/reverse.scad>;
 use <../util/flat.scad>;
 
-module sf_solidify(surface1, surface2, slicing = "SLASH") {
+module sf_solidify(surface1, surface2, slicing = "SLASH", convexity = 1) {
     rows = len(surface1);
     columns = len(surface1[0]);
 
@@ -143,7 +143,8 @@ module sf_solidify(surface1, surface2, slicing = "SLASH") {
 
         polyhedron(
             points = pts, 
-            faces = face_idxs
+            faces = face_idxs,
+            convexity = convexity
         );
 
         // hook for testing

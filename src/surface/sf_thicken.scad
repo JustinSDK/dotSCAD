@@ -11,7 +11,7 @@
 use <../util/sum.scad>;
 use <sf_solidify.scad>;
 
-module sf_thicken(points, thickness, direction = "BOTH") {
+module sf_thicken(points, thickness, direction = "BOTH", convexity = 1) {
     function tri_normal(tri) =
         let(v = cross(tri[2] - tri[0], tri[1] - tri[0])) v / norm(v);    
 
@@ -51,10 +51,10 @@ module sf_thicken(points, thickness, direction = "BOTH") {
         nv = tri_normal([points[midy][midx], points[midy + 1][midx], points[midy][midx + 1]]);
 
         if(nv * dir_v > 0) {
-            sf_solidify(surface_another, points);
+            sf_solidify(surface_another, points, convexity = convexity);
         }
         else {
-            sf_solidify(points, surface_another);
+            sf_solidify(points, surface_another, convexity = convexity);
         }
     }
     else {
@@ -70,17 +70,17 @@ module sf_thicken(points, thickness, direction = "BOTH") {
             half_thickness = thickness / 2;
             surface_top = points + half_thickness * vertex_normals;
             surface_bottom = points - half_thickness * vertex_normals;    
-            sf_solidify(surface_top, surface_bottom);
+            sf_solidify(surface_top, surface_bottom, convexity = convexity);
         }
         else if(direction == "FORWARD") {
             surface_top = points + thickness * vertex_normals;
             surface_bottom = points;    
-            sf_solidify(surface_top, surface_bottom);
+            sf_solidify(surface_top, surface_bottom, convexity = convexity);
         }
         else {
             surface_top = points;
             surface_bottom = points - thickness * vertex_normals;    
-            sf_solidify(surface_top, surface_bottom);
+            sf_solidify(surface_top, surface_bottom, convexity = convexity);
         }
     }
 }

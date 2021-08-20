@@ -13,7 +13,7 @@ use <../ptf/ptf_y_twist.scad>;
 use <_impl/_sf_square_surfaces.scad>;
 use <sf_solidify.scad>;
 
-module sf_square(levels, thickness, depth, x_twist = 0, y_twist = 0, invert = false) {
+module sf_square(levels, thickness, depth, x_twist = 0, y_twist = 0, invert = false, convexity = 1) {
     size = [len(levels[0]), len(levels)];
     dp = is_undef(depth) ? thickness / 2 : depth;
     surface = _sf_square_surfaces(levels, thickness, dp, invert);
@@ -37,6 +37,7 @@ module sf_square(levels, thickness, depth, x_twist = 0, y_twist = 0, invert = fa
                         y_twist
                     )
             ]
-        ]
+        ],
+        convexity = convexity
     );
 }

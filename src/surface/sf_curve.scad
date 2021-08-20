@@ -12,7 +12,7 @@ use <_impl/_sf_square_surfaces.scad>;
 use <sf_solidify.scad>;
 use <../ptf/ptf_rotate.scad>;
 
-module sf_curve(levels, curve_path, thickness, depth, invert = false) {
+module sf_curve(levels, curve_path, thickness, depth, invert = false, convexity = 1) {
     rows = len(levels);
     columns = len(levels[0]);
     leng_curve_path = len(curve_path);
@@ -47,5 +47,5 @@ module sf_curve(levels, curve_path, thickness, depth, invert = false) {
 		]
 	];
 	
-	sf_solidify(_curve(surfaces[0]), _curve(surfaces[1]));
+	sf_solidify(_curve(surfaces[0]), _curve(surfaces[1]), convexity = convexity);
 }
