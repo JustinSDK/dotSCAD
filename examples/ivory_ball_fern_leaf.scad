@@ -128,15 +128,7 @@ module fidget_ball_drill_support(radius, thickness, spacing, support_thickness) 
 		translate([0, 0, -sphere_r])
 		rotate_extrude()
 		translate([sphere_r * sina, 0])
-			polygon([
-				[0, support_r], 
-				[-.75, support_r], 
-				[-tana * support_r - support_thickness, 0], 
-				[-tana * support_r, 0]
-				// extra support
-				//, [thickness / 6 * sin(a), support_r - thickness / 5 * cos(a)]
-			]
-		);
+			polygon([[0, support_r], [-.75, support_r], [-tana * support_r - support_thickness, 0], [-tana * support_r, 0]]);
 
 		translate([0, 0, -sphere_r - height * i])
 		linear_extrude(height * i)
