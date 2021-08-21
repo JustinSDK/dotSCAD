@@ -7,12 +7,12 @@ use <experimental/ptf_c2sphere.scad>;
 $fn = 48;
 
 radius = 36;
-thickness = 2.5;
-spacing = 2.5;
+thickness = 2;
+spacing = 3;
 drill_angle = 38;
 support_thickness = 1;
 
-engraved = true; // [true, false], warning: previewing is very slow when it's true.
+engraved = false; // [true, false], warning: previewing is very slow when it's true.
 
 fidget_ball_fern_leaf(radius, thickness, spacing, drill_angle, support_thickness);
 
