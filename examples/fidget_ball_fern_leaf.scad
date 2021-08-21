@@ -7,16 +7,16 @@ use <experimental/ptf_c2sphere.scad>;
 $fn = 48;
 
 radius = 36;
-thickness = 2;
-spacing = 3;
+thickness = 2.5;
+spacing = 2.5;
 drill_angle = 38;
 support_thickness = 1;
 
-engraved = false; // [true, false], warning: previewing is very slow when it's true.
+engraved = true; // [true, false], warning: previewing is very slow when it's true.
 
-ivory_ball_fern_leaf(radius, thickness, spacing, drill_angle, support_thickness);
+fidget_ball_fern_leaf(radius, thickness, spacing, drill_angle, support_thickness);
 
-module ivory_ball_fern_leaf(radius, thickness, spacing, drill_angle, support_thickness) {
+module fidget_ball_fern_leaf(radius, thickness, spacing, drill_angle, support_thickness) {
 	module fern_ball(radius, thickness, fern_n, thickness_scale) {
 		function fern(n = 8, angle = 4, leng = 1, heading = 0, start = [0, 0]) = 
 			let(
