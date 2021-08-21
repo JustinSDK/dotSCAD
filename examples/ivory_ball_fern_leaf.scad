@@ -12,6 +12,8 @@ spacing = 3;
 drill_angle = 38;
 support_thickness = 1;
 
+engraved = false; // [true, false], warning: previewing is very slow when it's true.
+
 ivory_ball_fern_leaf(radius, thickness, spacing, drill_angle, support_thickness);
 
 module ivory_ball_fern_leaf(radius, thickness, spacing, drill_angle, support_thickness) {
@@ -48,15 +50,9 @@ module ivory_ball_fern_leaf(radius, thickness, spacing, drill_angle, support_thi
 					);
 				}
 			}
-		}		
-
-		color("black") 
-		difference() {
-			sphere(radius);
-			sphere(radius - thickness);
 		}
-		
-		union() {
+
+		module fern_ball() {
 			ferns(4);
 			
 			mirror([1, 0, 0])
@@ -69,6 +65,27 @@ module ivory_ball_fern_leaf(radius, thickness, spacing, drill_angle, support_thi
 			mirror([0, 1, 0])
 			mirror([0, 1, 1])
 				ferns(2);
+		}		
+
+        if(engraved) {
+			difference() {
+				render() 
+				difference() {
+					sphere(radius);
+					sphere(radius - thickness);
+				}
+				
+				fern_ball();
+			}
+		}
+        else {
+			color("black") 
+			difference() {
+				sphere(radius);
+				sphere(radius - thickness);
+			}
+			
+			fern_ball();
 		}
 	}
 
