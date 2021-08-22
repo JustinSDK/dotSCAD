@@ -9,7 +9,7 @@ smoothing = false; // warning: previewing is slow if it's true.
 scale(smoothing ? 0.985 : 1)
     tumbler();
 
-wish_decoration();
+wish_decoration(text, font, font_size);
 
 module tumbler() {
     radius = 10;
@@ -140,7 +140,7 @@ module tumbler() {
 	}
 }
 
-module wish_decoration() {
+module wish_decoration(text, font, font_size) {
     $fn = 48;
 	
 	translate([0, -2, 0])
