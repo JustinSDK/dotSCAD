@@ -119,32 +119,24 @@ module tumbler() {
 		linear_extrude(radius / 4, scale = 0.9)
 			circle(radius * 0.4);
 	}
-
-	difference() {
-		union() {
-			if(smoothing) {
-				minkowski() {
-					union() {
-						difference() {
-							body();
-							mask_face();	
-						}
-						eyes_nose();
-					}
-					sphere(radius / 9.5, $fn = 8);
-				}
-			} else {	
+	
+	if(smoothing) {
+		minkowski() {
+			union() {
 				difference() {
 					body();
 					mask_face();	
 				}
 				eyes_nose();
 			}
+			sphere(radius / 9.5, $fn = 8);
 		}
-		
-		translate([0, 0, -radius * 1.75])
-		linear_extrude(radius)
-			square(radius * 50, center = true);
+	} else {	
+		difference() {
+			body();
+			mask_face();	
+		}
+		eyes_nose();
 	}
 }
 
