@@ -6,7 +6,9 @@ font = "思源黑體 Heavy";
 font_size = 14;
 smoothing = false; // warning: previewing is slow if it's true.
 
-tumbler();
+scale(smoothing ? 0.985 : 1)
+    tumbler();
+
 wish_decoration();
 
 module tumbler() {
