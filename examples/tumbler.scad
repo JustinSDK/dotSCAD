@@ -1,7 +1,7 @@
 use <shear.scad>;
 use <multi_line_text.scad>;
 
-text = ["順", "暢"];
+text = "順暢";
 font = "思源黑體 Heavy";
 font_size = 14;
 smoothing = false; // warning: previewing is slow if it's true.
