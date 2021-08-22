@@ -151,7 +151,6 @@ module tumbler() {
 module wish_decoration() {
     $fn = 48;
 	
-	render()
 	translate([0, -2, 0])
 	intersection() {
 		union() {
