@@ -45,7 +45,7 @@ module helmet() {
 		
 		rotate(-30)
 		rotate_extrude(angle = 240, $fn = 12)
-			hull_polyline2d([[41, 1], [45, -10], [50, -30], [60, -45]], 2.5, $fn = 4);
+			hull_polyline2d([[40.65, 1], [45, -10], [50, -30], [60, -45]], 3.25, $fn = 4);
 
 		translate([0, 0, 1])	
 		linear_extrude(2)	
