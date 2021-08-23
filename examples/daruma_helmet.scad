@@ -3,7 +3,7 @@ use <arc.scad>;
 use <hull_polyline2d.scad>;
 
 text = "順暢";
-font = "思源黑體 Heavy";
+font = "思源黑體 Medium";
 font_size = 14;
 model = "both"; // [daruma, helmet, both]
 
