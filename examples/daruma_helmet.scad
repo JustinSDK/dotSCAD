@@ -5,7 +5,7 @@ use <hull_polyline2d.scad>;
 text = "順暢";
 font = "思源黑體 Heavy";
 font_size = 14;
-model = "helmet"; // [daruma, helmet, both]
+model = "both"; // [daruma, helmet, both]
 
 scale(.7) {
 	if(model == "daruma") {
