@@ -5,37 +5,39 @@ use <hull_polyline2d.scad>;
 text = "順暢";
 font = "思源黑體 Heavy";
 font_size = 14;
-model = "both"; // [daruma, helmet, both]
+model = "helmet"; // [daruma, helmet, both]
 
-if(model == "daruma") {
-    difference() {
-		union() {
-			daruma();
-			wish_decoration(text, font, font_size);
+scale(.7) {
+	if(model == "daruma") {
+		difference() {
+			union() {
+				daruma();
+				wish_decoration(text, font, font_size);
+			}
+			translate([0, 0, -23])
+			linear_extrude(20) 
+				square(100, center = true);
 		}
-		translate([0, 0, -23])
-		linear_extrude(20) 
-			square(100, center = true);
-	}
 
-} else if(model == "helmet") {
-    scale(1.025)
-	    helmet();
-}
-else {
-	difference() {
-		union() {
-			daruma();
-			wish_decoration(text, font, font_size);
+	} else if(model == "helmet") {
+		scale(1.03)
+			helmet();
+	}
+	else {
+		difference() {
+			union() {
+				daruma();
+				wish_decoration(text, font, font_size);
+			}
+			translate([0, 0, -24.5])
+			linear_extrude(20) 
+				square(100, center = true);
 		}
-		translate([0, 0, -23])
-		linear_extrude(20) 
-			square(100, center = true);
-	}
 
-	translate([0, 4, 55])
-	rotate([-20, 0, 0])
-		helmet();
+		translate([0, 4, 55])
+		rotate([-20, 0, 0])
+			helmet();
+	}
 }
 
 module helmet() {
