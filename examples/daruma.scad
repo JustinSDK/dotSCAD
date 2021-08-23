@@ -7,11 +7,11 @@ font_size = 14;
 smoothing = false; // warning: previewing is slow if it's true.
 
 scale(smoothing ? 0.985 : 1)
-    tumbler();
+    daruma();
 
 wish_decoration(text, font, font_size);
 
-module tumbler() {
+module daruma() {
     radius = 10;
 
 	module body() {
