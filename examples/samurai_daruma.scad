@@ -5,13 +5,14 @@ use <hull_polyline2d.scad>;
 text = "順暢";
 font = "思源黑體 Medium";
 font_size = 15;
+nose = true;
 model = "both"; // [daruma, helmet, both]
 
 scale(.7) {
 	if(model == "daruma") {
 		difference() {
 			union() {
-				daruma();
+				daruma(nose);
 				wish_decoration(text, font, font_size);
 			}
 			translate([0, 0, -23])
@@ -26,7 +27,7 @@ scale(.7) {
 	else {
 		difference() {
 			union() {
-				daruma();
+				daruma(nose);
 				wish_decoration(text, font, font_size);
 			}
 			translate([0, 0, -24.5])

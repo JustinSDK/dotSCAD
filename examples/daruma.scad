@@ -4,14 +4,15 @@ use <multi_line_text.scad>;
 text = "順暢";
 font = "思源黑體 Heavy";
 font_size = 15;
+nose = true;
 smoothing = false; // warning: previewing is slow if it's true.
 
 scale(smoothing ? 0.985 : 1)
-    daruma();
+    daruma(nose);
 
 wish_decoration(text, font, font_size);
 
-module daruma() {
+module daruma(nose) {
     radius = 10;
 
 	module body() {
@@ -114,10 +115,12 @@ module daruma() {
 			eye();
 			
 		// nose
-		translate([0, -3.75 * radius, radius * 4.85])
-		rotate([67.5, 0, 0])
-		linear_extrude(radius / 4, scale = 0.9)
-			circle(radius * 0.4);
+		if(nose) {
+			translate([0, -3.75 * radius, radius * 4.85])
+			rotate([67.5, 0, 0])
+			linear_extrude(radius / 4, scale = 0.9)
+				circle(radius * 0.4);
+		}
 	}
 	
 	if(smoothing) {
