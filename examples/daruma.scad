@@ -144,7 +144,6 @@ module wish_decoration(text, font, font_size) {
     $fn = 48;
 	
 	translate([0, -2, 0])
-	render()
 	intersection() {
 		union() {
 			wish();
