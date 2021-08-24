@@ -4,7 +4,7 @@ use <hull_polyline2d.scad>;
 
 text = "順暢";
 font = "思源黑體 Medium";
-font_size = 14;
+font_size = 15;
 model = "both"; // [daruma, helmet, both]
 
 scale(.7) {

@@ -3,7 +3,7 @@ use <multi_line_text.scad>;
 
 text = "順暢";
 font = "思源黑體 Heavy";
-font_size = 14;
+font_size = 15;
 smoothing = false; // warning: previewing is slow if it's true.
 
 scale(smoothing ? 0.985 : 1)
@@ -153,14 +153,14 @@ module wish_decoration(text, font, font_size) {
 				decoration();
 		}
 
-		translate([0, 0, 30])
-			sphere(52);
+		translate([0, 0, 31])
+			sphere(52.25);
 	}
 
 	module wish() {
-		translate([0, -43, 29])
+		translate([0, -43, 29.5])
 		rotate([85, 0, 0])
-		linear_extrude(10)
+		linear_extrude(10, scale = .8)
 			text(
 				text[0], 
 				font = font,
@@ -169,9 +169,9 @@ module wish_decoration(text, font, font_size) {
 				halign = "center"
 			);
 			
-		translate([0, -42.5, 10])
+		translate([0, -42.5, 12])
 		rotate([105, 0, 0])
-		linear_extrude(10)
+		linear_extrude(10, scale = .8)
 			text(
 				text[1], 
 				font = font,
@@ -182,11 +182,11 @@ module wish_decoration(text, font, font_size) {
 	}
 
 	module decoration() {
-		translate([18, -38, 20])
+		translate([18, -38, 21])
 		rotate([100, 0, 0])
-		linear_extrude(10)
+		linear_extrude(10, scale = .8)
 		scale(.85)
-		scale([1, 1.75])
+		scale([1, 1.825])
 		offset(.5)
 		difference() {
 			circle(10);
@@ -194,11 +194,11 @@ module wish_decoration(text, font, font_size) {
 				circle(11.5);
 		}
 
-		translate([28, -30, 20])
+		translate([28, -30, 21])
 		rotate([100, 0, 30])
-		linear_extrude(10)
+		linear_extrude(10, scale = .8)
 		scale(.7)
-		scale([1, 1.75])
+		scale([1, 1.825])
 		offset(.5)
 		difference() {
 			circle(10);
