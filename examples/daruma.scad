@@ -144,6 +144,7 @@ module wish_decoration(text, font, font_size) {
     $fn = 48;
 	
 	translate([0, -2, 0])
+	render()
 	intersection() {
 		union() {
 			wish();
@@ -158,27 +159,41 @@ module wish_decoration(text, font, font_size) {
 	}
 
 	module wish() {
-		translate([0, -43, 29.5])
-		rotate([85, 0, 0])
-		linear_extrude(10, scale = .8)
-			text(
-				text[0], 
-				font = font,
-				size = font_size,
-				valign = "center", 
-				halign = "center"
-			);
-			
-		translate([0, -42.5, 12])
-		rotate([105, 0, 0])
-		linear_extrude(10, scale = .8)
-			text(
-				text[1], 
-				font = font,
-				size = font_size,
-				valign = "center", 
-				halign = "center"
-			);
+		if(len(text) == 1) {
+			translate([0, -43, 21])
+			rotate([90, 0, 0])
+			linear_extrude(10, scale = .8)
+				text(
+					text, 
+					font = font,
+					size = font_size,
+					valign = "center", 
+					halign = "center"
+				);
+		}
+		else {
+			translate([0, -43, 29.5])
+			rotate([85, 0, 0])
+			linear_extrude(10, scale = .8)
+				text(
+					text[0], 
+					font = font,
+					size = font_size,
+					valign = "center", 
+					halign = "center"
+				);
+				
+			translate([0, -42.5, 12])
+			rotate([105, 0, 0])
+			linear_extrude(10, scale = .8)
+				text(
+					text[1], 
+					font = font,
+					size = font_size,
+					valign = "center", 
+					halign = "center"
+				);
+	    }
 	}
 
 	module decoration() {
