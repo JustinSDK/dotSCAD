@@ -15,7 +15,7 @@ function shape_pie(radius, angle) =
     let(
         a_step = 360 / __frags(radius),
         leng = radius * cos(a_step / 2),
-        angles = is_num(angle) ? [0:angle] : angle,
+        angles = is_num(angle) ? [0, angle] : angle,
         m = floor(angles[0] / a_step) + 1,
         n = floor(angles[1] / a_step),
         edge_r_begin = leng / cos((m - 0.5) * a_step - angles[0]),
