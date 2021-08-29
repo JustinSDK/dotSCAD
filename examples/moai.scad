@@ -1,13 +1,14 @@
 use <polyhedron_hull.scad>;
 use <sweep.scad>;
+use <shape_trapezium.scad>;
 use <util/reverse.scad>;
 use <util/slice.scad>;
 use <ptf/ptf_rotate.scad>;
 
 h = 50;
-face = 12;
-face_step = 3;
-nose = 5;
+face = 16;
+face_step = 2;
+nose = 4;
 nose_step = 1;
 smoothing = false; // warning: previewing is slow if it's true.
 smoothing_r = 2;
@@ -100,7 +101,6 @@ module moai(h, face, face_step, nose, nose_step) {
 				ptf_rotate(nose_profile[i], a)]
 	];
 	
-
 	polyhedron_hull(
 		concat(back, [for(p = back) [-p[0], p[1], p[2]]]), 
 		polyhedron_abuse = true
@@ -116,10 +116,27 @@ module moai(h, face, face_step, nose, nose_step) {
 		mirror([1, 0, 0])
 			sweep(nose_sections);
 	}
-	
+
+    module ear() {
+		translate([h / 17, -h / 7, 0])
+        rotate([0, 0, face * 1.4])
+		translate([0, -h / 2.5, h / 1.45])
+		rotate([90, face, 90])
+		linear_extrude(h / 25, center = true, scale = .9)
+		polygon(
+			shape_trapezium([h / 10, h / 20], 
+			h = h / 3,
+			corner_r = h / 40)
+		);
+	}
+
+    ear();
+	mirror([1, 0, 0])
+	    ear();
+
 	hull() {
 	    translate([0, h / 7.5, 0])
-		scale([2, 1.2, 1])
+		scale([1.25, 1.2, 1])
 		intersection() {
 		    union() {
 				sweep(no_nose_sections);
