@@ -8,8 +8,8 @@ use <ptf/ptf_rotate.scad>;
 use <util/sub_str.scad>;
 
 emoticon = "ToT";
-font = "Arial Black";
-font_size = 8;
+font = ["Arial Black", "Arial Black", "Arial Back"];
+font_size = [8, 8, 8];
 
 h = 50;
 face = 18;
@@ -166,21 +166,21 @@ module moai(emoticon, font, font_size, h, face = 18, face_step = 2, nose = 4, no
 	}
 	
 	translate([0, -h / 2.975, h / 7])
-	rotate([0, 0, nose * 5])
-	translate([0, -h / 2.5, h / 1.45])
-	rotate([60, 0, -(face + nose) / 2])
-    linear_extrude(h / 25, center = true, scale = .9)
-	    text(emoticon[len(emoticon) - 1], font = font, size = font_size, valign = "center", halign = "center");
-
-	translate([0, -h / 2.975, h / 7])
 	rotate([0, 0, -nose * 5])
 	translate([0, -h / 2.5, h / 1.45])
 	rotate([60, 0, (face + nose) / 2])
     linear_extrude(h / 25, center = true, scale = .9)
-	    text(emoticon[0], font = font, size = font_size, valign = "center", halign = "center");
+	    text(emoticon[0], font = font[0], size = font_size[0], valign = "center", halign = "center");
 
 	translate([0, -h / 1.115, h / 1.85])
 	rotate([55, 0, 0])
     linear_extrude(h / 25, center = true, scale = .9)
-	    text(sub_str(emoticon, 1, len(emoticon) - 1), font = font, size = font_size, valign = "center", halign = "center");
+	    text(sub_str(emoticon, 1, len(emoticon) - 1), font = font[1], size = font_size[1], valign = "center", halign = "center");
+		
+	translate([0, -h / 2.975, h / 7])
+	rotate([0, 0, nose * 5])
+	translate([0, -h / 2.5, h / 1.45])
+	rotate([60, 0, -(face + nose) / 2])
+    linear_extrude(h / 25, center = true, scale = .9)
+	    text(emoticon[len(emoticon) - 1], font = font[2], size = font_size[2], valign = "center", halign = "center");
 }
