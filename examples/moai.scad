@@ -8,19 +8,20 @@ use <ptf/ptf_rotate.scad>;
 use <util/sub_str.scad>;
 
 emoticon = "ToT";
-font = ["Arial Black", "Arial Black", "Arial Back"];
-font_size = [8, 8, 8];
+font = ["Arial Black", "Arial Black", "Arial Black"];
+font_size = [7.5, 9, 7.5];
 
 h = 50;
-face = 18;
-face_step = 2;
-nose = 4;
+face = 15;
+face_step = 3;
+nose = 3;
 nose_step = 1;
 
 smoothing = false; // warning: previewing is slow if it's true.
 smoothing_r = 2;
 $fn = 12;
 
+color("DarkGray")
 if(smoothing) {
 	minkowski() {
 		translate([0, h / 2, 0])
@@ -41,7 +42,7 @@ else {
 			moai("$___$", font, font_size, h, face, face_step, nose, nose_step);
 */
 
-module moai(emoticon, font, font_size, h, face = 18, face_step = 2, nose = 4, nose_step = 1) {
+module moai(emoticon, font, font_size, h, face = 18, face_step = 3, nose = 4, nose_step = 1) {
 	profile = [
 	    for(p = [
 			// back
@@ -54,16 +55,20 @@ module moai(emoticon, font, font_size, h, face = 18, face_step = 2, nose = 4, no
 			// head : 6
 			[0, -h / 10, h * 1.05],
 			[0, -h / 5, h * 1.075],
-			[0, -h / 3.2, h * 0.975],
-			[0, -h / 3.5, h * 0.925],
+			[0, -h / 3.2, h * 0.94],
+			[0, -h / 3.5, h * 0.9],
 			// nose : 10
 			[0, -h / 2.4, h * 0.75],
 			[0, -h / 2, h * 0.7],
 			[0, -h / 2, h * 0.65],
 			// mouth : 13
-			[0, -h / 2.15, h * 0.6],
-			[0, -h / 1.8, h * 0.475],
-			[0, -h / 2, h * 0.425],
+			[0, -h / 2.25, h * 0.625],
+			[0, -h / 2.175, h * 0.6],
+			[0, -h / 2.05, h * 0.55],
+			[0, -h / 2, h * 0.5],
+			[0, -h / 2, h * 0.46],
+			[0, -h / 2.05, h * 0.425],
+			[0, -h / 2.15, h * 0.4],
 			[0, -h / 2.5, h * 0.375],
 			[0, -h / 2, h * 0.25],
 			[0, -h / 1.75, 0],
@@ -115,14 +120,14 @@ module moai(emoticon, font, font_size, h, face = 18, face_step = 2, nose = 4, no
 	);
 
     module ear() {
-		translate([h / 17, -h / 7, 0])
-        rotate([0, 0, face * 1.4])
+		translate([h / 17, -h / 6, 0])
+        rotate([0, 0, face * 1.5])
 		translate([0, -h / 2.5, h / 1.45])
 		rotate([90, face, 90])
 		linear_extrude(h / 25, center = true, scale = .9)
 		polygon(
-			shape_trapezium([h / 10, h / 20], 
-			h = h / 3,
+			shape_trapezium([h * 0.125, h * 0.075], 
+			h = h * 0.425,
 			corner_r = h / 40)
 		);
 	}
@@ -165,19 +170,19 @@ module moai(emoticon, font, font_size, h, face = 18, face_step = 2, nose = 4, no
 		}	
 	}
 	
-	translate([0, -h / 2.975, h / 7])
+	translate([0, -h / 3, h / 7])
 	rotate([0, 0, -nose * 5])
 	translate([0, -h / 2.5, h / 1.45])
 	rotate([60, 0, (face + nose) / 2])
     linear_extrude(h / 25, center = true, scale = .9)
 	    text(emoticon[0], font = font[0], size = font_size[0], valign = "center", halign = "center");
 
-	translate([0, -h / 1.115, h / 1.85])
-	rotate([55, 0, 0])
+	translate([0, -h / 1.13, h / 1.85])
+	rotate([70, 0, 0])
     linear_extrude(h / 25, center = true, scale = .9)
 	    text(sub_str(emoticon, 1, len(emoticon) - 1), font = font[1], size = font_size[1], valign = "center", halign = "center");
 		
-	translate([0, -h / 2.975, h / 7])
+	translate([0, -h / 3, h / 7])
 	rotate([0, 0, nose * 5])
 	translate([0, -h / 2.5, h / 1.45])
 	rotate([60, 0, -(face + nose) / 2])
