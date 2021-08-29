@@ -3,13 +3,20 @@ use <sweep.scad>;
 use <shape_trapezium.scad>;
 use <util/reverse.scad>;
 use <util/slice.scad>;
+use <util/sub_str.scad>;
 use <ptf/ptf_rotate.scad>;
+use <util/sub_str.scad>;
+
+emoticon = "ToT";
+font = "Arial Black";
+font_size = 8;
 
 h = 50;
-face = 16;
+face = 18;
 face_step = 2;
 nose = 4;
 nose_step = 1;
+
 smoothing = false; // warning: previewing is slow if it's true.
 smoothing_r = 2;
 $fn = 12;
@@ -17,23 +24,24 @@ $fn = 12;
 if(smoothing) {
 	minkowski() {
 		translate([0, h / 2, 0])
-			moai(h, face, face_step, nose, nose_step);
+			moai(emoticon, font, font_size, h, face, face_step, nose, nose_step);
 		sphere(smoothing_r);
 	}
 }
 else {
 	translate([0, h / 2, 0])
-		moai(h, face, face_step, nose, nose_step);
+		moai(emoticon, font, font_size, h, face, face_step, nose, nose_step);
 }
 
 /*
-translate([70, h / 2, 0])
-    moai(h = 50, face = 18, face_step = 3, nose = 4, nose_step = 1);
-	
-translate([-60, h / 2, 0])
-    moai(h = 40, face = 10, face_step = 2.5, nose = 3, nose_step = 1);*/
+	translate([50, h / 2, 0])
+			moai("@xO", font, font_size, h, face, face_step, nose, nose_step);
 
-module moai(h, face, face_step, nose, nose_step) {
+	translate([-50, h / 2, 0])
+			moai("$___$", font, font_size, h, face, face_step, nose, nose_step);
+*/
+
+module moai(emoticon, font, font_size, h, face = 18, face_step = 2, nose = 4, nose_step = 1) {
 	profile = [
 	    for(p = [
 			// back
@@ -106,17 +114,6 @@ module moai(h, face, face_step, nose, nose_step) {
 		polyhedron_abuse = true
 	);
 
-	sweep(no_nose_sections);
-	mirror([1, 0, 0])
-		sweep(no_nose_sections);
-
-	
-	translate([0, .01, 0]) {
-		sweep(nose_sections);
-		mirror([1, 0, 0])
-			sweep(nose_sections);
-	}
-
     module ear() {
 		translate([h / 17, -h / 7, 0])
         rotate([0, 0, face * 1.4])
@@ -130,9 +127,18 @@ module moai(h, face, face_step, nose, nose_step) {
 		);
 	}
 
-    ear();
+    module head() {
+		sweep(no_nose_sections);
+		
+		translate([0, .01, 0]) 
+			sweep(nose_sections);
+		
+		ear();
+	}
+
+	head();
 	mirror([1, 0, 0])
-	    ear();
+	    head();
 
 	hull() {
 	    translate([0, h / 7.5, 0])
@@ -158,4 +164,23 @@ module moai(h, face, face_step, nose, nose_step) {
 				cube([h / 2 * 2, h / 2 * 2, h * 1.25 / 2], center = true);		
 		}	
 	}
+	
+	translate([0, -h / 2.975, h / 7])
+	rotate([0, 0, nose * 5])
+	translate([0, -h / 2.5, h / 1.45])
+	rotate([60, 0, -(face + nose) / 2])
+    linear_extrude(h / 25, center = true, scale = .9)
+	    text(emoticon[len(emoticon) - 1], font = font, size = font_size, valign = "center", halign = "center");
+
+	translate([0, -h / 2.975, h / 7])
+	rotate([0, 0, -nose * 5])
+	translate([0, -h / 2.5, h / 1.45])
+	rotate([60, 0, (face + nose) / 2])
+    linear_extrude(h / 25, center = true, scale = .9)
+	    text(emoticon[0], font = font, size = font_size, valign = "center", halign = "center");
+
+	translate([0, -h / 1.115, h / 1.85])
+	rotate([55, 0, 0])
+    linear_extrude(h / 25, center = true, scale = .9)
+	    text(sub_str(emoticon, 1, len(emoticon) - 1), font = font, size = font_size, valign = "center", halign = "center");
 }
