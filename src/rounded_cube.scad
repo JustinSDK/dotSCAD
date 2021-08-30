@@ -27,9 +27,6 @@ module rounded_cube(size, corner_r, center = false) {
     half_l = half_x - edge_d;
     half_w = half_y - edge_d;
     half_h = half_z - edge_d;
-    
-    half_cube_leng = size / 2;
-    half_leng = half_cube_leng - edge_d;
         
     pair = [1, -1];
     corners = [
