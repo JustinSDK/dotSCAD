@@ -25,24 +25,24 @@ color("DarkGray")
 if(smoothing) {
 	minkowski() {
 		translate([0, h / 2, 0])
-			moai(emoticon, font, font_size, h, face, face_step, nose, nose_step);
+			emoticon_moai(emoticon, font, font_size, h, face, face_step, nose, nose_step);
 		sphere(smoothing_r);
 	}
 }
 else {
 	translate([0, h / 2, 0])
-		moai(emoticon, font, font_size, h, face, face_step, nose, nose_step);
+		emoticon_moai(emoticon, font, font_size, h, face, face_step, nose, nose_step);
 }
 
 /*
 	translate([50, h / 2, 0])
-			moai("@xO", font, font_size, h, face, face_step, nose, nose_step);
+			emoticon_moai("@xO", font, font_size, h, face, face_step, nose, nose_step);
 
 	translate([-50, h / 2, 0])
-			moai("$___$", font, font_size, h, face, face_step, nose, nose_step);
+			emoticon_moai("$___$", font, font_size, h, face, face_step, nose, nose_step);
 */
 
-module moai(emoticon, font, font_size, h, face = 18, face_step = 3, nose = 4, nose_step = 1) {
+module emoticon_moai(emoticon, font, font_size, h, face = 18, face_step = 3, nose = 4, nose_step = 1) {
 	profile = [
 	    for(p = [
 			// back
