@@ -1,7 +1,8 @@
 use <turtle/lsystem2.scad>;
+use <util/dedup.scad>;
 use <line2d.scad>;
 
-for(line = fern()) {
+for(line = dedup(fern())) {
     line2d(
         line[0],
         line[1],

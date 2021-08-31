@@ -1,7 +1,8 @@
 use <turtle/lsystem3.scad>;
+use <util/dedup.scad>;
 use <hull_polyline3d.scad>;
 
-for(line = hilbert_curve()) {
+for(line = dedup(hilbert_curve())) {
     hull_polyline3d(
         [line[0], line[1]], 
         diameter = 0.5, 
