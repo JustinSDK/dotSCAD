@@ -319,3 +319,13 @@ function weed(n = 6, angle = 22.5, leng = 1, heading = 0, start = [0, 0]) =
         ]
     )
     lsystem2(axiom, rules, n, angle, leng, heading, start);
+
+function euler_spiral(n = 30, angle = 2.75, leng = 1, heading = 0, start = [0, 0]) = 
+    let(
+        axiom = "AF+",
+        rules = [
+            ["A", "AF+"],
+			["F", "F+"]
+        ]
+    )
+    lsystem2(axiom, rules, n, angle, leng, heading, start); 
