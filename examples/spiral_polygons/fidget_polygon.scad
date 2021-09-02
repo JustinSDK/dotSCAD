@@ -15,16 +15,12 @@ module fidget_polygon(model, beginning_radius, fn, n, height, thickness, spacing
 
 	y = beginning_radius - beginning_radius * cos(theta);
 	dr = y / cos(theta) + thickness + spacing;
-	pw = pow((beginning_radius + dr) * sin(theta), 2);
-	
-	// function a(ri, ro, i) = acos((pow(ro, 2) + pow(ri, 2) - pw * pow(0.985, i)) / (2 * ro * ri));
-	
+
 	module drawPolygon(r) {
 		circle(r, $fn = fn);
 	}
 	
 	rs = [for(i = [0: n + 1]) beginning_radius + i * dr];
-	//as = [for(i = [1: n]) a(rs[i - 1], rs[i], i) / 2];
 	
 	half_height = height / 2;
 
