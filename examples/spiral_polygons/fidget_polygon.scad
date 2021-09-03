@@ -35,7 +35,6 @@ module fidget_polygon(model, beginning_radius, fn, n, height, thickness, spacing
 			}
 				
 			for(i = [1:n - 1]) {
-				//rotate(as[i] * 2)
 				linear_extrude(half_height, scale = s[i])
 				difference() {
 					drawPolygon(rs[i]);
