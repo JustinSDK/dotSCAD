@@ -1,7 +1,14 @@
 use <__comm__/__frags.scad>;
 
-module r_union2(radius = 1) {
-	module _r_union2(r = 1) {
+module r_union3(radius = 1) {
+	module _r_union3(r = 1) {
+		module dilate(r) {
+			minkowski() {
+				children();
+				sphere(r);
+			}
+		}
+
 	    fn = __frags(r);
 		step = 90 / fn;
 		rx = is_list(r) ? r[1] : r;
@@ -14,12 +21,12 @@ module r_union2(radius = 1) {
 			yi = ry - cos(i * step + step) * ry;
 			hull() {
 				intersection() {
-					offset(x) children(0);
-					offset(y) children(1);
+					dilate(x) children(0);
+					dilate(y) children(1);
 				}
 				intersection() {
-					offset(xi) children(0);
-					offset(yi) children(1);
+					dilate(xi) children(0);
+					dilate(yi) children(1);
 				}
 			}
 		}
@@ -35,7 +42,7 @@ module r_union2(radius = 1) {
 	    children(0);
 	}
 	else if($children == 2) {
-	    _r_union2(radius) {
+	    _r_union3(radius) {
 			children(0);
 			children(1);
 		};
@@ -43,8 +50,8 @@ module r_union2(radius = 1) {
 	// OpenSCAD have to enumerate children explicitly.
     // Currently, this module allow 10 children.
 	else if($children == 3) {
-	    r_union2(radius) {
-			_r_union2(radius) {
+	    r_union3(radius) {
+			_r_union3(radius) {
 				children(0);
 				children(1);
 			};
@@ -52,8 +59,8 @@ module r_union2(radius = 1) {
 		}
 	}
 	else if($children == 4) {
-	    r_union2(radius) {
-			_r_union2(radius) {
+	    r_union3(radius) {
+			_r_union3(radius) {
 				children(0);
 				children(1);
 			};
@@ -62,8 +69,8 @@ module r_union2(radius = 1) {
 		}
 	}
 	else if($children == 5) {
-	    r_union2(radius) {
-			_r_union2(radius) {
+	    r_union3(radius) {
+			_r_union3(radius) {
 				children(0);
 				children(1);
 			};
@@ -73,8 +80,8 @@ module r_union2(radius = 1) {
 		}
 	}
 	else if($children == 6) {
-	    r_union2(radius) {
-			_r_union2(radius) {
+	    r_union3(radius) {
+			_r_union3(radius) {
 				children(0);
 				children(1);
 			};
@@ -85,8 +92,8 @@ module r_union2(radius = 1) {
 		}
 	}
 	else if($children == 7) {
-	    r_union2(radius) {
-			_r_union2(radius) {
+	    r_union3(radius) {
+			_r_union3(radius) {
 				children(0);
 				children(1);
 			};
@@ -98,8 +105,8 @@ module r_union2(radius = 1) {
 		}
 	}
 	else if($children == 8) {
-	    r_union2(radius) {
-			_r_union2(radius) {
+	    r_union3(radius) {
+			_r_union3(radius) {
 				children(0);
 				children(1);
 			};
@@ -112,8 +119,8 @@ module r_union2(radius = 1) {
 		}
 	}
 	else if($children == 9) {
-	    r_union2(radius) {
-			_r_union2(radius) {
+	    r_union3(radius) {
+			_r_union3(radius) {
 				children(0);
 				children(1);
 			};
@@ -127,8 +134,8 @@ module r_union2(radius = 1) {
 		}
 	}
 	else if($children == 10) {
-	    r_union2(radius) {
-			_r_union2(radius) {
+	    r_union3(radius) {
+			_r_union3(radius) {
 				children(0);
 				children(1);
 			};
