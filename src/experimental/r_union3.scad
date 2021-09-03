@@ -9,12 +9,12 @@ module r_union3(radius = 1) {
 			}
 		}
 
-	    fn = __frags(r);
-		step = 90 / fn;
+	    frags = __frags(r);
+		a_step = 90 / frags;
 		rx = is_list(r) ? r[1] : r;
 		ry = is_list(r) ? r[0] : r;
 
-		for(a = [0:step:step * (fn - 1)]) {
+		for(a = [0:a_step:a_step * (frags - 1)]) {
 			hull() {
 				intersection() {
 					dilate(rx - sin(a) * rx) 
@@ -23,9 +23,9 @@ module r_union3(radius = 1) {
 					    children(1);
 				}
 				intersection() {
-					dilate(rx - sin(a + step) * rx) 
+					dilate(rx - sin(a + a_step) * rx) 
 					    children(0);
-					dilate(ry - cos(a + step) * ry) 
+					dilate(ry - cos(a + a_step) * ry) 
 					    children(1);
 				}
 			}

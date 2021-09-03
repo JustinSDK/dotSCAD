@@ -2,12 +2,12 @@ use <__comm__/__frags.scad>;
 
 module r_union2(radius = 1) {
 	module _r_union2(r = 1) {
-	    fn = __frags(r);
-		step = 90 / fn;
+	    frags = __frags(r);
+		a_step = 90 / frags;
 		rx = is_list(r) ? r[1] : r;
 		ry = is_list(r) ? r[0] : r;
 		
-		for(a = [0:step:step * (fn - 1)]) {
+		for(a = [0:a_step:a_step * (frags - 1)]) {
 			hull() {
 				intersection() {
 					offset(rx - sin(a) * rx) 
@@ -16,9 +16,9 @@ module r_union2(radius = 1) {
 					    children(1);
 				}
 				intersection() {
-					offset(rx - sin(a + step) * rx) 
+					offset(rx - sin(a + a_step) * rx) 
 					    children(0);
-					offset(ry - cos(a + step) * ry) 
+					offset(ry - cos(a + a_step) * ry) 
 					    children(1);
 				}
 			}
