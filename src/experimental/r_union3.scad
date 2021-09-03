@@ -13,20 +13,20 @@ module r_union3(radius = 1) {
 		step = 90 / fn;
 		rx = is_list(r) ? r[1] : r;
 		ry = is_list(r) ? r[0] : r;
-		
-		for(i = [0:fn - 1]) {
-			x = rx - sin(i * step) * rx;
-			y = ry - cos(i * step) * ry;
-			xi = rx - sin(i * step + step) * rx;
-			yi = ry - cos(i * step + step) * ry;
+
+		for(a = [0:step:step * (fn - 1)]) {
 			hull() {
 				intersection() {
-					dilate(x) children(0);
-					dilate(y) children(1);
+					dilate(rx - sin(a) * rx) 
+					    children(0);
+					dilate(ry - cos(a) * ry) 
+					    children(1);
 				}
 				intersection() {
-					dilate(xi) children(0);
-					dilate(yi) children(1);
+					dilate(rx - sin(a + step) * rx) 
+					    children(0);
+					dilate(ry - cos(a + step) * ry) 
+					    children(1);
 				}
 			}
 		}
