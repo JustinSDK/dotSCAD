@@ -1,7 +1,6 @@
 use <polyhedron_hull.scad>;
 use <sweep.scad>;
 use <shape_trapezium.scad>;
-use <util/reverse.scad>;
 use <util/slice.scad>;
 use <util/sub_str.scad>;
 use <ptf/ptf_rotate.scad>;
