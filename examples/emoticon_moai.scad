@@ -4,7 +4,6 @@ use <shape_trapezium.scad>;
 use <util/slice.scad>;
 use <util/sub_str.scad>;
 use <ptf/ptf_rotate.scad>;
-use <util/sub_str.scad>;
 
 emoticon = "ToT";
 font = ["Arial Black", "Arial Black", "Arial Black"];
