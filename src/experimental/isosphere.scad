@@ -1,7 +1,7 @@
 use <experimental/tri_subdivide.scad>;
 
 module isosphere(radius, detail = 0) {
-    function prj2sphere(t) = [for(p = t) p / norm(p) * radius];
+    function prj2sphere(t, r) = [for(p = t) p / norm(p) * r];
 
     // Icosahedron
     t = (1 + sqrt(5)) / 2 ;
@@ -24,9 +24,9 @@ module isosphere(radius, detail = 0) {
 		[for(i = face) icosahedron_points[i]]
 	];
 	
-	points = detail == 0 ? [for(tri = tris) each prj2sphere(tri)] : [
+	points = detail == 0 ? [for(tri = tris) each prj2sphere(tri, radius)] : [
 	    for(tri = tris)
-		each [for(t = tri_subdivide(tri, detail)) each prj2sphere(t)]
+		each [for(t = tri_subdivide(tri, detail)) each prj2sphere(t, radius)]
 	];
 	
 	faces = [for(i = [0:3:len(points) - 3]) [i, i + 1, i + 2]];
