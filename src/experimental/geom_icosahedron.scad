@@ -2,7 +2,7 @@ use <experimental/tri_subdivide.scad>;
 
 function _prj2sphere(t, r) = [for(p = t) p / norm(p) * r];
 
-function geom_isosphere(radius, detail = 0) =
+function geom_icosahedron(radius, detail = 0) =
     let(
         t = (1 + sqrt(5)) / 2 ,
         icosahedron_points = [
