@@ -12,7 +12,7 @@ function _geom_icosahedron(icosahedron_points, icosahedron_faces, tris, radius, 
             for(tri = tris)
             each [for(t = tri_subdivide(tri, detail)) each t]
         ],
-        number_of_buckets = ceil(sqrt(len(points))),
+        number_of_buckets = ceil(sqrt(len(points)) * 1.5),
         hash = _pt3_hash(number_of_buckets),        
         deduped_pts = dedup(points, hash = hash, number_of_buckets = number_of_buckets),
         pts = [for(p = deduped_pts) p / norm(p) * radius],
