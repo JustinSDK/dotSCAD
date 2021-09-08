@@ -21,8 +21,6 @@ use <experimental/rand_pts_sphere.scad>;
 use <polyhedron_hull.scad>;
 
 number = 20;
-u = rands(0, 1, number);
-v = rands(0, 1, number);
 radius = 2;
 
 points = rand_pts_sphere(radius, number);
