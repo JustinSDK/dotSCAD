@@ -1,8 +1,4 @@
-use <__comm__/_pt3_hash.scad>;
 use <util/rand.scad>;
-use <util/dedup.scad>;
-use <util/map/hashmap.scad>;
-use <util/map/hashmap_get.scad>;
 use <noise/nz_worley3s.scad>;
 use <experimental/geom_icosahedron.scad>;
 
