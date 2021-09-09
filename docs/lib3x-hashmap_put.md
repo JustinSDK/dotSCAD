@@ -7,6 +7,10 @@ Puts a key/value pair to a [util/map/hashmap](https://openhome.cc/eGossip/OpenSC
 ## Parameters
 
 - `map` : The original map.
+- `key` : The specified key.
+- `value` : The specified value.
+- `eq` : A equality function. If it's ignored, use `==` to compare elements.
+- `hash` : A hash function. If it's ignored, convert each element to a string and hash it. 
 
 ## Examples
 

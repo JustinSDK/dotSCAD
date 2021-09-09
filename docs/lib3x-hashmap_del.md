@@ -7,7 +7,7 @@ This function deletes the mapping for the specified key from a [util/map/hashmap
 ## Parameters
 
 - `map` : The original map.
-- `key` : Adds the specified element to the specified set
+- `key` : The specified key.
 - `eq` : A equality function. If it's ignored, use `==` to compare elements.
 - `hash` : A hash function. If it's ignored, convert each element to a string and hash it. 
 
