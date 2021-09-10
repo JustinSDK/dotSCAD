@@ -1,12 +1,16 @@
 use <__comm__/__frags.scad>;
 use <sweep.scad>;
 
-// e = .25;
-// n = 1;
+// e = 0;
+// n = 0;
 
 // $fn = 24;
 
-// superellipsoid(e, n);
+// for(e = [0:.25:2]) {
+//     for(n = [0:.25:3])
+// 	    translate([e / .25, n / .25] * 3)
+//         superellipsoid(e, n);
+// }
 
 module superellipsoid(e, n) {
 	function _sgn(x) = 
