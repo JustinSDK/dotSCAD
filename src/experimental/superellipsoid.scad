@@ -30,13 +30,12 @@ module superellipsoid(e, n) {
 	b = 1;
 	c = 1;
 
-	u_step = 360 / __frags(1);
-	v_step = u_step / 2;
+	a_step = 360 / __frags(1);
 
 	sweep([
-		for(v = [-90:v_step:90])
+		for(v = [-90:a_step:90])
 			[
-				for(u = 180 - u_step; u >= -180; u = u - u_step)
+				for(u = 180 - a_step; u >= -180; u = u - a_step)
 				let(
 					x = a * _c(v, n) * _c(u, e),
 					y = b * _c(v, n) * _s(u, e),
