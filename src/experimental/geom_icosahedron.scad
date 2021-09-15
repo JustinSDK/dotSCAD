@@ -21,7 +21,7 @@ function _geom_icosahedron(icosahedron_points, icosahedron_faces, tris, radius, 
             each [for(t = tri_subdivide(tri, detail)) each t]
         ],
         number_of_buckets = ceil(sqrt(len(points)) * 1.5),
-        hash = _pt3_hash(number_of_buckets),   
+        hash = function(p) _pt3_hash(p),   
         leng = len(points), 
         m_pts = _pimap_pts( 
             radius,
