@@ -24,7 +24,7 @@ module penrose_basket(basket_radius, radius_in_plane, n, line_diameter, shell, s
 			pts = [for(p = t[1] * radius_in_plane) ptf_c2sphere(p, basket_radius)];
 			
 			hull_polyline3d(
-				concat(pts, [pts[0]]), 
+				pts, 
 				line_diameter
 			);
 
