@@ -11,11 +11,12 @@ radius_in_plane = basket_radius / 1.25 / cos(36);
 n = 4;
 line_diameter = 2;
 shell = "YES";
+shell_random_threshold = 0.4;
 $fn = 4;
 		
-penrose_basket(basket_radius, radius_in_plane, n, line_diameter, shell);
+penrose_basket(basket_radius, radius_in_plane, n, line_diameter, shell, shell_random_threshold);
 
-module penrose_basket(basket_radius, radius_in_plane, n, line_diameter, shell) {
+module penrose_basket(basket_radius, radius_in_plane, n, line_diameter, shell, shell_random_threshold) {
 	tris = tile_penrose3(n);
 
 	for(t = tris) {
@@ -27,7 +28,7 @@ module penrose_basket(basket_radius, radius_in_plane, n, line_diameter, shell) {
 				line_diameter
 			);
 
-			if(shell == "YES") {
+			if(shell == "YES" && rands(0, 1, 1)[0] < shell_random_threshold) {
 				inward_ratio = (basket_radius - 0.25 * line_diameter) / basket_radius;
 				outward_ratio = (basket_radius + 0.25 * line_diameter) / basket_radius;
 
