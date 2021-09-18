@@ -10,11 +10,12 @@ basket_radius = 40;
 radius_in_plane = basket_radius / 1.25 / cos(36);
 n = 4;
 line_diameter = 2;
+shell = "YES";
 $fn = 4;
 		
-penrose_basket(basket_radius, radius_in_plane, n, line_diameter);
+penrose_basket(basket_radius, radius_in_plane, n, line_diameter, shell);
 
-module penrose_basket(basket_radius, radius_in_plane, n, line_diameter) {
+module penrose_basket(basket_radius, radius_in_plane, n, line_diameter, shell) {
 	tris = tile_penrose3(n);
 
 	for(t = tris) {
@@ -26,10 +27,12 @@ module penrose_basket(basket_radius, radius_in_plane, n, line_diameter) {
 				line_diameter
 			);
 
-			inward_ratio = (basket_radius - 0.25 * line_diameter) / basket_radius;
-			outward_ratio = (basket_radius + 0.25 * line_diameter) / basket_radius;
+			if(shell == "YES") {
+				inward_ratio = (basket_radius - 0.25 * line_diameter) / basket_radius;
+				outward_ratio = (basket_radius + 0.25 * line_diameter) / basket_radius;
 
-			polyhedron_hull(concat(pts * outward_ratio, pts * inward_ratio), polyhedron_abuse = true);
+				polyhedron_hull(concat(pts * outward_ratio, pts * inward_ratio), polyhedron_abuse = true);
+			}
 		}
 	}
 }
