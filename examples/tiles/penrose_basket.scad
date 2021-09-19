@@ -10,9 +10,9 @@ basket_radius = 40;
 radius_in_plane = basket_radius;
 
 n = 4;
-line_diameter = 2;
+line_diameter = 3;
 bottom_radius = 8;
-bottom_height = 3;
+bottom_height = 4;
 shell_random_threshold = 0.5; // 0 ~ 1
 $fn = 4;
 		
