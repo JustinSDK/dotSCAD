@@ -1,4 +1,3 @@
-
 use <experimental/_impl/_geom_platonic_polyhedra.scad>;
 
 function geom_icosahedron(radius, detail = 0, quick_mode = true) =
