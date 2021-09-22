@@ -54,3 +54,12 @@ function _geom_info_quick(tris, radius, detail) =
         faces = [for(i = [0:3:len(points) - 3]) [i, i + 1, i + 2]]
     )
     [points, faces];
+
+function _geom_platonic_polyhedra(points, faces, radius, detail, quick_mode) = 
+    let(
+        tris = [
+            for(face = faces)
+            [for(i = face) points[i]]
+        ]
+    )
+    quick_mode ? _geom_info_quick(tris, radius, detail) : _geom_info(tris, radius, detail);

@@ -13,12 +13,7 @@ function geom_icosahedron(radius, detail = 0, quick_mode = true) =
             [9, 5, 1], [4, 11, 5], [2, 10, 11], [6, 7, 10], [8, 1, 7], 
             [4, 9, 3], [2, 4, 3], [6, 2, 3], [8, 6, 3], [9, 8, 3], 
             [5, 9, 4], [11, 4, 2], [10, 2, 6], [7, 6, 8], [1, 8, 9]
-        ],
-        tris = [
-            for(face = icosahedron_faces)
-            [for(i = face) icosahedron_points[i]]
         ]
     )
-    quick_mode ? _geom_info_quick(tris, radius, detail) :
-                 _geom_info(tris, radius, detail);
+    _geom_platonic_polyhedra(icosahedron_points, icosahedron_faces, radius, detail, quick_mode);
     

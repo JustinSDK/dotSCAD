@@ -1,25 +1,4 @@
-use <experimental/tri_subdivide.scad>;
-use <experimental/_impl/_geom_prj2sphere.scad>;
-use <experimental/_impl/_geom_pts_faces.scad>;
-
-function _geom_dodecahedron(dodecahedron_points, tris, radius, detail) = 
-    let(
-        points = detail == 0 ? [for(tri = tris) each tri] : [
-            for(tri = tris)
-            each [for(t = tri_subdivide(tri, detail)) each t]
-        ]
-    )
-    _geom_pts_faces(points, radius);
-
-function _geom_dodecahedron_quick(dodecahedron_points, tris, radius, detail) = 
-    let(
-        points = detail == 0 ? [for(tri = tris) each _geom_prj2sphere(tri, radius)] : [
-            for(tri = tris)
-            each [for(t = tri_subdivide(tri, detail)) each _geom_prj2sphere(t, radius)]
-        ],
-        faces = [for(i = [0:3:len(points) - 3]) [i, i + 1, i + 2]]
-    )
-    [points, faces];
+use <experimental/_impl/_geom_platonic_polyhedra.scad>;
 
 function geom_dodecahedron(radius, detail = 0, quick_mode = true) =
     let(
@@ -57,11 +36,6 @@ function geom_dodecahedron(radius, detail = 0, quick_mode = true) =
 			[5, 9, 11], [19, 5, 11], [7, 19, 11], 
 			[14, 5, 19], [4, 14, 19], [17, 4, 19], 
 			[14, 12, 1], [5, 14, 1], [9, 5, 1]
-		],
-        tris = [
-            for(face = dodecahedron_faces)
-            [for(i = face) dodecahedron_points[i]]
-        ]
+		]
     )
-    quick_mode ? _geom_dodecahedron_quick(dodecahedron_points, tris, radius, detail) :
-                 _geom_dodecahedron(dodecahedron_points, tris, radius, detail);
+	_geom_platonic_polyhedra(dodecahedron_points, dodecahedron_faces, radius, detail, quick_mode);
