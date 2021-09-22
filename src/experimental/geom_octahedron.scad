@@ -2,7 +2,6 @@ use <experimental/_impl/_geom_platonic_polyhedra.scad>;
 
 function geom_octahedron(radius, detail = 0, quick_mode = true) =
     let(
-        t = (1 + sqrt(5)) / 2 ,
         octahedron_points = [
 			[1, 0, 0], 	[-1, 0, 0],	[0, 1, 0],
 			[0, -1, 0], [0, 0, 1],	[0, 0, -1]
