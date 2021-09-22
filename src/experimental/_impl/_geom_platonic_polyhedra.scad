@@ -37,17 +37,14 @@ function _geom_pts_faces(points, radius) =
     [m_pts[1], faces];
 
 function _geom_info(tris, radius, detail) = 
-    let(
-        points = detail == 0 ? [for(tri = tris) each tri] : [
-            for(tri = tris)
-            each [for(t = tri_subdivide(tri, detail)) each t]
-        ]
-    )
-    _geom_pts_faces(points, radius);
+    _geom_pts_faces([
+        for(tri = tris)
+        each [for(t = tri_subdivide(tri, detail)) each t]
+    ], radius);
 
 function _geom_info_quick(tris, radius, detail) = 
     let(
-        points = detail == 0 ? [for(tri = tris) each _geom_prj2sphere(tri, radius)] : [
+        points = [
             for(tri = tris)
             each [for(t = tri_subdivide(tri, detail)) each _geom_prj2sphere(t, radius)]
         ],
@@ -56,6 +53,7 @@ function _geom_info_quick(tris, radius, detail) =
     [points, faces];
 
 function _geom_platonic_polyhedra(points, faces, radius, detail, quick_mode) = 
+    detail == 0 ? [_geom_prj2sphere(points, radius), faces] :
     let(
         tris = [
             for(face = faces)
