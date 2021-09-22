@@ -1,0 +1,1 @@
+function _geom_prj2sphere(t, r) = [for(p = t) p / norm(p) * r];
