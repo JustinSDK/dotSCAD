@@ -73,7 +73,8 @@ Puts children along the given path. If there's only one child, it will put the c
 					scale([2, 1]) 
 						circle(1.25, $fn = 24);    
 		}
-
+        
+		rotate([90, 0, 0])
 		for(a = [0:30:330]) {
 			rotate(a) 
 				translate([5, 0, 0]) 
