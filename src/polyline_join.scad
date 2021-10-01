@@ -1,4 +1,4 @@
-module polyline_hull(points) {
+module polyline_join(points) {
     leng = len(points);
     
     module hull_line(index) {

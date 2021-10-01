@@ -7,4 +7,4 @@ to_do:
 
 - doc: sf add convexity
 
-- new: polyline_hull, superellipsoid, select, dodecahedron, hexahedron, icosahedron, octahedron, tetrahedron
+- new: polyline_join, superellipsoid, select, dodecahedron, hexahedron, icosahedron, octahedron, tetrahedron
