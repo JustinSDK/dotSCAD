@@ -27,9 +27,23 @@ module hull_polyline2d(points, width = 1) {
         test_hull_polyline2d_line_segment(index, point1, point2, half_width);
     }
 
-    for(i = [1:leng - 1]) {
-        hull_line2d(i) 
-            circle(half_width);
+    if($children == 0) {
+        for(i = [1:leng - 1]) {
+            hull_line2d(i)
+                circle(half_width);
+        }
+    }
+    else if($children == 1) {
+        for(i = [1:leng - 1]) {
+            hull_line2d(i)
+                children();
+        }
+    }
+    else {
+        for(i = [1:leng - 1]) {
+            hull_line2d(i)
+                children(i);
+        }
     }
 }
 

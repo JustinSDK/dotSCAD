@@ -26,10 +26,24 @@ module hull_polyline3d(points, diameter = 1) {
         // hook for testing
         test_hull_polyline3d_line_segment(index, point1, point2, radius);        
     }
-    
-    for(i = [1:leng - 1]) {
-        hull_line3d(i)
-            sphere(radius);
+
+    if($children == 0) {
+        for(i = [1:leng - 1]) {
+            hull_line3d(i)
+                sphere(radius);
+        }
+    }
+    else if($children == 1) {
+        for(i = [1:leng - 1]) {
+            hull_line3d(i)
+                children();
+        }
+    }
+    else {
+        for(i = [1:leng - 1]) {
+            hull_line3d(i)
+                children(i);
+        }
     }
 }
 
