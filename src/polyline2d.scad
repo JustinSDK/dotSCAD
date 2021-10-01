@@ -32,16 +32,6 @@ module polyline2d(points, width = 1, startingStyle = "CAP_SQUARE", endingStyle =
         
         line2d(points[index - 1], points[index], width, 
                p1Style = p1Style, p2Style = p2Style);
-
-        // hook for testing
-        test_polyline2d_line_segment(index, p1, p2, width, p1Style, p2Style);
-    }
-
-    module lines(index) {
-        if(index < leng_pts) {
-            line_segment(index);
-            lines(index + 1);
-        } 
     }
 
     function angle(p1, p2, p3) = 
@@ -90,12 +80,9 @@ module polyline2d(points, width = 1, startingStyle = "CAP_SQUARE", endingStyle =
         line2d(points[0], points[1], width, startingStyle, endingStyle);
     }
     else {
-        lines(1);
+        for(i = [1:leng_pts - 1]) {
+            line_segment(i);
+        }
         joins(points, width / 2, leng_pts - 2, 0);
     }
-}
-
-// override it to test
-module test_polyline2d_line_segment(index, point1, point2, width, p1Style, p2Style) {
-
 }
