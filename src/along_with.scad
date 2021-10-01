@@ -13,6 +13,7 @@ use <__comm__/__to3d.scad>;
 use <matrix/m_rotation.scad>;
 
 module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE") {
+    pts = len(points[0]) == 3 ? points : [for(p = points) __to3d(p)];
     leng_points = len(points);
     leng_points_minus_one = leng_points - 1;
     twist_step_a = twist / leng_points;
@@ -82,7 +83,7 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
     // align modules
 
     module axis_angle_align_with_pts_angles(i) {
-        translate(points[i]) 
+        translate(pts[i]) 
         rotate(angles[i])
         rotate(twist_step_a * i) 
         scale([1, 1, 1] + scale_step_vt * i) 
@@ -90,9 +91,9 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
     }
 
     module axis_angle_align_with_pts_init(a, s) {
-        angleyz = __angy_angz(__to3d(points[0]), __to3d(points[1]));
+        angleyz = __angy_angz(pts[0], pts[1]);
         rotate([0, -angleyz[0], angleyz[1]])
-        rotate([90, 0, -90])
+        rotate([0, 0, -90])
         rotate(a)
         scale(s) 
             children(0);
@@ -120,7 +121,6 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
             
     function euler_angle_path_angles(children) = 
        let(
-           pts = len(points[0]) == 3 ? points : [for(pt = points) __to3d(pt)],
            end_i = children == 1 ? leng_points_minus_one : children - 1,
            angs = _euler_angle_path_angles(pts, end_i)
         )
@@ -130,7 +130,7 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
        );
 
     module euler_angle_align(i, angs) {
-        translate(points[i]) 
+        translate(pts[i]) 
         rotate(angs[i])
         rotate(angles_defined ? [0, 0, 0] : [90, 0, -90])
         rotate(twist_step_a * i) 
@@ -153,25 +153,24 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
             }
         }
         else {
-            pts3D = [for(p = points) __to3d(p)];
             cumu_rot_matrice = axis_angle_cumulated_rot_matrice(0, [
-                for(ang_vect = axis_angle_local_ang_vects(leng_points - 2, pts3D)) 
+                for(ang_vect = axis_angle_local_ang_vects(leng_points - 2, pts)) 
                     m_rotation(ang_vect[0], ang_vect[1])
             ]);
 
-            translate(points[0])
+            translate(pts[0])
             axis_angle_align_with_pts_local_rotate(0, 0, [1, 1, 1], cumu_rot_matrice)
                 children(0); 
 
             if($children == 1) { 
                 for(i = [0:leng_points - 2]) {
-                    translate(points[i + 1])
+                    translate(pts[i + 1])
                     axis_angle_align_with_pts_local_rotate(i, i * twist_step_a, [1, 1, 1] + scale_step_vt * i, cumu_rot_matrice)
                         children(0);          
                 }          
             } else {
                 for(i = [0:min(leng_points, $children) - 2]) {
-                    translate(points[i + 1])
+                    translate(pts[i + 1])
                     axis_angle_align_with_pts_local_rotate(i, i * twist_step_a, [1, 1, 1] + scale_step_vt * i, cumu_rot_matrice)
                         children(i + 1);   
                 }
