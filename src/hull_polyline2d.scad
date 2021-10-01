@@ -27,14 +27,9 @@ module hull_polyline2d(points, width = 1) {
         test_hull_polyline2d_line_segment(index, point1, point2, half_width);
     }
 
-    module polyline2d_inner(index) {
-        if(index < leng) {
-            hull_line2d(index);
-            polyline2d_inner(index + 1);
-        }
+    for(i = [1:leng - 1]) {
+        hull_line2d(i);
     }
-
-    polyline2d_inner(1);
 }
 
 // override it to test

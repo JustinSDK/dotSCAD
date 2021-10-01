@@ -26,15 +26,10 @@ module hull_polyline3d(points, diameter = 1) {
         // hook for testing
         test_hull_polyline3d_line_segment(index, point1, point2, radius);        
     }
-
-    module polyline3d_inner(index) {
-        if(index < leng) {
-            hull_line3d(index);
-            polyline3d_inner(index + 1);
-        }
+    
+    for(i = [1:leng - 1]) {
+        hull_line3d(i);
     }
-
-    polyline3d_inner(1);
 }
 
 // override it to test
