@@ -28,28 +28,15 @@ module polyline3d(points, diameter, startingStyle = "CAP_CIRCLE", endingStyle = 
         p2Style = styles[1];        
         
         line3d(p1, p2, diameter, 
-               p1Style = p1Style, p2Style = p2Style);
-
-        // hook for testing
-        test_polyline3d_line3d_segment(index, p1, p2, diameter, p1Style, p2Style);               
-    }
-
-    module polyline3d_inner(index) {
-        if(index < leng_pts) {
-            line_segment(index);
-            polyline3d_inner(index + 1);
-        }
+               p1Style = p1Style, p2Style = p2Style);       
     }
 
     if(leng_pts == 2) {
         line3d(points[0], points[1], diameter, startingStyle, endingStyle);
     }
     else {
-        polyline3d_inner(1);
+        for(i = [1:leng_pts - 1]) {
+            line_segment(i);
+        }
     }
-}
-
-// override it to test
-module test_polyline3d_line3d_segment(index, point1, point2, diameter, p1Style, p2Style) {
-
 }
