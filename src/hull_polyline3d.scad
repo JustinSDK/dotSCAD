@@ -18,9 +18,9 @@ module hull_polyline3d(points, diameter = 1) {
 
         hull() {
             translate(point1) 
-                sphere(radius);
+                children();
             translate(point2) 
-                sphere(radius);
+                children();
         }
 
         // hook for testing
@@ -28,7 +28,8 @@ module hull_polyline3d(points, diameter = 1) {
     }
     
     for(i = [1:leng - 1]) {
-        hull_line3d(i);
+        hull_line3d(i)
+            sphere(radius);
     }
 }
 

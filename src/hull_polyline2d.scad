@@ -18,9 +18,9 @@ module hull_polyline2d(points, width = 1) {
 
         hull() {
             translate(point1) 
-                circle(half_width);
+                children();
             translate(point2) 
-                circle(half_width);
+                children();
         }
 
         // hook for testing
@@ -28,7 +28,8 @@ module hull_polyline2d(points, width = 1) {
     }
 
     for(i = [1:leng - 1]) {
-        hull_line2d(i);
+        hull_line2d(i) 
+            circle(half_width);
     }
 }
 
