@@ -6,3 +6,5 @@ to_do:
 - angle_between adds a ccw param.
 
 - doc: sf add convexity
+
+- new: polyline_hull, superellipsoid, select, dodecahedron, hexahedron, icosahedron, octahedron, tetrahedron
