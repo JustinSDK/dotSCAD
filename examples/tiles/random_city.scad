@@ -4,7 +4,7 @@ use <arc.scad>;
 use <shear.scad>;
 use <util/rand.scad>;
 use <experimental/tile_w2e.scad>;
-use <experimental/select.scad>;
+use <select.scad>;
 
 mask = [
     [0, 1, 1, 0, 0, 0, 1, 1, 0],

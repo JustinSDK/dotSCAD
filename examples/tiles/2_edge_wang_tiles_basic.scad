@@ -1,5 +1,5 @@
 use <experimental/tile_w2e.scad>;
-use <experimental/select.scad>;
+use <select.scad>;
 use <arc.scad>;
 
 size = [15, 10];
