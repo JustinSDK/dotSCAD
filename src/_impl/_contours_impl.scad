@@ -116,8 +116,10 @@ function _isolines_of(cell_pts, threshold) =
 function _marching_squares_isolines(points, threshold) = 
     let(labeled_pts = _isolines_pn_label(points, threshold))
     [
-        for(y = [0:len(labeled_pts) - 2])            
-            for(x = [0:len(labeled_pts[0]) - 2])
+        for(
+            y = [0:len(labeled_pts) - 2], 
+            x = [0:len(labeled_pts[0]) - 2]
+        )            
             let(
                 p0 = labeled_pts[y][x],
                 p1 = labeled_pts[y + 1][x],
@@ -1391,8 +1393,10 @@ function _isobands_of(cell_pts, lower, upper) =
 function _marching_squares_isobands(points, lower, upper) = 
     let(labeled_pts = _isobands_tri_label(points, lower, upper))
     [
-        for(y = [0:len(labeled_pts) - 2])
-            for(x = [0:len(labeled_pts[0]) - 2])
+        for(
+            y = [0:len(labeled_pts) - 2], 
+            x = [0:len(labeled_pts[0]) - 2]
+        )
             let(
                 p0 = labeled_pts[y][x],
                 p1 = labeled_pts[y + 1][x],
