@@ -1,4 +1,4 @@
-use <experimental/geom_octahedron.scad>;
+use <geom_octahedron.scad>;
 
 module octahedron(radius, detail = 0, quick_mode = true) {
 	points_faces = geom_octahedron(radius, detail, quick_mode);
