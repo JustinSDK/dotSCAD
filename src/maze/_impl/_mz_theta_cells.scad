@@ -104,8 +104,7 @@ function config_nbrs(maze) =
 			]
 		],
 		cell_outwards_lt = [
-			for(row = mz_empty_outs)
-				for(c = row)
+			for(row = mz_empty_outs, c = row)
 				let(
 					ri = get_ri(c),
 					ci = get_ci(c),
