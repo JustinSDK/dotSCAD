@@ -40,9 +40,11 @@ function mz_hex_walls(cells, rows, columns, cell_radius, left_border = true, bot
                 cell_p = _cell_position(cell_radius, x, 0),
                 walls1 = _bottom(cell_radius),
                 walls2 = [
-                    for(pair = (x % 2 == 0 ? [_bottom_left(cell_radius), _bottom_right(cell_radius)] : []))
-                        for(wall = pair)
-                            wall
+                    for(
+                        pair = (x % 2 == 0 ? [_bottom_left(cell_radius), _bottom_right(cell_radius)] : []),
+                        wall = pair
+                    )
+                    wall
                 ]
             )
             walls2 == [] ? 
@@ -55,9 +57,8 @@ function mz_hex_walls(cells, rows, columns, cell_radius, left_border = true, bot
                 ]   
         ] : [],
         bottom_border_walls = [
-            for(pair = bottom_pair_walls)
-                for(wall = pair)
-                    wall
+            for(pair = bottom_pair_walls, wall = pair)
+                wall
         ]
     )
     concat(walls, left_border_walls, bottom_border_walls);
