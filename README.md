@@ -360,3 +360,21 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 [**maze/mz_hamiltonian**(rows, columns, start = [0, 0], seed = undef)](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_hamiltonian.html) | create a hamiltonian path from a maze.
 [**maze/mz_theta_cells**(rows, beginning_number, start = [0, 0], seed = undef)](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_theta_cells.html) | return cell data of a theta maze.
 [**maze/mz_theta_get**(cell, query)](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_theta_get.html) | a helper for getting data from a theta-maze cell.
+
+----
+
+# Preview
+
+## Transformation
+
+- polyline_join
+- select
+
+## Polyhedra
+
+- polyhedra/superellipsoid
+- polyhedra/tetrahedron
+- polyhedra/hexahedron 
+- polyhedra/octahedron 
+- polyhedra/dodecahedron
+- polyhedra/icosahedron
