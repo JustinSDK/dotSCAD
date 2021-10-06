@@ -1,4 +1,4 @@
-use <experimental/geom_tetrahedron.scad>;
+use <geom_tetrahedron.scad>;
 
 module tetrahedron(radius, detail = 0, quick_mode = true) {
 	points_faces = geom_tetrahedron(radius, detail, quick_mode);

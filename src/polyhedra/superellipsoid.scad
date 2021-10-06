@@ -1,5 +1,5 @@
-use <__comm__/__frags.scad>;
-use <sweep.scad>;
+use <../__comm__/__frags.scad>;
+use <../sweep.scad>;
 
 // e = 0;
 // n = 0;
