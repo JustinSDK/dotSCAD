@@ -63,6 +63,7 @@ module fidget_cat(beginning_radius, n, height, thickness, spacing, slope) {
 		    // translate([0, 0, -7.3])
 			difference() {
 				linear_extrude(half_height, scale = s[0])
+				scale(1.025)
 					cat(beginning_radius);
 					
 				linear_extrude(thickness * 2, center = true) {
