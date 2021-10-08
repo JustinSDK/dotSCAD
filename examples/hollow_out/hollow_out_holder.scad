@@ -1,4 +1,4 @@
-use <hull_polyline3d.scad>;
+use <polyline_join.scad>;
 use <ptf/ptf_bend.scad>;
 use <hollow_out_square.scad>;
 
@@ -18,7 +18,8 @@ lines = concat(
 
 for(line = lines) {  
    transformed = [for(pt = line) ptf_bend([columns * width, rows * width], pt, radius, angle)];
-   hull_polyline3d(transformed, diameter, $fn = 4);
+   polyline_join(transformed)
+       sphere(d = diameter, $fn = 4);
 }
 
 translate([0, 0, -diameter / 2])

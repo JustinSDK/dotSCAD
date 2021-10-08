@@ -1,4 +1,4 @@
-use <hull_polyline2d.scad>;
+use <polyline_join.scad>;
 use <hollow_out.scad>;
 use <turtle/t2d.scad>;
 
@@ -13,7 +13,8 @@ k2 = 0.3;
 
 module fern_leaf(t, leng, min_leng, k1, k2, width) {
     t1 = t2d(t, "forward", leng = leng);
-    hull_polyline2d([t2d(t, "point"), t2d(t1, "point")], width);
+    polyline_join([t2d(t, "point"), t2d(t1, "point")])
+	    circle(width / 2);
     
     if(leng > min_leng) {
         fern_leaf(
@@ -22,7 +23,8 @@ module fern_leaf(t, leng, min_leng, k1, k2, width) {
         );
         
         t2 = t2d(t1, "forward", leng = k1 * leng);
-        hull_polyline2d([t2d(t1, "point"), t2d(t2, "point")], width);
+        polyline_join([t2d(t1, "point"), t2d(t2, "point")])
+		    circle(width / 2);
         
         t3 = t2d(t2, "turn", angle = -69.0);
         fern_leaf(

@@ -1,5 +1,5 @@
 use <fibonacci_lattice.scad>;
-use <hull_polyline3d.scad>;
+use <polyline_join.scad>;
 use <polyhedron_hull.scad>;
 
 n = 150;
@@ -51,6 +51,7 @@ module spiral_math_constants(n, radius, constants, font_name, font_size, txt_ext
 	}
 
 	for(i = [0:2:6]) {
-		hull_polyline3d(spirals[i] * 0.9, 1, $fn = 4); 
+		polyline_join(spirals[i] * 0.9)
+		    sphere(.5, $fn = 4); 
 	}
 }

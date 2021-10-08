@@ -1,5 +1,5 @@
 use <shape_circle.scad>;
-use <hull_polyline2d.scad>;
+use <polyline_join.scad>;
 use <util/sum.scad>;
 
 beginning_radius = 10;
@@ -18,11 +18,14 @@ module spiral_polygons(beginning_radius, line_width, fn, n) {
 	dr = y / cos(theta);
 	pw = pow((beginning_radius + dr) * sin(theta), 2);
 	
+	half_line_width = line_width / 2;
+	
 	function a(ri, ro, i) = acos((pow(ro, 2) + pow(ri, 2) - pw * pow(0.985, i)) / (2 * ro * ri));
 	
 	module drawPolygon(r) {
 	    pts = shape_circle(radius = r, $fn = fn);
-	    hull_polyline2d(concat(pts, [pts[0]]), width = line_width, $fn = 12);
+		polyline_join(concat(pts, [pts[0]]))
+		    circle(half_line_width, $fn = 12);
 	}
 	
 	rs = [for(i = [0: n - 1]) beginning_radius + i * dr];

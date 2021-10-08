@@ -1,4 +1,4 @@
-use <hull_polyline3d.scad>;
+use <polyline_join.scad>;
 
 side_leng = 100;
 min_leng = 5;
@@ -29,11 +29,15 @@ module pyramid_frame(side_leng, diameter) {
     tri_pts = [[0, 0, h], [half_leng, half_leng, 0], [half_leng, -half_leng, 0], [0, 0, h]];
     line_pts = [[half_leng, half_leng, 0], [-half_leng, half_leng, 0]];
     
-    hull_polyline3d(tri_pts, diameter);
+    polyline_join(tri_pts) 
+	    sphere(d = diameter);
     mirror([1, 0, 0]) 
-        hull_polyline3d(tri_pts, diameter);
+	polyline_join(tri_pts) 
+	    sphere(d = diameter);
     
-    hull_polyline3d(line_pts, diameter);
+	polyline_join(line_pts) 
+	    sphere(d = diameter);
     mirror([0, 1, 0]) 
-        hull_polyline3d(line_pts, diameter);
+	polyline_join(line_pts) 
+	    sphere(d = diameter);
 }

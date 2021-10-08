@@ -1,4 +1,4 @@
-use <hull_polyline3d.scad>;
+use <polyline_join.scad>;
 
 length = 100;
 diff_scale = 0.125;
@@ -22,7 +22,8 @@ module square_pursuit_3d(length, diff_scale, diameter, n) {
             
             npts = [for(i = [0:3]) inter_p(pts[i], pts[(i + 1) % 4], leng, d)];
             
-            hull_polyline3d(concat(npts, [npts[3], npts[0]]), diameter);
+            polyline_join(concat(npts, [npts[3], npts[0]]))
+			    sphere(d = diameter);
             
             _square_pursuit_3d(npts, diff_scale, diameter, n - 1);
         }
@@ -36,7 +37,8 @@ module square_pursuit_3d(length, diff_scale, diameter, n) {
         [0, length, 0]
     ];    
     
-    hull_polyline3d(concat(pts, [pts[3], pts[0]]), diameter);
+    polyline_join(concat(pts, [pts[3], pts[0]]))
+	    sphere(d = diameter);
     
     _square_pursuit_3d(pts, diff_scale, diameter, n - 1);
 }

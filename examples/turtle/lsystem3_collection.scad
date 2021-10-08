@@ -1,13 +1,10 @@
 use <turtle/lsystem3.scad>;
 use <util/dedup.scad>;
-use <hull_polyline3d.scad>;
+use <polyline_join.scad>;
 
 for(line = dedup(hilbert_curve())) {
-    hull_polyline3d(
-        [line[0], line[1]], 
-        diameter = 0.5, 
-        $fn = 4
-    );
+    polyline_join([line[0], line[1]])
+	    sphere(.25, $fn = 4);
 }  
 
 function tree1(n = 4, angle = 22.5, leng = 1, heading = 0, start = [0, 0, 0]) = 

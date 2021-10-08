@@ -1,5 +1,5 @@
 use <experimental/tile_truchet.scad>;
-use <hull_polyline3d.scad>;
+use <polyline_join.scad>;
 use <ptf/ptf_ring.scad>;
 
 size = [20, 100];
@@ -28,9 +28,10 @@ module tiled_line_mobius(size, twist, line_diameter = 1) {
         ]
     );
             
+    half_line_diameter = line_diameter / 2;
     for(line = lines) {
         pts = [for(p = line) ptf_ring(size, p, size[0], twist = twist)];
-        hull_polyline3d(pts, diameter = line_diameter);
+        polyline_join(pts) sphere(half_line_diameter);
     }
 }
 

@@ -1,5 +1,5 @@
 use <bezier_smooth.scad>;
-use <hull_polyline3d.scad>;
+use <polyline_join.scad>;
 use <util/dedup.scad>;
 use <turtle/lsystem3.scad>;
 
@@ -14,7 +14,8 @@ hilbert_path = dedup(
     );
 smoothed_hilbert_path = bezier_smooth(hilbert_path, corner_r);
 
-hull_polyline3d(smoothed_hilbert_path,  diameter = diameter);
+polyline_join(smoothed_hilbert_path)
+    sphere(d = diameter);
 
 function hilbert_curve() = 
     let(

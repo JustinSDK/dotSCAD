@@ -1,5 +1,5 @@
 use <ptf/ptf_rotate.scad>;
-use <hull_polyline2d.scad>;
+use <polyline_join.scad>;
 use <bezier_curve.scad>;
 use <ellipse_extrude.scad>;
 
@@ -19,8 +19,10 @@ module nautilus_shell(chambered_section_max_angle, steps, thickness) {
             ptf_rotate([r(a), 0], a)
     ];
 
+    half_thickness = thickness / 2;
     render() {
-        hull_polyline2d(spiral, thickness);
+	    polyline_join(spiral)
+		    circle(half_thickness);
 
         for(a = [a_step:a_step * 2:chambered_section_max_angle]) {
             a2 = a + 360;
@@ -29,9 +31,8 @@ module nautilus_shell(chambered_section_max_angle, steps, thickness) {
             p2 = ptf_rotate((p1 + ptf_rotate([r(a2), 0], a2)) * .6, -5);
             p3 = ptf_rotate([r(a3), 0], a3);
             
-            hull_polyline2d(bezier_curve(0.1, 
-                [p1, p2, p3]
-            ), thickness);
+			polyline_join(bezier_curve(0.1, [p1, p2, p3]))
+			    circle(half_thickness);
         }
 
     }

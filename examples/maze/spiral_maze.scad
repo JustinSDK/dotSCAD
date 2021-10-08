@@ -1,6 +1,5 @@
 use <archimedean_spiral.scad>;
-use <hull_polyline3d.scad>;
-use <hull_polyline2d.scad>;
+use <polyline_join.scad>;
 
 use <maze/mz_square_cells.scad>;
 use <maze/mz_square_walls.scad>;
@@ -29,8 +28,10 @@ module spiral_maze() {
                 rows, columns, cell_width
             );
 
+    half_thickness = wall_thickness / 2;
+    
     for(wall = walls) {
-        hull_polyline3d([
+	    polyline_join([
             for(p = wall) 
                 let(
                     x = p[0],
@@ -38,14 +39,12 @@ module spiral_maze() {
                     cp = (pts3d[x] + pts3d[x + 1]) / 2
                 )
                 cp + [0, y, 0]
-            ],
-            wall_thickness, 
-            $fn = 5
-        );
+        ]) sphere(half_thickness, $fn = 5);
     }
 
     translate([0, rows, 0])
     rotate([90, 0, 0])
     linear_extrude(rows)
-        hull_polyline2d([for(i = [1:len(pts2d) - 2]) pts2d[i]], wall_thickness / 2);
+	polyline_join([for(i = [1:len(pts2d) - 2]) pts2d[i]])
+	    circle(wall_thickness / 4);
 }

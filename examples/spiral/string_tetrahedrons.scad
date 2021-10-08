@@ -1,4 +1,4 @@
-use <hull_polyline3d.scad>;
+use <polyline_join.scad>;
 
 level = 1;
 leng = 50;
@@ -20,12 +20,16 @@ module string_tetrahedron(leng, diameter, segs_per_side, line_fn) {
         pts2 = pts(side2[0], side2[1], segs);
         
         leng = len(pts1);
-        hull_polyline3d(points = [pts1[0], pts2[0]], diameter = diameter);
+		r = diameter / 2;
+        polyline_join(points = [pts1[0], pts2[0]])
+		    sphere(r);
         for(i = [1:leng - 2]) {
-            hull_polyline3d(points = [pts1[i], pts2[i]], diameter = diameter);
+            polyline_join([pts1[i], pts2[i]])
+			    sphere(r);
         }
         end = leng - 1;
-        hull_polyline3d(points = [pts1[end], pts2[end]], diameter = diameter);
+		polyline_join([pts1[end], pts2[end]])
+		    sphere(r);
     }
 
     function height(leng) = 

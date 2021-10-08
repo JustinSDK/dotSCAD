@@ -1,5 +1,5 @@
-use <hull_polyline3d.scad>;
-use <experimental/tri_delaunay.scad>;
+use <polyline_join.scad>;
+use <triangle/tri_delaunay.scad>;
 use <experimental/tri_bisectors.scad>;
 use <ptf/ptf_bend.scad>;
 
@@ -33,9 +33,6 @@ bisectors = [
 
 for(line = bisectors) {
     pts = [for(p = line) ptf_bend(size, p, radius, 360)];
-    hull_polyline3d(
-        concat(pts, [pts[0]]), 
-        line_diameter = line_diameter,
-        $fn = 4
-    );
+    polyline_join(concat(pts, [pts[0]]))
+        sphere(d = line_diameter, $fn = 4);
 }

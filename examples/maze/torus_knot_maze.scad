@@ -1,4 +1,4 @@
-use <hull_polyline3d.scad>;
+use <polyline_join.scad>;
 use <maze/mz_square_cells.scad>;
 use <maze/mz_square_walls.scad>;
 use <path_extrude.scad>;
@@ -42,25 +42,22 @@ module torus_knot_maze() {
             );
 
     half_row = rows / 2;
-	
+	r = wall_thickness / 2;
     for(wall = walls) {
-        hull_polyline3d([
-            for(p = wall) 
-                let(
-                    x = p[0],
-                    y = p[1]
-                )
-                path[x] + ptf_rotate(
-				    ptf_rotate(
-					    [-y + half_row, 0, 0], 
-						[0, 0, -90]
-					), 
-					[0, angle_yz[x][0], angle_yz[x][1]]
-			    )
-            ],
-            wall_thickness, 
-            $fn = 4
-        );
+	    polyline_join([
+		for(p = wall) 
+			let(
+				x = p[0],
+				y = p[1]
+			)
+			path[x] + ptf_rotate(
+				ptf_rotate(
+					[-y + half_row, 0, 0], 
+					[0, 0, -90]
+				), 
+				[0, angle_yz[x][0], angle_yz[x][1]]
+			)
+		]) sphere(r, $fn = 4);
     }
 
     if(filled) {

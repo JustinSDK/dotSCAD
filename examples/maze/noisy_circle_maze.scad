@@ -1,4 +1,4 @@
-use <hull_polyline2d.scad>;
+use <polyline_join.scad>;
 use <util/rand.scad>;
 use <maze/mz_square_cells.scad>;
 use <maze/mz_square_walls.scad>;
@@ -18,7 +18,7 @@ module noisy_circle_maze(r_cells, cell_width, wall_thickness, origin_offset, noi
     rect_size = is_undef(origin_offset) ? [width, width] : [width, width] - origin_offset * 2;
 
     noisy_f = is_undef(noisy_factor) ? 1 : noisy_factor;
-    
+    half_wall_thickness = wall_thickness / 2;
     seed = rand(0, 256);
     for(wall = walls) {
         for(i = [0:len(wall) - 2]) {
@@ -28,7 +28,8 @@ module noisy_circle_maze(r_cells, cell_width, wall_thickness, origin_offset, noi
             pn01 = nz_perlin2(p0[0] + seed, p0[1] + seed, seed) * noisy_f;
             pn10 = nz_perlin2(p1[0], p1[1], seed) * noisy_f;
             pn11 = nz_perlin2(p1[0] + seed, p1[1] + seed, seed) * noisy_f;
-            hull_polyline2d([p0 + [pn00, pn01], p1 + [pn10, pn11]], width = wall_thickness);
+			polyline_join([p0 + [pn00, pn01], p1 + [pn10, pn11]])
+			    circle(half_wall_thickness);
         }
     } 
 }

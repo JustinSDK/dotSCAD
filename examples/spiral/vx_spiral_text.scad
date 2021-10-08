@@ -1,4 +1,4 @@
-use <hull_polyline2d.scad>;
+use <polyline_join.scad>;
 use <voxel/vx_ascii.scad>;
 
 tx = "3.14159265358979323846264338327950288419716939937510582097494459230781640628620899862803482534211706798214808651328230664709384460955058223172";
@@ -20,7 +20,8 @@ linear_extrude(1) {
         translate(pts[i]) 
             square(7, center = true);
     }
-    hull_polyline2d([for(i = [0:len(tx) - 1]) pts[i]], width = 2);
+	polyline_join([for(i = [0:len(tx) - 1]) pts[i]])
+	    circle(1);
 }
 
 function _px_spiral_forward(pt, leng, dir, clockwise) = 

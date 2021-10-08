@@ -1,5 +1,5 @@
 use <shape_starburst.scad>;
-use <hull_polyline3d.scad>;
+use <polyline_join.scad>;
 use <experimental/tri_bisectors.scad>;
 
 r1 = 30;
@@ -19,9 +19,11 @@ module hollow_out_starburst(r1, r2, h, n, line_diameter, half = false) {
     
     module half_star() {
         for(tri = tris) {
-            hull_polyline3d(concat(tri, [tri[0]]), line_diameter = line_diameter);
+            polyline_join(concat(tri, [tri[0]]))
+			    sphere(d = line_diameter);
             for(line = tri_bisectors(tri)) {
-                hull_polyline3d(concat(line, [line[0]]), line_diameter = line_diameter);
+                polyline_join(concat(line, [line[0]]))
+				    sphere(d = line_diameter);
             }
         }    
     }

@@ -1,4 +1,4 @@
-use <hull_polyline3d.scad>;
+use <polyline_join.scad>;
 use <hollow_out.scad>;
 use <util/dedup.scad>;
 use <turtle/lsystem2.scad>;
@@ -43,11 +43,8 @@ module fidget_ball_fern_leaf(radius, thickness, spacing, drill_angle, support_th
 			for(i = [0:n - 1]) {
 				rotate(i * a_step)
 				for(line = fern) {
-					hull_polyline3d(
-						line,
-						thickness * thickness_scale,
-						$fn = 5
-					);
+				    polyline_join(line)
+					    sphere(thickness * thickness_scale / 2, $fn = 5);
 				}
 			}
 		}

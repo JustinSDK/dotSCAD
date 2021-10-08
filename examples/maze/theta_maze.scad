@@ -1,6 +1,6 @@
 use <maze/mz_theta_cells.scad>;
 use <maze/mz_theta_get.scad>;
-use <hull_polyline2d.scad>;
+use <polyline_join.scad>;
 
 rows = 5;
 beginning_number = 8;
@@ -16,6 +16,7 @@ module theta_maze(rows, beginning_number, cell_width, wall_thickness, wall_heigh
 
 	maze = mz_theta_cells(rows, beginning_number);
 
+    half_wall_thickness = wall_thickness / 2;
 	linear_extrude(wall_height) {
 		for(rows = maze) {
 			for(cell = rows) {
@@ -33,11 +34,13 @@ module theta_maze(rows, beginning_number, cell_width, wall_thickness, wall_heigh
 				outerVt2 = vt_from_angle(theta2, outerR);
 				
 				if(wallType == "INWARD_WALL" || wallType == "INWARD_CCW_WALL") {
-					hull_polyline2d([innerVt1, innerVt2], width = wall_thickness);
+				    polyline_join([innerVt1, innerVt2])
+					    circle(half_wall_thickness);
 				}
 
 				if(wallType == "CCW_WALL" || wallType == "INWARD_CCW_WALL") {
-					hull_polyline2d([innerVt2, outerVt2], width = wall_thickness);
+					polyline_join([innerVt2, outerVt2])
+					    circle(half_wall_thickness);
 				}
 			} 
 		}
@@ -47,7 +50,8 @@ module theta_maze(rows, beginning_number, cell_width, wall_thickness, wall_heigh
 		for(theta = [0:thetaStep:360 - thetaStep]) {
 			vt1 = vt_from_angle(theta, r);
 			vt2 = vt_from_angle(theta + thetaStep, r);
-			hull_polyline2d([vt1, vt2], width = wall_thickness);
+			polyline_join([vt1, vt2])
+			    circle(half_wall_thickness);
 		} 
 	}
 }

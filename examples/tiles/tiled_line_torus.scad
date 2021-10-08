@@ -1,5 +1,5 @@
 use <experimental/tile_truchet.scad>;
-use <hull_polyline3d.scad>;
+use <polyline_join.scad>;
 use <ptf/ptf_torus.scad>;
 
 size = [20, 50];
@@ -18,9 +18,11 @@ module tiled_line_torus(size, twist, line_diameter = 1) {
             i <= 1 ? [[x, y], [x + 1, y + 1]] : [[x + 1, y], [x, y + 1]]  
         ];
             
+	half_line_diameter = line_diameter / 2;
     for(line = lines) {
         pts = [for(p = line) ptf_torus(size, p, [size[0], size[0] / 2], twist = twist)];
-        hull_polyline3d(pts, diameter = line_diameter);
+        polyline_join(pts)
+		    sphere(half_line_diameter);
     }
 }
 

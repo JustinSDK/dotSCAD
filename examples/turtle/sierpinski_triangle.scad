@@ -1,4 +1,4 @@
-use <hull_polyline2d.scad>;
+use <polyline_join.scad>;
 use <turtle/t2d.scad>;
 
 side_leng = 100;
@@ -17,10 +17,8 @@ module triangle(t, side_leng, thickness) {
         ["forward", side_leng]
     ]);
 
-    hull_polyline2d(
-        [for(turtle = [t, t2, t3, t]) t2d(turtle, "point")], 
-        thickness
-    );
+    polyline_join([for(turtle = [t, t2, t3, t]) t2d(turtle, "point")])
+	    circle(thickness / 2);
 }
 
 module sierpinski_triangle(t, side_leng, min_leng, thickness) {

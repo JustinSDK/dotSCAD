@@ -1,4 +1,4 @@
-use <hull_polyline3d.scad>;
+use <polyline_join.scad>;
 use <maze/mz_square_cells.scad>;
 use <maze/mz_square_walls.scad>;
 use <ptf/ptf_ring.scad>;
@@ -24,5 +24,6 @@ walls = mz_square_walls(cells, rows, columns, cell_width, bottom_border = false)
 size = [columns * cell_width, rows * cell_width];
 for(wall_pts = walls) {  
    transformed = [for(pt = wall_pts) ptf_ring(size, pt, radius, 360, angle)];
-   hull_polyline3d(transformed, line_diameter);
+   polyline_join(transformed)
+       sphere(d = line_diameter);
 }

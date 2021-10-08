@@ -1,4 +1,4 @@
-use <hull_polyline3d.scad>;
+use <polyline_join.scad>;
 use <ptf/ptf_torus.scad>;
 use <hollow_out_square.scad>;
 
@@ -13,7 +13,8 @@ lines = hollow_out_square([columns, rows], width);
 
 for(line = lines) {  
    transformed = [for(pt = line) ptf_torus([columns * width, rows * width], pt, [radius, radius / 2], twist = twist)];
-   hull_polyline3d(transformed, line_diameter, $fn = 4);
+   polyline_join(transformed)
+       sphere(d = line_diameter, $fn = 4);
 }
 
 color("black")

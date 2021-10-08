@@ -1,4 +1,4 @@
-use <hull_polyline3d.scad>;
+use <polyline_join.scad>;
 use <ptf/ptf_torus.scad>;
 use <maze/mz_square_cells.scad>;
 use <maze/mz_square_walls.scad>;
@@ -24,7 +24,8 @@ walls = mz_square_walls(cells, rows, columns, cell_width, left_border = false, b
 size = [columns * cell_width, rows * cell_width];
 for(wall_pts = walls) {  
    transformed = [for(pt = wall_pts) ptf_torus(size, pt, [radius, radius / 2], twist = twist)];
-   hull_polyline3d(transformed, line_diameter, $fn = 4);
+   polyline_join(transformed)
+       sphere(d = line_diameter, $fn = 4);
 }
 
 color("black")

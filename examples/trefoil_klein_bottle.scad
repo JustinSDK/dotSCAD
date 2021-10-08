@@ -3,7 +3,7 @@ use <shape_circle.scad>;
 use <path_extrude.scad>;
 use <bezier_curve.scad>;
 use <bspline_curve.scad>;
-use <hull_polyline2d.scad>;
+use <polyline_join.scad>;
 
 thickness = 4.5;
 t_step = 0.05;
@@ -28,10 +28,8 @@ module dis_connected_klein_bottle(radius1, radius2, bottom_height, thickness, t_
                 
             path = concat([for(p = ph1) p + [radius1 + radius2, 0, 0]], ph2);
                 
-            hull_polyline2d(
-                path, 
-                thickness
-            );      
+            polyline_join(path)
+			    circle(half_thickness);      
         }
     }
 

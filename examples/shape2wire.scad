@@ -1,6 +1,5 @@
 use <ptf/ptf_rotate.scad>;
-use <hull_polyline2d.scad>;
-use <hull_polyline3d.scad>;
+use <polyline_join.scad>;
 use <shape_superformula.scad>; 
 
 function shape2wire(shape, r) = 
@@ -28,9 +27,11 @@ rotate([90, 0, 0])
 linear_extrude(1, center = true)
 difference() {
 	square(120, center = true);
-	hull_polyline2d(concat(shape, [shape[0]]), width = 5);
+	polyline_join(concat(shape, [shape[0]]))
+	    circle(2.5);
 }
 
 wire = shape2wire(shape, 150);
 rotate(-$t * 360)
-    hull_polyline3d(concat(wire, [wire[0]]), 3);
+polyline_join(concat(wire, [wire[0]]))
+	sphere(1.5);
