@@ -39,7 +39,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 
 [![examples](examples/images/gallery.JPG)](examples#dogfooding-examples)
 
-# API Documentation
+# API Reference
 
 ## 2D Module
 
