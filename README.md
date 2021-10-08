@@ -12,7 +12,7 @@ Some of my [3D models](https://github.com/JustinSDK/dotSCAD#examples) require co
 
 The idea of the name dotSCAD comes from the filename extension ".scad" of OpenSCAD. 
 
-## Get Started
+## Getting started
 
 OpenSCAD uses three library locations, the installation library, built-in library, and user defined libraries. Check [Setting OPENSCADPATH](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries#Setting_OPENSCADPATH) in [OpenSCAD User Manual/Libraries](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Libraries) for details.
 
