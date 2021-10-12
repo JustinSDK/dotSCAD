@@ -368,7 +368,8 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 ## Transformation
 
 - polyline_join
-- select
+[**select**(i)](https://openhome.cc/eGossip/OpenSCAD/lib3x-select.html) | a helper for getting data from a theta-maze cell.
+
 
 ## Polyhedra
 
