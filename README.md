@@ -367,9 +367,10 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 
 ## Transformation
 
-- polyline_join
-[**select**(i)](https://openhome.cc/eGossip/OpenSCAD/lib3x-select.html) | a helper for getting data from a theta-maze cell.
-
+ Signature | Description
+--|--
+[**select**(i)](https://openhome.cc/eGossip/OpenSCAD/lib3x-select.html) | select module objects.
+polyline_join | place a join on each point. Hull each pair of joins and union all convex hulls.
 
 ## Polyhedra
 
