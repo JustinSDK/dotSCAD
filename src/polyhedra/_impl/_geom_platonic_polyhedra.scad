@@ -1,5 +1,3 @@
-use <../../util/sum.scad>;
-
 function _tri_subdivide(points, detail) = 
    let(
        rows = detail + 1,
@@ -13,8 +11,8 @@ function _tri_subdivide(points, detail) =
 			for(ci = [0:cols]) 
 				points[0] + ci * dc + ri * dr 
 		],
-		pre_n = concat([0], [for(ri = [0:rows]) rows - ri + 1]),
-		idx = function(ci, ri) ci + sum([for(i = [0:ri]) pre_n[i]]),
+		ri_base = [for(ri = 0, acc = 0; ri <= rows; ri = ri + 1, acc = acc + rows - ri + 2) acc],
+		idx = function(ci, ri) ci + ri_base[ri],
 		faces = [
 			for(ri = [0:rows - 1])
 			let(cols = rows - ri - 1)
