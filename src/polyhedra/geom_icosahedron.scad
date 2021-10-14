@@ -1,6 +1,6 @@
 use <_impl/_geom_platonic_polyhedra.scad>;
 
-function geom_icosahedron(radius, detail = 0, quick_mode = true) =
+function geom_icosahedron(radius, detail = 0) =
     let(
         t = (1 + sqrt(5)) / 2 ,
         icosahedron_points = [
@@ -15,5 +15,5 @@ function geom_icosahedron(radius, detail = 0, quick_mode = true) =
             [5, 9, 4], [11, 4, 2], [10, 2, 6], [7, 6, 8], [1, 8, 9]
         ]
     )
-    _geom_platonic_polyhedra(icosahedron_points, icosahedron_faces, radius, detail, quick_mode);
+    _subdivide_project(icosahedron_points, icosahedron_faces, radius, detail);
     

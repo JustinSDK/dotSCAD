@@ -1,6 +1,6 @@
 use <_impl/_geom_platonic_polyhedra.scad>;
 
-function geom_hexahedron(radius, detail = 0, quick_mode = true) =
+function geom_hexahedron(radius, detail = 0) =
     let(
         t = 1 / sqrt(3),
         hexahedron_points = [
@@ -16,4 +16,4 @@ function geom_hexahedron(radius, detail = 0, quick_mode = true) =
             [5, 6, 7], [5, 7, 4]
 		]
     )
-	_geom_platonic_polyhedra(hexahedron_points, hexahedron_faces, radius, detail, quick_mode);
+	_subdivide_project(hexahedron_points, hexahedron_faces, radius, detail);

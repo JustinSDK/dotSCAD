@@ -1,6 +1,6 @@
 use <_impl/_geom_platonic_polyhedra.scad>;
 
-function geom_dodecahedron(radius, detail = 0, quick_mode = true) =
+function geom_dodecahedron(radius, detail = 0) =
     let(
         t = (1 + sqrt(5)) / 2,
 		r = 1 / t,
@@ -38,4 +38,4 @@ function geom_dodecahedron(radius, detail = 0, quick_mode = true) =
 			[14, 12, 1], [5, 14, 1], [9, 5, 1]
 		]
     )
-	_geom_platonic_polyhedra(dodecahedron_points, dodecahedron_faces, radius, detail, quick_mode);
+	_subdivide_project(dodecahedron_points, dodecahedron_faces, radius, detail);

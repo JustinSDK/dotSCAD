@@ -1,6 +1,6 @@
 use <geom_icosahedron.scad>;
 
-module icosahedron(radius, detail = 0, quick_mode = true) {
-	points_faces = geom_icosahedron(radius, detail, quick_mode);
+module icosahedron(radius, detail = 0) {
+	points_faces = geom_icosahedron(radius, detail);
     polyhedron(points_faces[0], points_faces[1]);
 } 

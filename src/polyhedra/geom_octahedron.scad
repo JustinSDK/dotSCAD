@@ -1,6 +1,6 @@
 use <_impl/_geom_platonic_polyhedra.scad>;
 
-function geom_octahedron(radius, detail = 0, quick_mode = true) =
+function geom_octahedron(radius, detail = 0) =
     let(
         octahedron_points = [
 			[1, 0, 0], 	[-1, 0, 0],	[0, 1, 0],
@@ -12,5 +12,5 @@ function geom_octahedron(radius, detail = 0, quick_mode = true) =
 			[4, 3, 1],	[2, 4, 1]
 		]
     )
-    _geom_platonic_polyhedra(octahedron_points, octahedron_faces, radius, detail, quick_mode);
+    _subdivide_project(octahedron_points, octahedron_faces, radius, detail);
     
