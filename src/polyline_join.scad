@@ -1,3 +1,13 @@
+/**
+* polyline_join.scad
+*
+* @copyright Justin Lin, 2021
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib3x-polyline_join.html
+*
+**/
+
 module polyline_join(points) {
     leng = len(points);
     
