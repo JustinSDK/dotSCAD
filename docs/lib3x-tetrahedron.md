@@ -1,6 +1,6 @@
 # tetrahedron
 
-Create a tetrahedron.
+Creates a tetrahedron.
 
 **Since:** 3.2
 
