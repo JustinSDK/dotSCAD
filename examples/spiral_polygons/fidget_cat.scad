@@ -8,12 +8,13 @@ height = 20;
 thickness = 1.25;
 spacing = thickness * 1.75;
 slope = 0.56;
+central_scale = 1;
 
 $fn = 48;
 
-fidget_cat(beginning_radius, number_of_polygons, height, thickness, spacing, slope);
+fidget_cat(beginning_radius, number_of_polygons, height, thickness, spacing, slope, central_scale);
 
-module fidget_cat(beginning_radius, n, height, thickness, spacing, slope) {
+module fidget_cat(beginning_radius, n, height, thickness, spacing, slope, central_scale) {
     fn = 8;
     theta = 180 / fn;
 
@@ -63,7 +64,7 @@ module fidget_cat(beginning_radius, n, height, thickness, spacing, slope) {
 		    // translate([0, 0, -7.3])
 			difference() {
 				linear_extrude(half_height, scale = s[0])
-				scale(1.025)
+				scale(central_scale)
 					cat(beginning_radius);
 					
 				linear_extrude(thickness * 2, center = true) {
