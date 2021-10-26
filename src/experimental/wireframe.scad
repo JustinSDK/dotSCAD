@@ -2,7 +2,7 @@ use <convex_offset.scad>;
 use <__comm__/_vertex_normals.scad>;
 use <util/reverse.scad>;
 
-module wireframe(points, faces, deep, outer_thickness, inner_thickness = 0, normals = undef) {
+module wireframe(points, faces, deep, outer_thickness, inner_thickness = 0, vertex_normals = undef) {
 	function hollow_face(pts, inner_pts) =
 		let(
 			leng = len(pts),
@@ -87,7 +87,7 @@ module wireframe(points, faces, deep, outer_thickness, inner_thickness = 0, norm
 
 
 	leng_faces = len(faces);
-	vx_normals = is_undef(normals) ? _vertex_normals(points, faces) : normals;
+	vx_normals = is_undef(vertex_normals) ? _vertex_normals(points, faces) : vertex_normals;
 	inner_pts = [
 		for(i = [0:len(vx_normals) - 1])
 		points[i] - vx_normals[i] * deep
