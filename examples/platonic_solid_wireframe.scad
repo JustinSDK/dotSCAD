@@ -14,9 +14,9 @@ outer_thickness = 1;
 inner_thickness = 1;
 detail = 0;
 
-platonic_solid_frame(number_of_faces, radius, deep, outer_thickness, inner_thickness, detail);
+platonic_solid_wireframe(number_of_faces, radius, deep, outer_thickness, inner_thickness, detail);
 
-module platonic_solid_frame(number_of_faces, radius, deep, outer_thickness, inner_thickness, detail) {
+module platonic_solid_wireframe(number_of_faces, radius, deep, outer_thickness, inner_thickness, detail) {
 	polyhedra = hashmap([
 		[3, function(r, d) geom_tetrahedron(r, d)],
 		[6, function(r, d) geom_hexahedron(r, d)],
