@@ -10,9 +10,9 @@ use <experimental/polyhedron_frame.scad>;
 number_of_faces = 8; // [3, 6, 8, 12, 20]
 radius = 10;
 deep = 1;
-outer_thickness = .5;
-inner_thickness = .5;
-detail = 1;
+outer_thickness = 1;
+inner_thickness = 1;
+detail = 0;
 
 platonic_solid_frame(number_of_faces, radius, deep, outer_thickness, inner_thickness, detail);
 
