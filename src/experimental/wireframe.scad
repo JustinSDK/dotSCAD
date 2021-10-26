@@ -2,7 +2,7 @@ use <convex_offset.scad>;
 use <__comm__/_vertex_normals.scad>;
 use <util/reverse.scad>;
 
-module polyhedron_frame(points, faces, deep, outer_thickness, inner_thickness = 0, normals = undef) {
+module wireframe(points, faces, deep, outer_thickness, inner_thickness = 0, normals = undef) {
 	function hollow_face(pts, inner_pts) =
 		let(
 			leng = len(pts),

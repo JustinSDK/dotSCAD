@@ -5,7 +5,7 @@ use <polyhedra/geom_hexahedron.scad>;
 use <polyhedra/geom_octahedron.scad>;
 use <polyhedra/geom_dodecahedron.scad>;
 use <polyhedra/geom_icosahedron.scad>;
-use <experimental/polyhedron_frame.scad>;
+use <experimental/wireframe.scad>;
 
 number_of_faces = 8; // [3, 6, 8, 12, 20]
 radius = 10;
@@ -29,7 +29,7 @@ module platonic_solid_frame(number_of_faces, radius, deep, outer_thickness, inne
 
 	geom = f_polyhedron(radius, detail);
 
-	polyhedron_frame(
+	wireframe(
 	    geom[0], 
 		geom[1], 
 		deep, 
