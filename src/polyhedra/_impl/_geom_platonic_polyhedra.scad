@@ -16,11 +16,11 @@ function _tri_subdivide(points, detail) =
 				for(ci = [0:cols]) 
 				each (ci == cols ? 
 					[
-						[idx(ci, ri), idx(ci, ri + 1), idx(ci + 1, ri)]
+						[idx(ci + 1, ri), idx(ci, ri + 1), idx(ci, ri)]
 					] :
 					[
-						[idx(ci, ri), idx(ci, ri + 1), idx(ci + 1, ri)], 
-						[idx(ci + 1, ri), idx(ci, ri + 1), idx(ci + 1, ri + 1)]
+						[idx(ci + 1, ri), idx(ci, ri + 1), idx(ci, ri)], 
+						[idx(ci + 1, ri + 1), idx(ci, ri + 1), idx(ci + 1, ri)]
 					]
 				) 
 		]
