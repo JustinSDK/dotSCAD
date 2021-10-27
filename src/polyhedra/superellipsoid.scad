@@ -1,16 +1,16 @@
 use <../__comm__/__frags.scad>;
 use <../sweep.scad>;
 
-// e = 0;
-// n = 0;
+// use <polyhedra/superellipsoid.scad>;
 
 // $fn = 24;
 
-// for(e = [0:.25:2]) {
-//     for(n = [0:.25:3])
-// 	    translate([e / .25, n / .25] * 3)
-//         superellipsoid(e, n);
+// for(e = [0:.5:4]) {
+//     for(n = [0:.5:3])
+//         translate([e / .5, n / .5] * 3)
+//            superellipsoid(e, n);
 // }
+
 
 module superellipsoid(e, n) {
 	function _sgn(x) = 
