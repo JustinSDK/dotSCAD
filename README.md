@@ -141,7 +141,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 [**shape_pie**(radius, angle)](https://openhome.cc/eGossip/OpenSCAD/lib3x-shape_pie.html) | return shape points of a pie (circular sector) shape. 
 [**shape_square**(size[, corner_r])](https://openhome.cc/eGossip/OpenSCAD/lib3x-shape_square.html) | return shape points of a rounded square or rectangle. 
 [**shape_starburst**(r1, r2, n)](https://openhome.cc/eGossip/OpenSCAD/lib3x-shape_starburst.html) | returns shape points of a star. 
-[**shape_superformula**(phi_step, m1, m2, n1, n2 = 1[, n3, a, b])](https://openhome.cc/eGossip/OpenSCAD/lib3x-shape_superformula.html) | return shape points of [Superformula](https://en.wikipedia.org/wiki/Superformula).
+[**shape_superformula**(phi_step, m1, m2, n1, [n2, n3, a, b])](https://openhome.cc/eGossip/OpenSCAD/lib3x-shape_superformula.html) | return shape points of [Superformula](https://en.wikipedia.org/wiki/Superformula).
 [**shape_taiwan**(h[, distance])](https://openhome.cc/eGossip/OpenSCAD/lib3x-shape_taiwan.html) | return shape points of [Taiwan](https://www.google.com.tw/maps?q=taiwan&um=1&ie=UTF-8&sa=X&ved=0ahUKEwjai9XrqurTAhVIopQKHbEHClwQ_AUICygC). 
 [**shape_trapezium**(length, h[, corner_r])](https://openhome.cc/eGossip/OpenSCAD/lib3x-shape_trapezium.html) | return shape points of an isosceles trapezoid. 
 
