@@ -1,16 +1,15 @@
+/**
+* superellipsoid.scad
+*
+* @copyright Justin Lin, 2021
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib3x-superellipsoid.html
+*
+**/
+
 use <../__comm__/__frags.scad>;
 use <../sweep.scad>;
-
-// use <polyhedra/superellipsoid.scad>;
-
-// $fn = 24;
-
-// for(e = [0:.5:4]) {
-//     for(n = [0:.5:3])
-//         translate([e / .5, n / .5] * 3)
-//            superellipsoid(e, n);
-// }
-
 
 module superellipsoid(e, n) {
 	function _sgn(x) = 

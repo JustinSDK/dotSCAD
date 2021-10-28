@@ -381,4 +381,4 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 [**polyhedra/octahedron**(radius[, detail])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_octahedron.html) | create a octahedron.
 polyhedra/dodecahedron | create a dodecahedron.
 polyhedra/icosahedron | create a icosahedron.
-polyhedra/superellipsoid | create a superellipsoid.
+[**polyhedra/superellipsoid**(radius[, detail])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_superellipsoid.html) | create a superellipsoid.
