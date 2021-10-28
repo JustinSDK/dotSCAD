@@ -1,5 +1,4 @@
 use <polyline_join.scad>;
-use <hollow_out.scad>;
 
 length = 100;
 width = 50;
