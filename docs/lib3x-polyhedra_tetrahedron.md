@@ -18,5 +18,5 @@ Creates a tetrahedron.
 			tetrahedron(radius = 1, detail = i);
 	}
 
-![tetrahedron](images/lib3x-tetrahedron-1.JPG)
+![tetrahedron](images/lib3x-polyhedra_tetrahedron-1.JPG)
 

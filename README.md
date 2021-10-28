@@ -376,9 +376,9 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 
  Signature | Description
 --|--
-[**polyhedra/tetrahedron**(radius[, detail])](https://openhome.cc/eGossip/OpenSCAD/lib3x-tetrahedron.html) | Create a tetrahedron.
-[**polyhedra/hexahedron**(radius[, detail])](https://openhome.cc/eGossip/OpenSCAD/lib3x-hexahedron.html) | create a hexahedron.
-[**polyhedra/octahedron**(radius[, detail])](https://openhome.cc/eGossip/OpenSCAD/lib3x-octahedron.html) | create a octahedron.
+[**polyhedra/tetrahedron**(radius[, detail])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_tetrahedron.html) | Create a tetrahedron.
+[**polyhedra/hexahedron**(radius[, detail])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_hexahedron.html) | create a hexahedron.
+[**polyhedra/octahedron**(radius[, detail])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_octahedron.html) | create a octahedron.
 polyhedra/dodecahedron | create a dodecahedron.
 polyhedra/icosahedron | create a icosahedron.
 polyhedra/superellipsoid | create a superellipsoid.

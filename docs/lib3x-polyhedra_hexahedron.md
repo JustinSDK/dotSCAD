@@ -18,5 +18,5 @@ Creates a hexahedron.
 			hexahedron(radius = 1, detail = i);
 	}
 
-![hexahedron](images/lib3x-hexahedron-1.JPG)
+![hexahedron](images/lib3x-polyhedra_hexahedron-1.JPG)
 

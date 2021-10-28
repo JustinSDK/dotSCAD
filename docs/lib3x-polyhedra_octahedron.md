@@ -18,5 +18,5 @@ Creates a octahedron.
 			octahedron(radius = 1, detail = i);
 	}
 
-![octahedron](images/lib3x-octahedron-1.JPG)
+![octahedron](images/lib3x-polyhedra_octahedron-1.JPG)
 
