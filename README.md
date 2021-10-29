@@ -371,12 +371,14 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 --|--
 [**select**(i)](https://openhome.cc/eGossip/OpenSCAD/lib3x-select.html) | select module objects.
 [**polyline_join**(points)](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyline_join.html) | place a join on each point. Hull each pair of joins and union all convex hulls.
+shape_star | create a 2D star.
 
 ## Polyhedra
 
  Signature | Description
 --|--
-[**polyhedra/tetrahedron**(radius[, detail])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_tetrahedron.html) | Create a tetrahedron.
+polyhedra/star | create a 3D star.
+[**polyhedra/tetrahedron**(radius[, detail])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_tetrahedron.html) | create a tetrahedron.
 [**polyhedra/hexahedron**(radius[, detail])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_hexahedron.html) | create a hexahedron.
 [**polyhedra/octahedron**(radius[, detail])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_octahedron.html) | create a octahedron.
 polyhedra/dodecahedron | create a dodecahedron.
