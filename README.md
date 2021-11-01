@@ -381,6 +381,6 @@ polyhedra/star | create a 3D star.
 [**polyhedra/tetrahedron**(radius[, detail])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_tetrahedron.html) | create a tetrahedron.
 [**polyhedra/hexahedron**(radius[, detail])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_hexahedron.html) | create a hexahedron.
 [**polyhedra/octahedron**(radius[, detail])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_octahedron.html) | create a octahedron.
-polyhedra/dodecahedron | create a dodecahedron.
+[**polyhedra/dodecahedron**(radius[, detail])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_dodecahedron.html) | create a dodecahedron.
 polyhedra/icosahedron | create a icosahedron.
 [**polyhedra/superellipsoid**(radius[, detail])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_superellipsoid.html) | create a superellipsoid.
