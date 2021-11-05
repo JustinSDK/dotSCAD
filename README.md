@@ -371,7 +371,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 --|--
 [**select**(i)](https://openhome.cc/eGossip/OpenSCAD/lib3x-select.html) | select module objects.
 [**polyline_join**(points)](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyline_join.html) | place a join on each point. Hull each pair of joins and union all convex hulls.
-shape_star | create a 2D star.
+[**shape_star**([outer_radius, inner_radius, n])](https://openhome.cc/eGossip/OpenSCAD/lib3x-shape_star.html) | create a 2D star.
 
 ## Polyhedra
 
