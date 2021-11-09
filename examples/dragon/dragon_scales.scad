@@ -64,3 +64,25 @@ module tail_scales(ang, leng, radius, height, thickness) {
         }
     }
 }
+
+module knee_scales(ang, leng, radius, height, thickness) {
+    module one_scale() {
+        rotate([0, ang, 0]) 
+        shear(sx = [0, -2])
+        linear_extrude(thickness, center = true) 
+        scale([leng, 1]) 
+            circle(1);    
+    }
+
+    for(a = [0:60:300]) {
+        hull() {
+            rotate(a) 
+            translate([radius, 0, height]) 
+                one_scale();
+                
+            rotate(a + 15) 
+            translate([radius, 0, height + 1.75]) 
+                one_scale();
+        }
+    }
+}
