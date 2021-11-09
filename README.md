@@ -2,7 +2,7 @@
 
 > **Reduce the burden of mathematics/algorithm when playing OpenSCAD.**
 
-![dotSCAD](featured_img/TorusKnotMaze.JPG)
+![dotSCAD](featured_img/TorusKnotDragon_and_Pearl.JPG)
 
 [![license/LGPL](LICENSE.svg)](https://github.com/JustinSDK/lib-openscad/blob/master/LICENSE)
 
