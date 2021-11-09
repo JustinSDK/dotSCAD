@@ -50,14 +50,16 @@ module torus_knot_dragon_and_pearl() {
 	scale([0.055, 0.055, 0.065])
 	    tail();
 
+    // pearl
     polyhedron_hull(fibonacci_lattice(66, .5));
     
-    translate([.125, -.95, .25])
-    rotate([5, -9, 25])
+    // feet
+    translate([.10, -1, .25])
+    rotate([7, -7.5, 26])
     scale(0.0475)
         foot();
 
-    translate([.5, -1.85, .6])
+    translate([.4, -1.75, .6])
     rotate([30, -60, -45])
     mirror([0, 1, 0])
     scale(0.0475)
