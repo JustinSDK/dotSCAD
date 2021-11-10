@@ -4,8 +4,6 @@
 
 ![dotSCAD](featured_img/TorusKnotDragon_and_Pearl.JPG)
 
-[![license/LGPL](LICENSE.svg)](https://github.com/JustinSDK/lib-openscad/blob/master/LICENSE)
-
 ## Introduction
 
 Some of my [3D models](https://github.com/JustinSDK/dotSCAD#examples) require complex mathematics/algorithm. I extract them into dotSCAD. Hope it helps when you're playing OpenSCAD.
