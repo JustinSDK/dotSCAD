@@ -1,4 +1,4 @@
-use <shape_starburst.scad>;
+use <shape_star.scad>;
 
 model = "STAR"; // [STAR, BASE, BOTH]
 r1 = 12;
@@ -33,7 +33,7 @@ module fidget_star(model, r1, r2, n, number_of_stars, height, thickness, spacing
 	r_ratio = r1 / r2;
 
 	module star(r1, r2) {
-	    polygon(shape_starburst(r1, r2, n));
+	    polygon(shape_star(r1, r2, n));
 	}
 	
 	rs2 = [for(i = [0: number_of_stars + 1]) r2 + i * dr];

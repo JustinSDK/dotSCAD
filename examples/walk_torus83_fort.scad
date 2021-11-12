@@ -1,4 +1,4 @@
-use <shape_starburst.scad>;
+use <shape_star.scad>;
 use <hollow_out.scad>;
 
 // The idea is from Walk Torus83 Fort.
@@ -31,7 +31,7 @@ module wall(radius, height, thickness) {
         hollow_out(shell_thickness = th) 
             intersection() {
                 rotate(22.5) 
-                    polygon(shape_starburst(ro, ri, 8));
+                    polygon(shape_star(ro, ri, 8)); 
                 circle(ro * 0.9);
             }
     }

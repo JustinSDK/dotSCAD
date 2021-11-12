@@ -1,4 +1,4 @@
-use <shape_starburst.scad>;
+use <shape_star.scad>;
 use <polyline_join.scad>;
 use <experimental/tri_bisectors.scad>;
 
@@ -10,7 +10,7 @@ line_diameter = 1.75;
 half = true;
 
 module hollow_out_starburst(r1, r2, h, n, line_diameter, half = false) {
-    star = [for(p = shape_starburst(r1, r2, n)) [p[0], p[1], 0]];
+    star = [for(p = shape_star(r1, r2, n)) [p[0], p[1], 0]];
     leng = len(star);
     tris = concat(
         [for(i = [0:leng - 2]) [[0, 0, h], star[i], star[i + 1]]],
