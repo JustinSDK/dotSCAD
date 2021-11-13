@@ -20,11 +20,11 @@ module torus_knot_dragon_and_pearl() {
 
     knot = torus_knot(2, 3, phi_step);
     d_path = reverse([for(i = [6:len(knot) - 4]) knot[i]]);
-	
+    
     one_body_scale_data = one_body_scale(body_r, body_fn, scale_fn, scale_tilt_a);
-	along_with(d_path, scale = 0.85, method = "EULER_ANGLE")    
-	scale(0.06)
-	    one_segment(body_r, body_fn, one_body_scale_data);
+    along_with(d_path, scale = 0.85, method = "EULER_ANGLE")    
+    scale(0.06)
+        one_segment(body_r, body_fn, one_body_scale_data);
 
     function __angy_angz(p1, p2) = 
         let(
@@ -34,21 +34,21 @@ module torus_knot_dragon_and_pearl() {
             ya = atan2(dz, sqrt(dx * dx + dy * dy)),
             za = atan2(dy, dx)
         ) [ya, za];
-		
-	h_angy_angz = __angy_angz(d_path[len(d_path) - 2], d_path[len(d_path) - 1]);
-	
-	translate([2.5, -1.1, .55])
+        
+    h_angy_angz = __angy_angz(d_path[len(d_path) - 2], d_path[len(d_path) - 1]);
+    
+    translate([2.5, -1.1, .55])
     scale(0.07)    
     rotate([0, h_angy_angz[0] + 28, h_angy_angz[1] + 245])
         dragon_head();
-		
-	t_angy_angz = __angy_angz(d_path[1], d_path[0]);	
-	
-	translate([2.1, 1.55, -.80])
-	rotate([0, t_angy_angz[0], t_angy_angz[1]])
-	rotate([0, -95, -75])
-	scale([0.055, 0.055, 0.065])
-	    tail();
+        
+    t_angy_angz = __angy_angz(d_path[1], d_path[0]);    
+    
+    translate([2.1, 1.55, -.80])
+    rotate([0, t_angy_angz[0], t_angy_angz[1]])
+    rotate([0, -95, -75])
+    scale([0.055, 0.055, 0.065])
+        tail();
 
     // pearl
     polyhedron_hull(fibonacci_lattice(66, .5));
