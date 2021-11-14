@@ -1,7 +1,7 @@
 use <shape_circle.scad>;
 use <bezier_curve.scad>;
 use <sweep.scad>;
-use <rail_extruded_sections.scad>;
+use <path_scaling_sections.scad>;
 use <bijection_offset.scad>;
 use <util/rand.scad>;
 use <noise/nz_perlin2s.scad>;
@@ -36,7 +36,7 @@ module distorted_vase(beginning_radius, thickness, fn, amplitude,curve_step, smo
 	]);
 
 
-	sections = rail_extruded_sections(section, edge_path);
+	sections = path_scaling_sections(section, edge_path);
 
     noise = perlin == 2 ? function(pts, seed) nz_perlin2s(pts, seed) : 
                           function(pts, seed) nz_perlin3s(pts, seed);
