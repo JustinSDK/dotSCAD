@@ -363,6 +363,12 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 
 # Preview
 
+## 2D/3D Function
+
+ Signature | Description
+--|--
+[**rails2sections**(rails)](https://openhome.cc/eGossip/OpenSCAD/lib3x-rails2sections.html) | create sections along rails.
+
 ## Transformation
 
  Signature | Description

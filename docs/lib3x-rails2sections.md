@@ -1,6 +1,6 @@
 # rails2sections
 
-It returns all cross-sections described by rails. Combined with the `sweep` module, you can describe a more complex model.
+Create sections along rails. Combined with the `sweep` module, you can describe a more complex model.
 
 Rails should be indexed count-clockwisely.
 
