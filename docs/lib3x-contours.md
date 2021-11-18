@@ -11,7 +11,7 @@ Computes contour polygons by applying [marching squares](https://en.wikipedia.or
 
 ## Examples
 
-    use <hull_polyline2d.scad>;
+    use <polyline_join.scad>;
 	use <surface/sf_thicken.scad>;
     use <contours.scad>;
 
@@ -36,7 +36,8 @@ Computes contour polygons by applying [marching squares](https://en.wikipedia.or
         translate([0, 0, z])
         linear_extrude(1)
         for(isoline = contours(points, z)) {
-            hull_polyline2d(isoline, width = 1);
+            polyline_join(isoline)
+			    circle(.5);
         }    
     }
 

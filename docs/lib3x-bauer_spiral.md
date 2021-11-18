@@ -15,7 +15,7 @@ Creates visually even spacing of n points on the surface of the sphere. Successi
 ## Examples
 
     use <bauer_spiral.scad>;
-    use <hull_polyline3d.scad>;
+    use <polyline_join.scad>;
 
     n = 200;
     radius = 20;
@@ -26,7 +26,7 @@ Creates visually even spacing of n points on the surface of the sphere. Successi
             sphere(1, $fn = 24);
     }
 
-    hull_polyline3d(pts, 1);
+    polyline_join(pts) sphere(.5);
 
 ![bauer_spiral](images/lib3x-bauer_spiral-1.JPG)
 

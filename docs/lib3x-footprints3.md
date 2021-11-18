@@ -11,7 +11,7 @@ A 3D verion of [footprint2](https://openhome.cc/eGossip/OpenSCAD/lib3x-footprint
 
 ## Examples
 	    
-	use <hull_polyline3d.scad>;
+	use <polyline_join.scad>;
 	use <turtle/footprints3.scad>;
 	
 	function xy_arc_cmds(radius, angle, steps) = 
@@ -49,7 +49,8 @@ A 3D verion of [footprint2](https://openhome.cc/eGossip/OpenSCAD/lib3x-footprint
 		)
 	);
 
-	hull_polyline3d(poly, thickness = 1);
+	polyline_join(poly)
+	    sphere(.5);
 
 ![footprints3](images/lib3x-footprints3-1.JPG)
 

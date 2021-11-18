@@ -1,6 +1,6 @@
 # bspline_curve
 
-[B-spline](https://en.wikipedia.org/wiki/B-spline) interpolation using [de Boor's algorithm](https://en.wikipedia.org/wiki/De_Boor%27s_algorithm). This function returns points of the B-spline path. Combined with the `polyline`, `polyline3d` or `hull_polyline3d` module, you can create a B-spline curve.
+[B-spline](https://en.wikipedia.org/wiki/B-spline) interpolation using [de Boor's algorithm](https://en.wikipedia.org/wiki/De_Boor%27s_algorithm). This function returns points of the B-spline path. 
 
 **Since:** 2.1
 

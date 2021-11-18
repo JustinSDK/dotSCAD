@@ -31,7 +31,7 @@ Creates visually even spacing of n points on the surface of the sphere. Nearest-
 ![fibonacci_lattice](images/lib3x-fibonacci_lattice-1.JPG)
 
     use <fibonacci_lattice.scad>;
-    use <hull_polyline3d.scad>;
+    use <polyline_join.scad>;
 
     n = 200;
     radius = 20;
@@ -49,7 +49,8 @@ Creates visually even spacing of n points on the surface of the sphere. Nearest-
     ];
 
     for(spiral = spirals) {
-        hull_polyline3d(spiral, 1);	
+        polyline_join(spiral)
+		    sphere(.5);	
     }
         
 ![fibonacci_lattice](images/lib3x-fibonacci_lattice-2.JPG)

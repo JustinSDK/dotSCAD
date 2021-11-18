@@ -11,7 +11,7 @@ Drive a turtle with `["forward", length]` or `["turn", angle]`. This function is
 
 ## Examples
 	    
-	use <polyline2d.scad>;
+	use <polyline_join.scad>;
 	use <turtle/footprints2.scad>;
 	
 	function arc_cmds(radius, angle, steps) = 
@@ -48,7 +48,8 @@ Drive a turtle with `["forward", length]` or `["turn", angle]`. This function is
 		)
 	);
 
-	polyline2d(poly, width = 1);
+	polyline_join(poly)
+	    circle(.5);
 
 ![footprints2](images/lib3x-footprints2-1.JPG)
 

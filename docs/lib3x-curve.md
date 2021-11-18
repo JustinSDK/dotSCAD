@@ -17,7 +17,7 @@ Draws a curved line from control points. The curve is drawn only from the 2nd co
 ## Examples
 
 	use <curve.scad>;
-	use <hull_polyline3d.scad>;
+	use <polyline_join.scad>;
 
 	pts = [
 		[28, 2, 1],
@@ -32,12 +32,14 @@ Draws a curved line from control points. The curve is drawn only from the 2nd co
 	tightness = 0;
 	points = curve(t_step, pts, tightness);
 
-	hull_polyline3d(points, 1);   
+	polyline_join(points)
+	    sphere(.5);   
 
 	#for(pt = pts) {
 		translate(pt)
 			sphere(1);
 	}
-	#hull_polyline3d(pts, .1);  
+	#polyline_join(pts)
+	    sphere(.05);  
 
 ![curve](images/lib3x-curve-3.JPG)

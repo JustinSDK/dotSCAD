@@ -14,7 +14,7 @@ Gets all points on the path of a spiral around a cylinder. Its `$fa`, `$fs` and 
 ## Examples
     
 	use <helix.scad>;
-	use <hull_polyline3d.scad>;
+	use <polyline_join.scad>;
 	
 	$fn = 12;
 	
@@ -30,12 +30,13 @@ Gets all points on the path of a spiral around a cylinder. Its `$fa`, `$fs` and 
 	    translate(p) sphere(5);
 	}
 	
-	hull_polyline3d(points, 2);
+	polyline_join(points)
+	    sphere(1);
 
 ![helix](images/lib3x-helix-1.JPG)
 
 	use <helix.scad>;
-	use <hull_polyline3d.scad>;
+	use <polyline_join.scad>;
 
 	$fn = 12;
 
@@ -47,7 +48,8 @@ Gets all points on the path of a spiral around a cylinder. Its `$fa`, `$fs` and 
 		rt_dir = "CLK"
 	);
 
-	hull_polyline3d(points, 2);
+	polyline_join(points)
+	    sphere(1);
 
 	%cylinder(h = 100, r1 = 40, r2 = 20);
 

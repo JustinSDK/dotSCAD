@@ -12,7 +12,7 @@ Given a path, the `bezier_smooth` function uses bazier curves to smooth all corn
 
 ## Examples
 
-	use <hull_polyline3d.scad>;
+	use <polyline_join.scad>;
 	use <bezier_smooth.scad>;
 
 	width = 2;
@@ -25,15 +25,15 @@ Given a path, the `bezier_smooth` function uses bazier curves to smooth all corn
 		[-10, -10, 50]
 	];
 
-	hull_polyline3d(
-		path_pts, width
-	);
+	polyline_join(path_pts)
+	    sphere(width / 2);
 
 	smoothed_path_pts = bezier_smooth(path_pts, round_d);
 
-	color("red") translate([30, 0, 0]) hull_polyline3d(
-		smoothed_path_pts, width
-	);
+	color("red") 
+	translate([30, 0, 0]) 
+	polyline_join(smoothed_path_pts) 
+	    sphere(width / 2);
 
 ![bezier_smooth](images/lib3x-bezier_smooth-1.JPG)
 
