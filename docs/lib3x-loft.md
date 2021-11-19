@@ -11,7 +11,7 @@ When having uniform cross sections, you can use [sweep](https://openhome.cc/eGos
 
 ## Examples
 
-	use <shape_starburst.scad>;
+	use <shape_star.scad>;
 	use <shape_circle.scad>;
 	use <ptf/ptf_rotate.scad>;
 	use <loft.scad>;
@@ -19,7 +19,7 @@ When having uniform cross sections, you can use [sweep](https://openhome.cc/eGos
 	sects = [
 		for(i = 10; i >= 4; i = i - 1)
 		[
-			for(p = shape_starburst(15, 12, i % 2 == 1 ? i : i - 1)) ptf_rotate([p[0], p[1], 5 * (i - 4)], i * 10)
+			for(p = shape_star(15, 12, i % 2 == 1 ? i : i - 1)) ptf_rotate([p[0], p[1], 5 * (i - 4)], i * 10)
 		]
 	];
 	loft(sects, slices = 3);
