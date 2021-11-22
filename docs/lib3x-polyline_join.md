@@ -2,6 +2,8 @@
 
 Place a join on each point. Hull each pair of joins and union all convex hulls.
 
+**Since:** 3.2
+
 ## Parameters
 
 - `points` : a list of points.
