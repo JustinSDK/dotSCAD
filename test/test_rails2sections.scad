@@ -1,11 +1,11 @@
 use <unittest.scad>;
 use <bezier_curve.scad>;
-use <paths2sections.scad>;
+use <rails2sections.scad>;
 
-module test_paths2sections() {
+module test_rails2sections() {
     module test_simple_path() {
 
-        echo("==== test_paths2sections_simple_path ====");
+        echo("==== test_rails2sections_simple_path ====");
 
         paths = [
             [[5, 0, 5], [15, 10, 10], [25, 20, 5]],
@@ -20,7 +20,7 @@ module test_paths2sections() {
             [[25, 20, 5], [-25, 20, 5], [-25, 20, -5], [25, 20, -5]]
         ];
         
-        actual = paths2sections(paths);
+        actual = rails2sections(paths);
 
         for(i = [0:len(paths[0]) - 1]) {
             assertEqualPoints(expected[i], actual[i]);
@@ -29,7 +29,7 @@ module test_paths2sections() {
     
      module test_bezier_path() {
 
-        echo("==== test_paths2sections_bezier_path ====");
+        echo("==== test_rails2sections_bezier_path ====");
 
         t_step = 0.05;
 
@@ -48,7 +48,7 @@ module test_paths2sections() {
             )
         ];    
                         
-        sections = paths2sections(paths);
+        sections = rails2sections(paths);
 
         for(i = [0:len(sections) - 1]) {
             for(j = [0:len(sections[i]) - 1]) {
@@ -61,4 +61,4 @@ module test_paths2sections() {
     test_bezier_path();
 }
 
-test_paths2sections();
+test_rails2sections();

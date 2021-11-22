@@ -18,7 +18,7 @@ include <test_along_with.scad>;
 // Function
 include <test_ptf_rotate.scad>;
 include <test_cross_sections.scad>;
-include <test_paths2sections.scad>;
+include <test_rails2sections.scad>;
 include <test_in_polyline.scad>;
 include <test_trim_shape.scad>;
 include <test_midpt_smooth.scad>;
@@ -44,7 +44,7 @@ include <test_shape_ellipse.scad>;
 include <test_shape_pie.scad>;
 include <test_shape_square.scad>;
 include <test_shape_trapezium.scad>;
-include <test_shape_starburst.scad>;
+include <test_shape_star.scad>;
 include <test_shape_superformula.scad>;
 include <test_shape_path_extend.scad>;
 
