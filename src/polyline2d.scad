@@ -80,9 +80,11 @@ module polyline2d(points, width = 1, startingStyle = "CAP_SQUARE", endingStyle =
         line2d(points[0], points[1], width, startingStyle, endingStyle);
     }
     else {
-        for(i = [1:leng_pts - 1]) {
-            line_segment(i);
+        union() {
+            for(i = [1:leng_pts - 1]) {
+                line_segment(i);
+            }
+            joins(points, width / 2, leng_pts - 2, 0);
         }
-        joins(points, width / 2, leng_pts - 2, 0);
     }
 }
