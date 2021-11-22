@@ -1,4 +1,4 @@
-# dotSCAD 3.1
+# dotSCAD 3.2 RC
 
 > **Reduce the burden of mathematics/algorithm when playing OpenSCAD.**
 
@@ -45,7 +45,6 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 --|--
 [**arc**(radius, angle[, width, width_mode"])](https://openhome.cc/eGossip/OpenSCAD/lib3x-arc.html) | create an arc.
 [**hexagons**(radius, spacing, levels)](https://openhome.cc/eGossip/OpenSCAD/lib3x-hexagons.html) | create hexagons in a hexagon.
-[**hull_polyline2d**(points[, width])](https://openhome.cc/eGossip/OpenSCAD/lib3x-hull_polyline2d.html) | create a 2D polyline from a list of `[x, y]`.
 [**line2d**(p1, p2[, width, p1Style, p2Style])](https://openhome.cc/eGossip/OpenSCAD/lib3x-line2d.html) | create a line from two points. 
 [**multi_line_text**(lines[, line_spacing, size, font, ...])](https://openhome.cc/eGossip/OpenSCAD/lib3x-multi_line_text.html) | create multi-line text from a list of strings.
 [**pie**(radius, angle)](https://openhome.cc/eGossip/OpenSCAD/lib3x-pie.html) | create polyline2de a pie (circular sector).
@@ -58,14 +57,12 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
  Signature | Description
 --|--
 [**crystal_ball**(radius[, theta, phi, thickness])](https://openhome.cc/eGossip/OpenSCAD/lib3x-crystal_ball.html) | create a crystal ball based on [spherical coordinates (r, θ, φ) used in mathematics](https://en.wikipedia.org/wiki/Spherical_coordinate_system).
-[**hull_polyline3d**(points[, diameter])](https://openhome.cc/eGossip/OpenSCAD/lib3x-hull_polyline3d.html) | create a 3D polyline from a list of `[x, y, z]`.
 [**line3d**(p1, p2[, diameter, p1Style, p2Style])](https://openhome.cc/eGossip/OpenSCAD/lib3x-line3d.html) | create a 3D line from two points.
 [**loft**(sections[, slices])](https://openhome.cc/eGossip/OpenSCAD/lib3x-loft.html) | develop a smooth skin between crosssections with different geometries.
 [**polyhedron_hull**(points)](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedron_hull.html) | create a convex polyhedron by hulling a list of points. It avoids using `hull` and small 3D primitives to create the polyhedron.
 [**polyline3d**(points, diameter[, startingStyle, endingStyle])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyline3d.html) | create a polyline from a list of `[x, y, z]`.
 [**rounded_cube**(size, corner_r[, center])](https://openhome.cc/eGossip/OpenSCAD/lib3x-rounded_cube.html) | create a cube in the first octant.
 [**rounded_cylinder**(radius, h, round_r[, convexity, center])](https://openhome.cc/eGossip/OpenSCAD/lib3x-rounded_cylinder.html) | create a rounded cylinder.
-[**starburst**(r1, r2, n, height)](https://openhome.cc/eGossip/OpenSCAD/lib3x-starburst.html) | a 3D version of [`shape_starburst`](https://openhome.cc/eGossip/OpenSCAD/lib3x-starburst.html).
 [**sweep**(sections[, triangles])](https://openhome.cc/eGossip/OpenSCAD/lib3x-sweep.html) | develop a smooth skin from crosssections with the same umber of sides.
 
 ## Transformation
@@ -76,6 +73,8 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 [**bend**(size, angle[, frags])](https://openhome.cc/eGossip/OpenSCAD/lib3x-bend.html) | bend a 3D object.
 [**hollow_out**(shell_thickness) ](https://openhome.cc/eGossip/OpenSCAD/lib3x-hollow_out.html)| hollow out a 2D object.
 [**shear**([sx, sy, sz])](https://openhome.cc/eGossip/OpenSCAD/lib3x-shear.html) | shear all child elements along the X-axis, Y-axis, or Z-axis.
+[**select**(i)](https://openhome.cc/eGossip/OpenSCAD/lib3x-select.html) | select module objects.
+[**polyline_join**(points)](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyline_join.html) | place a join on each point. Hull each pair of joins and union all convex hulls.
 
 ## 2D Function
 
@@ -95,7 +94,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 [**cross_sections**(shape_pts, path_pts, angles[, twist, scale])](https://openhome.cc/eGossip/OpenSCAD/lib3x-cross_sections.html) | given a 2D shape, points and angles along the path, this function returns all cross-sections.
 [**in_polyline**(line_pts, pt[, epsilon])](https://openhome.cc/eGossip/OpenSCAD/lib3x-in_polyline.html) | check whether a point is on a line.
 [**lines_intersection**(line1, line2[, ext, epsilon])](https://openhome.cc/eGossip/OpenSCAD/lib3x-lines_intersection.html) | find the intersection of two line segments. Return `[]` if lines don't intersect.
-[**paths2sections**(paths)](https://openhome.cc/eGossip/OpenSCAD/lib3x-paths2sections.html) | given a list of paths, this function returns all cross-sections described by those paths.
+[**rails2sections**(rails)](https://openhome.cc/eGossip/OpenSCAD/lib3x-rails2sections.html) | create sections along rails.
 [**path_scaling_sections**(shape_pts, edge_path)](https://openhome.cc/eGossip/OpenSCAD/lib3x-path_scaling_sections.html) | given an edge path with the first point at the outline of a shape, this function uses the path to calculate scaling factors and returns all scaled sections in the reversed order of the edge path. 
 [**midpt_smooth**(points, n[, closed])](https://openhome.cc/eGossip/OpenSCAD/lib3x-midpt_smooth.html) | given a 2D path, this function constructs a mid-point smoothed version by joining the mid-points of the lines of the path.
 
@@ -138,7 +137,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 [**shape_pentagram**(r)](https://openhome.cc/eGossip/OpenSCAD/lib3x-shape_pentagram.html) | return shape points of a pentagram.
 [**shape_pie**(radius, angle)](https://openhome.cc/eGossip/OpenSCAD/lib3x-shape_pie.html) | return shape points of a pie (circular sector) shape. 
 [**shape_square**(size[, corner_r])](https://openhome.cc/eGossip/OpenSCAD/lib3x-shape_square.html) | return shape points of a rounded square or rectangle. 
-[**shape_starburst**(r1, r2, n)](https://openhome.cc/eGossip/OpenSCAD/lib3x-shape_starburst.html) | returns shape points of a star. 
+[**shape_star**([outer_radius, inner_radius, n])](https://openhome.cc/eGossip/OpenSCAD/lib3x-shape_star.html) | create a 2D star.
 [**shape_superformula**(phi_step, m1, m2, n1, [n2, n3, a, b])](https://openhome.cc/eGossip/OpenSCAD/lib3x-shape_superformula.html) | return shape points of [Superformula](https://en.wikipedia.org/wiki/Superformula).
 [**shape_taiwan**(h[, distance])](https://openhome.cc/eGossip/OpenSCAD/lib3x-shape_taiwan.html) | return shape points of [Taiwan](https://www.google.com.tw/maps?q=taiwan&um=1&ie=UTF-8&sa=X&ved=0ahUKEwjai9XrqurTAhVIopQKHbEHClwQ_AUICygC). 
 [**shape_trapezium**(length, h[, corner_r])](https://openhome.cc/eGossip/OpenSCAD/lib3x-shape_trapezium.html) | return shape points of an isosceles trapezoid. 
@@ -359,29 +358,6 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 [**maze/mz_theta_cells**(rows, beginning_number[, start, seed])](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_theta_cells.html) | return cell data of a theta maze.
 [**maze/mz_theta_get**(cell, query)](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_theta_get.html) | a helper for getting data from a theta-maze cell.
 
-----
-
-# Preview
-
-## 2D/3D Function
-
- Signature | Description
---|--
-[**rails2sections**(rails)](https://openhome.cc/eGossip/OpenSCAD/lib3x-rails2sections.html) | create sections along rails.
-
-## Transformation
-
- Signature | Description
---|--
-[**select**(i)](https://openhome.cc/eGossip/OpenSCAD/lib3x-select.html) | select module objects.
-[**polyline_join**(points)](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyline_join.html) | place a join on each point. Hull each pair of joins and union all convex hulls.
-
-## 2D Shape
-
- Signature | Description
---|--
-[**shape_star**([outer_radius, inner_radius, n])](https://openhome.cc/eGossip/OpenSCAD/lib3x-shape_star.html) | create a 2D star.
-
 ## Polyhedra
 
  Signature | Description
@@ -393,3 +369,6 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 [**polyhedra/dodecahedron**(radius[, detail])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_dodecahedron.html) | create a dodecahedron.
 [**polyhedra/icosahedron**(radius[, detail])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_icosahedron.html) | create a icosahedron.
 [**polyhedra/superellipsoid**(radius[, detail])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_superellipsoid.html) | create a superellipsoid.
+
+----
+
