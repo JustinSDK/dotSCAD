@@ -11,4 +11,5 @@
 use <_impl/_shape_starburst_impl.scad>;
 
 function shape_starburst(r1, r2, n) = 
+   let(_ = echo("`shape_starburst` is deprecated since 3.2. Use `shape_star` instead."))
    _shape_starburst_impl(r1, r2, n);

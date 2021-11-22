@@ -9,6 +9,8 @@
 **/
 
 module starburst(r1, r2, n, height) {
+    echo("`starburst` is deprecated since 3.2. Use `polyhedra/star` instead.");
+
     a = 180 / n;
 
     p0 = [0, 0, 0];

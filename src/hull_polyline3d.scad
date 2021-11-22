@@ -9,6 +9,8 @@
 **/
 
 module hull_polyline3d(points, diameter = 1) {
+    echo("`hull_polyline2d` is deprecated since 3.2. Use `polyline_join` instead.");
+    
     radius = diameter / 2;
     leng = len(points);
     

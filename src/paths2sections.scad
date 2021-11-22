@@ -10,6 +10,7 @@
 
 function paths2sections(paths) =
     let(
+        _ = echo("`paths2sections` is deprecated since 3.2. Use `rails2sections` instead."),
         leng_path = len(paths[0]),
         leng_paths = len(paths)
     )
