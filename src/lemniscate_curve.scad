@@ -34,6 +34,8 @@ translate([0, 30, 0])
 
 
 */
+
+// based on Lemniscate of Gerono https://en.wikipedia.org/wiki/Lemniscate#Lemniscate_of_Gerono
 function lemniscate_curve(t_step, a = 2, b = 1, c = 1) = 
     [
 	    for(t = [0:t_step:360 - t_step])
@@ -41,5 +43,5 @@ function lemniscate_curve(t_step, a = 2, b = 1, c = 1) =
 		    sint = sin(t),
 			cost = cos(t)
 		)
-		[a * sint, b * sint * cost, c * cost]
+		[a * sint, b * sint * cost , c * cost]
 	];
