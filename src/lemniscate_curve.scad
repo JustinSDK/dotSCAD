@@ -34,7 +34,7 @@ translate([0, 30, 0])
 
 
 */
-function lemniscate_curve(t_step, a = 1, b = 1, c = 1) = 
+function lemniscate_curve(t_step, a = 2, b = 1, c = 1) = 
     [
 	    for(t = [0:t_step:360 - t_step])
 		let(
