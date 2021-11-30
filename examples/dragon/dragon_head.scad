@@ -38,7 +38,7 @@ module dragon_head() {
     module one_horn() {        
         translate([-9, -4, -2]) 
         rotate([45, -25, 0]) 
-        linear_extrude(30, scale = 0.1, twist = -90) 
+        linear_extrude(27.5, scale = 0.1, twist = -90) 
         translate([7.5, 0, 0]) 
             circle(3, $fn = 4);    
     }
