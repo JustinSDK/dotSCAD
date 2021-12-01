@@ -58,7 +58,7 @@ module infinity_dragon() {
 
     translate(body_path[0])
     scale(1.125)
-    rotate([90, angy_angz[0], angy_angz[1] - 100])
+    rotate([90, angy_angz[0], angy_angz[1] - 90])
         dragon_head();
 
     body_r = 6;
