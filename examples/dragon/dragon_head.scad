@@ -62,16 +62,37 @@ module dragon_head() {
                     h = 20,
                     corner_r = 2, $fn = 4)
                 );    
-                    
-        mirror([1, 0, 0]) 
-        translate([0, 0, -3]) 
-        rotate([85, 0, -90])
-        ellipse_extrude(4, slices = 2) 
-            polygon(
-                shape_trapezium([5, 18], 
-                h = 20,
-                corner_r = 2, $fn = 5)
-            );       
+
+        scale([1.5, 1, 1])
+        intersection() {       
+            mirror([1, 0, 0]) 
+            translate([0, 0, -2.25]) 
+            rotate([85, 0, -90])
+            ellipse_extrude(4, slices = 2) 
+                polygon(
+                    shape_trapezium([5, 18], 
+                    h = 20,
+                    corner_r = 2, $fn = 5)
+                );       
+
+            
+            jpath1 = curve(0.4, [[-10, 16], [0, 8], [4, 5],  [3, 0], [2, -5], [2, -10], [0, -13.5], [-3, -14]]);
+            rotate([90, -4, 0])
+            linear_extrude(25, center = true)
+                polygon(jpath1);
+        }
+    
+        translate([0, -2.5, -11])
+        rotate([0, 95, 0])
+        linear_extrude(1.4, scale = 0.1)
+        translate([.4, 0, 0])
+            circle(.5, $fn = 6);
+
+        translate([0, 2.5, -11])
+        rotate([0, 95, 0])
+        linear_extrude(1.5, scale = 0.1)
+        translate([.4, 0, 0])
+            circle(.5, $fn = 6);
     }
     
     module one_eye() {
@@ -92,13 +113,14 @@ module dragon_head() {
         translate([-9, -10, 0]) 
             circle(1, $fn = 8);    
     }
-    
+    // mouth();
     rotate([0, 15, 0]) 
     translate([0, 0, -25 / 2]) 
     scale(1.15) {
         scale([0.8, 0.9, 1]) hair();
 
-        translate([0, 0, 2]) {
+        translate([0, 0, 2]) 
+        {
             rotate(-90) {
                     one_horn();
                     mirror([-1, 0, 0]) one_horn();       
