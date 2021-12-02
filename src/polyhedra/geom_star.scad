@@ -1,4 +1,4 @@
-function star(outerRadius = 1, innerRadius =  0.381966, height = 0.5, n = 5) =
+function geom_star(outerRadius = 1, innerRadius =  0.381966, height = 0.5, n = 5) =
     let(
         right = 90,
         thetaStep = 360 / n,
