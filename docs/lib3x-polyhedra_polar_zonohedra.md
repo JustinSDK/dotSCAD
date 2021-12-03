@@ -1,4 +1,4 @@
-# octahedron
+# polar_zonohedra
 
 Creates a [polar zonohedra](https://mathworld.wolfram.com/PolarZonohedron.html).
 
