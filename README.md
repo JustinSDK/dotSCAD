@@ -363,6 +363,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
  Signature | Description
 --|--
 [**polyhedra/star**([outerRadius, innerRadius, height, n])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_star.html) | create a 3D star.
+[**polyhedra/polar_zonohedra**(n[, theta])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_polar_zonohedra.html) | create a [polar zonohedra](https://mathworld.wolfram.com/PolarZonohedron.html).
 [**polyhedra/tetrahedron**(radius[, detail])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_tetrahedron.html) | create a tetrahedron.
 [**polyhedra/hexahedron**(radius[, detail])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_hexahedron.html) | create a hexahedron.
 [**polyhedra/octahedron**(radius[, detail])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_octahedron.html) | create a octahedron.

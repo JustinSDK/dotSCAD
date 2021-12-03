@@ -1,13 +1,12 @@
-// http://archive.bridgesmathart.org/2021/bridges2021-7.pdf
-
-// use <util/sum.scad>;
-// use <util/flat.scad>;
-// use <polyhedra/polar_zonohedra.scad>;
-
-// for(n = [3:8]) {
-//     translate([0.5 * n * (n - 3), 0, 0])
-//         polar_zonohedra(n);
-// }
+/**
+* polar_zonohedra.scad
+*
+* @copyright Justin Lin, 2021
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_polar_zonohedra.html
+*
+**/
 
 use <geom_polar_zonohedra.scad>;
 
