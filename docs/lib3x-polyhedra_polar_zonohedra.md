@@ -7,7 +7,7 @@ Creates a [polar zonohedra](https://mathworld.wolfram.com/PolarZonohedron.html).
 ## Parameters
 
 - `n` : n equal rhombs surrounding one vertex. (rotational symmetry)
-- `theta` : the pitch angle of the edges.
+- `theta` : the pitch angle of the edges. Default to 35.5.
 
 ## Examples
 
