@@ -27,7 +27,7 @@ function _trim_sub(lines, leng, epsilon) =
         // collect current_p, intersecting pt and the last pt
         (leng == 3 || (inter_p.x == (leng_lines_from_next2 - 1))) ? [current_p, inter_p.y, lines[leng - 1]] : (
             // collect current_p, intersecting pt and trim remain lines
-            concat([current_p, inter_p.x], 
+            concat([current_p, inter_p.y], 
                 _trim_shape_trim_lines([for(i = inter_p.x + 1; i < leng_lines_from_next2; i = i + 1) lines_from_next2[i]], epsilon)
             )
         )
