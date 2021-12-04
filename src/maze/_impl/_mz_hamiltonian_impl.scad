@@ -48,7 +48,7 @@ _mz_hamiltonian_nxt_offset = [
 function _mz_hamiltonian_travel(dot_pts, p, leng, i = 0) = 
     i == leng ? [] :
     let(
-        dir_i = _mz_hamiltonian_dir(_mz_hamiltonian_corner_value(dot_pts, p[0], p[1])),
+        dir_i = _mz_hamiltonian_dir(_mz_hamiltonian_corner_value(dot_pts, p.x, p.y)),
         nxt_p = p + _mz_hamiltonian_nxt_offset[dir_i]
     )
     concat(

@@ -7,9 +7,9 @@ function _q_rotate_p_3d(p, a, v) =
         half_a = a / 2,
         axis = v / norm(v),
         s = sin(half_a),
-        x = s * axis[0],
-        y = s * axis[1],
-        z = s * axis[2],
+        x = s * axis.x,
+        y = s * axis.y,
+        z = s * axis.z,
         w = cos(half_a),
         
         x2 = x + x,
@@ -36,31 +36,31 @@ function _rotx(pt, a) =
     a == 0 ? pt :
     let(cosa = cos(a), sina = sin(a))
     [
-        pt[0], 
-        pt[1] * cosa - pt[2] * sina,
-        pt[1] * sina + pt[2] * cosa
+        pt.x, 
+        pt.y * cosa - pt[2] * sina,
+        pt.y * sina + pt[2] * cosa
     ];
 
 function _roty(pt, a) = 
     a == 0 ? pt :
     let(cosa = cos(a), sina = sin(a))
     [
-        pt[0] * cosa + pt[2] * sina, 
-        pt[1],
-        -pt[0] * sina + pt[2] * cosa, 
+        pt.x * cosa + pt.z * sina, 
+        pt.y,
+        -pt.x * sina + pt.z * cosa, 
     ];
 
 function _rotz(pt, a) = 
     a == 0 ? pt :
     let(cosa = cos(a), sina = sin(a))
     [
-        pt[0] * cosa - pt[1] * sina,
-        pt[0] * sina + pt[1] * cosa,
-        pt[2]
+        pt.x * cosa - pt.y * sina,
+        pt.x * sina + pt.y * cosa,
+        pt.z
     ];
 
 function _rotate_p_3d(point, a) =
-    _rotz(_roty(_rotx(point, a[0]), a[1]), a[2]);
+    _rotz(_roty(_rotx(point, a.x), a.y), a.z);
 
 function _rotate_p(p, a) =
     let(angle = __to_ang_vect(a))

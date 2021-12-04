@@ -13,8 +13,7 @@ use <ptf_y_twist.scad>;
 
 function ptf_ring(size, point, radius, angle = 360, twist = 0) = 
     let(
-        yleng = size[1],
-        a_step = angle / yleng,
+        a_step = angle / size.y,
         twisted = ptf_y_twist(size, point, twist)
     )
     ptf_rotate([radius + twisted[0], 0, twisted[2]], a_step * twisted[1]);

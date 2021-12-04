@@ -51,7 +51,7 @@ module vrn2_space(size, grid_w, seed, spacing = 1, r = 0, delta = 0, chamfer = f
         intersection_for(p = points) {
             v = p - pt;
             translate((pt + p) / 2 - normalize(v) * offset_leng)
-            rotate(atan2(v[1], v[0])) 
+            rotate(atan2(v.y, v.x)) 
                 children();
         }
     }    

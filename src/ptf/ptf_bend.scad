@@ -10,13 +10,11 @@
 
 function ptf_bend(size, point, radius, angle) = 
     let(
-        xlen = size[0],
-        // ignored
-        // ylen = size[1],
+        // ignored: size.y,
         y = point[0],
         z = point[1],
         x = is_undef(point[2]) ? 0 : point[2],
-        a_step = angle / xlen,
+        a_step = angle / size.x,
         a = a_step * y,
         r = radius + x
     )

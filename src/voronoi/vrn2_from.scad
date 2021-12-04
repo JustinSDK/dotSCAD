@@ -9,8 +9,8 @@
 **/
 
 module vrn2_from(points, spacing = 1, r = 0, delta = 0, chamfer = false, region_type = "square") {
-    xs = [for(p = points) p[0]];
-    ys = [for(p = points) abs(p[1])];
+    xs = [for(p = points) p.x];
+    ys = [for(p = points) abs(p.y)];
 
     region_size = max([(max(xs) -  min(xs) / 2), (max(ys) -  min(ys)) / 2]);    
     half_region_size = 0.5 * region_size; 
@@ -22,7 +22,7 @@ module vrn2_from(points, spacing = 1, r = 0, delta = 0, chamfer = false, region_
         intersection_for(p = [for(p = points) if(pt != p) p]) {
             v = p - pt;
             translate((pt + p) / 2 - normalize(v) * offset_leng)
-            rotate(atan2(v[1], v[0]))
+            rotate(atan2(v.y, v.x))
                 children();
         }
     }    
