@@ -41,9 +41,9 @@ module tail() {
 module infinity_dragon() {
     function __angy_angz(p1, p2) = 
         let(
-            dx = p2[0] - p1[0],
-            dy = p2[1] - p1[1],
-            dz = p2[2] - p1[2],
+            dx = p2.x - p1.x,
+            dy = p2.y - p1.y,
+            dz = p2.z - p1.z,
             ya = atan2(dz, sqrt(pow(dx, 2) + pow(dy, 2))),
             za = atan2(dy, dx)
         ) [ya, za];

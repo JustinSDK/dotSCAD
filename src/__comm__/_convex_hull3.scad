@@ -1,13 +1,9 @@
 function is_zero(p) = p == [0, 0, 0];
 
 function _cmp(a, b) =
-    let(
-        ax = a[0], ay = a[1], az = a[2],
-        bx = b[0], by = b[1], bz = b[2]
-    )
-    ax != bx ? ax < bx : 
-    ay != by ? ay < by :
-    az < bz;
+    a.x != b.x ? a.x < b.x : 
+    a.y != b.y ? a.y < b.y :
+    a.z < b.z;
     
 function _convex_hull_sort_by_xyz(pts) = 
     let(leng = len(pts))

@@ -1,1 +1,1 @@
-function __to2d(p) = [p[0], p[1]];
+function __to2d(p) = [p.x, p.y];

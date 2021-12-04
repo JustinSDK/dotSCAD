@@ -1,1 +1,1 @@
-function __to3d(p) = [p[0], p[1], 0];
+function __to3d(p) = [p.x, p.y, 0];

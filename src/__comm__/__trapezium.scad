@@ -7,7 +7,7 @@ function __trapezium(length, h, round_r) =
         l_half_trapezium = [
             for(i = 0; i <= to; i = i + 1)
                 let(pt = r_half_trapezium[to - i])
-                [-pt[0], pt[1]]
+                [-pt.x, pt.y]
         ]
     )    
     concat(

@@ -1,7 +1,7 @@
 use <../util/slice.scad>;
 
 function _convex_hull_lt_than_by_xy(p1, p2) =
-    p1[0] < p2[0] || (p1[0] == p2[0] && p1[1] < p2[1]);
+    p1.x < p2.x || (p1.x == p2.x && p1.y < p2.y);
 
 function _convex_hull_sort_by_xy(lt) = 
     let(leng = len(lt))
@@ -15,15 +15,7 @@ function _convex_hull_sort_by_xy(lt) =
 
 // oa->ob ct_clk : greater than 0
 function _convex_hull_impl_dir(o, a, b) =
-    let(
-        ox = o[0],
-        oy = o[1],
-        ax = a[0],
-        ay = a[1],
-        bx = b[0],
-        by = b[1]
-    )
-    (ax - ox) * (by - oy) - (ay - oy) * (bx - ox);
+    (a.x - o.x) * (b.y - o.y) - (a.y - o.y) * (b.x - o.x);
 
 function _convex_hull_convex_hull_lower_m(chain, p, m) = 
     (m >= 2 && _convex_hull_impl_dir(chain[m - 2], chain[m - 1], p) <= 0) ? _convex_hull_convex_hull_lower_m(chain, p, m - 1) : m;
