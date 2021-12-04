@@ -19,7 +19,7 @@ module torus_knot_dragon() {
     d_path = reverse([for(i = [6:len(knot) - 4]) knot[i]]);
 	
     one_body_scale_data = one_body_scale(body_r, body_fn, scale_fn, scale_tilt_a);
-	along_with(d_path, scale = 0.85, method = "EULER_ANGLE")    
+	along_with(d_path, scale = [0.6, 0.6, 0.85], method = "EULER_ANGLE")    
 	scale(0.06)
 	    one_segment(body_r, body_fn, one_body_scale_data);
 
@@ -41,10 +41,10 @@ module torus_knot_dragon() {
 		
 	t_angy_angz = __angy_angz(d_path[1], d_path[0]);	
 	
-	translate([2.1, 1.55, -.80])
+	translate([2.09, 1.56, -.8])
 	rotate([0, t_angy_angz[0], t_angy_angz[1]])
 	rotate([0, -95, -75])
-	scale([0.055, 0.055, 0.065])
+	scale([0.038, 0.038, 0.065])
 	    tail();
 }
 

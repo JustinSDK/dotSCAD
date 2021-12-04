@@ -67,18 +67,18 @@ module infinity_dragon() {
     scale_tilt_a = 6;
     one_body_scale_data = one_body_scale(body_r, body_fn, scale_fn, scale_tilt_a);
 
-    along_with(body_path, scale = 0.7)    
+    along_with(body_path, scale = [0.5, 0.7, 0.5])    
     rotate([90, 90, 0])
         one_segment(body_r, body_fn, one_body_scale_data);
 
     ayz = __angy_angz(body_path[leng_body_path - 2], body_path[leng_body_path - 1]);
 
-    translate([1.5, 0, 0])
+    translate([1, 0, 0])
     translate(body_path[leng_body_path - 1])
     rotate([0, ayz[0] + 96, ayz[1]])
     mirror([0, 0, 1])
     rotate(-12)
-    scale([0.85, 0.875, 1.1])
+    scale([0.55, 0.55, 0.85])
         tail();
 
     translate([-20, -20, -5]) 

@@ -73,13 +73,13 @@ module spiral_dragon() {
 
     one_body_scale_data = one_body_scale(body_r, body_fn, scale_fn, scale_tilt_a);
     scale(1.075) 
-    along_with(path_pts, scale = 0.85, method = "EULER_ANGLE")    
+    along_with(path_pts, scale = [0.575, 0.575, 0.85], method = "EULER_ANGLE")    
         one_segment(body_r, body_fn, one_body_scale_data);
     
-    translate([27.75, 3, -1.2])
+    translate([27.25, 2.75, -.5])
     rotate([-88, 0, 0])
     rotate([0, 0, 10])
-    scale([.95, 1.2, 1.4])
+    scale([.6, .8, 1.4])
         tail();
 
     translate([17.5, 0, 63]) 

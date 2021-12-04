@@ -74,36 +74,36 @@ module dragon_and_perl() {
     scale_tilt_a = 6;
     one_body_scale_data = one_body_scale(body_r, body_fn, scale_fn, scale_tilt_a);
 
-    along_with(body_path, scale = 0.5, method = "EULER_ANGLE")    
+    along_with(body_path, scale = [0.25, 0.25, 0.5], method = "EULER_ANGLE")    
         one_segment(body_r, body_fn, one_body_scale_data);
 
     ayz = __angy_angz(body_path[leng_body_path - 2], body_path[leng_body_path - 1]);
 
     translate(body_path[leng_body_path - 1])
-    rotate([0, ayz[0] + 85, ayz[1]])
+    rotate([0, ayz[0] + 82, ayz[1]])
     mirror([0, 0, 1])
     rotate(-12)
-    scale(0.6)
+    scale([0.3, 0.3, 0.6])
         tail();
 
-    translate([-5, 25, -13]) 
+    translate([-5, 25, -12.5]) 
     rotate([-20, 0, -15]) 
         foot();
 
-    translate([-10, 15, -7]) 
+    translate([-10, 15, -6.5]) 
     rotate([-60, 45, 25]) 
     mirror([1, 0, 0])
         foot();
 
-    translate([11.5, 110, -3]) 
+    translate([11.5, 107, -.5]) 
     rotate([-10, 20, -50]) 
-    scale(0.75)
+    scale(0.65)
         foot();
 
-    translate([7, 108, -1]) 
+    translate([7, 108, .25]) 
     rotate([5, 20, 60]) 
     rotate([10, -30, 0]) 
-    scale(0.75)
+    scale(0.65)
     mirror([1, 0, 0])
         foot();
 
