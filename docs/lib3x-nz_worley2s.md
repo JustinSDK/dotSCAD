@@ -25,8 +25,8 @@ It divides the space into grids. The nucleus of each cell is randomly placed in 
     seed = 51;
 
     points = [
-        for(y = [0:size[1] - 1]) 
-            for(x = [0:size[0] - 1]) 
+        for(y = [0:size.y - 1]) 
+            for(x = [0:size.x - 1]) 
                 [x, y]
     ];
 

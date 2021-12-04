@@ -18,8 +18,8 @@ It solidifies two surfaces with triangular mesh.
     points = [for(i = [0:50]) rands(-300, 300, 2)]; 
     triangles = tri_delaunay(points);
 
-    pts = [for(p = points) [p[0], p[1], rands(100, 150, 1)[0]]];
-    pts2 = [for(p = pts) [p[0], p[1], p[2] - 100]];
+    pts = [for(p = points) [p.x, p.y, rands(100, 150, 1)[0]]];
+    pts2 = [for(p = pts) [p.x, p.y, p.z - 100]];
 
     sf_solidifyT(pts, pts2, triangles = triangles);	
 
@@ -45,8 +45,8 @@ It solidifies two surfaces with triangular mesh.
             [x, y] 
     ];
 
-    points1 = [for(p = pts2d) scale * [p[0], p[1], f(p[0], p[1])]];
-    points2 = [for(p = points1) [p[0], p[1], p[2] - scale * thickness]];
+    points1 = [for(p = pts2d) scale * [p.x, p.y, f(p.x, p.y)]];
+    points2 = [for(p = points1) [p.x, p.y, p.z - scale * thickness]];
     triangles = tri_delaunay(pts2d);
 
 

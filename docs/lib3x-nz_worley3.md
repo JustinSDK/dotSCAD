@@ -26,7 +26,7 @@ It divides the space into grids. The nucleus of each cell is randomly placed in 
 
     points = vx_sphere(20);
 
-    cells = [for(p = points) nz_worley3(p[0], p[1], p[2], seed, grid_w, dist)];
+    cells = [for(p = points) nz_worley3(p.x, p.y, p.z, seed, grid_w, dist)];
 
     max_dist = max([for(c = cells) c[3]]);
     for(i = [0:len(cells) - 1]) {

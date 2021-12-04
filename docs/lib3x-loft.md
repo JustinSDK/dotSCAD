@@ -19,7 +19,7 @@ When having uniform cross sections, you can use [sweep](https://openhome.cc/eGos
 	sects = [
 		for(i = 10; i >= 4; i = i - 1)
 		[
-			for(p = shape_star(15, 12, i % 2 == 1 ? i : i - 1)) ptf_rotate([p[0], p[1], 5 * (i - 4)], i * 10)
+			for(p = shape_star(15, 12, i % 2 == 1 ? i : i - 1)) ptf_rotate([p.x, p.y, 5 * (i - 4)], i * 10)
 		]
 	];
 	loft(sects, slices = 3);
@@ -28,16 +28,16 @@ When having uniform cross sections, you can use [sweep](https://openhome.cc/eGos
 	difference() {
 		loft(
 			[
-				[for(p = shape_circle(10, $fn = 3)) [p[0], p[1], 15]],
-				[for(p = shape_circle(15, $fn = 24)) [p[0], p[1], 0]]        
+				[for(p = shape_circle(10, $fn = 3)) [p.x, p.y, 15]],
+				[for(p = shape_circle(15, $fn = 24)) [p.x, p.y, 0]]        
 			],
 			slices = 4
 		);
 
 		loft(
 			[
-				[for(p = shape_circle(8, $fn = 3)) [p[0], p[1], 15.1]],
-				[for(p = shape_circle(13, $fn = 24)) [p[0], p[1], -0.1]]        
+				[for(p = shape_circle(8, $fn = 3)) [p.x, p.y, 15.1]],
+				[for(p = shape_circle(13, $fn = 24)) [p.x, p.y, -0.1]]        
 			],
 			slices = 4
 		);    

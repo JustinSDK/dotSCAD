@@ -16,7 +16,7 @@ Returns points that can be used to draw a voxel-style polygon.
 
 	pentagram = [
 		for(pt = shape_pentagram(15)) 
-			[round(pt[0]), round(pt[1])]
+			[round(pt.x), round(pt.y)]
 	];
 
 	for(pt = vx_polygon(pentagram)) {

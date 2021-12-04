@@ -48,7 +48,7 @@ An `init_angle` less than 180 degrees is not recommended because the function us
 
 ![archimedean_spiral](images/lib3x-archimedean_spiral-2.JPG)
 
-    include <archimedean_spiral.scad>;
+    use <archimedean_spiral.scad>;
     
     t = "3.141592653589793238462643383279502884197169399375105820974944592307816406286";
 
@@ -60,8 +60,8 @@ An `init_angle` less than 180 degrees is not recommended because the function us
 	); 
 	
 	for(i = [0: len(points) - 1]) {
-	    translate(points[i][0])          
-	        rotate(points[i][1] + 90)  
+	    translate(points[i].x)          
+	        rotate(points[i].y + 90)  
 	            text(t[i], valign = "center", halign = "center");
 	}
 

@@ -56,7 +56,7 @@ The indexes of the above triangles is:
 			[
 				for(p = section1)
 					let(pt = ptf_rotate(p, [90, 0, 10 * i]))
-					[pt[0], pt[1] , pt[2] + i]
+					[pt.x, pt.y , pt.z + i]
 			]
 	];
 
@@ -86,7 +86,7 @@ The indexes of the above triangles is:
 	        [
 	            for(p = section1)
 	                let(pt = ptf_rotate(p, [90, 0, 10 * i]))
-	                [pt[0], pt[1] , pt[2] + i]
+	                [pt.x, pt.y , pt.z + i]
 	        ]
 	];
 	    
@@ -114,7 +114,7 @@ The indexes of the above triangles is:
 	        [
 	            for(p = section1)
 	                let(pt = ptf_rotate(p, [90, 0, 10 * i]))
-	                [pt[0], pt[1] , pt[2] + i]
+	                [pt.x, pt.y , pt.z + i]
 	        ]
 	];
 	    

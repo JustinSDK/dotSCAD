@@ -20,13 +20,13 @@ Twist a point along the x-axis. You can use it to create something such as a [tw
     size = [20, 10];
 
     rows = [
-        for(y = [0:size[1]])
-            [for(x = [0:size[0]]) [x, y]]
+        for(y = [0:size.y])
+            [for(x = [0:size.x]) [x, y]]
     ];
 
     columns = [
-        for(x = [0:size[0]])
-            [for(y = [0:size[1]]) [x, y]]
+        for(x = [0:size.x])
+            [for(y = [0:size.y]) [x, y]]
     ];
 
     for(line = rows) {
