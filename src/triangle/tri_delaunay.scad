@@ -17,8 +17,8 @@ use <tri_delaunay_voronoi.scad>;
 function tri_delaunay(points, ret = "TRI_INDICES") = 
     let(
 		_indices_hash = function(indices) indices[3],
-		xs = [for(p = points) p[0]],
-		ys = [for(p = points) p[1]],
+		xs = [for(p = points) p.x],
+		ys = [for(p = points) p.y],
 		max_x = max(xs),
 		min_x = min(xs),
 		max_y = max(ys),

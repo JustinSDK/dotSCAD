@@ -21,7 +21,7 @@ function lsystem2(axiom, rules, n, angle, leng = 1, heading = 0, start = [0, 0],
         ])
     )
     _lines(
-        turtle2d("create", start[0], start[0], heading), 
+        turtle2d("create", start.x, start.y, heading), 
         codes,
         angle,
         leng
