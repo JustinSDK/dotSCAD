@@ -15,7 +15,7 @@ Transforms a point inside a rectangle to a point of a sphere. It can create thin
 
 ## Examples
 
-    use <hull_polyline3d.scad>;
+    use <polyline_join.scad>;
     use <ptf/ptf_sphere.scad>;
 
     size = [20, 10];
@@ -34,12 +34,14 @@ Transforms a point inside a rectangle to a point of a sphere. It can create thin
 
     for(line = rows) {
         transformed = [for(p = line) ptf_sphere(size, p, radius, angle)];
-        hull_polyline3d(transformed, thickness = .5);
+        polyline_join(transformed)
+            sphere(.5);
     }
 
     for(line = columns) {
         transformed = [for(p = line) ptf_sphere(size, p, radius, angle)];
-        hull_polyline3d(transformed, thickness = .5);
+        polyline_join(transformed)
+            sphere(.5);
     }
 
 ![ptf_sphere](images/lib3x-ptf_sphere-2.JPG)
