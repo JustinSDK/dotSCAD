@@ -14,7 +14,7 @@ Creates all points and angles on the path of a spiral around a sphere. It return
 
 ## Examples
     
-	use <hull_polyline3d.scad>;
+	use <polyline_join.scad>;
 	use <sphere_spiral.scad>;
 	
 	points_angles = sphere_spiral(
@@ -25,7 +25,8 @@ Creates all points and angles on the path of a spiral around a sphere. It return
 	    end_angle = 90
 	);
 	
-	hull_polyline3d([for(pa = points_angles) pa[0]], 1);
+	polyline_join([for(pa = points_angles) pa[0]])
+	    sphere(.5);
 	
 	%sphere(40);
 
@@ -54,7 +55,7 @@ Creates all points and angles on the path of a spiral around a sphere. It return
 
 ![sphere_spiral](images/lib3x-sphere_spiral-5.JPG)
 
-	use <hull_polyline3d.scad>;
+	use <polyline_join.scad>;
 	use <sphere_spiral.scad>;
 	
 	points_angles = sphere_spiral(
@@ -64,7 +65,8 @@ Creates all points and angles on the path of a spiral around a sphere. It return
 	
 	for(a = [0:30:360]) {
 	    rotate(a) 
-	        hull_polyline3d([for(pa = points_angles) pa[0]], 2);
+		polyline_join([for(pa = points_angles) pa[0]])
+			sphere(1);
 	}
 
 ![sphere_spiral](images/lib3x-sphere_spiral-6.JPG)

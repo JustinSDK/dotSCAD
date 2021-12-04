@@ -33,14 +33,11 @@
 [lsystem3-collections.scad](https://github.com/JustinSDK/dotSCAD/blob/master/examples/turtle/lsystem3_collection.scad) collects several L-system grammars. Here's one of them.
 
 	use <turtle/lsystem3.scad>;
-	use <hull_polyline3d.scad>;
+	use <polyline_join.scad>;
 
 	for(line = hilbert_curve()) {
-		hull_polyline3d(
-			[line[0], line[1]], 
-			thickness = 0.5, 
-			$fn = 4
-		);
+		polyline_join([line[0], line[1]])
+		    sphere(.25, $fn = 4);
 	}  
 
 	function hilbert_curve(n = 3, angle = 90, leng = 1, heading = 0, start = [0, 0, 0]) = 
@@ -60,14 +57,11 @@
     // a stochastic L-system
 
 	use <turtle/lsystem3.scad>;
-	use <hull_polyline3d.scad>;
+	use <polyline_join.scad>;
 
 	for(line = vine()) {
-		hull_polyline3d(
-			[line[0], line[1]], 
-			thickness = 0.5, 
-			$fn = 4
-		);
+		polyline_join([line[0], line[1]])
+		    sphere(.25, $fn = 4);
 	}  
 
 	function vine(n = 3, angle = 18, leng = 1, heading = 0, start = [0, 0, 0]) = 

@@ -11,13 +11,12 @@ Returns the 1D [Perlin noise](https://en.wikipedia.org/wiki/Perlin_noise) value 
 
 ## Examples
 
-    use <hull_polyline2d.scad>;
+    use <polyline_join.scad>;
     use <util/rand.scad>;
     use <noise/nz_perlin1.scad>;
 
     seed = rand();
-    hull_polyline2d(
-        [for(x = [0:.1:10]) [x, nz_perlin1(x, seed)]], width = .1
-    );
+    polyline_join([for(x = [0:.1:10]) [x, nz_perlin1(x, seed)]])
+	    circle(.05);
 
 ![nz_perlin1](images/lib3x-nz_perlin1-1.JPG)

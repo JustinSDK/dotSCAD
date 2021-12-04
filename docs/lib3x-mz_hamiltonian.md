@@ -14,13 +14,14 @@ Creates a hamiltonian path from a maze. The path is the result of maze traversal
 ## Examples
     
     use <maze/mz_hamiltonian.scad>;
-    use <hull_polyline2d.scad>;
+    use <polyline_join.scad>;
 
     rows = 5;
     columns = 10;
 
     path = mz_hamiltonian(rows, columns, [0, 0]);
-    hull_polyline2d(path, .5);
+    polyline_join(path)
+	    circle(.25);
 
 ![mz_hamiltonian](images/lib3x-mz_hamiltonian-1.JPG)
 

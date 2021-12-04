@@ -16,7 +16,7 @@ Transforms a point inside a rectangle to a point of a ring. It can create things
 
 ## Examples
 
-    use <hull_polyline3d.scad>;
+    use <polyline_join.scad>;
     use <ptf/ptf_ring.scad>;
 
     size = [20, 10];
@@ -34,12 +34,14 @@ Transforms a point inside a rectangle to a point of a ring. It can create things
 
     for(line = rows) {
         transformed = [for(p = line) ptf_ring(size, p, radius, 360, 180)];
-        hull_polyline3d(transformed, thickness = .5);
+		polyline_join(transformed)
+		    sphere(.25);
     }
 
     for(line = columns) {
         transformed = [for(p = line) ptf_ring(size, p, radius, 360, 180)];
-        hull_polyline3d(transformed, thickness = .5);
+		polyline_join(transformed)
+		    sphere(.25);
     }
 
 ![ptf_ring](images/lib3x-ptf_ring-2.JPG)

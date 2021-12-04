@@ -13,7 +13,7 @@ Rails should be indexed count-clockwisely.
 ## Examples
 
 	use <rails2sections.scad>;
-	use <hull_polyline3d.scad>;
+	use <polyline_join.scad>;
 	use <sweep.scad>;
 	
 	rails = [
@@ -28,14 +28,15 @@ Rails should be indexed count-clockwisely.
 	sweep(sections);
 	
 	#for(path = rails) {
-	    hull_polyline3d(path, 0.5);
+	    polyline_join(path)
+		    sphere(.25);
 	}
 
 ![rails2sections](images/lib3x-rails2sections-1.JPG)
 
 	use <bezier_curve.scad>;
 	use <rails2sections.scad>;
-	use <hull_polyline3d.scad>;
+	use <polyline_join.scad>;
 	use <sweep.scad>;
 	
 	t_step = 0.05;
@@ -61,7 +62,8 @@ Rails should be indexed count-clockwisely.
 	sweep(sections);
 	
 	#for(path = rails) {
-	    hull_polyline3d(path, 0.5);
+	    polyline_join(path)
+		    sphere(.25);
 	}
 
 ![rails2sections](images/lib3x-rails2sections-2.JPG)

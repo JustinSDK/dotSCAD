@@ -12,7 +12,7 @@ Join a set of points to make a [Delaunay triangulation](https://en.wikipedia.org
 ## Examples
 
     use <triangle/tri_delaunay.scad>;
-    use <hull_polyline2d.scad>;
+    use <polyline_join.scad>;
 
     points = [for(i = [0:20]) rands(-100, 100, 2)]; 
 
@@ -32,7 +32,8 @@ Join a set of points to make a [Delaunay triangulation](https://en.wikipedia.org
 	color("red")
 	linear_extrude(3)
 	for(t = tri_delaunay(points, ret = "VORONOI_CELLS")) {
-	    hull_polyline2d(concat(t, [t[0]]), 2);
+	    polyline_join(concat(t, [t[0]]))
+		    circle(1);
 	}
 
 ![tri_delaunay](images/lib3x-tri_delaunay-1.JPG)

@@ -10,7 +10,7 @@ Create cell shapes of Voronoi from a list of points.
 
 ## Examples
 
-    use <hull_polyline2d.scad>;
+    use <polyline_join.scad>;
     use <voronoi/vrn2_cells_from.scad>;
 
     points = [for(i = [0:50]) rands(-100, 100, 2)]; 
@@ -21,7 +21,8 @@ Create cell shapes of Voronoi from a list of points.
         cell = cells[i];
         
         linear_extrude(1)
-            hull_polyline2d(concat(cell, [cell[0]]), width = 1);
+        polyline_join(concat(cell, [cell[0]]))
+		    circle(.5);
         
         color(rands(0, 1, 3))
         translate(pt)    

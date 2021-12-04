@@ -11,7 +11,7 @@ You paths should be indexed count-clockwisely.
 ## Examples
 
 	use <paths2sections.scad>;
-	use <hull_polyline3d.scad>;
+	use <polyline_join.scad>;
 	use <sweep.scad>;
 	
 	paths = [
@@ -26,14 +26,15 @@ You paths should be indexed count-clockwisely.
 	sweep(sections);
 	
 	#for(path = paths) {
-	    hull_polyline3d(path, 0.5);
+	    polyline_join(path)
+		    sphere(.25);
 	}
 
 ![paths2sections](images/lib3x-paths2sections-1.JPG)
 
 	use <bezier_curve.scad>;
 	use <paths2sections.scad>;
-	use <hull_polyline3d.scad>;
+	use <polyline_join.scad>;
 	use <sweep.scad>;
 	
 	t_step = 0.05;
@@ -59,7 +60,8 @@ You paths should be indexed count-clockwisely.
 	sweep(sections);
 	
 	#for(path = paths) {
-	    hull_polyline3d(path, 0.5);
+	    polyline_join(path)
+		    sphere(.25);
 	}
 
 ![paths2sections](images/lib3x-paths2sections-2.JPG)

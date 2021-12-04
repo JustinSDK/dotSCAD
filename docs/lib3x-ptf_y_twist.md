@@ -14,7 +14,7 @@ Twist a point along the y-axis. You can use it to create something such as a [tw
 
 ## Examples
 
-    use <hull_polyline3d.scad>;
+    use <polyline_join.scad>;
     use <ptf/ptf_y_twist.scad>;
 
     size = [10, 20];
@@ -31,12 +31,14 @@ Twist a point along the y-axis. You can use it to create something such as a [tw
 
     for(line = rows) {
         twisted = [for(p = line) ptf_y_twist(size, p, 90)];
-        hull_polyline3d(twisted, thickness = .1);
+        polyline_join(twisted)
+		    sphere(.05);
     }
 
     for(line = columns) {
         twisted = [for(p = line) ptf_y_twist(size, p, 90)];
-        hull_polyline3d(twisted, thickness = .1);
+        polyline_join(twisted)
+		    sphere(.05);
     }
 
 ![ptf_y_twist](images/lib3x-ptf_y_twist-1.JPG)

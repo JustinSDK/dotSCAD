@@ -15,7 +15,7 @@ You can use any point as the first point of the edge path. Just remember that yo
 
 ## Examples
 
-	use <hull_polyline3d.scad>;
+	use <polyline_join.scad>;
 	use <shape_taiwan.scad>;
 	use <path_scaling_sections.scad>;
 	use <sweep.scad>;
@@ -33,12 +33,13 @@ You can use any point as the first point of the edge path. Just remember that yo
 		fst_pt + [0, 0, 60]
 	];
 
-	#hull_polyline3d(edge_path);
+	#polyline_join(edge_path) 
+	    sphere(.5);
 	sweep(path_scaling_sections(taiwan, edge_path));
 
 ![path_scaling_sections](images/lib3x-path_scaling_sections-1.JPG)
 
-	use <hull_polyline3d.scad>;
+	use <polyline_join.scad>;
 	use <shape_taiwan.scad>;
 	use <path_scaling_sections.scad>;
 	use <sweep.scad>;
@@ -58,7 +59,8 @@ You can use any point as the first point of the edge path. Just remember that yo
 		fst_pt + [0, 0, 60]
 	]);
 
-	#hull_polyline3d(edge_path);
+	#polyline_join(edge_path) 
+	    sphere(.5);
 	sweep(path_scaling_sections(taiwan, edge_path));
 
 ![path_scaling_sections](images/lib3x-path_scaling_sections-2.JPG)
@@ -99,7 +101,7 @@ You can use any point as the first point of the edge path. Just remember that yo
 
 ![path_scaling_sections](images/lib3x-path_scaling_sections-3.JPG)	
 
-	use <hull_polyline3d.scad>;
+	use <polyline_join.scad>;
 	use <shape_taiwan.scad>;
 	use <path_scaling_sections.scad>;
 	use <sweep.scad>;
@@ -123,7 +125,8 @@ You can use any point as the first point of the edge path. Just remember that yo
 		fst_pt + ptf_rotate([0, 0, 60], a)
 	];
 
-	#hull_polyline3d(edge_path);
+	#polyline_join(edge_path) 
+	    sphere(.5);
 	sweep(path_scaling_sections(taiwan, edge_path));
 
 ![path_scaling_sections](images/lib3x-path_scaling_sections-4.JPG)

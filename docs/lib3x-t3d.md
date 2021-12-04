@@ -20,7 +20,7 @@ For more details, please see [3D turtle graphics](https://openhome.cc/eGossip/Op
 ## Examples
 	    
 	use <turtle/t3d.scad>;
-	use <hull_polyline3d.scad>;
+	use <polyline_join.scad>;
 	
 	leng = 10;
 	angle = 120;
@@ -37,10 +37,9 @@ For more details, please see [3D turtle graphics](https://openhome.cc/eGossip/Op
         ["xforward", leng]
     ]);   
     
-	hull_polyline3d(
-        [for(turtle = [t, t2, t3, t4]) t3d(turtle, "point")],
-	    thickness
-	);
+	polyline_join(
+        [for(turtle = [t, t2, t3, t4]) t3d(turtle, "point")]
+	) sphere(thickness / 2);
 
 ![t3d](images/lib3x-t3d-1.JPG)
 	

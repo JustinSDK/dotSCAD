@@ -25,7 +25,7 @@ The value of `type` is the wall type of the cell. It can be `0`, `1`, `2` or `3`
 ## Examples
     
 	use <maze/mz_theta_cells.scad>;
-	use <hull_polyline2d.scad>;
+	use <polyline_join.scad>;
 
 	rows = 8;
 	beginning_number = 8;
@@ -58,11 +58,13 @@ The value of `type` is the wall type of the cell. It can be `0`, `1`, `2` or `3`
 			outerVt2 = vt_from_angle(theta2, outerR);
 			
 			if(type == INWARD_WALL || type == INWARD_CCW_WALL) {
-				hull_polyline2d([innerVt1, innerVt2], width = wall_thickness);
+				polyline_join([innerVt1, innerVt2])
+				    circle(wall_thickness / 2);
 			}
 
 			if(type == CCW_WALL || type == INWARD_CCW_WALL) {
-				hull_polyline2d([innerVt2, outerVt2], width = wall_thickness);
+				polyline_join([innerVt1, innerVt2])
+				    circle(wall_thickness / 2);
 			}
 		} 
 	}
@@ -73,7 +75,8 @@ The value of `type` is the wall type of the cell. It can be `0`, `1`, `2` or `3`
 	for(theta = [0:thetaStep:360 - thetaStep]) {
 		vt1 = vt_from_angle(theta, r);
 		vt2 = vt_from_angle(theta + thetaStep, r);
-		hull_polyline2d([vt1, vt2], width = wall_thickness);
+		polyline_join([vt1, vt2])
+			circle(wall_thickness / 2);
 	} 
 
 ![mz_theta_cells](images/lib3x-mz_theta_cells-3.JPG)

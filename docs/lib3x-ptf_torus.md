@@ -16,7 +16,7 @@ Transforms a point inside a rectangle to a point of a torus. It can create thing
 
 ## Examples
 
-    use <hull_polyline3d.scad>;
+    use <polyline_join.scad>;
     use <ptf/ptf_torus.scad>;
 
     size = [20, 10];
@@ -36,12 +36,14 @@ Transforms a point inside a rectangle to a point of a torus. It can create thing
 
     for(line = rows) {
         transformed = [for(p = line) ptf_torus(size, p, radius, angle, twist)];
-        hull_polyline3d(transformed, thickness = .5);
+        polyline_join(transformed)
+		    sphere(.25);
     }
 
     for(line = columns) {
         transformed = [for(p = line) ptf_torus(size, p, radius, angle, twist)];
-        hull_polyline3d(transformed, thickness = .5);
+        polyline_join(transformed)
+		    sphere(.25);
     }
 
 ![ptf_torus](images/lib3x-ptf_torus-2.JPG)

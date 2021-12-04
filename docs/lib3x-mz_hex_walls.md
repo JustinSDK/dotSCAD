@@ -17,7 +17,7 @@ It's a helper for creating wall data from maze cells. You can transform wall poi
     
 	use <maze/mz_square_cells.scad>;
 	use <maze/mz_hex_walls.scad>;
-	use <hull_polyline2d.scad>;
+	use <polyline_join.scad>;
 
 	rows = 10;
 	columns = 12;
@@ -28,7 +28,8 @@ It's a helper for creating wall data from maze cells. You can transform wall poi
 	walls = mz_hex_walls(cells, rows, columns, cell_width);
 
 	for(wall = walls) {
-		hull_polyline2d(wall, wall_thickness, $fn = 24);
+		polyline_join(wall) 
+		    circle(wall_thickness, $fn = 24);
 	}
 	
 ![mz_hex_walls](images/lib3x-mz_hex_walls-1.JPG)

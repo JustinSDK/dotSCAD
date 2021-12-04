@@ -14,7 +14,7 @@ A method of [`tri_delaunay`](lib3x-tri_delaunay.html). Returns voronoi cells fro
 	use <triangle/tri_delaunay_indices.scad>;
 	use <triangle/tri_delaunay_shapes.scad>;
 	use <triangle/tri_delaunay_voronoi.scad>;
-	use <hull_polyline2d.scad>;
+	use <polyline_join.scad>;
 
 	points = [for(i = [0:20]) rands(-100, 100, 2)]; 
 
@@ -36,7 +36,8 @@ A method of [`tri_delaunay`](lib3x-tri_delaunay.html). Returns voronoi cells fro
 	color("red")
 	linear_extrude(3)
 	for(t = tri_delaunay_voronoi(delaunay)) {
-		hull_polyline2d(concat(t, [t[0]]), 2);
+		polyline_join(concat(t, [t[0]]))
+		    circle(1);
 	}
 
 ![tri_delaunay_voronoi](images/lib3x-tri_delaunay_voronoi-1.JPG)

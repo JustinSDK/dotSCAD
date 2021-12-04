@@ -20,7 +20,7 @@ Follow the steps described in [img2gray](https://github.com/JustinSDK/img2gray).
 
 ## Examples
 
-    use <hull_polyline3d.scad>;
+    use <polyline_join.scad>;
     use <bezier_curve.scad>;
     use <surface/sf_curve.scad>;
 
@@ -146,4 +146,5 @@ Follow the steps described in [img2gray](https://github.com/JustinSDK/img2gray).
 
     sf_curve(levels, curve_path, thickness, depth, invert);
 
-    #hull_polyline3d(curve_path, 5);      
+    #polyline_join(curve_path)
+	    sphere(2.5);      

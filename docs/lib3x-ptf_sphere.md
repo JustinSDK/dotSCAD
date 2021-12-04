@@ -35,13 +35,13 @@ Transforms a point inside a rectangle to a point of a sphere. It can create thin
     for(line = rows) {
         transformed = [for(p = line) ptf_sphere(size, p, radius, angle)];
         polyline_join(transformed)
-            sphere(.5);
+            sphere(.25);
     }
 
     for(line = columns) {
         transformed = [for(p = line) ptf_sphere(size, p, radius, angle)];
         polyline_join(transformed)
-            sphere(.5);
+            sphere(.25);
     }
 
 ![ptf_sphere](images/lib3x-ptf_sphere-2.JPG)

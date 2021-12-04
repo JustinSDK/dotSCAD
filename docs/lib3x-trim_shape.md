@@ -13,7 +13,7 @@ Given a tangled-edge shape. This function trims the shape to a non-tangled shape
 
 ## Examples
 
-    use <hull_polyline2d.scad>;
+    use <polyline_join.scad>;
     use <trim_shape.scad>;
     use <shape_taiwan.scad>;
     use <bijection_offset.scad>;
@@ -24,10 +24,13 @@ Given a tangled-edge shape. This function trims the shape to a non-tangled shape
     trimmed = trim_shape(offseted, 3, len(offseted) - 6);
     smoothed = midpt_smooth(trimmed, 3);
 
-    #hull_polyline2d(taiwan, .1); 
+    #polyline_join(taiwan)
+	    circle(.05); 
     %translate([25, 0, 0]) 
-        hull_polyline2d(offseted, .2);
-    hull_polyline2d(smoothed, .1); 
+	 polyline_join(offseted)
+		circle(.1);
+    polyline_join(smoothed)
+	    circle(.05); 
 
 ![trim_shape](images/lib3x-trim_shape-1.JPG)
 

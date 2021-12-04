@@ -12,7 +12,7 @@ Draws a voxel-by-voxel curve from control points. The curve is drawn only from t
 ## Examples
 
     use <voxel/vx_curve.scad>;
-    use <hull_polyline3d.scad>;
+    use <polyline_join.scad>;
 
     pts = [
         [28, 2, 1],
@@ -32,6 +32,7 @@ Draws a voxel-by-voxel curve from control points. The curve is drawn only from t
         translate(pt)
             sphere(1);
     }
-    #hull_polyline3d(pts, .1);  
+    #polyline_join(pts)
+	    sphere(.05);  
 
 ![vx_curve](images/lib3x-vx_curve-1.JPG)

@@ -13,7 +13,7 @@ Transform a point inside a rectangle to a point inside a circle. You can use it 
 
 ## Examples
 
-    use <hull_polyline3d.scad>;
+    use <polyline_join.scad>;
     use <ptf/ptf_circle.scad>;
 
     size = [10, 10];
@@ -30,12 +30,14 @@ Transform a point inside a rectangle to a point inside a circle. You can use it 
 
     for(line = rows) {
         transformed = [for(p = line) ptf_circle(size, p)];
-        hull_polyline3d(transformed, thickness = .1);
+        polyline_join(transformed)
+		    sphere(.05);
     }
 
     for(line = columns) {
         transformed = [for(p = line) ptf_circle(size, p)];
-        hull_polyline3d(transformed, thickness = .1);
+        polyline_join(transformed)
+		    sphere(.05);
     }
 
 ![ptf_circle](images/lib3x-ptf_circle-2.JPG)

@@ -13,7 +13,7 @@ Returns the 2D [Perlin noise](https://en.wikipedia.org/wiki/Perlin_noise) value 
 ## Examples
 
     use <util/rand.scad>;
-    use <hull_polyline2d.scad>;
+    use <polyline_join.scad>;
     use <surface/sf_thicken.scad>;
     use <noise/nz_perlin2.scad>;
     use <contours.scad>;
@@ -31,7 +31,8 @@ Returns the 2D [Perlin noise](https://en.wikipedia.org/wiki/Perlin_noise) value 
 
     translate([11, 0])
     for(isoline = contours(points, 0)) {
-        hull_polyline2d(isoline, width = .1);
+        polyline_join(isoline)
+		    circle(.05);
     }   
 
 ![nz_perlin2](images/lib3x-nz_perlin2-1.JPG)
