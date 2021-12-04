@@ -51,7 +51,7 @@ module polyline2d(points, width = 1, startingStyle = "CAP_SQUARE", endingStyle =
             c = cross(v1, v2);  // c > 0: ct_clk
 
             a = angle(p1, p2, p3);
-            v1a = atan2(v1[1], v1[0]);
+            v1a = atan2(v1.y, v1.x);
 
             ra = c > 0 ? (-90 + v1a) : (90 + v1a - a);
             if(joinStyle == "JOIN_ROUND") {

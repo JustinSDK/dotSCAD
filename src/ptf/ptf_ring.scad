@@ -16,4 +16,4 @@ function ptf_ring(size, point, radius, angle = 360, twist = 0) =
         a_step = angle / size.y,
         twisted = ptf_y_twist(size, point, twist)
     )
-    ptf_rotate([radius + twisted[0], 0, twisted[2]], a_step * twisted[1]);
+    ptf_rotate([radius + twisted.x, 0, twisted.z], a_step * twisted.y);

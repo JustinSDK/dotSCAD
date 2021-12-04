@@ -13,9 +13,9 @@ use <__comm__/__nearest_multiple_of_4.scad>;
 
 module rounded_cube(size, corner_r, center = false) {
     is_flt = is_num(size);
-    x = is_flt ? size : size[0];
-    y = is_flt ? size : size[1];
-    z = is_flt ? size : size[2];
+    x = is_flt ? size : size.x;
+    y = is_flt ? size : size.y;
+    z = is_flt ? size : size.z;
 
     corner_frags = __nearest_multiple_of_4(__frags(corner_r));
     edge_d = corner_r * cos(180 / corner_frags);

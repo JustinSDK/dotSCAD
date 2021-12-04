@@ -23,9 +23,9 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
     scale_step_vt = is_num(scale) ? 
         let(s =  (scale - 1) / leng_points_minus_one) [s, s, s] :
         [
-            (scale[0] - 1) / leng_points_minus_one, 
-            (scale[1] - 1) / leng_points_minus_one,
-            is_undef(scale[2]) ? 0 : (scale[2] - 1) / leng_points_minus_one
+            (scale.x - 1) / leng_points_minus_one, 
+            (scale.y - 1) / leng_points_minus_one,
+            is_undef(scale.z) ? 0 : (scale.z - 1) / leng_points_minus_one
         ]; 
 
     /* 

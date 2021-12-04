@@ -17,9 +17,9 @@ module line3d(p1, p2, diameter = 1, p1Style = "CAP_CIRCLE", p2Style = "CAP_CIRCL
     frags = __nearest_multiple_of_4(__frags(r));
     half_fa = 180 / frags;
     
-    dx = p2[0] - p1[0];
-    dy = p2[1] - p1[1];
-    dz = p2[2] - p1[2];
+    dx = p2.x - p1.x;
+    dy = p2.y - p1.y;
+    dz = p2.z - p1.z;
     
     length = sqrt(pow(dx, 2) + pow(dy, 2) + pow(dz, 2));
     ay = 90 - atan2(dz, sqrt(pow(dx, 2) + pow(dy, 2)));

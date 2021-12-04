@@ -12,10 +12,8 @@ use <ptf_rotate.scad>;
 
 function ptf_y_twist(size, point, angle) =
     let(
-        xlen = size[0],
-        ylen = size[1],
-        x_offset = xlen / 2,
-        a_step = angle / ylen,
-        x_centered = [point[0], point[1], is_undef(point[2]) ? 0 : point[2]] + [-x_offset, 0, 0]
+        x_offset = size.x / 2,
+        a_step = angle / size.y,
+        x_centered = [point.x, point.y, is_undef(point.z) ? 0 : point.z] + [-x_offset, 0, 0]
     )
-    ptf_rotate(x_centered, [0, point[1] * a_step, 0]) + [x_offset, 0, 0];
+    ptf_rotate(x_centered, [0, point.y * a_step, 0]) + [x_offset, 0, 0];

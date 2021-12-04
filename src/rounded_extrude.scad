@@ -12,8 +12,8 @@ use <__comm__/__frags.scad>;
 
 module rounded_extrude(size, round_r, angle = 90, twist = 0, convexity = 10) {
     is_flt = is_num(size);
-    x = is_flt ? size : size[0];
-    y = is_flt ? size : size[1];
+    x = is_flt ? size : size.x;
+    y = is_flt ? size : size.y;
     
     q_corner_frags = __frags(round_r) / 4;
     

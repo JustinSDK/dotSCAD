@@ -9,8 +9,8 @@
 **/
 
 module bend_extrude(size, thickness, angle, frags = 24) {
-    x = size[0];
-    y = size[1];
+    x = size.x;
+    y = size.y;
     frag_width = x / frags ;
     frag_angle = angle / frags;
     half_frag_width = 0.5 * frag_width;

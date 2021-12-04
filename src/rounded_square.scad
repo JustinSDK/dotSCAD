@@ -12,8 +12,8 @@ use <__comm__/__trapezium.scad>;
 
 module rounded_square(size, corner_r, center = false) {
     is_flt = is_num(size);
-    x = is_flt ? size : size[0];
-    y = is_flt ? size : size[1];       
+    x = is_flt ? size : size.x;
+    y = is_flt ? size : size.y;       
     
     position = center ? [0, 0] : [x / 2, y / 2];
     points = __trapezium(

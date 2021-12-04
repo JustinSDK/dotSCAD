@@ -58,7 +58,7 @@ module ellipse_extrude(semi_minor_axis, height, center = false, convexity = 10, 
         }
     }
     
-    center_offset = [0, 0, center == true ? -h / 2 : 0];
+    center_offset = [0, 0, center ? -h / 2 : 0];
     translate(center_offset) 
     extrude() 
         children();

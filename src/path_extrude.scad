@@ -24,22 +24,21 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
     module axis_angle_path_extrude() {
         twist_step_a = twist / len_path_pts;
 
-        function scale_pts(pts, s) = [
-            for(p = pts) [p[0] * s[0], p[1] * s[1], p[2] * s[2]]
+        function scale_pts(pts, s) = 
+        [
+            for(p = pts) [p.x * s.x, p.y * s.y, p.z * s.z]
         ];
         
-        function translate_pts(pts, t) = [
-            for(p = pts) [p[0] + t[0], p[1] + t[1], p[2] + t[2]]
-        ];
+        function translate_pts(pts, t) = [for(p = pts) p + t];
             
         function rotate_pts(pts, a, v) = [for(p = pts) ptf_rotate(p, a, v)];
 
         scale_step_vt = is_num(scale) ? 
             let(s =  (scale - 1) / len_path_pts_minus_one) [s, s, s] : 
             [
-                (scale[0] - 1) / len_path_pts_minus_one, 
-                (scale[1] - 1) / len_path_pts_minus_one,
-                is_undef(scale[2]) ? 0 : (scale[2] - 1) / len_path_pts_minus_one
+                (scale.x - 1) / len_path_pts_minus_one, 
+                (scale.y - 1) / len_path_pts_minus_one,
+                is_undef(scale[2]) ? 0 : (scale.z - 1) / len_path_pts_minus_one
             ];   
 
         // get rotation matrice for sections
@@ -157,10 +156,8 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
     module euler_angle_path_extrude() {
         scale_step_vt = is_num(scale) ? 
             [(scale - 1) / len_path_pts_minus_one, (scale - 1) / len_path_pts_minus_one] : 
-            [(scale[0] - 1) / len_path_pts_minus_one, (scale[1] - 1) / len_path_pts_minus_one];
+            [(scale.x - 1) / len_path_pts_minus_one, (scale.y - 1) / len_path_pts_minus_one];
 
-        scale_step_x = scale_step_vt[0];
-        scale_step_y = scale_step_vt[1];
         twist_step = twist / len_path_pts_minus_one;
 
         function section(p1, p2, i) = 
@@ -172,7 +169,7 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
             )
             [
                 for(p = sh_pts) 
-                    let(scaled_p = [p[0] * (1 + scale_step_x * i), p[1] * (1 + scale_step_y * i), p[2]])
+                    let(scaled_p = [p.x * (1 + scale_step_vt.x * i), p.y * (1 + scale_step_vt.y * i), p.z])
                     ptf_rotate(
                         ptf_rotate(
                             ptf_rotate(scaled_p, twist_step * i), [90, 0, -90]
