@@ -2,14 +2,14 @@ use <__comm__/__in_line.scad>;
 
 function _in_shape_in_line_equation(edge, pt) = 
     let(
-        x1 = edge[0][0],
-        y1 = edge[0][1],
-        x2 = edge[1][0],
-        y2 = edge[1][1],
+        x1 = edge[0].x,
+        y1 = edge[0].y,
+        x2 = edge[1].x,
+        y2 = edge[1].y,
         a = (y2 - y1) / (x2 - x1),
         b = y1 - a * x1
     )
-    (pt[1] == a * pt[0] + b);
+    (pt.y == a * pt.x + b);
 
 function _in_shape_in_any_edges(edges, pt, epsilon) = 
     let(
@@ -19,13 +19,13 @@ function _in_shape_in_any_edges(edges, pt, epsilon) =
     is_undef(maybe_last);
 
 function _in_shape_interpolate_x(y, p1, p2) = 
-    p1[1] == p2[1] ? p1[0] : (
-        p1[0] + (p2[0] - p1[0]) * (y - p1[1]) / (p2[1] - p1[1])
+    p1.y == p2.y ? p1.x : (
+        p1.x + (p2.x - p1.x) * (y - p1.y) / (p2.y - p1.y)
     );
     
 function _in_shape_does_pt_cross(pts, i, j, pt) = 
-    ((pts[i][1] > pt[1]) != (pts[j][1] > pt[1])) &&
-    (pt[0] < _in_shape_interpolate_x(pt[1], pts[i], pts[j]));
+    ((pts[i].y > pt.y) != (pts[j].y > pt.y)) &&
+    (pt.x < _in_shape_interpolate_x(pt.y, pts[i], pts[j]));
     
 
 function _in_shape_sub(shapt_pts, leng, pt, cond, i, j) =

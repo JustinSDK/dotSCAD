@@ -2,9 +2,9 @@ use <../util/lerp.scad>;
 
 function interpolated_pt(p0, p1, threshold) = 
     lerp(
-        [p0[0], p0[1], p0[2]], 
-        [p1[0], p1[1], p1[2]], 
-        (threshold - p0[2]) / (p1[2] - p0[2])
+        [p0.x, p0.y, p0.z], 
+        [p1.x, p1.y, p1.z], 
+        (threshold - p0.z) / (p1.z - p0.z)
     );
 
 /*
@@ -21,7 +21,7 @@ function interpolated_pt(p0, p1, threshold) =
 function _isolines_pn_label(pts, threshold) =
     [
         for(row = pts)
-        [for(p = row) [p[0], p[1], p[2], p[2] >= threshold]]
+        [for(p = row) [p.x, p.y, p.z, p.z >= threshold]]
     ]; 
     
 function _isolines_corner_value(cell_pts) =

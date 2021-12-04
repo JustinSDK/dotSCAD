@@ -5,8 +5,8 @@ function _bijection_inward_edge_normal(edge) =
     let(
         pt1 = edge[0],
         pt2 = edge[1],
-        dx = pt2[0] - pt1[0],
-        dy = pt2[1] - pt1[1],
+        dx = pt2.x - pt1.x,
+        dy = pt2.y - pt1.y,
         edge_leng = norm([dx, dy])
     )
     [-dy / edge_leng, dx / edge_leng];
@@ -26,8 +26,8 @@ function _bijection__bijection_offset_edges(edges, d) =
         for(edge = edges)
         let(
             ow_normal = _bijection_outward_edge_normal(edge),
-            dx = ow_normal[0] * d,
-            dy = ow_normal[1] * d
+            dx = ow_normal.x * d,
+            dy = ow_normal.y * d
         )
         _bijection_offset_edge(edge, dx, dy)
     ];
