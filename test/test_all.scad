@@ -1,7 +1,6 @@
 // 2D
 include <test_rounded_square.scad>;
 include <test_line2d.scad>;
-include <test_hull_polyline2d.scad>;
 include <test_hexagons.scad>;
 
 // 3D
@@ -9,7 +8,6 @@ include <test_rounded_cube.scad>;
 include <test_rounded_cylinder.scad>;
 include <test_crystal_ball.scad>;
 include <test_line3d.scad>;
-include <test_hull_polyline3d.scad>;
 
 // Transformation
 include <test_bend.scad>;
@@ -22,6 +20,9 @@ include <test_rails2sections.scad>;
 include <test_in_polyline.scad>;
 include <test_trim_shape.scad>;
 include <test_midpt_smooth.scad>;
+include <test_angle_between.scad>;
+include <test_contours.scad>;
+include <test_in_shape.scad>;
 
 // Path
 include <test_bezier_curve.scad>;
