@@ -1,4 +1,4 @@
-# dotSCAD 3.2 RC
+# dotSCAD 3.2
 
 > **Reduce the burden of mathematics/algorithm when playing OpenSCAD.**
 
