@@ -69,14 +69,14 @@ module random_city(rows, columns, mask) {
         halfTW = tileW / 2;
         
         translate([0, halfTW / 1.6, 2.25])
-            linear_extrude(9.9)
-                rounded_square(halfRW / 2.5, corner_r = .8, center = true, $fn = 6);
+            linear_extrude(10)
+                rounded_square(halfRW / 1.25, corner_r = .8, center = true, $fn = 6);
                 
         translate([0, halfTW / 1.6, 11.56])
         rotate([90, 0, 0])
-        linear_extrude(halfRW / 2.25, center = true)
+        linear_extrude(halfRW / 1.225, center = true)
             polygon(
-                shape_trapezium([halfRW, roadW * 0.9], 
+                shape_trapezium([halfRW / 1.25, roadW * 0.9], 
                 h = halfRW / 3,
                 corner_r = 0)
             );
@@ -169,10 +169,10 @@ module random_city(rows, columns, mask) {
             translate([0, -halfTW / 2, 1])
             shear(sz = [0, .5]){
                 translate([-halfRW, 0])
-                linear_extrude(1)
+                linear_extrude(2)
                     square([roadW, roadL]);
                 
-                linear_extrude(2)
+                linear_extrude(3)
                 difference() {
                     translate([-halfRW, 0])	
                         square([roadW, roadL]);
@@ -245,10 +245,10 @@ module random_city(rows, columns, mask) {
         
         module road() {
             translate([halfTW, halfTW, halfTW * 0.5 + 4.75]) {
-                linear_extrude(1)
+                linear_extrude(2)
                     arc(radius = halfTW, angle = [180, 270], width = roadW, $fn = 64);
                     
-                linear_extrude(2)
+                linear_extrude(3)
                     difference() {
                         arc(radius = halfTW, angle = [180, 270], width = roadW, $fn = 64);
                         arc(radius = halfTW, angle = [180, 270], width = roadW - 2, $fn = 64);
@@ -299,10 +299,10 @@ module random_city(rows, columns, mask) {
         
         module road() {
             translate([0, 0, halfTW * 0.5 + 4.75]) {
-                linear_extrude(1)
+                linear_extrude(2)
                     square([roadW, roadL], center = true);
                 
-                linear_extrude(2)
+                linear_extrude(3)
                 difference() {
                     square([roadW, roadL], center = true);
                     square([roadW - 2, roadL], center = true);
@@ -344,10 +344,10 @@ module random_city(rows, columns, mask) {
             
             module road() {
                 translate([halfTW, halfTW, halfTW * 0.5 + 4.75]) {
-                    linear_extrude(1)
+                    linear_extrude(2)
                         arc(radius = halfTW, angle = [180, 270], width = roadW, $fn = 64);
                         
-                    linear_extrude(2)
+                    linear_extrude(3)
                         difference() {
                             arc(radius = halfTW, angle = [180, 270], width = roadW, $fn = 64);
                             arc(radius = halfTW, angle = [180, 270], width = roadW - 2, $fn = 64);
@@ -394,13 +394,13 @@ module random_city(rows, columns, mask) {
             }
             
             translate([0, 0, halfTW * 0.5 + 4.75]) {
-                linear_extrude(1)
+                linear_extrude(2)
                 intersection() {
                     square(tileW, center = true);
                     road_shape();
                 }
                 
-                linear_extrude(2)
+                linear_extrude(3)
                 intersection() {
                     square(tileW, center = true);
                     difference() {
