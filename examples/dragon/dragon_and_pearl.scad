@@ -10,6 +10,7 @@ use <dragon_foot.scad>;
 
 dragon_and_perl();
 
+
 module one_segment(body_r, body_fn, one_scale_data) {
     // scales
     rotate([-90, 0, 0])
@@ -36,6 +37,57 @@ module tail() {
     tail_scales(100, 1.25, 4.5, -7, 1);
     tail_scales(110, 1.25, 3, -9, 1);
     tail_scales(120, 2.5, 2, -9, 1);   
+
+
+    tail_hair = [
+        [0, -2.5],
+        [1.5, -3.5],
+        [5.5, -4],
+        [9.5, -3],
+        [6.5, -2],
+        [4, -1],
+        [5, -1],
+        [8, 0],
+        [10, 1],
+        [14, 5],
+        [17, 10],
+        [14, 8],
+        [12, 7],
+        [9, 6],
+        [11.5, 10],
+        [13, 12],
+        [16, 14],
+        [12, 13],
+        [8, 11],
+        [8, 13],
+        [5, 9],
+        [3, 6.5],
+        [0, 5]
+    ];
+
+    rotate([-2.5, 0, 0])
+    translate([-1, .5, 5.5])
+    scale([1.1, 1, 1.3]) {
+        translate([2, 0, -3])
+        scale([2, 1, .8])
+        rotate([-90, 70, 15])
+        linear_extrude(.75, center = true)
+            polygon(tail_hair);
+
+        scale([.8, .9, .6])
+        translate([2, 0, -3])
+        scale([1.75, 1, .8])
+        rotate([-90, 70, 15])
+        linear_extrude(1.5, center = true)
+            polygon(tail_hair);
+
+        scale([.6, .7, .9])
+        translate([2, 0, -3])
+        scale([2, 1, .85])
+        rotate([-90, 70, 15])
+        linear_extrude(1, center = true)
+            polygon(tail_hair);
+    }
 }
 
 module dragon_and_perl() {
