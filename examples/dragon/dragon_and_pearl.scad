@@ -38,7 +38,6 @@ module tail() {
     tail_scales(110, 1.25, 3, -9, 1);
     tail_scales(120, 2.5, 2, -9, 1);   
 
-
     tail_hair = [
         [0, -2.5],
         [1.5, -3.5],
