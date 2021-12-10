@@ -6,7 +6,7 @@ use <sweep.scad>;
 use <shape_circle.scad>;
 use <bezier_curve.scad>;
 use <path_scaling_sections.scad>;
-use <noise/nz_perlin2s.scad>;
+use <experimental/worley_sphere.scad>;
 use <dragon_head.scad>;
 use <dragon_scales.scad>;
 
@@ -37,11 +37,73 @@ module one_segment(body_r, body_fn, one_scale_data) {
 
 module tail() {
     $fn = 4;
-    scale([1,0.85, 1]) union() {
-        tail_scales(75, 2.5, 4.25, -4, 1.25);
-        tail_scales(100, 1.25, 4.5, -7, 1);
-        tail_scales(110, 1.25, 3, -9, 1);
-        tail_scales(120, 2.5, 2, -9, 1);   
+    tail_scales(75, 2.5, 4.25, -4, 1.25);
+    tail_scales(100, 1.25, 4.5, -7, 1);
+    tail_scales(110, 1.25, 3, -9, 1);
+    tail_scales(120, 2.5, 2, -9, 1);   
+
+    translate([0, -.5, -5])
+    rotate([-5, -5, 5])
+    scale([.9, 1, .55])
+        hair();
+
+    module hair() {
+        tail_hair = [
+            [3, -1],
+            [5, -1.5],
+            [8, -1],
+            [9.5, 0],
+            [8, -0.4],
+            [6.5, -0.3],
+            [8, 0],
+            [10, 1],
+            [14, 5],
+            [17, 10],
+            [14, 8],
+            [12, 7],
+            [9, 6],
+            [11.5, 10],
+            [13, 12],
+            [16, 14],
+            [12, 13],
+            [8, 11],
+            [10, 14],
+            [5, 11],
+            [3, 8.5],
+            [-1, 3]
+        ];
+
+        rotate([-2.5, 0, 0])
+        translate([-1, .5, 5.5])
+        scale([1.1, 1, 1.3]) {
+            translate([2, 0, -3])
+            scale([2, 1, .8])
+            rotate([-90, 70, 15])
+            linear_extrude(.75, center = true)
+                polygon(tail_hair);
+
+            scale([.8, .9, .6])
+            translate([2, 0, -5])
+            scale([1.75, 1, .8])
+            rotate([-90, 70, 15]) {
+                linear_extrude(1.5, scale = 0.5)
+                    polygon(tail_hair);
+                mirror([0, 0, 1])
+                linear_extrude(1.5, scale = 0.5)
+                    polygon(tail_hair);
+            }
+
+            scale([.6, .7, .9])
+            translate([2, 0, -4])
+            scale([2, 1, .85])
+            rotate([-90, 70, 15]) {
+                linear_extrude(3.5, scale = 0.5)
+                    polygon(tail_hair);
+                mirror([0, 0, 1])
+                linear_extrude(3.5, scale = 0.5)
+                    polygon(tail_hair);
+            }
+        }    
     }
 }
 
@@ -76,10 +138,10 @@ module spiral_dragon() {
     along_with(path_pts, scale = [0.575, 0.575, 0.85], method = "EULER_ANGLE")    
         one_segment(body_r, body_fn, one_body_scale_data);
     
-    translate([27.25, 2.75, -.5])
+    translate([27.25, 3, -.5])
     rotate([-88, 0, 0])
-    rotate([0, 0, 10])
-    scale([.6, .8, 1.4])
+    rotate([0, 0, 90])
+    scale([.65, .8, 1.4])
         tail();
 
     translate([17.5, 0, 63]) 
@@ -88,52 +150,31 @@ module spiral_dragon() {
         dragon_head();
 }
 
-module flame_mountain(beginning_radius, fn, amplitude,curve_step, smoothness) {
-	seed = 1000;
-	section = shape_circle(radius = beginning_radius, $fn = fn);
-	pt = [beginning_radius, 0, 0];
+module mountain() {
+    radius = 20;
+    detail = 10;
+    amplitude = .1;
+    dist = "border"; 
 
-	edge_path = bezier_curve(curve_step, [
-		pt,
-		pt + [-6, 0, 20],
-		pt + [-7, 0, 50],
-		pt + [-9, 0, 60],
-		pt + [-26, 0, 72],
-		pt * 0.9 + [-23.25, 0, 85]
-	]);
+    difference() {
+        union() {
+            translate([0, 0, 12])
+            scale([1.05, .85, 2.35])	
+                worley_sphere(radius, detail, amplitude, dist, seed = 5);
 
+            translate([0, 0, -15])
+            scale([1.05, 1.05, 1])
+                worley_sphere(radius * 1.2, detail, amplitude, dist, seed = 1);
+        }
 
-	sections = path_scaling_sections(section, edge_path);
-
-    noise = function(pts, seed) nz_perlin2s(pts, seed);
-
-	noisy = [
-		for(section = sections)
-		let(nz = noise(section / smoothness, seed))
-		[
-			for(i = [0:len(nz) - 1])
-			let(
-				p = section[i],
-				p2d = [p[0], p[1]],
-				noisyP = p2d + p2d / norm(p2d) * nz[i] * amplitude
-			)
-			[noisyP[0], noisyP[1], p[2]]
-		]
-	];
-
-
-	sweep(noisy);
+        translate([0, 0, -102])
+        linear_extrude(100)
+            square(100, center = true);
+    }
 }
 
 rotate(180) {
     translate([0, 0, 7]) 
         spiral_dragon($fn = 12);
-    rotate(95)
-        flame_mountain(
-            beginning_radius = 26, 
-            fn = 18, 
-            amplitude = 7, 
-            curve_step = 0.04, 
-            smoothness = 10
-        );
+    mountain();
 }
