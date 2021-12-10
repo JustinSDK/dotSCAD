@@ -170,7 +170,7 @@ module spiral_dragon2() {
         foot();
 
     translate([-15, -13.5, 12])
-    rotate([-70, -45, 145])
+    rotate([-69, -45, 145])
     mirror([1, 0, 0])
     scale(.65)
         foot();
@@ -188,8 +188,9 @@ module mountain() {
             scale([.925, .85, 2.5])	
                 worley_sphere(radius, detail, amplitude, dist, seed = 5);
 
-            translate([2, 0, -15])
+            translate([4, -4, -15])
             scale([1.04, 1.04, 1])
+            rotate(10)
                 worley_sphere(radius * 1.2, detail, amplitude, dist, seed = 1);
         }
 
