@@ -139,10 +139,10 @@ module spiral_dragon2() {
     along_with(path_pts, twist = 45, scale = [0.575, 0.575, 0.85], method = "EULER_ANGLE")    
         one_segment(body_r, body_fn, one_body_scale_data);
     
-    translate([27.25, 3, -.5])
-    rotate([-88, 0, 0])
-    rotate([0, 0, 90])
-    scale([.65, .8, 1.4])
+    translate([27.25, 4, 1])
+    rotate([-78, 0, 0])
+    rotate([0, 0, 125])
+    scale([.5, .725, 1.5])
         tail();
 
     translate([17.5, 0, 63]) 
