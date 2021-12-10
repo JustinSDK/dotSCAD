@@ -45,23 +45,94 @@ module hilbert_dragon() {
      
     one_body_scale_data = one_body_scale(body_r, body_fn, scale_fn, scale_tilt_a);
      
-    along_with(dragon_body_path, scale = 0.6)    
+    along_with(dragon_body_path, scale = [0.425, 0.6, 0.425])    
     rotate([90, 0, 0]) 
     scale(0.035)  
         one_segment(body_r, body_fn, one_body_scale_data);
     
     // tail
-    translate([0, 0, -0.62])
-    rotate(-5)
-    scale(0.0285)
-    mirror([0, 0, 1]) 
-        tail_scales(120, 2.5, 2, -9, 1, $fn = 4);
+    translate([0, -.012, -.54])
+    scale([0.017, 0.017, 0.025])
+    rotate([0, 0, -12])
+    mirror([0, 0, .2]) 
+        tail();
 
     translate([0, 0, -2.5])        
     scale(0.035)         
         dragon_head();     
 }
    
+module tail() {
+    $fn = 4;
+    tail_scales(75, 2.5, 4.25, -4, 1.25);
+    tail_scales(100, 1.25, 4.5, -7, 1);
+    tail_scales(110, 1.25, 3, -9, 1);
+    tail_scales(120, 2.5, 2, -9, 1);   
+ 
+    translate([0, 0, -1.6])
+    rotate([0, -25, 0])
+    scale([1.3, 1.2, .9])
+        hair();
+
+    module hair() {
+        tail_hair = [
+            [3, -1],
+            [5, -1.5],
+            [8, -1],
+            [9.5, 0],
+            [8, -0.4],
+            [6.5, -0.3],
+            [8, 0],
+            [12, 1.5],
+            [15, 4],
+            [17, 10],
+            [14, 8],
+            [12, 7],
+            [9, 6],
+            [11.5, 10],
+            [13, 12],
+            [16, 14],
+            [12, 13],
+            [8, 11],
+            [9, 13],
+            [4, 9],
+            [2, 8],
+            [-1, 3]
+        ];
+
+        rotate([-2.5, 0, 0])
+        translate([-1, 1, 5.5])
+        scale([.8, 1, 1.3]) {
+            translate([2, 0, -3])
+            scale([2, 1, .8])
+            rotate([-90, 70, 15])
+            linear_extrude(.75, center = true)
+                polygon(tail_hair);
+
+            scale([.85, .9, .6])
+            translate([2, 0, -5])
+            scale([1.75, 1, .8])
+            rotate([-90, 70, 15]) {
+                linear_extrude(1.5, scale = 0.5)
+                    polygon(tail_hair);
+                mirror([0, 0, 1])
+                linear_extrude(1.5, scale = 0.5)
+                    polygon(tail_hair);
+            }
+
+            scale([.6, .7, .9])
+            translate([2, 0, -4])
+            scale([2, 1, .85])
+            rotate([-90, 65, 15]) {
+                linear_extrude(3.5, scale = 0.5)
+                    polygon(tail_hair);
+                mirror([0, 0, 1])
+                linear_extrude(3.5, scale = 0.5)
+                    polygon(tail_hair);
+            }
+        }    
+    }
+}
 
 function hilbert_curve() = 
     let(
