@@ -163,7 +163,7 @@ module mountain() {
                 worley_sphere(radius, detail, amplitude, dist, seed = 5);
 
             translate([4, -4, -15])
-            scale([1.04, 1.04, 1])
+            scale([1.04, 1.04, .9])
             rotate(10)
                 worley_sphere(radius * 1.2, detail, amplitude, dist, seed = 1);
         }
