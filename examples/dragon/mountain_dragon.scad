@@ -108,7 +108,7 @@ module tail() {
     }
 }
 
-module spiral_dragon2() {
+module mountain_dragon() {
     path_pts = helix(
         radius = [r1, r2], 
         levels = levels, 
@@ -202,7 +202,7 @@ module mountain() {
 
 rotate(180) {
     translate([0, 0, 7]) 
-        spiral_dragon2($fn = 12);
+        mountain_dragon($fn = 12);
     rotate(57)
         mountain();
 }
