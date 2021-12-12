@@ -23,7 +23,7 @@ module one_segment(body_r, body_fn, one_scale_data) {
 
     // dorsal fin
     translate([0, 3, -3]) 
-    rotate([-75, 0, 0]) 
+    rotate([-82.5, 5, 30]) 
     shear(sy = [0, 3])
     linear_extrude(2.25, scale = 0.2)
         square([2, 12], center = true);            
