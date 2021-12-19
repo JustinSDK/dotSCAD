@@ -27,7 +27,7 @@ module ripples() {
 				let(
 					i = size.x * y + x,
 					p = points[i],
-					n = 2.5 * (nz_perlin3(cells[i][2], p.x / detail2, p.y / detail2, 1) + 1)
+					n = 2.5 * nz_perlin3(cells[i][2], p.x / detail2, p.y / detail2, 1)
 				)
 				[p.x, p.y, n]
 			]
