@@ -4,6 +4,7 @@ use <surface/sf_thicken.scad>;
 
 size = [100, 100];
 grid_w = 5;
+amplitude = 3;
 detail = 5;
 thickness = 0.5;
 dist = "euclidean"; // [euclidean, manhattan, chebyshev, border] 
@@ -27,7 +28,7 @@ module ripples() {
 				let(
 					i = size.x * y + x,
 					p = points[i],
-					n = 2.5 * nz_perlin3(cells[i][2], p.x / detail2, p.y / detail2, 1)
+					n = amplitude * nz_perlin3(cells[i][2], p.x / detail2, p.y / detail2, 1)
 				)
 				[p.x, p.y, n]
 			]
