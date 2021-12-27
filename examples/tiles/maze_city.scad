@@ -21,10 +21,7 @@ module maze_city(rows, columns, skyscraper_prs) {
     );
     tile_width = 30;
     for(tile = tiles) {
-        x = tile[0];
-        y = tile[1];
-        i = tile[2];
-        translate([x, y] * tile_width)
-            city_tile(i);
+        translate([tile.x, tile.y] * tile_width)
+            city_tile(tile[2], tile_width);
     }
 }

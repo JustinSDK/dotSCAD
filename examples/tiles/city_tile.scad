@@ -5,7 +5,7 @@ use <shape_trapezium.scad>;
 use <arc.scad>;
 use <util/rand.scad>;
 
-module city_tile(i, tile_width = 30) {
+module city_tile(i, tile_width) {
     select(i) {
         tile00();
         tile01();
