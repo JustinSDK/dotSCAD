@@ -1,5 +1,4 @@
 use <curve.scad>;
-use <polyline2d.scad>;
 use <ptf/ptf_rotate.scad>;
 use <util/dedup.scad>;
 
