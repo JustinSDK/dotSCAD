@@ -15,7 +15,7 @@ detail = 1;
 head_angles = [5, 0, 20];
 
 owl(detail, head_angles);
-rock();
+rock(detail);
 
 module owl(detail, head_angles) {
 	n = (detail + 1) * 5;
@@ -246,7 +246,7 @@ module owl(detail, head_angles) {
 	    claw();
 }
 
-module rock() {
+module rock(detail) {
     radius = 16.5;
     detail = detail;
     amplitude = .25;
