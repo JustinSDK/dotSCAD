@@ -252,12 +252,18 @@ module rock() {
     amplitude = .25;
     dist = "border"; 
 	
-	translate([1, -29, -6.9])
-	scale([1, 1.2, 1])
-	rotate([35, 3, 0])
-    translate([0, 0, 12])
-	scale([3, 1, 1])	
-		worley_sphere(radius, detail, amplitude, dist, seed = 4);
+	difference() {
+		translate([1, -29, -6.9])
+		scale([1, 1.2, 1])
+		rotate([35, 3, 0])
+		translate([0, 0, 12])
+		scale([3, 1, 1])	
+			worley_sphere(radius, detail, amplitude, dist, seed = 4);
+
+		translate([0, -15, -30]) 
+		linear_extrude(30)
+			square(150, center = true);
+	}
 }
 
 
