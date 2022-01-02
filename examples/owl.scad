@@ -86,11 +86,11 @@ module owl(detail, head_angles) {
 			eyebrow();
 
 		// beak
-		translate([0, -72.25, 80])
-		scale([.85, 1, 3.5])
+		translate([0, -71.7, 80])
+		shear(sz = [0, -.3])
+		scale([.85, 1.1, 3.5])
 		rotate([25, 0, 0])
 			octahedron(2.5, detail);
-
 	}
 
 	module body() {
