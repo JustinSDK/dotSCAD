@@ -23,14 +23,14 @@ module owl(detail, head_angles) {
 
 	module head() {
 		module eye_plane_mask() {
-			translate([10, -66, 82.5])
+			translate([10, -17, 0])
 			rotate([90, 0, 30])
 			linear_extrude(10)
 				circle(12);
 		}
 
 		module eye_ring() {
-			translate([10, -65, 82.5])
+			translate([10, -16, 0])
 			rotate([270, 0, 30])
 			scale([1, 1, 2])
 			rotate(180 / $fn)
@@ -40,23 +40,22 @@ module owl(detail, head_angles) {
 		}
 
 		module eye_hole_mask() {
-			translate([10, -66, 82.5])
+			translate([10, -17, 0])
 			rotate([270, 0, 30])
 			rotate(180 / $fn)
 			translate([0, 0, -1])
 			linear_extrude(3, scale = .5)
-			circle(10);
+			    circle(10);
 		}
 
 		module eye_ball() {
-			translate([8, -62, 82.5])
+			translate([8, -13, 0])
 				icosahedron(4, n / 5 - 1);
 		}
 
 		difference() {
 			union() {
 				difference() {
-					translate([0, -49, 82.5])
 					rotate([15, 0, 0])
 					shear(sy = [0, -.05])
 					scale([25, 25, 25])
@@ -80,22 +79,21 @@ module owl(detail, head_angles) {
 		eye_ball();
 		mirror([1, 0, 0])
 			eye_ball();
-			
+		
 		eyebrow();
 		mirror([1, 0, 0])
 			eyebrow();
-
+		
 		// beak
-		translate([0, -72.25, 80])
+		translate([0, -23.25, -2.5])
 		scale([.85, 1, 3.5])
 		rotate([25, 0, 0])
 			octahedron(2.5, detail);
-
 	}
 
 	module body() {
 		// back
-		translate([0, 8, 22])
+		translate([0, 57, 22])
 		rotate([68, 0, 0])
 		shear(sy = [0, .3])
 		scale([11, 10, 15])
@@ -104,13 +102,13 @@ module owl(detail, head_angles) {
 
 
 		// belly
-		translate([0, -35, 22])
+		translate([0, 14, 22])
 		rotate([5, 0, 0])
 		scale([10, 9, 12])
 		scale(10 / n)
 			polar_zonohedra(n);
 			
-		translate([0, 7.5, 15])
+		translate([0, 56.5, 15])
 		rotate([12, 0, 0])
 		shear(sy = [0, -1])
 		scale([9, 9, 10])
@@ -118,7 +116,7 @@ module owl(detail, head_angles) {
 			polar_zonohedra(n);
 		
 		// tail
-		translate([0, 20, 9])
+		translate([0, 69, 9])
 		rotate([12, 0, 0])
 		shear(sz = [0, .1])
 		shear(sy = [0, -1.1])
@@ -126,7 +124,7 @@ module owl(detail, head_angles) {
 		scale(10 / n)
 			polar_zonohedra(n);
 
-		translate([4, 20, 11])
+		translate([4, 69, 11])
 		rotate([12, 0, 2])
 		shear(sz = [0, .1])
 		shear(sy = [0, -1.1])
@@ -136,7 +134,7 @@ module owl(detail, head_angles) {
 	}
 
 	module wing() {
-		translate([2, 12, 25])
+		translate([2, 61, 25])
 		rotate([68, 5, 0])
 		shear(sz = [0, .3])
 		shear(sy = [0, .2])
@@ -147,34 +145,10 @@ module owl(detail, head_angles) {
 
 	module eyebrow() {
 		t_step = 0.2 / detail;
-		points = bezier_curve(t_step, [
-			[0, -74, 83], 
-			[5, -75, 97], 
-			[15, -70, 90], 
-			[25, -55, 105]
-		]);
-			
-		points2 = bezier_curve(t_step, [
-			[0, -74, 83], 
-			[5, -75, 95], 
-			[20, -65, 82], 
-			[25, -55, 105]
-		]);
-
-		points3 = bezier_curve(t_step, [
-			[0, -74, 83], 
-			[5, -60, 95], 
-			[15, -65, 92], 
-			[25, -55, 105]
-		]);
-
-			
-		points4 = bezier_curve(t_step, [
-			[0, -74, 83], 
-			[-5, -72, 100], 
-			[15, -70, 97], 
-			[25, -55, 105]
-		]);
+		points = bezier_curve(t_step, [[0, -25, 0.5], [5, -26, 14.5], [15, -21, 7.5], [25, -6, 22.5]]);
+		points2 = bezier_curve(t_step, [[0, -25, 0.5], [5, -26, 12.5], [20, -16, -0.5], [25, -6, 22.5]]);
+		points3 = bezier_curve(t_step, [[0, -25, 0.5], [5, -11, 12.5], [15, -16, 9.5], [25, -6, 22.5]]);
+		points4 = bezier_curve(t_step, [[0, -25, 0.5], [-5, -23, 17.5], [15, -21, 14.5], [25, -6, 22.5]]);
 
 		rails = [
 			points4, points3, points2, points
@@ -212,9 +186,10 @@ module owl(detail, head_angles) {
 		claw_path3 = [for(p = claw_path_basic) ptf_rotate(p * 1.1, a * 6)];
 		claw_path4 = [for(p = claw_path_basic) ptf_rotate(p, a * 12)];
 
-		rotate(-15)
+		translate([10, 19, 18])
+		scale([1.2, 1.2, 1.5])
+		rotate([10, 0, 180])
 		scale([1.15, 1.3, 1]) 
-		rotate(15)
 		intersection() {
 			rotate_extrude($fn = 7)
 				polygon(pts);
@@ -223,10 +198,8 @@ module owl(detail, head_angles) {
 		}
 	}
 
-	translate([0, -45, 0])
-	translate([0, 0, 80])
+	translate([0, 0, 82.5])
 	rotate(head_angles)
-	translate([0, 45, -80])
 		head(); 	
 		
 	body();
@@ -235,15 +208,9 @@ module owl(detail, head_angles) {
 	mirror([1, 0, 0])
 		wing();
 
-	translate([10, -30, 18])
-	scale([1.2, 1.2, 1.5])
-	rotate([10, 0, 180])
-	    claw();
-
-	translate([-10, -30, 18])
-	scale([1.2, 1.2, 1.5])
-	rotate([10, 0, 150])
-	    claw();
+	claw();
+    mirror([1, 0, 0])
+		claw();
 }
 
 module rock(detail) {
@@ -253,14 +220,14 @@ module rock(detail) {
     dist = "border"; 
 	
 	difference() {
-		translate([1, -29, -6.9])
+		translate([1, 20, -6.9])
 		scale([1, 1.2, 1])
 		rotate([35, 3, 0])
 		translate([0, 0, 12])
 		scale([3, 1, 1])	
 			worley_sphere(radius, detail, amplitude, dist, seed = 4);
 
-		translate([0, -15, -30]) 
+		translate([0, 34, -30]) 
 		linear_extrude(30)
 			square(150, center = true);
 	}
