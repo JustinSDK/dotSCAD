@@ -17,6 +17,16 @@ head_angles = [5, 0, 20];
 owl(detail, head_angles);
 rock(detail);
 
+// translate([100, 0, 0]) {
+// 	owl(detail, [-15, 0, -20]);
+// 	rock(detail);
+// }
+
+// translate([-100, 0, 0]) {
+// 	owl(detail, [-35, 0, 30]);
+// 	rock(detail);
+// }
+
 module owl(detail, head_angles) {
 	n = (detail + 1) * 5;
 	$fn = n;
