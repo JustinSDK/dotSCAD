@@ -5,7 +5,7 @@ function vrn_sphere(points) =
     let(
 	    r = norm(points[0]),
 	    plane_pts = [for(p = points) stereographic_proj_to_plane(p / r)],
-		inifinity = [4.5e8, 0],
+		inifinity = [4e8, 0],
 		vrn2_cells = vrn2_cells_from(concat(plane_pts, [inifinity]))
 	)
     [
