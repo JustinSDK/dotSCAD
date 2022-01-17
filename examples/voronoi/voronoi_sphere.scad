@@ -12,7 +12,7 @@ pts = [
 	for(i = [0:n]) 
 	let(
 		theta = rands(0, 360, 1)[0],
-		phi = rands(5, 175, 1)[0],
+		phi = rands(15, 165, 1)[0],
 		rs = radius * sin(phi)
 	)
 	[
