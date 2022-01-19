@@ -1,28 +1,17 @@
 use <voronoi/vrn_sphere.scad>;
 use <polyline_join.scad>;
-use <experimental/convex_center_p.scad>;
 use <sweep.scad>;
 use <fibonacci_lattice.scad>;
+use <experimental/convex_center_p.scad>;
+use <experimental/rand_pts_sphere.scad>;
 
 n = 60;
 radius = 5;
 
 // pts = fibonacci_lattice(n, radius);
-pts = [
-	for(i = [0:n]) 
-	let(
-		theta = rands(0, 360, 1)[0],
-		phi = rands(15, 165, 1)[0],
-		rs = radius * sin(phi)
-	)
-	[
-		rs * cos(theta), 
-		rs * sin(theta), 
-		radius * cos(phi)
-	]
-];
+pts = rand_pts_sphere(radius, n);
 	
-region_hollow = false;
+region_hollow = true;
 region_offset = 0.2;
 region_height = 1;
 
@@ -72,6 +61,6 @@ module voronoi_sphere(pts, region_hollow, region_offset, region_height) {
 		
 
 		polyline_join(concat(cell, [cell[0]]))
-			sphere(region_offset / 2, $fn = 4);
+			sphere(region_offset / 2, $fn = 5);
 	}
 }
