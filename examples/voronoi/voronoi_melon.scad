@@ -3,8 +3,8 @@ use <polyline_join.scad>;
 use <experimental/rand_pts_sphere.scad>;
 use <experimental/r_union3.scad>;
 
-eyelets = 500;
-radius = 5;
+eyelets = 800;
+radius = 50;
 
 voronoi_melon(eyelets, radius);
 
@@ -22,7 +22,7 @@ module voronoi_melon(eyelets, radius) {
 	sphere(radius, $fn = 96);
 	
 	color("DarkOliveGreen") {
-		r_union3(.6) {
+		r_union3(radius / 8.4) {
 			scale(.99)
 				sphere(radius, $fn = 24);
 			
