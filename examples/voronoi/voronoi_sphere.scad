@@ -2,7 +2,7 @@ use <voronoi/vrn_sphere.scad>;
 use <polyline_join.scad>;
 use <sweep.scad>;
 use <fibonacci_lattice.scad>;
-use <experimental/convex_center_p.scad>;
+use <experimental/convex_centroid.scad>;
 use <experimental/rand_pts_sphere.scad>;
 
 n = 60;
@@ -23,7 +23,7 @@ module voronoi_sphere(pts, region_hollow, region_offset, region_height) {
 
 	for(i = [0:len(cells) - 1]) {
 		cell = cells[i];
-		cell_cp = convex_center_p(cell);
+		cell_cp = convex_centroid(cell);
 		cell_inner = [
 			for(p = cell)
 			let(
@@ -44,7 +44,7 @@ module voronoi_sphere(pts, region_hollow, region_offset, region_height) {
 		];
 		
 		if(region_hollow) {
-			cell2_cp = convex_center_p(cell2);
+			cell2_cp = convex_centroid(cell2);
 			cell2_inner = [
 				for(p = cell2)
 				let(
