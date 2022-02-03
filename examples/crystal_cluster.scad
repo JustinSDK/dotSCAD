@@ -26,8 +26,8 @@ module crystal_cluster(base_r, crystals) {
 			concat(
 				[for(p = bottom_shape) [p.x, p.y, 0]], 
 				[for(p = neck_shape) [p.x, p.y, rand(h * 0.7, h * 0.75)]],
-				[[rand(0, r * 0.1), rand(0, r * 0.1), rand(h * 0.95, h * 1.05)]],
-				[for(i = [0:2]) if(rand(0, 1) > 0.5) [rand(0, r * 0.15), rand(0, r * 0.15), rand(h * 0.95, h * 1.05)]]
+				[[rand(0, r * 0.1), rand(0, r * 0.1), rand(h * 0.8, h)]],
+				[for(i = [0:2]) if(rand(0, 1) > 0.5) [rand(0, r * 0.15), rand(0, r * 0.15), rand(h * 0.9, h * 1.05)]]
 			)
 		);
 	}
