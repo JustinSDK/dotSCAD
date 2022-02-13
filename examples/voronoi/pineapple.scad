@@ -20,7 +20,7 @@ module pineapple(eye_number, leaf_step, leaf_number, leaf_fn) {
     scale(50) {
         mirror([0, 0, 1])
         scale([1, 1, 1.3])
-            union() {
+        union() {
             for(i = [0:real_eye_number - 1]) {
                 polyhedron_hull(concat(regions[i], [pts[i] * 1.075]));
             }
