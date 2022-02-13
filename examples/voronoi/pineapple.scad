@@ -2,15 +2,62 @@ use <fibonacci_lattice.scad>;
 use <shape_superformula.scad>;   
 use <ring_extrude.scad>;
 use <polyhedron_hull.scad>;
+use <curve.scad>;
+use <polyline_join.scad>;
 use <voronoi/vrn_sphere.scad>;
 use <util/rand.scad>;
+
+model = "BOTH"; // ["PINAPPLE", "RUYI", "BOTH"]
 
 eye_number = 150;
 leaf_number = 7;
 leaf_step = 0.5;
 leaf_fn = 36;
 
-pineapple(eye_number, leaf_step, leaf_number, leaf_fn);
+ruyi_step = 0.1;
+ruyi_fn = 12;
+
+if(model == "PINAPPLE") {
+    pineapple(eye_number, leaf_step, leaf_number, leaf_fn);
+}
+else if(model == "RUYI") {
+    ruyi(ruyi_step, ruyi_fn);
+}
+else {
+    translate([-90, 0, -76])
+    rotate([90, 0, 0])
+        ruyi(ruyi_step, ruyi_fn);
+        
+    rotate([0, -15, 0])
+        pineapple(eye_number, leaf_step, leaf_number, leaf_fn);
+}
+
+module ruyi(ruyi_step, ruyi_fn) { 
+    pts = [
+        [17, 20],
+        [17, 15],
+        [-10, 8],
+        [-5, 0],
+        [14, 20],
+        [3, 24],
+        [-5, 10],
+        [10, 0],
+        [21, 7],
+        [14, 10],
+        [12, 5],
+        [30, 0],
+        [55, 5],
+        [80, 0],
+        [85, 15]
+    ];
+
+    points = curve(ruyi_step, pts, 0);
+
+    scale([2.4, 3.5, 3.5])
+    linear_extrude(12.5, center = true)
+    polyline_join(points)
+        circle(1, $fn = ruyi_fn);   
+}
 
 module pineapple(eye_number, leaf_step, leaf_number, leaf_fn) {
     real_eye_number = eye_number + rand(0, 10);   
