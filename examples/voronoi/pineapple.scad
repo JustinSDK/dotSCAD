@@ -16,13 +16,13 @@ module pineapple(eye_number, leaf_step, leaf_number, leaf_fn) {
     real_eye_number = eye_number + rand(0, 10);   
     pts = fibonacci_lattice(real_eye_number, 1);
     regions = vrn_sphere(pts);
-    
+
     scale(50) {
         mirror([0, 0, 1])
         scale([1, 1, 1.3])
         union() {
             for(i = [0:real_eye_number - 1]) {
-                polyhedron_hull(concat(regions[i], [pts[i] * 1.075]));
+                polyhedron_hull(concat(regions[i], [pts[i] * rand(1.05, 1.075)]));
             }
             sphere(1.0015, $fn = 96);
         }
