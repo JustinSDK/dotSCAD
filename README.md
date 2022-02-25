@@ -90,7 +90,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
  Signature | Description
 --|--
 [**angle_between**(vt1, vt2)](https://openhome.cc/eGossip/OpenSCAD/lib3x-angle_between.html) | return the angle between two vectors.
-[**bezier_smooth**(path_pts, round_d[, t_step, closed, angle_threshold])](https://openhome.cc/eGossip/OpenSCAD/lib3x-bezier_smooth.html) | use bazier curves to smooth a path.
+[**bezier_smooth**(path_pts, round_d[, t_step, closed, angle_threshold])](https://openhome.cc/eGossip/OpenSCAD/lib3x-bezier_smooth.html) | use bezier curves to smooth a path.
 [**cross_sections**(shape_pts, path_pts, angles[, twist, scale])](https://openhome.cc/eGossip/OpenSCAD/lib3x-cross_sections.html) | given a 2D shape, points and angles along the path, this function returns all cross-sections.
 [**in_polyline**(line_pts, pt[, epsilon])](https://openhome.cc/eGossip/OpenSCAD/lib3x-in_polyline.html) | check whether a point is on a line.
 [**lines_intersection**(line1, line2[, ext, epsilon])](https://openhome.cc/eGossip/OpenSCAD/lib3x-lines_intersection.html) | find the intersection of two line segments. Return `[]` if lines don't intersect.
