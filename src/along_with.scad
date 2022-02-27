@@ -78,7 +78,7 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
             curr_matrix = rot_matrice[i],
             prev_matrix = matrice[len(matrice) - 1]
         )
-        concat(matrice, [curr_matrix * prev_matrix]);
+        [each matrice, curr_matrix * prev_matrix];
 
     // align modules
 
@@ -123,10 +123,10 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
            end_i = children == 1 ? leng_points_minus_one : children - 1,
            angs = _euler_angle_path_angles(pts, end_i)
         )
-       concat(
-           [[0, -angs[0][0], angs[0][1]]], 
-           [for(a = angs) [0, -a[0], a[1]]]
-       );
+        [
+            [0, -angs[0][0], angs[0][1]], 
+            each[for(a = angs) [0, -a[0], a[1]]]
+        ];
 
     module euler_angle_align(i, angs) {
         translate(pts[i]) 
