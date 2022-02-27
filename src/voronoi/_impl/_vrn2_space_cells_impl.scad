@@ -20,16 +20,16 @@ function cell_pt(fcord, grid_w, seed, x, y, gw, gh) =
 
 // 21-nearest-neighbor 
 function _neighbors(fcord, seed, grid_w, gw, gh) = 
+    let(range = [-1:1])
     concat(
         [
-            for(y = [-1:1])
-                for(x = [-1:1])
+            for(y = range, x = range)
                     cell_pt(fcord, grid_w, seed, x, y, gw, gh)
         ],
-        [for(x = [-1:1]) cell_pt(fcord, grid_w, seed, x, -2, gw, gh)],
-        [for(x = [-1:1]) cell_pt(fcord, grid_w, seed, x, 2, gw, gh)],
-        [for(y = [-1:1]) cell_pt(fcord, grid_w, seed, -2, y, gw, gh)],
-        [for(y = [-1:1]) cell_pt(fcord, grid_w, seed, 2, y, gw, gh)]
+        [for(x = range) cell_pt(fcord, grid_w, seed, x, -2, gw, gh)],
+        [for(x = range) cell_pt(fcord, grid_w, seed, x, 2, gw, gh)],
+        [for(y = range) cell_pt(fcord, grid_w, seed, -2, y, gw, gh)],
+        [for(y = range) cell_pt(fcord, grid_w, seed, 2, y, gw, gh)]
     );
 
 function _cells_lt_before_intersection(shape, size, points, pt, half_region_size) =

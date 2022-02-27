@@ -11,7 +11,7 @@ function _convex_hull_sort_by_xy(lt) =
             before = [for(j = 1; j < leng; j = j + 1) if(_convex_hull_lt_than_by_xy(lt[j], pivot)) lt[j]],
             after =  [for(j = 1; j < leng; j = j + 1) if(!_convex_hull_lt_than_by_xy(lt[j], pivot)) lt[j]]
         )
-        concat(_convex_hull_sort_by_xy(before), [pivot], _convex_hull_sort_by_xy(after));
+        [each _convex_hull_sort_by_xy(before), pivot, each _convex_hull_sort_by_xy(after)];
 
 // oa->ob ct_clk : greater than 0
 function _convex_hull_impl_dir(o, a, b) =
@@ -28,7 +28,7 @@ function _convex_hull_lower_chain(points, leng, chain, m, i) =
         _convex_hull_lower_chain(
             points,
             leng,
-            concat(slice(chain, 0, current_m), [points[i]]),
+            [each slice(chain, 0, current_m), points[i]],
             current_m + 1,
             i + 1
         );
@@ -44,7 +44,7 @@ function _convex_hull_upper_chain(points, chain, m, t, i) =
         )
         _convex_hull_upper_chain(
             points,
-            concat(slice(chain, 0, current_m), [points[i]]),
+            [each slice(chain, 0, current_m), points[i]],
             current_m + 1,
             t,
             i - 1

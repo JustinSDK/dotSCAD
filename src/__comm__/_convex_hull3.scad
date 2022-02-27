@@ -13,7 +13,7 @@ function _convex_hull_sort_by_xyz(pts) =
             before = [for(j = 1; j < leng; j = j + 1) if(_cmp(pts[j], pivot)) pts[j]],
             after =  [for(j = 1; j < leng; j = j + 1) if(!_cmp(pts[j], pivot)) pts[j]]
         )
-        concat(_convex_hull_sort_by_xyz(before), [pivot], _convex_hull_sort_by_xyz(after));
+        [each _convex_hull_sort_by_xyz(before), pivot, each _convex_hull_sort_by_xyz(after)];
 
 function normal(pts, f) = cross(pts[f[1]] - pts[f[0]], pts[f[2]] - pts[f[0]]);
 
@@ -33,25 +33,25 @@ function m_assign(m, i, j, v) =
     let(
         lt = m[i],
         leng_lt = len(lt),
-        nlt = concat(
-            j == 0 ? [] : [for(idx = [0:j - 1]) lt[idx]],
-            [v],
-            j == leng_lt - 1 ? [] : [for(idx = [j + 1:leng_lt - 1]) lt[idx]]
-        ),
+        nlt = [
+            each (j == 0 ? [] : [for(idx = [0:j - 1]) lt[idx]]),
+            v,
+            each (j == leng_lt - 1 ? [] : [for(idx = [j + 1:leng_lt - 1]) lt[idx]])
+        ],
         leng_m = len(m)
     )
-    concat(
-        i == 0 ? [] : [for(idx = [0:i - 1]) m[idx]],
-        [nlt],
-        i == leng_m - 1 ? [] : [for(idx = [i + 1:leng_m - 1]) m[idx]]
-    );
+    [
+        each (i == 0 ? [] : [for(idx = [0:i - 1]) m[idx]]),
+        nlt,
+        each (i == leng_m - 1 ? [] : [for(idx = [i + 1:leng_m - 1]) m[idx]])
+    ];
 
 function next_vis(i, pts, cur_faces, cur_faces_leng, next, vis, j = 0) = 
     j == cur_faces_leng ? [next, vis] :
     let(
         f = cur_faces[j],
         d = (pts[f[0]] - pts[i]) * normal(pts, f),
-        nx = d >= 0 ? concat(next, [f]) : next,
+        nx = d >= 0 ? [each next, f] : next,
         s = d > 0 ? 1 :
             d < 0 ? -1 : 0,
         vis1 = m_assign(vis, f[0], f[1], s),
@@ -68,11 +68,11 @@ function next2(i, cur_faces, cur_faces_leng, vis, next, j = 0) =
         b = f[1],
         c = f[2],
         nx1 = vis[a][b] < 0 && vis[a][b] != vis[b][a] ? 
-            concat(next, [[a, b, i]]) : next,
+            [each next, [a, b, i]] : next,
         nx2 = vis[b][c] < 0 && vis[b][c] != vis[c][b] ? 
-            concat(nx1, [[b, c, i]]) : nx1,        
+            [each nx1, [b, c, i]] : nx1,        
         nx3 = vis[c][a] < 0 && vis[c][a] != vis[a][c] ? 
-            concat(nx2, [[c, a, i]]) : nx2                    
+            [each nx2, [c, a, i]] : nx2                    
     )
     next2(i, cur_faces, cur_faces_leng, vis, nx3, j + 1);
 

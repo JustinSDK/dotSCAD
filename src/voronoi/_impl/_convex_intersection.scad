@@ -19,7 +19,7 @@ function _in_convex(convex_pts, pt) =
 function _intersection_ps(shape, line_pts, epsilon) = 
     let(
         leng = len(shape),
-        pts = concat(shape, [shape[0]])
+        pts = [each shape, shape[0]]
     )
     dedup([
         for(i = [0:leng - 1]) 
@@ -31,7 +31,7 @@ function _convex_intersection(shape1, shape2, epsilon = 0.0001) =
     (shape1 == [] || shape2 == []) ? [] :
     let(
         leng = len(shape1),
-        pts = concat(shape1, [shape1[0]])
+        pts = [each shape1, shape1[0]]
     )
     _convex_ct_clk_order(
         concat(
