@@ -156,7 +156,7 @@ function updateNbrs(d, delaunayTri, neighbors, _indices_hash) =
 	
 function delaunayAddCoords(d, p) = 
     [
-	    concat(delaunay_coords(d), [p]), 
+		[each delaunay_coords(d), p], 
 		delaunay_triangles(d), 
 		delaunay_circles(d)
 	];
@@ -206,10 +206,10 @@ function _delaunayBoundaries(d, badTriangles, boundaries, t, vi, _indices_hash) 
 		)
 		_delaunayBoundaries(d, badTriangles, boundaries, nt, nvi, _indices_hash) : 
 	    let(
-		    nboundaries = concat(boundaries, [[
+		    nboundaries = [each boundaries, [
 			    [t[(vi + 1) % 3], t[vi > 0 ? vi - 1 : (vi + 2)]], // edge
 				opTri                                             // delaunayTri
-			]]),
+			]],
 			nvi = (vi + 1) % 3,
 			v1 = nboundaries[0][0][0],
 			v2 = nboundaries[len(nboundaries) - 1][0][1]

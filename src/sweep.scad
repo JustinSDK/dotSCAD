@@ -96,7 +96,7 @@ module sweep(sections, triangles = "SOLID") {
                     i + leng_pts_sect * (leng_sects - 1)
             ];    
 
-            f_idxes = concat([first_idxes], side_indexes(sects), [last_idxes]);
+            f_idxes = [first_idxes, each side_indexes(sects), last_idxes];
             
             polyhedron(
                 v_pts, 

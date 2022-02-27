@@ -59,13 +59,7 @@ module hexagons(radius, spacing, levels) {
         [[hex_datum[0][0], -hex_datum[0][1]], hex_datum[1]]
     ] : [];
 
-    total_hex_data = concat(
-        [
-            [[0, 0], beginning_n] // first line
-        ], 
-        upper_hex_data, 
-        lower_hex_data
-    );
+    total_hex_data = [[[0, 0], beginning_n], each upper_hex_data, each lower_hex_data];
 
     pts_all_lines = [
         for(hex_datum = total_hex_data)

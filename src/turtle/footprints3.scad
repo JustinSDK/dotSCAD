@@ -16,4 +16,4 @@ function footprints3(cmds, start = [0, 0, 0]) =
         t = turtle3d("create", start, [[1, 0, 0], [0, 1, 0], [0, 0, 1]]),
         leng = len(cmds)
     )
-    concat([turtle3d("pt", t)], _footprints3(cmds, t, leng));
+    [turtle3d("pt", t), each _footprints3(cmds, t, leng)];

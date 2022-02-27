@@ -39,10 +39,7 @@ function _vx_circle_impl(radius, filled) =
     )
     concat(
         filled ? 
-            concat(
-                [[0, radius], [0, -radius]],
-                [for(xi = -radius; xi <= radius; xi = xi + 1) [xi, 0]]
-            )
+            [[0, radius], [0, -radius], each [for(xi = -radius; xi <= radius; xi = xi + 1) [xi, 0]]]
             : 
             [
                 [0, -radius],                

@@ -54,7 +54,7 @@ function _bspline_curve_interpolate(t, degree, points, knots, weights) =
         v = [
             for(i = 0; i < n; i = i + 1) 
             let(p = points[i] * wts[i])
-            concat([for(j = 0; j < d; j = j + 1) p[j]], [wts[i]])
+            [each [for(j = 0; j < d; j = j + 1) p[j]], wts[i]]
         ],
         ts = _bspline_curve_ts(t, degree, kts),
         s = ts[1],

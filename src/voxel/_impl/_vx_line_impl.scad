@@ -26,9 +26,9 @@ function _vx_line_xdominant(start, end, a, s) =
         zd = az - shrx,
         endx = end[0]
     )
-    concat(
-        [start], 
-        _vx_line_xdominant_sub(
+    [
+        start,
+        each _vx_line_xdominant_sub(
             x + sx, 
             _vx_line_xdominant_y(y, yd, sy), 
             _vx_line_xdominant_z(z, zd, sz), 
@@ -38,7 +38,7 @@ function _vx_line_xdominant(start, end, a, s) =
             _vx_line_xdominant_yd(yd, ax, ay), 
             _vx_line_xdominant_zd(zd, ax, az)
         )
-    );
+    ];
 
 function _vx_line_xdominant_sub(x, y, z, endx, a, s, yd, zd) = 
     let(
@@ -49,19 +49,19 @@ function _vx_line_xdominant_sub(x, y, z, endx, a, s, yd, zd) =
         sy = s[1],
         sz = s[2]
     )
-    x == endx ? [] : 
-        concat([[x, y, z]], 
-            _vx_line_xdominant_sub(
-                x + sx, 
-                _vx_line_xdominant_y(y, yd, sy), 
-                _vx_line_xdominant_z(z, zd, sz), 
-                endx, 
-                a, 
-                s, 
-                _vx_line_xdominant_yd(yd, ax, ay), 
-                _vx_line_xdominant_zd(zd, ax, az)
-            )
-        );
+    x == endx ? [] : [
+        [x, y, z], 
+        each _vx_line_xdominant_sub(
+            x + sx, 
+            _vx_line_xdominant_y(y, yd, sy), 
+            _vx_line_xdominant_z(z, zd, sz), 
+            endx, 
+            a, 
+            s, 
+            _vx_line_xdominant_yd(yd, ax, ay), 
+            _vx_line_xdominant_zd(zd, ax, az)
+        )
+    ];
         
 // y-dominant
 function _vx_line_ydominant_x(x, xd, sx) = xd >= 0 ? x + sx : x;
@@ -85,9 +85,9 @@ function _vx_line_ydominant(start, end, a, s) =
         zd = az - shry,
         endy = end[1]
     )
-    concat(
-        [start], 
-        _vx_line_ydominant_sub(
+    [
+        start,
+        each _vx_line_ydominant_sub(
             _vx_line_ydominant_x(x, xd, sx), 
             y + sy,
             _vx_line_ydominant_z(z, zd, sz), 
@@ -97,7 +97,7 @@ function _vx_line_ydominant(start, end, a, s) =
             _vx_line_ydominant_xd(xd, ax, ay), 
             _vx_line_ydominant_zd(zd, ay, az)
         )
-    );
+    ];
 
 function _vx_line_ydominant_sub(x, y, z, endy, a, s, xd, zd) = 
     let(
@@ -108,19 +108,19 @@ function _vx_line_ydominant_sub(x, y, z, endy, a, s, xd, zd) =
         sy = s[1],
         sz = s[2]
     )
-    y == endy ? [] : 
-        concat([[x, y, z]], 
-            _vx_line_ydominant_sub(
-                _vx_line_ydominant_x(x, xd, sx), 
-                y + sy,
-                _vx_line_ydominant_z(z, zd, sz), 
-                endy, 
-                a, 
-                s, 
-                _vx_line_ydominant_xd(xd, ax, ay), 
-                _vx_line_ydominant_zd(zd, ay, az)
-            )
-        );
+    y == endy ? [] : [
+        [x, y, z],
+        each _vx_line_ydominant_sub(
+            _vx_line_ydominant_x(x, xd, sx), 
+            y + sy,
+            _vx_line_ydominant_z(z, zd, sz), 
+            endy, 
+            a, 
+            s, 
+            _vx_line_ydominant_xd(xd, ax, ay), 
+            _vx_line_ydominant_zd(zd, ay, az)
+        )
+    ];
 
 // z-dominant
 function _vx_line_zdominant_x(x, xd, sx) = xd >= 0 ? x + sx : x;
@@ -145,9 +145,9 @@ function _vx_line_zdominant(start, end, a, s) =
         yd = ay - shrz,
         endz = end[2]
     )
-    concat(
-        [start], 
-        _vx_line_zdominant_sub(
+    [
+        start, 
+        each _vx_line_zdominant_sub(
             _vx_line_zdominant_x(x, xd, sx), 
             _vx_line_zdominant_y(y, yd, sy), 
             z + sz,
@@ -157,7 +157,7 @@ function _vx_line_zdominant(start, end, a, s) =
             _vx_line_zdominant_xd(xd, ax, az), 
             _vx_line_zdominant_yd(yd, ay, az)
         )
-    );
+    ];
 
 function _vx_line_zdominant_sub(x, y, z, endz, a, s, xd, yd) = 
     let(
@@ -168,20 +168,20 @@ function _vx_line_zdominant_sub(x, y, z, endz, a, s, xd, yd) =
         sy = s[1],
         sz = s[2]
     )
-    z == endz ? [] : 
-        concat([[x, y, z]], 
-            _vx_line_zdominant_sub(
-                _vx_line_zdominant_x(x, xd, sx), 
-                _vx_line_zdominant_y(y, yd, sy), 
-                z + sz,
-                endz, 
-                a, 
-                s, 
-                _vx_line_zdominant_xd(xd, ax, az), 
-                _vx_line_zdominant_yd(yd, ay, az)
-            )
-        );
-        
+    z == endz ? [] : [
+        [x, y, z],
+        each _vx_line_zdominant_sub(
+            _vx_line_zdominant_x(x, xd, sx), 
+            _vx_line_zdominant_y(y, yd, sy), 
+            z + sz,
+            endz, 
+            a, 
+            s, 
+            _vx_line_zdominant_xd(xd, ax, az), 
+            _vx_line_zdominant_yd(yd, ay, az)
+        )
+    ];
+
 function _vx_line_impl(p1, p2) = 
     let(
         is_2d = len(p1) == 2,

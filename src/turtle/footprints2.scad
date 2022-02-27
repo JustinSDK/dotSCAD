@@ -16,4 +16,4 @@ function footprints2(cmds, start = [0, 0]) =
         t = turtle2d("create", start.x, start.y, 0),
         leng = len(cmds)
     )
-    concat([turtle2d("pt", t)], _footprints2(cmds, t, leng));
+    [turtle2d("pt", t), each _footprints2(cmds, t, leng)];

@@ -29,7 +29,7 @@ module hollow_out_sweep(sections, diameter, closed = false, style = "LINES") {
             [[rect[0], rect[1], rect[2]], [rect[0], rect[2], rect[3]]] :
             [[rect[1], rect[2], rect[3]], [rect[1], rect[3], rect[0]]];        
     
-    sects = closed ? concat(sections, [sections[0]]) : sections;
+    sects = closed ? [each sections, sections[0]] : sections;
     lines = [
         for(rect = rects(sects)) 
             for(tri = rand_tris(rect)) 

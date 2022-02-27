@@ -34,16 +34,16 @@ function m_assign(m, i, j, v) =
         lt = m[i],
         leng_lt = len(lt),
         nlt = [
-            each (j == 0 ? [] : [for(idx = [0:j - 1]) lt[idx]]),
+            if(j != 0) each  [for(idx = [0:j - 1]) lt[idx]],
             v,
-            each (j == leng_lt - 1 ? [] : [for(idx = [j + 1:leng_lt - 1]) lt[idx]])
+            if(j != leng_lt - 1) each [for(idx = [j + 1:leng_lt - 1]) lt[idx]]
         ],
         leng_m = len(m)
     )
     [
-        each (i == 0 ? [] : [for(idx = [0:i - 1]) m[idx]]),
+        if(i != 0) each [for(idx = [0:i - 1]) m[idx]],,
         nlt,
-        each (i == leng_m - 1 ? [] : [for(idx = [i + 1:leng_m - 1]) m[idx]])
+        if(i != leng_m - 1) each [for(idx = [i + 1:leng_m - 1]) m[idx]]
     ];
 
 function next_vis(i, pts, cur_faces, cur_faces_leng, next, vis, j = 0) = 

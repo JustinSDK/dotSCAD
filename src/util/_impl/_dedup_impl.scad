@@ -15,4 +15,4 @@ function _dedup_add(buckets, i_elem, eq, hash, bucket_numbers) =
 
 function _add(buckets, bucket, i_elem, b_idx) = 
     let(leng = len(buckets))
-	[for(i = 0; i < leng; i = i + 1) i == b_idx ? concat(bucket, [i_elem]) : buckets[i]];
+	[for(i = 0; i < leng; i = i + 1) i == b_idx ? [each bucket, i_elem] : buckets[i]];

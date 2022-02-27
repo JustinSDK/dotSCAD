@@ -29,11 +29,7 @@ module loft(sections, slices = 1) {
             p1 = sect[i],
             p2 = sect[(i + 1) % leng]
         )
-        concat(
-            [p1], 
-            inter_pts(p1, p2, n),
-            _interpolate(sect, leng, n, i + 1)
-        );
+        [p1, each inter_pts(p1, p2, n), each _interpolate(sect, leng, n, i + 1)];
 
     function interpolate(sect, n) = 
         n <= 1 ? sect : _interpolate(sect, len(sect), n);
@@ -53,13 +49,7 @@ module loft(sections, slices = 1) {
         new_sect1 = interpolate(sect1, lcm_n / len(sect1));
         new_sect2 = interpolate(sect2, lcm_n / len(sect2));
         
-        sweep(
-            concat(
-                [new_sect1],
-                inter_sects(new_sect1, new_sect2, lcm_n, slices),
-                [new_sect2]
-            )
-        );
+        sweep([new_sect1, each inter_sects(new_sect1, new_sect2, lcm_n, slices), new_sect2]);
     }
         
     for(i = [0:len(sections) - 2]) {

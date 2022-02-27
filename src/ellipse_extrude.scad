@@ -30,14 +30,8 @@ module ellipse_extrude(semi_minor_axis, height, center = false, convexity = 10, 
                 pre_f * f_extrude[i][0]
         ];
 
-    child_fs = concat([1], accm_fs);
-    pre_zs = concat(
-        [0],
-        [
-            for(i = 0; i < len_f_extrude; i = i + 1)
-                f_extrude[i][1]
-        ]
-    );
+    child_fs = [1, each accm_fs];
+    pre_zs = [0, each [for(i = 0; i < len_f_extrude; i = i + 1) f_extrude[i][1]]];
 
     module extrude() {
         for(i = [0:len_f_extrude - 1]) {

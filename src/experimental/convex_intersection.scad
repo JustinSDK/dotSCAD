@@ -7,7 +7,7 @@ function convex_intersection(shape1, shape2, epsilon = 0.0001) =
     (shape1 == [] || shape2 == []) ? [] :
     let(
         leng = len(shape1),
-        pts = concat(shape1, [shape1[0]])
+        pts = [each shape1, shape1[0]]
     )
     convex_ct_clk_order(
         concat(

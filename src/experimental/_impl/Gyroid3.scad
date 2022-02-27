@@ -91,7 +91,7 @@ function gyroid_points(pp, w)=
 // pp=number of rows
 function gyroid_faces(pp)=
 	let(zs=(pp+1)*(pp+1))								// starting index of down wall points
-	concat(												// calculate face index vetros for triangles of polyhedron
+	  		     										// calculate face index vetros for triangles of polyhedron
 	[	for(i=[0:pp-1])									// for every row
 			let(jm=i*(i+1))								// middle point index for current j vector
 			let(jfm=(i+1)*(i+2))						// middle point index for succeeding j vector
@@ -103,7 +103,7 @@ function gyroid_faces(pp)=
 				let(p3=(l==0) ? jfm+(j+1)*k+dm : jm+(j+1)*k+dm)
 				if (j<i || l==0)
 					((k==1 && m==0) || (k==-1 && m==1)) ? [p2, p1, p3] : [p1, p2, p3]
-	]);
+	];
 
 // Swaps x and y coordinate of all members in matrix m. Applied on a faces matrix for polyhedron creation, it swaps inside out. 
 function swap_xy(m)=

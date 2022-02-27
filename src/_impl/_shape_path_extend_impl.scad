@@ -73,6 +73,6 @@ function _shape_path_extend_impl(stroke_pts, path_pts, scale, closed) =
     closed && path_pts[0] == path_pts[leng_path_pts - 1] ? 
         __polytransversals(concat(strokes, [strokes[0]])) : 
         __polytransversals(
-            concat([_shape_path_first_stroke(stroke_pts, path_pts)], strokes)
+            [_shape_path_first_stroke(stroke_pts, path_pts), each strokes]
         );
         

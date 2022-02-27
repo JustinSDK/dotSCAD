@@ -36,7 +36,7 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH", con
 			tri = sort(triangles[i], by = ascending),
             n_cnt_tris = [
                 for(k = [0:leng_pts - 1])
-                find_index(tri, function(e) e == k) != -1 ? concat(cnt_tris[k], [triangles[i]]) : cnt_tris[k]
+                find_index(tri, function(e) e == k) != -1 ? [each cnt_tris[k], triangles[i]] : cnt_tris[k]
             ]
 		)
 		_connected_tris(triangles, leng, leng_pts, n_cnt_tris, i + 1);

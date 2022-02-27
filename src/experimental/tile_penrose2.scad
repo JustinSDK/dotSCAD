@@ -67,9 +67,9 @@ function sub_dart(tile) =
 		n_size = tile_size(tile) / PHI,
 		r = PHI * size
 	)
-	concat(
-		[tile(KITE, x, y, between_360(angle + 5 * 36), n_size)],
-		[
+	[
+		tile(KITE, x, y, between_360(angle + 5 * 36), n_size),
+		each [
 			for(i = 0, sign = 1; i < 2; i = i + 1, sign = -sign)
 			let(a = between_360(angle - 4 * 36 * sign))
 			tile(
@@ -80,7 +80,7 @@ function sub_dart(tile) =
 				n_size
 			)
 		]
-	);
+	];
 
 function subdivide(tiles) = [
     for(tile = tiles)
@@ -114,9 +114,9 @@ function tile_penrose2(n, triangles) =
 			angle = tile_angle(tile) - 36,
 			type = tile_type(tile),
 			size = tile_size(tile),
-			shape = concat(
-				[[tile_x(tile), tile_y(tile)]],
-				[
+			shape = [
+				[tile_x(tile), tile_y(tile)],
+				each [
 					for(i = [0:2])
 					let(
 						r = dist[type][i] * size,
@@ -124,7 +124,7 @@ function tile_penrose2(n, triangles) =
 					)
 					[tile_x(tile) + r * cos(a), tile_y(tile) + r * sin(a)]
 				]
-			)
+			]
 		)
 		each [
 		    [type, [shape[0], shape[1], shape[2]]], 

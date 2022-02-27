@@ -23,13 +23,12 @@ function _trim_sub(lines, leng, epsilon) =
         inter_p = _trim_shape_any_intersection(lines_from_next2, current_line, leng_lines_from_next2, 0, epsilon)
     )
     // no intersecting pt, collect current_p and trim remain lines
-    inter_p == [] ? (concat([current_p], _trim_shape_trim_lines(lines_from_next, epsilon))) : (
+    inter_p == [] ? [current_p, each _trim_shape_trim_lines(lines_from_next, epsilon)]
+         : (
         // collect current_p, intersecting pt and the last pt
         (leng == 3 || (inter_p.x == (leng_lines_from_next2 - 1))) ? [current_p, inter_p.y, lines[leng - 1]] : (
             // collect current_p, intersecting pt and trim remain lines
-            concat([current_p, inter_p.y], 
-                _trim_shape_trim_lines([for(i = inter_p.x + 1; i < leng_lines_from_next2; i = i + 1) lines_from_next2[i]], epsilon)
-            )
+            [current_p, inter_p.y, each _trim_shape_trim_lines([for(i = inter_p.x + 1; i < leng_lines_from_next2; i = i + 1) lines_from_next2[i]], epsilon)]
         )
     );
     
@@ -38,7 +37,7 @@ function _trim_shape_trim_lines(lines, epsilon) =
     leng > 2 ? _trim_sub(lines, leng, epsilon) : _trim_shape_collect_pts_from(lines, leng);
 
 function _trim_shape_collect_pts_from(lines, leng) = 
-    concat([for(line = lines) line[0]], [lines[leng - 1][1]]);
+    [each [for(line = lines) line[0]], lines[leng - 1][1]];
 
 function _trim_shape_impl(shape_pts, from, to, epsilon) = 
     let(

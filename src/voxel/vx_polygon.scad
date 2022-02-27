@@ -4,7 +4,7 @@ use <../util/dedup.scad>;
 use <vx_polyline.scad>;
 
 function vx_polygon(points, filled = false) =
-    let(contour = vx_polyline(concat(points, [points[0]])))
+    let(contour = vx_polyline([each points, points[0]]))
     !filled ? contour :
     let(
         sortedXY = sort(contour, by = "vt"),

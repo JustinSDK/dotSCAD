@@ -11,10 +11,7 @@ function _find_radians(b, point_distance, radians, n, count = 1) =
         _find_radians(
             b, 
             point_distance, 
-            concat(
-                radians,
-                [pre_radians + _radian_step(b, pre_radians, point_distance)]
-            ), 
+            [each radians, pre_radians + _radian_step(b, pre_radians, point_distance)], 
             n,
         count + 1) 
     );

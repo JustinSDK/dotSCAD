@@ -89,7 +89,7 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
                 curr_matrix = rot_matrice[i],
                 prev_matrix = matrice[len(matrice) - 1]
             )
-            concat(matrice, [curr_matrix * prev_matrix]);
+            [each matrice, curr_matrix * prev_matrix];
 
         cumu_rot_matrice = cumulated_rot_matrice(0);
 
@@ -137,11 +137,11 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
                             pth_pts[i + 1]
                         )
                 ]
-            ) concat([fst_section], remain_sections);
+            ) [fst_section, each remain_sections];
 
         calculated_sections =
             closed && pth_pts[0] == pth_pts[len_path_pts_minus_one] ?
-                concat(sections, [sections[0]]) : // round-robin
+                [each sections, sections[0]] : // round-robin
                 sections;
         
         sweep(
@@ -186,8 +186,8 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
 
         calculated_sections =
             closed && pth_pts[0] == pth_pts[len_path_pts_minus_one] ?
-                concat(path_extrude_inner, [path_extrude_inner[0]]) : // round-robin
-                concat([section(pth_pts[0], pth_pts[1], 0)], path_extrude_inner);
+                [each path_extrude_inner, path_extrude_inner[0]] : // round-robin
+                [section(pth_pts[0], pth_pts[1], 0), each path_extrude_inner];
 
         sweep(
             calculated_sections,

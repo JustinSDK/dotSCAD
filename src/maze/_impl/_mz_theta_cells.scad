@@ -32,7 +32,7 @@ function set_outwards(cell, outwards) = [
 function get_outwards(cell) = cell[5];
 
 function add_outward(cell, outward) = [
-	cell[0], cell[1], cell[2], cell[3], cell[4], concat(get_outwards(cell), [outward]), cell[6], cell[7]
+	cell[0], cell[1], cell[2], cell[3], cell[4], [each get_outwards(cell), outward], cell[6], cell[7]
 ];
 
 function columnLengOfRow(ri, cellWidth, previousColumnLeng, dividedRatio) = 
@@ -63,7 +63,7 @@ function _init_theta_maze(ri, maze, totalRows, dividedRatio, cellWidth) =
 					cell(ri, ci, INWARD_CCW_WALL)
 			]
 		)
-		_init_theta_maze(ri + 1, concat(maze, [row]), totalRows, dividedRatio, cellWidth);
+		_init_theta_maze(ri + 1, [each maze, row], totalRows, dividedRatio, cellWidth);
 
 function update_maze_row(row, cell) =
     let(leng = len(row))

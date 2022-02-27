@@ -54,11 +54,6 @@ function _bezier_smooth_impl(path_pts, round_d, t_step, closed, angle_threshold)
                     [pts[leng - 2], pts[leng - 1], pts[0]],
                     round_d, t_step, 3, angle_threshold
                 )  
-            ) :
-            concat(
-                [pts[0]],
-                middle_pts,
-                [pts[leng - 1]]
-            )
+            ) : [pts[0], each middle_pts, pts[leng - 1]]
     ) 
     len(path_pts[0]) == 2 ? [for(p = pth_pts) __to2d(p)] : pth_pts;

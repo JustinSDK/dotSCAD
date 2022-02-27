@@ -29,7 +29,4 @@ function _vx_contour_travel(pts, p, fst) =
         dir_i = _vx_contour_dir(_vx_contour_corner_value(pts, p[0], p[1])),
         nxt_p = p + _vx_contour_nxt_offset[dir_i]
     )
-    nxt_p == fst ? [p] :
-    concat(
-        [p], _vx_contour_travel(pts, nxt_p, fst)
-    );
+    nxt_p == fst ? [p] : [p, each _vx_contour_travel(pts, nxt_p, fst)];

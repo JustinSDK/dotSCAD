@@ -1,11 +1,11 @@
 function _midpt_smooth_sub(points, iend, closed) = 
-    concat(
-        [
+    [
+        each [
             for(i = 0; i < iend; i = i + 1) 
                 (points[i] + points[i + 1]) / 2
         ],
-        closed ? [(points[iend] + points[0]) / 2] : []
-    );
+        if(closed) (points[iend] + points[0]) / 2
+    ];
 
 function _midpt_smooth_impl(points, n, closed) =
     let(

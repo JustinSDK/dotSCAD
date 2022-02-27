@@ -252,13 +252,12 @@ function tilemap_generate(tm) =
 		], x, y));
 
 
-function neighbor_dirs(x, y, width, height) =
-    concat(
-		x > 0          ? [[-1,  0]] : [],  // left
-		x < width - 1  ? [[ 1,  0]] : [],  // right 
-		y > 0          ? [[ 0, -1]] : [],  // top
-		y < height - 1 ? [[ 0,  1]] : []   // bottom
-	);
+function neighbor_dirs(x, y, width, height) = [
+	if(x > 0)          [-1,  0],   // left
+	if(x < width - 1)  [ 1,  0],   // right 
+	if(y > 0)          [ 0, -1],   // top
+	if(y < height - 1) [ 0,  1]    // bottom
+];
 
 function neighbor_compatibilities(sample, x, y, width, height) = 
     let(me = sample[y][x])

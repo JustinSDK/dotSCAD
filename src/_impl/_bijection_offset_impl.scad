@@ -40,9 +40,9 @@ function _bijection_offset_impl(pts, d, epsilon) =
         leng_minus_one = leng - 1,
         last_p = __line_intersection2(offset_es[leng_minus_one], offset_es[0], epsilon)
     )
-    concat(
-        last_p != [] && last_p == last_p ? [last_p] : [],
-        [
+    [
+        if(last_p != [] && last_p == last_p) last_p,
+        each [
             for(i = 0; i < leng_minus_one; i = i + 1)
             let(
                 this_edge = offset_es[i],
@@ -53,5 +53,5 @@ function _bijection_offset_impl(pts, d, epsilon) =
             )
             p
         ]
-    );
+    ];
     

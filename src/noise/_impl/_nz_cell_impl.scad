@@ -26,7 +26,7 @@ function _nz_cell_border(cells, p) =
     let(
         dists = [
             for(i = [0:len(cells) - 1])
-                concat(cells[i], [norm(cells[i] - p)])
+                [each cells[i], norm(cells[i] - p)]
         ],
         idx = len(cells[0]),
         sorted = sort(dists, by = "idx", idx = idx),

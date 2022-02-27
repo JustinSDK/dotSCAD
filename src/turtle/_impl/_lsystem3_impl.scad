@@ -8,7 +8,7 @@ function _lsystem3_derive(axiom, rules, n, rule_prs) =
                          _derive_p(axiom, rules, rule_prs, n);
 
 function _next_stack(t, code, stack) = 
-    code == "[" ? concat([t], stack) :
+    code == "[" ? [t, each stack] :
     let(leng = len(stack))
     code == "]" ? 
             (leng > 1 ? [for(i = [1:leng - 1]) stack[i]] : []) :

@@ -13,11 +13,7 @@ use <__comm__/__half_trapezium.scad>;
 module rounded_cylinder(radius, h, round_r, convexity = 2, center = false) {  
     r_corners = __half_trapezium(radius, h, round_r);
     
-    shape_pts = concat(
-        [[0, -h/2]],
-        r_corners,           
-        [[0, h/2]]
-    );
+    shape_pts = [[0, -h/2], each r_corners, [0, h/2]];
 
     center_pt = center ? [0, 0, 0] : [0, 0, h/2];
 

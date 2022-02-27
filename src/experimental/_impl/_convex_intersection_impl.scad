@@ -3,7 +3,7 @@ use <lines_intersection.scad>;
 function _intersection_ps(shape, line_pts, epsilon) = 
     let(
         leng = len(shape),
-        pts = concat(shape, [shape[0]])
+        pts = [each shape, shape[0]]
     )
     [
         for(i = [0:leng - 1]) 

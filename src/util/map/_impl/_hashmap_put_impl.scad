@@ -18,4 +18,4 @@ function _replace(buckets, b_numbers, bucket, key, value, b_idx, k_idx) =
 	[for(i = 0; i < b_numbers; i = i + 1) i == b_idx ? n_bucket : buckets[i]];
 
 function _put(buckets, b_numbers, bucket, key, value, b_idx) = 
-    [for(i = 0; i < b_numbers; i = i + 1) i == b_idx ? concat(bucket, [[key, value]]) : buckets[i]];
+    [for(i = 0; i < b_numbers; i = i + 1) i == b_idx ? [each bucket, [key, value]] : buckets[i]];

@@ -68,7 +68,7 @@ function _triangulate_snip(shape_pts, collector, indices, u, v, w, num_of_vertic
     )
     _triangulate_real_triangulate( 
         shape_pts, 
-        concat(collector, [[a, b, c]]),  
+        [each collector, [a, b, c]],  
         _triangulate_remove_v(indices, v, num_of_vertices),
         v, 
         new_nv,

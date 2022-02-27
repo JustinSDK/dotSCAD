@@ -8,8 +8,4 @@
 *
 **/
 
-function hashmap_keys(map) = [
-    for(bucket = map) 
-        for(kv = bucket)
-            kv[0]
-];
+function hashmap_keys(map) = [for(bucket = map, kv = bucket) kv[0]];

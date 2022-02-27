@@ -54,11 +54,5 @@ function _bezier_curve_point3(t, points) =
 function _bezier_curve_impl(t_step, points) = 
     let(t_end = ceil(1 / t_step)) 
     len(points[0]) == 3 ? 
-            concat([
-                for(t = 0; t < t_end; t = t + 1)
-                    _bezier_curve_point3(t * t_step, points)
-            ], [_bezier_curve_point3(1, points)]) :
-            concat([
-                for(t = 0; t < t_end; t = t + 1)
-                    _bezier_curve_point2(t * t_step, points)
-            ], [_bezier_curve_point2(1, points)]);
+        [each [for(t = 0; t < t_end; t = t + 1) _bezier_curve_point3(t * t_step, points)], _bezier_curve_point3(1, points)] :
+        [each [for(t = 0; t < t_end; t = t + 1) _bezier_curve_point2(t * t_step, points)], _bezier_curve_point2(1, points)];
