@@ -32,7 +32,7 @@ Join a set of points to make a [Delaunay triangulation](https://en.wikipedia.org
 	color("red")
 	linear_extrude(3)
 	for(t = tri_delaunay(points, ret = "VORONOI_CELLS")) {
-	    polyline_join(concat(t, [t[0]]))
+	    polyline_join([each t, t[0]])
 		    circle(1);
 	}
 

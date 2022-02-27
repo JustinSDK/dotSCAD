@@ -18,7 +18,7 @@ Given a list of points. `vx_polyline` returns points that can be used to draw a 
 			[round(pt.x), round(pt.y)]
 	];
 
-	for(pt = vx_polyline(concat(pentagram, [pentagram[0]]))) {
+	for(pt = vx_polyline([each pentagram, pentagram[0]])) {
 		translate(pt) 
 			linear_extrude(1, scale = 0.5) 
 			    square(1, center = true);

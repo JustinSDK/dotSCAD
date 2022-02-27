@@ -36,7 +36,7 @@ A method of [`tri_delaunay`](lib3x-tri_delaunay.html). Returns triangle shapes f
 	color("red")
 	linear_extrude(3)
 	for(t = tri_delaunay_voronoi(delaunay)) {
-		polyline_join(concat(t, [t[0]]))
+		polyline_join([each t, t[0]])
 		    circle(1);
 	}
 

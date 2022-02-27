@@ -20,32 +20,29 @@ Drive a turtle with `["forward", length]` or `["turn", angle]`. This function is
 			ta = fa / 2,
 			leng = sin(ta) * radius * 2
 		)
-		concat(
-			[["turn", ta]],
-			[
+        [
+            ["turn", ta],
+            each [
 				for(i = [0:steps - 2])
 				each [["forward", leng], ["turn", fa]]
 			],
-			[["forward", leng], ["turn", ta]]
-		);
+            ["forward", leng], 
+            ["turn", ta]
+        ];
 		
 	poly = footprints2(
-		concat(
-			[
-				["forward", 10],
-				["turn", 90],
-				["forward", 10] 
-			], 
-			arc_cmds(5, 180, 12),
-			[
-				["turn", -90],
-				["forward", 10],
-				["turn", 90],
-				["forward", 10],
-				["turn", 90],
-				["forward", 10]
-			]
-		)
+        [
+            ["forward", 10],
+		    ["turn", 90],
+			["forward", 10],
+            each arc_cmds(5, 180, 12),
+            ["turn", -90],
+            ["forward", 10],
+            ["turn", 90],
+            ["forward", 10],
+            ["turn", 90],
+            ["forward", 10]
+        ]
 	);
 
 	polyline_join(poly)

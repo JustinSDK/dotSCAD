@@ -257,7 +257,7 @@ So, which is the correct method? Both methods are correct when you provide only 
 	// not closed perfectly
 	translate([-8, 0, 0]) path_extrude(
 		shape_pentagram_pts, 
-		concat(pts, [pts[0]]), 
+        [each pts, pts[0]], 
 		closed = true,
 		method = "AXIS_ANGLE"
 	);
@@ -265,7 +265,7 @@ So, which is the correct method? Both methods are correct when you provide only 
 	// adjust it 
 	path_extrude(
 		shape_pentagram_pts, 
-		concat(pts, [pts[0]]), 
+		[each pts, pts[0]], 
 		closed = true,
 		twist = 188,
 		method = "AXIS_ANGLE"
@@ -274,7 +274,7 @@ So, which is the correct method? Both methods are correct when you provide only 
 	// "EULER_ANGLE" is easy in this situation
 	translate([0, 8, 0]) path_extrude(
 		shape_pentagram_pts, 
-		concat(pts, [pts[0]]), 
+		[each pts, pts[0]], 
 		closed = true,
 		method = "EULER_ANGLE"
 	);

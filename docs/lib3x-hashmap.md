@@ -54,7 +54,7 @@ Want to simulate class-based OO in OpenSCAD? Here's my experiment.
     function clz_list(data) = function(name) _(name,
         methods([
             ["get", function(i) data[i]],
-            ["append", function(n) clz_list(concat(data, [n]))]
+            ["append", function(n) clz_list([each data, n])]
         ])
     );
 

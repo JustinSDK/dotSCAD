@@ -24,7 +24,7 @@ Create cell shapes of Voronoi in the first quadrant. You specify a space and a g
         cell_poly = cell[1];
 
         linear_extrude(1)
-		polyline_join(concat(cell_poly, [cell_poly[0]]))
+		polyline_join([each cell_poly, cell_poly[0]])
 			circle(.5);
         
         color(rands(0, 1, 3))

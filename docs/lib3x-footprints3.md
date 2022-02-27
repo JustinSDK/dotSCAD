@@ -20,33 +20,28 @@ A 3D verion of [footprint2](https://openhome.cc/eGossip/OpenSCAD/lib3x-footprint
 			ta = fa / 2,
 			leng = sin(ta) * radius * 2
 		)
-		concat(
-			[["turn", ta]],
-			[
+        [
+            ["turn", ta],
+            each [
 				for(i = [0:steps - 2])
 				each [["forward", leng], ["turn", fa]]
 			],
-			[["forward", leng], ["turn", ta]]
-		);
+            ["forward", leng], 
+            ["turn", ta]
+        ];
 
 	poly = footprints3(
-		concat(
-			[
-				["forward", 10],
-				["turn", 90],
-				["forward", 10] 
-			], 
-			xy_arc_cmds(5, 180, 12),
-			[
-				["pitch", 90],
-				["forward", 10],
-				["roll", 90]
-			],
-			xy_arc_cmds(5, 180, 12),
-			[
-				["forward", 10]
-			]
-		)
+        [
+            ["forward", 10],
+            ["turn", 90],
+            ["forward", 10],
+            each xy_arc_cmds(5, 180, 12),
+            ["pitch", 90],
+            ["forward", 10],
+            ["roll", 90],
+            each xy_arc_cmds(5, 180, 12),
+            ["forward", 10]
+        ]
 	);
 
 	polyline_join(poly)
