@@ -16,11 +16,11 @@ module wormhole(length, width, depth, thickness, hole_r) {
     r2 = width / 4;
     half_thickness = thickness / 2;
 
-    plane = concat(
-        [[length - r1, r1]], 
-        [for(a = [90:a_step:270]) r1 * [cos(a), sin(a)]],
-        [[length - r1, -r1]]
-    );
+    plane = [
+        [length - r1, r1], 
+        each [for(a = [90:a_step:270]) r1 * [cos(a), sin(a)]], 
+        [length - r1, -r1]
+    ];
 
     difference() {
         rotate([90, 0, 0])

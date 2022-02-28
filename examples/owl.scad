@@ -204,7 +204,20 @@ module owl(detail, head_angles) {
 			rotate_extrude($fn = 7)
 				polygon(pts);
 			linear_extrude(5)
-				polygon(dedup(concat(claw_path1, claw_path2, claw_path3, [[-2, -.75], [-1.45, -1.45]], claw_path4, [[1.45, -1.45], [2, -.75]])));
+				polygon(
+					dedup(
+						[
+							each claw_path1, 
+							each claw_path2, 
+							each claw_path3,
+							[-2, -.75], 
+							[-1.45, -1.45],
+							each claw_path4,
+							[1.45, -1.45], 
+							[2, -.75]
+						]
+					)
+				);
 		}
 	}
 

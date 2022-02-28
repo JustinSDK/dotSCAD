@@ -45,7 +45,7 @@ function _packing_circles(size, min_radius, max_radius, total_circles, attempts,
     i == total_circles ? circles :
     let(c = _packing_circles_new_circle(size, min_radius, max_radius, attempts, circles))
     c == [] ? _packing_circles(size, min_radius, max_radius, total_circles, attempts, circles) :
-    _packing_circles(size, min_radius, max_radius, total_circles, attempts, concat(circles, [c]), i + 1);
+    _packing_circles(size, min_radius, max_radius, total_circles, attempts, [each circles, c], i + 1);
 
 function packing_circles(size, min_radius, max_radius, total_circles, attempts = 100) = 
     _packing_circles(is_num(size) ? [size, size] : size, min_radius, max_radius, total_circles, attempts);

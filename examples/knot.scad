@@ -13,7 +13,7 @@ shape_pentagram_pts = shape_pentagram(star_radius);
 
 path_extrude(
     shape_pentagram_pts, 
-    concat(pts, [pts[0]]), 
+    [each pts, pts[0]], 
     closed = true,
     method = "EULER_ANGLE"
 );

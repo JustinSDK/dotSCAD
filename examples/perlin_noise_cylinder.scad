@@ -14,13 +14,10 @@ module perlin_noise_cylinder(radius, height, thickness_scale, step) {
 
     surface_inside = [
         for(y = [0:step:size[1]])
-            concat(
-                [
-                    for(x = [0:step:size[0] - 1])
-                    [x / 10, y / 10, 0] 
-                ],
-                [[size[0] / 10, y / 10, 0]]
-            )
+            [
+                each [for(x = [0:step:size[0] - 1]) [x / 10, y / 10, 0]],
+                [size[0] / 10, y / 10, 0]
+            ]
     ];
 
     seed = rand(0, 256);
@@ -29,7 +26,10 @@ module perlin_noise_cylinder(radius, height, thickness_scale, step) {
             for(ri = [0:len(surface_inside) - 1])
                 let(
                     row = surface_inside[ri],
-                    row_for_noise = concat(slice(row, 0, leng_row - 1), [[0, row[leng_row - 1][1], 0]]),
+                    row_for_noise = [
+                        each slice(row, 0, leng_row - 1), 
+                        [0, row[leng_row - 1][1], 0]
+                    ],
                     ns = nz_perlin2s(row_for_noise, seed)
                 )
                 [

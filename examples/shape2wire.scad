@@ -27,11 +27,11 @@ rotate([90, 0, 0])
 linear_extrude(1, center = true)
 difference() {
 	square(120, center = true);
-	polyline_join(concat(shape, [shape[0]]))
+	polyline_join([each shape, shape[0]])
 	    circle(2.5);
 }
 
 wire = shape2wire(shape, 150);
 rotate(-$t * 360)
-polyline_join(concat(wire, [wire[0]]))
+polyline_join([each wire, wire[0]])
 	sphere(1.5);

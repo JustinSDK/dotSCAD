@@ -57,20 +57,10 @@ module klein_bottle(radius1, radius2, bottom_height, thickness, t_step, fn) {
         
         degree = 2;
         bs_curve = bspline_curve(t_step, degree, mid_pts);
+        tube_path = [[0, 0, bottom_height], each bs_curve, [0, 0, 0]];
+        tube_path2 = [[0, 0, bottom_height - thickness], each bs_curve, [0, 0, -thickness]];
 
-        tube_path = concat(
-            [[0, 0, bottom_height]],
-            bs_curve,
-            [[0, 0, 0]]
-        );
-
-        tube_path2 = concat(
-            [[0, 0, bottom_height - thickness]],
-            bs_curve,
-            [[0, 0, -thickness]]
-        );
-
-    difference() { 
+        difference() { 
             union() {
                 bottom(); 
 
