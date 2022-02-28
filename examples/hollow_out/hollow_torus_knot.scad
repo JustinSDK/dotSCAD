@@ -41,7 +41,7 @@ module hollow_out_torus_knot(shape, p, q, phi_step, thickness, line_style) {
                 [0, 90 - a[0], a[1]]
             ]
         )
-       cross_sections(shape, path, concat([angles[0]], angles));
+       cross_sections(shape, path, [angles[0], each angles]);
     
     pts = torus_knot(p, q, phi_step);
     sects = sects_by_path(shape, pts);

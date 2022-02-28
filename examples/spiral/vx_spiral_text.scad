@@ -55,7 +55,5 @@ function _px_spiral(from, leng, max_leng, clockwise, dir) =
     leng > max_leng ? [] : _px_spiral_go_turn(from, leng, max_leng, clockwise, dir);
     
 function px_spiral(init_leng, max_leng, clockwise = false) =
-    let(
-        org = [0, 0]
-    )
-    concat([org], _px_spiral(org, init_leng, max_leng, clockwise, 0));
+    let(org = [0, 0])
+    [org, each _px_spiral(org, init_leng, max_leng, clockwise, 0)];

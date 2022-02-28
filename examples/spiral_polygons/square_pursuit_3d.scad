@@ -22,7 +22,7 @@ module square_pursuit_3d(length, diff_scale, diameter, n) {
             
             npts = [for(i = [0:3]) inter_p(pts[i], pts[(i + 1) % 4], leng, d)];
             
-            polyline_join(concat(npts, [npts[3], npts[0]]))
+            polyline_join([each npts, npts[3], npts[0]])
 			    sphere(d = diameter);
             
             _square_pursuit_3d(npts, diff_scale, diameter, n - 1);
@@ -37,7 +37,7 @@ module square_pursuit_3d(length, diff_scale, diameter, n) {
         [0, length, 0]
     ];    
     
-    polyline_join(concat(pts, [pts[3], pts[0]]))
+    polyline_join([each pts, pts[3], pts[0]])
 	    sphere(d = diameter);
     
     _square_pursuit_3d(pts, diff_scale, diameter, n - 1);

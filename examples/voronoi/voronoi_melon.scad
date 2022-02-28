@@ -14,7 +14,7 @@ module voronoi_melon(eyelets, radius) {
 
     color("DarkKhaki")
 	for(cell = cells) {
-		polyline_join(concat(cell, [cell[0]]))
+		polyline_join([each cell, cell[0]])
 			sphere(radius / 60, $fn = 4);
 	}
 	

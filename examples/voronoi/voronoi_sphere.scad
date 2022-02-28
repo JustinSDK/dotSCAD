@@ -60,7 +60,7 @@ module voronoi_sphere(pts, region_hollow, region_offset, region_height) {
 		}
 		
 
-		polyline_join(concat(cell, [cell[0]]))
+		polyline_join([each cell, cell[0]])
 			sphere(region_offset / 2, $fn = 5);
 	}
 }

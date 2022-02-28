@@ -21,7 +21,7 @@ module torus_knot_maze() {
     cell_width = 1;
     torus_knot_path = torus_knot(p, q, phi_step) * rows;
     columns = len(torus_knot_path);
-	path = concat(torus_knot_path, [torus_knot_path[0]]);
+	path = [each torus_knot_path, torus_knot_path[0]];
 
     angle_yz_path = [
 		for(i = [0:len(path) - 2]) 
@@ -34,7 +34,7 @@ module torus_knot_maze() {
 		[90 - phi, theta]
 	];
 	
-	angle_yz = concat(angle_yz_path, [angle_yz_path[0]]);
+	angle_yz = [each angle_yz_path, angle_yz_path[0]];
 
     walls = mz_square_walls(
                 mz_square_cells(rows, columns, x_wrapping = true), 

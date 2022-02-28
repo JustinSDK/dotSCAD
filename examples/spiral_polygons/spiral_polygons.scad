@@ -24,7 +24,7 @@ module spiral_polygons(beginning_radius, line_width, fn, n) {
 	
 	module drawPolygon(r) {
 	    pts = shape_circle(radius = r, $fn = fn);
-		polyline_join(concat(pts, [pts[0]]))
+		polyline_join([each pts, pts[0]])
 		    circle(half_line_width, $fn = 12);
 	}
 	

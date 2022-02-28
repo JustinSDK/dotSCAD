@@ -7,11 +7,7 @@ diameter = 0.3;
 corner_r = 0.5;
 
 lines = hilbert_curve();
-hilbert_path = dedup(
-    concat(
-        [for(line = lines) line[0]], 
-        [lines[len(lines) - 1][1]])
-    );
+hilbert_path = dedup([each [for(line = lines) line[0]], lines[len(lines) - 1][1]]);
 smoothed_hilbert_path = bezier_smooth(hilbert_path, corner_r);
 
 polyline_join(smoothed_hilbert_path)

@@ -50,7 +50,13 @@ module voronoi_vase(r, h, thickness, num_of_pts, fn, profile_step) {
             intersection() {
                 sweep(sections);
                 render() 
-                    vrn3_from(concat([for(i = indices) pts[i]],  [sections[0][0], sections[0][half_fn], sections[last_section_i][0], sections[last_section_i][half_fn]]));  
+                    vrn3_from([
+                        each [for(i = indices) pts[i]],  
+                        sections[0][0], 
+                        sections[0][half_fn], 
+                        sections[last_section_i][0], 
+                        sections[last_section_i][half_fn]
+                    ]);  
             }
         }
 
