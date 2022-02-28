@@ -1,6 +1,6 @@
 use <util/rand.scad>;
 use <line3d.scad>;
-use <hull_polyline3d.scad>;
+use <polyline_join.scad>;
 use <experimental/tri_bisectors.scad>;
 
 // style: LINES or HULL_LINES
@@ -49,7 +49,8 @@ module hollow_out_sweep(sections, diameter, closed = false, style = "LINES") {
     }   
     else if(style == "HULL_LINES") { 
         for(line = lines) {
-            hull_polyline3d(line, diameter = diameter);
+            polyline_join(line)
+                sphere(d = diameter);
         }
     }
 }
