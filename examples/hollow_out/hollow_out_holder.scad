@@ -9,12 +9,10 @@ radius = 30;
 angle = 360;
 diameter = 2;
     
-lines = concat(
-    hollow_out_square([columns, rows], width),
-    [[
-        for(x = [0:width:width * columns]) [x, rows * width]
-    ]]
-);
+lines = [
+    each hollow_out_square([columns, rows], width),
+    [for(x = [0:width:width * columns]) [x, rows * width]]    
+];
 
 for(line = lines) {  
    transformed = [for(pt = line) ptf_bend([columns * width, rows * width], pt, radius, angle)];

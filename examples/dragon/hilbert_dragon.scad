@@ -34,11 +34,7 @@ module hilbert_dragon() {
     scale_tilt_a = -3;
 
     lines = hilbert_curve();
-    hilbert_path = dedup(
-        concat(
-            [for(line = lines) line[0]], 
-            [lines[len(lines) - 1][1]])
-        );
+    hilbert_path = dedup([each [for(line = lines) line[0]], lines[len(lines) - 1][1]]);
     smoothed_hilbert_path = bezier_smooth(hilbert_path, 0.45, t_step = 0.15);
 
     dragon_body_path = reverse([for(i = [1:len(smoothed_hilbert_path) - 2]) smoothed_hilbert_path[i]]);

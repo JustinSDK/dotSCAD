@@ -9,14 +9,14 @@ function one_body_scale(body_r, body_fn, scale_fn, scale_tilt_a) =
 	    scale_r = PI * body_r / body_fn,
 		double_scale_r = scale_r * 2,
 		shape_scale = shape_circle(scale_r, $fn = scale_fn),
-		scale_pts = concat(
-			[[0, 0, scale_r / 2 + body_r]], 
-			[
+		scale_pts = [
+            [0, 0, scale_r / 2 + body_r],
+            each [
 				for(p = shape_scale) 
 					ptf_rotate([p[0], p[1] * 2.01, body_r], [scale_tilt_a, 0, 0])
-			], 
-			[for(p = shape_scale) [p[0], p[1] * 2.01, 0]]
-		)
+			],
+            each [for(p = shape_scale) [p[0], p[1] * 2.01, 0]]
+        ]
 	)
     convex_hull3(scale_pts);
 

@@ -39,10 +39,11 @@ module hollow_out_vase(ctrl_pts, t_step, line_diameter, fn, line_style) {
 
     // bottom
     fst_sect = sects[0];
-    fst_tris = concat(
-        [for(i = [0:leng_sect - 2]) [[0, 0, 0], fst_sect[i], fst_sect[i + 1]]],
-        [[[0, 0, 0], fst_sect[leng_sect - 1], fst_sect[0]]]
-    );
+    fst_tris = [
+        each [for(i = [0:leng_sect - 2]) [[0, 0, 0], fst_sect[i], fst_sect[i + 1]]],
+        [[0, 0, 0], fst_sect[leng_sect - 1], fst_sect[0]]
+    ];
+
     for(tri = fst_tris) {
         lines = tri_bisectors(tri);
         for(line = lines) {
@@ -55,10 +56,10 @@ module hollow_out_vase(ctrl_pts, t_step, line_diameter, fn, line_style) {
 
     // mouth
     lst_sect = sects[len(sects) - 1];
-    lst_tris = concat(
-        [for(i = [0:leng_sect - 2]) [[0, 0, fpt[2]], lst_sect[i], lst_sect[i + 1]]],
-        [[[0, 0,  fpt[2]], lst_sect[leng_sect - 1], lst_sect[0]]]
-    );
+    lst_tris = [
+        each [for(i = [0:leng_sect - 2]) [[0, 0, fpt[2]], lst_sect[i], lst_sect[i + 1]]],
+        [[0, 0,  fpt[2]], lst_sect[leng_sect - 1], lst_sect[0]]
+    ];
     dangling_pts = [for(tri = lst_tris) tri_bisectors(tri)[1][1]];
     offset_z = [0, 0, line_diameter];
     for(i = [0: leng_sect - 1]) {

@@ -31,7 +31,7 @@ module torus_knot_dragon_low_poly() {
     pts = [for(p = body_shape) p * 0.015];
     p = dragon_body_path[0];
     
-    path_extrude(pts, concat([p + [0.00001, 0.0000055, 0.000008]], dragon_body_path), scale = 0.9);
+    path_extrude(pts, [p + [0.00001, 0.0000055, 0.000008], each dragon_body_path], scale = 0.9);
 
     translate([2.975, -0.75, -0.75])      
     scale(0.01825)

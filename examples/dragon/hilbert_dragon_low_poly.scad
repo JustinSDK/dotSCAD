@@ -11,11 +11,7 @@ hilbert_dragon_low_poly();
 
 module hilbert_dragon_low_poly() {
     lines = hilbert_curve();
-    hilbert_path = dedup(
-        concat(
-            [for(line = lines) line[0]], 
-            [lines[len(lines) - 1][1]])
-        );
+    hilbert_path = dedup([each [for(line = lines) line[0]], lines[len(lines) - 1][1]]);
     smoothed_hilbert_path = bezier_smooth(hilbert_path, 0.48, t_step = 0.2);
 
     dragon_body_path = reverse([for(i = [1:len(smoothed_hilbert_path) - 2]) smoothed_hilbert_path[i]]);
@@ -37,7 +33,11 @@ module hilbert_dragon_low_poly() {
     pts = [for(p = body_shape) p * 0.007];
     p = dragon_body_path[0];
     
-    path_extrude(pts, concat([p + [0.0155, 0, 0.175]], [for(i = [1:len(dragon_body_path) - 1]) dragon_body_path[i]]), scale = 0.9);
+    path_extrude(
+        pts, 
+        [p + [0.0155, 0, 0.175], each [for(i = [1:len(dragon_body_path) - 1]) dragon_body_path[i]]], 
+        scale = 0.9
+    );
 
     translate([0.125, 0, -2.73])        
     scale(0.009)
