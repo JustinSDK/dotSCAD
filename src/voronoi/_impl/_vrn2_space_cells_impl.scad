@@ -22,10 +22,7 @@ function cell_pt(fcord, grid_w, seed, x, y, gw, gh) =
 function _neighbors(fcord, seed, grid_w, gw, gh) = 
     let(range = [-1:1])
     concat(
-        [
-            for(y = range, x = range)
-                    cell_pt(fcord, grid_w, seed, x, y, gw, gh)
-        ],
+        [for(y = range, x = range) cell_pt(fcord, grid_w, seed, x, y, gw, gh)],
         [for(x = range) cell_pt(fcord, grid_w, seed, x, -2, gw, gh)],
         [for(x = range) cell_pt(fcord, grid_w, seed, x, 2, gw, gh)],
         [for(y = range) cell_pt(fcord, grid_w, seed, -2, y, gw, gh)],

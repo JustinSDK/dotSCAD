@@ -8,4 +8,4 @@
 *
 **/ 
 
-function degrees(radians) = 180 / PI * radians;
+function degrees(radians) = (radians * 180) / PI;

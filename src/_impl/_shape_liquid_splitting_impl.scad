@@ -6,11 +6,12 @@ function _liquid_splitting_pie_curve(radius, centre_dist, tangent_angle) =
     let(
         begin_ang = 90 + tangent_angle,
         shape_pts = shape_pie(radius, [-begin_ang, begin_ang]),
-        leng = len(shape_pts)
+        leng = len(shape_pts),
+        offset_p = [centre_dist / 2, 0]
     )
     [
         for(i = 1; i < leng; i = i + 1)
-            shape_pts[i] + [centre_dist / 2, 0]
+            shape_pts[i] + offset_p
     ];
     
 function _liquid_splitting_bezier(radius, centre_dist, tangent_angle, t_step, ctrl_p1) = 

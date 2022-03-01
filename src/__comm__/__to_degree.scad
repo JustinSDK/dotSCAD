@@ -1,1 +1,1 @@
-function __to_degree(phi) = 180 / PI * phi;
+function __to_degree(radians) = (radians * 180) / PI;

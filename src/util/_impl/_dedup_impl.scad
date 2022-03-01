@@ -6,7 +6,6 @@ function _dedup(elems, leng, buckets, eq, hash, bucket_numbers, i = 0) =
 
 function _dedup_add(buckets, i_elem, eq, hash, bucket_numbers) =
     let(
-		i =  i_elem[0],
 		elem = i_elem[1],
 	    b_idx = hash(elem) % bucket_numbers,
 		bucket = buckets[b_idx]

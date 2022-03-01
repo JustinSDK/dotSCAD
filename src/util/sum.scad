@@ -8,6 +8,4 @@
 *
 **/ 
 
-use <_impl/_sum_impl.scad>;
-
-function sum(lt) = _sum_impl(lt, len(lt));
+function sum(lt) = [for(i = [0:len(lt) - 1]) 1] * lt;

@@ -106,8 +106,7 @@ function wf_entropy(wf, x, y) =
     let(
 		states = wf_eigenstates_at(wf, x, y),
 		weights = wf_weights(wf),
-		state_leng = len(states),
-		sumOfWeights_sumOfWeightLogWeights = _wf_entropy(weights, states, state_leng, 0, 0),
+		sumOfWeights_sumOfWeightLogWeights = _wf_entropy(weights, states, len(states), 0, 0),
 		sumOfWeights = sumOfWeights_sumOfWeightLogWeights[0],
 		sumOfWeightLogWeights = sumOfWeights_sumOfWeightLogWeights[1]
 	)
@@ -241,8 +240,8 @@ function tilemap_generate(tm) =
 	wf_is_all_collapsed(wf) ? collapsed_tiles(wf) :
 	let(
 		coord = wf_coord_min_entropy(wf),
-		x = coord[0],
-		y = coord[1]
+		x = coord.x,
+		y = coord.y
 	)
 	tilemap_generate(tilemap_propagate([
 			tilemap_width(tm),
@@ -269,10 +268,8 @@ function compatibilities_of_tiles(sample) =
 		height = len(sample)
 	)
 	hashset([
-		for(y = [0:height - 1])
-			for(x = [0:width - 1])
-				for(c = neighbor_compatibilities(sample, x, y, width, height))
-					c
+		for(y = [0:height - 1], x = [0:width - 1])
+		    each neighbor_compatibilities(sample, x, y, width, height)
 	], number_of_buckets = width * height);
 
 function collapsed_tiles(wf) =
