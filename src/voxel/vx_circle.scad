@@ -12,5 +12,4 @@ use <_impl/_vx_circle_impl.scad>;
 use <../util/dedup.scad>;
 
 function vx_circle(radius, filled = false) = 
-    let(all = _vx_circle_impl(radius, filled))
-    dedup(all);
+    dedup(_vx_circle_impl(radius, filled));

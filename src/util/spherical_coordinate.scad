@@ -12,6 +12,6 @@ function spherical_coordinate(point) =
     // mathematics [r, theta, phi]
     [
         norm(point), 
-        atan2(point[1], point[0]), 
-        atan2(sqrt(point[0]^2 + point[1]^2), point[2])
+        atan2(point.y, point.x), 
+        atan2(sqrt(point.x ^ 2 + point.y ^ 2), point.z)
     ];

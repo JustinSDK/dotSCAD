@@ -49,7 +49,7 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
             let(
                 vt0 = pts[i] - pts[i - 1],
                 vt1 = pts[i + 1] - pts[i],
-                a = acos((vt0 * vt1) / (norm(vt0) * norm(vt1))),
+                a = acos((vt0 * vt1) / sqrt((vt0 * vt0) * (vt1 * vt1))),
                 v = cross(vt0, vt1)
             )
             [a, v]

@@ -23,8 +23,8 @@ function _tri_circumcircle(shape_pts) =
    )
    det == 0 ? undef : 
              let(
-                 x = (d1 * v0[1] - d0 * v1[1]) / det,
-                 y = (d0 * v1[0] - d1 * v0[0]) / det,
+                 x = (d1 * v0.y - d0 * v1.y) / det,
+                 y = (d0 * v1.x - d1 * v0.x) / det,
                  center = [x, y],
                  v = p0 - center
              )
@@ -179,10 +179,9 @@ function delaunayBadTriangles(d, p, _indices_hash) =
 function inCircumcircle(t, p, circles, _indices_hash) = 
     let(
 	    c = hashmap_get(circles, t, hash = _indices_hash),
-		ct = cc_center(c),
-		rr = (ct[0] - p[0]) ^ 2 + (ct[1] - p[1]) ^ 2
+		v = cc_center(c) - p
 	)
-	rr <= cc_rr(c);
+	v * v <= cc_rr(c);
 
 function delaunayBoundaries(d, badTriangles, _indices_hash) = 
     let(

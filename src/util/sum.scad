@@ -8,4 +8,6 @@
 *
 **/ 
 
-function sum(lt) = [for(i = [0:len(lt) - 1]) 1] * lt;
+function sum(lt) = 
+    let(leng = len(lt))
+    [for(i = 0; i < leng; i = i + 1) 1] * lt;

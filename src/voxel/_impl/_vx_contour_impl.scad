@@ -26,7 +26,7 @@ _vx_contour_nxt_offset = [
 ];
 function _vx_contour_travel(pts, p, fst) = 
     let(
-        dir_i = _vx_contour_dir(_vx_contour_corner_value(pts, p[0], p[1])),
+        dir_i = _vx_contour_dir(_vx_contour_corner_value(pts, p.x, p.y)),
         nxt_p = p + _vx_contour_nxt_offset[dir_i]
     )
     nxt_p == fst ? [p] : [p, each _vx_contour_travel(pts, nxt_p, fst)];

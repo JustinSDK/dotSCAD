@@ -1,20 +1,18 @@
 function _vx_cylinder_vx_circle(radius, filled, thickness) = 
     let(range = [-radius: radius - 1])
     filled ? [
-        for(y = range)        
-           for(x = range)
-               let(v = [x, y])
-               if(norm(v) < radius) v
+        for(y = range, x = range)    
+        let(v = [x, y])
+        if(norm(v) < radius) v
     ] :
-    let(ishell = radius * radius - 2 * thickness * radius)
+    let(ishell = radius ^ 2 - 2 * thickness * radius)
     [
-        for(y = range)        
-           for(x = range)
-               let(
-                   v = [x, y],
-                   leng = norm(v)
-               )
-               if(leng < radius && (leng * leng) > ishell) v    
+        for(y = range, x = range)        
+        let(
+            v = [x, y],
+            leng = norm(v)
+        )
+        if(leng < radius && (leng ^ 2) > ishell) v    
     ];
 
 function _vx_cylinder_diff_r(r, h, filled, thickness) =
@@ -29,7 +27,7 @@ function _vx_cylinder_diff_r(r, h, filled, thickness) =
         let(r = round(r1 + dr * i))
         each [
             for(pt = _vx_cylinder_vx_circle(r, filled, thickness))
-            [pt[0], pt[1], i]
+            [pt.x, pt.y, i]
         ]
     ]; 
 
@@ -39,7 +37,7 @@ function _vx_cylinder_same_r(r, h, filled, thickness) =
         for(i = 0; i < h; i = i + 1)
         each [
             for(pt = c)
-            [pt[0], pt[1], i]
+            [pt.x, pt.y, i]
         ]
     ]; 
 
