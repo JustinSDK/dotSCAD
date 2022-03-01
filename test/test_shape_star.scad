@@ -1,14 +1,16 @@
 use <unittest.scad>;
-use <shape_starburst.scad>;
+use <shape_star.scad>;
 
-module test_shape_starburst() {
-    echo("==== test_shape_starburst ====");
+module test_shape_star() {
+    echo("==== test_shape_star ====");
 
-    expected = [[30, 0], [10.3923, 6], [15, 25.9808], [0, 12], [-15, 25.9808], [-10.3923, 6], [-30, 0], [-10.3923, -6], [-15, -25.9808], [0, -12], [15, -25.9808], [10.3923, -6]];
+    expected = [[0, 30], [-6, 10.3923], [-25.9808, 15], [-12, 0], [-25.9808, -15], [-6, -10.3923], [0, -30], [6, -10.3923], [25.9808, -15], [12, 0], [25.9808, 15], [6, 10.3923]];
 
-    actual = shape_starburst(30, 12, 6);
+    actual = shape_star(30, 12, 6);
+
+    echo(actual);
 
     assertEqualPoints(expected, actual);
 }
 
-test_shape_starburst();
+test_shape_star();
