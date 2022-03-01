@@ -8,8 +8,6 @@ module test_shape_star() {
 
     actual = shape_star(30, 12, 6);
 
-    echo(actual);
-
     assertEqualPoints(expected, actual);
 }
 
