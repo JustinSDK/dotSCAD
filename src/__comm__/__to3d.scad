@@ -1,1 +1,1 @@
-function __to3d(p) = [p.x, p.y, 0];
+function __to3d(p) = [each p, 0];
