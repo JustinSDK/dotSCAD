@@ -7,7 +7,7 @@ function _combi(n, k) =
             [1,3,3,1]   // n = 3: for Cubic Bézier curves
         ]  
     )
-    n < len(bi_coef) ? bi_coef[n][k] : (
+    n < 4 ? bi_coef[n][k] : (
         k == 0 ? 1 : (_combi(n, k - 1) * (n - k + 1) / k)
     );
         
@@ -21,12 +21,12 @@ function _bezier_curve_point2(t, points) =
     [
         bezier_curve_coordinate(
             t, 
-            [for(p = points) p[0]], 
+            [for(p = points) p.x], 
             n
         ),
         bezier_curve_coordinate(
             t,  
-            [for(p = points) p[1]], 
+            [for(p = points) p.y], 
             n
         )
     ];
@@ -36,17 +36,17 @@ function _bezier_curve_point3(t, points) =
     [
         bezier_curve_coordinate(
             t, 
-            [for(p = points) p[0]], 
+            [for(p = points) p.x], 
             n
         ),
         bezier_curve_coordinate(
             t,  
-            [for(p = points) p[1]], 
+            [for(p = points) p.y], 
             n
         ),
         bezier_curve_coordinate(
             t, 
-            [for(p = points) p[2]], 
+            [for(p = points) p.z], 
             n
         )
     ];

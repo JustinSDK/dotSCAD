@@ -21,7 +21,7 @@ function interpolated_pt(p0, p1, threshold) =
 function _isolines_pn_label(pts, threshold) =
     [
         for(row = pts)
-        [for(p = row) [p.x, p.y, p.z, p.z >= threshold]]
+        [for(p = row) [each p, p.z >= threshold]]
     ]; 
     
 function _isolines_corner_value(cell_pts) =
@@ -116,10 +116,7 @@ function _isolines_of(cell_pts, threshold) =
 function _marching_squares_isolines(points, threshold) = 
     let(labeled_pts = _isolines_pn_label(points, threshold))
     [
-        for(
-            y = [0:len(labeled_pts) - 2], 
-            x = [0:len(labeled_pts[0]) - 2]
-        )            
+        for(y = [0:len(labeled_pts) - 2], x = [0:len(labeled_pts[0]) - 2])            
             let(
                 p0 = labeled_pts[y][x],
                 p1 = labeled_pts[y + 1][x],
@@ -145,11 +142,12 @@ function _isobands_tri_label(pts, lower, upper) =
         for(row = pts)
         [
             for(p = row) 
-            let(label = 
-                p[2] < lower ? "0" : 
-                p[2] >= lower && p[2] <= upper ? "1" : "2"
+            let(
+                z = p.z,
+                label = z < lower ? "0" : 
+                        z >= lower && z <= upper ? "1" : "2"
             )
-            [p[0], p[1], p[2], label]
+            [each p, label]
         ]
     ]; 
     
@@ -1393,10 +1391,7 @@ function _isobands_of(cell_pts, lower, upper) =
 function _marching_squares_isobands(points, lower, upper) = 
     let(labeled_pts = _isobands_tri_label(points, lower, upper))
     [
-        for(
-            y = [0:len(labeled_pts) - 2], 
-            x = [0:len(labeled_pts[0]) - 2]
-        )
+        for(y = [0:len(labeled_pts) - 2], x = [0:len(labeled_pts[0]) - 2])
             let(
                 p0 = labeled_pts[y][x],
                 p1 = labeled_pts[y + 1][x],
