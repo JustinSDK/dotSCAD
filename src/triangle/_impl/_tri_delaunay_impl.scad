@@ -26,10 +26,9 @@ function _tri_circumcircle(shape_pts) =
                  x = (d1 * v0[1] - d0 * v1[1]) / det,
                  y = (d0 * v1[0] - d1 * v0[0]) / det,
                  center = [x, y],
-                 v = p0 - center,
-                 rr = v[0] ^ 2 + v[1] ^ 2
+                 v = p0 - center
              )
-             [center, rr];
+             [center, v * v];
 
 function cc_center(cc) = cc[0];
 function cc_rr(cc) = cc[1];
