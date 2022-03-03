@@ -7,9 +7,8 @@ function _combi(n, k) =
             [1,3,3,1]   // n = 3: for Cubic Bézier curves
         ]  
     )
-    n < 4 ? bi_coef[n][k] : (
-        k == 0 ? 1 : (_combi(n, k - 1) * (n - k + 1) / k)
-    );
+    n < 4 ? bi_coef[n][k] : 
+    k == 0 ? 1 : (_combi(n, k - 1) * (n - k + 1) / k);
         
 function bezier_curve_coordinate(t, pn, n, i = 0) = 
     i == n + 1 ? 0 : 

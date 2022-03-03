@@ -24,12 +24,8 @@ function _bijection_offset_edge(edge, dx, dy) =
 function _bijection__bijection_offset_edges(edges, d) = 
     [ 
         for(edge = edges)
-        let(
-            ow_normal = _bijection_outward_edge_normal(edge),
-            dx = ow_normal.x * d,
-            dy = ow_normal.y * d
-        )
-        _bijection_offset_edge(edge, dx, dy)
+        let(ow_normal_d = _bijection_outward_edge_normal(edge) * d)
+        _bijection_offset_edge(edge, ow_normal_d.x, ow_normal_d.y)
     ];
 
 function _bijection_offset_impl(pts, d, epsilon) = 

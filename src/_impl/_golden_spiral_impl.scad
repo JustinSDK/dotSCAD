@@ -8,7 +8,7 @@ function _fast_fibonacci_sub(nth) =
         a = _f[0],
         b = _f[1],
         c = a * (b * 2 - a),
-        d = a * a + b * b
+        d = a ^ 2 + b ^ 2
     ) 
     nth % 2 == 0 ? [c, d] : [d, c + d];
 
