@@ -3,6 +3,7 @@ use <util/has.scad>;
 use <util/rand.scad>;
 use <util/some.scad>;
 use <util/every.scad>;
+use <util/sum.scad>;
 use <util/map/hashmap.scad>;
 use <util/map/hashmap_put.scad>;
 use <util/map/hashmap_get.scad>;
@@ -67,8 +68,7 @@ function wf_is_all_collapsed(wf) = every(
 
 function wf_remove(wf, x, y, removedStates) = _replaceStatesAt(wf, x, y, [
 	for(state = wf_eigenstates_at(wf, x, y)) 
-	    if(!has(removedStates, state)) 
-		    state
+	if(!has(removedStates, state)) state
 ]);
 
 function wf_collapse(wf, x, y) =
@@ -81,20 +81,17 @@ function wf_collapse(wf, x, y) =
 			if(w != undef)
 			[state, w]
 		],
-		totalWeights = _totalWeights(weights_xy, len(weights_xy)),
-		threshold = rand() * totalWeights
+		leng = len(weights_xy),
+		threshold = rand() * sum([for(i = 0; i < leng; i = i + 1) weights_xy[i][1]])
 	)		
 	_wf_collapse(wf, x, y, weights_xy, len(weights_xy), threshold);
-
-function _totalWeights(weights_xy, leng, i = 0) =
-    i == leng ? 0 :
-	weights_xy[i][1] + _totalWeights(weights_xy, leng, i + 1);
 
 function _wf_collapse(wf, x, y, states_weights, leng, threshold, i = 0) =
     i == leng ? wf : 
 	let(
-		state = states_weights[i][0],
-		weight = states_weights[i][1],
+		state_weight = states_weights[i],
+		state = state_weight[0],
+		weight = state_weight[1],
 		t = threshold - weight
 	)
 	t < 0 ? _oneStateAt(wf, x, y, state) :  _wf_collapse(wf, x, y, states_weights, leng, t, i + 1);
@@ -114,10 +111,7 @@ function wf_entropy(wf, x, y) =
 
 function _wf_entropy(weights, states, state_leng, sumOfWeights, sumOfWeightLogWeights, i = 0) =
 	i == state_leng ? [sumOfWeights, sumOfWeightLogWeights] :
-	let(
-		opt = states[i],
-		weight = hashmap_get(weights, opt)
-	)
+	let(weight = hashmap_get(weights, states[i]))
 	_wf_entropy(weights, states, state_leng, sumOfWeights + weight, sumOfWeightLogWeights + weight * ln(weight), i + 1);
 
 function _replaceStatesAt(wf, x, y, states) = 
@@ -136,10 +130,8 @@ function _replaceStatesAt(wf, x, y, states) =
 	];
 
 function wf_not_collapsed_coords(wf) = [
-	for(y = [0:wf_height(wf) - 1])
-		for(x = [0:wf_width(wf) - 1])
-			if(len(wf_eigenstates_at(wf, x, y)) != 1)
-				[x, y]
+	for(y = [0:wf_height(wf) - 1], x = [0:wf_width(wf) - 1])
+	if(len(wf_eigenstates_at(wf, x, y)) != 1) [x, y]
 ];
 
 function wf_coord_min_entropy(wf) = 
@@ -147,7 +139,7 @@ function wf_coord_min_entropy(wf) =
 		coords = wf_not_collapsed_coords(wf),
 		coords_leng = len(coords),
 		entropyCoord = coords[0],
-		entropy = wf_entropy(wf, entropyCoord[0], entropyCoord[1]) - (rand() / 1000)
+		entropy = wf_entropy(wf, entropyCoord.x, entropyCoord.y) - (rand() / 1000)
 	)
 	_wf_coord_min_entropy(wf, coords, coords_leng, entropy, entropyCoord);
 
@@ -155,7 +147,7 @@ function _wf_coord_min_entropy(wf, coords, coords_leng, entropy, entropyCoord, i
     i == coords_leng ? entropyCoord :
 	let(
 		coord = coords[i],
-		noisedEntropy = wf_entropy(wf, coord[0], coord[1]) - (rand() / 1000)
+		noisedEntropy = wf_entropy(wf, coord.x, coord.y) - (rand() / 1000)
 	)
 	noisedEntropy < entropy ? _wf_coord_min_entropy(wf, coords, coords_leng, noisedEntropy, coord, i + 1) :
 	                          _wf_coord_min_entropy(wf, coords, coords_leng, entropy, entropyCoord, i + 1);
@@ -197,8 +189,8 @@ function _tilemap_propagate(tm, stack) =
 	let(
 		current_coord = stack[0],
 		cs = stack[1],
-		cx = current_coord[0], 
-		cy = current_coord[1],
+		cx = current_coord.x, 
+		cy = current_coord.y,
 		current_tiles = wf_eigenstates_at(tilemap_wf(tm), cx, cy),
 		dirs = neighbor_dirs(cx, cy, tilemap_width(tm), tilemap_height(tm)),
 		tm_stack = _doDirs(tm, cs, cx, cy, current_tiles, dirs, len(dirs))
@@ -215,8 +207,7 @@ function _doDirs(tm, stack, cx, cy, current_tiles, dirs, leng, i = 0) =
 		nbr_tiles = wf_eigenstates_at(wf, nbrx, nbry),
 		not_compatible_nbr_tiles = [
 			for(nbr_tile = nbr_tiles) 
-			    if(not_compatible_nbr_tile(tm, current_tiles, nbr_tile, dir)) 
-				    nbr_tile
+			if(not_compatible_nbr_tile(tm, current_tiles, nbr_tile, dir)) nbr_tile
 		]
 	)
 	len(not_compatible_nbr_tiles) == 0 ? _doDirs(tm, stack, cx, cy, current_tiles, dirs, leng, i + 1) :
@@ -269,7 +260,7 @@ function compatibilities_of_tiles(sample) =
 	)
 	hashset([
 		for(y = [0:height - 1], x = [0:width - 1])
-		    each neighbor_compatibilities(sample, x, y, width, height)
+		each neighbor_compatibilities(sample, x, y, width, height)
 	], number_of_buckets = width * height);
 
 function collapsed_tiles(wf) =
