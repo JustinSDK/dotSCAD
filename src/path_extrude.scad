@@ -133,7 +133,7 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
                 remain_sections = [
                     for(i = 0; i < end_i; i = i + 1) 
                         translate_pts(
-                            local_rotate_section(i, i * twist_step_a, [1, 1, 1] + scale_step_vt * i),
+                            local_rotate_section(i, i * twist_step_a, [1, 1, 1] + scale_step_vt * (i + 1)),
                             pth_pts[i + 1]
                         )
                 ]
