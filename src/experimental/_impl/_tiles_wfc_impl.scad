@@ -1,4 +1,3 @@
-use <util/flat.scad>;
 use <util/has.scad>;
 use <util/rand.scad>;
 use <util/some.scad>;
@@ -13,7 +12,7 @@ use <util/set/hashset_has.scad>;
 
 function weights_of_tiles(sample) = 
     let(
-	    symbols = flat(sample),
+	    symbols = [for(row = sample) each row],
 		leng = len(symbols)
 	)
     _weights_of_tiles(hashmap(number_of_buckets = leng), symbols, leng);
