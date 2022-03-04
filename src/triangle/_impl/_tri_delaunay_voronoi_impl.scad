@@ -3,12 +3,7 @@ use <../../util/map/hashmap_get.scad>;
 use <../../util/find_index.scad>;
 
 function indicesOfCell(iTris, triIndices) = 
-    let(
-	    vi = iTris[0][0],
-		indices = [],
-		leng = len(iTris)
-	)
-	_indicesOfCell(iTris, triIndices, leng, indices, vi);
+	_indicesOfCell(iTris, triIndices, len(iTris), [], iTris[0][0]);
 
 function _indicesOfCell(iTris, triIndices, leng, indices, vi, i = 0) =
     i == leng ? indices :

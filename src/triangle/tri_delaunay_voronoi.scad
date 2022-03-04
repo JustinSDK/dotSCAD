@@ -28,9 +28,10 @@ function tri_delaunay_voronoi(d) =
 		i_rts = [
 			for(i = i_range)
 			let(
-				a = tris[i][0],
-				b = tris[i][1],
-				c = tris[i][2],
+				tris_i = tris[i],
+				a = tris_i[0],
+				b = tris_i[1],
+				c = tris_i[2],
 			    rt1 = [b, c, a],
 			    rt2 = [c, a, b],
 			    rt3 = [a, b, c]
@@ -44,9 +45,10 @@ function tri_delaunay_voronoi(d) =
 		triIndices = hashmap([
 			for(i = i_range)
 			let(
-				a = tris[i][0],
-				b = tris[i][1],
-				c = tris[i][2],
+				tris_i = tris[i],
+				a = tris_i[0],
+				b = tris_i[1],
+				c = tris_i[2],
 			    rt1 = [b, c, a],
 			    rt2 = [c, a, b],
 			    rt3 = [a, b, c]

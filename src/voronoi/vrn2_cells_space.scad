@@ -18,10 +18,10 @@ function vrn2_cells_space(size, grid_w, seed) =
         region_size = grid_w * 3,
         half_region_size = region_size * 0.5,
         shape = shape_square(grid_w * 3),
-        gw = size[0] / grid_w,
-        gh = size[1] / grid_w,
-        cell_nbrs_lt = [for(cy = [-grid_w:grid_w:size[1]]) 
-            for(cx = [-grid_w:grid_w:size[0]])
+        gw = size.x / grid_w,
+        gh = size.y / grid_w,
+        cell_nbrs_lt = [for(cy = [-grid_w:grid_w:size.y]) 
+            for(cx = [-grid_w:grid_w:size.x])
             let(
                 nbrs = _neighbors(
                     [floor(cx / grid_w), floor(cy / grid_w)],

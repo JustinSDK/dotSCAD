@@ -21,22 +21,20 @@ module sweep(sections, triangles = "SOLID") {
         ) 
         concat(
             [
-                for(j = range_j)
-                    for(i = range_i) 
-                        [
-                            j + i, 
-                            j + (i + 1) % leng_pts_sect, 
-                            j + (i + 1) % leng_pts_sect + leng_pts_sect
-                        ]
+                for(j = range_j, i = range_i)
+                [
+                    j + i, 
+                    j + (i + 1) % leng_pts_sect, 
+                    j + (i + 1) % leng_pts_sect + leng_pts_sect
+                ]
             ],
             [
-                for(j = range_j)
-                    for(i = range_i) 
-                        [
-                            j + i, 
-                            j + (i + 1) % leng_pts_sect + leng_pts_sect , 
-                            j + i + leng_pts_sect
-                        ]
+                for(j = range_j, i = range_i)
+                [
+                    j + i, 
+                    j + (i + 1) % leng_pts_sect + leng_pts_sect , 
+                    j + i + leng_pts_sect
+                ]
             ]      
         );
 
@@ -45,21 +43,14 @@ module sweep(sections, triangles = "SOLID") {
             (p == f_sect[i] ? i : search_at(f_sect, p, leng_pts_sect, i + 1)) : -1;
     
     function the_same_after_twisting(f_sect, l_sect, leng_pts_sect) =
-        let(
-            found_at_i = search_at(f_sect, l_sect[0], leng_pts_sect)
-        )
+        let(found_at_i = search_at(f_sect, l_sect[0], leng_pts_sect))
         found_at_i <= 0 ? false : 
             l_sect == concat(
                 [for(i = found_at_i; i < leng_pts_sect; i = i + 1) f_sect[i]],
                 [for(i = 0; i < found_at_i; i = i + 1) f_sect[i]]
             ); 
 
-    function to_v_pts(sects) = 
-            [
-            for(sect = sects) 
-                for(pt = sect) 
-                    pt
-            ];                   
+    function to_v_pts(sects) = [for(sect = sects) each sect];                   
 
     module solid_sections(sects) {
         
@@ -68,11 +59,7 @@ module sweep(sections, triangles = "SOLID") {
         first_sect = sects[0];
         last_sect = sects[leng_sects - 1];
    
-        v_pts = [
-            for(sect = sects) 
-                for(pt = sect) 
-                    pt
-        ];
+        v_pts = [for(sect = sects) each sect];
 
         begin_end_the_same =
             first_sect == last_sect || 

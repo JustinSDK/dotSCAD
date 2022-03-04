@@ -38,7 +38,7 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
             [
                 (scale.x - 1) / len_path_pts_minus_one, 
                 (scale.y - 1) / len_path_pts_minus_one,
-                is_undef(scale[2]) ? 0 : (scale.z - 1) / len_path_pts_minus_one
+                is_undef(scale.z) ? 0 : (scale.z - 1) / len_path_pts_minus_one
             ];   
 
         // get rotation matrice for sections
@@ -114,15 +114,17 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
             let(
                 vt0 = pth_pts[j] - pth_pts[j - 1],
                 vt1 = pth_pts[j + 1] - pth_pts[j],
-                ms = cumu_rot_matrice[j - 1]
+                ms = cumu_rot_matrice[j - 1],
+                ms0 = ms[0],
+                ms1 = ms[1],
+                ms2 = ms[2],
+                ms0p = [ms0[0], ms0[1], ms0[2]],
+                ms1p = [ms1[0], ms1[1], ms1[2]],
+                ms2p = [ms2[0], ms2[1], ms2[2]]
             )
             [
                 for(p = init_section(init_a, init_s)) 
-                    [
-                        [ms[0][0], ms[0][1], ms[0][2]] * p,
-                        [ms[1][0], ms[1][1], ms[1][2]] * p,
-                        [ms[2][0], ms[2][1], ms[2][2]] * p
-                    ]
+                    [ms0p * p, ms1p * p, ms2p * p]
             ];        
 
         sections =

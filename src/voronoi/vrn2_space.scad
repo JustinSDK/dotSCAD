@@ -15,8 +15,8 @@ module vrn2_space(size, grid_w, seed, spacing = 1, r = 0, delta = 0, chamfer = f
 
     function cell_pt(fcord, seed, x, y, gw, gh) = 
         let(
-            nx = fcord[0] + x,
-            ny = fcord[1] + y,
+            nx = fcord.x + x,
+            ny = fcord.y + y,
             sd_x = nx < 0 ? nx + gw : 
                    nx >= gw ? nx % gw : nx,
             sd_y = ny < 0 ? ny + gh : 
@@ -59,8 +59,8 @@ module vrn2_space(size, grid_w, seed, spacing = 1, r = 0, delta = 0, chamfer = f
     gw = size[0] / grid_w;
     gh = size[1] / grid_w;
 
-    cell_nbrs_lt = [for(cy = [-grid_w:grid_w:size[1]]) 
-        for(cx = [-grid_w:grid_w:size[0]])
+    cell_nbrs_lt = [
+        for(cy = [-grid_w:grid_w:size.y], cx = [-grid_w:grid_w:size.x]) 
         let(
             nbrs = _neighbors(
                 [floor(cx / grid_w), floor(cy / grid_w)],

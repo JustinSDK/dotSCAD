@@ -32,7 +32,7 @@ module starburst(r1, r2, n, height) {
     module burst() {
         hull() {
             half_burst();
-            mirror([0, 1,0]) half_burst();
+            mirror([0, 1, 0]) half_burst();
         }
     }
 

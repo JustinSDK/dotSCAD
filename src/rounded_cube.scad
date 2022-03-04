@@ -30,10 +30,8 @@ module rounded_cube(size, corner_r, center = false) {
         
     pair = [1, -1];
     corners = [
-        for(z = pair) 
-            for(y = pair) 
-                for(x = pair) 
-                    [half_l * x, half_w * y, half_h * z]
+        for(z = pair, y = pair, x = pair) 
+        [half_l * x, half_w * y, half_h * z]
     ];
 
     module corner(i) {

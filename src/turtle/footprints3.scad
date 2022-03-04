@@ -12,8 +12,5 @@ use <_impl/_footprints3.scad>;
 use <turtle3d.scad>;
 
 function footprints3(cmds, start = [0, 0, 0]) = 
-    let(
-        t = turtle3d("create", start, [[1, 0, 0], [0, 1, 0], [0, 0, 1]]),
-        leng = len(cmds)
-    )
-    [turtle3d("pt", t), each _footprints3(cmds, t, leng)];
+    let(t = turtle3d("create", start, [[1, 0, 0], [0, 1, 0], [0, 0, 1]]))
+    [turtle3d("pt", t), each _footprints3(cmds, t, len(cmds))];

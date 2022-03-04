@@ -6,8 +6,8 @@ function _lookup_noise_table(i) = _noise_table[i % 256];
 
 function cell_pt(fcord, grid_w, seed, x, y, gw, gh) = 
     let(
-        nx = fcord[0] + x,
-        ny = fcord[1] + y,
+        nx = fcord.x + x,
+        ny = fcord.y + y,
         sd_x = nx < 0 ? nx + gw : 
                 nx >= gw ? nx % gw : nx,
         sd_y = ny < 0 ? ny + gh : 

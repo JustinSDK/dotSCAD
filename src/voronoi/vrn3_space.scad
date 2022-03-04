@@ -17,20 +17,19 @@ module vrn3_space(size, grid_w, seed, spacing = 1) {
     function _lookup_noise_table(i) = _noise_table[i % 256];
     
     function _neighbors(fcord, seed, grid_w) = [
-        for(z = [-1:1])    
-            for(y = [-1:1])
-                for(x = [-1:1])
-                let(
-                    nx = fcord[0] + x,
-                    ny = fcord[1] + y,
-                    nz = fcord[2] + z,
-                    sd_base = abs(nx + ny * grid_w + nz * grid_w * grid_w),
-                    sd1 = _lookup_noise_table(seed + sd_base),
-                    sd2 = _lookup_noise_table(sd1 * 255 + sd_base),
-                    sd3 = _lookup_noise_table(sd2 * 255 + sd_base),
-                    nbr = [(nx + sd1) * grid_w, (ny + sd2) * grid_w, (nz + sd3) * grid_w]
-                )
-                nbr
+        let(range = [-1:1])
+        for(z = range, y = range, x = range)    
+        let(
+            nx = fcord.x + x,
+            ny = fcord.y + y,
+            nz = fcord.z + z,
+            sd_base = abs(nx + ny * grid_w + nz * grid_w * grid_w),
+            sd1 = _lookup_noise_table(seed + sd_base),
+            sd2 = _lookup_noise_table(sd1 * 255 + sd_base),
+            sd3 = _lookup_noise_table(sd2 * 255 + sd_base),
+            nbr = [(nx + sd1) * grid_w, (ny + sd2) * grid_w, (nz + sd3) * grid_w]
+        )
+        nbr
     ];    
     
     space_size = grid_w * 3;    
@@ -55,22 +54,20 @@ module vrn3_space(size, grid_w, seed, spacing = 1) {
         It can be avoided by taking 177-nearest-neighbor cells but the time taken would be unacceptable.
     */
     cell_nbrs_lt = [
-        for(cz = [0:grid_w:size[2]]) 
-            for(cy = [0:grid_w:size[1]]) 
-                for(cx = [0:grid_w:size[0]])
-                let(
-                    nbrs = _neighbors(
-                        [floor(cx / grid_w), floor(cy / grid_w), floor(cz / grid_w)],
-                        sd, 
-                        grid_w
-                    ),
-                    p = nbrs[13],
-                    points = concat(
-                        [for(i = [0:12]) nbrs[i]], 
-                        [for(i = [14:len(nbrs) - 1]) nbrs[i]]
-                    )
-                )
-                [p, points] 
+        for(cz = [0:grid_w:size.z], cy = [0:grid_w:size.y], cx = [0:grid_w:size.x]) 
+        let(
+            nbrs = _neighbors(
+                [floor(cx / grid_w), floor(cy / grid_w), floor(cz / grid_w)],
+                sd, 
+                grid_w
+            ),
+            p = nbrs[13],
+            points = concat(
+                [for(i = [0:12]) nbrs[i]], 
+                [for(i = [14:len(nbrs) - 1]) nbrs[i]]
+            )
+        )
+        [p, points] 
     ];
     
     for(cell_nbrs = cell_nbrs_lt) {

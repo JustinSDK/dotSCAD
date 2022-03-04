@@ -27,7 +27,7 @@ function _vx_cylinder_diff_r(r, h, filled, thickness) =
         let(r = round(r1 + dr * i))
         each [
             for(pt = _vx_cylinder_vx_circle(r, filled, thickness))
-            [pt.x, pt.y, i]
+            [each pt, i]
         ]
     ]; 
 
@@ -36,8 +36,7 @@ function _vx_cylinder_same_r(r, h, filled, thickness) =
     [
         for(i = 0; i < h; i = i + 1)
         each [
-            for(pt = c)
-            [pt.x, pt.y, i]
+            for(pt = c) [each pt, i]
         ]
     ]; 
 

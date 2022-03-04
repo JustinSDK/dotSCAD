@@ -8,7 +8,7 @@ function vx_polygon(points, filled = false) =
     !filled ? contour :
     let(
         sortedXY = sort(contour, by = "vt"),
-        ys = [for(p = sortedXY) p[1]],
+        ys = [for(p = sortedXY) p.y],
         rows = [
             for(y = [min(ys):max(ys)])
             let(
@@ -20,9 +20,9 @@ function vx_polygon(points, filled = false) =
             sortedXY,
             [
                 for(row = rows)
-                let(to = len(row) - 1, y = row[0][1])
-                if(to > 0 && (row[0][0] + 1 != row[to][0]))
-                    for(i = [row[0][0] + 1:row[to][0] - 1])
+                let(to = len(row) - 1, row0 = row[0], y = row0[1])
+                if(to > 0 && (row0[0] + 1 != row[to][0]))
+                    for(i = [row0[0] + 1:row[to][0] - 1])
                     let(p = [i, y])
                     if(in_shape(points, p)) p
             ]
