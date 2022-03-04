@@ -14,10 +14,9 @@ use <util/set/hashset_has.scad>;
 function weights_of_tiles(sample) = 
     let(
 	    symbols = flat(sample),
-		leng = len(symbols),
-		weights = hashmap(number_of_buckets = leng)
+		leng = len(symbols)
 	)
-    _weights_of_tiles(weights, symbols, leng);
+    _weights_of_tiles(hashmap(number_of_buckets = leng), symbols, leng);
 
 function _weights_of_tiles(weights, symbols, leng, i = 0) =
     i == leng ? weights :
@@ -253,24 +252,23 @@ function neighbor_compatibilities(sample, x, y, width, height) =
 function compatibilities_of_tiles(sample) =
     let(
 		width = len(sample[0]), 
-		height = len(sample)
+		height = len(sample),
+		rx = [0:width - 1]
 	)
 	hashset([
-		for(y = [0:height - 1], x = [0:width - 1])
+		for(y = [0:height - 1], x = rx)
 		each neighbor_compatibilities(sample, x, y, width, height)
 	], number_of_buckets = width * height);
 
 function collapsed_tiles(wf) =
     let(
 		wf_h = wf_height(wf),
-		wf_w = wf_width(wf)
+		wf_w = wf_width(wf),
+		rx = [0:wf_w - 1]
 	)
 	[
 		for(y = [0:wf_h - 1])
-		[
-			for(x = [0:wf_w - 1])
-			    wf_eigenstates_at(wf, x, y)[0]
-		]
+		[for(x = rx) wf_eigenstates_at(wf, x, y)[0]]
 	];
 
 function not_compatible_nbr_tile(tm, current_tiles, nbr_tile, dir) =
