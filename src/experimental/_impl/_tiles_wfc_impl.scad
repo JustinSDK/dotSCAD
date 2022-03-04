@@ -90,11 +90,9 @@ function _wf_collapse(wf, x, y, states_weights, leng, threshold, i = 0) =
     i == leng ? wf : 
 	let(
 		state_weight = states_weights[i],
-		state = state_weight[0],
-		weight = state_weight[1],
-		t = threshold - weight
+		t = threshold - state_weight[1]
 	)
-	t < 0 ? _oneStateAt(wf, x, y, state) :  _wf_collapse(wf, x, y, states_weights, leng, t, i + 1);
+	t < 0 ? _oneStateAt(wf, x, y, state_weight[0]) :  _wf_collapse(wf, x, y, states_weights, leng, t, i + 1);
 
 function _oneStateAt(wf, x, y, state) = _replaceStatesAt(wf, x, y, [state]);
 
@@ -102,8 +100,7 @@ function _oneStateAt(wf, x, y, state) = _replaceStatesAt(wf, x, y, [state]);
 function wf_entropy(wf, x, y) = 
     let(
 		states = wf_eigenstates_at(wf, x, y),
-		weights = wf_weights(wf),
-		sumOfWeights_sumOfWeightLogWeights = _wf_entropy(weights, states, len(states), 0, 0),
+		sumOfWeights_sumOfWeightLogWeights = _wf_entropy(wf_weights(wf), states, len(states), 0, 0),
 		sumOfWeights = sumOfWeights_sumOfWeightLogWeights[0],
 		sumOfWeightLogWeights = sumOfWeights_sumOfWeightLogWeights[1]
 	)
