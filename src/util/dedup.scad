@@ -19,11 +19,7 @@ function dedup(lt, eq = function(e1, e2) e1 == e2, hash = function(e) _str_hash(
 		b_numbers = is_undef(number_of_buckets) ? ceil(sqrt(leng_lt)) : number_of_buckets,
 	    buckets = [for(i = [0:b_numbers - 1]) []],
 		deduped = _dedup(lt, leng_lt, buckets, eq, hash, b_numbers),
-		i_elem_lt = [
-			for(bucket = deduped) 
-				for(i_elem = bucket)
-					i_elem		
-		],
+		i_elem_lt = [for(bucket = deduped) each bucket],
 		sorted = sort(i_elem_lt, by = function(e1, e2) e1[0] - e2[0])
 	)
 	[for(i_elem = sorted) i_elem[1]];

@@ -10,7 +10,4 @@
 
 use <../sum.scad>;
 
-function hashset_len(set) = sum([
-    for(bucket = set) 
-        len(bucket)		
-]);
+function hashset_len(set) = sum([for(bucket = set) len(bucket)]);
