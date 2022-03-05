@@ -30,20 +30,13 @@ function _fst_v3(pts, leng, n, d, i) =
     [i, nd];
 
 function m_assign(m, i, j, v) =
-    let(
-        lt = m[i],
-        leng_lt = len(lt),
-        nlt = [
-            if(j != 0) each  [for(idx = [0:j - 1]) lt[idx]],
-            v,
-            if(j != leng_lt - 1) each [for(idx = [j + 1:leng_lt - 1]) lt[idx]]
-        ],
-        leng_m = len(m)
-    )
+    let(lt = m[i])
     [
-        if(i != 0) each [for(idx = [0:i - 1]) m[idx]],,
-        nlt,
-        if(i != leng_m - 1) each [for(idx = [i + 1:leng_m - 1]) m[idx]]
+        for(r = [0:len(m) - 1]) 
+        if(r == i) 
+            [for(c = [0:len(lt) - 1]) c == j ? v : lt[c]] 
+        else 
+            m[r]
     ];
 
 function next_vis(i, pts, cur_faces, cur_faces_leng, next, vis, j = 0) = 
