@@ -8,11 +8,8 @@ use <../util/sum.scad>;
 ascending = function(e1, e2) e1 - e2;
 
 function connected_faces(leng_pts, faces) =
-	let(
-		leng = len(faces),
-		cnt_faces = [for(i = [0:leng_pts - 1]) []]
-	)
-	_connected_faces(faces, leng, leng_pts, cnt_faces);
+	let(cnt_faces = [for(i = [0:leng_pts - 1]) []])
+	_connected_faces(faces, len(faces), leng_pts, cnt_faces);
 	
 function _connected_faces(faces, leng, leng_pts, cnt_faces, i = 0) = 
 	i == leng ? cnt_faces :
