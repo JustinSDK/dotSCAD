@@ -43,10 +43,10 @@ function _bijection_offset_impl(pts, d, epsilon) =
             let(
                 this_edge = offset_es[i],
                 next_edge = offset_es[i + 1],
-                p = __line_intersection2(this_edge, next_edge, epsilon),
-                // p == p to avoid [nan, nan], because [nan, nan] != [nan, nan],
-                _ = assert(p != [] && p == p, "bijection_offset failed. Parallel or conincident edges found")
+                p = __line_intersection2(this_edge, next_edge, epsilon)
             )
+            // p == p to avoid [nan, nan], because [nan, nan] != [nan, nan]
+            assert(p != [] && p == p, "bijection_offset failed. Parallel or conincident edges found")
             p
         ]
     ];

@@ -87,14 +87,14 @@ function _convex_hull3(pts) =
         leng = len(sorted),
         v0 = 0,
         v1 =  _fst_v1(sorted, leng, v0 + 1),
-        _ = assert(v1 < leng, "common points"),
-        v2 = _fst_v2(sorted, leng, v1, v1 + 1),
-        __ = assert(v2 < leng, "collinear points"),
-        n = cross(sorted[v1] - sorted[v0], sorted[v2] - sorted[v0]),
+        v2 = assert(v1 < leng, "common points") 
+             _fst_v2(sorted, leng, v1, v1 + 1),
+        n = assert(v2 < leng, "collinear points") 
+            cross(sorted[v1] - sorted[v0], sorted[v2] - sorted[v0]),
         v3_d = _fst_v3(sorted, leng, n, 0, v2 + 1),
         v3 = v3_d[0],
-        ___ = assert(v3 < leng, "coplanar points"),
-        d = v3_d[1],
+        d = assert(v3 < leng, "coplanar points")
+            v3_d[1],
         fst_tetrahedron = d > 0 ? [
                 [v1, v0, v2],
                 [v0, v1, v3],
