@@ -8,12 +8,14 @@
 *
 **/
 
+use <util/degrees.scad>;
+
 function torus_knot(p, q, phi_step) = 
     let(tau = PI * 2)
     [
         for(phi = 0; phi < tau; phi = phi + phi_step)
         let(
-            degree = phi * 180 / PI,
+            degree = degrees(phi),
             r = cos(q * degree) + 2,
             x = r * cos(p * degree),
             y = r * sin(p * degree),

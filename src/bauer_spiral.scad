@@ -8,21 +8,22 @@
 *
 **/
 
+use <util/degrees.scad>;
+use <util/radians.scad>;
+
 function bauer_spiral(n, radius = 1, rt_dir = "CT_CLK") = 
     let(
         L = sqrt(n * PI),
-        toRadians = PI / 180,
-        toDegrees = 180 / PI,
         clk = rt_dir == "CT_CLK" ? 1 : -1
     )
     [
         for(k = 1; k <= n; k = k + 1)
         let(
             zk = 1 - (2 * k - 1) / n,
-            phik = acos(zk) * toRadians,
+            phik = radians(acos(zk)),
             thetak = L * phik * clk,
-            phikDegrees = toDegrees * phik,
-            thetakDegrees = toDegrees * thetak,
+            phikDegrees = degrees(phik),
+            thetakDegrees = degrees(thetak),
             xk = sin(phikDegrees) * cos(thetakDegrees),
             yk = sin(phikDegrees) * sin(thetakDegrees)
         )
