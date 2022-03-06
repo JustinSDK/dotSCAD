@@ -15,7 +15,7 @@ module polyhedron_hull(points, polyhedron_abuse = false) {
         // It's workable only because `polyhedron` doesn't complain about mis-ordered faces.
         // It's fast but might be invalid in later versions.
         hull()
-        polyhedron(points, [[for(i = [0:len(points) - 1]) i]]);
+        polyhedron(points, [[each [0:len(points) - 1]]]);
     }
     else {
         vts_faces = _convex_hull3(points);
