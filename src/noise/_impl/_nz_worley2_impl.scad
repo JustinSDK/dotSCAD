@@ -1,19 +1,20 @@
 use <_nz_worley_comm.scad>;
 use <../../util/sort.scad>;
 
-function _neighbors(fcord, seed, grid_w) = [
-    for(y = [-1:1])
-        for(x = [-1:1])
+function _neighbors(fcord, seed, grid_w) = 
+    let(range = [-1:1])
+    [
+        for(y = range, x = range)
         let(
-            nx = fcord[0] + x,
-            ny = fcord[1] + y,
+            nx = fcord.x + x,
+            ny = fcord.y + y,
             sd_base = abs(nx + ny * grid_w),
             sd1 = _lookup_noise_table(seed + sd_base),
             sd2 = _lookup_noise_table(sd1 * 255 + sd_base),
             nbr = [(nx + sd1) * grid_w, (ny + sd2) * grid_w]
         )
         nbr
-];
+    ];
 
 function _nz_worley2_classic(p, nbrs, dist) = 
     let(

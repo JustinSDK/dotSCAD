@@ -27,39 +27,35 @@ module sf_solidify(surface1, surface2, slicing = "SLASH", convexity = 1) {
         leng_pts = len(flatted_sf1);
                 
         sf1_tri_faces1 = slicing == "SLASH" ? [
-            for(yi = yi_range) 
-                for(xi = xi_range)
-                    [
-                        xy_to_index(xi, yi, columns),
-                        xy_to_index(xi + 1, yi + 1, columns),
-                        xy_to_index(xi + 1, yi, columns)
-                    ]    
+            for(yi = yi_range, xi = xi_range) 
+            [
+                xy_to_index(xi, yi, columns),
+                xy_to_index(xi + 1, yi + 1, columns),
+                xy_to_index(xi + 1, yi, columns)
+            ]    
         ] : [
-            for(yi = yi_range)
-                for(xi = xi_range)
-                    [
-                        xy_to_index(xi, yi, columns),
-                        xy_to_index(xi, yi + 1, columns),
-                        xy_to_index(xi + 1, yi, columns)
-                    ]    
+            for(yi = yi_range, xi = xi_range)
+            [
+                xy_to_index(xi, yi, columns),
+                xy_to_index(xi, yi + 1, columns),
+                xy_to_index(xi + 1, yi, columns)
+            ]    
         ];
 
         sf1_tri_faces2 = slicing == "SLASH" ? [
-            for(yi = yi_range) 
-                for(xi = xi_range)
-                    [
-                        xy_to_index(xi, yi, columns),
-                        xy_to_index(xi, yi + 1, columns),
-                        xy_to_index(xi + 1, yi + 1, columns)
-                    ]    
+            for(yi = yi_range, xi = xi_range) 
+            [
+                xy_to_index(xi, yi, columns),
+                xy_to_index(xi, yi + 1, columns),
+                xy_to_index(xi + 1, yi + 1, columns)
+            ]    
         ] : [
-            for(yi = yi_range) 
-                for(xi = xi_range)
-                    [
-                        xy_to_index(xi, yi + 1, columns),
-                        xy_to_index(xi + 1, yi + 1, columns),
-                        xy_to_index(xi + 1, yi, columns)
-                    ]    
+            for(yi = yi_range, xi = xi_range) 
+            [
+                xy_to_index(xi, yi + 1, columns),
+                xy_to_index(xi + 1, yi + 1, columns),
+                xy_to_index(xi + 1, yi, columns)
+            ]    
         ];        
 
         offset_v = [leng_pts, leng_pts, leng_pts];

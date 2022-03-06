@@ -40,7 +40,6 @@ function mz_wang_tiles(rows, columns, start = [0, 0], init_cells, seed) =
         dot_pts = dedup(sort(all, by = "vt"))
     )
     [
-        for(y = [0:rows - 1])
-            for(x = [0:columns - 1])
+        for(y = [0:rows - 1], x = [0:columns - 1])
             [x, y, _mz_wang_tile_type(dot_pts, x, y)]
     ];

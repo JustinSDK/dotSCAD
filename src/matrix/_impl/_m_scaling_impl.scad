@@ -8,8 +8,8 @@ function __m_scaling_to_scaling_vect(s) = is_num(s) ? [s, s, s] : __m_scaling_to
 function _m_scaling_impl(s) = 
     let(v = __m_scaling_to_scaling_vect(s))
     [
-        [v[0], 0, 0, 0],
-        [0, v[1], 0, 0],
-        [0, 0, v[2], 0],
+        [v.x, 0, 0, 0],
+        [0, v.y, 0, 0],
+        [0, 0, v.z, 0],
         [0, 0, 0, 1]
     ];
