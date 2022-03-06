@@ -63,7 +63,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 [**polyline3d**(points, diameter[, startingStyle, endingStyle])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyline3d.html) | create a polyline from a list of `[x, y, z]`.
 [**rounded_cube**(size, corner_r[, center])](https://openhome.cc/eGossip/OpenSCAD/lib3x-rounded_cube.html) | create a cube in the first octant.
 [**rounded_cylinder**(radius, h, round_r[, convexity, center])](https://openhome.cc/eGossip/OpenSCAD/lib3x-rounded_cylinder.html) | create a rounded cylinder.
-[**sweep**(sections[, triangles])](https://openhome.cc/eGossip/OpenSCAD/lib3x-sweep.html) | develop a smooth skin from crosssections with the same umber of sides.
+[**sweep**(sections[, triangles])](https://openhome.cc/eGossip/OpenSCAD/lib3x-sweep.html) | develop a smooth skin from crosssections with the same number of sides.
 
 ## Transformation
 
