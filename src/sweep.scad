@@ -76,13 +76,12 @@ module sweep(sections, triangles = "SOLID") {
             // hook for testing
             test_sweep_solid(v_pts, f_idxes, triangles);
         } else {
-            range_i = [0:leng_pts_sect - 1];
-            first_idxes = [for(i = range_i) leng_pts_sect - 1 - i];  
-            last_idxes = [
-                for(i = range_i) 
-                    i + leng_pts_sect * (leng_sects - 1)
-            ];    
+            first_idxes = [for(i = leng_pts_sect - 1; i >= 0; i = i - 1) i];  
+           
+            from = leng_pts_sect * (leng_sects - 1);
+            to = from + leng_pts_sect - 1;
 
+            last_idxes = [each [from:to]];    
             f_idxes = [first_idxes, each side_indexes(sects), last_idxes];
             
             polyhedron(
@@ -188,7 +187,7 @@ module sweep(sections, triangles = "SOLID") {
     
     module triangles_defined_sections() {
         module tri_sections(tri1, tri2) {
-            hull() polyhedron(
+            polyhedron(
                 points = concat(tri1, tri2),
                 faces = [
                     [0, 1, 2], 
@@ -201,7 +200,7 @@ module sweep(sections, triangles = "SOLID") {
 
         module two_sections(section1, section2) {
             for(idx = triangles) {
-               tri_sections(
+                tri_sections(
                     [
                         section1[idx[0]], 
                         section1[idx[1]], 
