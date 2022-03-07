@@ -9,7 +9,10 @@
 **/
 
 use <__comm__/__to3d.scad>;
-use <ptf/ptf_rotate.scad>;
+
+use <matrix/m_scaling.scad>;
+use <matrix/m_translation.scad>;
+use <matrix/m_rotation.scad>;
 
 function cross_sections(shape_pts, path_pts, angles, twist = 0, scale = 1.0) =
     let(
@@ -23,12 +26,15 @@ function cross_sections(shape_pts, path_pts, angles, twist = 0, scale = 1.0) =
     )
     [
         for(i = 0; i <= len_path_pts_minus_one; i = i + 1)
-            [
-                for(p = sh_pts) 
-                let(scaled_p = [p.x * (1 + scale_step_vt.x * i), p.y * (1 + scale_step_vt.y * i), p.z])
-                    ptf_rotate(
-                        ptf_rotate(scaled_p, twist_step * i)
-                        , angles[i]
-                    ) + pth_pts[i]
-            ]
+        let(
+            transform_m = m_translation(pth_pts[i]) * 
+                          m_rotation(angles[i]) * 
+                          m_rotation(twist_step * i) * 
+                          m_scaling([1 + scale_step_vt.x * i, 1 + scale_step_vt.y * i, 1])
+        )
+        [
+            for(p = sh_pts) 
+            let(transformed = transform_m * [each p, 1])
+            [transformed.x, transformed.y, transformed.z]
+        ]
     ];
