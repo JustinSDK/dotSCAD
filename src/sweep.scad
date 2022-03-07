@@ -101,34 +101,32 @@ module sweep(sections, triangles = "SOLID") {
         half_leng_v_pts = leng_sects * half_leng_sect;
 
         function strip_sects(begin_idx, end_idx) = 
+            let(range = [begin_idx:end_idx])
             [
-                for(i = 0; i < leng_sects; i = i + 1) 
-                    [
-                        for(j = begin_idx; j <= end_idx; j = j + 1)
-                            sects[i][j]
-                    ]
+                for(sect = sects) [for(j = range) sect[j]]
             ]; 
 
+        range = [0:half_leng_sect - 1];
         function first_idxes() = 
             [
-                for(i = 0; i < half_leng_sect; i = i + 1) 
-                    [
-                       i,
-                       i + half_leng_v_pts,
-                       (i + 1) % half_leng_sect + half_leng_v_pts, 
-                       (i + 1) % half_leng_sect
-                    ] 
+                for(i = range) 
+                [
+                    i,
+                    i + half_leng_v_pts,
+                    (i + 1) % half_leng_sect + half_leng_v_pts, 
+                    (i + 1) % half_leng_sect
+                ] 
             ];
 
         function last_idxes(begin_idx) = 
             [
-                for(i = 0; i < half_leng_sect; i = i + 1) 
-                    [
-                       begin_idx + i,
-                       begin_idx + (i + 1) % half_leng_sect,
-                       begin_idx + (i + 1) % half_leng_sect + half_leng_v_pts,
-                       begin_idx + i + half_leng_v_pts
-                    ]     
+                for(i = range) 
+                [
+                    begin_idx + i,
+                    begin_idx + (i + 1) % half_leng_sect,
+                    begin_idx + (i + 1) % half_leng_sect + half_leng_v_pts,
+                    begin_idx + i + half_leng_v_pts
+                ]     
             ];            
 
         outer_sects = strip_sects(0, half_leng_sect - 1);
