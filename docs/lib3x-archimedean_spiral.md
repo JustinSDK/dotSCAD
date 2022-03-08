@@ -47,22 +47,22 @@ An `init_angle` less than 180 degrees is not recommended because the function us
 	}
 
 ![archimedean_spiral](images/lib3x-archimedean_spiral-2.JPG)
-
-    use <archimedean_spiral.scad>;
-    
-    t = "3.141592653589793238462643383279502884197169399375105820974944592307816406286";
-
-	points = archimedean_spiral(
+	
+	use <archimedean_spiral.scad>;
+	
+	t = "3.141592653589793238462643383279502884197169399375105820974944592307816406286";
+	
+	points_angles = archimedean_spiral(
 	    arm_distance = 15,
 	    init_angle = 450, 
 	    point_distance = 12, 
 	    num_of_points = len(t) 
 	); 
 	
-	for(i = [0: len(points) - 1]) {
-	    translate(points[i].x)          
-	        rotate(points[i].y + 90)  
-	            text(t[i], valign = "center", halign = "center");
+	for(i = [0: len(points_angles) - 1]) {
+	    translate(points_angles[i][0])          
+	    rotate(points_angles[i][1] + 90)  
+	        text(t[i], valign = "center", halign = "center");
 	}
 
 ![archimedean_spiral](images/lib3x-archimedean_spiral-3.JPG)
