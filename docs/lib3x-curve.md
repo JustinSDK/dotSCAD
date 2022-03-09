@@ -6,7 +6,7 @@ Draws a curved line from control points. The curve is drawn only from the 2nd co
 
 ## Parameters
 
-- `t_step` : The distance between two points of the generated curve.
+- `t_step` : 0 ~ 1. Control the distance between two points of the generated curve.
 - `points` : A list of `[x, y]` or `[x, y, z]` control points.
 - `tightness` : You can view it as the curve tigntness if you provide a value between 0.0 and 1.0. The default value is 0.0. The value 1.0 connects all the points with straight lines. The value greater than 1.0 or less than 0.0 is also acceptable because it defines how to generate a bezier curve every four control points.
 

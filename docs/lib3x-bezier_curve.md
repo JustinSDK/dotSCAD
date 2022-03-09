@@ -4,7 +4,7 @@ Given a set of control points, the `bezier_curve` function returns points of the
 
 ## Parameters
 
-- `t_step` : The distance between two points of the Bézier path.
+- `t_step` : 0 ~ 1. Control the distance between two points of the Bézier path.
 - `points` : A list of `[x, y]` or `[x, y, z]` control points.
 
 ## Examples
