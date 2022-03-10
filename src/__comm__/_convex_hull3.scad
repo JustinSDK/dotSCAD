@@ -112,7 +112,7 @@ function _convex_hull3(pts) =
         faces = _all_faces(v0, v1, v2, v3, sorted, leng, init_vis, fst_tetrahedron), // counter-clockwise
         reversed = [
             for(face = faces)      // OpenSCAD requires clockwise.
-            [for(i = 2; i >= 0; i = i - 1) face[i]]
+            [face[2], face[1], face[0]]
         ]
     )
     [
