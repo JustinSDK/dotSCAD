@@ -82,3 +82,6 @@ include <voxel/test_vx_cylinder.scad>;
 include <voxel/test_vx_sphere.scad>;
 include <voxel/test_vx_polygon.scad>;
 
+// Matrix
+include <matrix/test_m_scaling.scad>;
+include <matrix/test_m_translation.scad>;
