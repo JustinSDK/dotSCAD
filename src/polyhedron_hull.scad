@@ -19,6 +19,11 @@ module polyhedron_hull(points, polyhedron_abuse = false) {
     }
     else {
         vts_faces = _convex_hull3(points);
-        polyhedron(vts_faces[0], vts_faces[1]);        
+        polyhedron(vts_faces[0], vts_faces[1]);
+        test_convex_hull3(vts_faces);
     }
+}
+
+module test_convex_hull3(vts_faces) {
+
 }

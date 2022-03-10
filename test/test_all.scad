@@ -8,6 +8,7 @@ include <test_rounded_cube.scad>;
 include <test_rounded_cylinder.scad>;
 include <test_crystal_ball.scad>;
 include <test_line3d.scad>;
+include <test_polyhedron_hull.scad>;
 
 // Transformation
 include <test_bend.scad>;
