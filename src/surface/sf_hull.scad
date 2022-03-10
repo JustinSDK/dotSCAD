@@ -22,20 +22,19 @@ module sf_hull(points, thickness) {
     
     twintri_lt = 
         [
-            for(yi = yi_range)
-                for(xi = xi_range)
-                    [
-                        [
-                            points[yi][xi], 
-                            points[yi][xi + 1], 
-                            points[yi + 1][xi]
-                        ],
-                        [
-                            points[yi + 1][xi], 
-                            points[yi][xi + 1], 
-                            points[yi + 1][xi + 1]                        
-                        ]
-                    ]
+            for(yi = yi_range, xi = xi_range)
+            [
+                [
+                    points[yi][xi], 
+                    points[yi][xi + 1], 
+                    points[yi + 1][xi]
+                ],
+                [
+                    points[yi + 1][xi], 
+                    points[yi][xi + 1], 
+                    points[yi + 1][xi + 1]                        
+                ]
+            ]
         ];
 
     for(twintri = twintri_lt) {

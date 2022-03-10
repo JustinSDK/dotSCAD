@@ -19,7 +19,6 @@ module sf_ring(levels, radius, thickness, depth, angle = 360, twist = 0, invert 
     columns = len(levels[0]);
     size = [columns - 1, rows - 1];
     
-    offset_z = invert ? thickness : 0;
     centered = invert ? [0, 0, thickness] : [0, 0, thickness / 2];
     if(invert) {
         mirror([0, 0, 1]) 
@@ -46,7 +45,7 @@ module sf_ring(levels, radius, thickness, depth, angle = 360, twist = 0, invert 
                 for(row = surface[0]) 
                 [
                     for(p = row) 
-                        ptf_ring(size, p - centered, radius, angle, twist) + [0, 0, offset_z]
+                        ptf_ring(size, p - centered, radius, angle, twist)
                 ]
             ],
             [

@@ -54,11 +54,12 @@ module sf_solidifyT(points1, points2, triangles, convexity = 1) {
 		]
 	];
 	
+	off = [leng, leng, leng];
 	polyhedron(
         points = concat(points1, points2), 
         faces = concat(
             tris, 
-            [for(tri = triangles) tri + [leng, leng, leng]],
+            [for(tri = triangles) tri + off],
             side_faces
         ),
 		convexity = convexity

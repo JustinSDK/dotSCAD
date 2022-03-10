@@ -49,7 +49,8 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH", con
         mid = sort(points)[leng_pts / 2];
         tri = cnn_tris[find_index(points, function(p) p == mid)][0];
         nv = _face_normal([points[tri[0]], points[tri[1]], points[tri[2]]]);
-        pts = [for(p = points) p + dir_v * thickness];
+        off = dir_v * thickness;
+        pts = [for(p = points) p + off];
 
         if(nv * dir_v > 0) {
             sf_solidifyT(pts, points, real_triangles, convexity = convexity);

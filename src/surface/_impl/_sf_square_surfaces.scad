@@ -2,13 +2,14 @@ function _sf_square_surfaces(levels, thickness, depth, invert) =
     let(
         rows = len(levels),
         columns = len(levels[0]),
-        offset_z = invert ? 0 : thickness - depth,
+        lv_offset = invert ? function(lv) (255 - lv) / 255 * depth : 
+                             function(lv) lv / 255 * depth + (thickness - depth),
         surface1 = [
             for(r = [0:rows - 1]) 
+            let(level = levels[rows - r - 1])
             [
                 for(c = [0:columns - 1]) 
-                let(lv = invert ? 255 - levels[rows - r - 1][c] : levels[rows - r - 1][c])
-                [c, r, lv / 255 * depth + offset_z]
+                [c, r, lv_offset(level[c])]
             ]
         ],
         surface2 = [

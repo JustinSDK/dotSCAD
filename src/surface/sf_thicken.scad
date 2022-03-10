@@ -19,7 +19,12 @@ module sf_thicken(points, thickness, direction = "BOTH", convexity = 1) {
         let(
             xy = [xi, yi],
             // clockwise
-            vi = [for(coord_offset = [[1, 0], [0, -1], [-1, 0], [0, 1]]) coord_offset + xy],
+            vi = [
+                [1, 0]  + xy, 
+                [0, -1] + xy, 
+                [-1, 0] + xy, 
+                [0, 1]  + xy
+            ],
             normals = [
                 for(i = [0:3])
                 let(
@@ -36,18 +41,20 @@ module sf_thicken(points, thickness, direction = "BOTH", convexity = 1) {
         )
         sum(normals) / len(normals);
 
+    leng_points = len(points);
+    leng_point0 = len(points[0]);
     if(is_list(direction)) {
         dir_v = direction / norm(direction);
         surface_another = points + thickness * [
-            for(y = [0:len(points) - 1])
+            for(y = [0:leng_points - 1])
             [
-                for(x = [0:len(points[0]) - 1])
+                for(x = [0:leng_point0 - 1])
                     dir_v
             ]
         ];
 
-        midy = len(points) / 2;
-        midx = len(points[0]) / 2;
+        midy = leng_points / 2;
+        midx = leng_point0 / 2;
         nv = tri_normal([points[midy][midx], points[midy + 1][midx], points[midy][midx + 1]]);
 
         if(nv * dir_v > 0) {
@@ -59,9 +66,9 @@ module sf_thicken(points, thickness, direction = "BOTH", convexity = 1) {
     }
     else {
         vertex_normals = [
-            for(y = [0:len(points) - 1])
+            for(y = [0:leng_points - 1])
             [
-                for(x = [0:len(points[0]) - 1])
+                for(x = [0:leng_point0 - 1])
                     vertex_normal(points, x, y)
             ]
         ];        

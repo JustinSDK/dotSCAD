@@ -17,14 +17,14 @@ module sf_square(levels, thickness, depth, x_twist = 0, y_twist = 0, invert = fa
     size = [len(levels[0]), len(levels)];
     dp = is_undef(depth) ? thickness / 2 : depth;
     surface = _sf_square_surfaces(levels, thickness, dp, invert);
-    offset_z = invert ? thickness : 0;
 
+    off = [0, 0, invert ? thickness : 0];
     sf_solidify(
         [
             for(row = surface[0]) [
                 for(p = row) 
                     ptf_y_twist(size, 
-                        ptf_x_twist(size, p + [0, 0, offset_z], x_twist), 
+                        ptf_x_twist(size, p + off, x_twist), 
                         y_twist
                     )
             ]
