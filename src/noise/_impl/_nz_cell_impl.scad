@@ -9,10 +9,10 @@ function _chebyshev(p1, p2) =
 function _nz_cell_classic(cells, p, dist) =
     let(
         dists = [
-            for(i = [0:len(cells) - 1])
-                dist == "euclidean" ? norm(cells[i] - p) :
-                dist == "manhattan" ? _manhattan(cells[i] - p) :
-                dist == "chebyshev" ? _chebyshev(cells[i], p) :
+            for(cell = cells)
+                dist == "euclidean" ? norm(cell - p) :
+                dist == "manhattan" ? _manhattan(cell - p) :
+                dist == "chebyshev" ? _chebyshev(cell, p) :
                              assert("Unknown distance option")
         ]
     )
@@ -21,13 +21,15 @@ function _nz_cell_classic(cells, p, dist) =
 function _nz_cell_border(cells, p) =
     let(
         dists = [
-            for(i = [0:len(cells) - 1])
-                [each cells[i], norm(cells[i] - p)]
+            for(cell = cells)
+            [each cell, norm(cell - p)]
         ],
         idx = len(cells[0]),
         sorted = sort(dists, by = "idx", idx = idx),
-        a = [for(i = [0:idx - 1]) sorted[0][i]],
-        b = [for(i = [0:idx - 1]) sorted[1][i]],
+        sorted0 = sorted[0],
+        sorted1 = sorted[1],
+        a = [for(i = [0:idx - 1]) sorted0[i]],
+        b = [for(i = [0:idx - 1]) sorted1[i]],
         m = (a + b) / 2
     )
     (p - m) * (a - m);

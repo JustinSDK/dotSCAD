@@ -39,11 +39,10 @@ function _build_cell(cell_radius, cell) =
             _row_wall(cell_radius, x, y),
             [_is_top_wall(cell) || _is_top_right_wall(cell) ? _top(cell_radius) : []],
             [_is_right_wall(cell) || _is_top_right_wall(cell) ? _right_wall(cell_radius, x) : []]
-        )
+        ),
+        cell_p = _cell_position(cell_radius, x, y)
     )
     [
         for(wall = walls)
-        if(wall != [])
-            [for(p = wall)
-                _cell_position(cell_radius, x, y) + p]
+        if(wall != []) [for(p = wall) cell_p + p]
     ];
