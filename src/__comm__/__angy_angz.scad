@@ -1,10 +1,6 @@
 function __angy_angz(p1, p2) = 
-    let(
-        dx = p2.x - p1.x,
-        dy = p2.y - p1.y,
-        dz = p2.z - p1.z
-    ) 
+    let(v = p2 - p1) 
     [
-        atan2(dz, sqrt(dx ^ 2 + dy ^ 2)), 
-        atan2(dy, dx)
+        atan2(v.z, sqrt(v.x ^ 2 + v.y ^ 2)), 
+        atan2(v.y, v.x)
     ];
