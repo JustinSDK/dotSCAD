@@ -5,9 +5,9 @@ function __m_rotation_q_rotation(a, v) =
         half_a = a / 2,
         axis = v / norm(v),
         s = sin(half_a),
-        x = s * axis[0],
-        y = s * axis[1],
-        z = s * axis[2],
+        x = s * axis.x,
+        y = s * axis.y,
+        z = s * axis.z,
         w = cos(half_a),
         
         x2 = x + x,
