@@ -45,8 +45,7 @@ function next_vis(i, pts, cur_faces, cur_faces_leng, next, vis, j = 0) =
         f = cur_faces[j],
         d = (pts[f[0]] - pts[i]) * normal(pts, f),
         nx = d >= 0 ? [each next, f] : next,
-        s = d > 0 ? 1 :
-            d < 0 ? -1 : 0,
+        s = sign(d),
         vis1 = m_assign(vis, f[0], f[1], s),
         vis2 = m_assign(vis1, f[1], f[2], s),
         vis3 = m_assign(vis2, f[2], f[0], s)
