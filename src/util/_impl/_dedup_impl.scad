@@ -1,8 +1,17 @@
 use <../some.scad>;
 
-function _dedup(elems, leng, buckets, eq, hash, bucket_numbers, i = 0) = 
-    i == leng ? buckets :
-	_dedup(elems, leng, _dedup_add(buckets, [i, elems[i]], eq, hash, bucket_numbers), eq, hash, bucket_numbers, i + 1);
+function _dedup(elems, leng, buckets, eq, hash, bucket_numbers) = 
+    let(
+        end = leng - 1,
+        n_buckets_lt = [
+        for(i = 0, n_buckets = _dedup_add(buckets, [i, elems[i]], eq, hash, bucket_numbers);
+            i < end; 
+            i = i + 1, n_buckets = _dedup_add(n_buckets, [i, elems[i]], eq, hash, bucket_numbers)) 
+            n_buckets
+        ]
+    )
+    _dedup_add(n_buckets_lt[len(n_buckets_lt) - 1], [end, elems[end]], eq, hash, bucket_numbers); 
+
 
 function _dedup_add(buckets, i_elem, eq, hash, bucket_numbers) =
     let(
