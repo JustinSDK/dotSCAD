@@ -74,6 +74,7 @@ include <util/test_some.scad>;
 include <util/test_every.scad>;
 include <util/set/test_hashset.scad>;
 include <util/map/test_hashmap.scad>;
+include <util/test_shuffle.scad>;
 
 // Voxel
 include <voxel/test_vx_line.scad>;
