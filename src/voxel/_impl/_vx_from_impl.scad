@@ -4,9 +4,10 @@ function _vx_from_row(r_count, row_bits, width, height, center, invert) =
         half_h = height / 2,
         offset_x = center ? 0 : half_w,
         offset_y = center ? -half_h : 0,
-        bit = invert ? 0 : 1
+        bit = invert ? 0 : 1,
+        y = r_count + offset_y
     ) 
-    [for(i = 0; i < width; i = i + 1) if(row_bits[i] == bit) [i - half_w + offset_x, r_count + offset_y]];
+    [for(i = 0; i < width; i = i + 1) if(row_bits[i] == bit) [i - half_w + offset_x, y]];
 
 function _vx_from_impl(binaries, center, invert) = 
     let(

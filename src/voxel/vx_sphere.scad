@@ -13,15 +13,15 @@ function vx_sphere(radius, filled = false, thickness = 1) =
     filled ? [
         for(z = range, y = range, x = range)
         let(v = [x, y, z])
-        if(norm(v) < radius) v
+        if(v * v < radius ^ 2) v
     ] :
     let(ishell = radius * radius - 2 * thickness * radius)
     [
         for(z = range, y = range, x = range)
         let(
             v = [x, y, z],
-            leng = norm(v)
+            vv = v * v
         )
-        if(leng < radius && (leng * leng) > ishell) v    
+        if(vv < radius ^ 2 && vv > ishell) v    
     ];
     
