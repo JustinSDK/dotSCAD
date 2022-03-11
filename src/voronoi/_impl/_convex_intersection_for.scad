@@ -3,7 +3,7 @@ use <_convex_intersection.scad>;
 function _convex_intersection_for_impl(shapes, pre, leng, i = 2) = 
     i == leng ? pre :
     let(r = _convex_intersection(pre, shapes[i]))
-    r == [] ? [] 
+    r == [] ? r 
             : _convex_intersection_for_impl(shapes, 
                   r, 
                   leng, i + 1
