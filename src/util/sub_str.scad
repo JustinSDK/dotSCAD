@@ -8,6 +8,9 @@
 *
 **/ 
 
-use <_impl/_sub_str_impl.scad>;
-
-function sub_str(t, begin, end) = _sub_str_impl(t, begin, end);
+function sub_str(t, begin, end) = 
+    let(
+        ed = is_undef(end) ? len(t) : end,
+        cum = [for(i = begin, s = t[i]; i < ed; i = i + 1, s = str(s, t[i])) s]
+    )
+    cum[len(cum) - 1];
