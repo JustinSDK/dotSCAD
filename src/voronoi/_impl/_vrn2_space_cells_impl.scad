@@ -35,7 +35,7 @@ function _cells_lt_before_intersection(shape, size, points, pt, half_region_size
             let(
                 v = p - pt,
                 offset = (pt + p) / 2 - v / norm(v) * half_region_size,
-                a = atan2(v[1], v[0])            
+                a = atan2(v.y, v.x)            
             )
             [
                 for(sp = shape)
