@@ -15,8 +15,8 @@ function _turtle2d_forward(turtle, leng) =
 
 function _turtle2d_turn(turtle, angle) = [_turtle2d_get_pt(turtle), _turtle2d_get_angle(turtle) + angle];
 
-function _turtle2d_get_x(turtle) = turtle[0][0];
-function _turtle2d_get_y(turtle) = turtle[0][1];
+function _turtle2d_get_x(turtle) = turtle[0].x;
+function _turtle2d_get_y(turtle) = turtle[0].y;
 function _turtle2d_get_pt(turtle) = turtle[0];
 function _turtle2d_get_angle(turtle) = turtle[1];
 

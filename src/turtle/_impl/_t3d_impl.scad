@@ -1,111 +1,86 @@
-function _t3d_x(pt) = pt[0];
-function _t3d_y(pt) = pt[1];
-function _t3d_z(pt) = pt[2];
-
-function _t3d_pt3D(x, y, z) = [x, y, z];
+use <../../matrix/m_rotation.scad>;
 
 function _t3d_create(pt, unit_vts) = 
     [
-        is_undef(pt) ? _t3d_pt3D(0, 0, 0) : pt, 
-        is_undef(unit_vts) ? [_t3d_pt3D(1, 0, 0), _t3d_pt3D(0, 1, 0), _t3d_pt3D(0, 0, 1)] : unit_vts
+        is_undef(pt) ? [0, 0, 0] : pt, 
+        is_undef(unit_vts) ? [[1, 0, 0], [0, 1, 0], [0, 0, 1]] : unit_vts
     ];
-
-function _t3d_plus(pt, n) = 
-    _t3d_pt3D(_t3d_x(pt) + n, _t3d_y(pt) + n, _t3d_z(pt) + n);
-function _t3d_minus(pt, n) = 
-    _t3d_pt3D(_t3d_x(pt) - n, _t3d_y(pt) - n, _t3d_z(pt) + n);
-function _t3d_mlt(pt, n) = 
-    _t3d_pt3D(_t3d_x(pt) * n, _t3d_y(pt) * n, _t3d_z(pt) * n);
-function _t3d_div(pt, n) = 
-    _t3d_pt3D(_t3d_x(pt) / n, _t3d_y(pt) / n, _t3d_z(pt) / n);
-function _t3d_neg(pt, n) = 
-    _t3d_mlt(pt, -1);
-
-function _t3d_ptPlus(pt1, pt2) = 
-    _t3d_pt3D(
-        _t3d_x(pt1) + _t3d_x(pt2), 
-        _t3d_y(pt1) + _t3d_y(pt2), 
-        _t3d_z(pt1) + _t3d_z(pt2)
-    );
 
 function _t3d_pt(turtle) = turtle[0];
 function _t3d_unit_vts(turtle) = turtle[1];
 
 // forward the turtle in the x' direction
 function _t3d_xu_forward(turtle, leng) = _t3d_create(
-    _t3d_ptPlus(_t3d_pt(turtle), _t3d_mlt(_t3d_unit_vts(turtle)[0], leng)),
+    _t3d_pt(turtle) + _t3d_unit_vts(turtle).x * leng,
     _t3d_unit_vts(turtle)
 );
 
 // forward the turtle in the y' direction
 function _t3d_yu_forward(turtle, leng) = _t3d_create(
-    _t3d_ptPlus(_t3d_pt(turtle), _t3d_mlt(_t3d_unit_vts(turtle)[1], leng)),
+    _t3d_pt(turtle) + _t3d_unit_vts(turtle).y * leng,
     _t3d_unit_vts(turtle)
 );
 
 // forward the turtle in the z' direction
 function _t3d_zu_forward(turtle, leng) = _t3d_create(
-    _t3d_ptPlus(
-        _t3d_pt(turtle), 
-        _t3d_mlt(_t3d_unit_vts(turtle)[2], leng)
-    ),
+    _t3d_pt(turtle) + _t3d_unit_vts(turtle).z * leng,
     _t3d_unit_vts(turtle)
 );
 
 // turn the turtle around the x'-axis
 // return a new unit vector
 function _t3d_xu_turn(turtle, a) = 
-    let(cosa = cos(a), sina = sin(a))
+    let(
+        unit_vts = _t3d_unit_vts(turtle),
+        xu = unit_vts.x,
+        m = m_rotation(a, xu),
+        nyu = m * [each unit_vts.y, 1],
+        nzu = m * [each unit_vts.z, 1]
+    )
     _t3d_create(
         _t3d_pt(turtle),
         [
-            _t3d_unit_vts(turtle)[0], 
-            _t3d_ptPlus(
-                _t3d_mlt(_t3d_unit_vts(turtle)[1], cosa), 
-                _t3d_mlt(_t3d_unit_vts(turtle)[2], sina)
-            ), 
-            _t3d_ptPlus(
-                _t3d_mlt(_t3d_neg(_t3d_unit_vts(turtle)[1]), sina), 
-                _t3d_mlt(_t3d_unit_vts(turtle)[2], cosa)
-            )
+            xu, 
+            [nyu.x, nyu.y, nyu.z], 
+            [nzu.x, nzu.y, nzu.z]
         ]
     );
 
 // turn the turtle around the y'-axis
 // return a new unit vector
 function _t3d_yu_turn(turtle, a) = 
-    let(cosa = cos(a), sina = sin(a))
+    let(
+        unit_vts = _t3d_unit_vts(turtle),
+        yu = unit_vts.y,
+        m = m_rotation(a, yu),
+        nxu = m * [each unit_vts.x, 1],
+        nzu = m * [each unit_vts.z, 1]
+    )
     _t3d_create(
         _t3d_pt(turtle),
         [
-            _t3d_ptPlus(
-                _t3d_mlt(_t3d_unit_vts(turtle)[0], cosa), 
-                _t3d_mlt(_t3d_neg(_t3d_unit_vts(turtle)[2]), sina)
-            ),
-            _t3d_unit_vts(turtle)[1], 
-            _t3d_ptPlus(
-                _t3d_mlt(_t3d_unit_vts(turtle)[0], sina), 
-                _t3d_mlt(_t3d_unit_vts(turtle)[2], cosa)
-            )
+            [nxu.x, nxu.y, nxu.z], 
+            yu, 
+            [nzu.x, nzu.y, nzu.z]
         ]
     );
 
 // turn the turtle around the z'-axis
 // return a new unit vector
 function _t3d_zu_turn(turtle, a) = 
-    let(cosa = cos(a), sina = sin(a))
+    let(
+        unit_vts = _t3d_unit_vts(turtle),
+        zu = unit_vts.z,
+        m = m_rotation(a, zu),
+        nxu = m * [each unit_vts.x, 1],
+        nyu = m * [each unit_vts.y, 1]
+    )
     _t3d_create(
         _t3d_pt(turtle),
         [
-            _t3d_ptPlus(
-                _t3d_mlt(_t3d_unit_vts(turtle)[0], cosa), 
-                _t3d_mlt(_t3d_unit_vts(turtle)[1], sina)
-            ),
-            _t3d_ptPlus(
-                _t3d_mlt(_t3d_neg(_t3d_unit_vts(turtle)[0]), sina), 
-                _t3d_mlt(_t3d_unit_vts(turtle)[1], cosa)
-            ),
-            _t3d_unit_vts(turtle)[2], 
+            [nxu.x, nxu.y, nxu.z], 
+            [nyu.x, nyu.y, nyu.z],
+            zu
         ]
     );
     

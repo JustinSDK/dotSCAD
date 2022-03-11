@@ -18,8 +18,8 @@ function _t2d_forward(t, leng) =
 
 function _t2d_turn(t, angle) = [_t2d_get_pt(t), _t2d_get_angle(t) + angle];
 
-function _t2d_get_x(t) = t[0][0];
-function _t2d_get_y(t) = t[0][1];
+function _t2d_get_x(t) = t[0].x;
+function _t2d_get_y(t) = t[0].y;
 function _t2d_get_pt(t) = t[0];
 function _t2d_get_angle(t) = t[1];
 
