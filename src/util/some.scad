@@ -8,6 +8,6 @@
 *
 **/ 
 
-use <_impl/_some.scad>;
-
-function some(lt, test) = _some(lt, test, len(lt));
+function some(lt, test) = 
+    let(leng = len(lt)) 
+    len([for(i = 0; i < leng && !test(lt[i]); i = i + 1) 0]) < leng;

@@ -8,6 +8,6 @@
 *
 **/ 
 
-use <_impl/_every.scad>;
-
-function every(lt, test) = _every(lt, test, len(lt));
+function every(lt, test) = 
+    let(leng = len(lt)) 
+    len([for(i = 0; i < leng && test(lt[i]); i = i + 1) 0]) == leng;

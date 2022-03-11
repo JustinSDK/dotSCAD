@@ -8,6 +8,10 @@
 *
 **/ 
 
-use <_impl/_find_index_impl.scad>;
-
-function find_index(lt, test) = _find_index(lt, test, len(lt));
+function find_index(lt, test) = 
+    let(
+        leng = len(lt),
+        indices = [for(i = 0; i < leng && !test(lt[i]); i = i + 1) i],
+        leng_indices = len(indices)
+    )
+    leng_indices == leng ? -1 : leng_indices;
