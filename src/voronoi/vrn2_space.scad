@@ -71,7 +71,7 @@ module vrn2_space(size, grid_w, seed, spacing = 1, r = 0, delta = 0, chamfer = f
             ),
             p = nbrs[4],
             points = concat(
-                [for(i = [0:3]) nbrs[i]], 
+                [nbrs[0], nbrs[1], nbrs[2], nbrs[3]], 
                 [for(i = [5:len(nbrs) - 1]) nbrs[i]]
             )
         )
