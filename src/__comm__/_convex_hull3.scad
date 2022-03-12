@@ -1,5 +1,3 @@
-function is_zero(p) = p == [0, 0, 0];
-
 function _cmp(a, b) =
     a.x != b.x ? a.x < b.x : 
     a.y != b.y ? a.y < b.y :
@@ -18,16 +16,15 @@ function _convex_hull_sort_by_xyz(pts) =
 function normal(pts, f) = cross(pts[f[1]] - pts[f[0]], pts[f[2]] - pts[f[0]]);
 
 function _fst_v1(pts, leng, i) =
-    i != leng && is_zero(pts[i] - pts[0]) ? _fst_v1(pts, leng, i + 1) : i;
+    i == leng || (pts[i] - pts[0]) != [0, 0, 0] ? i : _fst_v1(pts, leng, i + 1);
   
 function _fst_v2(pts, leng, v1, i) = 
-    i != leng && is_zero(cross(pts[v1] - pts[0], pts[i] - pts[0])) ? _fst_v2(pts, leng, v1, i + 1) : i;
+    i == leng || cross(pts[v1] - pts[0], pts[i] - pts[0]) != [0, 0, 0] ? i : _fst_v2(pts, leng, v1, i + 1);
 
 function _fst_v3(pts, leng, n, d, i) =
-    i == leng ? [i, d]:
-    let(nd = n *(pts[i] - pts[0]))
-    nd == 0 ? _fst_v3(pts, leng, n, nd, i + 1) : 
-    [i, nd];
+    i == leng ? [i, d] :
+    let(nd = n * (pts[i] - pts[0]))
+    nd != 0 ? [i, nd] : _fst_v3(pts, leng, n, nd, i + 1);
 
 function m_assign(m, i, j, v) =
     let(lt = m[i])
@@ -70,15 +67,18 @@ function next2(i, cur_faces, cur_faces_leng, vis, next, j = 0) =
 
 function _all_faces(v0, v1, v2, v3, pts, pts_leng, vis, cur_faces, i = 0) =
     i == pts_leng ? cur_faces :
-    i == v0 || i == v1 || i == v2 || i == v3 ? _all_faces(v0, v1, v2, v3, pts, pts_leng, vis, cur_faces, i + 1) :
     let(
-        cur_faces_leng = len(cur_faces),
-        nv = next_vis(i, pts, cur_faces, cur_faces_leng, [], vis),
-        nx1 = nv[0],
-        vis1 = nv[1],
-        nx2 = next2(i, cur_faces, cur_faces_leng, vis1, nx1)
+        vis_faces = i == v0 || i == v1 || i == v2 || i == v3 ? [vis, cur_faces] :
+        let(
+            cur_faces_leng = len(cur_faces),
+            nv = next_vis(i, pts, cur_faces, cur_faces_leng, [], vis),
+            nx1 = nv[0],
+            vis1 = nv[1],
+            nx2 = next2(i, cur_faces, cur_faces_leng, vis1, nx1)
+        ) 
+        [vis1, nx2]
     )
-    _all_faces(v0, v1, v2, v3, pts, pts_leng, vis1, nx2, i + 1);
+    _all_faces(v0, v1, v2, v3, pts, pts_leng, vis_faces[0], vis_faces[1], i + 1);
 
 function _convex_hull3(pts) = 
     let(
