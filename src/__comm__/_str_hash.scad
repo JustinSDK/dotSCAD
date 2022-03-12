@@ -1,5 +1,3 @@
-use <../util/sum.scad>;
-
 function _str_hash(value) = 
     let(
 		chars = str(value),
