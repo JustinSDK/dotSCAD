@@ -28,8 +28,8 @@ function _triangulate_snipable_sub(shape_pts, n, u, v, w, a, b, c, indices, p = 
 function _triangulate_remove_v(indices, v, num_of_vertices) = 
     let(nv_minuns_one = num_of_vertices - 1)
     v == 0 ? [for(i = 1; i <= nv_minuns_one; i = i + 1) indices[i]] : 
-    v == nv_minuns_one ? [for(i = 0; i < v; i = i + 1) indices[i]] : 
-                         [for(i = 0; i <= nv_minuns_one; i = i + 1) if(i != v) indices[i]];
+    let(n_indices = [for(i = 0; i < v; i = i + 1) indices[i]])
+    v == nv_minuns_one ? n_indices : concat(n_indices, [for(i = v + 1; i <= nv_minuns_one; i = i + 1) indices[i]]);
     
 function _triangulate_zero_or_value(num_of_vertices, value) = num_of_vertices <= value ? 0 : value;
 
@@ -45,15 +45,10 @@ function _triangulate_real_triangulate_sub(shape_pts, collector, indices, v, num
         _triangulate_real_triangulate(shape_pts, collector, indices, vi, num_of_vertices, count, epsilon);
         
 function _triangulate_snip(shape_pts, collector, indices, u, v, w, num_of_vertices, count, epsilon) = 
-    let(
-        a = indices[u],
-        b = indices[v],
-        c = indices[w],
-        new_nv = num_of_vertices - 1
-    )
+    let(new_nv = num_of_vertices - 1)
     _triangulate_real_triangulate( 
         shape_pts, 
-        [each collector, [a, b, c]],  
+        [each collector, [indices[u], indices[v], indices[w]]],  
         _triangulate_remove_v(indices, v, num_of_vertices),
         v, 
         new_nv,
@@ -70,7 +65,6 @@ function _tri_ear_clipping_impl(shape_pts,  epsilon) =
     let(
         num_of_vertices = len(shape_pts),
         v = num_of_vertices - 1,
-        indices = [for(vi = 0; vi <= v; vi = vi + 1) vi],
         count = 2 * num_of_vertices        
     )
-    num_of_vertices < 3 ? [] : _triangulate_real_triangulate(shape_pts, [], indices, v, num_of_vertices, count, epsilon);
+    num_of_vertices < 3 ? [] : _triangulate_real_triangulate(shape_pts, [], [each [0:v]], v, num_of_vertices, count, epsilon);
