@@ -9,7 +9,7 @@ module gyroid(detail, thickness, period) {
 	
 	points_lt = gyroid_points(pp = pp, w = w);		
 	range = [0:len(points_lt) - 1];
-	faces_lt = [ for(i = range) (i % 2 == 0) ? fi : f];
+	faces_lt = [for(i = range) (i % 2 == 0) ? fi : f];
 	
 	module cell() {
 		gyroid_cell()						
@@ -18,13 +18,9 @@ module gyroid(detail, thickness, period) {
 		}
 	}
 	
-	for(z = [0:period.z - 1]) {
-	    for(y = [0:period.y - 1]) {
-		    for(x = [0:period.x - 1]) {
-			    translate([x, y, z] * 360)
-			    cell();
-			}
-		}
+	for(z = [0:period.z - 1], y = [0:period.y - 1], x = [0:period.x - 1]) {
+		translate([x, y, z] * 360)
+		    cell();
 	}
 }
 

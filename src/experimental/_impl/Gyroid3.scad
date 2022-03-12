@@ -79,7 +79,7 @@ function gyroid_points(pp, w)=
 					let(wall=(k==0 || k==2*j || j==pp) ? 0 : i)
 					wall_gyroid(p_xy.x,p_xy.y,gyroid_point(x=p_xy.x, y=p_xy.y),wall)	// calculate point in row, line within gyroid wall
 	])													// matrix of points for all primitives of a gyroid micro cell
-	[	[for(i=p) i],									// copy of p
+	[	p,									            // copy of p
 		[for(i=p) [180,180,180]-i],						// diagonally oposing part of p
 		[for(i=p) [i.y,i.z,i.x]],						// first cyclic permutation of coordinates
 		[for(i=p) [180-i.y,180-i.z,180-i.x]],			// diagonally oposing part of permutation
