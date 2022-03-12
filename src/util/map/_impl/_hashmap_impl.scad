@@ -10,4 +10,4 @@ function _hashmap(kv_lt, leng, buckets, b_numbers, eq, hash) =
             n_buckets
         ]
     )
-    _hashmap_put(n_buckets_lt[len(n_buckets_lt) - 1], b_numbers, kv_lt[end][0], kv_lt[end][1], eq, hash); 
+    _hashmap_put(n_buckets_lt[end - 1], b_numbers, kv_lt[end][0], kv_lt[end][1], eq, hash); 

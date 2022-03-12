@@ -10,6 +10,6 @@ function _hashset(lt, leng, buckets, b_numbers, eq, hash) =
             n_buckets
         ]
     )
-    _hashset_add(n_buckets_lt[len(n_buckets_lt) - 1], b_numbers, lt[end], eq, hash); 
+    _hashset_add(n_buckets_lt[end - 1], b_numbers, lt[end], eq, hash); 
 
 

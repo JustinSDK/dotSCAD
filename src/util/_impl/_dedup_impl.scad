@@ -10,7 +10,7 @@ function _dedup(elems, leng, buckets, eq, hash, bucket_numbers) =
             n_buckets
         ]
     )
-    _dedup_add(n_buckets_lt[len(n_buckets_lt) - 1], [end, elems[end]], eq, hash, bucket_numbers); 
+    _dedup_add(n_buckets_lt[end - 1], [end, elems[end]], eq, hash, bucket_numbers); 
 
 
 function _dedup_add(buckets, i_elem, eq, hash, bucket_numbers) =
