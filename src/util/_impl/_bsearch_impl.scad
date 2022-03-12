@@ -3,11 +3,13 @@ use <_vt_default_comparator.scad>;
 function _bsearch_vt(sorted, elem, low, upper) =
     low > upper ? -1 :
     let(mid = floor((low + upper) / 2))
-    lessThan(sorted[mid], elem) ? _bsearch_vt(sorted, elem, mid + 1, upper) :
-    greaterThan(sorted[mid], elem) ? _bsearch_vt(sorted, elem, low, mid - 1) : mid;
-
+    sorted[mid] == elem ? mid :
+    let(lu = lessThan(sorted[mid], elem) ? [mid + 1, upper] : [low, mid - 1])
+    _bsearch_vt(sorted, elem, lu[0], lu[1]);
+    
 function _bsearch_cmp(sorted, cmp, low, upper) =
     low > upper ? -1 :
-    let(mid = floor((low + upper) / 2))
-    cmp(sorted[mid]) < 0 ? _bsearch_cmp(sorted, cmp, mid + 1, upper) :
-    cmp(sorted[mid]) > 0 ? _bsearch_cmp(sorted, cmp, low, mid - 1) : mid;
+    let(mid = floor((low + upper) / 2), compared = cmp(sorted[mid]))
+    compared == 0 ? mid :
+    let(lu = compared < 0 ? [mid + 1, upper] : [low, mid - 1])
+    _bsearch_cmp(sorted, cmp, lu[0], lu[1]);
