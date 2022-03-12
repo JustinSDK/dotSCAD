@@ -20,8 +20,8 @@ function vrn2_cells_space(size, grid_w, seed) =
         shape = shape_square(grid_w * 3),
         gw = size.x / grid_w,
         gh = size.y / grid_w,
-        cell_nbrs_lt = [for(cy = [-grid_w:grid_w:size.y]) 
-            for(cx = [-grid_w:grid_w:size.x])
+        cell_nbrs_lt = [
+            for(cy = [-grid_w:grid_w:size.y], cx = [-grid_w:grid_w:size.x])
             let(
                 nbrs = _neighbors(
                     [floor(cx / grid_w), floor(cy / grid_w)],
@@ -32,7 +32,7 @@ function vrn2_cells_space(size, grid_w, seed) =
                 ),
                 p = nbrs[4],
                 points = concat(
-                    [for(i = [0:3]) nbrs[i]], 
+                    [nbrs[0], nbrs[1], nbrs[2], nbrs[3]], 
                     [for(i = [5:len(nbrs) - 1]) nbrs[i]]
                 )
             )

@@ -4,9 +4,10 @@ use <../../lines_intersection.scad>;
 use <_convex_ct_clk_order.scad>;
 
 function _in_convex_r(i, j, preC, convex_pts, pt, leng, convex_pts, pt) =
-    j == leng ? true :
+    j == leng || (
 		let(c = cross(convex_pts[i] - pt, convex_pts[j] - pt))
-		c * preC <= 0 ? false : _in_convex_r(j, j + 1, c, convex_pts, pt, leng, convex_pts, pt) ;
+		c * preC > 0 && _in_convex_r(j, j + 1, c, convex_pts, pt, leng, convex_pts, pt)
+    );
 
 function _in_convex(convex_pts, pt) = 
     let(
