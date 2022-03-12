@@ -277,4 +277,4 @@ function create_stack(elem) = [elem, []];
 function stack_push(stack, elem) = [elem, stack];
 // function stack_pop(stack) = stack;
 function stack_len(stack) = 
-    stack[0] == undef ? 0 : (1 + stack_len(stack[1])); 
+    is_undef(stack[0]) ? 0 : 1 + stack_len(stack[1]); 

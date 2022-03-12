@@ -89,7 +89,8 @@ function adjustNeighbors(d, newTriangles, _indices_hash) =
 		],
 	    ncs = [
 		    for(nt = newTriangles)
-			[nt[0], _tri_circumcircle([for(i = [0:2]) coords[nt[0][i]]])]
+			let(nt0 = nt[0])
+			[nt0, _tri_circumcircle([coords[nt0[0]], coords[nt0[1]], coords[nt0[2]]])]
 		],
 		nd = [
 		    coords, 
@@ -126,20 +127,22 @@ function _adjustNeighborsDtri(d, newTriangles, leng, _indices_hash, i = 0) =
     let(
 	    t = newTriangles[i][0],
 		edge = newTriangles[i][1],
-		delaunayTri = newTriangles[i][2]
+		delaunayTri = newTriangles[i][2],
+		rd = is_undef(delaunayTri) ? d : 
+				(
+					let(
+						neighbors = hashmap_get(delaunay_triangles(d), delaunayTri, hash = _indices_hash),
+						leng_nbrs = len(neighbors),
+						nbri = find_index(neighbors, function(nbr) nbr != undef && has(nbr, edge[1]) && has(nbr, edge[0])),
+						nd = nbri == -1 ? d : updateNbrs(d, delaunayTri, [
+							for(j = 0; j < leng_nbrs; j = j + 1)
+								j == nbri ? t : neighbors[j]
+						], _indices_hash)
+					)
+					nd
+				)
 	)
-	delaunayTri != undef ? 
-	let(
-	    neighbors = hashmap_get(delaunay_triangles(d), delaunayTri, hash = _indices_hash),
-		leng_nbrs = len(neighbors),
-		nbri = find_index(neighbors, function(nbr) nbr != undef && has(nbr, edge[1]) && has(nbr, edge[0])),
-		nd = nbri == -1 ? d : updateNbrs(d, delaunayTri, [
-			for(j = 0; j < leng_nbrs; j = j + 1)
-			    j == nbri ? t : neighbors[j]
-		], _indices_hash)
-	)
-    _adjustNeighborsDtri(nd, newTriangles, leng, _indices_hash, i + 1) :
-	_adjustNeighborsDtri(d, newTriangles, leng, _indices_hash, i + 1);
+    _adjustNeighborsDtri(rd, newTriangles, leng, _indices_hash, i + 1);
 	
 function updateNbrs(d, delaunayTri, neighbors, _indices_hash) =
     let(
