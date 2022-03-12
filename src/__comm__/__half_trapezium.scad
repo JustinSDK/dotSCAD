@@ -5,14 +5,14 @@ function __tr__corner_t_leng_lt_zero(frags, t_sector_angle, l1, l2, h, round_r) 
     let(t_height = tan(t_sector_angle) * l1 - round_r / sin(90 - t_sector_angle) - h / 2)
     [ 
         for(pt = __pie_for_rounding(round_r, 90 - t_sector_angle, 90, frags * t_sector_angle / 180))
-            [pt[0], pt[1] + t_height]
+            [pt.x, pt.y + t_height]
     ];
 
 function __tr_corner_t_leng_gt_or_eq_zero(frags, t_sector_angle, t_leng, h, round_r) = 
     let(offset_y = h / 2 - round_r)
     [
         for(pt = __pie_for_rounding(round_r, 90 - t_sector_angle, 90, frags * t_sector_angle / 360))
-            [pt[0] + t_leng, pt[1] + offset_y]
+            [pt.x + t_leng, pt.y + offset_y]
     ];    
 
 function __tr_corner(frags, b_ang, l1, l2, h, round_r) = 
@@ -29,14 +29,14 @@ function __tr__corner_b_leng_lt_zero(frags, b_sector_angle, l1, l2, h, round_r) 
     [
         for(i = [0:leng - 1])
             let(pt = reversed[leng - 1 - i])
-            [pt[0], -pt[1]]
+            [pt.x, -pt.y]
     ];
 
 function __br_corner_b_leng_gt_or_eq_zero(frags, b_sector_angle, l1, l2, b_leng, h, round_r) = 
     let(half_h = h / 2) 
     [
         for(pt = __pie_for_rounding(round_r, -90, -90 + b_sector_angle, frags * b_sector_angle / 360))
-            [pt[0] + b_leng, pt[1] + round_r - half_h]
+            [pt.x + b_leng, pt.y + round_r - half_h]
     ];
 
 function __br_corner(frags, b_ang, l1, l2, h, round_r) = 
