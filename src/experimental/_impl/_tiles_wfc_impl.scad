@@ -142,10 +142,10 @@ function _wf_coord_min_entropy(wf, coords, coords_leng, entropy, entropyCoord, i
     i == coords_leng ? entropyCoord :
 	let(
 		coord = coords[i],
-		noisedEntropy = wf_entropy(wf, coord.x, coord.y) - (rand() / 1000)
+		noisedEntropy = wf_entropy(wf, coord.x, coord.y) - (rand() / 1000),
+		nee = noisedEntropy < entropy ? [noisedEntropy, coord] : [entropy, entropyCoord]
 	)
-	noisedEntropy < entropy ? _wf_coord_min_entropy(wf, coords, coords_leng, noisedEntropy, coord, i + 1) :
-	                          _wf_coord_min_entropy(wf, coords, coords_leng, entropy, entropyCoord, i + 1);
+	_wf_coord_min_entropy(wf, coords, coords_leng, nee[0], nee[1], i + 1);
 
 
 /*
