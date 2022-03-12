@@ -12,13 +12,14 @@ function swap(lt, i, j) =
     i == j ? lt :
     let(
 	    leng = len(lt),
-		a = min([i, j]),
-		b = max([i, j])
-	)
+		ab = i < j ? [i, j] : [j, i],
+		a = ab[0],
+		b = ab[1]
+	) 
 	[
-        if(a != 0) each [for(idx = [0:a - 1]) lt[idx]],
+		each [for(idx = 0; idx < a; idx = idx + 1) lt[idx]],
 		lt[b],
-		if(b - a != 1) each [for(idx = [a + 1:b - 1]) lt[idx]],
+		each [for(idx = a + 1; idx < b; idx = idx + 1) lt[idx]],
 		lt[a],
-		if(b != leng - 1) each [for(idx = [b + 1:leng - 1]) lt[idx]]
+		each [for(idx = b + 1; idx < leng; idx = idx + 1) lt[idx]]
 	];
