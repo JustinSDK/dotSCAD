@@ -8,4 +8,4 @@
 *
 **/ 
 
-function reverse(lt) = [for(i = len(lt) - 1; i >= 0; i = i - 1) lt[i]];
+function reverse(lt) = [for(i = len(lt) - 1; i > -1; i = i - 1) lt[i]];
