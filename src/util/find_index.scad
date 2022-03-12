@@ -11,7 +11,7 @@
 function find_index(lt, test) = 
     let(
         leng = len(lt),
-        indices = [for(i = 0; i < leng && !test(lt[i]); i = i + 1) i],
+        indices = [for(i = 0; i < leng && !test(lt[i]); i = i + 1) undef],
         leng_indices = len(indices)
     )
     leng_indices == leng ? -1 : leng_indices;

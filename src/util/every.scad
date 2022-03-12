@@ -10,4 +10,4 @@
 
 function every(lt, test) = 
     let(leng = len(lt)) 
-    len([for(i = 0; i < leng && test(lt[i]); i = i + 1) 0]) == leng;
+    len([for(i = 0; i < leng && test(lt[i]); i = i + 1) undef]) == leng;
