@@ -12,4 +12,4 @@ function sum(lt) =
     let(end = len(lt) - 1)
     end == 0 ? lt[0] :
     let(cum_total = [for(i = 0, s = lt[0]; i < end; i = i + 1, s = s + lt[i]) s])
-    cum_total[len(cum_total) - 1] + lt[end];
+    cum_total[end - 1] + lt[end];
