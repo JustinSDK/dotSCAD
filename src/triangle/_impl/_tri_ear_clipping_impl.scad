@@ -20,7 +20,7 @@ function _triangulate_snipable(shape_pts, u, v, w, n, indices, epsilon = 0.0001)
     
 function _triangulate_snipable_sub(shape_pts, n, u, v, w, a, b, c, indices, p = 0) = 
     p == n || (
-        ([p, p, p] == [u, v, w] && _triangulate_snipable_sub(shape_pts, n, u, v, w, a, b, c, indices, p + 1)) || 
+        (((p == u) || (p == v) || (p == w)) && _triangulate_snipable_sub(shape_pts, n, u, v, w, a, b, c, indices, p + 1)) || 
         (_triangulate_snipable_sub(shape_pts, n, u, v, w, a, b, c, indices, p + 1) && !_triangulate_in_triangle(a, b, c, shape_pts[indices[p]]))
     );
 
