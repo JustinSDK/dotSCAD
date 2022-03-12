@@ -16,29 +16,22 @@ function _triangulate_snipable(shape_pts, u, v, w, n, indices, epsilon = 0.0001)
         c = shape_pts[indices[w]],
         determinant = cross([b.x - a.x, b.y - a.y],  [c.x - a.x, c.y - a.y])
     )
-    epsilon > determinant ? 
-        false : _triangulate_snipable_sub(shape_pts, n, u, v, w, a, b, c, indices);
+    epsilon <= determinant && _triangulate_snipable_sub(shape_pts, n, u, v, w, a, b, c, indices);
     
 function _triangulate_snipable_sub(shape_pts, n, u, v, w, a, b, c, indices, p = 0) = 
-    p == n ? true : (
-        ((p == u) || (p == v) || (p == w)) ? _triangulate_snipable_sub(shape_pts, n, u, v, w, a, b, c, indices, p + 1) : (
-            _triangulate_in_triangle(a, b, c, shape_pts[indices[p]]) ? 
-                false : _triangulate_snipable_sub(shape_pts, n, u, v, w, a, b, c, indices, p + 1)
-        )
+    p == n || (
+        ([p, p, p] == [u, v, w] && _triangulate_snipable_sub(shape_pts, n, u, v, w, a, b, c, indices, p + 1)) || 
+        (_triangulate_snipable_sub(shape_pts, n, u, v, w, a, b, c, indices, p + 1) && !_triangulate_in_triangle(a, b, c, shape_pts[indices[p]]))
     );
 
 // remove the elem at idx v from indices  
 function _triangulate_remove_v(indices, v, num_of_vertices) = 
     let(nv_minuns_one = num_of_vertices - 1)
-    v == 0 ? [for(i = 1; i <= nv_minuns_one; i = i + 1) indices[i]] : (
-        v == nv_minuns_one ? [for(i = 0; i < v; i = i + 1) indices[i]] : concat(
-            [for(i = 0; i < v; i = i + 1) indices[i]], 
-            [for(i = v + 1; i <= nv_minuns_one; i = i + 1) indices[i]]
-        )
-    );
+    v == 0 ? [for(i = 1; i <= nv_minuns_one; i = i + 1) indices[i]] : 
+    v == nv_minuns_one ? [for(i = 0; i < v; i = i + 1) indices[i]] : 
+                         [for(i = 0; i <= nv_minuns_one; i = i + 1) if(i != v) indices[i]];
     
-function _triangulate_zero_or_value(num_of_vertices, value) = 
-    num_of_vertices <= value ? 0 : value;
+function _triangulate_zero_or_value(num_of_vertices, value) = num_of_vertices <= value ? 0 : value;
 
 function _triangulate_real_triangulate_sub(shape_pts, collector, indices, v, num_of_vertices, count, epsilon) = 
     let(
@@ -69,10 +62,9 @@ function _triangulate_snip(shape_pts, collector, indices, u, v, w, num_of_vertic
     );
 
 function _triangulate_real_triangulate(shape_pts, collector, indices, v, num_of_vertices, count, epsilon) = 
-    count <= 0 ? [] : (
-        num_of_vertices == 2 ? 
-            collector : _triangulate_real_triangulate_sub(shape_pts, collector, indices, v, num_of_vertices, count - 1,  epsilon)
-    );
+    count <= 0 ? [] : 
+    num_of_vertices == 2 ? collector : 
+                           _triangulate_real_triangulate_sub(shape_pts, collector, indices, v, num_of_vertices, count - 1,  epsilon);
     
 function _tri_ear_clipping_impl(shape_pts,  epsilon) =
     let(
