@@ -8,3 +8,4 @@ new:
 - surface/sf_cylinder?
 - noise/worley_sphere?
 - voronoi/vrn_sphere?
+- t3d - roll/pitch/forward
