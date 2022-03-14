@@ -101,23 +101,27 @@ function _t3d_set(t, point, unit_vectors) =
     assert(false, "no target to set");
 
 function _t3d_cmd(t, cmd, point, unit_vectors, leng, angle) = 
-    cmd == "xforward" ? _t3d_xu_forward(t, leng) : 
-    cmd == "yforward" ? _t3d_yu_forward(t, leng) : 
-    cmd == "zforward" ? _t3d_zu_forward(t, leng) : 
+    cmd == "forward" || cmd == "xforward" ? _t3d_xu_forward(t, leng) : 
+    cmd == "roll" ? _t3d_xu_turn(t, -angle) : 
+    cmd == "pitch" ? _t3d_yu_turn(t, -angle) : 
+    cmd == "turn" || cmd == "zturn" ? _t3d_zu_turn(t, angle) : 
     cmd == "xturn" ? _t3d_xu_turn(t, angle) : 
     cmd == "yturn" ? _t3d_yu_turn(t, angle) : 
-    cmd == "zturn" ? _t3d_zu_turn(t, angle) : 
+    cmd == "yforward" ? _t3d_yu_forward(t, leng) : 
+    cmd == "zforward" ? _t3d_zu_forward(t, leng) : 
     _t3d_get(t, cmd);
 
 function _t3d_cmdline(cmd, t, arg) = 
     is_undef(arg) ? _t3d_get(t, cmd) : 
-    cmd == "xforward" ? _t3d_xu_forward(t, arg) : 
-    cmd == "yforward" ? _t3d_yu_forward(t, arg) : 
-    cmd == "zforward" ? _t3d_zu_forward(t, arg) : 
+    cmd == "forward" || cmd == "xforward" ? _t3d_xu_forward(t, arg) : 
+    cmd == "roll" ? _t3d_xu_turn(t, -arg) : 
+    cmd == "pitch" ? _t3d_yu_turn(t, -arg) : 
+    cmd == "turn" || cmd == "zturn" ? _t3d_zu_turn(t, arg) : 
+    cmd == "point" ? _t3d_set_point(t, point) : 
     cmd == "xturn" ? _t3d_xu_turn(t, arg) : 
     cmd == "yturn" ? _t3d_yu_turn(t, arg) : 
-    cmd == "zturn" ? _t3d_zu_turn(t, arg) : 
-    cmd == "point" ? _t3d_set_point(t, point) : 
+    cmd == "yforward" ? _t3d_yu_forward(t, arg) : 
+    cmd == "zforward" ? _t3d_zu_forward(t, arg) : 
     cmd == "unit_vectors" ? _t3d_set_unit_vectors(t, unit_vectors) :  
     assert(false, "unknown command");
 

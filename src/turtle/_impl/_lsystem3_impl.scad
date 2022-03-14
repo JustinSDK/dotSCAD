@@ -20,14 +20,14 @@ function _next_t1(t1, t2, code, stack) =
     
 function _next_t2(t, code, angle, leng) = 
     is_undef(code) || code == "[" || code == "]" ? t :
-    code == "F" || code == "f" ? turtle3d("xu_move", t, leng) :
-    code == "+"  ? turtle3d("zu_turn", t, angle) :
-    code == "-"  ? turtle3d("zu_turn", t, -angle) : 
-    code == "|"  ? turtle3d("zu_turn", t, 180) :   
-    code == "&"  ? turtle3d("yu_turn", t, angle) :        
-    code == "^"  ? turtle3d("yu_turn", t, -angle) :
-    code == "\\" ? turtle3d("xu_turn", t, -angle) :             
-    code == "/"  ? turtle3d("xu_turn", t, angle) : t;       
+    code == "F" || code == "f" ? turtle3d("forward", t, leng) :
+    code == "+"  ? turtle3d("turn", t, angle) :
+    code == "-"  ? turtle3d("turn", t, -angle) : 
+    code == "|"  ? turtle3d("turn", t, 180) :   
+    code == "&"  ? turtle3d("pitch", t, -angle) :        
+    code == "^"  ? turtle3d("pitch", t, angle) :
+    code == "\\" ? turtle3d("roll", t, angle) :             
+    code == "/"  ? turtle3d("roll", t, -angle) : t;       
 
 // It doesn't use recursion to avoid recursion error.    
 function _lines(t, codes, angle, leng) = 
