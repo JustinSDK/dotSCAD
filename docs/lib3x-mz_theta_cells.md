@@ -63,7 +63,7 @@ The value of `type` is the wall type of the cell. It can be `0`, `1`, `2` or `3`
 			}
 
 			if(type == CCW_WALL || type == INWARD_CCW_WALL) {
-				polyline_join([innerVt1, innerVt2])
+				polyline_join([innerVt2, outerVt2])
 				    circle(wall_thickness / 2);
 			}
 		} 
