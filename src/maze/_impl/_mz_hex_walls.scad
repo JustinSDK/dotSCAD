@@ -36,14 +36,14 @@ function _build_cell(cell_radius, cell) =
     let(
         x = _get_x(cell),
         y = _get_y(cell),
-        walls = concat(
-            _is_mask(cell) ? [] : _row_wall(cell_radius, x, y),
-            [_is_top_wall(cell) || _is_top_right_wall(cell) ? _top(cell_radius) : []],
-            [_is_right_wall(cell) || _is_top_right_wall(cell) ? _right_wall(cell_radius, x) : []]
-        ),
+        walls = [
+            if(!_is_mask(cell)) each _row_wall(cell_radius, x, y),
+            if(_is_top_wall(cell) || _is_top_right_wall(cell)) _top(cell_radius),
+            if(_is_right_wall(cell) || _is_top_right_wall(cell)) _right_wall(cell_radius, x)
+        ],
         cell_p = _cell_position(cell_radius, x, y)
     )
     [
-        for(wall = walls)
-        if(wall != []) [for(p = wall) cell_p + p]
+        for(wall = walls) 
+        [for(p = wall) cell_p + p]
     ];
