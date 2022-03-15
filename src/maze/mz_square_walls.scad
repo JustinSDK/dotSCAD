@@ -18,11 +18,9 @@ function mz_square_walls(cells, rows, columns, cell_width, left_border = true, b
      concat(
         [
             for(cell = cells) 
-            let(
-                wall_pts = _square_walls(cell, cell_width),
-                pts = len(wall_pts) == 4 ? [wall_pts[0], wall_pts[1], wall_pts[3]]: wall_pts
-            )
-            if(pts != []) pts
+            let(wall_pts = _square_walls(cell, cell_width))
+            if(wall_pts != []) 
+            len(wall_pts) == 4 ? [wall_pts[0], wall_pts[1], wall_pts[3]]: wall_pts
         ]
         , left_walls, buttom_walls
     );
