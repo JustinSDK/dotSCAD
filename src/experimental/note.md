@@ -9,3 +9,4 @@ new:
 - noise/worley_sphere?
 - voronoi/vrn_sphere?
 - t3d - roll/pitch/forward
+- polyline_join: doc multi-childs
