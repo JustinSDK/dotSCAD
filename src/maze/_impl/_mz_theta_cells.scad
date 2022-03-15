@@ -194,12 +194,10 @@ function nextCells(maze, cell, dir) =
 		cw = get_cw(cell), 
 		ccw = get_ccw(cell)
 	)
-	[
-		is_undef(inward) ? [] : [cell_from(maze, inward)],
-		is_undef(outwards) ? [] : [for(outward = outwards) cell_from(maze, outward)],
-		is_undef(cw) ? [] : [cell_from(maze, cw)],
-		is_undef(ccw) ? [] : [cell_from(maze, ccw)]
-	][dir];
+	dir == 0 ? (is_undef(inward) ? [] : [cell_from(maze, inward)]) :
+	dir == 1 ? (is_undef(outwards) ? [] : [for(outward = outwards) cell_from(maze, outward)]) :
+	dir == 2 ? (is_undef(cw) ? [] : [cell_from(maze, cw)]) :
+	           (is_undef(ccw) ? [] : [cell_from(maze, ccw)]);
 
 function visitIN(maze, next, currentCell) =
 	update_maze(
