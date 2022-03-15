@@ -7,6 +7,7 @@ function _get_type(cell) = mz_square_get(cell, "t");
 function _is_top_wall(cell) = _get_type(cell) == "TOP_WALL";
 function _is_right_wall(cell) = _get_type(cell) == "RIGHT_WALL";
 function _is_top_right_wall(cell) = _get_type(cell) == "TOP_RIGHT_WALL";
+function _is_mask(cell) = _get_type(cell) == "MASK";
 
 function _cell_position(cell_radius, x_cell, y_cell) =
     let(
@@ -36,7 +37,7 @@ function _build_cell(cell_radius, cell) =
         x = _get_x(cell),
         y = _get_y(cell),
         walls = concat(
-            _row_wall(cell_radius, x, y),
+            _is_mask(cell) ? [] : _row_wall(cell_radius, x, y),
             [_is_top_wall(cell) || _is_top_right_wall(cell) ? _top(cell_radius) : []],
             [_is_right_wall(cell) || _is_top_right_wall(cell) ? _right_wall(cell_radius, x) : []]
         ),
