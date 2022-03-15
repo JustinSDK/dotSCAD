@@ -44,7 +44,7 @@ It's a helper for getting data from a theta-maze cell.
 			}
 
 			if(type == "CCW_WALL" || type == "INWARD_CCW_WALL") {
-				polyline_join([innerVt1, innerVt2])
+				polyline_join([innerVt2, outerVt2])
 				    circle(wall_thickness / 2);
 			}
 		} 
