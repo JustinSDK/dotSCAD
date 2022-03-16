@@ -1,9 +1,7 @@
 use <_mz_square_comm.scad>;
 
-function eqPos(x, y, cell) = cell.x == x && cell.y == y;
-
 // is (x, y) visited?
-function visited(x, y, cells, columns) = cells[y * columns + x][3];
+function visited(x, y, cells, columns) = cells[y][x][3];
 
 // is (x, y) visitable?
 function visitable(x, y, cells, rows, columns) = 
@@ -12,10 +10,13 @@ function visitable(x, y, cells, rows, columns) =
     !visited(x, y, cells, columns);     // unvisited
 
 // setting (x, y) as being visited
-function set_visited(x, y, cells) = [
-    for(cell = cells) 
-    eqPos(x, y, cell) ? [x, y, get_type(cell), true] : cell
-];
+function set_visited(x, y, cells) = 
+    let(rowY = [for(cell = cells[y]) if(cell.x == x) [x, y, get_type(cell), true] else cell])
+    [
+        for(r = [0:len(cells) - 1])
+        if(r == y) rowY
+        else cells[r]
+    ];
     
 // 0(right), 1(top), 2(left), 3(bottom)
 _rand_dir_table = [
@@ -61,34 +62,68 @@ function next_y(y, dir, rows, wrapping) =
     wrapping ? (ny < 0 ? ny + rows : ny % rows) : ny;
     
 // go right and carve the right wall
-function carve_right(x, y, cells) = [
-    for(cell = cells) 
-        !eqPos(x, y, cell) ? cell : 
-        top_right_wall(cell) ? [x, y, 1, true] : [x, y, 0, true]
-]; 
+function carve_right(x, y, cells) = 
+    let(
+        rowY = [
+            for(cell = cells[y]) 
+            if(cell.x != x) cell
+            else (top_right_wall(cell) ? [x, y, 1, true] : [x, y, 0, true]) 
+        ]
+    )
+    [
+        for(r = [0:len(cells) - 1])
+        if(r == y) rowY
+        else cells[r]
+    ];
 
 // go up and carve the top wall
-function carve_top(x, y, cells) = [
-    for(cell = cells) 
-        !eqPos(x, y, cell) ? cell : 
-        top_right_wall(cell) ? [x, y, 2, true] : [x, y, 0, true]
-]; 
+function carve_top(x, y, cells) = 
+    let(
+        rowY = [
+            for(cell = cells[y]) 
+            if(cell.x != x) cell
+            else (top_right_wall(cell) ? [x, y, 2, true] : [x, y, 0, true]) 
+        ]
+    )
+    [
+        for(r = [0:len(cells) - 1])
+        if(r == y) rowY
+        else cells[r]
+    ];
 
 // go left and carve the right wall of the left cell
 function carve_left(x, y, cells, columns) = 
     let(
         x_minus_one = x - 1,
-        nx = x_minus_one < 0 ? x_minus_one + columns : x_minus_one
+        nx = x_minus_one < 0 ? x_minus_one + columns : x_minus_one,
+        rowY = [
+            for(cell = cells[y]) 
+            if(cell.x != nx) cell
+            else [nx, y, 1, false]
+        ]
     )
-    [for(cell = cells) eqPos(nx, y, cell) ? [nx, y, 1, 0] : cell]; 
+    [
+        for(r = [0:len(cells) - 1])
+        if(r == y) rowY
+        else cells[r]
+    ];
 
 // go down and carve the top wall of the bottom cell
 function carve_bottom(x, y, cells, rows) = 
     let(
         y_minus_one = y - 1,
-        ny = y_minus_one < 0 ? y_minus_one + rows : y_minus_one
+        ny = y_minus_one < 0 ? y_minus_one + rows : y_minus_one,
+        rowNY = [
+            for(cell = cells[ny]) 
+            if(cell.x != x) cell
+            else [x, ny, 2, false]
+        ]
     )
-    [for(cell = cells) eqPos(x, ny, cell) ? [x, ny, 2, 0] : cell]; 
+    [
+        for(r = [0:len(cells) - 1])
+        if(r == ny) rowNY
+        else cells[r]
+    ];
 
 // 0(right), 1(top), 2(left), 3(bottom)
 function carve(dir, x, y, cells, rows, columns) =
@@ -96,7 +131,6 @@ function carve(dir, x, y, cells, rows, columns) =
     dir == 1 ? carve_top(x, y, cells) : 
     dir == 2 ? carve_left(x, y, cells, columns) : 
     /*dir 3*/  carve_bottom(x, y, cells, rows);
-
 
 // find out visitable dirs from (x, y)
 function visitable_dirs(r_dirs, x, y, cells, rows, columns, x_wrapping, y_wrapping) = [

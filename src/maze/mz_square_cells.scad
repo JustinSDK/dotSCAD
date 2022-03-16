@@ -16,15 +16,18 @@ function mz_square_cells(rows, columns, start = [0, 0], init_cells, x_wrapping =
     let(
         init_undef = is_undef(init_cells),
         mz = init_undef ? mz_square_initialize(rows, columns) : init_cells,
-        c = find_index(mz, function(cell) cell.y != 0),
-        r = len(mz) / c
+        r = len(mz),
+        c = len(mz[0]),
+        // c = find_index(mz, function(cell) cell.y != 0),
+        // r = len(mz) / c
+        generated = go_maze( 
+            start.x, 
+            start.y,   
+            mz,  
+            r, c, 
+            x_wrapping, 
+            y_wrapping, 
+            seed
+        )
     )
-    go_maze( 
-        start.x, 
-        start.y,   
-        mz,  
-        r, c, 
-        x_wrapping, 
-        y_wrapping, 
-        seed
-    );
+    [for(row = generated) each row];
