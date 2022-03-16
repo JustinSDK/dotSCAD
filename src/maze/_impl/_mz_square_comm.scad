@@ -10,6 +10,6 @@ function right_wall(cell) = get_type(cell) == 2;
 function top_right_wall(cell) = get_type(cell) == 3;
 
 function cell(x, y, type, visited) = [x, y, type, visited];
-function get_x(cell) = cell[0];
-function get_y(cell) = cell[1];
+function get_x(cell) = cell.x;
+function get_y(cell) = cell.y;
 function get_type(cell) = cell[2];

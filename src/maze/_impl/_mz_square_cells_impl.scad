@@ -1,6 +1,6 @@
 use <_mz_square_comm.scad>;
 
-function eqPos(x, y, cell) = get_x(cell) == x && get_y(cell) == y;
+function eqPos(x, y, cell) = cell.x == x && cell.y == y;
 
 // is (x, y) visited?
 function visited(x, y, cells, columns) = cells[y * columns + x][3];

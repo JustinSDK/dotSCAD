@@ -24,8 +24,8 @@ function mz_hamiltonian(rows, columns, start = [0, 0], seed) =
             [
                 for(cell = cells)
                 let(
-                    x = mz_square_get(cell, "x"),
-                    y = mz_square_get(cell, "y"),
+                    x = cell.x,
+                    y = cell.y,
                     type = mz_square_get(cell, "t")
                 )
                 each if(type == "TOP_WALL") _mz_hamiltonian_top(x, y) else

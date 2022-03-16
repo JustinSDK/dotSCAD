@@ -25,8 +25,8 @@ function mz_wang_tiles(rows, columns, start = [0, 0], init_cells, seed) =
             [
                 for(cell = cells)
                 let(
-                    x = mz_square_get(cell, "x"),
-                    y = mz_square_get(cell, "y"),
+                    x = cell.x,
+                    y = cell.y,
                     type = mz_square_get(cell, "t"),
                     pts = type == "TOP_WALL" ? _mz_wang_tiles_top(x, y) :
                           type == "RIGHT_WALL" ? _mz_wang_tiles_right(x, y) :
