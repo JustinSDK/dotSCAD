@@ -1,10 +1,10 @@
 /**
-* mz_square_walls.scad
+* mz_squarewalls.scad
 *
 * @copyright Justin Lin, 2020
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *
-* @see https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_square_walls.html
+* @see https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_squarewalls.html
 *
 **/
 
@@ -12,8 +12,8 @@ use <_impl/_mz_square_walls_impl.scad>;
 
 function mz_squarewalls(cells, cell_width, left_border = true, bottom_border = true) = 
     let(
-        rows = len([for(cell = cells) if(cell.y == 0) undef]),
-        columns = len(cells) - rows,
+        rows = len([for(cell = cells) if(cell.x == 0) undef]),
+        columns = len([for(cell = cells) if(cell.y == 0) undef]),
         left_walls = left_border ? [for(y = [0:rows - 1]) [[0, cell_width * (y + 1)], [0, cell_width * y]]] : [],
         buttom_walls = bottom_border ? [for(x = [0:columns - 1]) [[cell_width * x, 0], [cell_width * (x + 1), 0]]] : []
     )
