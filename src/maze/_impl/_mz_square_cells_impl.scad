@@ -109,15 +109,15 @@ function visitable_dirs(r_dirs, x, y, cells, rows, columns, x_wrapping, y_wrappi
 function go_maze(x, y, cells, rows, columns, x_wrapping = false, y_wrapping = false, seed) = 
     let(
         r_dirs = rand_dirs(x * rows + y, seed),
-        v_dirs = visitable_dirs(r_dirs, x, y, cells, rows, columns, x_wrapping, y_wrapping)
+        v_dirs = visitable_dirs(r_dirs, x, y, cells, rows, columns, x_wrapping, y_wrapping),
+        nx_cells = set_visited(x, y, cells)
     )
     //  have visitable dirs?
-    len(v_dirs) == 0 ? 
-        set_visited(x, y, cells)      // road closed
+    len(v_dirs) == 0 ? nx_cells      // road closed
         : walk_around_from(          
             x, y, 
             v_dirs,             
-            set_visited(x, y, cells), 
+            nx_cells, 
             rows, columns,
             x_wrapping, y_wrapping,
             seed = seed
@@ -126,7 +126,7 @@ function go_maze(x, y, cells, rows, columns, x_wrapping = false, y_wrapping = fa
 // try four directions
 function walk_around_from(x, y, dirs, cells, rows, columns, x_wrapping, y_wrapping, i = 0, seed) =
     // all done?
-    i < len(dirs) ? 
+    i == len(dirs) ? cells :
         // not yet
         walk_around_from(x, y, dirs, 
             // try one direction
@@ -134,12 +134,13 @@ function walk_around_from(x, y, dirs, cells, rows, columns, x_wrapping, y_wrappi
             rows, columns, 
             x_wrapping, y_wrapping,
             i + 1,
-            seed) 
-        : cells;
+            seed);
         
 function try_routes_from(x, y, dir, cells, rows, columns, x_wrapping, y_wrapping, seed) = 
     // is the dir visitable?
-    visitable(next_x(x, dir, columns, x_wrapping), next_y(y, dir, rows, y_wrapping), cells, rows, columns) ?     
+    !visitable(next_x(x, dir, columns, x_wrapping), next_y(y, dir, rows, y_wrapping), cells, rows, columns) ?
+        // road closed so return cells directly
+        cells :     
         // try the cell 
         go_maze(
             next_x(x, dir, columns, x_wrapping), next_y(y, dir, rows, y_wrapping), 
@@ -147,6 +148,4 @@ function try_routes_from(x, y, dir, cells, rows, columns, x_wrapping, y_wrapping
             rows, columns,
             x_wrapping, y_wrapping,
             seed
-        ) 
-        // road closed so return cells directly
-        : cells; 
+        ); 
