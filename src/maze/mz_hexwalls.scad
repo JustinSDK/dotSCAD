@@ -9,11 +9,12 @@
 **/
 
 use <_impl/_mz_hex_walls.scad>;
+use <../util/find_index.scad>;
 
 function mz_hexwalls(cells, cell_radius, left_border = true, bottom_border = true) = 
     let(
-        rows = len([for(cell = cells) if(cell.x == 0) undef]),
-        columns = len([for(cell = cells) if(cell.y == 0) undef])
+        columns = find_index(cells, function(cell) cell.y != 0),
+        rows = len(cells) / columns
     )
     [
         each [for(cell = cells, wall = _build_cell(cell_radius, cell)) wall],

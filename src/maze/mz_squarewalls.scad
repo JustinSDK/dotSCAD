@@ -9,11 +9,12 @@
 **/
 
 use <_impl/_mz_square_walls_impl.scad>;
+use <../util/find_index.scad>;
 
 function mz_squarewalls(cells, cell_width, left_border = true, bottom_border = true) = 
     let(
-        rows = len([for(cell = cells) if(cell.x == 0) undef]),
-        columns = len([for(cell = cells) if(cell.y == 0) undef]),
+        columns = find_index(cells, function(cell) cell.y != 0),
+        rows = len(cells) / columns,
         left_walls = left_border ? [for(y = [0:rows - 1]) [[0, cell_width * (y + 1)], [0, cell_width * y]]] : [],
         buttom_walls = bottom_border ? [for(x = [0:columns - 1]) [[cell_width * x, 0], [cell_width * (x + 1), 0]]] : []
     )
