@@ -1,13 +1,13 @@
 use <_mz_square_comm.scad>;
 
 // is (x, y) visited?
-function visited(x, y, cells, columns) = cells[y][x][3];
+function visited(x, y, cells) = cells[y][x][3];
 
 // is (x, y) visitable?
 function visitable(x, y, cells, rows, columns) = 
     y >= 0 && y < rows &&     // y bound
     x >= 0 && x < columns &&  // x bound
-    !visited(x, y, cells, columns);     // unvisited
+    !visited(x, y, cells);     // unvisited
 
 // setting (x, y) as being visited
 function set_visited(x, y, cells) = 
@@ -147,27 +147,28 @@ function go_maze(x, y, cells, rows, columns, x_wrapping = false, y_wrapping = fa
         nx_cells = set_visited(x, y, cells)
     )
     //  have visitable dirs?
-    len(v_dirs) == 0 ? nx_cells      // road closed
+    v_dirs == [] ? nx_cells      // road closed
         : walk_around_from(          
             x, y, 
             v_dirs,             
             nx_cells, 
             rows, columns,
             x_wrapping, y_wrapping,
+            len(v_dirs) - 1,
             seed = seed
         );
 
 // try four directions
-function walk_around_from(x, y, dirs, cells, rows, columns, x_wrapping, y_wrapping, i = 0, seed) =
+function walk_around_from(x, y, dirs, cells, rows, columns, x_wrapping, y_wrapping, i, seed) =
     // all done?
-    i == len(dirs) ? cells :
+    i == -1 ? cells :
         // not yet
         walk_around_from(x, y, dirs, 
             // try one direction
             try_routes_from(x, y, dirs[i], cells, rows, columns, x_wrapping, y_wrapping, seed),  
             rows, columns, 
             x_wrapping, y_wrapping,
-            i + 1,
+            i - 1,
             seed);
         
 function try_routes_from(x, y, dir, cells, rows, columns, x_wrapping, y_wrapping, seed) = 
