@@ -3,13 +3,13 @@ use <_mz_square_comm.scad>;
 function eqPos(x, y, cell) = get_x(cell) == x && get_y(cell) == y;
 
 // is (x, y) visited?
-function visited(x, y, cells, rows) = cells[y * rows + x][3];
+function visited(x, y, cells, columns) = cells[y * columns + x][3];
 
 // is (x, y) visitable?
 function visitable(x, y, cells, rows, columns) = 
     y >= 0 && y < rows &&     // y bound
     x >= 0 && x < columns &&  // x bound
-    !visited(x, y, cells, rows);     // unvisited
+    !visited(x, y, cells, columns);     // unvisited
 
 // setting (x, y) as being visited
 function set_visited(x, y, cells) = [
@@ -80,7 +80,7 @@ function carve_left(x, y, cells, columns) =
         x_minus_one = x - 1,
         nx = x_minus_one < 0 ? x_minus_one + columns : x_minus_one
     )
-    [for(cell = cells) [get_x(cell), get_y(cell)] == [nx, y] ? [nx, y, 1, 0] : cell]; 
+    [for(cell = cells) eqPos(nx, y, cell) ? [nx, y, 1, 0] : cell]; 
 
 // go down and carve the top wall of the bottom cell
 function carve_bottom(x, y, cells, rows) = 
