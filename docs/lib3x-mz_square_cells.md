@@ -56,8 +56,8 @@ The cell data is seperated from views. You can use cell data to construct [diffe
 		}
 	}
 
-	line2d([0, 0], [cell_width * rows, 0], wall_thickness);
-	line2d([0, 0], [0, cell_width * columns], wall_thickness);
+	line2d([0, 0], [cell_width * columns, 0], wall_thickness);
+	line2d([0, 0], [0, cell_width * rows], wall_thickness);
 
 ![mz_square_cells](images/lib3x-mz_square_cells-1.JPG)
 
