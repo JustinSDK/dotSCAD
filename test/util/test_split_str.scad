@@ -1,4 +1,3 @@
-use <unittest.scad>;
 use <util/split_str.scad>;
 
 module test_split_str() {

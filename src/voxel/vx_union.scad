@@ -9,7 +9,10 @@
 **/ 
 
 use <../__comm__/_pt3_hash.scad>;
-use <../util/dedup.scad>;
+use <../util/set/hashset.scad>;
+use <../util/set/hashset_elems.scad>;
 
 function vx_union(points1, points2) = 
-    dedup(concat(points1, points2), hash = function(p) _pt3_hash(p));
+    hashset_elems(
+        hashset(concat(points1, points2), hash = function(p) _pt3_hash(p))
+    );

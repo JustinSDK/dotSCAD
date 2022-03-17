@@ -1,4 +1,3 @@
-use <unittest.scad>;
 use <util/fibseq.scad>;
 
 module test_fibseq() {

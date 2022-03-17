@@ -1,4 +1,3 @@
-use <unittest.scad>;
 use <util/slice.scad>;
 
 module test_slice() {

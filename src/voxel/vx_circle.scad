@@ -8,8 +8,12 @@
 *
 **/ 
 
+use <../__comm__/_pt2_hash.scad>;
 use <_impl/_vx_circle_impl.scad>;
-use <../util/dedup.scad>;
+use <../util/set/hashset.scad>;
+use <../util/set/hashset_elems.scad>;
 
 function vx_circle(radius, filled = false) = 
-    dedup(_vx_circle_impl(radius, filled));
+    hashset_elems(
+        hashset(_vx_circle_impl(radius, filled), hash = function(p) _pt2_hash(p))
+    );

@@ -1,4 +1,3 @@
-use <unittest.scad>;
 use <util/find_index.scad>;
 
 module test_find_index() {

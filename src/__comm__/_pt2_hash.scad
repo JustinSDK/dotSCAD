@@ -1,0 +1,1 @@
+function _pt2_hash(p) = floor(abs(p * [73856093, 19349669]));

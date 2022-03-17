@@ -1,7 +1,9 @@
+use <../__comm__/_pt2_hash.scad>;
 use <../in_shape.scad>;
 use <../util/sort.scad>;
-use <../util/dedup.scad>;
 use <vx_polyline.scad>;
+use <../util/set/hashset.scad>;
+use <../util/set/hashset_elems.scad>;
 
 function vx_polygon(points, filled = false) =
     let(contour = vx_polyline([each points, points[0]]))
@@ -26,4 +28,6 @@ function vx_polygon(points, filled = false) =
             ]
         )
     )
-    dedup(all);
+    hashset_elems(
+        hashset(all, hash = function(p) _pt2_hash(p))
+    );

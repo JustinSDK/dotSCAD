@@ -1,4 +1,3 @@
-use <unittest.scad>;
 use <util/shuffle.scad>;
 
 module test_shuffle() {

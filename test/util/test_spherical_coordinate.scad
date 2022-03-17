@@ -1,4 +1,3 @@
-use <unittest.scad>;
 use <util/spherical_coordinate.scad>;
 
 module test_spherical_coordinate() {
