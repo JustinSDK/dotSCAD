@@ -21,6 +21,13 @@ function _mz_hamiltonian_top_right(x, y) =
     )
     [[nx, ny + 2], [nx + 1, ny + 2], [nx + 2, ny + 2], [nx + 2, ny + 1], [nx + 2, ny]];
 
+function _mz_hamiltonian_mask(x, y) =
+    let(
+        nx = x * 2,
+        ny = y * 2
+    )
+    [[nx, ny], [nx, ny + 2], [nx + 1, ny + 2], [nx + 2, ny + 2], [nx + 2, ny + 1], [nx + 2, ny]];
+
 function _mz_hamiltonian_corner_value(dots, x, y) =
     let(
         c1 = has(dots, [x, y], sorted = true) ? 1 : 0,
