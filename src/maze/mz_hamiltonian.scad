@@ -13,7 +13,8 @@ use <mz_square_cells.scad>;
 use <mz_square_initialize.scad>;
 use <mz_square_get.scad>;
 use <../util/sort.scad>;
-use <../util/dedup.scad>;
+use <../util/set/hashset.scad>;
+use <../util/set/hashset_elems.scad>;
 
 function mz_hamiltonian(rows, columns, start = [0, 0], init_cells, seed) =
     let(
@@ -36,6 +37,13 @@ function mz_hamiltonian(rows, columns, start = [0, 0], init_cells, seed) =
             [for(x = [0:c * 2 - 1]) [x, 0]],
             [for(y = [0:r * 2 - 1]) [0, y]]
         ),
-        dot_pts = dedup(sort(all, by = "vt"))
+        
+        dot_pts = sort(
+            hashset_elems(hashset(all, hash = function(p) floor(abs(p * [73856093, 19349669])))), 
+            by = "vt"
+        ),
+        falseRow = [for(c = [0:c * 2]) false],
+        falseM = [for(r = [0:r * 2]) falseRow],
+        dotM = dot_m(dot_pts, len(dot_pts), falseM)
     )
-    _mz_hamiltonian_travel(dot_pts, start * 2, r * c * 4);
+    _mz_hamiltonian_travel(dotM, start * 2, r * c * 4);

@@ -1,5 +1,16 @@
-use <../../util/has.scad>;
+function dot_m(dot_pts, leng, m, i = 0) =
+    i == leng ? m :
+    let(p = dot_pts[i])
+    dot_m(dot_pts, leng, updated(p.x, p.y, m), i + 1);
 
+function updated(x, y, dots) =
+    let(rowY = dots[y]) 
+    [
+        for(r = [0:len(dots) - 1])
+        if(r == y) [for(c = [0:len(rowY) - 1]) c == x || rowY[c]]
+        else dots[r]
+    ];
+    
 function _mz_hamiltonian_top(x, y) =
     let(
         nx = x * 2,
@@ -21,12 +32,12 @@ function _mz_hamiltonian_top_right(x, y) =
     )
     [[nx, ny + 2], [nx + 1, ny + 2], [nx + 2, ny + 2], [nx + 2, ny + 1], [nx + 2, ny]];
 
-function _mz_hamiltonian_corner_value(dots, x, y) =
+function _mz_hamiltonian_corner_value(dotM, x, y) =
     let(
-        c1 = has(dots, [x, y], sorted = true) ? 1 : 0,
-        c2 = has(dots, [x, y + 1], sorted = true) ? 2 : 0,
-        c3 = has(dots, [x + 1, y + 1], sorted = true) ? 4 : 0,
-        c4 = has(dots, [x + 1, y], sorted = true) ? 8 : 0
+        c1 = dotM[y][x] ? 1 : 0,
+        c2 = dotM[y + 1][x] ? 2 : 0,
+        c3 = dotM[y + 1][x + 1] ? 4 : 0,
+        c4 = dotM[y][x + 1] ? 8 : 0
     )
     c1 + c2 + c3 + c4;
 
@@ -45,10 +56,10 @@ _mz_hamiltonian_nxt_offset = [
     [-1, 0],  // LEFT
     [1,  0]   // RIGHT
 ];
-function _mz_hamiltonian_travel(dot_pts, p, leng, i = 0) = 
+function _mz_hamiltonian_travel(dotM, p, leng, i = 0) = 
     i == leng ? [] :
     let(
-        dir_i = _mz_hamiltonian_dir(_mz_hamiltonian_corner_value(dot_pts, p.x, p.y)),
+        dir_i = _mz_hamiltonian_dir(_mz_hamiltonian_corner_value(dotM, p.x, p.y)),
         nxt_p = p + _mz_hamiltonian_nxt_offset[dir_i]
     )
-    [p, each _mz_hamiltonian_travel(dot_pts, nxt_p, leng, i + 1)];
+    [p, each _mz_hamiltonian_travel(dotM, nxt_p, leng, i + 1)];
