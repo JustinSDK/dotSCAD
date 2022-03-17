@@ -32,12 +32,10 @@ function mz_hamiltonian(rows, columns, start = [0, 0], init_cells, seed) =
                 each if(type == "TOP_WALL") _mz_hamiltonian_top(cell.x, cell.y) else
                      if(type == "RIGHT_WALL") _mz_hamiltonian_right(cell.x, cell.y) else
                      if(type == "TOP_RIGHT_WALL" || type == "MASK") _mz_hamiltonian_top_right(cell.x, cell.y) 
-                     
             ],
             [for(x = [0:c * 2 - 1]) [x, 0]],
             [for(y = [0:r * 2 - 1]) [0, y]]
         ),
-        dot_pts = dedup(sort(all, by = "vt")),
-        _ = echo(dot_pts)
+        dot_pts = dedup(sort(all, by = "vt"))
     )
     _mz_hamiltonian_travel(dot_pts, start * 2, r * c * 4);
