@@ -18,8 +18,9 @@ use <../util/set/hashset_elems.scad>;
 
 function mz_hamiltonian(rows, columns, start = [0, 0], init_cells, seed) =
     let(
-        r = is_undef(init_cells) ? rows : len(init_cells),
-        c = is_undef(init_cells) ? columns : len(init_cells[0]),
+        init_cells_undef = is_undef(init_cells),
+        r = init_cells_undef ? rows : len(init_cells),
+        c = init_cells_undef ? columns : len(init_cells[0]),
         cells = mz_square_cells(
             r, c,
             init_cells = init_cells,
@@ -46,6 +47,9 @@ function mz_hamiltonian(rows, columns, start = [0, 0], init_cells, seed) =
         ),
         falseRow = [for(c = [0:c * 2]) false],
         falseM = [for(r = [0:r * 2]) falseRow],
-        dotM = dot_m(dot_pts, len(dot_pts), falseM)
+        dotM = dot_m(dot_pts, len(dot_pts), falseM),
+
+        path_leng = init_cells_undef ? r * c : 
+            len([for(row = init_cells, cell = row) if(mz_square_get(cell, "t") != "MASK") undef])
     )
-    _mz_hamiltonian_travel(dotM, start * 2, r * c * 4);
+    _mz_hamiltonian_travel(dotM, start * 2, path_leng * 4);
