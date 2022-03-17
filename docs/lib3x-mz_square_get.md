@@ -25,7 +25,7 @@ It's a helper for getting data from a square-maze cell.
 	for(cell = cells) {
 		x = mz_square_get(cell, "x");
 		y = mz_square_get(cell, "y");
-		type = mz_square_get(cell, "t");;
+		type = mz_square_get(cell, "t");
 		
 		translate([x, y] * cell_width) {
 			if(type == "TOP_WALL" || type == "TOP_RIGHT_WALL") {
@@ -38,7 +38,7 @@ It's a helper for getting data from a square-maze cell.
 		}
 	}
 
-	line2d([0, 0], [cell_width * rows, 0], wall_thickness);
-	line2d([0, 0], [0, cell_width * columns], wall_thickness);
+	line2d([0, 0], [cell_width * columns, 0], wall_thickness);
+	line2d([0, 0], [0, cell_width * rows], wall_thickness);
 
 ![mz_square_get](images/lib3x-mz_square_get-1.JPG)
