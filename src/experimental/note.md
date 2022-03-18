@@ -13,3 +13,4 @@ new:
 - mz_squarewalls, mz_hexwalls
 - mz_hamiltonian supports init_cells
 - util/count
+- lemniscate_curve?
