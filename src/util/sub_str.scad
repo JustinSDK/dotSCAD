@@ -11,6 +11,10 @@
 function sub_str(t, begin, end) = 
     let(
         ed = is_undef(end) ? len(t) : end,
-        cum = [for(i = begin, s = t[i]; i < ed; i = i + 1, s = str(s, t[i])) s]
+        cum = [
+            for(i = begin, s = t[i], is_continue = i < ed; 
+                is_continue; 
+                i = i + 1, is_continue = i < ed, s = is_continue ? str(s, t[i]) : undef) s
+        ]
     )
     cum[len(cum) - 1];

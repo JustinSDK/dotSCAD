@@ -4,5 +4,10 @@ function _str_hash(value) =
 		end = len(chars) - 1
 	)
 	end == 0 ? ord(chars[0]) :
-	let(cum_total = [for(i = 0, s = ord(chars[0]); i < end; i = i + 1, s = s + (ord(chars[i]) * 31 ^ i)) s])
+	let(
+		cum_total = [
+			for(i = 0, s = ord(chars[0]), is_continue = i < end; 
+			    is_continue; 
+				i = i + 1, is_continue = i < end,  s = is_continue ? s + (ord(chars[i]) * 31 ^ i) : undef) s]
+	)
 	cum_total[end - 1] + (ord(chars[end]) * 31 ^ end);
