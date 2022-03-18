@@ -61,11 +61,12 @@ function nxtp(dotM, p) = p + _mz_hamiltonian_nxt_offset[_mz_hamiltonian_dir(_mz_
 
 function _mz_hamiltonian_travel(dotM, p, leng, i = 0) = 
     let(
+        end = leng - 1,
         pts = [
-            for(i = 0, nxt_p = nxtp(dotM, p), is_continue = i < leng; 
+            for(i = 0, nxt_p = nxtp(dotM, p), is_continue = i < end; 
                 is_continue; 
                 i = i + 1,
-                is_continue = i < leng,
+                is_continue = i < end,
                 nxt_p = is_continue ? nxtp(dotM, nxt_p) : undef
             )
             nxt_p
