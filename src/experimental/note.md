@@ -12,3 +12,4 @@ new:
 - polyline_join: doc multi-childs
 - mz_squarewalls, mz_hexwalls
 - mz_hamiltonian supports init_cells
+- util/count

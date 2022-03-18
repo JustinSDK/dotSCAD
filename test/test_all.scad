@@ -75,6 +75,7 @@ include <util/test_every.scad>;
 include <util/test_shuffle.scad>;
 include <util/test_find_index.scad>;
 include <util/test_spherical_coordinate.scad>;
+include <util/test_count.scad>;
 include <util/set/test_hashset.scad>;
 include <util/map/test_hashmap.scad>;
 
