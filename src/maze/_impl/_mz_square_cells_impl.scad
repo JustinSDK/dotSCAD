@@ -144,30 +144,25 @@ function go_maze(x, y, cells, rows, columns, x_wrapping = false, y_wrapping = fa
     let(
         r_dirs = rand_dirs(x * rows + y, seed),
         v_dirs = visitable_dirs(r_dirs, x, y, cells, rows, columns, x_wrapping, y_wrapping),
-        nx_cells = set_visited(x, y, cells)
+        nx_cells0 = set_visited(x, y, cells),
+        leng_v_dirs = len(v_dirs)
     )
     //  have visitable dirs?
-    v_dirs == [] ? nx_cells      // road closed
-        : walk_around_from(          
-            x, y, 
-            v_dirs,             
-            nx_cells, 
-            rows, columns,
-            x_wrapping, y_wrapping,
-            len(v_dirs) - 1,
-            seed = seed
-        );
+    leng_v_dirs == 0 ? nx_cells0 :      // road closed
+    // try four directions
+    let(nxcells1 = next_cells(x, y, v_dirs[0], nx_cells0, rows, columns, x_wrapping, y_wrapping, seed))
+    leng_v_dirs == 1 ? nxcells1 :
+    let(nxcells2 = next_cells(x, y, v_dirs[1], nxcells1, rows, columns, x_wrapping, y_wrapping, seed))
+    leng_v_dirs == 2 ? nxcells2 : 
+    let(nxcells3 = next_cells(x, y, v_dirs[2], nxcells2, rows, columns, x_wrapping, y_wrapping, seed))
+    leng_v_dirs == 3 ? nxcells3 : next_cells(x, y, v_dirs[3], nxcells3, rows, columns, x_wrapping, y_wrapping, seed);
 
-// try four directions
-function walk_around_from(x, y, dirs, cells, rows, columns, x_wrapping, y_wrapping, i, seed) =
-    // all done?
-    i == -1 ? cells :
-    // not yet
+function next_cells(x, y, dir, cells, rows, columns, x_wrapping, y_wrapping, seed) =
     let(
-        dir = dirs[i],
         nx = next_x(x, dir, columns, x_wrapping),
-        ny = next_y(y, dir, rows, y_wrapping),
-        nx_cells = !visitable(nx, ny, cells, rows, columns) ? // is the dir visitable?
+        ny = next_y(y, dir, rows, y_wrapping)
+    )
+    !visitable(nx, ny, cells, rows, columns) ? // is the dir visitable?
             cells :   // road closed so return cells directly
             go_maze(  // try the cell 
                 nx, ny, 
@@ -175,12 +170,4 @@ function walk_around_from(x, y, dirs, cells, rows, columns, x_wrapping, y_wrappi
                 rows, columns,
                 x_wrapping, y_wrapping,
                 seed
-            )
-    )
-    walk_around_from(x, y, dirs, 
-        // try one direction
-        nx_cells,  
-        rows, columns, 
-        x_wrapping, y_wrapping,
-        i - 1,
-        seed); 
+            );
