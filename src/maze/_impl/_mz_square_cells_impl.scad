@@ -162,25 +162,25 @@ function go_maze(x, y, cells, rows, columns, x_wrapping = false, y_wrapping = fa
 function walk_around_from(x, y, dirs, cells, rows, columns, x_wrapping, y_wrapping, i, seed) =
     // all done?
     i == -1 ? cells :
-        // not yet
-        walk_around_from(x, y, dirs, 
-            // try one direction
-            try_routes_from(x, y, dirs[i], cells, rows, columns, x_wrapping, y_wrapping, seed),  
-            rows, columns, 
-            x_wrapping, y_wrapping,
-            i - 1,
-            seed);
-        
-function try_routes_from(x, y, dir, cells, rows, columns, x_wrapping, y_wrapping, seed) = 
-    // is the dir visitable?
-    !visitable(next_x(x, dir, columns, x_wrapping), next_y(y, dir, rows, y_wrapping), cells, rows, columns) ?
-        // road closed so return cells directly
-        cells :     
-        // try the cell 
-        go_maze(
-            next_x(x, dir, columns, x_wrapping), next_y(y, dir, rows, y_wrapping), 
-            carve(dir, x, y, cells, rows, columns),
-            rows, columns,
-            x_wrapping, y_wrapping,
-            seed
-        ); 
+    // not yet
+    let(
+        dir = dirs[i],
+        nx = next_x(x, dir, columns, x_wrapping),
+        ny = next_y(y, dir, rows, y_wrapping),
+        nx_cells = !visitable(nx, ny, cells, rows, columns) ? // is the dir visitable?
+            cells :   // road closed so return cells directly
+            go_maze(  // try the cell 
+                nx, ny, 
+                carve(dir, x, y, cells, rows, columns),
+                rows, columns,
+                x_wrapping, y_wrapping,
+                seed
+            )
+    )
+    walk_around_from(x, y, dirs, 
+        // try one direction
+        nx_cells,  
+        rows, columns, 
+        x_wrapping, y_wrapping,
+        i - 1,
+        seed); 
