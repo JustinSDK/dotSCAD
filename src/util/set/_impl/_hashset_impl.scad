@@ -4,9 +4,9 @@ function _hashset(lt, leng, buckets, b_numbers, eq, hash) =
     let(
         end = leng - 1,
         n_buckets_lt = [
-        for(i = 0, n_buckets = _hashset_add(buckets, b_numbers, lt[i], eq, hash);
-            i < end; 
-            i = i + 1, n_buckets = _hashset_add(n_buckets, b_numbers, lt[i], eq, hash)) 
+        for(i = 0, n_buckets = _hashset_add(buckets, b_numbers, lt[i], eq, hash), is_continue = i < end;
+            is_continue; 
+            i = i + 1, is_continue = i < end, n_buckets = is_continue ? _hashset_add(n_buckets, b_numbers, lt[i], eq, hash) : n_buckets) 
             n_buckets
         ]
     )

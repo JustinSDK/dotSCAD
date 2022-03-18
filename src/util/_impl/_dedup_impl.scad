@@ -4,9 +4,9 @@ function _dedup(elems, leng, buckets, eq, hash, bucket_numbers) =
     let(
         end = leng - 1,
         n_buckets_lt = [
-        for(i = 0, n_buckets = _dedup_add(buckets, [i, elems[i]], eq, hash, bucket_numbers);
-            i < end; 
-            i = i + 1, n_buckets = _dedup_add(n_buckets, [i, elems[i]], eq, hash, bucket_numbers)) 
+        for(i = 0, n_buckets = _dedup_add(buckets, [i, elems[i]], eq, hash, bucket_numbers), is_continue = i < end;
+            is_continue; 
+            i = i + 1, is_continue = i < end, n_buckets = is_continue ? _dedup_add(n_buckets, [i, elems[i]], eq, hash, bucket_numbers) : n_buckets) 
             n_buckets
         ]
     )
