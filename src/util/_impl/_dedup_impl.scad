@@ -6,7 +6,7 @@ function _dedup(elems, leng, buckets, eq, hash, bucket_numbers) =
         n_buckets_lt = [
         for(i = 0, n_buckets = _dedup_add(buckets, [i, elems[i]], eq, hash, bucket_numbers), is_continue = i < end;
             is_continue; 
-            i = i + 1, is_continue = i < end, n_buckets = is_continue ? _dedup_add(n_buckets, [i, elems[i]], eq, hash, bucket_numbers) : n_buckets) 
+            i = i + 1, is_continue = i < end, n_buckets = is_continue ? _dedup_add(n_buckets, [i, elems[i]], eq, hash, bucket_numbers) : undef) 
             n_buckets
         ]
     )
