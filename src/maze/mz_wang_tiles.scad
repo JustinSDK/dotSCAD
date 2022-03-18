@@ -8,11 +8,13 @@
 *
 **/
 
+use <../__comm__/_pt2_hash.scad>;
 use <_impl/_mz_wang_tiles_impl.scad>;
 use <mz_square_cells.scad>;
 use <mz_square_get.scad>;
 use <../util/sort.scad>;
-use <../util/dedup.scad>;
+use <../util/set/hashset.scad>;
+use <../util/set/hashset_elems.scad>;
 
 function mz_wang_tiles(rows, columns, start = [0, 0], init_cells, seed) =
     let(
@@ -37,7 +39,7 @@ function mz_wang_tiles(rows, columns, start = [0, 0], init_cells, seed) =
             [for(x = [0:columns - 1]) [x * 2 + 1, 0]],
             [for(y = [0:rows - 1]) [0, y * 2 + 1]]
         ),
-        dot_pts = dedup(sort(all, by = "vt"))
+        dot_pts = sort(hashset_elems(hashset(all, hash = function(p) _pt2_hash(p))), by = "vt")
     )
     [
         for(y = [0:rows - 1], x = [0:columns - 1])

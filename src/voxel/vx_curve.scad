@@ -8,6 +8,8 @@
 *
 **/ 
 
+use <../__comm__/_pt2_hash.scad>;
+use <../__comm__/_pt3_hash.scad>;
 use <_impl/_vx_curve_impl.scad>;
 use <../util/dedup.scad>;
 
@@ -22,4 +24,4 @@ function vx_curve(points, tightness = 0) =
                 for(i = [0:len(pts) - 2]) pts[i]    
         ],
         points[leng - 2]
-    ]);
+    ], hash = len(points[0]) == 2 ? function(p) _pt2_hash(p) : function(p) _pt3_hash(p));

@@ -8,6 +8,8 @@
 *
 **/ 
 
+use <../__comm__/_pt2_hash.scad>;
+use <../__comm__/_pt3_hash.scad>;
 use <../__comm__/__to2d.scad>;
 use <../__comm__/__to3d.scad>;
 use <_impl/_vx_bezier_impl.scad>;
@@ -18,6 +20,6 @@ function vx_bezier(p1, p2, p3, p4) =
         is2d = len(p1) == 2,
         pts = is2d ? _vx_bezier2(__to3d(p1), __to3d(p2), __to3d(p3), __to3d(p4), []) :
                      _vx_bezier3(p1, p2, p3, p4, []),
-        deduped = dedup(pts)
+        deduped = dedup(pts, hash = is2d ? function(p) _pt2_hash(p) : function(p) _pt3_hash(p))
     )
     is2d ? [for(p = deduped) __to2d(p)] : deduped;
