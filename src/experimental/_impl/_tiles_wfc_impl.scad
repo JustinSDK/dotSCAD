@@ -23,9 +23,7 @@ function _weights_of_tiles(weights, symbols, leng, i = 0) =
 		    tile = symbols[i],
 			w = hashmap_get(weights, tile)
 	    )
-        w == undef ? 
-		    _weights_of_tiles(hashmap_put(weights, tile, 1), symbols, leng, i + 1) :
-			_weights_of_tiles(hashmap_put(weights, tile, w + 1), symbols, leng, i + 1);
+		_weights_of_tiles(hashmap_put(weights, tile, w == undef ? 1 : w + 1), symbols, leng, i + 1);
 
 /* 
     oo-style
@@ -97,17 +95,12 @@ function _oneStateAt(wf, x, y, state) = _replaceStatesAt(wf, x, y, [state]);
 // Shannon entropy
 function wf_entropy(wf, x, y) = 
     let(
-		states = wf_eigenstates_at(wf, x, y),
-		sumOfWeights_sumOfWeightLogWeights = _wf_entropy(wf_weights(wf), states, len(states), 0, 0),
-		sumOfWeights = sumOfWeights_sumOfWeightLogWeights[0],
-		sumOfWeightLogWeights = sumOfWeights_sumOfWeightLogWeights[1]
+		weights = wf_weights(wf),
+		states_weights = [for(state = wf_eigenstates_at(wf, x, y)) hashmap_get(weights, state)],
+		sumOfWeights = sum(states_weights),
+		sumOfWeightLogWeights = sum([for(w = states_weights) w * ln(w)]) 
 	)
 	ln(sumOfWeights) - (sumOfWeightLogWeights / sumOfWeights);
-
-function _wf_entropy(weights, states, state_leng, sumOfWeights, sumOfWeightLogWeights, i = 0) =
-	i == state_leng ? [sumOfWeights, sumOfWeightLogWeights] :
-	let(weight = hashmap_get(weights, states[i]))
-	_wf_entropy(weights, states, state_leng, sumOfWeights + weight, sumOfWeightLogWeights + weight * ln(weight), i + 1);
 
 function _replaceStatesAt(wf, x, y, states) = 
     let(
