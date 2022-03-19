@@ -8,7 +8,8 @@ use <maze/mz_hamiltonian.scad>;
 cell_width = 5;
 wall_thickness = 1.75;
 
-maze_tai_chi(cell_width, wall_thickness);
+linear_extrude(wall_thickness)
+    maze_tai_chi(cell_width, wall_thickness);
 
 module maze_tai_chi(cell_width, wall_thickness) {
     seed = 15;
