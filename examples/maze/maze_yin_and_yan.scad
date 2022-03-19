@@ -9,9 +9,9 @@ cell_width = 5;
 wall_thickness = 1.75;
 with_bottom = "NO";
 
-maze_tai_chi(cell_width, wall_thickness, with_bottom);
+maze_yin_and_yan(cell_width, wall_thickness, with_bottom);
 
-module maze_tai_chi(cell_width, wall_thickness, with_bottom) {
+module maze_yin_and_yan(cell_width, wall_thickness, with_bottom) {
     seed = 15;
 
     module maze(mask, start, cell_width, wall_thickness, seed) {
