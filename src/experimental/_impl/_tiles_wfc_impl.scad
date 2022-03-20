@@ -1,4 +1,3 @@
-use <util/has.scad>;
 use <util/rand.scad>;
 use <util/some.scad>;
 use <util/every.scad>;
@@ -35,7 +34,6 @@ function _weights_of_tiles(weights, symbols, leng, i = 0) =
 		- wf_eigenstates(wf)
 		- wf_eigenstates_at(wf, x, y)
 		- wf_is_all_collapsed(wf)
-		- wf_remove(wf, x, y, removedStates)
 		- wf_collapse(wf, x, y)
 		- wf_entropy(wf, x, y)
 		- wf_coord_min_entropy(wf)
@@ -61,11 +59,6 @@ function wf_is_all_collapsed(wf) = every(
     wf_eigenstates(wf), 
 	function(row) every(row, function(states) len(states) == 1)
 );
-
-function wf_remove(wf, x, y, removedStates) = _replaceStatesAt(wf, x, y, [
-	for(state = wf_eigenstates_at(wf, x, y)) 
-	if(!has(removedStates, state)) state
-]);
 
 function wf_collapse(wf, x, y) =
     let(
@@ -193,26 +186,31 @@ function _doDirs(tm, stack, cx, cy, current_tiles, dirs, leng, i = 0) =
 		nbry = cy + dir[1],
 		wf = tilemap_wf(tm),
 		nbr_tiles = wf_eigenstates_at(wf, nbrx, nbry),
-		not_compatible_nbr_tiles = [
+		compatible_nbr_tiles = [
 			for(nbr_tile = nbr_tiles) 
-			if(not_compatible_nbr_tile(tm, current_tiles, nbr_tile, dir)) nbr_tile
+			if(compatible_nbr_tile(tm, current_tiles, nbr_tile, dir)) nbr_tile
 		],
-		leng_not_compatible_nbr_tiles_0 = len(not_compatible_nbr_tiles) == 0
+		leng_compatible_nbr_tiles = len(compatible_nbr_tiles),
+
+		tm_stack =
+			assert(leng_compatible_nbr_tiles > 0,
+					str("(", nbrx, ", ", nbry, ")", 
+					" reaches a contradiction. Tiles have all been ruled out by your previous choices. Please try again."))
+
+			leng_compatible_nbr_tiles == len(nbr_tiles) ? 
+				[tm, stack] 
+				: 
+				[   
+					[
+						tilemap_width(tm), 
+						tilemap_height(tm), 
+						tilemap_compatibilities(tm),
+						_replaceStatesAt(wf, nbrx, nbry, compatible_nbr_tiles)
+					], 
+					stack_push(stack, [nbrx, nbry])
+				]
 	)
-	_doDirs(
-		leng_not_compatible_nbr_tiles_0 ? tm : 
-		    let(nwf = wf_remove(wf, nbrx, nbry, not_compatible_nbr_tiles)) [
-			    tilemap_width(tm), 
-				tilemap_height(tm), 
-				tilemap_compatibilities(tm),
-				wf_eigenstates_at(nwf, nbrx, nbrx) != [] ? nwf :
-				    assert(false,
-				        str("(", nbrx, ", ", nbry, ")", 
-						    " reaches a contradiction. Tiles have all been ruled out by your previous choices. Please try again."))
-			], 
-		leng_not_compatible_nbr_tiles_0 ? stack : stack_push(stack, [nbrx, nbry]), 
-		cx, cy, current_tiles, dirs, leng, i + 1
-	);
+	_doDirs(tm_stack[0], tm_stack[1], cx, cy, current_tiles, dirs, leng, i + 1);
 
 function tilemap_generate(tm) =
     let(wf = tilemap_wf(tm))
@@ -263,8 +261,8 @@ function collapsed_tiles(wf) =
 		[for(x = rx) wf_eigenstates_at(wf, x, y)[0]]
 	];
 
-function not_compatible_nbr_tile(tm, current_tiles, nbr_tile, dir) =
-    !some(current_tiles, function(tile) tilemap_check_compatibilities(tm, tile, nbr_tile, dir));
+function compatible_nbr_tile(tm, current_tiles, nbr_tile, dir) =
+    some(current_tiles, function(tile) tilemap_check_compatibilities(tm, tile, nbr_tile, dir));
 
 function create_stack(elem) = [elem, []];
 function stack_push(stack, elem) = [elem, stack];
