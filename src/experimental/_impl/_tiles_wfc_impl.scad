@@ -83,12 +83,12 @@ function wf_collapse(wf, x, y) =
 	_wf_collapse(wf, x, y, weights_xy, len(weights_xy), threshold);
 
 function _wf_collapse(wf, x, y, states_weights, leng, threshold, i = 0) =
-    i == leng ? wf : 
+    threshold < 0 || i == leng ? wf : 
 	let(
 		state_weight = states_weights[i],
 		t = threshold - state_weight[1]
 	)
-	t < 0 ? _oneStateAt(wf, x, y, state_weight[0]) :  _wf_collapse(wf, x, y, states_weights, leng, t, i + 1);
+	_wf_collapse(t < 0 ? _oneStateAt(wf, x, y, state_weight[0]) : wf, x, y, states_weights, leng, t, i + 1);
 
 function _oneStateAt(wf, x, y, state) = _replaceStatesAt(wf, x, y, [state]);
 
@@ -196,13 +196,12 @@ function _doDirs(tm, stack, cx, cy, current_tiles, dirs, leng, i = 0) =
 		not_compatible_nbr_tiles = [
 			for(nbr_tile = nbr_tiles) 
 			if(not_compatible_nbr_tile(tm, current_tiles, nbr_tile, dir)) nbr_tile
-		]
+		],
+		leng_not_compatible_nbr_tiles_0 = len(not_compatible_nbr_tiles) == 0
 	)
-	len(not_compatible_nbr_tiles) == 0 ? _doDirs(tm, stack, cx, cy, current_tiles, dirs, leng, i + 1) :
-		let(
-			nstack = stack_push(stack, [nbrx, nbry]),
-			nwf = wf_remove(wf, nbrx, nbry, not_compatible_nbr_tiles),
-			ntm = [
+	_doDirs(
+		leng_not_compatible_nbr_tiles_0 ? tm : 
+		    let(nwf = wf_remove(wf, nbrx, nbry, not_compatible_nbr_tiles)) [
 			    tilemap_width(tm), 
 				tilemap_height(tm), 
 				tilemap_compatibilities(tm),
@@ -210,9 +209,10 @@ function _doDirs(tm, stack, cx, cy, current_tiles, dirs, leng, i = 0) =
 				    assert(false,
 				        str("(", nbrx, ", ", nbry, ")", 
 						    " reaches a contradiction. Tiles have all been ruled out by your previous choices. Please try again."))
-			]
-		)
-	    _doDirs(ntm, nstack, cx, cy, current_tiles, dirs, leng, i + 1);
+			], 
+		leng_not_compatible_nbr_tiles_0 ? stack : stack_push(stack, [nbrx, nbry]), 
+		cx, cy, current_tiles, dirs, leng, i + 1
+	);
 
 function tilemap_generate(tm) =
     let(wf = tilemap_wf(tm))
