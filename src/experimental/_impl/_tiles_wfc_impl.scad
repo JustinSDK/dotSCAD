@@ -33,11 +33,11 @@ function _weights_of_tiles(weights, symbols, leng, i = 0) =
         - wf_weights(wf)
 		- wf_eigenstates(wf)
 		- wf_eigenstates_at(wf, x, y)
-		- wf_is_all_collapsed(wf)
+		- wf_is_all_collapsed(wf, notCollaspedCoords)
 		- wf_collapse(wf, x, y)
 		- wf_entropy(wf, x, y)
-		- wf_coord_min_entropy(wf)
-		- wf_not_collapsed_coords(wf)
+		- wf_coord_min_entropy(wf, notCollaspedCoords)
+		- wf_not_collapsed_coords(wf, notCollaspedCoords)
 */
 function wave_function(width, height, weights) = 
     [width, height, weights, _initialEigenstates(width, height, weights)];	
@@ -55,10 +55,13 @@ function wf_weights(wf) = wf[2];
 function wf_eigenstates(wf) = wf[3];
 function wf_eigenstates_at(wf, x, y) = wf_eigenstates(wf)[y][x];
 
-function wf_is_all_collapsed(wf) = every(
-    wf_eigenstates(wf), 
-	function(row) every(row, function(states) len(states) == 1)
-);
+function wf_is_all_collapsed(wf, notCollaspedCoords) = 
+    is_undef(notCollaspedCoords) ?
+	every(
+		wf_eigenstates(wf), 
+		function(row) every(row, function(states) len(states) == 1)
+	) :
+	every(notCollaspedCoords, function(coord) len(wf_eigenstates_at(wf, coord.x, coord.y)) == 1);
 
 function wf_collapse(wf, x, y) =
     let(
@@ -108,21 +111,21 @@ function _replaceStatesAt(wf, x, y, states) =
 		[for(i = 0; i < leng_eigenstates; i = i + 1) i == y ? newRowY : eigenstates[i]]
 	];
 
-function wf_not_collapsed_coords(wf, notCollapsedCoords) = 
-    is_undef(notCollapsedCoords) ?
+function wf_not_collapsed_coords(wf, notCollaspedCoords) = 
+    is_undef(notCollaspedCoords) ?
 	let(rx = [0:wf_width(wf) - 1])
 	[
 		for(y = [0:wf_height(wf) - 1], x = rx)
 		if(len(wf_eigenstates_at(wf, x, y)) != 1) [x, y]
 	] :
 	[
-		for(coord = notCollapsedCoords)
+		for(coord = notCollaspedCoords)
 		if(len(wf_eigenstates_at(wf, coord.x, coord.y)) != 1) [coord.x, coord.y]
 	];
 
-function wf_coord_min_entropy(wf, notCollapsedCoords) = 
+function wf_coord_min_entropy(wf, notCollaspedCoords) = 
     let(
-		coords = wf_not_collapsed_coords(wf, notCollapsedCoords),
+		coords = wf_not_collapsed_coords(wf, notCollaspedCoords),
 		entropyCoord = coords[0],
 		entropy = wf_entropy(wf, entropyCoord.x, entropyCoord.y) - (rand() / 1000),
 		min_coord = _wf_coord_min_entropy(wf, coords, len(coords), entropy, entropyCoord)
@@ -147,7 +150,7 @@ function _wf_coord_min_entropy(wf, coords, coords_leng, entropy, entropyCoord, i
 		- tilemap_wf(tm)
 		- tilemap_check_compatibilities(tm, tile1, tile2, direction)
 		- tilemap_propagate(tm, x, y)
-		- tilemap_generate(tm)
+		- tilemap_generate(tm, notCollaspedCoords)
 */
 
 function tilemap(width, height, sample) = [
@@ -217,7 +220,7 @@ function _doDirs(tm, stack, cx, cy, current_tiles, dirs, leng, i = 0) =
 
 function tilemap_generate(tm, notCollaspedCoords) =
     let(wf = tilemap_wf(tm))
-	wf_is_all_collapsed(wf) ? collapsed_tiles(wf) :
+	wf_is_all_collapsed(wf, notCollaspedCoords) ? collapsed_tiles(wf) :
 	let(
 		coord_notCollaspedCoords = wf_coord_min_entropy(wf, notCollaspedCoords),
 		x = coord_notCollaspedCoords[0].x,
