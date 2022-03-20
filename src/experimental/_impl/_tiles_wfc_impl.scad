@@ -116,11 +116,10 @@ function wf_not_collapsed_coords(wf) = [
 function wf_coord_min_entropy(wf) = 
     let(
 		coords = wf_not_collapsed_coords(wf),
-		coords_leng = len(coords),
 		entropyCoord = coords[0],
 		entropy = wf_entropy(wf, entropyCoord.x, entropyCoord.y) - (rand() / 1000)
 	)
-	_wf_coord_min_entropy(wf, coords, coords_leng, entropy, entropyCoord);
+	_wf_coord_min_entropy(wf, coords, len(coords), entropy, entropyCoord);
 
 function _wf_coord_min_entropy(wf, coords, coords_leng, entropy, entropyCoord, i = 1) = 
     i == coords_leng ? entropyCoord :
@@ -156,15 +155,13 @@ function tilemap_compatibilities(tm) = tm[2];
 function tilemap_wf(tm) = tm[3];
 
 function tilemap_check_compatibilities(tm, tile1, tile2, direction) = 
-    let(compatibilities = tilemap_compatibilities(tm))
-	hashset_has(compatibilities, [tile1, tile2, direction]);
+	hashset_has(tilemap_compatibilities(tm), [tile1, tile2, direction]);
 
 function tilemap_propagate(tm, x, y) = 
-    let(stack = create_stack([x, y])) 
-	_tilemap_propagate(tm, stack);
+	_tilemap_propagate(tm, create_stack([x, y]));
 
 function _tilemap_propagate(tm, stack) =
-    stack_len(stack) == 0 ? tm :
+    stack == [] ? tm :
 	let(
 		current_coord = stack[0],
 		cs = stack[1],
