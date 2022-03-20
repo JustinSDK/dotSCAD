@@ -79,11 +79,9 @@ function _wf_collapse(wf, x, y, states_weights, leng, threshold, i = 0) =
     threshold < 0 || i == leng ? wf : 
 	let(state_weight = states_weights[i])
 	_wf_collapse(
-		threshold < state_weight[1] ? _oneStateAt(wf, x, y, state_weight[0]) : wf, 
+		threshold < state_weight[1] ? _replaceStatesAt(wf, x, y, [state_weight[0]]) : wf, 
 		x, y, states_weights, leng, threshold - state_weight[1], i + 1
 	);
-
-function _oneStateAt(wf, x, y, state) = _replaceStatesAt(wf, x, y, [state]);
 
 // Shannon entropy
 function wf_entropy(wf, x, y) = 
