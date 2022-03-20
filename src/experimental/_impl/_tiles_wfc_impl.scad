@@ -108,10 +108,12 @@ function _replaceStatesAt(wf, x, y, states) =
 		[for(i = 0; i < leng_eigenstates; i = i + 1) i == y ? newRowY : eigenstates[i]]
 	];
 
-function wf_not_collapsed_coords(wf) = [
-	for(y = [0:wf_height(wf) - 1], x = [0:wf_width(wf) - 1])
-	if(len(wf_eigenstates_at(wf, x, y)) != 1) [x, y]
-];
+function wf_not_collapsed_coords(wf) = 
+	let(rx = [0:wf_width(wf) - 1])
+	[
+		for(y = [0:wf_height(wf) - 1], x = rx)
+		if(len(wf_eigenstates_at(wf, x, y)) != 1) [x, y]
+	];
 
 function wf_coord_min_entropy(wf) = 
     let(
