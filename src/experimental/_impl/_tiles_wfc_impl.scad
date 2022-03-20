@@ -108,20 +108,26 @@ function _replaceStatesAt(wf, x, y, states) =
 		[for(i = 0; i < leng_eigenstates; i = i + 1) i == y ? newRowY : eigenstates[i]]
 	];
 
-function wf_not_collapsed_coords(wf) = 
+function wf_not_collapsed_coords(wf, notCollapsedCoords) = 
+    is_undef(notCollapsedCoords) ?
 	let(rx = [0:wf_width(wf) - 1])
 	[
 		for(y = [0:wf_height(wf) - 1], x = rx)
 		if(len(wf_eigenstates_at(wf, x, y)) != 1) [x, y]
+	] :
+	[
+		for(coord = notCollapsedCoords)
+		if(len(wf_eigenstates_at(wf, coord.x, coord.y)) != 1) [coord.x, coord.y]
 	];
 
-function wf_coord_min_entropy(wf) = 
+function wf_coord_min_entropy(wf, notCollapsedCoords) = 
     let(
-		coords = wf_not_collapsed_coords(wf),
+		coords = wf_not_collapsed_coords(wf, notCollapsedCoords),
 		entropyCoord = coords[0],
-		entropy = wf_entropy(wf, entropyCoord.x, entropyCoord.y) - (rand() / 1000)
+		entropy = wf_entropy(wf, entropyCoord.x, entropyCoord.y) - (rand() / 1000),
+		min_coord = _wf_coord_min_entropy(wf, coords, len(coords), entropy, entropyCoord)
 	)
-	_wf_coord_min_entropy(wf, coords, len(coords), entropy, entropyCoord);
+	[min_coord, coords];
 
 function _wf_coord_min_entropy(wf, coords, coords_leng, entropy, entropyCoord, i = 1) = 
     i == coords_leng ? entropyCoord :
@@ -209,20 +215,20 @@ function _doDirs(tm, stack, cx, cy, current_tiles, dirs, leng, i = 0) =
 	)
 	_doDirs(tm_stack[0], tm_stack[1], cx, cy, current_tiles, dirs, leng, i + 1);
 
-function tilemap_generate(tm) =
+function tilemap_generate(tm, notCollaspedCoords) =
     let(wf = tilemap_wf(tm))
 	wf_is_all_collapsed(wf) ? collapsed_tiles(wf) :
 	let(
-		coord = wf_coord_min_entropy(wf),
-		x = coord.x,
-		y = coord.y
+		coord_notCollaspedCoords = wf_coord_min_entropy(wf, notCollaspedCoords),
+		x = coord_notCollaspedCoords[0].x,
+		y = coord_notCollaspedCoords[0].y
 	)
 	tilemap_generate(tilemap_propagate([
 			tilemap_width(tm),
 			tilemap_height(tm),
 			tilemap_compatibilities(tm),
 			wf_collapse(wf, x, y)
-		], x, y));
+		], x, y), coord_notCollaspedCoords[1]);
 
 
 function neighbor_dirs(x, y, width, height) = [
