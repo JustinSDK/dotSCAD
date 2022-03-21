@@ -110,7 +110,7 @@ function wf_not_collapsed_coords(wf, notCollaspedCoords) =
 	] :
 	[
 		for(coord = notCollaspedCoords)
-		if(len(wf_eigenstates_at(wf, coord.x, coord.y)) != 1) [coord.x, coord.y]
+		if(len(wf_eigenstates_at(wf, coord.x, coord.y)) != 1) coord
 	];
 
 function wf_coord_min_entropy(wf, notCollaspedCoords) = 
