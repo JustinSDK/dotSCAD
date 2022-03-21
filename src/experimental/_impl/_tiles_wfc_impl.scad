@@ -55,25 +55,18 @@ function wf_eigenstates_at(wf, x, y) = wf_eigenstates(wf)[y][x];
 
 function wf_collapse(wf, x, y) =
     let(
-		weights = wf_weights(wf),
-		states_xy = wf_eigenstates_at(wf, x, y),
-		weights_xy = [
-			for(state = states_xy)
-			let(w = hashmap_get(weights, state))
-			if(w != undef)
-			[state, w]
-		],
-		leng = len(weights_xy),
-		threshold = rand() * sum([for(i = 0; i < leng; i = i + 1) weights_xy[i][1]])
+		states = wf_eigenstates_at(wf, x, y),
+		all_weights = wf_weights(wf),
+		weights = [for(state = states) hashmap_get(all_weights, state)],
+		threshold = rand() * sum(weights)
 	)		
-	_wf_collapse(wf, x, y, weights_xy, len(weights_xy), threshold);
+	_wf_collapse(wf, x, y, states, weights, len(states), threshold);
 
-function _wf_collapse(wf, x, y, states_weights, leng, threshold, i = 0) =
+function _wf_collapse(wf, x, y, states, weights, leng, threshold, i = 0) =
     threshold < 0 || i == leng ? wf : 
-	let(state_weight = states_weights[i])
 	_wf_collapse(
-		threshold < state_weight[1] ? _replaceStatesAt(wf, x, y, [state_weight[0]]) : wf, 
-		x, y, states_weights, leng, threshold - state_weight[1], i + 1
+		threshold < weights[i] ? _replaceStatesAt(wf, x, y, [states[i]]) : wf, 
+		x, y, states, weights, leng, threshold - weights[i], i + 1
 	);
 
 // Shannon entropy
