@@ -33,9 +33,9 @@ function _weights_of_tiles(weights, symbols, leng, i = 0) =
         - wf_weights(wf)
 		- wf_eigenstates(wf)
 		- wf_eigenstates_at(wf, x, y)
-		- wf_collapse(wf, x, y)
-		- wf_entropy(wf, x, y)
-		- wf_coord_min_entropy(wf, notCollaspedCoords)
+		- wf_collapse(wf, x, y, weights)
+		- wf_entropy_weights(wf, x, y)
+		- wf_coord_weights_min_entropy(wf, notCollaspedCoords)
 		- wf_not_collapsed_coords(wf, notCollaspedCoords)
 */
 function wave_function(width, height, weights) = 
@@ -54,15 +54,15 @@ function wf_weights(wf) = wf[2];
 function wf_eigenstates(wf) = wf[3];
 function wf_eigenstates_at(wf, x, y) = wf_eigenstates(wf)[y][x];
 
-function wf_collapse(wf, x, y, wets) =
+function wf_collapse(wf, x, y, weights) =
     let(
 		states = wf_eigenstates_at(wf, x, y),
-		weights = is_undef(wets) ? 
+		wets = is_undef(weights) ? 
 		    let(all_weights = wf_weights(wf)) [for(state = states) hashmap_get(all_weights, state)] : 
-			wets,
-		threshold = rand() * sum(weights)
+			weights,
+		threshold = rand() * sum(wets)
 	)		
-	_wf_collapse(wf, x, y, states, weights, len(states), threshold);
+	_wf_collapse(wf, x, y, states, wets, len(states), threshold);
 
 function _wf_collapse(wf, x, y, states, weights, leng, threshold, i = 0) =
     threshold < 0 || i == leng ? wf : 
