@@ -1,6 +1,7 @@
 use <util/rand.scad>;
 use <util/some.scad>;
 use <util/sum.scad>;
+use <util/sort.scad>;
 use <util/map/hashmap.scad>;
 use <util/map/hashmap_put.scad>;
 use <util/map/hashmap_get.scad>;
@@ -53,11 +54,12 @@ function wf_weights(wf) = wf[2];
 function wf_eigenstates(wf) = wf[3];
 function wf_eigenstates_at(wf, x, y) = wf_eigenstates(wf)[y][x];
 
-function wf_collapse(wf, x, y) =
+function wf_collapse(wf, x, y, wets) =
     let(
 		states = wf_eigenstates_at(wf, x, y),
-		all_weights = wf_weights(wf),
-		weights = [for(state = states) hashmap_get(all_weights, state)],
+		weights = is_undef(wets) ? 
+		    let(all_weights = wf_weights(wf)) [for(state = states) hashmap_get(all_weights, state)] : 
+			wets,
 		threshold = rand() * sum(weights)
 	)		
 	_wf_collapse(wf, x, y, states, weights, len(states), threshold);
@@ -70,14 +72,14 @@ function _wf_collapse(wf, x, y, states, weights, leng, threshold, i = 0) =
 	);
 
 // Shannon entropy
-function wf_entropy(wf, x, y) = 
+function wf_entropy_weights(wf, x, y) = 
     let(
 		all_weights = wf_weights(wf),
 		weights = [for(state = wf_eigenstates_at(wf, x, y)) hashmap_get(all_weights, state)],
 		sumOfWeights = sum(weights),
 		sumOfWeightLogWeights = sum([for(w = weights) w * ln(w)]) 
 	)
-	ln(sumOfWeights) - (sumOfWeightLogWeights / sumOfWeights);
+	[ln(sumOfWeights) - (sumOfWeightLogWeights / sumOfWeights) - rand() / 1000, weights];
 
 function _replaceStatesAt(wf, x, y, states) = 
     let(
@@ -106,22 +108,16 @@ function wf_not_collapsed_coords(wf, notCollaspedCoords) =
 		if(len(wf_eigenstates_at(wf, coord.x, coord.y)) != 1) coord
 	];
 
-function wf_coord_min_entropy(wf, notCollaspedCoords) = 
+function wf_coord_min_entropy_weights(wf, notCollaspedCoords) = 
     let(
-		entropyCoord = notCollaspedCoords[0],
-		entropy = wf_entropy(wf, entropyCoord.x, entropyCoord.y) - (rand() / 1000),
-		min_coord = _wf_coord_min_entropy(wf, notCollaspedCoords, len(notCollaspedCoords), entropy, entropyCoord)
+		ewlt = [
+			for(coord = notCollaspedCoords)
+			let(x = coord.x, y = coord.y)
+			[x, y, wf_entropy_weights(wf, coord.x, coord.y)] 
+		],
+		sorted = sort(ewlt, by = function(a, b) a[2][0] - b[2][0])
 	)
-	min_coord;
-
-function _wf_coord_min_entropy(wf, coords, coords_leng, entropy, entropyCoord, i = 1) = 
-    i == coords_leng ? entropyCoord :
-	let(
-		coord = coords[i],
-		noisedEntropy = wf_entropy(wf, coord.x, coord.y) - (rand() / 1000),
-		nee = noisedEntropy < entropy ? [noisedEntropy, coord] : [entropy, entropyCoord]
-	)
-	_wf_coord_min_entropy(wf, coords, coords_leng, nee[0], nee[1], i + 1);
+    sorted[0];
 
 
 /*
@@ -200,13 +196,13 @@ function _doDirs(compatibilities, wf, stack, cx, cy, current_tiles, dirs, leng, 
 function generate(w, h, compatibilities, wf, notCollaspedCoords) =
 	len(notCollaspedCoords) == 0 ? collapsed_tiles(wf) :
 	let(
-		min_coord = wf_coord_min_entropy(wf, notCollaspedCoords),
-		x = min_coord.x,
-		y = min_coord.y,
-		nwf = propagate(w, h, compatibilities, wf_collapse(wf, x, y), x, y)
+		entropy_weights = wf_coord_min_entropy_weights(wf, notCollaspedCoords),
+		x = entropy_weights.x,
+		y = entropy_weights.y,
+		weights = entropy_weights[2][1],
+		nwf = propagate(w, h, compatibilities, wf_collapse(wf, x, y, weights), x, y)
 	)
 	generate(w, h, compatibilities, nwf, wf_not_collapsed_coords(nwf));
-
 
 function neighbor_dirs(x, y, width, height) = [
 	if(x > 0)          [-1,  0],   // left
