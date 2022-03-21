@@ -1,6 +1,5 @@
 use <util/rand.scad>;
 use <util/some.scad>;
-use <util/every.scad>;
 use <util/sum.scad>;
 use <util/map/hashmap.scad>;
 use <util/map/hashmap_put.scad>;
@@ -33,7 +32,6 @@ function _weights_of_tiles(weights, symbols, leng, i = 0) =
         - wf_weights(wf)
 		- wf_eigenstates(wf)
 		- wf_eigenstates_at(wf, x, y)
-		- wf_is_all_collapsed(wf, notCollaspedCoords)
 		- wf_collapse(wf, x, y)
 		- wf_entropy(wf, x, y)
 		- wf_coord_min_entropy(wf, notCollaspedCoords)
@@ -54,14 +52,6 @@ function wf_height(wf) = wf[1];
 function wf_weights(wf) = wf[2];
 function wf_eigenstates(wf) = wf[3];
 function wf_eigenstates_at(wf, x, y) = wf_eigenstates(wf)[y][x];
-
-function wf_is_all_collapsed(wf, notCollaspedCoords) = 
-    is_undef(notCollaspedCoords) ?
-	every(
-		wf_eigenstates(wf), 
-		function(row) every(row, function(states) len(states) == 1)
-	) :
-	every(notCollaspedCoords, function(coord) len(wf_eigenstates_at(wf, coord.x, coord.y)) == 1);
 
 function wf_collapse(wf, x, y) =
     let(
@@ -125,12 +115,11 @@ function wf_not_collapsed_coords(wf, notCollaspedCoords) =
 
 function wf_coord_min_entropy(wf, notCollaspedCoords) = 
     let(
-		coords = wf_not_collapsed_coords(wf, notCollaspedCoords),
-		entropyCoord = coords[0],
+		entropyCoord = notCollaspedCoords[0],
 		entropy = wf_entropy(wf, entropyCoord.x, entropyCoord.y) - (rand() / 1000),
-		min_coord = _wf_coord_min_entropy(wf, coords, len(coords), entropy, entropyCoord)
+		min_coord = _wf_coord_min_entropy(wf, notCollaspedCoords, len(notCollaspedCoords), entropy, entropyCoord)
 	)
-	[min_coord, coords];
+	min_coord;
 
 function _wf_coord_min_entropy(wf, coords, coords_leng, entropy, entropyCoord, i = 1) = 
     i == coords_leng ? entropyCoord :
@@ -220,18 +209,19 @@ function _doDirs(tm, stack, cx, cy, current_tiles, dirs, leng, i = 0) =
 
 function tilemap_generate(tm, notCollaspedCoords) =
     let(wf = tilemap_wf(tm))
-	wf_is_all_collapsed(wf, notCollaspedCoords) ? collapsed_tiles(wf) :
+	len(notCollaspedCoords) == 0 ? collapsed_tiles(wf) :
 	let(
-		coord_notCollaspedCoords = wf_coord_min_entropy(wf, notCollaspedCoords),
-		x = coord_notCollaspedCoords[0].x,
-		y = coord_notCollaspedCoords[0].y
-	)
-	tilemap_generate(tilemap_propagate([
+		min_coord = wf_coord_min_entropy(wf, notCollaspedCoords),
+		x = min_coord.x,
+		y = min_coord.y,
+		ntm = tilemap_propagate([
 			tilemap_width(tm),
 			tilemap_height(tm),
 			tilemap_compatibilities(tm),
 			wf_collapse(wf, x, y)
-		], x, y), coord_notCollaspedCoords[1]);
+		], x, y)
+	)
+	tilemap_generate(ntm, wf_not_collapsed_coords(tilemap_wf(ntm)));
 
 
 function neighbor_dirs(x, y, width, height) = [
