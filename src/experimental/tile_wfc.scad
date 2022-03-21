@@ -11,7 +11,7 @@ function tile_wfc(size, sample) =
 		w = tilemap_width(tm),
 	    h = tilemap_height(tm),
 		compatibilities = tilemap_compatibilities(tm),
-        first_collasped_propagated = tilemap_propagate(
+        first_collasped_propagated = propagate(
 			w,
 			h,
 			compatibilities,
@@ -21,7 +21,7 @@ function tile_wfc(size, sample) =
         ),
         notCollapsedCoords = wf_not_collapsed_coords(first_collasped_propagated)
     )
-    _generate(w, h, compatibilities, first_collasped_propagated, notCollapsedCoords);
+    generate(w, h, compatibilities, first_collasped_propagated, notCollapsedCoords);
 
 /*
 

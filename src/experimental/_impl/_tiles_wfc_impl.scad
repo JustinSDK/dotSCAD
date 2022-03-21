@@ -154,7 +154,7 @@ function tilemap_wf(tm) = tm[3];
 function check_compatibilities(compatibilities, tile1, tile2, direction) = 
 	hashset_has(compatibilities, [tile1, tile2, direction]);
 
-function tilemap_propagate(w, h, compatibilities, wf, x, y) = 
+function propagate(w, h, compatibilities, wf, x, y) = 
 	_propagate(
 		w, 
 		h,
@@ -204,15 +204,15 @@ function _doDirs(compatibilities, wf, stack, cx, cy, current_tiles, dirs, leng, 
 	)
 	_doDirs(compatibilities, wf_stack[0], wf_stack[1], cx, cy, current_tiles, dirs, leng, i + 1);
 
-function _generate(w, h, compatibilities, wf, notCollaspedCoords) =
+function generate(w, h, compatibilities, wf, notCollaspedCoords) =
 	len(notCollaspedCoords) == 0 ? collapsed_tiles(wf) :
 	let(
 		min_coord = wf_coord_min_entropy(wf, notCollaspedCoords),
 		x = min_coord.x,
 		y = min_coord.y,
-		nwf = tilemap_propagate(w, h, compatibilities, wf_collapse(wf, x, y), x, y)
+		nwf = propagate(w, h, compatibilities, wf_collapse(wf, x, y), x, y)
 	)
-	_generate(w, h, compatibilities, nwf, wf_not_collapsed_coords(nwf));
+	generate(w, h, compatibilities, nwf, wf_not_collapsed_coords(nwf));
 
 
 function neighbor_dirs(x, y, width, height) = [
