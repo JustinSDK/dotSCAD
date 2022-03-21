@@ -64,7 +64,7 @@ function _mz_hamiltonian_travel(dotM, p, leng) =
         end = leng - 1,
         pts = [
             for(i = 0, nxt_p = nxtp(dotM, p), is_continue = i < end; 
-                is_continue; 
+                is_continue && nxt_p != p; 
                 i = i + 1,
                 is_continue = i < end,
                 nxt_p = is_continue ? nxtp(dotM, nxt_p) : undef
