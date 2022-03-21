@@ -6,7 +6,7 @@ use <util/map/hashmap_put.scad>;
 use <util/map/hashmap_get.scad>;
 use <util/map/hashmap_keys.scad>;
 use <util/set/hashset.scad>;
-use <util/set/hashset_has.scad>;
+use <util/set/hashset_elems.scad>;
 
 function weights_of_tiles(sample) = 
     let(
@@ -222,10 +222,10 @@ function compatibilities_of_tiles(sample) =
 		height = len(sample),
 		rx = [0:width - 1]
 	)
-	hashset([
+	hashset_elems(hashset([
 		for(y = [0:height - 1], x = rx)
 		each neighbor_compatibilities(sample, x, y, width, height)
-	], number_of_buckets = width * height);
+	], number_of_buckets = width * height));
 
 function collapsed_tiles(wf) =
     let(
@@ -239,7 +239,7 @@ function collapsed_tiles(wf) =
 	];
 
 function compatible_nbr_tile(compatibilities, current_tiles, nbr_tile, dir) =
-    some(current_tiles, function(tile) hashset_has(compatibilities, [tile, nbr_tile, dir]));
+    some(current_tiles, function(tile) search([[tile, nbr_tile, dir]], compatibilities) != [[]]);
 
 function create_stack(elem) = [elem, []];
 function stack_push(stack, elem) = [elem, stack];
