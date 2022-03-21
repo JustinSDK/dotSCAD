@@ -59,7 +59,7 @@ _mz_hamiltonian_nxt_offset = [
 
 function nxtp(dotM, p) = p + _mz_hamiltonian_nxt_offset[_mz_hamiltonian_dir(_mz_hamiltonian_corner_value(dotM, p.x, p.y))];
 
-function _mz_hamiltonian_travel(dotM, p, leng, i = 0) = 
+function _mz_hamiltonian_travel(dotM, p, leng) = 
     let(
         end = leng - 1,
         pts = [
