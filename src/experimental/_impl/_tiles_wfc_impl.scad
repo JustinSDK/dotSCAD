@@ -137,7 +137,6 @@ function _wf_coord_min_entropy(wf, coords, coords_leng, entropy, entropyCoord, i
 		- tilemap_height(tm)
 		- tilemap_compatibilities(tm)
 		- tilemap_wf(tm)
-		- tilemap_check_compatibilities(tm, tile1, tile2, direction)
 		- tilemap_propagate(tm, x, y)
 		- tilemap_generate(tm, notCollaspedCoords)
 */
@@ -154,74 +153,68 @@ function tilemap_height(tm) = tm[1];
 function tilemap_compatibilities(tm) = tm[2];
 function tilemap_wf(tm) = tm[3];
 
-function tilemap_check_compatibilities(tm, tile1, tile2, direction) = 
-	hashset_has(tilemap_compatibilities(tm), [tile1, tile2, direction]);
+function check_compatibilities(compatibilities, tile1, tile2, direction) = 
+	hashset_has(compatibilities, [tile1, tile2, direction]);
 
-function tilemap_propagate(tm, x, y) = 
-	_tilemap_propagate(tm, create_stack([x, y]));
+function tilemap_propagate(w, h, compatibilities, wf, x, y) = 
+	_tilemap_propagate(
+		w, 
+		h,
+		compatibilities,
+		wf,
+		create_stack([x, y])
+	);
 
-function _tilemap_propagate(tm, stack) =
-    stack == [] ? tm :
+function _tilemap_propagate(w, h, compatibilities, wf, stack) =
+    stack == [] ? wf :
 	let(
 		current_coord = stack[0],
 		cs = stack[1],
 		cx = current_coord.x, 
 		cy = current_coord.y,
-		current_tiles = wf_eigenstates_at(tilemap_wf(tm), cx, cy),
-		dirs = neighbor_dirs(cx, cy, tilemap_width(tm), tilemap_height(tm)),
-		tm_stack = _doDirs(tm, cs, cx, cy, current_tiles, dirs, len(dirs))
+		current_tiles = wf_eigenstates_at(wf, cx, cy),
+		dirs = neighbor_dirs(cx, cy, w, h),
+		wf_stack = _doDirs(compatibilities, wf, cs, cx, cy, current_tiles, dirs, len(dirs))
 	)
-    _tilemap_propagate(tm_stack[0], tm_stack[1]);
+    _tilemap_propagate(w, h, compatibilities, wf_stack[0], wf_stack[1]);
 
-function _doDirs(tm, stack, cx, cy, current_tiles, dirs, leng, i = 0) = 
-    i == leng ? [tm, stack] :
+function _doDirs(compatibilities, wf, stack, cx, cy, current_tiles, dirs, leng, i = 0) = 
+    i == leng ? [wf, stack] :
 	let(
 		dir = dirs[i],
 		nbrx = cx + dir[0],
 		nbry = cy + dir[1],
-		wf = tilemap_wf(tm),
 		nbr_tiles = wf_eigenstates_at(wf, nbrx, nbry),
 		compatible_nbr_tiles = [
 			for(nbr_tile = nbr_tiles) 
-			if(compatible_nbr_tile(tm, current_tiles, nbr_tile, dir)) nbr_tile
+			if(compatible_nbr_tile(compatibilities, current_tiles, nbr_tile, dir)) nbr_tile
 		],
 		leng_compatible_nbr_tiles = len(compatible_nbr_tiles),
 
-		tm_stack =
+		wf_stack =
 			assert(leng_compatible_nbr_tiles > 0,
 					str("(", nbrx, ", ", nbry, ")", 
 					" reaches a contradiction. Tiles have all been ruled out by your previous choices. Please try again."))
 
 			leng_compatible_nbr_tiles == len(nbr_tiles) ? 
-				[tm, stack] 
+				[wf, stack] 
 				: 
 				[   
-					[
-						tilemap_width(tm), 
-						tilemap_height(tm), 
-						tilemap_compatibilities(tm),
-						_replaceStatesAt(wf, nbrx, nbry, compatible_nbr_tiles)
-					], 
+					_replaceStatesAt(wf, nbrx, nbry, compatible_nbr_tiles), 
 					stack_push(stack, [nbrx, nbry])
 				]
 	)
-	_doDirs(tm_stack[0], tm_stack[1], cx, cy, current_tiles, dirs, leng, i + 1);
+	_doDirs(compatibilities, wf_stack[0], wf_stack[1], cx, cy, current_tiles, dirs, leng, i + 1);
 
-function tilemap_generate(tm, notCollaspedCoords) =
-    let(wf = tilemap_wf(tm))
+function tilemap_generate(w, h, compatibilities, wf, notCollaspedCoords) =
 	len(notCollaspedCoords) == 0 ? collapsed_tiles(wf) :
 	let(
 		min_coord = wf_coord_min_entropy(wf, notCollaspedCoords),
 		x = min_coord.x,
 		y = min_coord.y,
-		ntm = tilemap_propagate([
-			tilemap_width(tm),
-			tilemap_height(tm),
-			tilemap_compatibilities(tm),
-			wf_collapse(wf, x, y)
-		], x, y)
+		nwf = tilemap_propagate(w, h, compatibilities, wf_collapse(wf, x, y), x, y)
 	)
-	tilemap_generate(ntm, wf_not_collapsed_coords(tilemap_wf(ntm)));
+	tilemap_generate(w, h, compatibilities, nwf, wf_not_collapsed_coords(nwf));
 
 
 function neighbor_dirs(x, y, width, height) = [
@@ -257,8 +250,8 @@ function collapsed_tiles(wf) =
 		[for(x = rx) wf_eigenstates_at(wf, x, y)[0]]
 	];
 
-function compatible_nbr_tile(tm, current_tiles, nbr_tile, dir) =
-    some(current_tiles, function(tile) tilemap_check_compatibilities(tm, tile, nbr_tile, dir));
+function compatible_nbr_tile(compatibilities, current_tiles, nbr_tile, dir) =
+    some(current_tiles, function(tile) check_compatibilities(compatibilities, tile, nbr_tile, dir));
 
 function create_stack(elem) = [elem, []];
 function stack_push(stack, elem) = [elem, stack];

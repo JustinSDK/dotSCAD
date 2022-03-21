@@ -8,15 +8,20 @@ function tile_wfc(size, sample) =
         // random start
         x = floor(rand(size[0] * 0.25, size[0] * 0.75)),
         y = floor(rand(size[1] * 0.25, size[1] * 0.75)),
-        first_collasped_propagated = tilemap_propagate([
-			tilemap_width(tm),
-			tilemap_height(tm),
-			tilemap_compatibilities(tm),
-			wf_collapse(tilemap_wf(tm), x, y)
-		], x, y),
-        notCollapsedCoords = wf_not_collapsed_coords(tilemap_wf(first_collasped_propagated))
+		w = tilemap_width(tm),
+	    h = tilemap_height(tm),
+		compatibilities = tilemap_compatibilities(tm),
+        first_collasped_propagated = tilemap_propagate(
+			w,
+			h,
+			compatibilities,
+			wf_collapse(tilemap_wf(tm), x, y), 
+            x, 
+            y
+        ),
+        notCollapsedCoords = wf_not_collapsed_coords(first_collasped_propagated)
     )
-    tilemap_generate(first_collasped_propagated, notCollapsedCoords);
+    tilemap_generate(w, h, compatibilities, first_collasped_propagated, notCollapsedCoords);
 
 /*
 
