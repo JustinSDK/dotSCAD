@@ -108,16 +108,15 @@ function wf_not_collapsed_coords(wf, notCollaspedCoords) =
 		if(len(wf_eigenstates_at(wf, coord.x, coord.y)) != 1) coord
 	];
 
-function wf_coord_min_entropy_weights(wf, notCollaspedCoords) = 
+function wf_coord_weights_min_entropy(wf, notCollaspedCoords) = 
     let(
-		ewlt = [
+		sorted = sort([
 			for(coord = notCollaspedCoords)
 			let(x = coord.x, y = coord.y)
 			[x, y, wf_entropy_weights(wf, coord.x, coord.y)] 
-		],
-		sorted = sort(ewlt, by = function(a, b) a[2][0] - b[2][0])
+		], by = function(a, b) a[2][0] - b[2][0])
 	)
-    sorted[0];
+    [sorted[0].x, sorted[0].y, sorted[0][2][1]];
 
 
 /*
@@ -196,10 +195,10 @@ function _doDirs(compatibilities, wf, stack, cx, cy, current_tiles, dirs, leng, 
 function generate(w, h, compatibilities, wf, notCollaspedCoords) =
 	len(notCollaspedCoords) == 0 ? collapsed_tiles(wf) :
 	let(
-		entropy_weights = wf_coord_min_entropy_weights(wf, notCollaspedCoords),
-		x = entropy_weights.x,
-		y = entropy_weights.y,
-		weights = entropy_weights[2][1],
+		coord_weights = wf_coord_weights_min_entropy(wf, notCollaspedCoords),
+		x = coord_weights.x,
+		y = coord_weights.y,
+		weights = coord_weights[2],
 		nwf = propagate(w, h, compatibilities, wf_collapse(wf, x, y, weights), x, y)
 	)
 	generate(w, h, compatibilities, nwf, wf_not_collapsed_coords(nwf));
