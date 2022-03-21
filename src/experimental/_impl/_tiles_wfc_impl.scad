@@ -72,10 +72,10 @@ function _wf_collapse(wf, x, y, states, weights, leng, threshold, i = 0) =
 // Shannon entropy
 function wf_entropy(wf, x, y) = 
     let(
-		weights = wf_weights(wf),
-		states_weights = [for(state = wf_eigenstates_at(wf, x, y)) hashmap_get(weights, state)],
-		sumOfWeights = sum(states_weights),
-		sumOfWeightLogWeights = sum([for(w = states_weights) w * ln(w)]) 
+		all_weights = wf_weights(wf),
+		weights = [for(state = wf_eigenstates_at(wf, x, y)) hashmap_get(all_weights, state)],
+		sumOfWeights = sum(weights),
+		sumOfWeightLogWeights = sum([for(w = weights) w * ln(w)]) 
 	)
 	ln(sumOfWeights) - (sumOfWeightLogWeights / sumOfWeights);
 
