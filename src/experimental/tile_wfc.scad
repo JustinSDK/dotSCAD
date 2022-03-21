@@ -21,7 +21,7 @@ function tile_wfc(size, sample) =
         ),
         notCollapsedCoords = wf_not_collapsed_coords(first_collasped_propagated)
     )
-    tilemap_generate(w, h, compatibilities, first_collasped_propagated, notCollapsedCoords);
+    _generate(w, h, compatibilities, first_collasped_propagated, notCollapsedCoords);
 
 /*
 

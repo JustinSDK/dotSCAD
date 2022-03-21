@@ -137,8 +137,6 @@ function _wf_coord_min_entropy(wf, coords, coords_leng, entropy, entropyCoord, i
 		- tilemap_height(tm)
 		- tilemap_compatibilities(tm)
 		- tilemap_wf(tm)
-		- tilemap_propagate(tm, x, y)
-		- tilemap_generate(tm, notCollaspedCoords)
 */
 
 function tilemap(width, height, sample) = [
@@ -157,7 +155,7 @@ function check_compatibilities(compatibilities, tile1, tile2, direction) =
 	hashset_has(compatibilities, [tile1, tile2, direction]);
 
 function tilemap_propagate(w, h, compatibilities, wf, x, y) = 
-	_tilemap_propagate(
+	_propagate(
 		w, 
 		h,
 		compatibilities,
@@ -165,7 +163,7 @@ function tilemap_propagate(w, h, compatibilities, wf, x, y) =
 		create_stack([x, y])
 	);
 
-function _tilemap_propagate(w, h, compatibilities, wf, stack) =
+function _propagate(w, h, compatibilities, wf, stack) =
     stack == [] ? wf :
 	let(
 		current_coord = stack[0],
@@ -176,7 +174,7 @@ function _tilemap_propagate(w, h, compatibilities, wf, stack) =
 		dirs = neighbor_dirs(cx, cy, w, h),
 		wf_stack = _doDirs(compatibilities, wf, cs, cx, cy, current_tiles, dirs, len(dirs))
 	)
-    _tilemap_propagate(w, h, compatibilities, wf_stack[0], wf_stack[1]);
+    _propagate(w, h, compatibilities, wf_stack[0], wf_stack[1]);
 
 function _doDirs(compatibilities, wf, stack, cx, cy, current_tiles, dirs, leng, i = 0) = 
     i == leng ? [wf, stack] :
@@ -206,7 +204,7 @@ function _doDirs(compatibilities, wf, stack, cx, cy, current_tiles, dirs, leng, 
 	)
 	_doDirs(compatibilities, wf_stack[0], wf_stack[1], cx, cy, current_tiles, dirs, leng, i + 1);
 
-function tilemap_generate(w, h, compatibilities, wf, notCollaspedCoords) =
+function _generate(w, h, compatibilities, wf, notCollaspedCoords) =
 	len(notCollaspedCoords) == 0 ? collapsed_tiles(wf) :
 	let(
 		min_coord = wf_coord_min_entropy(wf, notCollaspedCoords),
@@ -214,7 +212,7 @@ function tilemap_generate(w, h, compatibilities, wf, notCollaspedCoords) =
 		y = min_coord.y,
 		nwf = tilemap_propagate(w, h, compatibilities, wf_collapse(wf, x, y), x, y)
 	)
-	tilemap_generate(w, h, compatibilities, nwf, wf_not_collapsed_coords(nwf));
+	_generate(w, h, compatibilities, nwf, wf_not_collapsed_coords(nwf));
 
 
 function neighbor_dirs(x, y, width, height) = [
