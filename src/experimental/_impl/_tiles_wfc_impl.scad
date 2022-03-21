@@ -5,6 +5,7 @@ use <util/map/hashmap.scad>;
 use <util/map/hashmap_put.scad>;
 use <util/map/hashmap_get.scad>;
 use <util/map/hashmap_keys.scad>;
+use <util/map/hashmap_entries.scad>;
 use <util/set/hashset.scad>;
 use <util/set/hashset_elems.scad>;
 
@@ -13,7 +14,7 @@ function weights_of_tiles(sample) =
 	    symbols = [for(row = sample) each row],
 		leng = len(symbols)
 	)
-    _weights_of_tiles(hashmap(number_of_buckets = leng), symbols, leng);
+    hashmap_entries(_weights_of_tiles(hashmap(number_of_buckets = leng), symbols, leng));
 
 function _weights_of_tiles(weights, symbols, leng, i = 0) =
     i == leng ? weights :
@@ -42,7 +43,7 @@ function wave_function(width, height, weights) =
 
 function _initialEigenstates(width, height, weights) =
 	let(
-	    keys = hashmap_keys(weights),
+	    keys = [for(weight = weights) weight[0]], 
         row = [for(x = [0:width - 1]) keys]
 	)	
 	[for(y = [0:height - 1]) row];
@@ -53,11 +54,13 @@ function wf_weights(wf) = wf[2];
 function wf_eigenstates(wf) = wf[3];
 function wf_eigenstates_at(wf, x, y) = wf_eigenstates(wf)[y][x];
 
+function get_state_weight(weights, state) = weights[search([state], weights)[0]][1];
+
 function wf_collapse(wf, x, y, weights) =
     let(
 		states = wf_eigenstates_at(wf, x, y),
 		wets = is_undef(weights) ? 
-		    let(all_weights = wf_weights(wf)) [for(state = states) hashmap_get(all_weights, state)] : 
+		    let(all_weights = wf_weights(wf)) [for(state = states) get_state_weight(all_weights, state)] : 
 			weights,
 		threshold = rand() * sum(wets)
 	)		
@@ -74,7 +77,7 @@ function _wf_collapse(wf, x, y, states, weights, leng, threshold, i = 0) =
 function wf_entropy_weights(wf, x, y) = 
     let(
 		all_weights = wf_weights(wf),
-		weights = [for(state = wf_eigenstates_at(wf, x, y)) hashmap_get(all_weights, state)],
+		weights = [for(state = wf_eigenstates_at(wf, x, y)) get_state_weight(all_weights, state)],
 		sumOfWeights = sum(weights),
 		sumOfWeightLogWeights = sum([for(w = weights) w * ln(w)]) 
 	)
