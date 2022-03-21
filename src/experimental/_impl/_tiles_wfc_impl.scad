@@ -1,7 +1,6 @@
 use <util/rand.scad>;
 use <util/some.scad>;
 use <util/sum.scad>;
-use <util/sort.scad>;
 use <util/map/hashmap.scad>;
 use <util/map/hashmap_put.scad>;
 use <util/map/hashmap_get.scad>;
@@ -110,15 +109,21 @@ function wf_not_collapsed_coords(wf, notCollaspedCoords) =
 
 function wf_coord_weights_min_entropy(wf, notCollaspedCoords) = 
     let(
-		sorted = sort([
+		coord_entropy_weights_lt = [
 			for(coord = notCollaspedCoords)
 			let(x = coord.x, y = coord.y)
 			[x, y, wf_entropy_weights(wf, x, y)] 
-		], by = function(a, b) a[2][0] - b[2][0])
+		],
+		m = coord_entropy_weights_lt[0],
+		min_coord_entropy_weights = _coord_entropy_weights(coord_entropy_weights_lt, len(coord_entropy_weights_lt), m)
 	)
-    [sorted[0].x, sorted[0].y, sorted[0][2][1]];
+    [min_coord_entropy_weights.x, min_coord_entropy_weights.y, min_coord_entropy_weights[2][1]];
 
-
+function _coord_entropy_weights(coord_entropy_weights_lt, leng, m, i = 1) = 
+    i == leng ? m :
+	let(cm = coord_entropy_weights_lt[i])
+	_coord_entropy_weights(coord_entropy_weights_lt, leng, m[2][0] <= cm[2][0] ? m : cm, i + 1);
+	
 /*
 	- tilemap(width, height, sample)
 		- tilemap_width(tm)
