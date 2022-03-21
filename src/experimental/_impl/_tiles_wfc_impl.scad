@@ -113,7 +113,7 @@ function wf_coord_weights_min_entropy(wf, notCollaspedCoords) =
 		sorted = sort([
 			for(coord = notCollaspedCoords)
 			let(x = coord.x, y = coord.y)
-			[x, y, wf_entropy_weights(wf, coord.x, coord.y)] 
+			[x, y, wf_entropy_weights(wf, x, y)] 
 		], by = function(a, b) a[2][0] - b[2][0])
 	)
     [sorted[0].x, sorted[0].y, sorted[0][2][1]];
@@ -138,9 +138,6 @@ function tilemap_width(tm) = tm[0];
 function tilemap_height(tm) = tm[1];
 function tilemap_compatibilities(tm) = tm[2];
 function tilemap_wf(tm) = tm[3];
-
-function check_compatibilities(compatibilities, tile1, tile2, direction) = 
-	hashset_has(compatibilities, [tile1, tile2, direction]);
 
 function propagate(w, h, compatibilities, wf, x, y) = 
 	_propagate(
@@ -237,7 +234,7 @@ function collapsed_tiles(wf) =
 	];
 
 function compatible_nbr_tile(compatibilities, current_tiles, nbr_tile, dir) =
-    some(current_tiles, function(tile) check_compatibilities(compatibilities, tile, nbr_tile, dir));
+    some(current_tiles, function(tile) hashset_has(compatibilities, [tile, nbr_tile, dir]));
 
 function create_stack(elem) = [elem, []];
 function stack_push(stack, elem) = [elem, stack];
