@@ -17,10 +17,9 @@ module vrn2_space(size, grid_w, seed, spacing = 1, r = 0, delta = 0, chamfer = f
                    nx >= gw ? nx % gw : nx,
             sd_y = ny < 0 ? ny + gh : 
                    ny >= gh ? ny % gh : ny,                   
-            sd_base = abs(sd_x + sd_y * grid_w),
-            sds = rands(0.1, 0.9, 2, seed_value = seed + sd_base)
+            sd_base = abs(sd_x + sd_y * grid_w)
         )
-        [(nx + sds.x) * grid_w, (ny + sds.y) * grid_w];
+        ([nx, ny] + rands(0.1, 0.9, 2, seed_value = seed + sd_base)) * grid_w;
 
     // 9-nearest-neighbor 
     function _neighbors(fcord, seed, grid_w, gw, gh) = 
