@@ -19,10 +19,9 @@ module vrn3_space(size, grid_w, seed, spacing = 1) {
             nx = fcord.x + x,
             ny = fcord.y + y,
             nz = fcord.z + z,
-            sd_base = abs(nx + ny * grid_w + nz * grid_w * grid_w),
-            sds =  rands(0.1, 0.9, 3, seed_value = seed + sd_base)
+            sd_base = abs(nx + ny * grid_w + nz * grid_w * grid_w)
         )
-        ([nx, ny, nz] + sds) * grid_w
+        ([nx, ny, nz] + rands(0.1, 0.9, 3, seed_value = seed + sd_base)) * grid_w
     ];    
     
     space_size = grid_w * 3;    
