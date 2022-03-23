@@ -23,10 +23,24 @@ function _cells_lt_before_intersection(shape, size, points, pt, half_region_size
             let(
                 v = p - pt,
                 offset = (pt + p) / 2 - v / norm(v) * half_region_size,
-                a = atan2(v.y, v.x)            
+                a = atan2(v.y, v.x),
+                cosa = cos(a),
+                sina = sin(a),
+                m = [
+                        [1, 0, offset.x],
+                        [0, 1, offset.y],
+                        [0, 0, 1]
+                    ] 
+                    * 
+                    [
+                        [cosa, -sina, 0],
+                        [sina, cosa, 0],
+                        [0, 0, 1]    
+                    ]   
             )
             [
                 for(sp = shape)
-                     ptf_rotate(sp, a) + offset
+                let(transformed = m * [each sp, 1])
+                [transformed.x, transformed.y]
             ]
     ];
