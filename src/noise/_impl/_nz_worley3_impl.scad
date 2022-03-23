@@ -22,7 +22,7 @@ function _nz_worley3_classic(p, nbrs, dist) =
     let(
         cells = [
             for(nbr = nbrs) 
-                [nbr[0], nbr[1], nbr[2], _distance(nbr, p, dist)]
+                [each nbr, _distance(nbr, p, dist)]
         ],
         sorted = sort(cells, by = "idx", idx = 3)
     )
@@ -32,18 +32,17 @@ function _nz_worley3_border(p, nbrs) =
     let(
         cells = [
             for(nbr = nbrs) 
-                [nbr[0], nbr[1], nbr[2], norm(nbr - p)]
+                [each nbr, norm(nbr - p)]
         ],
         sorted = sort(cells, by = "idx", idx = 3),
-        a = [sorted[0][0], sorted[0][1], sorted[0][2]],
-        b = [sorted[1][0], sorted[1][1], sorted[1][2]],
-        m = (a + b) / 2        
+        a = [sorted[0].x, sorted[0].y, sorted[0].z],
+        m = (a + [sorted[1].x, sorted[1].y, sorted[1].z]) / 2        
     )
     [a[0], a[1], a[2], (p - m) * (a - m)];
     
 function _nz_worley3(p, seed, grid_w, dist) = 
     let(
-        fcord = [floor(p[0] / grid_w), floor(p[1] / grid_w), floor(p[2] / grid_w)],
+        fcord = [floor(p.x / grid_w), floor(p.y / grid_w), floor(p.z / grid_w)],
         nbrs = _neighbors(fcord, seed, grid_w)
     )
     dist == "border" ? _nz_worley3_border(p, nbrs) :
