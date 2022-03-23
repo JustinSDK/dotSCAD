@@ -53,13 +53,13 @@ function rand_dirs(c, seed) =
 _next_x_table = [1, 0, -1, 0];
 function next_x(x, dir, columns, wrapping) = 
     let(nx = x + _next_x_table[dir])
-    wrapping ? (nx < 0 ? nx + columns : nx % columns) : nx;
+    wrapping ? (nx + columns) % columns : nx;
     
 // get y value by dir
 _next_y_table = [0, 1, 0, -1];
 function next_y(y, dir, rows, wrapping) = 
     let(ny = y + _next_y_table[dir])
-    wrapping ? (ny < 0 ? ny + rows : ny % rows) : ny;
+    wrapping ? (ny + rows) % rows : ny;
     
 // go right and carve the right wall
 function carve_right(x, y, cells) = 
