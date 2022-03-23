@@ -13,10 +13,8 @@ module vrn2_space(size, grid_w, seed, spacing = 1, r = 0, delta = 0, chamfer = f
         let(
             nx = fcord.x + x,
             ny = fcord.y + y,
-            sd_x = nx < 0 ? nx + gw : 
-                   nx >= gw ? nx % gw : nx,
-            sd_y = ny < 0 ? ny + gh : 
-                   ny >= gh ? ny % gh : ny,                   
+            sd_x = (nx + gw) % gw,
+            sd_y = (ny + gh) % gh,                 
             sd_base = abs(sd_x + sd_y * grid_w)
         )
         ([nx, ny] + rands(0.1, 0.9, 2, seed_value = seed + sd_base)) * grid_w;
