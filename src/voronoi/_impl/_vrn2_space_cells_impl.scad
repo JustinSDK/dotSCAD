@@ -1,5 +1,3 @@
-use <../../ptf/ptf_rotate.scad>;
-
 function cell_pt(fcord, grid_w, seed, x, y, gw, gh) = 
     let(
         nx = fcord.x + x,
