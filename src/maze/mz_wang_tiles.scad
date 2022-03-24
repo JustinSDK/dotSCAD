@@ -16,7 +16,7 @@ use <../util/sort.scad>;
 use <../util/set/hashset.scad>;
 use <../util/set/hashset_elems.scad>;
 
-function mz_wang_tiles(rows, columns, start = [0, 0], init_cells, x_wrapping = true, y_wrapping = true, seed) =
+function mz_wang_tiles(rows, columns, start = [0, 0], init_cells, x_wrapping = false, y_wrapping = false, seed) =
     let(
         cells = mz_square_cells(  
             rows, columns,
