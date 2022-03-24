@@ -16,13 +16,18 @@ use <../util/sort.scad>;
 use <../util/set/hashset.scad>;
 use <../util/set/hashset_elems.scad>;
 
-function mz_wang_tiles(rows, columns, start = [0, 0], init_cells, seed) =
+function mz_wang_tiles(rows, columns, start = [0, 0], init_cells, x_wrapping = true, y_wrapping = true, seed) =
     let(
         cells = mz_square_cells(  
             rows, columns,
-            init_cells = init_cells,
-            seed = seed
+            start,
+            init_cells,
+            x_wrapping,
+            y_wrapping,
+            seed
         ),
+        top_cells = sort([for(cell = cells) if(cell.y == rows - 1) cell], by = "x"),
+        right_cells = sort([for(cell = cells) if(cell.x == columns - 1) cell], by = "y"),
         all = concat(
             [
                 for(cell = cells)
@@ -36,8 +41,16 @@ function mz_wang_tiles(rows, columns, start = [0, 0], init_cells, seed) =
                 )
                 each pts
             ],
-            [for(x = [0:columns - 1]) [x * 2 + 1, 0]],
-            [for(y = [0:rows - 1]) [0, y * 2 + 1]]
+            y_wrapping ? [
+                for(x = [0:columns - 1])
+                let(type = mz_square_get(top_cells[x], "t"))
+                if(type == "RIGHT_WALL" || type == "NO_WALL") [x * 2 + 1, 1] else [x * 2 + 1, 0]
+            ] : [for(x = [0:columns - 1]) [x * 2 + 1, 0]],
+            x_wrapping ? [
+                for(y = [0:rows - 1]) 
+                let(type = mz_square_get(right_cells[y], "t"))
+                if(type == "TOP_WALL" || type == "NO_WALL") [1, y * 2 + 1] else [0, y * 2 + 1]
+            ] : [for(y = [0:rows - 1]) [0, y * 2 + 1]]
         ),
         dot_pts = sort(hashset_elems(hashset(all, hash = function(p) _pt2_hash(p))), by = "vt")
     )
