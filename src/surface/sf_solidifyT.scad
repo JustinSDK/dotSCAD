@@ -8,12 +8,6 @@
 *
 **/ 
 
-use <../util/set/hashset.scad>;
-use <../util/set/hashset_has.scad>;
-use <../util/set/hashset_add.scad>;
-use <../util/set/hashset_del.scad>;
-use <../util/set/hashset_elems.scad>;
-
 module sf_solidifyT(points1, points2, triangles, convexity = 1) {
     // triangles : counter-clockwise
     leng = len(points1);
@@ -26,16 +20,19 @@ module sf_solidifyT(points1, points2, triangles, convexity = 1) {
 	function de_pairs(tri_edges) = 
 		let(
 			leng = len(tri_edges),
-			edges = hashset([tri_edges[0], tri_edges[1], tri_edges[2]], hash = hash, number_of_buckets = round(sqrt(leng)))
+			edges = [tri_edges[0], tri_edges[1], tri_edges[2]]
 		)
 		_de_pairs(tri_edges, leng, edges);
 		
 	function _de_pairs(tri_edges, leng, edges, i = 3) =
-		i == leng ? hashset_elems(edges) :
-		let(edge = tri_edges[i], pair = [edge[1], edge[0]])
-		hashset_has(edges, pair, hash = hash) ? 
-			_de_pairs(tri_edges, leng, hashset_del(edges, pair, hash = hash), i + 1) :
-			_de_pairs(tri_edges, leng, hashset_add(edges, edge, hash = hash), i + 1);	
+		i == leng ? edges :
+		let(
+			edge = tri_edges[i], 
+			pair = [edge[1], edge[0]],
+			idx = search([pair], edges)[0],
+			nx_edges = idx == [] ? [each edges, edge] : [for(i = [0:len(edges) - 1]) if(i != idx) edges[i]]
+		)
+		_de_pairs(tri_edges, leng, nx_edges, i + 1);
 			
 	tri_edges = [
 		for(tri = tris)

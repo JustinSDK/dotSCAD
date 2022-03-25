@@ -29,7 +29,6 @@ function _nz_cell_border(cells, p) =
         sorted0 = sorted[0],
         sorted1 = sorted[1],
         a = [for(i = [0:idx - 1]) sorted0[i]],
-        b = [for(i = [0:idx - 1]) sorted1[i]],
-        m = (a + b) / 2
+        m = (a + [for(i = [0:idx - 1]) sorted1[i]]) / 2
     )
     (p - m) * (a - m);

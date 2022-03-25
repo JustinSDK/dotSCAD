@@ -17,7 +17,7 @@ function ptf_sphere(size, point, radius, angle = [180, 360]) =
         xa = angle[1], 
         za_step = za / size.y,
         rza = za_step * point.y,
-        rzpt = [(radius + z) * cos(rza), (radius + z) * sin(rza), 0],       
+        rzpt = (radius + z) * [cos(rza), sin(rza), 0],       
         rxpt = ptf_rotate(rzpt, [90 - xa / size.x * point.x, 90, 0])   
     )
     rxpt;
