@@ -15,7 +15,7 @@ module sf_thicken(points, thickness, direction = "BOTH", convexity = 1) {
     function tri_normal(tri) =
         let(v = cross(tri[2] - tri[0], tri[1] - tri[0])) v / norm(v);    
 
-    function vertex_normal(sf, xi, yi) = 
+    function vertex_normal(sf, xi, yi) =    
         let(
             xy = [xi, yi],
             // clockwise
@@ -45,12 +45,10 @@ module sf_thicken(points, thickness, direction = "BOTH", convexity = 1) {
     leng_point0 = len(points[0]);
     if(is_list(direction)) {
         dir_v = direction / norm(direction);
+        dir_vs = [for(x = [0:leng_point0 - 1]) dir_v];
         surface_another = points + thickness * [
             for(y = [0:leng_points - 1])
-            [
-                for(x = [0:leng_point0 - 1])
-                    dir_v
-            ]
+            dir_vs
         ];
 
         midy = leng_points / 2;
