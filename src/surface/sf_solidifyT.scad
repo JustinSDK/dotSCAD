@@ -27,7 +27,6 @@ module sf_solidifyT(points1, points2, triangles, convexity = 1) {
 		let(
 			edge = tri_edges[i], 
 			pair = [edge[1], edge[0]],
-			idx = search([pair], edges)[0],
 			de_edges = [for(e = edges) if(e != pair) e]
 		)
 		_de_pairs(tri_edges, leng, len(de_edges) == len(edges) ? [each edges, edge] : de_edges, i + 1);
