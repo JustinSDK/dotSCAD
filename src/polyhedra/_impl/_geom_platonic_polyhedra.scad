@@ -4,25 +4,19 @@ function _tri_subdivide(points, detail) =
 		dr = (points[2] - points[0]) / rows,
 		dc = (points[1] - points[0]) / rows,
 		pts = [
-			for(ri = [0:rows])
-			    for(ci = [0:rows - ri]) 
-				    points[0] + ci * dc + ri * dr 
+			for(ri = [0:rows], ci = [0:rows - ri])
+				points[0] + ci * dc + ri * dr 
 		],
 		ri_base = [for(ri = 0, acc = 0; ri <= rows; ri = ri + 1, acc = acc + rows - ri + 2) acc],
 		idx = function(ci, ri) ci + ri_base[ri],
 		faces = [
 			for(ri = [0:rows - 1])
-			let(cols = rows - ri - 1)
+			    let(cols = rows - ri - 1)
 				for(ci = [0:cols]) 
-				each (ci == cols ? 
-					[
-						[idx(ci + 1, ri), idx(ci, ri + 1), idx(ci, ri)]
-					] :
-					[
-						[idx(ci + 1, ri), idx(ci, ri + 1), idx(ci, ri)], 
-						[idx(ci + 1, ri + 1), idx(ci, ri + 1), idx(ci + 1, ri)]
-					]
-				) 
+				each [
+					[idx(ci + 1, ri), idx(ci, ri + 1), idx(ci, ri)], 
+					if(ci != cols) [idx(ci + 1, ri + 1), idx(ci, ri + 1), idx(ci + 1, ri)]
+				]
 		]
    )
    [pts, faces];
