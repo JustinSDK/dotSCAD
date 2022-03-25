@@ -15,8 +15,6 @@ module sf_solidifyT(points1, points2, triangles, convexity = 1) {
 		
 	tris = [for(tri = triangles) [tri[2], tri[1], tri[0]]];
 
-    hash = function(e) e[0] + e[1] * 31; 
-
 	function de_pairs(tri_edges) = 
 		let(
 			leng = len(tri_edges),
@@ -30,9 +28,9 @@ module sf_solidifyT(points1, points2, triangles, convexity = 1) {
 			edge = tri_edges[i], 
 			pair = [edge[1], edge[0]],
 			idx = search([pair], edges)[0],
-			nx_edges = idx == [] ? [each edges, edge] : [for(i = [0:len(edges) - 1]) if(i != idx) edges[i]]
+			de_edges = [for(e = edges) if(e != pair) e]
 		)
-		_de_pairs(tri_edges, leng, nx_edges, i + 1);
+		_de_pairs(tri_edges, leng, len(de_edges) == len(edges) ? [each edges, edge] : de_edges, i + 1);
 			
 	tri_edges = [
 		for(tri = tris)
