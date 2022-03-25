@@ -29,16 +29,15 @@ function _subdivide_project(points, faces, radius, detail) =
 				_tri_subdivide([for(i = face) points[i]], detail)
 		],
 		flatten_points = [
-			for(pts_faces = subdivided_all)
-				for(p = pts_faces[0]) 
-					p / norm(p) * radius
+			for(pts_faces = subdivided_all, p = pts_faces[0])
+				p / norm(p) * radius
 		],
 		pts_number_per_tri = len(subdivided_all[0][0]),
 		flatten_faces = [
 			for(i = [0:len(subdivided_all) - 1])
-			let(faces = subdivided_all[i][1])
+			let(faces = subdivided_all[i][1], off = [i, i, i] * pts_number_per_tri)
 				for(face = faces) 
-					face + [i, i, i] * pts_number_per_tri
+					face + off
 		]
 	)   
 	[flatten_points, flatten_faces];
