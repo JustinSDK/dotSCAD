@@ -12,18 +12,13 @@ use <../__comm__/__frags.scad>;
 use <../sweep.scad>;
 
 module superellipsoid(e, n) {
-	function _sgn(x) = 
-		x < 0 ? -1 :
-		x == 0 ? 0 : 
-				 1; // x > 0
-
 	function _c(w, m) = 
 		let(cosw = cos(w))
-			_sgn(cosw) * pow(abs(cosw), m);
+			sign(cosw) * pow(abs(cosw), m);
 		
 	function _s(w, m) = 
 		let(sinw = sin(w))
-			_sgn(sinw) * pow(abs(sinw), m);
+			sign(sinw) * pow(abs(sinw), m);
 			
 	a = 1;
 	b = 1;
