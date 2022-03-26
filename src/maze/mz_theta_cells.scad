@@ -1,5 +1,5 @@
 /**
-* mz_hex_walls.scad
+* mz_theta_cells.scad
 *
 * @copyright Justin Lin, 2020
 * @license https://opensource.org/licenses/lgpl-3.0.html
