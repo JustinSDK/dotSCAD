@@ -10,7 +10,6 @@
 
 use <_impl/_mz_square_cells_impl.scad>;
 use <mz_square_initialize.scad>;
-use <../util/find_index.scad>;
 
 function mz_square_cells(rows, columns, start = [0, 0], init_cells, x_wrapping = false, y_wrapping = false, seed) = 
     let(
@@ -18,8 +17,6 @@ function mz_square_cells(rows, columns, start = [0, 0], init_cells, x_wrapping =
         mz = init_undef ? mz_square_initialize(rows, columns) : init_cells,
         r = len(mz),
         c = len(mz[0]),
-        // c = find_index(mz, function(cell) cell.y != 0),
-        // r = len(mz) / c
         generated = go_maze( 
             start.x, 
             start.y,   
