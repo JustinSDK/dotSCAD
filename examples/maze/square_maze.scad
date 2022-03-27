@@ -1,20 +1,14 @@
-use <maze/mz_square_cells.scad>;
-use <maze/mz_square_walls.scad>;
+use <maze/mz_square.scad>;
+use <maze/mz_squarewalls.scad>;
+use <polyline_join.scad>;
 
 module square_maze(rows, cell_width, wall_thickness) {
-    cells = mz_square_cells(
-        rows, rows
-    );
-
-    walls = mz_square_walls(cells, rows, rows, cell_width);
+    cells = mz_square(rows, rows);
+    walls = mz_squarewalls(cells, cell_width);
 
     for(wall = walls) {
-        for(i = [0:len(wall) - 2]) {
-            hull() {
-                translate(wall[i]) square(wall_thickness, center = true);
-                translate(wall[i + 1]) square(wall_thickness, center = true);
-            }
-        }
+        polyline_join(wall)
+            square(wall_thickness, center = true);
     } 
 }
 
