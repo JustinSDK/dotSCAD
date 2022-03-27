@@ -13,14 +13,14 @@ use <../util/find_index.scad>;
 
 function mz_squarewalls(cells, cell_width, left_border = true, bottom_border = true) = 
     let(
-        columns = find_index(cells, function(cell) cell.y != 0),
-        rows = len(cells) / columns,
+        rows = len(cells),
+        columns = len(cells[0]),
         left_walls = left_border ? [for(y = [0:rows - 1]) [[0, cell_width * (y + 1)], [0, cell_width * y]]] : [],
         buttom_walls = bottom_border ? [for(x = [0:columns - 1]) [[cell_width * x, 0], [cell_width * (x + 1), 0]]] : []
     )
      concat(
         [
-            for(cell = cells) 
+            for(row = cells, cell = row) 
             let(wall_pts = _square_walls(cell, cell_width))
             if(wall_pts != []) 
             len(wall_pts) == 4 ? [wall_pts[0], wall_pts[1], wall_pts[3]]: wall_pts
