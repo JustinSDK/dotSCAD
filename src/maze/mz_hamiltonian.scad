@@ -10,7 +10,7 @@
 
 use <../__comm__/_pt2_hash.scad>;
 use <_impl/_mz_hamiltonian_impl.scad>;
-use <mz_square_cells.scad>;
+use <mz_square.scad>;
 use <mz_square_initialize.scad>;
 use <mz_square_get.scad>;
 use <../util/set/hashset.scad>;
@@ -21,7 +21,7 @@ function mz_hamiltonian(rows, columns, start = [0, 0], init_cells, seed) =
         init_cells_undef = is_undef(init_cells),
         r = init_cells_undef ? rows : len(init_cells),
         c = init_cells_undef ? columns : len(init_cells[0]),
-        cells = mz_square_cells(
+        cells = mz_square(
             r, c,
             init_cells = init_cells,
             start = start,
@@ -29,7 +29,7 @@ function mz_hamiltonian(rows, columns, start = [0, 0], init_cells, seed) =
         ),
         all = concat(
             [
-                for(cell = cells)
+                for(row = cells, cell = row)
                 let(type = mz_square_get(cell, "t"))
                 each if(type == "TOP_WALL") _mz_hamiltonian_top(cell.x, cell.y) else
                      if(type == "RIGHT_WALL") _mz_hamiltonian_right(cell.x, cell.y) else
