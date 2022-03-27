@@ -11,20 +11,19 @@
 use <../__comm__/_pt2_hash.scad>;
 use <_impl/_mz_wang_tiles_impl.scad>;
 use <mz_square_get.scad>;
-use <../util/find_index.scad>;
 use <../util/sort.scad>;
 use <../util/set/hashset.scad>;
 use <../util/set/hashset_elems.scad>;
 
 function mz_wang_tiles(cells, left_border = true, bottom_border = true) =
     let(
-        columns = find_index(cells, function(cell) cell.y != 0),
-        rows = len(cells) / columns,        
-        top_cells = sort([for(cell = cells) if(cell.y == rows - 1) cell], by = "x"),
-        right_cells = sort([for(cell = cells) if(cell.x == columns - 1) cell], by = "y"),
+        rows = len(cells),
+        columns = len(cells[0]),
+        top_cells = cells[rows - 1],
+        right_cells = [for(r = [0:rows - 1]) cells[r][columns - 1]],
         all = concat(
             [
-                for(cell = cells)
+                for(row = cells, cell = row)
                 let(
                     x = cell.x,
                     y = cell.y,
