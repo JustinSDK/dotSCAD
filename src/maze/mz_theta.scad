@@ -10,7 +10,7 @@
 
 use <_impl/_mz_theta_cells.scad>;
 
-function mz_theta_cells(rings, beginning_number, start = [0, 0], seed) =
+function mz_theta(rings, beginning_number, start = [0, 0], seed) =
     let(
 		divided_ratio = 1.5,
 	    before_traveled = config_nbrs(init_theta_maze(rings, beginning_number, divided_ratio)), 
