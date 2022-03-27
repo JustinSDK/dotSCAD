@@ -2,7 +2,7 @@ use <line2d.scad>;
 use <hollow_out.scad>;
 use <ellipse_extrude.scad>;
 use <arc.scad>;
-use <maze/mz_square_cells.scad>;
+use <maze/mz_square.scad>;
 use <maze/mz_square_get.scad>;
 
 radius_of_heart = 12;
@@ -78,8 +78,7 @@ module heart_maze(cells, radius, ccells, levels, thickness = 1) {
 			}
 		  
 		  
-			for(i = [0:len(cells) - 1]) { 
-				cell = cells[i];
+			for(row = cells, cell = row) { 
 				cr = get_x(cell) + 1; 
 				cc = get_y(cell);    
 				
@@ -93,8 +92,7 @@ module heart_maze(cells, radius, ccells, levels, thickness = 1) {
 		
 		render() union() {
 	        // road to the next level
-			for(i = [0:len(cells) - 1]) { 
-				cell = cells[i];
+			for(row = cells, cell = row) { 
 				cr = get_x(cell) + 1; 
 				cc = get_y(cell);   
 				
@@ -106,9 +104,7 @@ module heart_maze(cells, radius, ccells, levels, thickness = 1) {
 	}
 }
 
-cells = mz_square_cells(
-	ccells, levels, y_wrapping = true
-);
+cells = mz_square(ccells, levels, y_wrapping = true);
 
 intersection() {
 	union() {

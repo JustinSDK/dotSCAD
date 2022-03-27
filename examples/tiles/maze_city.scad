@@ -1,5 +1,5 @@
 use <maze/mz_square_initialize.scad>;
-use <maze/mz_square_cells.scad>;
+use <maze/mz_square.scad>;
 use <maze/mz_wang_tiles.scad>;
 use <util/rand.scad>;
 use <city_tile.scad>;
@@ -16,7 +16,7 @@ module maze_city(rows, columns, skyscraper_prs) {
 		rand() < skyscraper_prs ? 0 : 1]
 	];
 
-    cells = mz_square_cells(rows, columns, [0, 0], init_cells = mz_square_initialize(rows, columns, mask));
+    cells = mz_square(rows, columns, [0, 0], init_cells = mz_square_initialize(rows, columns, mask));
 
     tiles = mz_wang_tiles(cells);
 

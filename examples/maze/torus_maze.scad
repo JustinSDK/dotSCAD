@@ -1,7 +1,7 @@
 use <polyline_join.scad>;
 use <ptf/ptf_torus.scad>;
-use <maze/mz_square_cells.scad>;
-use <maze/mz_square_walls.scad>;
+use <maze/mz_square.scad>;
+use <maze/mz_squarewalls.scad>;
 
 rows = 36;
 columns = 12;
@@ -14,12 +14,12 @@ leng = rows * cell_width;
 radius = 0.5 * leng / PI;
 a_step = 360 / leng;
 
-cells = mz_square_cells(
+cells = mz_square(
     rows, columns, 
     x_wrapping = true, y_wrapping = true
 );
 
-walls = mz_square_walls(cells, rows, columns, cell_width, left_border = false, bottom_border = false);
+walls = mz_squarewalls(cells, cell_width, left_border = false, bottom_border = false);
 
 size = [columns * cell_width, rows * cell_width];
 for(wall_pts = walls) {  

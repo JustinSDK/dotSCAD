@@ -1,25 +1,25 @@
-use <maze/mz_theta_cells.scad>;
+use <maze/mz_theta.scad>;
 use <maze/mz_theta_get.scad>;
 use <polyline_join.scad>;
 
-rows = 5;
+rings = 5;
 beginning_number = 8;
 cell_width = 10;
 wall_thickness = 2;
 wall_height = 5;
 
-theta_maze(rows, beginning_number, cell_width, wall_thickness, wall_height);
+theta_maze(rings, beginning_number, cell_width, wall_thickness, wall_height);
 
-module theta_maze(rows, beginning_number, cell_width, wall_thickness, wall_height) {
+module theta_maze(rings, beginning_number, cell_width, wall_thickness, wall_height) {
 
 	function vt_from_angle(theta, r) = [r * cos(theta), r * sin(theta)];
 
-	maze = mz_theta_cells(rows, beginning_number);
+	maze = mz_theta(rings, beginning_number);
 
     half_wall_thickness = wall_thickness / 2;
 	linear_extrude(wall_height) {
-		for(rows = maze) {
-			for(cell = rows) {
+		for(rings = maze) {
+			for(cell = rings) {
 				ri = mz_theta_get(cell, "r");
 				ci = mz_theta_get(cell, "c");
 				wallType = mz_theta_get(cell, "t");
@@ -45,8 +45,8 @@ module theta_maze(rows, beginning_number, cell_width, wall_thickness, wall_heigh
 			} 
 		}
 		
-		thetaStep = 360 / len(maze[rows - 1]);
-		r = cell_width * (rows + 1);
+		thetaStep = 360 / len(maze[rings - 1]);
+		r = cell_width * (rings + 1);
 		for(theta = [0:thetaStep:360 - thetaStep]) {
 			vt1 = vt_from_angle(theta, r);
 			vt2 = vt_from_angle(theta + thetaStep, r);

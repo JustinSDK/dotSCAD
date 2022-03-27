@@ -1,6 +1,6 @@
 use <polyline2d.scad>;
-use <maze/mz_square_cells.scad>;
-use <maze/mz_hex_walls.scad>;
+use <maze/mz_square.scad>;
+use <maze/mz_hexwalls.scad>;
 
 columns = 10;
 cell_radius = 2;
@@ -30,9 +30,8 @@ module pyramid_hex_maze(columns, cell_radius, wall_thickness) {
     
     pyramid_height = square_w / sqrt(2);
 
-    cells = mz_square_cells(rows, columns);
-
-    walls = mz_hex_walls(cells, rows, columns, cell_radius, wall_thickness);
+    cells = mz_square(rows, columns);
+    walls = mz_hexwalls(cells, cell_radius, wall_thickness);
 
     intersection() {    
         linear_extrude(pyramid_height) 

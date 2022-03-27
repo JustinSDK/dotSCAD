@@ -1,16 +1,16 @@
 use <along_with.scad>;
 use <polyhedron_hull.scad>;
-use <maze/mz_theta_cells.scad>;
+use <maze/mz_theta.scad>;
 use <maze/mz_theta_get.scad>;
 
-rows = 4;
+rings = 4;
 begining_columns = 6;
 cell_width = 12;
 rock_size = 4;
 height_scale = 3;
 flat_base = false;
 
-rock_theta_maze(rows, begining_columns, cell_width, rock_size, height_scale, flat_base);
+rock_theta_maze(rings, begining_columns, cell_width, rock_size, height_scale, flat_base);
 
 module rock(width = 1) {
 	n = 15 * rands(1, 1.25, 1)[0];
@@ -36,16 +36,16 @@ module rock_wall(p1, p2, size) {
 	    rock(size * 0.875);
 }
 
-module rock_theta_maze(rows, begining_columns, cell_width, rock_size, height_scale, flat_base) {
+module rock_theta_maze(rings, begining_columns, cell_width, rock_size, height_scale, flat_base) {
 	function vt_from_angle(theta, r) = [r * cos(theta), r * sin(theta)];
 
-	maze = mz_theta_cells(rows, begining_columns);
+	maze = mz_theta(rings, begining_columns);
 
 	scale([1, 1, height_scale]) 
 	difference() {
 		union() {
-			for(rows = maze) {
-				for(cell = rows) {
+			for(rings = maze) {
+				for(cell = rings) {
 					
 					ri = mz_theta_get(cell, "r");
 					ci = mz_theta_get(cell, "c");
@@ -72,8 +72,8 @@ module rock_theta_maze(rows, begining_columns, cell_width, rock_size, height_sca
 				} 
 			}
 			
-			thetaStep = 360 / len(maze[rows - 1]);
-			r = cell_width * (rows + 1);
+			thetaStep = 360 / len(maze[rings - 1]);
+			r = cell_width * (rings + 1);
 			for(theta = [0:thetaStep:360 - thetaStep * 2]) {
 				vt1 = vt_from_angle(theta, r);
 				vt2 = vt_from_angle(theta + thetaStep, r);
@@ -81,8 +81,8 @@ module rock_theta_maze(rows, begining_columns, cell_width, rock_size, height_sca
 			} 
 		}
 		if(flat_base) {
-			translate([0, 0, -cell_width * rows * 2])
-				cube(cell_width * rows * 4, center = true);
+			translate([0, 0, -cell_width * rings * 2])
+				cube(cell_width * rings * 4, center = true);
 		}
 	}
 }

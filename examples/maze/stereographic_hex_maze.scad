@@ -1,7 +1,7 @@
 use <polyline2d.scad>;
 use <stereographic_extrude.scad>;
-use <maze/mz_square_cells.scad>;
-use <maze/mz_hex_walls.scad>;
+use <maze/mz_square.scad>;
+use <maze/mz_hexwalls.scad>;
 
 columns = 10;
 cell_radius = 20;
@@ -24,11 +24,9 @@ module hex_maze_stereographic_projection(columns, cell_radius, wall_thickness, f
     pyramid_height = square_w / sqrt(2);
   
     // create a maze     
-    cells = mz_square_cells(
-        rows, columns
-    );
+    cells = mz_square(rows, columns);
 
-    walls = mz_hex_walls(cells, rows, columns, cell_radius, wall_thickness);
+    walls = mz_hexwalls(cells, cell_radius, wall_thickness);
     
     stereographic_extrude(square_w, $fn = fn) 
     translate([grid_w - square_w / 2, grid_h - square_w / 2, 0]) 

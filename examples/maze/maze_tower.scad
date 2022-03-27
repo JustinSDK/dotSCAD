@@ -1,11 +1,11 @@
-use <maze/mz_theta_cells.scad>;
+use <maze/mz_theta.scad>;
 use <util/find_index.scad>;
 use <arc.scad>;
 use <polyline2d.scad>;
 
 $fn = 48;
 
-rows = 6;
+rings = 6;
 beginning_number = 5;
 cell_width = 2;
 
@@ -23,14 +23,14 @@ module maze_tower() {
 
 	function vt_from_angle(theta, r) = [r * cos(theta), r * sin(theta)];
 
-	mz = mz_theta_cells(rows, beginning_number);
+	mz = mz_theta(rings, beginning_number);
 	mz_leng = len(mz);
-	outThetaStep = 360 / len(mz[rows - 1]);
-	r = cell_width * (rows + 1);
+	outThetaStep = 360 / len(mz[rings - 1]);
+	r = cell_width * (rings + 1);
 
 	module maze() {
-		for(rows = mz) {
-			for(cell = rows) {
+		for(rings = mz) {
+			for(cell = rings) {
 				ri = cell[0];
 				ci = cell[1];
 				type = cell[2];
@@ -68,8 +68,8 @@ module maze_tower() {
 		difference() {
 			union() {
 				for(i = [0:mz_leng - 1]) {
-					rows = mz[i];
-					ir = (rows[i][0] + 1) * cell_width;
+					rings = mz[i];
+					ir = (rings[i][0] + 1) * cell_width;
 					linear_extrude((mz_leng - i + 1) * wall_height)
 						circle(ir + wall_thickness * 0.4999);
 				}
@@ -80,9 +80,9 @@ module maze_tower() {
 			linear_extrude(wall_height * (mz_leng + 2)) 
 			    maze();
 		}
-		last_rows = mz[mz_leng - 1];
-		i = find_index(last_rows, function(cell) cell[2] == CCW_WALL || cell[2] == INWARD_CCW_WALL);
-		theta1 = outThetaStep * last_rows[i][1];
+		last_rings = mz[mz_leng - 1];
+		i = find_index(last_rings, function(cell) cell[2] == CCW_WALL || cell[2] == INWARD_CCW_WALL);
+		theta1 = outThetaStep * last_rings[i][1];
 		linear_extrude(wall_height)
 			arc(r * 0.9999, [theta1 + outThetaStep * 0.1, theta1 + outThetaStep * 0.75], wall_thickness);
 	}
@@ -91,7 +91,7 @@ module maze_tower() {
 		num_stairs = 4;
 		stair_thickness = wall_thickness / 3;
 		or = r + half_wall_thickness;
-		for(ri = [0:2:rows * 2]) {
+		for(ri = [0:2:rings * 2]) {
 			for(si = [0:2]) {
 				r = or - stair_thickness * si - wall_thickness * ri;
 				translate([0, 0, wall_height * ri / 2 + wall_height / num_stairs * (si + 1)])

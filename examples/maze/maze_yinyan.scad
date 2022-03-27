@@ -1,4 +1,4 @@
-use <maze/mz_square_cells.scad>;
+use <maze/mz_square.scad>;
 use <maze/mz_squarewalls.scad>;
 use <maze/mz_square_initialize.scad>;
 use <polyline_join.scad>;
@@ -15,7 +15,7 @@ module maze_yinyan(cell_width, wall_thickness) {
 
     module maze(mask, start, cell_width, wall_thickness, seed) {
         init_cells = mz_square_initialize(mask = mask);
-        cells = mz_square_cells(start = start, init_cells = init_cells, seed = seed);
+        cells = mz_square(start = start, init_cells = init_cells, seed = seed);
         walls = mz_squarewalls(cells, cell_width, false, false);
 
         for(wall = walls) {

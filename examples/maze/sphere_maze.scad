@@ -1,6 +1,6 @@
 use <matrix/m_rotation.scad>;
-use <maze/mz_square_cells.scad>;
-use <maze/mz_square_walls.scad>;
+use <maze/mz_square.scad>;
+use <maze/mz_squarewalls.scad>;
 use <ptf/ptf_sphere.scad>;
 
 r = 10;
@@ -51,15 +51,12 @@ module sphere_maze() {
 
 
     size = [rows * cell_width, columns * cell_width + pole_offset * 2];
-    cells = mz_square_cells(
-        rows, columns, 
-        y_wrapping = true
-    );
+    cells = mz_square(rows, columns, y_wrapping = true);
 
     p_offset = [cell_width * rows, pole_offset, 0];
     mr = m_rotation(90);
 
-    walls = mz_square_walls(cells, rows, columns, cell_width, bottom_border = false);
+    walls = mz_squarewalls(cells, cell_width, bottom_border = false);
     for(wall_pts = walls) {  
         rxpts = [
             for(p = wall_pts) 

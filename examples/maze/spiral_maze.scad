@@ -1,8 +1,8 @@
 use <archimedean_spiral.scad>;
 use <polyline_join.scad>;
 
-use <maze/mz_square_cells.scad>;
-use <maze/mz_square_walls.scad>;
+use <maze/mz_square.scad>;
+use <maze/mz_squarewalls.scad>;
 
 rows = 8;
 columns = 50;
@@ -23,9 +23,9 @@ module spiral_maze() {
     pts2d = [for(pa = points_angles) pa[0]];
     pts3d = [for(p = pts2d) [p[0], 0, p[1]]];
 
-    walls = mz_square_walls(
-                mz_square_cells(rows, columns), 
-                rows, columns, cell_width
+    walls = mz_squarewalls(
+                mz_square(rows, columns), 
+                cell_width
             );
 
     half_thickness = wall_thickness / 2;

@@ -1,6 +1,6 @@
 use <line2d.scad>;
 use <hollow_out.scad>;
-use <maze/mz_square_cells.scad>;
+use <maze/mz_square.scad>;
 use <maze/mz_square_get.scad>;
 
 // only for creating a small maze
@@ -49,9 +49,7 @@ module regular_polygon_maze(radius, ccells, levels, thickness = 1, sides) {
     arc_angle = 360 / ccells;
 	r = radius / (levels + 1);
 	
-	cells = mz_square_cells(
-		ccells, levels, y_wrapping = true
-	);
+	cells = mz_square(ccells, levels, y_wrapping = true);
 
 	difference() {
 		render() union() {
@@ -60,8 +58,7 @@ module regular_polygon_maze(radius, ccells, levels, thickness = 1, sides) {
 			}
 		  
 		  
-			for(i = [0:len(cells) - 1]) { 
-				cell = cells[i];
+			for(row = cells, cell = row) { 
 				cr = get_x(cell) + 1; 
 				cc = get_y(cell);    
 				
@@ -78,8 +75,7 @@ module regular_polygon_maze(radius, ccells, levels, thickness = 1, sides) {
 			// ring_regular_polygon_sector(r, arc_angle / 1.975 , thickness, r / 3, sides);   
 
 	        // road to the next level
-			for(i = [0:len(cells) - 1]) { 
-				cell = cells[i];
+			for(row = cells, cell = row) { 
 				cr = get_x(cell) + 1; 
 				cc = get_y(cell);   
 				

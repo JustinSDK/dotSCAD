@@ -1,5 +1,5 @@
-use <maze/mz_square_cells.scad>;
-use <maze/mz_square_walls.scad>;
+use <maze/mz_square.scad>;
+use <maze/mz_squarewalls.scad>;
 use <maze/mz_square_initialize.scad>;
 use <voxel/vx_contour.scad>;
 
@@ -29,7 +29,7 @@ module maze_masking(start, mask, cell_width, wall_thickness, wall_height, base_h
     rows = len(mask); 
     columns = len(mask[0]);
 
-    cells = mz_square_cells(
+    cells = mz_square(
         rows, columns, start,
 		mz_square_initialize(mask = mask)
     );
@@ -41,7 +41,7 @@ module maze_masking(start, mask, cell_width, wall_thickness, wall_height, base_h
 			    [x, y]
 	], sorted = true) : [];	
 	
-    walls = mz_square_walls(cells, rows, columns, cell_width);
+    walls = mz_squarewalls(cells, cell_width);
 	
 	color("gray")
 	linear_extrude(wall_height)

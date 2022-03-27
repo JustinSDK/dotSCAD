@@ -1,6 +1,6 @@
 use <polyline_join.scad>;
-use <maze/mz_square_cells.scad>;
-use <maze/mz_square_walls.scad>;
+use <maze/mz_square.scad>;
+use <maze/mz_squarewalls.scad>;
 use <path_extrude.scad>;
 use <torus_knot.scad>;
 use <ptf/ptf_rotate.scad>;
@@ -36,9 +36,9 @@ module torus_knot_maze() {
 	
 	angle_yz = [each angle_yz_path, angle_yz_path[0]];
 
-    walls = mz_square_walls(
-                mz_square_cells(rows, columns, x_wrapping = true), 
-                rows, columns, cell_width, left_border = false
+    walls = mz_squarewalls(
+                mz_square(rows, columns, x_wrapping = true), 
+                cell_width, left_border = false
             );
 
     half_row = rows / 2;
