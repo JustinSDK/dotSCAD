@@ -142,7 +142,7 @@ function visitable_dirs(r_dirs, x, y, cells, rows, columns, x_wrapping, y_wrappi
 // go maze from (x, y)
 function go_maze(x, y, cells, rows, columns, x_wrapping = false, y_wrapping = false, seed) = 
     let(
-        r_dirs = rand_dirs(x * rows + y, seed),
+        r_dirs = rand_dirs(x + y * columns, seed),
         v_dirs = visitable_dirs(r_dirs, x, y, cells, rows, columns, x_wrapping, y_wrapping),
         nx_cells0 = set_visited(x, y, cells),
         leng_v_dirs = len(v_dirs)
