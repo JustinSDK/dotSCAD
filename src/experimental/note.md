@@ -17,3 +17,4 @@ new:
 
 - util/count
 - lemniscate_curve?
+- perlin_sphere?
