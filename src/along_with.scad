@@ -18,8 +18,6 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
     leng_points_minus_one = leng_points - 1;
     twist_step_a = twist / leng_points;
 
-    angles_defined = !is_undef(angles);
-
     scale_step_vt = is_num(scale) ? 
         let(s =  (scale - 1) / leng_points_minus_one) [s, s, s] :
         [
@@ -133,6 +131,8 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
         scale([1, 1, 1] + scale_step_vt * i) 
             children(0);
     }
+
+    angles_defined = !is_undef(angles);
 
     // <<< end: modules and functions for "EULER-ANGLE"
 
