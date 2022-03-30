@@ -70,7 +70,11 @@ module sweep(sections, triangles = "SOLID") {
             test_sweep_solid(v_pts, f_idxes, triangles);
         } else {
             first_idxes = [for(i = leng_pts_sect - 1; i >= 0; i = i - 1) i];  
-            last_idxes = [each [leng_pts_sect * (leng_sects - 1):from + leng_pts_sect - 1]];    
+           
+            from = leng_pts_sect * (leng_sects - 1);
+            to = from + leng_pts_sect - 1;
+
+            last_idxes = [each [from:to]];    
             f_idxes = [first_idxes, each side_indexes(sects), last_idxes];
             
             polyhedron(
