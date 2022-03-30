@@ -9,6 +9,7 @@
 **/
 
 use <util/reverse.scad>;
+use <util/find_index.scad>;
 
 module sweep(sections, triangles = "SOLID") {
 
@@ -38,12 +39,8 @@ module sweep(sections, triangles = "SOLID") {
             ]      
         );
 
-    function search_at(f_sect, p, leng_pts_sect, i = 0) =  
-        i < leng_pts_sect ?
-            (p == f_sect[i] ? i : search_at(f_sect, p, leng_pts_sect, i + 1)) : -1;
-    
     function the_same_after_twisting(f_sect, l_sect, leng_pts_sect) =
-        let(found_at_i = search_at(f_sect, l_sect[0], leng_pts_sect))
+        let(found_at_i = find_index(f_sect, function(p) p == l_sect[0]))
         found_at_i <= 0 ? false : 
             l_sect == concat(
                 [for(i = found_at_i; i < leng_pts_sect; i = i + 1) f_sect[i]],
@@ -53,7 +50,6 @@ module sweep(sections, triangles = "SOLID") {
     function to_v_pts(sects) = [for(sect = sects) each sect];                   
 
     module solid_sections(sects) {
-        
         leng_sects = len(sects);
         leng_pts_sect = len(sects[0]);
         first_sect = sects[0];
