@@ -129,7 +129,7 @@ module infinity_dragon() {
     one_body_scale_data = one_body_scale(body_r, body_fn, scale_fn, scale_tilt_a);
 
     along_with(body_path, scale = [0.45, 0.7, 0.45])    
-    rotate([90, 90, 0])
+    rotate([0, 0, -90])
         one_segment(body_r, body_fn, one_body_scale_data);
 
     ayz = __angy_angz(body_path[leng_body_path - 2], body_path[leng_body_path - 1]);

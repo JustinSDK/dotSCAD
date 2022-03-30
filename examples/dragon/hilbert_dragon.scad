@@ -42,7 +42,6 @@ module hilbert_dragon() {
     one_body_scale_data = one_body_scale(body_r, body_fn, scale_fn, scale_tilt_a);
      
     along_with(dragon_body_path, scale = [0.425, 0.6, 0.425])    
-    rotate([90, 0, 0]) 
     scale(0.035)  
         one_segment(body_r, body_fn, one_body_scale_data);
     
