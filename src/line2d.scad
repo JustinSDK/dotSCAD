@@ -14,8 +14,9 @@ use <__comm__/__nearest_multiple_of_4.scad>;
 module line2d(p1, p2, width = 1, p1Style = "CAP_SQUARE", p2Style =  "CAP_SQUARE") {
     half_width = 0.5 * width;    
 
-    atan_angle = atan2(p2.y - p1.y, p2.x - p1.x);
-    leng = sqrt(pow(p2.x - p1.x, 2) + pow(p2.y - p1.y, 2));
+    v = p2 - p1;
+    atan_angle = atan2(v.y, v.x);
+    leng = norm(v);
 
     frags = __nearest_multiple_of_4(__frags(half_width));
         

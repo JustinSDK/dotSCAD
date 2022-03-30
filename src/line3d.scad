@@ -17,13 +17,10 @@ module line3d(p1, p2, diameter = 1, p1Style = "CAP_CIRCLE", p2Style = "CAP_CIRCL
     frags = __nearest_multiple_of_4(__frags(r));
     half_fa = 180 / frags;
     
-    dx = p2.x - p1.x;
-    dy = p2.y - p1.y;
-    dz = p2.z - p1.z;
-    
-    length = sqrt(pow(dx, 2) + pow(dy, 2) + pow(dz, 2));
-    ay = 90 - atan2(dz, sqrt(pow(dx, 2) + pow(dy, 2)));
-    az = atan2(dy, dx);
+    v = p2 - p1;
+    length = norm(v);
+    ay = 90 - atan2(v.z, norm([v.x, v.y]));
+    az = atan2(v.y, v.x);
 
     angles = [0, ay, az];
 
@@ -35,8 +32,8 @@ module line3d(p1, p2, diameter = 1, p1Style = "CAP_CIRCLE", p2Style = "CAP_CIRCL
 
     module cap_butt() {
         cap_with(p1)                 
-            linear_extrude(length) 
-                circle(r, $fn = frags);
+        linear_extrude(length) 
+            circle(r, $fn = frags);
         
         // hook for testing
         test_line3d_butt(p1, r, frags, length, angles);
