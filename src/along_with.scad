@@ -125,21 +125,13 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
             each[for(a = angs) [0, -a[0], a[1]]]
         ];
 
-    module euler_angle_align(i, angs) {
-        if(angles_defined) {
-            translate(pts[i]) 
-            rotate(twist_step_a * i + angs[i]) 
-            scale([1, 1, 1] + scale_step_vt * i) 
-                children(0);
-        }
-        else {
-            translate(pts[i]) 
-            rotate(angs[i])
-            rotate([90, 0, -90])
-            rotate(twist_step_a * i) 
-            scale([1, 1, 1] + scale_step_vt * i) 
-                children(0);
-        }
+    module euler_angle_align(i, angs, look_at) {
+        translate(pts[i]) 
+        rotate(angs[i])
+        rotate(look_at)
+        rotate(twist_step_a * i) 
+        scale([1, 1, 1] + scale_step_vt * i) 
+            children(0);
     }
 
     // <<< end: modules and functions for "EULER-ANGLE"
@@ -185,15 +177,19 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
         }
     }
     else if(method == "EULER_ANGLE") {
-        angs = angles_defined ? angles : euler_angle_path_angles($children);
+        angs = angles_defined ? 
+                   (is_list(angles) ? angles : [for(angle = angles) [0, 0, angle]]) :
+                   euler_angle_path_angles($children);
         
+        look_at = angles_defined ? [0, 0, 0] : [90, 0, -90];
+
         if($children == 1) { 
             for(i = [0:leng_points_minus_one]) {
-                euler_angle_align(i, angs) children(0);
+                euler_angle_align(i, angs, look_at) children(0);
             }
         } else {
             for(i = [0:min(leng_points, $children) - 1]) {
-                euler_angle_align(i, angs) children(i);
+                euler_angle_align(i, angs, look_at) children(i);
             }
         }    
 
