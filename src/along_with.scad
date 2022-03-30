@@ -167,7 +167,7 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
                 for(i = [0:leng_points - 2]) {
                     translate(pts[i + 1])
                     axis_angle_align_with_local_rotate(i, i * twist_step_a, scale_one + scale_step_vt * i, cumu_rot_matrice)
-                    rotatex_90)
+                    rotate(x_90)
                         children(0);          
                 }          
             } else {
