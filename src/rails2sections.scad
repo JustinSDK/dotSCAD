@@ -8,15 +8,6 @@
 *
 **/
 
-function rails2sections(rails) =
-    let(
-        leng_rail = len(rails[0]),
-        leng_rails = len(rails)
-    )
-    [
-        for(i = 0; i < leng_rail; i = i + 1)
-            [
-                for(j = 0; j < leng_rails; j = j + 1)
-                    rails[j][i]
-            ] 
-    ];
+use <matrix/m_transpose.scad>;
+
+function rails2sections(rails) = m_transpose(rails);
