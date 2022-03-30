@@ -1,7 +1,7 @@
 use <polyline_join.scad>;
 use <bezier_curve.scad>;
 use <ptf/ptf_rotate.scad>;
-use <rails2sections.scad>;
+use <matrix/m_transpose.scad>;
 use <experimental/hollow_out_sweep.scad>;
 use <experimental/tri_bisectors.scad>;
 
@@ -27,7 +27,7 @@ module hollow_out_vase(ctrl_pts, t_step, line_diameter, fn, line_style) {
     fpt = ctrl_pts[len(ctrl_pts) - 1];
 
     a_step = 360 / fn;
-    sects = rails2sections([
+    sects = m_transpose([
         for(a = [0:a_step:360 - a_step])
         [for(p = bezier) ptf_rotate(p, [0, 0, a])]
     ]);

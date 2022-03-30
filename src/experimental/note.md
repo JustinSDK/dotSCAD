@@ -18,3 +18,6 @@ new:
 - util/count
 - lemniscate_curve?
 - perlin_sphere?
+
+deprecated:
+    rails2sections: use m_transpose

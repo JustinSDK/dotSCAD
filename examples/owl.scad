@@ -4,7 +4,7 @@ use <polyhedra/icosahedron.scad>;
 use <shear.scad>;
 use <polyline_join.scad>;
 use <bezier_curve.scad>;
-use <rails2sections.scad>;
+use <matrix/m_transpose.scad>;
 use <sweep.scad>;
 use <experimental/worley_sphere.scad>;
 use <curve.scad>;
@@ -164,7 +164,7 @@ module owl(detail, head_angles) {
 			points4, points3, points2, points
 		];
 
-		sections = rails2sections(rails);
+		sections = m_transpose(rails);
 
 		sweep(sections);
 	}
