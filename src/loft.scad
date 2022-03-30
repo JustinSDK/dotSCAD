@@ -15,13 +15,8 @@ module loft(sections, slices = 1) {
     function lcm(m, n) = m * n / gcd(m, n);
 
     function inter_pts(p1, p2, n) =
-        let(
-            v = p2 - p1,
-            dx = v[0] / n,
-            dy = v[1] / n,
-            dz = v[2] / n
-        )
-        [for(i = [1:n - 1]) p1 + [dx, dy, dz] * i];
+        let(dv = (p2 - p1) / n)
+        [for(i = [1:n - 1]) p1 + dv * i];
 
     function _interpolate(sect, leng, n, i = 0) = 
         i == leng ? [] :
