@@ -12,7 +12,8 @@ use <ptf/ptf_rotate.scad>;
 
 function sphere_spiral(radius, za_step, z_circles = 1, begin_angle = 0, end_angle = 0, vt_dir = "SPI_DOWN", rt_dir = "CT_CLK") = 
     let(
-        a_end = 90 * z_circles - end_angle
+        a_end = 90 * z_circles - end_angle,
+        p = [radius, 0, 0]
     )
     [
         for(a = begin_angle; a <= a_end; a = a + za_step) 
@@ -21,5 +22,5 @@ function sphere_spiral(radius, za_step, z_circles = 1, begin_angle = 0, end_angl
                 za = (rt_dir == "CT_CLK" ? 1 : -1) * a,
                 ra = [0, ya, za]
             )
-            [ptf_rotate([radius, 0, 0], ra), ra]
+            [ptf_rotate(p, ra), ra]
     ];
