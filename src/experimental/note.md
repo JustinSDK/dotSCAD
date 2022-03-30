@@ -1,6 +1,6 @@
 to_do:
 
-- doc: sf add convexity
+- doc: sf, stereographic_extrude add convexity
 
 new:
 

@@ -8,7 +8,7 @@
 *
 **/
 
-module stereographic_extrude(shadow_side_leng) {
+module stereographic_extrude(shadow_side_leng, convexity = 1) {
     half_side_length = shadow_side_leng / 2;
     outer_sphere_r = half_side_length / 3;
     a = atan(sqrt(2) * half_side_length / (2 * outer_sphere_r));
@@ -25,7 +25,7 @@ module stereographic_extrude(shadow_side_leng) {
                 circle(inner_sphere_r * cos(a));
         }
      
-        linear_extrude(outer_sphere_r * 2, scale = 0.01) 
+        linear_extrude(outer_sphere_r * 2, scale = 0.01, convexity = convexity) 
             children();
     }
 
