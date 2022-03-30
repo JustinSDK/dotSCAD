@@ -20,10 +20,10 @@ Given a list of points that form a closed area, `vx_contour` returns the contour
     linear_extrude(2)
     for(i = [0:len(t) - 1]) {
         translate([i * 8, 0]) 
-            for(pt = vx_ascii(t[i])) {
-                translate(pt)
-                    square(1, center = true);
-            }
+        for(pt = vx_ascii(t[i])) {
+            translate(pt)
+                square(1, center = true);
+        }
     }
 
     color("black")

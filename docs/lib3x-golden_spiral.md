@@ -38,9 +38,9 @@ It returns a vector of `[[x, y], angle]`.
 	    
 	for(pt_angle = pts_angles) {
 	    translate(pt_angle[0]) 
-	        rotate([90, 0, pt_angle[1]])
-	            linear_extrude(1, center = true) 
-	                text("A", valign = "center", halign = "center");
+		rotate([90, 0, pt_angle[1]])
+		linear_extrude(1, center = true) 
+			text("A", valign = "center", halign = "center");
 	}
     
 ![golden_spiral](images/lib3x-golden_spiral-2.JPG)

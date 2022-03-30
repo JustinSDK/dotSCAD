@@ -60,9 +60,9 @@ Given a list of numbers (0 ~ 255) that represent a gray image. This function tra
         g = 1 - dot[1] / 255;
         h = dot[1] / 85;
         color([g, g, g]) 
-            translate(dot[0]) 
-                linear_extrude(h) 
-                    square(1);
+        translate(dot[0]) 
+        linear_extrude(h) 
+            square(1);
     }
 
 ![vx_gray](images/lib3x-vx_gray-1.JPG)

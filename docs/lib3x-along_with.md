@@ -57,9 +57,9 @@ Puts children along the given path. If there's only one child, it will put the c
 	angles = [for(p_a = pts_angles) p_a[1]];
 
 	along_with(points, angles)
-		rotate([90, 0, 0]) 
-			linear_extrude(1, center = true) 
-				text("A", valign = "center", halign = "center");
+	rotate([90, 0, 0]) 
+	linear_extrude(1, center = true) 
+		text("A", valign = "center", halign = "center");
 
 ![along_with](images/lib3x-along_with-3.JPG)
 
@@ -69,20 +69,20 @@ Puts children along the given path. If there's only one child, it will put the c
 	module scales() {
 		module one_scale() {
 			rotate([0, 60, 0]) 
-				linear_extrude(1, center = true) 
-					scale([2, 1]) 
-						circle(1.25, $fn = 24);    
+			linear_extrude(1, center = true) 
+			scale([2, 1]) 
+				circle(1.25, $fn = 24);    
 		}
 
 		for(a = [0:30:330]) {
 			rotate(a) 
-				translate([5, 0, 0]) 
-					one_scale();
-			rotate(a + 15) 
-				translate([5, 0, 1.75]) 
-					one_scale();
-		}
+			translate([5, 0, 0]) 
+				one_scale();
 
+			rotate(a + 15) 
+			translate([5, 0, 1.75]) 
+				one_scale();
+		}
 	}
 
 	t_step = 0.01;

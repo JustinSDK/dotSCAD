@@ -21,9 +21,9 @@ Sometimes you need all points on the path of a circle. Here's the function. Its 
 	step_angle = 360 / leng;
 	for(i = [0:leng - 1]) {
 	    translate(points[i]) 
-	        rotate([90, 0, 90 + i * step_angle]) 
-	            linear_extrude(1, center = true) 
-	                text("A", valign = "center", halign = "center");
+		rotate([90, 0, 90 + i * step_angle]) 
+		linear_extrude(1, center = true) 
+			text("A", valign = "center", halign = "center");
 	}
 
 ![circle_path](images/lib3x-circle_path-1.JPG)

@@ -34,7 +34,8 @@ Once you have the size of the containing cube, you can use it as the `size` argu
 	*cube(size = [x, y, z]);
 	
 	bend(size = [x, y, z], angle = 270)
-	    linear_extrude(z) text("A");
+	linear_extrude(z) 
+		text("A");
 
 ![bend](images/lib3x-bend-2.JPG)
 
@@ -47,8 +48,8 @@ The arc shape is smoother if the `frags` value is larger.
 	z = 1;  
 	
 	bend(size = [x, y, z], angle = 270, frags = 360)
-	    linear_extrude(z) 
-	        text("A");
+	linear_extrude(z) 
+		text("A");
 
 ![bend](images/lib3x-bend-3.JPG)
 

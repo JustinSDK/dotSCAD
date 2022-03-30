@@ -21,15 +21,15 @@ Returns points that can be used to draw a voxel-style polygon.
 
 	for(pt = vx_polygon(pentagram)) {
 		translate(pt) 
-			linear_extrude(1, scale = 0.5) 
-			    square(1, center = true);
+		linear_extrude(1, scale = 0.5) 
+			square(1, center = true);
 	}
 
 	translate([30, 0])
         for(pt = vx_polygon(pentagram, filled = true)) {
             translate(pt) 
-                linear_extrude(1, scale = 0.5) 
-                    square(1, center = true);
+			linear_extrude(1, scale = 0.5) 
+				square(1, center = true);
         }
 
 ![vx_polygon](images/lib3x-vx_polygon-1.JPG)

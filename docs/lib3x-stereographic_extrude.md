@@ -16,7 +16,7 @@ The 2D polygon should center at the origin and you have to determine the side le
     
 	dimension = 100;
 	
-	render() stereographic_extrude(shadow_side_leng = dimension)
+	stereographic_extrude(shadow_side_leng = dimension, convexity = 10)
 	   text(
             "M", size = dimension, 
             valign = "center", halign = "center"

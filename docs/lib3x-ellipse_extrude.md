@@ -34,7 +34,9 @@ Extrudes a 2D object along the path of an ellipse from 0 to 180 degrees. The sem
 	 
 	ellipse_extrude(semi_minor_axis) 
 	    text("♥", size = 40, valign = "center", halign = "center");
-	mirror([0, 0, 1]) ellipse_extrude(semi_minor_axis) 
+		
+	mirror([0, 0, 1]) 
+	ellipse_extrude(semi_minor_axis) 
 	    text("♥", size = 40, valign = "center", halign = "center");
 
 ![ellipse_extrude](images/lib3x-ellipse_extrude-3.JPG)

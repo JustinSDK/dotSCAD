@@ -16,11 +16,11 @@ Generate 8x8 voxel points of printable ASCII characters (codes 32dec to 126dec).
 
     for(i = [0:94]) {
         translate([8 * (i % 10), -8 * floor(i / 10), 0]) 
-            for(p = vx_ascii(chr(i + 32))) {
-                translate(p) 
-                    linear_extrude(1, scale = 0.8) 
-                        square(1);
-            }
+        for(p = vx_ascii(chr(i + 32))) {
+            translate(p) 
+            linear_extrude(1, scale = 0.8) 
+                square(1);
+        }
     }       
 
 ![vx_ascii](images/lib3x-vx_ascii-1.JPG)
@@ -31,10 +31,10 @@ Generate 8x8 voxel points of printable ASCII characters (codes 32dec to 126dec).
      
     for(i = [0:len(t) - 1]) {
         translate([i * 8, 0]) 
-            for(pt = vx_ascii(t[i], invert = true)) {
-                translate(pt)
-                    sphere(0.5, $fn = 24);
-            }
+        for(pt = vx_ascii(t[i], invert = true)) {
+            translate(pt)
+                sphere(0.5, $fn = 24);
+        }
     }
 
 ![vx_ascii](images/lib3x-vx_ascii-2.JPG)

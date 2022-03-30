@@ -20,8 +20,8 @@ Given a list of points. `vx_polyline` returns points that can be used to draw a 
 
 	for(pt = vx_polyline([each pentagram, pentagram[0]])) {
 		translate(pt) 
-			linear_extrude(1, scale = 0.5) 
-			    square(1, center = true);
+		linear_extrude(1, scale = 0.5) 
+			square(1, center = true);
 	}
 
 ![vx_polyline](images/lib3x-vx_polyline-1.JPG)
@@ -42,10 +42,10 @@ Given a list of points. `vx_polyline` returns points that can be used to draw a 
 
 	for(a = [0:30:330]) { 
 		rotate(a) 
-			for(pt = vx_polyline(points)) {
-				translate(pt)
-					cube(1, center = true);
-			}
+		for(pt = vx_polyline(points)) {
+			translate(pt)
+				cube(1, center = true);
+		}
 	}
 		
 ![vx_polyline](images/lib3x-vx_polyline-2.JPG)
