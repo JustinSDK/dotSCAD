@@ -10,6 +10,7 @@
 
 use <util/reverse.scad>;
 use <util/find_index.scad>;
+use <util/slice.scad>;
 
 module sweep(sections, triangles = "SOLID") {
 
@@ -42,10 +43,7 @@ module sweep(sections, triangles = "SOLID") {
     function the_same_after_twisting(f_sect, l_sect, leng_pts_sect) =
         let(found_at_i = find_index(f_sect, function(p) p == l_sect[0]))
         found_at_i <= 0 ? false : 
-            l_sect == concat(
-                [for(i = found_at_i; i < leng_pts_sect; i = i + 1) f_sect[i]],
-                [for(i = 0; i < found_at_i; i = i + 1) f_sect[i]]
-            ); 
+                          l_sect == concat(slice(f_sect, found_at_i), slice(f_sect, 0, found_at_i));
 
     function to_v_pts(sects) = [for(sect = sects) each sect];                   
 
@@ -58,8 +56,7 @@ module sweep(sections, triangles = "SOLID") {
         v_pts = [for(sect = sects) each sect];
 
         begin_end_the_same =
-            first_sect == last_sect || 
-            the_same_after_twisting(first_sect, last_sect, leng_pts_sect);
+            first_sect == last_sect || the_same_after_twisting(first_sect, last_sect, leng_pts_sect);
 
         if(begin_end_the_same) {
             f_idxes = side_indexes(sects);
@@ -73,11 +70,7 @@ module sweep(sections, triangles = "SOLID") {
             test_sweep_solid(v_pts, f_idxes, triangles);
         } else {
             first_idxes = [for(i = leng_pts_sect - 1; i >= 0; i = i - 1) i];  
-           
-            from = leng_pts_sect * (leng_sects - 1);
-            to = from + leng_pts_sect - 1;
-
-            last_idxes = [each [from:to]];    
+            last_idxes = [each [leng_pts_sect * (leng_sects - 1):from + leng_pts_sect - 1]];    
             f_idxes = [first_idxes, each side_indexes(sects), last_idxes];
             
             polyhedron(
