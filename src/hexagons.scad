@@ -39,8 +39,7 @@ module hexagons(radius, spacing, levels) {
 
         offset_xs = [for(i = 0; i < n; i = i + 1) i * offset_step + center_offset];
         for(x = offset_xs) {
-            p = [x + tx, ty, 0];
-            translate(p) 
+            translate([x + tx, ty, 0]) 
                 hexagon();
         }
     }
@@ -66,11 +65,9 @@ module hexagons(radius, spacing, levels) {
             hexagons_pts(hex_datum)
     ];
 
-    for(pts_one_line = pts_all_lines) {
-        for(pt = pts_one_line) {
-            translate(pt) 
-                hexagon();
-        }
+    for(pts_one_line = pts_all_lines, pt = pts_one_line) {
+        translate(pt) 
+            hexagon();
     }
 
     test_each_hexagon(r_hexagon, pts_all_lines);
