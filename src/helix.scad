@@ -30,6 +30,6 @@ function helix(radius, levels, level_dist, vt_dir = "SPI_DOWN", rt_dir = "CT_CLK
     )
     [
         for(i = 0; i <= end_i; i = i + 1) 
-            let(r = begin_r + r_step * i, a = a_step * i)
-                [r * cos(a), r * sin(a), begin_h - h_step * i]
+        let(r = begin_r + r_step * i, a = a_step * i)
+        [r * cos(a), r * sin(a), begin_h - h_step * i]
     ];
