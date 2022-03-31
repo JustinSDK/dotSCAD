@@ -1,13 +1,12 @@
 use <../../some.scad>;
-use <../../find_index.scad>;
 
 function _hashmap_put(buckets, b_numbers, key, value, eq, hash) =
     let(
 	    b_idx = hash(key) % b_numbers,
 		bucket = buckets[b_idx],
-		k_idx = find_index(bucket, function(kv) eq(kv[0], key))
+		k_idx = search([key], bucket)[0]
 	)
-	k_idx != -1 ? _replace(buckets, b_numbers, bucket, key, value, b_idx, k_idx) : 
+	k_idx != [] ? _replace(buckets, b_numbers, bucket, key, value, b_idx, k_idx) : 
 	              _put(buckets, b_numbers, bucket, key, value, b_idx);
 
 function _replace(buckets, b_numbers, bucket, key, value, b_idx, k_idx) = 

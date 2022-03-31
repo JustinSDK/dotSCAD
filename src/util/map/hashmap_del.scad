@@ -9,7 +9,6 @@
 **/
 
 use <../../__comm__/_str_hash.scad>;
-use <../find_index.scad>;
 
 function hashmap_del(map, key, eq = function(e1, e2) e1 == e2, hash = function(e) _str_hash(e)) =
     let(
@@ -19,8 +18,8 @@ function hashmap_del(map, key, eq = function(e1, e2) e1 == e2, hash = function(e
 		leng_map = len(map)
 	)
 	leng_bucket == 0 ? map :
-	let(i = find_index(bucket, function(e) eq(e[0], key)))
-	i == -1 ? map : 
+	let(i = search([key], bucket)[0])
+	i == [] ? map : 
 	[
 	    for(j = 0; j < leng_map; j = j + 1) j == bidx ? 
 	        [for(k = 0; k < leng_bucket; k = k + 1) if(k != i) bucket[k]] :

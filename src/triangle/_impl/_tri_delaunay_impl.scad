@@ -201,7 +201,7 @@ function _delaunayBoundaries(d, badTriangles, boundaries, t, vi, _indices_hash) 
 	)
 	some(badTriangles, function(tri) tri == opTri) ?
 		let(
-		    i = find_index(hashmap_get(triangles, opTri, hash = _indices_hash), function(tri) tri == t),
+		    i = search([t], hashmap_get(triangles, opTri, hash = _indices_hash))[0],
 			nvi = (i + 1) % 3,
 			nt = opTri
 		)

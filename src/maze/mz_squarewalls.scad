@@ -9,7 +9,6 @@
 **/
 
 use <_impl/_mz_square_walls_impl.scad>;
-use <../util/find_index.scad>;
 
 function mz_squarewalls(cells, cell_width, left_border = true, bottom_border = true) = 
     let(

@@ -10,7 +10,6 @@
 
 use <../__comm__/_face_normal.scad>;
 use <../util/sort.scad>;
-use <../util/find_index.scad>;
 use <../util/sum.scad>;
 use <../surface/sf_solidifyT.scad>;
 use <../triangle/tri_delaunay.scad>;
@@ -36,7 +35,7 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH", con
 			tri = sort(triangles[i], by = ascending),
             n_cnt_tris = [
                 for(k = [0:leng_pts - 1])
-                find_index(tri, function(e) e == k) != -1 ? [each cnt_tris[k], triangles[i]] : cnt_tris[k]
+                search([k], tri)[0] != [] ? [each cnt_tris[k], triangles[i]] : cnt_tris[k]
             ]
 		)
 		_connected_tris(triangles, leng, leng_pts, n_cnt_tris, i + 1);
@@ -47,7 +46,7 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH", con
     if(is_list(direction)) {
         dir_v = direction / norm(direction);
         mid = sort(points)[leng_pts / 2];
-        tri = cnn_tris[find_index(points, function(p) p == mid)][0];
+        tri = cnn_tris[search([mid], points)[0]][0];
         nv = _face_normal([points[tri[0]], points[tri[1]], points[tri[2]]]);
         off = dir_v * thickness;
         pts = [for(p = points) p + off];
