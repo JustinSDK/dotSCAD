@@ -82,7 +82,7 @@ function carve_up(x, y, z, cells) =
         cells, 
         z_y_x_wall(cell) ? [x, y, z, 3, true] :
         z_y_wall(cell)   ? [x, y, z, 1, true] :
-        z_x_wall(cell)   ? [x, y, z, 6, true] : [x, y, z, 0, true]
+        z_x_wall(cell)   ? [x, y, z, 2, true] : [x, y, z, 0, true]
     );
 
 // go left and carve the right wall of the left cell
