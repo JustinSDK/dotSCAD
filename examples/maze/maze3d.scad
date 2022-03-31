@@ -8,7 +8,7 @@ rows = 4;
 columns = 4;
 cell_width = 15;
 road_width = 9;
-$fn = 4;
+$fn = 4;  // [4, 8, 12]
 
 maze3d();
 
