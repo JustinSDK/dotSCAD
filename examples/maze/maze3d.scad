@@ -1,13 +1,14 @@
 use <experimental/mz_cube.scad>;
 use <experimental/mz_cube_get.scad>;
-use <polyhedra/octahedron.scad>;
 use <util/has.scad>;
+use <crystal_ball.scad>;
 
-layers = 5;
-rows = 5;
-columns = 5;
-cell_width = 5;
-road_width = 2.5;
+layers = 4;
+rows = 4;
+columns = 4;
+cell_width = 15;
+road_width = 9;
+$fn = 4;
 
 maze3d();
 
@@ -41,8 +42,8 @@ module maze3d() {
         half_cw = cell_width / 2;
         half_rw = road_width / 2;
 
-        octahedron(half_rw);
-        
+        crystal_ball(half_rw);
+
         rots = [
             [0, 0, 0],
             [180, 0, 0],
@@ -52,11 +53,11 @@ module maze3d() {
             [0, -90, 0]
         ];
         
-        for(i = [0:5]) {
+       for(i = [0:5]) {
             if(channels[i]) {
                 rotate(rots[i])
                 linear_extrude(half_cw)
-                    circle(half_rw, $fn = 4);
+                    circle(half_rw);
             }
         }
     }
