@@ -70,36 +70,34 @@ module multiplication_puzzle(n, piece_side_length, spacing, same_height = false,
     n_minus_one = n - 1;
 	
 	intersection() {
-		union() for(x = [0 : n_minus_one]) {
-			for(y = [0 : n_minus_one]) {
-                pos = [piece_side_length * x, piece_side_length * y];
-			    r = (x + 1) * (y + 1);
-				linear_extrude(same_height ? height : r) union() {
-					translate(pos) 
-						puzzle_piece_with_text(piece_side_length, str(r), spacing);
-						
-					if(x == 0) {
-                        x_offset = half_circle_radius - spacing * 2;
-                        y_offset = piece_side_length * y - spacing;
-						translate([x_offset, side_length_div_4 + y_offset, 0]) 
-							circle(circle_radius);
-						translate([x_offset, side_length_div_4 * 3 + y_offset, 0]) 
-							circle(circle_radius);			
-					}
-					if(y == n_minus_one) {
-                        x_offset = piece_side_length * x - spacing;
-                        y_offset = piece_side_length * (y + 1) - half_circle_radius;
-                        translate([side_length_div_4 + x_offset, y_offset]) 
-                            circle(circle_radius);
-                        translate([side_length_div_4 * 3 + x_offset, y_offset]) 
-                            circle(circle_radius);	
-
-					}
-				}
-                linear_extrude((same_height ? height : r) - 0.6) 
+		union() for(x = [0 : n_minus_one], y = [0 : n_minus_one]) {
+            pos = [piece_side_length * x, piece_side_length * y];
+            r = (x + 1) * (y + 1);
+            linear_extrude(same_height ? height : r) union() {
                 translate(pos) 
-                    puzzle_piece(piece_side_length, spacing);
-			}
+                    puzzle_piece_with_text(piece_side_length, str(r), spacing);
+                    
+                if(x == 0) {
+                    x_offset = half_circle_radius - spacing * 2;
+                    y_offset = piece_side_length * y - spacing;
+                    translate([x_offset, side_length_div_4 + y_offset, 0]) 
+                        circle(circle_radius);
+                    translate([x_offset, side_length_div_4 * 3 + y_offset, 0]) 
+                        circle(circle_radius);			
+                }
+                if(y == n_minus_one) {
+                    x_offset = piece_side_length * x - spacing;
+                    y_offset = piece_side_length * (y + 1) - half_circle_radius;
+                    translate([side_length_div_4 + x_offset, y_offset]) 
+                        circle(circle_radius);
+                    translate([side_length_div_4 * 3 + x_offset, y_offset]) 
+                        circle(circle_radius);	
+
+                }
+            }
+            linear_extrude((same_height ? height : r) - 0.6) 
+            translate(pos) 
+                puzzle_piece(piece_side_length, spacing);
 		}
 		
 		linear_extrude(same_height ? height : n * n) 
