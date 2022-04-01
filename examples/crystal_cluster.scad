@@ -39,9 +39,7 @@ module crystal_cluster(base_r, crystals) {
 		
 		scale([1, 1, 0.5])
 		difference() {
-			translate([0, 0, -6.9])
-
-			translate([0, 0, 12])
+			translate([0, 0, 5.1])
 				worley_sphere(radius, detail, amplitude, dist);
 
 			translate([0, 0, -30]) 
