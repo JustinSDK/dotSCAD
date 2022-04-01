@@ -4,8 +4,6 @@ level = 4;
 reducing_scale = 0.575; // [0:0.707107]
 $fn = 8;
 
-echo(atan2(1, sqrt(2)));
-
 module drilled_cube(width, reducing_scale, joint_h, level) {
     module drills(width, reducing_scale, joint_h, level) {
         w = width * reducing_scale;
