@@ -16,21 +16,18 @@ ripples();
 module ripples() {
     point_size = size / mesh_w;
 
-	points = [for(y = [0:point_size.y - 1], x = [0:point_size.x - 1]) [x, y] * mesh_w];
-
-	noise = [for(p = points) nz_worley2(p.x, p.y, seed, grid_w, dist)[2]];
-
 	sf = [
 		for(y = [0:point_size.y - 1]) 
-			[for(x = [0:point_size.x - 1]) 
-				let(
-					i = point_size.x * y + x,
-					nz = noise[i],
-					p = points[i],
-					n = amplitude * nz_perlin2(nz + p.x / wave_smoothness, nz + p.y / wave_smoothness, seed)
-				)
-				[p.x, p.y, n]
-			]
+		[
+			for(x = [0:point_size.x - 1]) 
+			let(
+				px = x * mesh_w,
+				py = y * mesh_w,
+				nz = nz_worley2(px, py, seed, grid_w, dist)[2],
+				n = amplitude * nz_perlin2(nz + px / wave_smoothness, nz + py / wave_smoothness, seed)
+			)
+			[px, py, n]
+		]
 	];
 
 	sf_thicken(sf, thickness);
