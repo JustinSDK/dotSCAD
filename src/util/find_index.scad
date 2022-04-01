@@ -17,7 +17,7 @@ function find_index(lt, test) =
             )
             leng_indices == leng ? -1 : leng_indices
         ) : (
-            let(found = search([key], bucket)[0])
+            let(found = search([test], lt)[0])
             found == [] ? - 1 : found
         );
         
