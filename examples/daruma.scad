@@ -57,7 +57,7 @@ module daruma(nose) {
 			mirror([0, 1, 0])
 			mirror([0, 0, 1])
 				for(i = [0 : frags - 1]) {
-				rotate(i * frag_angle + half_frag_angle) 
+				    rotate(i * frag_angle + half_frag_angle) 
 					translate([0, offsetY, 0])
 					rotate([-90, 0, 0]) 
 						get_frag(i) 
@@ -163,7 +163,7 @@ module wish_decoration(text, font, font_size) {
 		if(len(text) == 1) {
 			translate([0, -43, 21])
 			rotate([90, 0, 0])
-			linear_extrude(10, scale = .8)
+			linear_extrude(10, scale = .8, convexity = 10)
 				text(
 					text, 
 					font = font,
@@ -175,7 +175,7 @@ module wish_decoration(text, font, font_size) {
 		else {
 			translate([0, -43, 29.5])
 			rotate([85, 0, 0])
-			linear_extrude(10, scale = .8)
+			linear_extrude(10, scale = .8, convexity = 10)
 				text(
 					text[0], 
 					font = font,
@@ -186,7 +186,7 @@ module wish_decoration(text, font, font_size) {
 				
 			translate([0, -42.5, 12])
 			rotate([105, 0, 0])
-			linear_extrude(10, scale = .8)
+			linear_extrude(10, scale = .8, convexity = 10)
 				text(
 					text[1], 
 					font = font,
@@ -201,8 +201,7 @@ module wish_decoration(text, font, font_size) {
 		translate([18, -38, 21])
 		rotate([100, 0, 0])
 		linear_extrude(10, scale = .8)
-		scale(.85)
-		scale([1, 1.825])
+		scale([.85, 1.55125])
 		offset(.5)
 		difference() {
 			circle(10);
@@ -213,8 +212,7 @@ module wish_decoration(text, font, font_size) {
 		translate([28, -30, 21])
 		rotate([100, 0, 30])
 		linear_extrude(10, scale = .8)
-		scale(.7)
-		scale([1, 1.825])
+		scale([.7, 1.2775])
 		offset(.5)
 		difference() {
 			circle(10);
