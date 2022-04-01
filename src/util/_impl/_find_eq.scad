@@ -1,7 +1,7 @@
 function _find_eq(lt, target, eq) = 
     is_undef(eq) ? (
             let(found = search([target], lt)[0])
-            found == [] ? - 1 : found
+            found == [] ? -1 : found
         ) : (
             let(
                 leng = len(lt),
