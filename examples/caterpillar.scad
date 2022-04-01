@@ -73,23 +73,23 @@ module body(radius) {
 		// eyes
 		color("black") {    
 			rotate([0, 65, 16]) 
-				linear_extrude(radius * 4.25)
-					eye();
+			linear_extrude(radius * 4.25)
+				eye();
 			
 			rotate([0, 65, -16]) 
-				linear_extrude(radius * 4.25) 
-					eye();
+			linear_extrude(radius * 4.25) 
+				eye();
 		}
 		
 		// eyebrows
 		color("black") {
 			rotate([0, 55, 20]) 
-				linear_extrude(radius * 4.25)
-  				    eyebrow();
+			linear_extrude(radius * 4.25)
+				eyebrow();
 				
 			rotate([0, 55, -20]) 
-				linear_extrude(radius * 4.25) 
-				    eyebrow();				
+			linear_extrude(radius * 4.25) 
+				eyebrow();				
 		}
 	}
 }
@@ -100,6 +100,7 @@ module arm(radius) {
 		linear_extrude(radius) {
 			translate([0, -radius * 0.75, 0]) 
 			    square([radius * 9, radius * 1.5]);
+
 			rotate(80) 
 			translate([0, -radius * 0.5, 0]) 
 			    square([radius * 9, radius]);
@@ -195,12 +196,14 @@ module small_caterpillar(radius) {
 		color("white") 
 		translate([0, 0, 0]) 
 		    sphere(radius / 1.5);
+
 		color("black") 
 		translate([.5 * radius, radius / 4, 0]) 
 		    sphere(radius / 3);
+
 		color("white") 
 		translate([.655 * radius, radius / 2.75, 0])
-		sphere(radius / 6);
+		    sphere(radius / 6);
 	}
 	
 	half_r = radius / 2;
@@ -212,9 +215,11 @@ module small_caterpillar(radius) {
 
 module caterpillars(radius) {
 	big_caterpillar(radius);
+	
 	translate([radius * 3.5, -radius * 4.5, radius * 9.75]) 
-		rotate([0, -15, 0]) 
-			scale([0.8, 0.8, 0.8]) small_caterpillar(radius);
+	rotate([0, -15, 0]) 
+	scale([0.8, 0.8, 0.8]) 
+	    small_caterpillar(radius);
 }
 
 caterpillars(5);
