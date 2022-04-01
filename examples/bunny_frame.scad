@@ -1,4 +1,4 @@
-use <experimental/polyhedron_frame.scad>;
+use <experimental/wireframe.scad>;
 
 deep = 1;
 thickness = .5;
@@ -25,4 +25,4 @@ points_faces = bunny();
 }
 
 
-polyhedron_frame(points_faces[0], points_faces[1], deep, thickness);
+wireframe(points_faces[0], points_faces[1], deep, thickness);
