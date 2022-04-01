@@ -3,6 +3,7 @@ use <_vt_default_comparator.scad>;
 function _vt_sort(lt) = 
     let(leng = len(lt))
     leng <= 1 ? lt : 
+    leng == 2 ? (greaterThan(lt[1], lt[0]) || lt[1] == lt[0] ? lt : [lt[1], lt[0]]) :
         let(
             pivot = lt[0],
             before = [for(j = 1; j < leng; j = j + 1) if(lessThan(lt[j], pivot)) lt[j]],
@@ -13,6 +14,7 @@ function _vt_sort(lt) =
 function _sort_by_idx(lt, i) = 
     let(leng = len(lt))
     leng <= 1 ? lt : 
+    leng == 2 ? (lt[1][i] >= lt[0][i] ? lt : [lt[1], lt[0]]) :
         let(
             pivot = lt[0],
             before = [for(j = 1; j < leng; j = j + 1) if(lt[j][i] < pivot[i]) lt[j]],
@@ -30,6 +32,7 @@ function _sort_by(lt, by, idx) =
 function _sort_by_cmp(lt, cmp) = 
     let(leng = len(lt))
     leng <= 1 ? lt : 
+    leng == 2 ? (cmp(lt[1], lt[0]) >= 0 ? lt : [lt[1], lt[0]]) :
         let(
             pivot = lt[0],
             before = [for(j = 1; j < leng; j = j + 1) if(cmp(lt[j], pivot) < 0) lt[j]],
