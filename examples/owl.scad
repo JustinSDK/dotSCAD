@@ -106,23 +106,20 @@ module owl(detail, head_angles) {
 		translate([0, 57, 22])
 		rotate([68, 0, 0])
 		shear(sy = [0, .3])
-		scale([11, 10, 15])
-		scale(10 / n)
+		scale([110, 100, 150] / n)
 			polar_zonohedra(n);
 
 
 		// belly
 		translate([0, 14, 22])
 		rotate([5, 0, 0])
-		scale([10, 9, 12])
-		scale(10 / n)
+		scale([100, 90, 120] / n)
 			polar_zonohedra(n);
 			
 		translate([0, 56.5, 15])
 		rotate([12, 0, 0])
 		shear(sy = [0, -1])
-		scale([9, 9, 10])
-		scale(10 / n)
+		scale([90, 90, 100] / n)
 			polar_zonohedra(n);
 		
 		// tail
@@ -130,16 +127,14 @@ module owl(detail, head_angles) {
 		rotate([12, 0, 0])
 		shear(sz = [0, .1])
 		shear(sy = [0, -1.1])
-		scale([8, 8, 11])
-		scale(10 / n)
+		scale([80, 80, 110] / n)
 			polar_zonohedra(n);
 
 		translate([4, 69, 11])
 		rotate([12, 0, 2])
 		shear(sz = [0, .1])
 		shear(sy = [0, -1.1])
-		scale([6, 6, 10])
-		scale(10 / n)
+		scale([60, 60, 100] / n)
 			polar_zonohedra(n);
 	}
 
@@ -148,8 +143,7 @@ module owl(detail, head_angles) {
 		rotate([68, 5, 0])
 		shear(sz = [0, .3])
 		shear(sy = [0, .2])
-		scale([12, 10, 14])
-		scale(10 / n)
+		scale([120, 100, 140] / n)
 			polar_zonohedra(n);
 	}	
 
@@ -160,13 +154,9 @@ module owl(detail, head_angles) {
 		points3 = bezier_curve(t_step, [[0, -25, 0.5], [5, -11, 12.5], [15, -16, 9.5], [25, -6, 22.5]]);
 		points4 = bezier_curve(t_step, [[0, -25, 0.5], [-5, -23, 17.5], [15, -21, 14.5], [25, -6, 22.5]]);
 
-		rails = [
-			points4, points3, points2, points
-		];
-
-		sections = m_transpose(rails);
-
-		sweep(sections);
+		sweep(
+			m_transpose([points4, points3, points2, points])
+		);
 	}
 	
 	module claw() {
