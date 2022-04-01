@@ -9,9 +9,15 @@
 **/ 
 
 function find_index(lt, test) = 
-    let(
-        leng = len(lt),
-        indices = [for(i = 0; i < leng && !test(lt[i]); i = i + 1) undef],
-        leng_indices = len(indices)
-    )
-    leng_indices == leng ? -1 : leng_indices;
+    is_function(test) ? (
+            let(
+                leng = len(lt),
+                indices = [for(i = 0; i < leng && !test(lt[i]); i = i + 1) undef],
+                leng_indices = len(indices)
+            )
+            leng_indices == leng ? -1 : leng_indices
+        ) : (
+            let(found = search([key], bucket)[0])
+            found == [] ? - 1 : found
+        );
+        

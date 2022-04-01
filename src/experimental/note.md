@@ -19,5 +19,7 @@ new:
 - lemniscate_curve?
 - perlin_sphere?
 
+- find_index: test support elem
+
 deprecated:
     rails2sections: use m_transpose
