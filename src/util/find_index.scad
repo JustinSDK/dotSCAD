@@ -9,15 +9,9 @@
 **/ 
 
 function find_index(lt, test) = 
-    is_function(test) ? (
-            let(
-                leng = len(lt),
-                indices = [for(i = 0; i < leng && !test(lt[i]); i = i + 1) undef],
-                leng_indices = len(indices)
-            )
-            leng_indices == leng ? -1 : leng_indices
-        ) : (
-            let(found = search([test], lt)[0])
-            found == [] ? - 1 : found
-        );
-        
+    let(
+        leng = len(lt),
+        indices = [for(i = 0; i < leng && !test(lt[i]); i = i + 1) undef],
+        leng_indices = len(indices)
+    )
+    leng_indices == leng ? -1 : leng_indices;
