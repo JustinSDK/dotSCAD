@@ -12,7 +12,7 @@ use <../../__comm__/_str_hash.scad>;
 use <_impl/_hashset_impl.scad>;
 use <_impl/_hashset_add_impl.scad>;
 	
-function hashset(lt, eq = function(e1, e2) e1 == e2, hash = function(e) _str_hash(e), number_of_buckets) =
+function hashset(lt, eq = undef, hash = function(e) _str_hash(e), number_of_buckets) =
     let(
 	    lt_undef = is_undef(lt),
 		leng_lt = lt_undef ? -1 : len(lt),

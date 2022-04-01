@@ -9,8 +9,9 @@
 **/
 
 use <../../__comm__/_str_hash.scad>;
+use <../_impl/_find_eq.scad>;
 
-function hashmap_del(map, key, eq = function(e1, e2) e1 == e2, hash = function(e) _str_hash(e)) =
+function hashmap_del(map, key, eq = undef, hash = function(e) _str_hash(e)) =
     let(
 	    bidx = hash(key) % len(map),
 		bucket = map[bidx],
@@ -18,8 +19,8 @@ function hashmap_del(map, key, eq = function(e1, e2) e1 == e2, hash = function(e
 		leng_map = len(map)
 	)
 	leng_bucket == 0 ? map :
-	let(i = search([key], bucket)[0])
-	i == [] ? map : 
+	let(i = _find_eq(bucket, key, eq))
+	i == -1 ? map : 
 	[
 	    for(j = 0; j < leng_map; j = j + 1) j == bidx ? 
 	        [for(k = 0; k < leng_bucket; k = k + 1) if(k != i) bucket[k]] :

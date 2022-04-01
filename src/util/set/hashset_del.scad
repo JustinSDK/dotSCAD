@@ -9,8 +9,9 @@
 **/
 
 use <../../__comm__/_str_hash.scad>;
+use <../_impl/_find_eq.scad>;
 
-function hashset_del(set, elem, eq = function(e1, e2) e1 == e2, hash = function(e) _str_hash(e)) =
+function hashset_del(set, elem, eq = undef, hash = function(e) _str_hash(e)) =
     let(
 	    leng_set = len(set),
 	    bidx = hash(elem) % leng_set,
@@ -18,8 +19,8 @@ function hashset_del(set, elem, eq = function(e1, e2) e1 == e2, hash = function(
 		leng_bucket = len(bucket)
 	)
 	leng_bucket == 0 ? set :
-	let(i = search([elem], bucket)[0])
-	i == [] ? set : 
+	let(i = _find_eq(bucket, elem, eq))
+	i == -1 ? set : 
 	[
 	    for(j = 0; j < leng_set; j = j + 1) j == bidx ? 
 		    [for(k = 0; k < leng_bucket; k = k + 1) if(k != i) bucket[k]] : 

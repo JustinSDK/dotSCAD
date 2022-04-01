@@ -9,11 +9,12 @@
 **/
 
 use <../../__comm__/_str_hash.scad>;
+use <../_impl/_find_eq.scad>;
 
-function hashmap_get(map, key, eq = function(e1, e2) e1 == e2, hash = function(e) _str_hash(e)) =
+function hashmap_get(map, key, eq = undef, hash = function(e) _str_hash(e)) =
     let(
 	    bidx = hash(key) % len(map),
 		bucket = map[bidx]
 	)
-	let(i = search([key], bucket)[0])
-	i == [] ? undef : bucket[i][1];
+	let(i = _find_eq(bucket, key, eq))
+	i == -1 ? undef : bucket[i][1];
