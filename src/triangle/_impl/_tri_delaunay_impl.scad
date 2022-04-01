@@ -4,7 +4,6 @@ use <../../util/map/hashmap_get.scad>;
 use <../../util/map/hashmap_del.scad>;
 use <../../util/map/hashmap_keys.scad>;
 use <../../util/map/hashmap_put.scad>;
-use <../../util/some.scad>;
 use <../../util/has.scad>;
 use <../../util/find_index.scad>;
 
@@ -199,7 +198,7 @@ function _delaunayBoundaries(d, badTriangles, boundaries, t, vi, _indices_hash) 
 	    triangles = delaunay_triangles(d),
 	    opTri = hashmap_get(triangles, t, hash = _indices_hash)[vi]
 	)
-	some(badTriangles, function(tri) tri == opTri) ?
+	has(badTriangles, opTri) ?
 		let(
 		    i = search([t], hashmap_get(triangles, opTri, hash = _indices_hash))[0],
 			nvi = (i + 1) % 3,
