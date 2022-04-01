@@ -25,8 +25,8 @@ module wormhole(length, width, depth, thickness, hole_r) {
     difference() {
         rotate([90, 0, 0])
         linear_extrude(width, center = true)
-            polyline_join(plane)
-                    square(thickness, center = true);
+        polyline_join(plane)
+                square(thickness, center = true);
             
         translate([(length - r1) / 2, 0])
         linear_extrude(depth + thickness * 2, center = true)
@@ -43,8 +43,8 @@ module wormhole(length, width, depth, thickness, hole_r) {
         translate([(length - r1) / 2, 0, r1 - r2])
         rotate_extrude()
         translate([r2 + half_thickness + hole_r, 0])
-            polyline_join(hole_profile)
-                square(thickness, center = true);
+        polyline_join(hole_profile)
+            square(thickness, center = true);
     }
 
     hole();

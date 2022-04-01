@@ -16,21 +16,21 @@ module dis_connected_klein_bottle(radius1, radius2, bottom_height, thickness, t_
 
     module bottom() { 
         rotate(180) 
-        rotate_extrude() {
-            ph1 = arc_path(radius = radius2, angle = [180, 360]);
-            ph2 = bezier_curve(t_step, [
-                        [radius1 + radius2 * 2, 0, 0],
-                        [radius1 + radius2 * 2, bottom_height * 0.25, 0],
-                        [radius1 + radius2 * 0.5, bottom_height * 0.5, 0],
-                        [radius1, bottom_height * 0.75, 0],
-                        [radius1, bottom_height * 1.015, 0]            
-                    ]);
-                
-            path = concat([for(p = ph1) p + [radius1 + radius2, 0, 0]], ph2);
-                
-            polyline_join(path)
-			    circle(half_thickness);      
-        }
+            rotate_extrude() {
+                ph1 = arc_path(radius = radius2, angle = [180, 360]);
+                ph2 = bezier_curve(t_step, [
+                            [radius1 + radius2 * 2, 0, 0],
+                            [radius1 + radius2 * 2, bottom_height * 0.25, 0],
+                            [radius1 + radius2 * 0.5, bottom_height * 0.5, 0],
+                            [radius1, bottom_height * 0.75, 0],
+                            [radius1, bottom_height * 1.015, 0]            
+                        ]);
+                    
+                path = concat([for(p = ph1) p + [radius1 + radius2, 0, 0]], ph2);
+                    
+                polyline_join(path)
+                    circle(half_thickness);      
+            }
     }
 
     module tube() {
@@ -75,17 +75,17 @@ module dis_connected_klein_bottle(radius1, radius2, bottom_height, thickness, t_
                 bottom(); 
 
                 rotate(-90) 
-                path_extrude(
-                    shape_circle(radius1 + half_thickness),
-                    tube_path
-                );
+                    path_extrude(
+                        shape_circle(radius1 + half_thickness),
+                        tube_path
+                    );
             }
 
             rotate(-90)
-            path_extrude(
-                shape_circle(radius1 - half_thickness),
-                tube_path2
-            );
+                path_extrude(
+                    shape_circle(radius1 - half_thickness),
+                    tube_path2
+                );
         }
     }
 
@@ -94,17 +94,17 @@ module dis_connected_klein_bottle(radius1, radius2, bottom_height, thickness, t_
 
 module trefoil_klein_bottle(radius1, radius2, bottom_height, thickness, t_step, fn) {
     rotate(90)
-    dis_connected_klein_bottle(radius1, radius2, bottom_height, thickness, t_step, fn);
+        dis_connected_klein_bottle(radius1, radius2, bottom_height, thickness, t_step, fn);
     
     translate([0, -26.9, 151.35]) // try-and-error
     rotate([-120, 0, 0])
     rotate(90)
-    dis_connected_klein_bottle(radius1, radius2, bottom_height, thickness, t_step, fn);
+        dis_connected_klein_bottle(radius1, radius2, bottom_height, thickness, t_step, fn);
     
     translate([0, 117.59, 98.975])  // try-and-error
     rotate([120, 0, 0])
     rotate(90)
-    dis_connected_klein_bottle(radius1, radius2, bottom_height, thickness, t_step, fn);  
+        dis_connected_klein_bottle(radius1, radius2, bottom_height, thickness, t_step, fn);  
 }
 
 module trefoil_cutted_klein_bottle(radius1, radius2, bottom_height, thickness, t_step, fn) {

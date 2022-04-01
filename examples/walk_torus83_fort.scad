@@ -106,39 +106,39 @@ module walk_torus83_fort(radius, thickness, height) {
         half_leng2 = leng2 / 2;
         
         rotate([90, 0, 0]) 
-           linear_extrude(thickness, center = true) {
-                // walkway with doors
-                difference() {
-                    hull() {   
-                        translate([half_leng, 0, 0]) 
-                            square([leng, height], center = true);
-                        translate([-half_leng, -half_h])
-                            polygon(tri_points);
-                    }
-                    
-                    translate([-leng / 2.125, 0]) 
-                        door_df();
-                    
-                    half_door_df();
-                }
-                translate([-half_leng - height, -half_h]) 
-                    stairs(height, stair_number);
-                    
-                 // walkway without doors    
-                translate([-leng * 2, 0]) 
-                rotate([180, 0, 180]) {
-                    translate([half_leng2, 0]) 
-                        square([leng2, height], center = true);
-                    translate([0, -half_h]) 
+        linear_extrude(thickness, center = true) {
+            // walkway with doors
+            difference() {
+                hull() {   
+                    translate([half_leng, 0, 0]) 
+                        square([leng, height], center = true);
+                    translate([-half_leng, -half_h])
                         polygon(tri_points);
-                    translate([-height, -half_h]) 
-                        stairs(height, stair_number);
-                    
-                    walk_bottom_leng = 2 * leng - height * 2 - half_leng;
-                    translate([-walk_bottom_leng - height, -half_h]) 
-                        square([walk_bottom_leng, height / stair_number]);
-                }                    
+                }
+                
+                translate([-leng / 2.125, 0]) 
+                    door_df();
+                
+                half_door_df();
             }
+            translate([-half_leng - height, -half_h]) 
+                stairs(height, stair_number);
+                
+                // walkway without doors    
+            translate([-leng * 2, 0]) 
+            rotate([180, 0, 180]) {
+                translate([half_leng2, 0]) 
+                    square([leng2, height], center = true);
+                translate([0, -half_h]) 
+                    polygon(tri_points);
+                translate([-height, -half_h]) 
+                    stairs(height, stair_number);
+                
+                walk_bottom_leng = 2 * leng - height * 2 - half_leng;
+                translate([-walk_bottom_leng - height, -half_h]) 
+                    square([walk_bottom_leng, height / stair_number]);
+            }                    
+        }
     }
 
     module one_burst(leng, thickness, height, stair_number) {
