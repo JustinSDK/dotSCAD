@@ -44,32 +44,29 @@ module rock_theta_maze(rings, begining_columns, cell_width, rock_size, height_sc
 	scale([1, 1, height_scale]) 
 	difference() {
 		union() {
-			for(rings = maze) {
-				for(cell = rings) {
+			for(rings = maze, cell = rings) {	
+				ri = mz_theta_get(cell, "r");
+				ci = mz_theta_get(cell, "c");
+				if([ri, ci] != [0, 0]) {
+					wallType = mz_theta_get(cell, "t");
+					thetaStep = 360 / len(maze[ri]);
+					innerR = (ri + 1) * cell_width;
+					outerR = (ri + 2) * cell_width;
+					theta1 = thetaStep * ci;
+					theta2 = thetaStep * (ci + 1);
 					
-					ri = mz_theta_get(cell, "r");
-					ci = mz_theta_get(cell, "c");
-					if([ri, ci] != [0, 0]) {
-						wallType = mz_theta_get(cell, "t");
-						thetaStep = 360 / len(maze[ri]);
-						innerR = (ri + 1) * cell_width;
-						outerR = (ri + 2) * cell_width;
-						theta1 = thetaStep * ci;
-						theta2 = thetaStep * (ci + 1);
-						
-						innerVt1 = vt_from_angle(theta1, innerR);
-						innerVt2 = vt_from_angle(theta2, innerR);
-						outerVt2 = vt_from_angle(theta2, outerR);
-						
-						if(wallType == "INWARD_WALL" || wallType == "INWARD_CCW_WALL") {
-							rock_wall(innerVt1, innerVt2, rock_size);
-						}
-
-						if(wallType == "CCW_WALL" || wallType == "INWARD_CCW_WALL") {
-							rock_wall(innerVt2, outerVt2, rock_size);
-						}
+					innerVt1 = vt_from_angle(theta1, innerR);
+					innerVt2 = vt_from_angle(theta2, innerR);
+					outerVt2 = vt_from_angle(theta2, outerR);
+					
+					if(wallType == "INWARD_WALL" || wallType == "INWARD_CCW_WALL") {
+						rock_wall(innerVt1, innerVt2, rock_size);
 					}
-				} 
+
+					if(wallType == "CCW_WALL" || wallType == "INWARD_CCW_WALL") {
+						rock_wall(innerVt2, outerVt2, rock_size);
+					}
+				}
 			}
 			
 			thetaStep = 360 / len(maze[rings - 1]);

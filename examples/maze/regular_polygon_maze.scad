@@ -52,7 +52,7 @@ module regular_polygon_maze(radius, ccells, levels, thickness = 1, sides) {
 	cells = mz_square(ccells, levels, y_wrapping = true);
 
 	difference() {
-		render() union() {
+		union() {
 			for(i = [1 : levels + 1]) {
 			    ring_regular_polygon(r * i, thickness, sides);
 			}
@@ -70,7 +70,7 @@ module regular_polygon_maze(radius, ccells, levels, thickness = 1, sides) {
 			}
 	    }
 		
-		render() union() {
+		union() {
 		    // maze entry
 			// ring_regular_polygon_sector(r, arc_angle / 1.975 , thickness, r / 3, sides);   
 
