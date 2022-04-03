@@ -46,10 +46,8 @@ module cylinder_maze() {
 
     bend(size = [leng_circumference, cell_width * maze_rows + wall_thickness, wall_height], angle = 360 + 360 * wall_thickness / leng_circumference, frags = fn) 
     translate([0, wall_thickness / 2])
-        for(wall = walls) {
-            for(i = [0:len(wall) - 2]) {
-                ramp_line(wall[i], wall[i + 1], wall_thickness, wall_height, wall_top_scale);
-            }
+        for(wall = walls, i = [0:len(wall) - 2]) {
+            ramp_line(wall[i], wall[i + 1], wall_thickness, wall_height, wall_top_scale);
         }
 }
 
