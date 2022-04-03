@@ -8,13 +8,11 @@ function _chebyshev(p1, p2) =
 
 function _nz_cell_classic(cells, p, dist) =
     let(
-        dists = [
-            for(cell = cells)
-                dist == "euclidean" ? norm(cell - p) :
-                dist == "manhattan" ? _manhattan(cell - p) :
-                dist == "chebyshev" ? _chebyshev(cell, p) :
-                             assert("Unknown distance option")
-        ]
+        dists = 
+            dist == "euclidean" ? [for(cell = cells) norm(cell - p)] :
+            dist == "manhattan" ? [for(cell = cells) _manhattan(cell - p)] :
+            dist == "chebyshev" ? [for(cell = cells) _chebyshev(cell, p)] :
+                            assert("Unknown distance option")
     )
     min(dists); 
 
