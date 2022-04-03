@@ -5,7 +5,7 @@ use <polyline2d.scad>;
 
 $fn = 48;
 
-rings = 6;
+rings = 5;
 beginning_number = 5;
 cell_width = 2;
 
@@ -29,36 +29,34 @@ module maze_tower() {
 	r = cell_width * (rings + 1);
 
 	module maze() {
-		for(rings = mz) {
-			for(cell = rings) {
-				ri = cell[0];
-				ci = cell[1];
-				type = cell[2];
-				thetaStep = 360 / len(mz[ri]);
-				innerR = (ri + 1) * cell_width;
-				outerR = (ri + 2) * cell_width;
-				theta1 = thetaStep * ci;
-				theta2 = thetaStep * (ci + 1);
+		for(rings = mz, cell = rings) {
+			ri = cell[0];
+			ci = cell[1];
+			type = cell[2];
+			thetaStep = 360 / len(mz[ri]);
+			innerR = (ri + 1) * cell_width;
+			outerR = (ri + 2) * cell_width;
+			theta1 = thetaStep * ci;
+			theta2 = thetaStep * (ci + 1);
 
-				innerVt2 = vt_from_angle(theta2, innerR);
-				outerVt2 = vt_from_angle(theta2, outerR);
+			innerVt2 = vt_from_angle(theta2, innerR);
+			outerVt2 = vt_from_angle(theta2, outerR);
 
-				if(type == INWARD_WALL || type == INWARD_CCW_WALL) {
-					if(!(ri == 0 && ci == 0)) {
-						arc(innerR, [theta1, theta2], wall_thickness);
-					}
+			if(type == INWARD_WALL || type == INWARD_CCW_WALL) {
+				if(!(ri == 0 && ci == 0)) {
+					arc(innerR, [theta1, theta2], wall_thickness);
 				}
+			}
 
-				if(type == CCW_WALL || type == INWARD_CCW_WALL) {
-					intersection() {
-						difference() {
-						    circle(outerR + half_wall_thickness);
-							circle(innerR - half_wall_thickness);
-						}
-						polyline2d([innerVt2 * 0.9, outerVt2], width = wall_thickness);
+			if(type == CCW_WALL || type == INWARD_CCW_WALL) {
+				intersection() {
+					difference() {
+						circle(outerR + half_wall_thickness);
+						circle(innerR - half_wall_thickness);
 					}
+					polyline2d([innerVt2 * 0.9, outerVt2], width = wall_thickness);
 				}
-			} 
+			}
 		} 
 
 		arc(r, 360, wall_thickness);
@@ -77,7 +75,7 @@ module maze_tower() {
 					circle(r + wall_thickness * 0.4999);
 			}
 			translate([0, 0, -0.1])
-			linear_extrude(wall_height * (mz_leng + 2)) 
+			linear_extrude(wall_height * (mz_leng + 2), convexity = 10) 
 			    maze();
 		}
 		last_rings = mz[mz_leng - 1];
@@ -91,13 +89,11 @@ module maze_tower() {
 		num_stairs = 4;
 		stair_thickness = wall_thickness / 3;
 		or = r + half_wall_thickness;
-		for(ri = [0:2:rings * 2]) {
-			for(si = [0:2]) {
-				r = or - stair_thickness * si - wall_thickness * ri;
-				translate([0, 0, wall_height * ri / 2 + wall_height / num_stairs * (si + 1)])
-				linear_extrude(wall_height / num_stairs * (3 - si))
-				    arc(r, 360, stair_thickness, width_mode = "LINE_INWARD");
-			}
+		for(ri = [0:2:rings * 2], si = [0:2]) {
+			r = or - stair_thickness * si - wall_thickness * ri;
+			translate([0, 0, wall_height * ri / 2 + wall_height / num_stairs * (si + 1)])
+			linear_extrude(wall_height / num_stairs * (3 - si))
+				arc(r, 360, stair_thickness, width_mode = "LINE_INWARD");
 		}
 	}
 

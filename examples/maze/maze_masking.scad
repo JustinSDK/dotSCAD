@@ -34,12 +34,11 @@ module maze_masking(start, mask, cell_width, wall_thickness, wall_height, base_h
 		mz_square_initialize(mask = mask)
     );
 
-	pts = contour ? vx_contour([
-	for(y = [0:rows - 1])
-	    for(x = [0:columns - 1])
-		    if(mask[rows - y - 1][x] == 1)
-			    [x, y]
-	], sorted = true) : [];	
+	pts = contour ? 
+		vx_contour([
+			for(y = [0:rows - 1], x = [0:columns - 1]) if(mask[rows - y - 1][x] == 1) [x, y]
+		], sorted = true) : 
+		[];	
 	
     walls = mz_squarewalls(cells, cell_width);
 	
@@ -47,25 +46,21 @@ module maze_masking(start, mask, cell_width, wall_thickness, wall_height, base_h
 	linear_extrude(wall_height)
 	intersection() {
 	    union() {
-			for(wall = walls) {
-				for(i = [0:len(wall) - 2]) {
-					if(wall[i][0] != 0 && wall[i][1] != 0) {
-						hull() {
-							translate(wall[i]) 
-							    square(wall_thickness);
-							translate(wall[i + 1]) 
-							    square(wall_thickness);
-						}
+			for(wall = walls, i = [0:len(wall) - 2]) {
+				if(wall[i][0] != 0 && wall[i][1] != 0) {
+					hull() {
+						translate(wall[i]) 
+							square(wall_thickness);
+						translate(wall[i + 1]) 
+							square(wall_thickness);
 					}
 				}
 			} 
-			for(y = [0:rows - 1]) {
-				for(x = [0:columns - 1]) {
-					if(mask[rows - y - 1][x] == 0) {
-						translate([x * cell_width + wall_thickness, y * cell_width + wall_thickness])
-						    square(cell_width);
-					}
-			    }
+			for(y = [0:rows - 1], x = [0:columns - 1]) {
+				if(mask[rows - y - 1][x] == 0) {
+					translate([x * cell_width + wall_thickness, y * cell_width + wall_thickness])
+						square(cell_width);
+				}
 			}
 		}
 
@@ -80,13 +75,13 @@ module maze_masking(start, mask, cell_width, wall_thickness, wall_height, base_h
 			translate([0, 0, -base_height])
 			linear_extrude(base_height)
 			translate([wall_thickness * 2, wall_thickness * 2])
-			   polygon(pts * cell_width);	
+			    polygon(pts * cell_width);	
 	    }
 		else {
 		    translate([0, 0, -base_height])
 		    linear_extrude(base_height)
 			translate([wall_thickness, wall_thickness])
-			square([columns, rows] * cell_width);
+			    square([columns, rows] * cell_width);
 		}
 	}
 }
