@@ -20,10 +20,10 @@ function _neighbors(fcord, seed, grid_w) =
 
 function _nz_worley3_classic(p, nbrs, dist) =
     let(
-        cells = [
-            for(nbr = nbrs) 
-                [each nbr, _distance(nbr, p, dist)]
-        ],
+        cells = dist == "euclidean" ? [for(nbr = nbrs) [each nbr, norm(nbr - p)]] :
+                dist == "manhattan" ? [for(nbr = nbrs) [each nbr, _manhattan(nbr - p)]]  :
+                dist == "chebyshev" ? [for(nbr = nbrs) [each nbr, _chebyshev(nbr, p)]] : 
+                               assert("Unknown distance option"),    
         sorted = sort(cells, by = "idx", idx = 3)
     )
     sorted[0];
