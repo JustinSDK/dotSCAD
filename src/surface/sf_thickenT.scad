@@ -16,11 +16,9 @@ use <../triangle/tri_delaunay.scad>;
 
 module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH", convexity = 1) {
     // triangles : counter-clockwise
-    real_triangles = is_undef(triangles) ? tri_delaunay([for(p = points) [p[0], p[1]]]) : triangles;
+    real_triangles = is_undef(triangles) ? tri_delaunay([for(p = points) [p.x, p.y]]) : triangles;
 
     tris = [for(tri = real_triangles) [tri[2], tri[1], tri[0]]];
-
-	ascending = function(e1, e2) e1 - e2;
 
 	function connected_tris(leng_pts, triangles) =
 		let(
@@ -32,10 +30,10 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH", con
 	function _connected_tris(triangles, leng, leng_pts, cnt_tris, i = 0) = 
 		i == leng ? cnt_tris :
 		let(
-			tri = sort(triangles[i], by = ascending),
+			tri = triangles[i],
             n_cnt_tris = [
                 for(k = [0:leng_pts - 1])
-                search([k], tri)[0] != [] ? [each cnt_tris[k], triangles[i]] : cnt_tris[k]
+                search([k], tri)[0] != [] ? [each cnt_tris[k], tri] : cnt_tris[k]
             ]
 		)
 		_connected_tris(triangles, leng, leng_pts, n_cnt_tris, i + 1);
