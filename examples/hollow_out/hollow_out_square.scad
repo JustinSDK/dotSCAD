@@ -24,8 +24,9 @@ function hollow_out_square(size, width) =
         rows = size[1]
     )
     [
-        for(y = [0:width:width * rows - width])
-            for(x = [0:width:width * columns - width])
-                for(line = h_lines_in_square(width)) 
-                    [for(p = line) p + [x, y]] 
+        for(y = [0:width:width * rows - width], 
+            x = [0:width:width * columns - width], 
+            line = h_lines_in_square(width)
+        )
+        [for(p = line) p + [x, y]] 
     ];

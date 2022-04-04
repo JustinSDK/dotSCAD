@@ -50,19 +50,18 @@ module floor_stand(width, height, thickness, spacing) {
     }
 
     module board_T() {
-        linear_extrude(thickness, center = true) 
-            union() { 
-                difference() {
-                    board_base();
-                    square([width, height / 3], center = true);
-                }
-                
-                translate([0, -height / 12 - spacing / 2, 0]) 
-                difference() {
-                    square([width / 1.5 - double_spacing, height / 6 + spacing], center = true);
-                    square([width / 1.5 - thickness * 2, height / 6], center = true);
-                }
+        linear_extrude(thickness, center = true) { 
+            difference() {
+                board_base();
+                square([width, height / 3], center = true);
             }
+            
+            translate([0, -height / 12 - spacing / 2, 0]) 
+            difference() {
+                square([width / 1.5 - double_spacing, height / 6 + spacing], center = true);
+                square([width / 1.5 - thickness * 2, height / 6], center = true);
+            }
+        }
 
         rotate([0, 90, 0]) {
             linear_extrude(width / 1.5 - double_spacing, center = true) 

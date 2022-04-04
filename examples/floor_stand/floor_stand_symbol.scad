@@ -30,17 +30,16 @@ module content(text, font, font_size, symbol_png, symbol_unicode, symbol_font, s
     translate([0, -height / 1.8, thickness]) {
         color("black") 
         linear_extrude(half_th / 2) 
-        union() {
-            translate([0, -half_h / 3, 0]) 
-                multi_line_text(
-                    split_str(text, " "),
-                    font = font,
-                    size = font_size,
-                    line_spacing = line_spacing,    
-                    valign = "center", 
-                    halign = "center"
-                );
-        } 
+        translate([0, -half_h / 3, 0]) 
+            multi_line_text(
+                split_str(text, " "),
+                font = font,
+                size = font_size,
+                line_spacing = line_spacing,    
+                valign = "center", 
+                halign = "center"
+            );
+
         
         if(symbol_source == "DEFAULT") {
             color("green") 
@@ -62,14 +61,13 @@ module content(text, font, font_size, symbol_png, symbol_unicode, symbol_font, s
             color("black") 
             translate([0, half_h / 5, half_th / 4]) 
             scale([symbol_png_scale, symbol_png_scale, 1])
-                difference() {       
-                    cube([symbol_png_size * 0.99, symbol_png_size  * 0.99, stand_thickness / 4], center = true);                        
-                    
-                    translate([0, 0, -50])
-                    scale([1, 1, 100]) 
-                        surface(symbol_png, center = true); 
-                }
-            
+            difference() {       
+                cube([symbol_png_size * 0.99, symbol_png_size  * 0.99, stand_thickness / 4], center = true);                        
+                
+                translate([0, 0, -50])
+                scale([1, 1, 100]) 
+                    surface(symbol_png, center = true); 
+            }
         }
     }
 }
