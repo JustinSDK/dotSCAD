@@ -56,12 +56,12 @@ module dragon_head() {
 
         translate([0, 0, -3.25]) 
         rotate([90, 0, -90]) 
-            ellipse_extrude(5.5, slices = 2) 
-                polygon(
-                    shape_trapezium([5, 18], 
-                    h = 20,
-                    corner_r = 2, $fn = 4)
-                );    
+        ellipse_extrude(5.5, slices = 2) 
+            polygon(
+                shape_trapezium([5, 18], 
+                h = 20,
+                corner_r = 2, $fn = 4)
+            );    
 
         scale([1.5, 1, 1])
         intersection() {       
@@ -122,8 +122,8 @@ module dragon_head() {
         translate([0, 0, 2]) 
         {
             rotate(-90) {
-                    one_horn();
-                    mirror([-1, 0, 0]) one_horn();       
+                one_horn();
+                mirror([-1, 0, 0]) one_horn();       
             }
             
             mouth();

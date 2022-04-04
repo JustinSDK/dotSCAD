@@ -26,11 +26,12 @@ module foot() {
     lower_arm_scale_data = one_body_scale(lower_arm_r, arm_fn, scale_fn, scale_tilt_a);
 
     along_with(upper_arm_path, scale = 0.75, method = "EULER_ANGLE") 
-        rotate([-90, 0, 0])
-            dragon_body_scales(upper_arm_r, arm_fn, upper_arm_scale_data);
+    rotate([-90, 0, 0])
+        dragon_body_scales(upper_arm_r, arm_fn, upper_arm_scale_data);
+
     along_with(lower_arm_path, scale = 0.7, method = "EULER_ANGLE") 
-        rotate([-90, 0, 0])
-            dragon_body_scales(lower_arm_r, arm_fn, lower_arm_scale_data);
+    rotate([-90, 0, 0])
+        dragon_body_scales(lower_arm_r, arm_fn, lower_arm_scale_data);
     
     translate([2.25, 14.5, 12.75])
     scale([0.7, 1.15, .8])
