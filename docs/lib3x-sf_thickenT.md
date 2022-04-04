@@ -14,22 +14,20 @@ It thickens a surface with triangular mesh.
 	use <surface/sf_thickenT.scad>;
 
 	radius = 100;
-	width = 2;
 	thickness = .2;
 
 	a_step = 10;
 	r_step = 0.2;
 
-	function f(x, y) = (pow(y,2)/pow(2, 2))-(pow(x,2)/pow(2, 2));
+	function f(x, y) = (y^2 - x^2) / 4;
 
 	points = [
-		for(a = [a_step:a_step:360])
-			for(r = [r_step:r_step:2])
-			let(
-				x = round(r * cos(a) * 100) / 100, 
-				y = round(r * sin(a) * 100) / 100
-			)
-			[x, y, f(x, y)] 
+		for(a = [a_step:a_step:360], r = [r_step:r_step:2])
+		let(
+			x = round(r * cos(a) * 100) / 100, 
+			y = round(r * sin(a) * 100) / 100
+		)
+		[x, y, f(x, y)] 
 	];
 
 	sf_thickenT(points, thickness);
@@ -44,14 +42,13 @@ It thickens a surface with triangular mesh.
 	thickness = .2;
 
 	points = [
-		for(u = [0:u_step:360])
-			for(v = [-1:v_step:1])
-			let(
-				x = (1 + v / 2 * cos(u / 2)) * cos(u),
-				y = (1 + v / 2 * cos(u / 2)) * sin(u),
-				z = v / 2 * sin(u / 2)
-			)
-			[x, y, z]
+		for(u = [0:u_step:360], v = [-1:v_step:1])
+		let(
+			x = (1 + v / 2 * cos(u / 2)) * cos(u),
+			y = (1 + v / 2 * cos(u / 2)) * sin(u),
+			z = v / 2 * sin(u / 2)
+		)
+		[x, y, z]
 	];
 
 	triangles = tri_delaunay([
