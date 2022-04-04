@@ -30,9 +30,9 @@ module spiral_math_constants(n, radius, constants, font_name, font_size, txt_ext
 
 	module constant_on_spiral(constant, spiral) {
 		for(i = [0:len(spiral) - 1]) {
-			x = spiral[i][0];
-			y = spiral[i][1];
-			z = spiral[i][2];
+			x = spiral[i].x;
+			y = spiral[i].y;
+			z = spiral[i].z;
 			ya = atan2(z, sqrt(x * x + y * y));
 			za = atan2(y, x);
 

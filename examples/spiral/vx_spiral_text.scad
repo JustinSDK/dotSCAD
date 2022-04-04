@@ -9,7 +9,7 @@ linear_extrude(2)
         translate(pts[i]) 
         difference() {
             square(7, center = true);
-            render() for(p = vx_ascii(tx[i], center = true)) {
+            for(p = vx_ascii(tx[i], center = true)) {
                 translate(p) square(.8);
             }
         } 

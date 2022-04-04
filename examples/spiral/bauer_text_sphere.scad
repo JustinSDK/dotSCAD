@@ -17,7 +17,6 @@ module bauer_text_sphere(radius, font_name, font_size, txt_extrude, txt_scale, b
     pts = bauer_spiral(n, radius);
 
     if(ball) {
-        render() 
         sphere(radius * 0.9);
     }
     /* 
@@ -25,10 +24,10 @@ module bauer_text_sphere(radius, font_name, font_size, txt_extrude, txt_scale, b
           Bauer R. Distribution of points on a sphere with application to star catalogs. Journal of Guidance, Control, and Dynamics. 2000;23(1):130–137
     */
     for(i = [0:n - 1]) {
-        x = pts[i][0];
-        y = pts[i][1];
-        z = pts[i][2];
-        ya = atan2(z, sqrt(x * x + y * y));
+        x = pts[i].x;
+        y = pts[i].y;
+        z = pts[i].z;
+        ya = atan2(z, norm([x, y]));
         za = atan2(y, x);
 
         render() 

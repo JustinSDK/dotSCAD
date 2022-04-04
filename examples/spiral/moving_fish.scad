@@ -17,8 +17,8 @@ module joint_Y(leng, width, height, ring_offset, thickness) {
 	linear_extrude(height, center = true) 
     difference() {
         hollow_out(thickness)
-            offset(delta = thickness, chamfer = true) 
-                square([inner_leng, inner_width], center = true);
+        offset(delta = thickness, chamfer = true) 
+            square([inner_leng, inner_width], center = true);
 		
         translate([-half_thickness - inner_leng / 2, 0, 0]) 
 	        square([thickness, inner_width], center = true);

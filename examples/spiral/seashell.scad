@@ -58,14 +58,8 @@ module seashell() {
 		);
 
 	points = [
-		for(s = [s_s:s_step:s_e])
-			for(theta = [theta_s:theta_step:theta_e])
-			let(
-				x = x(theta, s),
-				y = y(theta, s),
-				z = z(theta, s)
-			)
-			[x, y, z]
+		for(s = [s_s:s_step:s_e], theta = [theta_s:theta_step:theta_e])
+		[x(theta, s), y(theta, s), z(theta, s)]
 	];
 
 	slen = floor((s_e - s_s) / s_step);
@@ -73,15 +67,12 @@ module seashell() {
 
 	c = thetalen + 1;
 	triangles = [
-		for(s = [0:slen - 1])
-			for(theta = [0:thetalen - 1])
-			each [
-				[theta + s * c, theta + 1 + s * c, theta + (s + 1) * c], 
-				[theta + 1 + s * c, theta + 1 + (s + 1) * c, theta + (s + 1) * c]
-			]
+		for(s = [0:slen - 1], theta = [0:thetalen - 1])
+		each [
+			[theta + s * c, theta + 1 + s * c, theta + (s + 1) * c], 
+			[theta + 1 + s * c, theta + 1 + (s + 1) * c, theta + (s + 1) * c]
+		]
 	];
-
-
 
 	sf_thickenT(points, thickness, triangles);
 }

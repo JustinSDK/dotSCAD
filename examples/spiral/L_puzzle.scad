@@ -48,7 +48,7 @@ module L_puzzle(level, thickness, thickness_step = true, p = 1.272) {
             mirror([1, 0, 0])
             rotate(-90)
             color(rands(0, 1, 3))
-            L_piece(1, thickness_step ? thickness * 2 : thickness);
+                L_piece(1, thickness_step ? thickness * 2 : thickness);
         }
     }
 
@@ -77,13 +77,13 @@ module L_puzzle(level, thickness, thickness_step = true, p = 1.272) {
             translate([0, offset1])
             rotate(-90) {
                 scale([1, 1, thickness_step ? 1 + level * 0.05 : 1])
-                _L_puzzle(level - 1);
+                    _L_puzzle(level - 1);
  
                 translate([offset1, offset2]) 
                 mirror([1, 0, 0])
                 rotate(-90)
                 scale([1, 1, thickness_step ? 1 + (level - 1) * 0.05 : 1])
-                _L_puzzle(level - 2);
+                    _L_puzzle(level - 2);
             }
         }
     }

@@ -20,21 +20,19 @@ module nautilus_shell(chambered_section_max_angle, steps, thickness) {
     ];
 
     half_thickness = thickness / 2;
-    render() {
-	    polyline_join(spiral)
-		    circle(half_thickness);
 
-        for(a = [a_step:a_step * 2:chambered_section_max_angle]) {
-            a2 = a + 360;
-            a3 = a + 420;
-            p1 = ptf_rotate([r(a), 0], a);
-            p2 = ptf_rotate((p1 + ptf_rotate([r(a2), 0], a2)) * .6, -5);
-            p3 = ptf_rotate([r(a3), 0], a3);
-            
-			polyline_join(bezier_curve(0.1, [p1, p2, p3]))
-			    circle(half_thickness);
-        }
+    polyline_join(spiral)
+        circle(half_thickness);
 
+    for(a = [a_step:a_step * 2:chambered_section_max_angle]) {
+        a2 = a + 360;
+        a3 = a + 420;
+        p1 = ptf_rotate([r(a), 0], a);
+        p2 = ptf_rotate((p1 + ptf_rotate([r(a2), 0], a2)) * .6, -5);
+        p3 = ptf_rotate([r(a3), 0], a3);
+        
+        polyline_join(bezier_curve(0.1, [p1, p2, p3]))
+            circle(half_thickness);
     }
 }
 

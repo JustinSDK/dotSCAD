@@ -10,7 +10,7 @@ module heart(radius, center = false) {
     
     module heart_sub_component() {
         translate([-radius * cos(rotated_angle), 0, 0]) 
-        rotate(-rotated_angle) union() {
+        rotate(-rotated_angle) {
             circle(radius);
             translate([0, -radius, 0]) 
                 square(diameter);

@@ -9,12 +9,7 @@ center = false;
 module string_tetrahedron(leng, diameter, segs_per_side, line_fn) {
     module lines_between(side1, side2, diameter, segs) {
         function pts(p1, p2, segs) =
-            let(
-                 p = p2 - p1,
-                 dx = p[0] / segs,
-                 dy = p[1] / segs,
-                 dz = p[2] / segs
-            ) [for(i = [0:segs]) p1 + [dx, dy, dz] * i];
+            let(p = p2 - p1) [for(i = [0:segs]) p1 + p / segs * i];
 
         pts1 = pts(side1[0], side1[1], segs);
         pts2 = pts(side2[0], side2[1], segs);
@@ -95,12 +90,11 @@ module string_tetrahedrons(level, leng, diameter, segs_per_side, center) {
 
             for(i = [0:120:240]) {
                 rotate(i)
-                
                 translate([0, -center_y * 2])
                 rotate([a, 0, 0])
                 translate([0, center_y * 2])
                 rotate([180, 0, 0])
-                    scale(0.9427)
+                scale(0.9427)
                     string_tetrahedrons(level - 1, half_leng, diameter, segs_per_side, center);
             }  
         }        

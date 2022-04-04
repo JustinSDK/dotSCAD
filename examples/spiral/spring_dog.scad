@@ -48,8 +48,7 @@ module dog_back(head_r, peg_radius) {
     $fn = 36;    
 
     module foot() {
-        translate([head_r, 0, 0]) 
-        union() {
+        translate([head_r, 0, 0]) {
             color("PapayaWhip") 
             ellipse_extrude(head_r / 3) 
                 polygon(shape_ellipse([head_r / 3, head_r / 2]));
