@@ -11,12 +11,12 @@ It thickens a surface with triangular mesh.
 
 ## Examples
 
+	use <triangle/tri_delaunay.scad>;
 	use <surface/sf_thickenT.scad>;
 
-	radius = 100;
 	thickness = .2;
 
-	a_step = 10;
+	a_step = 15;
 	r_step = 0.2;
 
 	function f(x, y) = (y^2 - x^2) / 4;
@@ -24,8 +24,8 @@ It thickens a surface with triangular mesh.
 	points = [
 		for(a = [a_step:a_step:360], r = [r_step:r_step:2])
 		let(
-			x = round(r * cos(a) * 100) / 100, 
-			y = round(r * sin(a) * 100) / 100
+			x = r * cos(a), 
+			y = r * sin(a)
 		)
 		[x, y, f(x, y)] 
 	];
