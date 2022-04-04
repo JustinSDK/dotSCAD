@@ -18,8 +18,6 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH", con
     // triangles : counter-clockwise
     real_triangles = is_undef(triangles) ? tri_delaunay([for(p = points) [p.x, p.y]]) : triangles;
 
-    tris = [for(tri = real_triangles) [tri[2], tri[1], tri[0]]];
-
 	function connected_tris(leng_pts, triangles) =
 		let(
 			leng = len(triangles),
@@ -33,13 +31,15 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH", con
 			tri = triangles[i],
             n_cnt_tris = [
                 for(k = [0:leng_pts - 1])
-                search([k], tri)[0] != [] ? [each cnt_tris[k], tri] : cnt_tris[k]
+                search([k], tri)[0] != [] ? 
+                      // OpenSCAD requires clockwise
+                      [each cnt_tris[k], [tri[2], tri[1], tri[0]]] : cnt_tris[k]
             ]
 		)
 		_connected_tris(triangles, leng, leng_pts, n_cnt_tris, i + 1);
 
     leng_pts = len(points);
-    cnn_tris = connected_tris(leng_pts, tris);
+    cnn_tris = connected_tris(leng_pts, real_triangles);
 
     if(is_list(direction)) {
         dir_v = direction / norm(direction);
