@@ -21,12 +21,11 @@ function h_lines_in_square(width) =
 function hollow_out_square(size, width) =
     let(
         columns = size[0],
-        rows = size[1]
+        rows = size[1],
+        lines = h_lines_in_square(width)
     )
     [
-        for(y = [0:width:width * rows - width], 
-            x = [0:width:width * columns - width], 
-            line = h_lines_in_square(width)
-        )
-        [for(p = line) p + [x, y]] 
+        for(y = [0:width:width * rows - width], x = [0:width:width * columns - width])
+        let(coord = [x, y])
+        for(line = lines) [for(p = line) p + coord] 
     ];
