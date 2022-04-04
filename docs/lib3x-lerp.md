@@ -6,8 +6,8 @@ Linear interpolate the vector v1 to v2.
 
 ## Parameters
 
-- `v1` : Minimum value of random number range. Default to 0.
-- `v2` : Maximum value of random number range. Default to 1.
+- `v1` : the vector v1.
+- `v2` : the vector v2.
 - `amt` : The amount of interpolation. Some value between 0.0 and 1.0.
 
 ## Examples
