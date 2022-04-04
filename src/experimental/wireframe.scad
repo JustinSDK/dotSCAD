@@ -149,8 +149,6 @@ module wireframe(points, faces, deep, outer_thickness, inner_thickness = 0, vert
 }
 
 /*
-use <experimental/polyhedron_frame.scad>;
-
 deep = 0.2;
 thickness = 0.2;
 
@@ -158,7 +156,7 @@ points = [[-1, -1, 0], [-1, 1, 0], [0, 0, -1], [0, 0, 1], [1, -1, 0], [1, 1, 0],
 
 faces = [[2, 1, 0], [3, 0, 1], [4, 2, 0], [4, 0, 3], [5, 1, 2], [5, 2, 4], [6, 3, 1], [6, 1, 5], [6, 4, 3], [6, 5, 4]];
 
-polyhedron_frame(points, faces, deep, thickness);
+wireframe(points, faces, deep, thickness);
 
 cubePoints = [
   [ 0,  0,  0],  //0
@@ -179,4 +177,4 @@ cubeFaces = [
   [7,4,0,3]]; // left
 
 translate([2, 0, 0])
-    polyhedron_frame( cubePoints, cubeFaces, deep, thickness);*/
+    wireframe( cubePoints, cubeFaces, deep, thickness);*/
