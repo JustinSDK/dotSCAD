@@ -11,7 +11,6 @@ It thickens a surface with triangular mesh.
 
 ## Examples
 
-	use <triangle/tri_delaunay.scad>;
 	use <surface/sf_thickenT.scad>;
 
 	thickness = .2;
