@@ -18,16 +18,13 @@ function _tri_circumcircle(shape_pts) =
       d0 = (p1 + p0) / 2 * v0,
       v1 = p2 - p1,
       d1 = (p2 + p1) / 2 * v1,
-      det = -cross(v0 , v1)
+      det = -cross(v0 , v1),
+	  x = (d1 * v0.y - d0 * v1.y) / det,
+	  y = (d0 * v1.x - d1 * v0.x) / det,
+	  center = [x, y],
+	  v = p0 - center
    )
-   det == 0 ? undef : 
-             let(
-                 x = (d1 * v0.y - d0 * v1.y) / det,
-                 y = (d0 * v1.x - d1 * v0.x) / det,
-                 center = [x, y],
-                 v = p0 - center
-             )
-             [center, v * v];
+   [center, v * v];
 
 function cc_center(cc) = cc[0];
 function cc_rr(cc) = cc[1];
