@@ -101,13 +101,11 @@ module tail() {
 
 module dragon_and_perl() {
     function __angy_angz(p1, p2) = 
-        let(
-            dx = p2.x - p1.x,
-            dy = p2.y - p1.y,
-            dz = p2.z - p1.z,
-            ya = atan2(dz, sqrt(pow(dx, 2) + pow(dy, 2))),
-            za = atan2(dy, dx)
-        ) [ya, za];
+        let(v = p2 - p1) 
+        [
+            atan2(v.z, norm([v.x, v.y])), 
+            atan2(v.y, v.x)
+        ];
         
     body_path = bezier_curve(0.02, [
         [0, 7.5, 15],
