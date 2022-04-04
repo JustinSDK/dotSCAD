@@ -6,8 +6,8 @@ Linear interpolate the vector v1 to v2.
 
 ## Parameters
 
-- `v1` : the vector v1.
-- `v2` : the vector v2.
+- `v1` : The vector v1.
+- `v2` : The vector v2.
 - `amt` : The amount of interpolation. Some value between 0.0 and 1.0.
 
 ## Examples
