@@ -24,13 +24,11 @@ module torus_knot_dragon() {
 	    one_segment(body_r, body_fn, one_body_scale_data);
 
     function __angy_angz(p1, p2) = 
-        let(
-            dx = p2.x - p1.x,
-            dy = p2.y - p1.y,
-            dz = p2.z - p1.z,
-            ya = atan2(dz, sqrt(dx * dx + dy * dy)),
-            za = atan2(dy, dx)
-        ) [ya, za];
+        let(v = p2 - p1) 
+        [
+            atan2(v.z, norm([v.x, v.y])), 
+            atan2(v.y, v.x)
+        ];
 		
 	h_angy_angz = __angy_angz(d_path[len(d_path) - 2], d_path[len(d_path) - 1]);
 	
