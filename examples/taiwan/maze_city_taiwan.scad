@@ -64,7 +64,7 @@ module maze_city_taiwan(skyscraper_prs) {
 		rand() < skyscraper_prs ? 0 : taiwan[r][c]]
 	];	
 
-    cells = mz_square(rows, columns, [10, 10], init_cells = mz_square_initialize(rows, columns, mask));
+    cells = mz_square(start = [10, 10], init_cells = mz_square_initialize(mask = mask));
     tiles = mz_wang_tiles(cells);
     tile_width = 30;
     for(tile = tiles) {
