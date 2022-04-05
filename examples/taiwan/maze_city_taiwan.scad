@@ -6,9 +6,9 @@ use <../tiles/city_tile.scad>;
 
 skyscraper_prs = 0.05;
 
-maze_city(skyscraper_prs);
+maze_city_taiwan(skyscraper_prs);
 
-module maze_city(skyscraper_prs) {
+module maze_city_taiwan(skyscraper_prs) {
 	taiwan = [
 		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
 		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0],
