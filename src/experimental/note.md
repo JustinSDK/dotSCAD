@@ -19,5 +19,7 @@ new:
 - lemniscate_curve?
 - perlin_sphere?
 
+- rands_disk, rands_sphere?
+
 deprecated:
     rails2sections: use m_transpose
