@@ -1,6 +1,6 @@
 use <voronoi/vrn_sphere.scad>;
 use <polyline_join.scad>;
-use <experimental/rand_pts_sphere.scad>;
+use <util/rands_sphere.scad>;
 use <experimental/r_union3.scad>;
 
 eyelets = 800;
@@ -9,7 +9,7 @@ radius = 50;
 voronoi_melon(eyelets, radius);
 
 module voronoi_melon(eyelets, radius) {
-    pts = rand_pts_sphere(radius, eyelets);
+    pts = rands_sphere(radius, eyelets);
 	cells = vrn_sphere(pts);
 
     color("DarkKhaki")
