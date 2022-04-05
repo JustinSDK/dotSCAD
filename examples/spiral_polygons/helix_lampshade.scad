@@ -45,7 +45,7 @@ if(model == "JOIN") {
     color("white")
     rotate(-5)
     translate([-(r_circumscribed_circle - width / 2), 0, 0])
-    join(r_circumscribed_circle, width, height, layer_h);
+        join(r_circumscribed_circle, width, height, layer_h);
 }
 else if(model == "RING") {
     color("black")
@@ -71,18 +71,18 @@ else {
 
     color("white") 
     for(h = [0:2:n - 2]) {
-        translate([0, 0, layer_h * (h)]) 
-        rotate((h) * 5) {
+        translate([0, 0, layer_h * h]) 
+        rotate(h * 5) {
             for(i = [0:2]) {
                 rotate(i * 120)
-                join(r_circumscribed_circle, width, height, layer_h);
+                    join(r_circumscribed_circle, width, height, layer_h);
             }
 
             translate([0, 0, layer_h])
             rotate(65)
             for(i = [0:2]) {
                 rotate(i * 120)
-                join(r_circumscribed_circle, width, height, layer_h);
+                    join(r_circumscribed_circle, width, height, layer_h);
             }
         }
     }

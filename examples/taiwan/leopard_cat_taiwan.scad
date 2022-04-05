@@ -138,9 +138,8 @@ linear_extrude(1.5) difference() {
 	rotate(22.5) 
 	    polygon(shape_taiwan(250));    
 		
-    render() for(dot = dots) {
+    for(dot = dots) {
         translate(dot[0]) 
             square(0.7 * dot[1]);
-
     }
 }

@@ -45,7 +45,7 @@ module golden_taiwan(taiwan_fineness, wave_fineness) {
             [
                 for(x = [0:len(g[0]) - 1])
                 let(p = g[y][x])
-                [p[0], p[1], -10]
+                [p.x, p.y, -10]
             ]
         ];
 

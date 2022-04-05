@@ -77,12 +77,12 @@ module fidget_star(model, r1, r2, n, number_of_stars, height, thickness, spacing
 		difference() {
 			linear_extrude(ring_thickness, scale = 1.02)
 			offset(ring_thickness / 3, $fn = n)
-			    offset(delta = -thickness)
-					star(rs2[number_of_stars] * s[number_of_stars] * r_ratio, rs2[number_of_stars] * s[number_of_stars]);
+			offset(delta = -thickness)
+				star(rs2[number_of_stars] * s[number_of_stars] * r_ratio, rs2[number_of_stars] * s[number_of_stars]);
 
 			linear_extrude(thickness * 4, center = true)
-			    offset(delta = -ring_thickness)
-					star(rs2[number_of_stars] * s[number_of_stars] * r_ratio, rs2[number_of_stars] * s[number_of_stars]);
+			offset(delta = -ring_thickness)
+				star(rs2[number_of_stars] * s[number_of_stars] * r_ratio, rs2[number_of_stars] * s[number_of_stars]);
 		}
 	}
 
