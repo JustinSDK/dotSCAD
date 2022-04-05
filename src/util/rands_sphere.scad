@@ -1,4 +1,4 @@
-use <util/degrees.scad>;
+use <degrees.scad>;
 
 function rands_sphere(radius, value_count, seed = undef) =
     let(r_nums = is_undef(seed) ? rands(0, 1, value_count * 2) :  rands(0, 1, value_count * 2, seed))
