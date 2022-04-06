@@ -42,31 +42,29 @@ The value of `type` is the wall type of the cell. It can be `0`, `1`, `2` or `3`
 	maze = mz_theta_cells(rows, beginning_number);
 
 	// draw cell walls
-	for(rows = maze) {
-		for(cell = rows) {
-			ri = cell[0];
-			ci = cell[1];
-			type = cell[2];
-			thetaStep = 360 / len(maze[ri]);
-			innerR = (ri + 1) * cell_width;
-			outerR = (ri + 2) * cell_width;
-			theta1 = thetaStep * ci;
-			theta2 = thetaStep * (ci + 1);
-			
-			innerVt1 = vt_from_angle(theta1, innerR);
-			innerVt2 = vt_from_angle(theta2, innerR);
-			outerVt2 = vt_from_angle(theta2, outerR);
-			
-			if(type == INWARD_WALL || type == INWARD_CCW_WALL) {
-				polyline_join([innerVt1, innerVt2])
-				    circle(wall_thickness / 2);
-			}
+	for(rows = maze, cell = rows) {		
+		ri = cell[0];
+		ci = cell[1];
+		type = cell[2];
+		thetaStep = 360 / len(maze[ri]);
+		innerR = (ri + 1) * cell_width;
+		outerR = (ri + 2) * cell_width;
+		theta1 = thetaStep * ci;
+		theta2 = thetaStep * (ci + 1);
+		
+		innerVt1 = vt_from_angle(theta1, innerR);
+		innerVt2 = vt_from_angle(theta2, innerR);
+		outerVt2 = vt_from_angle(theta2, outerR);
+		
+		if(type == INWARD_WALL || type == INWARD_CCW_WALL) {
+			polyline_join([innerVt1, innerVt2])
+				circle(wall_thickness / 2);
+		}
 
-			if(type == CCW_WALL || type == INWARD_CCW_WALL) {
-				polyline_join([innerVt2, outerVt2])
-				    circle(wall_thickness / 2);
-			}
-		} 
+		if(type == CCW_WALL || type == INWARD_CCW_WALL) {
+			polyline_join([innerVt2, outerVt2])
+				circle(wall_thickness / 2);
+		}
 	}
 
     // outmost walls

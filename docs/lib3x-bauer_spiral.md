@@ -26,7 +26,8 @@ Creates visually even spacing of n points on the surface of the sphere. Successi
             sphere(1, $fn = 24);
     }
 
-    polyline_join(pts) sphere(.5);
+    polyline_join(pts) 
+        sphere(.5);
 
 ![bauer_spiral](images/lib3x-bauer_spiral-1.JPG)
 

@@ -39,9 +39,9 @@ This function maps keys to values. You can use the following to process the retu
     m3 = hashmap_del(m2, "k1");
     assert(hashmap_get(m3, "k1") == undef);
 
-    echo(hashmap_keys(m3));    // a list contains "k2", "k2", "k3"
-    echo(hashmap_values(m3));  // a list contains 20, 30, 40
-    echo(hashmap_entries(m3)); // a list contains ["k2", 20], ["k3", 30], ["k4", 40]
+    assert(hashmap_keys(m3) == ["k2", "k3", "k4"]); 
+    assert(hashmap_values(m3) == [20, 30, 40]); 
+    assert(hashmap_entries(m3) == [["k2", 20], ["k3", 30], ["k4", 40]]);
 
 Want to simulate class-based OO in OpenSCAD? Here's my experiment.
 

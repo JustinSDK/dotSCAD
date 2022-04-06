@@ -51,6 +51,7 @@ Given a path, the `bezier_smooth` function uses bazier curves to smooth all corn
 
 	smoothed_path_pts = bezier_smooth(path_pts, round_d, closed = true);
 
-	translate([50, 0, 0]) polygon(smoothed_path_pts);
+	translate([50, 0, 0]) 
+	    polygon(smoothed_path_pts);
 
 ![bezier_smooth](images/lib3x-bezier_smooth-2.JPG)

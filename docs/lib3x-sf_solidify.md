@@ -27,18 +27,18 @@ It solidifies two square surfaces, described by a m * n list of `[x, y, z]`s.
 
     surface1 = [
         for(y = [min_value:resolution:max_value])
-            [
-                for(x = [min_value:resolution:max_value]) 
-                    [x, y, f(x, y) + 100]
-            ]
+        [
+            for(x = [min_value:resolution:max_value]) 
+                [x, y, f(x, y) + 100]
+        ]
     ];
 
     surface2 = [
         for(y = [min_value:resolution:max_value])
-            [
-                for(x = [min_value:resolution:max_value]) 
-                    [x, y, -f(x, y) - 100]
-            ]
+        [
+            for(x = [min_value:resolution:max_value]) 
+                [x, y, -f(x, y) - 100]
+        ]
     ];
 
     sf_solidify(surface1, surface2);

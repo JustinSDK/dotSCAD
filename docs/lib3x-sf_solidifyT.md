@@ -29,26 +29,24 @@ It solidifies two surfaces with triangular mesh.
     use <surface/sf_solidifyT.scad>;
 
     thickness = .2;
-    a_step = 10;
+    a_step = 15;
     r_step = 0.2;
     scale = 100;
 
-    function f(x, y) = (pow(y,2)/pow(2, 2))-(pow(x,2)/pow(2, 2));
+    function f(x, y) = (y ^ 2 - x ^ 2) / 4;
 
     pts2d = [
-        for(a = [a_step:a_step:360])
-            for(r = [r_step:r_step:2])
-            let(
-                x = round(r * cos(a) * 100) / 100, 
-                y = round(r * sin(a) * 100) / 100
-            )
-            [x, y] 
+        for(a = [a_step:a_step:360], r = [r_step:r_step:2])
+        let(
+            x = r * cos(a), 
+            y = r * sin(a)
+        )
+        [x, y] 
     ];
 
     points1 = [for(p = pts2d) scale * [p.x, p.y, f(p.x, p.y)]];
     points2 = [for(p = points1) [p.x, p.y, p.z - scale * thickness]];
     triangles = tri_delaunay(pts2d);
-
 
     sf_solidifyT(points1, points2, triangles);
 

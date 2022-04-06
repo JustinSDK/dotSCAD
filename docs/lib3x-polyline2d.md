@@ -23,16 +23,23 @@ Creates a polyline from a list of `[x, y]` coordinates. When the end points are 
     use <polyline2d.scad>;
     
     $fn = 24;
-    polyline2d(points = [[1, 2], [-5, -4], [-5, 3], [5, 5]], width = 1,
-               endingStyle = "CAP_ROUND");
+    polyline2d(
+        points = [[1, 2], [-5, -4], [-5, 3], [5, 5]], 
+        width = 1,
+        endingStyle = "CAP_ROUND"
+    );
 
 ![polyline2d](images/lib3x-polyline2d-2.JPG)
 
     use <polyline2d.scad>;
     
     $fn = 24;
-	polyline2d(points = [[1, 2], [-5, -4], [-5, 3], [5, 5]], width = 1,
-               startingStyle = "CAP_ROUND", endingStyle = "CAP_ROUND");
+	polyline2d(
+        points = [[1, 2], [-5, -4], [-5, 3], [5, 5]], 
+        width = 1,
+        startingStyle = "CAP_ROUND", 
+        endingStyle = "CAP_ROUND"
+    );
 
 ![polyline2d](images/lib3x-polyline2d-3.JPG)
 

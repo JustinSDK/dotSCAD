@@ -41,11 +41,9 @@ The cell data is seperated from views. You can use cell data to construct [diffe
 	cells = mz_square_cells(rows, columns);
 
 	for(cell = cells) {
-		x = cell[0];
-		y = cell[1];
 		type = cell[2];
 		
-		translate([x, y] * cell_width) {
+		translate([cell.x, cell.y] * cell_width) {
 			if(type == TOP_WALL || type == TOP_RIGHT_WALL) {
 				line2d([0, cell_width], [cell_width, cell_width], wall_thickness);
 			}

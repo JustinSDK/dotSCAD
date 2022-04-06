@@ -53,11 +53,11 @@ The indexes of the above triangles is:
 	// spin section1
 	sections = [
 		for(i = [0:55]) 
-			[
-				for(p = section1)
-					let(pt = ptf_rotate(p, [90, 0, 10 * i]))
-					[pt.x, pt.y , pt.z + i]
-			]
+		[
+			for(p = section1)
+				let(pt = ptf_rotate(p, [90, 0, 10 * i]))
+				[pt.x, pt.y , pt.z + i]
+		]
 	];
 
 	sweep(sections);
@@ -83,11 +83,11 @@ The indexes of the above triangles is:
 	// spin section1
 	sections = [
 	    for(i = [0:55]) 
-	        [
-	            for(p = section1)
-	                let(pt = ptf_rotate(p, [90, 0, 10 * i]))
-	                [pt.x, pt.y , pt.z + i]
-	        ]
+		[
+			for(p = section1)
+				let(pt = ptf_rotate(p, [90, 0, 10 * i]))
+				[pt.x, pt.y , pt.z + i]
+		]
 	];
 	    
 	sweep(sections, "HOLLOW");
@@ -111,11 +111,11 @@ The indexes of the above triangles is:
 	// spin section1
 	sections = [
 	    for(i = [0:55]) 
-	        [
-	            for(p = section1)
-	                let(pt = ptf_rotate(p, [90, 0, 10 * i]))
-	                [pt.x, pt.y , pt.z + i]
-	        ]
+		[
+			for(p = section1)
+				let(pt = ptf_rotate(p, [90, 0, 10 * i]))
+				[pt.x, pt.y , pt.z + i]
+		]
 	];
 	    
 	sweep(

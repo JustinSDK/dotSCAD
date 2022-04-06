@@ -22,11 +22,11 @@ Move 2D outlines outward or inward by a given amount. Each point of the offsette
 		[-15, 0]
 	];
 
-	color("red") polygon(bijection_offset(shape, 3));
+	color("red")    polygon(bijection_offset(shape, 3));
 	color("orange") polygon(bijection_offset(shape, 2));
 	color("yellow") polygon(bijection_offset(shape, 1));
-	color("green") polygon(shape);
-	color("blue") polygon(bijection_offset(shape, -1));
+	color("green")  polygon(shape);
+	color("blue")   polygon(bijection_offset(shape, -1));
 	color("indigo") polygon(bijection_offset(shape, -2));
 	color("purple") polygon(bijection_offset(shape, -3));
 
@@ -43,7 +43,6 @@ Move 2D outlines outward or inward by a given amount. Each point of the offsette
 		[-5, 0]
 	];
 	offsetted = bijection_offset(shape, 1);
-
 	offsetted2 = bijection_offset(shape, 2);
 	offsetted3 = bijection_offset(shape, 3);
 

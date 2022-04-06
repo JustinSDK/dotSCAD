@@ -14,5 +14,5 @@ Returns a list containing all elements in a [util/set/hashset](https://openhome.
     use <util/set/hashset_elems.scad>;
 
     s = hashset([1, 2, 3, 4, 5]);
-    echo(hashset_elems(s));  // a list contains 1, 2, 3, 4, 5
+    assert(hashset_elems(s) == [1, 2, 3, 4, 5]); 
 

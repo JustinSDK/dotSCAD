@@ -14,21 +14,30 @@ Returns shape points of a [Superformula](https://en.wikipedia.org/wiki/Superform
     phi_step = 0.05;
 
     polygon(shape_superformula(phi_step, 3, 3, 4.5, 10, 10));
+
     translate([3, 0]) 
         polygon(shape_superformula(phi_step, 4, 4, 12, 15, 15));
+
     translate([6, 0]) 
         polygon(shape_superformula(phi_step, 7, 7, 10, 6, 6));
+
     translate([9, 0]) 
         polygon(shape_superformula(phi_step, 5, 5, 4, 4, 4));
         
     translate([0, -4]) 
-        scale(0.8) polygon(shape_superformula(phi_step, 5, 5, 2, 7, 7));
+    scale(0.8) 
+        polygon(shape_superformula(phi_step, 5, 5, 2, 7, 7));
+
     translate([3, -4]) 
-        scale(0.25) polygon(shape_superformula(phi_step, 5, 5, 2, 13, 13));
+    scale(0.25) 
+        polygon(shape_superformula(phi_step, 5, 5, 2, 13, 13));
+
     translate([6, -4]) 
         polygon(shape_superformula(phi_step, 4, 4, 1, 1, 1));
+
     translate([9, -4]) 
-        scale(0.3) polygon(shape_superformula(phi_step, 4, 4, 1, 7, 8));
+    scale(0.3) 
+        polygon(shape_superformula(phi_step, 4, 4, 1, 7, 8));
 
 ![shape_superformula](images/lib3x-shape_superformula-1.JPG)
 

@@ -23,10 +23,10 @@ Computes contour polygons by applying [marching squares](https://en.wikipedia.or
     
     points = [
         for(y = [min_value:resolution:max_value])
-            [
-                for(x = [min_value:resolution:max_value]) 
-                    [x, y, f(x, y)]
-            ]
+        [
+            for(x = [min_value:resolution:max_value]) 
+                [x, y, f(x, y)]
+        ]
     ];
 
     sf_thicken(points, 1);

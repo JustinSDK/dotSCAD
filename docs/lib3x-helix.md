@@ -27,7 +27,8 @@ Gets all points on the path of a spiral around a cylinder. Its `$fa`, `$fs` and 
 	);
 	
 	for(p = points) {
-	    translate(p) sphere(5);
+	    translate(p) 
+		    sphere(5);
 	}
 	
 	polyline_join(points)

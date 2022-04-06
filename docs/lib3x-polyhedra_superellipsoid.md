@@ -17,9 +17,8 @@ Creates a [superellipsoid](https://en.wikipedia.org/wiki/Superellipsoid).
 
 	step = 0.5;
 
-	for(e = [0:step:4]) {
-		for(n = [0:step:4])
-			translate([e / step, n / step] * 3)
+	for(e = [0:step:4], n = [0:step:4]) {
+		translate([e / step, n / step] * 3)
 			superellipsoid(e, n);
 	}
 

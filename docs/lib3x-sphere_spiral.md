@@ -47,8 +47,8 @@ Creates all points and angles on the path of a spiral around a sphere. It return
 	
 	for(pa = points_angles) {
 	    translate(pa[0]) rotate(pa[1])
-	        rotate([90, 0, 90]) linear_extrude(1) 
-	            text("A", valign = "center", halign = "center");
+		rotate([90, 0, 90]) linear_extrude(1) 
+			text("A", valign = "center", halign = "center");
 	}
 	
 	%sphere(40);

@@ -16,8 +16,8 @@ Generate a 4x4 transformation matrix which can pass into `multmatrix` to mirror 
 		cube([3, 2, 1]);
 		
 	multmatrix(m_mirror([1, 1, 0]))
-		rotate([0, 0, 10]) 
-			cube([3, 2, 1]);
+	rotate([0, 0, 10]) 
+		cube([3, 2, 1]);
 
 ![m_mirror](images/lib3x-m_mirror-1.JPG)
 

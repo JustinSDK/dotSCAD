@@ -13,8 +13,10 @@ Creates a pie (circular sector). Its `$fa`, `$fs` and `$fn` are consistent with 
     use <pie.scad>;
 
     pie(radius = 20, angle = [210, 310]);   
-    translate([-15, 0, 0]) pie(radius = 20, angle = [45, 135]);  
-    translate([15, 0, 0]) pie(radius = 20, angle = [45, 135], $fn = 12);  
+    translate([-15, 0, 0]) 
+        pie(radius = 20, angle = [45, 135]);  
+    translate([15, 0, 0]) 
+        pie(radius = 20, angle = [45, 135], $fn = 12);  
 
 ![pie](images/lib3x-pie-1.JPG)
 

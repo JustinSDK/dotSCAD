@@ -19,8 +19,8 @@ Generate a 4x4 transformation matrix which can pass into `multmatrix` to rotate 
 	hull() {
 		sphere(1);
 		multmatrix(m_rotation(a))    
-			translate(point) 
-				sphere(1);   
+		translate(point) 
+			sphere(1);   
 	}  
 
 ![m_rotation](images/lib3x-m_rotation-1.JPG)
@@ -32,14 +32,14 @@ Generate a 4x4 transformation matrix which can pass into `multmatrix` to rotate 
 	hull() {
 		sphere(1);
 		translate(v)
-		sphere(1);   
+		    sphere(1);   
 	}
 
 	p = [10, 10, 0];
 	for(i = [0:20:340]) {
 		multmatrix(m_rotation(a = i, v = v))
-			translate(p) 
-				sphere(1);  
+		translate(p) 
+			sphere(1);  
 	}
 
 ![m_rotation](images/lib3x-m_rotation-2.JPG)

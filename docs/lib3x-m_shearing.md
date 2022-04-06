@@ -18,10 +18,12 @@ Generate a 4x4 transformation matrix which can pass into `multmatrix` to shear a
 		multmatrix(m_shearing(sx = [1, 0]))
 			cube(1);
 			
-		translate([2, 0, 0]) multmatrix(m_shearing(sx = [0, 1]))
+		translate([2, 0, 0]) 
+		multmatrix(m_shearing(sx = [0, 1]))
 			cube(1);
 			
-		translate([4, 0, 0]) multmatrix(m_shearing(sx = [1, 1]))
+		translate([4, 0, 0]) 
+		multmatrix(m_shearing(sx = [1, 1]))
 			cube(1);
 	}
 
@@ -29,10 +31,12 @@ Generate a 4x4 transformation matrix which can pass into `multmatrix` to shear a
 		multmatrix(m_shearing(sy = [1, 0]))
 			cube(1);
 			
-		translate([2, 0, 0]) multmatrix(m_shearing(sy = [0, 1]))
+		translate([2, 0, 0]) 
+		multmatrix(m_shearing(sy = [0, 1]))
 			cube(1);
 			
-		translate([4, 0, 0]) multmatrix(m_shearing(sy = [1, 1]))
+		translate([4, 0, 0]) 
+		multmatrix(m_shearing(sy = [1, 1]))
 			cube(1);
 	}
 
@@ -40,10 +44,12 @@ Generate a 4x4 transformation matrix which can pass into `multmatrix` to shear a
 		multmatrix(m_shearing(sz = [1, 0]))
 			cube(1);
 			
-		translate([2, 0, 0]) multmatrix(m_shearing(sz = [0, 1]))
+		translate([2, 0, 0]) 
+		multmatrix(m_shearing(sz = [0, 1]))
 			cube(1);
 			
-		translate([4, 0, 0]) multmatrix(m_shearing(sz = [1, 1]))
+		translate([4, 0, 0]) 
+		multmatrix(m_shearing(sz = [1, 1]))
 			cube(1);
 	}
 

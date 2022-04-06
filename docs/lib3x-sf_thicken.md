@@ -28,10 +28,8 @@ It thickens a surface, described by a m * n list of `[x, y, z]`s.
 	use <surface/sf_thicken.scad>;
 
 	function f(x, y) = 
-		30 * (
-			cos(sqrt(pow(x, 2) + pow(y, 2))) + 
-			cos(3 * sqrt(pow(x, 2) + pow(y, 2)))
-		);
+        let(leng = norm([x, y]))
+		30 * (cos(leng) + cos(3 * leng));
 
 	thickness = 3;
 	min_value =  -200;
@@ -40,10 +38,10 @@ It thickens a surface, described by a m * n list of `[x, y, z]`s.
 
 	surface1 = [
 		for(y = [min_value:resolution:max_value])
-			[
-				for(x = [min_value:resolution:max_value]) 
-					[x, y, f(x, y) + 100]
-			]
+		[
+			for(x = [min_value:resolution:max_value]) 
+				[x, y, f(x, y) + 100]
+		]
 	];
 	sf_thicken(surface1, thickness);
 
@@ -60,10 +58,10 @@ It thickens a surface, described by a m * n list of `[x, y, z]`s.
 
 	surface1 = [
 		for(y = [min_value:resolution:max_value])
-			[
-				for(x = [min_value:resolution:max_value]) 
-					[x, y, f(x, y) + 100]
-			]
+		[
+			for(x = [min_value:resolution:max_value]) 
+				[x, y, f(x, y) + 100]
+		]
 	];
 	sf_thicken(surface1, thickness, direction = [1, 1, -1]);
 

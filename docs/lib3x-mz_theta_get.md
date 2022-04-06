@@ -23,31 +23,29 @@ It's a helper for getting data from a theta-maze cell.
 	function vt_from_angle(theta, r) = [r * cos(theta), r * sin(theta)];
 
 	maze = mz_theta_cells(rows, beginning_number);
-	for(rows = maze) {
-		for(cell = rows) {
-			ri = mz_theta_get(cell, "r");
-			ci = mz_theta_get(cell, "c");
-			type = mz_theta_get(cell, "t");
-			thetaStep = 360 / len(maze[ri]);
-			innerR = (ri + 1) * cell_width;
-			outerR = (ri + 2) * cell_width;
-			theta1 = thetaStep * ci;
-			theta2 = thetaStep * (ci + 1);
-			
-			innerVt1 = vt_from_angle(theta1, innerR);
-			innerVt2 = vt_from_angle(theta2, innerR);
-			outerVt2 = vt_from_angle(theta2, outerR);
-			
-			if(type == "INWARD_WALL" || type == "INWARD_CCW_WALL") {
-				polyline_join([innerVt1, innerVt2])
-				    circle(wall_thickness / 2);
-			}
+	for(rows = maze, cell = rows) {
+		ri = mz_theta_get(cell, "r");
+		ci = mz_theta_get(cell, "c");
+		type = mz_theta_get(cell, "t");
+		thetaStep = 360 / len(maze[ri]);
+		innerR = (ri + 1) * cell_width;
+		outerR = (ri + 2) * cell_width;
+		theta1 = thetaStep * ci;
+		theta2 = thetaStep * (ci + 1);
+		
+		innerVt1 = vt_from_angle(theta1, innerR);
+		innerVt2 = vt_from_angle(theta2, innerR);
+		outerVt2 = vt_from_angle(theta2, outerR);
+		
+		if(type == "INWARD_WALL" || type == "INWARD_CCW_WALL") {
+			polyline_join([innerVt1, innerVt2])
+				circle(wall_thickness / 2);
+		}
 
-			if(type == "CCW_WALL" || type == "INWARD_CCW_WALL") {
-				polyline_join([innerVt2, outerVt2])
-				    circle(wall_thickness / 2);
-			}
-		} 
+		if(type == "CCW_WALL" || type == "INWARD_CCW_WALL") {
+			polyline_join([innerVt2, outerVt2])
+				circle(wall_thickness / 2);
+		}
 	}
 
 	thetaStep = 360 / len(maze[rows - 1]);

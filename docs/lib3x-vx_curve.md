@@ -24,8 +24,8 @@ Draws a voxel-by-voxel curve from control points. The curve is drawn only from t
     ];
 
     for(pt = vx_curve(pts)) {
-    translate(pt)
-        cube(1);
+        translate(pt)
+            cube(1);
     }
 
     #for(pt = pts) {

@@ -36,7 +36,8 @@ Returns shape points of two splitting liquid shapes, kind of how cells divide. T
     shape_pts = shape_liquid_splitting(radius, centre_dist);
     width = centre_dist / 2 + radius;
 
-    rotate_extrude() difference() {    
+    rotate_extrude() 
+    difference() {    
         polygon(shape_pts);    
 
         translate([-width, -radius]) 
@@ -57,11 +58,11 @@ Returns shape points of two splitting liquid shapes, kind of how cells divide. T
     width = centre_dist + radius * 2;
 
     rotate_extrude() 
-        intersection() { 
-            rotate(-90) polygon(shape_pts);    
+    intersection() { 
+        rotate(-90) polygon(shape_pts);    
 
-            translate([radius / 2, 0]) 
-                square([radius, width], center = true);
-        }
+        translate([radius / 2, 0]) 
+            square([radius, width], center = true);
+    }
 
 ![shape_liquid_splitting](images/lib3x-shape_liquid_splitting-3.JPG)

@@ -54,9 +54,7 @@ Create a 3D version of [Voronoi diagram](https://en.wikipedia.org/wiki/Voronoi_d
             r * sin(yas[i])
         ]
     ];
-        
-    thickness = 2;
-
+    
     difference() {
         sphere(r);
         

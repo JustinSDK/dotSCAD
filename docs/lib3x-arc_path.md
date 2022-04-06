@@ -16,7 +16,8 @@ Creates an arc path. You can pass a 2 element vector to define the central angle
 
 	$fn = 24;
 	points = arc_path(radius = 20, angle = [45, 290]);
-	polyline_join(points) circle(1);
+	polyline_join(points) 
+        circle(1);
 
 ![arc_path](images/lib3x-arc_path-1.JPG)
 
@@ -25,7 +26,8 @@ Creates an arc path. You can pass a 2 element vector to define the central angle
     
     $fn = 24;
     points = arc_path(radius = 20, angle = 135);
-    polyline_join(points) circle(1);
+    polyline_join(points) 
+        circle(1);
 
 ![arc_path](images/lib3x-arc_path-2.JPG)
 

@@ -255,12 +255,13 @@ So, which is the correct method? Both methods are correct when you provide only 
 	shape_pentagram_pts = shape_pentagram(star_radius);
 
 	// not closed perfectly
-	translate([-8, 0, 0]) path_extrude(
-		shape_pentagram_pts, 
-        [each pts, pts[0]], 
-		closed = true,
-		method = "AXIS_ANGLE"
-	);
+	translate([-8, 0, 0]) 
+		path_extrude(
+			shape_pentagram_pts, 
+			[each pts, pts[0]], 
+			closed = true,
+			method = "AXIS_ANGLE"
+		);
 
 	// adjust it 
 	path_extrude(
@@ -272,12 +273,13 @@ So, which is the correct method? Both methods are correct when you provide only 
 	);
 
 	// "EULER_ANGLE" is easy in this situation
-	translate([0, 8, 0]) path_extrude(
-		shape_pentagram_pts, 
-		[each pts, pts[0]], 
-		closed = true,
-		method = "EULER_ANGLE"
-	);
+	translate([0, 8, 0]) 
+		path_extrude(
+			shape_pentagram_pts, 
+			[each pts, pts[0]], 
+			closed = true,
+			method = "EULER_ANGLE"
+		);
 
 ![path_extrude](images/lib3x-path_extrude-9.JPG)	
 

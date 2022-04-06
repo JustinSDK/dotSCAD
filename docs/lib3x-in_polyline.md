@@ -20,10 +20,10 @@ Checks whether a point is on a line.
         [10, 10]
     ];
 
-    echo(in_polyline(pts, [-2, -3]));  // false
-    echo(in_polyline(pts, [5, 0]));    // true
-    echo(in_polyline(pts, [10, 5]));   // true
-    echo(in_polyline(pts, [10, 15]));  // false
+    assert(!in_polyline(pts, [-2, -3])); 
+    assert(in_polyline(pts, [5, 0]));    
+    assert(in_polyline(pts, [10, 5]));   
+    assert(!in_polyline(pts, [10, 15]));
 
 ----
 
@@ -35,7 +35,7 @@ Checks whether a point is on a line.
         [20, 10, 10]
     ]; 
 
-    echo(in_polyline(pts, [10, 0, 10]));  // true
-    echo(in_polyline(pts, [15, 0, 10]));  // true
-    echo(in_polyline(pts, [15, 1, 10]));  // false
-    echo(in_polyline(pts, [20, 11, 10])); // false    
+    assert(in_polyline(pts, [10, 0, 10]));  
+    assert(in_polyline(pts, [15, 0, 10]));  
+    assert(!in_polyline(pts, [15, 1, 10])); 
+    assert(!in_polyline(pts, [20, 11, 10])); 

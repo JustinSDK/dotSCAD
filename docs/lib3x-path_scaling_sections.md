@@ -45,7 +45,6 @@ You can use any point as the first point of the edge path. Just remember that yo
 	use <sweep.scad>;
 	use <bezier_curve.scad>;
 
-
 	taiwan = shape_taiwan(100);
 	fst_pt = [13, 0, 0];
 

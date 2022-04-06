@@ -22,8 +22,8 @@ Rotates a point `a` degrees around the axis of the coordinate system or an arbit
 	hull() {
 	    sphere(1);
 	    translate(ptf_rotate(point, a))    
-	       rotate(a)  
-	           sphere(1);   
+		rotate(a)  
+			sphere(1);   
 	}  
 
 ![ptf_rotate](images/lib3x-ptf_rotate-1.JPG)
@@ -57,7 +57,7 @@ Rotates a point `a` degrees around the axis of the coordinate system or an arbit
 	hull() {
 		sphere(1);
 		translate(v)
-		sphere(1);   
+		    sphere(1);   
 	}
 
 	p = [10, 10, 0];

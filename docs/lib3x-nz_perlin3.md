@@ -18,15 +18,13 @@ Returns the 3D [Perlin noise](https://en.wikipedia.org/wiki/Perlin_noise) value 
 
     seed = rand(0, 255);
     noised = [
-        for(z = [0:.2:5])
-            for(y = [0:.2:5])
-                for(x = [0:.2:5])
-                    [x, y, z, nz_perlin3(x, y, z, seed)]
+        for(z = [0:.2:5], y = [0:.2:5], x = [0:.2:5])
+        [x, y, z, nz_perlin3(x, y, z, seed)]
     ];    
 
     for(nz = noised) {
         if(nz[3] > 0.2) {
-            translate([nz[0], nz[1], nz[2]])
+            translate([nz.x, nz.y, nz.z])
                 cube(.2);
         }
     }

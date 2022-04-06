@@ -26,7 +26,7 @@ It divides the space into grids. The nucleus of each cell is randomly placed in 
     cells = nz_worley3s(points, seed, grid_w, dist);
 
     for(i = [0:len(cells) - 1]) {
-        c = (norm([cells[i][0], cells[i][1], cells[i][2]]) % 20) / 20;
+        c = (norm([cells[i].x, cells[i].y, cells[i].z]) % 20) / 20;
         color([c, c, c])
         translate(points[i])
             cube(1);

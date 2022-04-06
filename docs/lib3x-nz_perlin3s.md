@@ -27,11 +27,11 @@ Returns 3D [Perlin noise](https://en.wikipedia.org/wiki/Perlin_noise) values at 
 
     points_with_h = [
             for(ri = [0:len(points) - 1])
-                let(ns = nz_perlin2s(points[ri], seed))
-                    [
-                        for(ci = [0:len(ns) - 1])
-                            [points[ri][ci][0], points[ri][ci][1], ns[ci] + 1]
-                    ]
+            let(ns = nz_perlin2s(points[ri], seed))
+            [
+                for(ci = [0:len(ns) - 1])
+                    [points[ri][ci][0], points[ri][ci][1], ns[ci] + 1]
+            ]
         ];
 
     h_scale = 1.5;
@@ -39,7 +39,7 @@ Returns 3D [Perlin noise](https://en.wikipedia.org/wiki/Perlin_noise) values at 
         for(i = [0:len(row) - 1]) {
             p = row[i];
             pts = [
-                for(z = [0:.2:p[2] * h_scale]) [p[0], p[1], z]
+                for(z = [0:.2:p[2] * h_scale]) [p.x, p.y, z]
             ];
             noise = nz_perlin3s(pts, seed);
             for(j = [0:len(pts) - 1]) {

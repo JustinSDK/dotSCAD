@@ -10,7 +10,10 @@ Hollows out a 2D object.
 
     use <hollow_out.scad>;
 
-	hollow_out(shell_thickness = 1) circle(r = 3, $fn = 48);
-    hollow_out(shell_thickness = 1) square([10, 5]);
+	hollow_out(shell_thickness = 1) 
+        circle(r = 3, $fn = 48);
+    
+    hollow_out(shell_thickness = 1) 
+        square([10, 5]);
 
 ![hollow_out](images/lib3x-hollow_out-1.JPG)

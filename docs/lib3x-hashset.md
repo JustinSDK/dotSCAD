@@ -35,4 +35,4 @@ This function models the mathematical set, backed by a hash table. You can use t
     s3 = hashset_del(s2, 2);
     assert(!hashset_has(s3, 2));
 
-    echo(hashset_elems(s3)); // a list contains 1, 3, 4, 5, 9
+    assert(hashset_elems(s3) == [1, 3, 4, 5, 9]); 

@@ -18,7 +18,7 @@ It thickens a surface with triangular mesh.
 	a_step = 15;
 	r_step = 0.2;
 
-	function f(x, y) = (y^2 - x^2) / 4;
+	function f(x, y) = (y ^ 2 - x ^ 2) / 4;
 
 	points = [
 		for(a = [a_step:a_step:360], r = [r_step:r_step:2])

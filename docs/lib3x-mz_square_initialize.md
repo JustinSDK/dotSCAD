@@ -68,12 +68,10 @@ It's a helper for initializing cell data of a maze.
     // Mask
     mask_width = cell_width + wall_thickness;
     translate([-wall_thickness / 2, -wall_thickness / 2])
-    for(i = [0:rows - 1]) {
-        for(j = [0:columns - 1]) {
-                if(mask[i][j] == 0) {
-                    translate([cell_width * j, cell_width * (rows - i - 1)])
-                        square(mask_width);
-                }
+    for(i = [0:rows - 1], j = [0:columns - 1]) {
+        if(mask[i][j] == 0) {
+            translate([cell_width * j, cell_width * (rows - i - 1)])
+                square(mask_width);
         }
     }
 	

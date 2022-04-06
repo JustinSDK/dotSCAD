@@ -26,11 +26,13 @@ Given a list of 0s and 1s that represent a black-and-white image. This function 
     ]);
                 
     for(pt = pts) {
-        translate(pt) square(1);
+        translate(pt) 
+            square(1);
     }
 
     translate([8, 0]) for(pt = pts) {
-        translate(pt) text("A", font="Arial Black", 1);
+        translate(pt) 
+            text("A", font="Arial Black", 1);
     }
 
 ![vx_from](images/lib3x-vx_from-1.JPG)

@@ -25,9 +25,8 @@ It divides the space into grids. The nucleus of each cell is randomly placed in 
     seed = 51;
 
     points = [
-        for(y = [0:size.y - 1]) 
-            for(x = [0:size.x - 1]) 
-                [x, y]
+        for(y = [0:size.y - 1], x = [0:size.x - 1]) 
+        [x, y]
     ];
 
     cells = nz_worley2s(points, seed, grid_w, dist);

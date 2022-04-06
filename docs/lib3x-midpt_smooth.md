@@ -19,7 +19,12 @@ Given a 2D path, this function constructs a mid-point smoothed version by joinin
     taiwan = shape_taiwan(50);  
     smoothed = midpt_smooth(taiwan, 20, true);
 
-    translate([0, 0, 0]) polyline_join(taiwan) circle(.125); 
-    #translate([10, 0, 0]) polyline_join(smoothed) circle(.125);
+    translate([0, 0, 0]) 
+    polyline_join(taiwan) 
+        circle(.125); 
+
+    #translate([10, 0, 0]) 
+    polyline_join(smoothed) 
+        circle(.125);
 
 ![midpt_smooth](images/lib3x-midpt_smooth-1.JPG)

@@ -26,9 +26,8 @@ It's an implementation of [Worley noise](https://en.wikipedia.org/wiki/Worley_no
 
     feature_points = [for(pt_angle = pts_angles) pt_angle[0] + half_size];
     noised = [
-        for(y = [0:size.y - 1]) 
-            for(x = [0:size.x - 1]) 
-                [x, y, nz_cell(feature_points, [x, y])]
+        for(y = [0:size.y - 1], x = [0:size.x - 1]) 
+        [x, y, nz_cell(feature_points, [x, y])]
     ];
 
     max_dist = max([for(n = noised) n[2]]);

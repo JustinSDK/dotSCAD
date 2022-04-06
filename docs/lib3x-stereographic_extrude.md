@@ -19,13 +19,15 @@ The 2D polygon should center at the origin and you have to determine the side le
 	stereographic_extrude(shadow_side_leng = dimension, convexity = 10)
 	   text(
             "M", size = dimension, 
-            valign = "center", halign = "center"
+            valign = "center", 
+            halign = "center"
        );
 	   
 	color("black") 
 	   text(
             "M", size = dimension, 
-            valign = "center", halign = "center"
+            valign = "center", 
+            halign = "center"
        );
 
 ![stereographic_extrude](images/lib3x-stereographic_extrude-1.JPG)
