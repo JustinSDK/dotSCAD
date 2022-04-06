@@ -8,6 +8,6 @@ function _str_hash(value) =
 		cum_total = [
 			for(i = 0, s = ord(chars[0]), is_continue = i < end; 
 			    is_continue; 
-				i = i + 1, is_continue = i < end,  s = is_continue ? s + (ord(chars[i]) * 31 ^ i) : undef) s]
+				i = i + 1, is_continue = i < end,  s = is_continue ? 31 * s + ord(chars[i]) : undef) s]
 	)
-	cum_total[end - 1] + (ord(chars[end]) * 31 ^ end);
+	31 * cum_total[end - 1] + ord(chars[end]);
