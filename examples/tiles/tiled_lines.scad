@@ -6,11 +6,10 @@ tile_width = 5;
 line_width = 1;
 
 for(tile = tile_truchet(size)) {
-    x = tile[0];
-	y = tile[1];
-	i = tile[2];
+    x = tile.x;
+	y = tile.y;
 	
-	if(i <= 1) {
+	if(tile[2] <= 1) {
 	    line2d([x, y] * tile_width , [x + 1, y + 1] * tile_width, width = line_width);
 	}
 	else {

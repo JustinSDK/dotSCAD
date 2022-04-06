@@ -19,14 +19,12 @@ module voronoi_holder() {
           
     difference() {
         bend_extrude(size = size, thickness = thickness * 3, angle = 360, frags = frags) 
-        render() 
         difference() {
             square(size);
-            render() 
-                for(cell = cells) {
-                    offset(-half_spacing)
+            for(cell = cells) {
+                offset(-half_spacing)
                     polygon(cell[1]);
-                }
+            }
         }
         linear_extrude(size[1] - thickness)
            arc(radius = r, angle = 360, width = thickness, $fn = frags);

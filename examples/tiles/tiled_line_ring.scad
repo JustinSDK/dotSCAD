@@ -16,8 +16,8 @@ module tiled_line_ring(radius, height, line_diameter) {
     lines = [
 		for(tile = tile_truchet(size)) 
 		let(
-			x = tile[0],
-			y = tile[1],
+			x = tile.x,
+			y = tile.y,
 			i = tile[2]
 		)
 		if(i <= 1)  [

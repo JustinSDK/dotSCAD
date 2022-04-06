@@ -8,10 +8,9 @@ line_width = 1;
 $fn = 4; // 4, 8, 12 ....
 
 for(tile = tile_truchet(size)) {
-    x = tile[0];
-	y = tile[1];
-	i = tile[2];
-	if(i <= 1) {
+    x = tile.x;
+	y = tile.y;
+	if(tile[2] <= 1) {
 	    translate([x, y] * tile_width)
 	        arc(0.5 * tile_width, [0, 90], line_width);
 	    translate([x + 1, y + 1] * tile_width)

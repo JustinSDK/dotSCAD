@@ -23,17 +23,16 @@ pts_angles = golden_spiral(
 
 a_step = 360 / spirals;
 cells = [
-    for(i = [0:spirals - 1])
-        for(pt_angle = pts_angles) 
-            ptf_rotate(pt_angle[0], i * a_step)
+    for(i = [0:spirals - 1], pt_angle = pts_angles)
+        ptf_rotate(pt_angle[0], i * a_step)
 ];
 noised = [
     for(y = [-half_size[1]:pixel_step:half_size[1]]) 
-        [
-            for(x = [-half_size[0]:pixel_step:half_size[0]]) 
-            let(n = nz_cell(cells, [x, y] * height_factor) )
-                [x, y, n < half_pixel_step ? half_pixel_step : n]
-        ]
+    [
+        for(x = [-half_size[0]:pixel_step:half_size[0]]) 
+        let(n = nz_cell(cells, [x, y] * height_factor) )
+            [x, y, n < half_pixel_step ? half_pixel_step : n]
+    ]
 ];
 
 sf_thicken(noised, thickness);

@@ -15,11 +15,8 @@ module tube_box(size, tile_width) {
 	
     translate([eighth_w, eighth_w, eighth_w] + [tile_width, tile_width, 0] / 2)
 		for(tile = tile_w2e(size)) {
-			x = tile[0];
-			y = tile[1];
-			i = tile[2];
-			translate([x, y] * tile_width)
-				tube_tile(i, tile_width);
+			translate([tile.x, tile.y] * tile_width)
+				tube_tile(tile[2], tile_width);
 		}
 
 	box_extrude(height = tile_width, shell_thickness = eighth_w)

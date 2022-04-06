@@ -32,11 +32,9 @@ draw_tubes(
 module draw_tubes(tiles, tileW) {
 	rows = len(tiles);
 	columns = len(tiles[0]);
-	for(y = [0:rows - 1]) {
-		for(x = [0:columns - 1]) {
-			translate([x, rows - y - 1] * tileW)
+	for(y = [0:rows - 1], x = [0:columns - 1]) {
+		translate([x, rows - y - 1] * tileW)
 			tube_tile(tiles[y][x], tileW);
-		}
 	}
 }
 

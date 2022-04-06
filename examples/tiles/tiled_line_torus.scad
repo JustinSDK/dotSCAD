@@ -11,11 +11,10 @@ module tiled_line_torus(size, twist, line_diameter = 1) {
     lines = [
             for(tile = tile_truchet(size)) 
             let(
-			    x = tile[0],
-				y = tile[1],
-				i = tile[2]
+			    x = tile.x,
+				y = tile.y
 			)
-            i <= 1 ? [[x, y], [x + 1, y + 1]] : [[x + 1, y], [x, y + 1]]  
+            tile[2] <= 1 ? [[x, y], [x + 1, y + 1]] : [[x + 1, y], [x, y + 1]]  
         ];
             
 	half_line_diameter = line_diameter / 2;
