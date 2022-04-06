@@ -7,12 +7,8 @@ tile_width = 5;
 line_width = 1;
 
 for(tile = tile_hitomezashi(size)) {
-    x = tile[0];
-	y = tile[1];
-	i = tile[2];
-
-	translate([x, y] * tile_width) 
-	select(i) {
+	translate([tile.x, tile.y] * tile_width) 
+	select(tile[2]) {
 		tile00(tile_width, line_width);
 		tile01(tile_width, line_width);
 		tile02(tile_width, line_width);

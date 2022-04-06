@@ -47,14 +47,12 @@ module random_town_square(size, tileW, layerH) {
     module draw_tiles(tiles) {
         rows = len(tiles);
         columns = len(tiles[0]);
-        for(y = [0:rows - 1]) {
-            for(x = [0:len(tiles[y]) - 1]) {
-                translate([x, rows - y - 1] * tileW) {
-                    draw_tile(tiles[y][x], tileW, layerH);
-                    *color("white")
-                    linear_extrude(3)
-                    text(tiles[y][x], size = 1.5);
-                }
+        for(y = [0:rows - 1], x = [0:len(tiles[y]) - 1]) {
+            translate([x, rows - y - 1] * tileW) {
+                draw_tile(tiles[y][x], tileW, layerH);
+                *color("white")
+                linear_extrude(3)
+                text(tiles[y][x], size = 1.5);
             }
         }
     }
@@ -209,9 +207,9 @@ module random_town_square(size, tileW, layerH) {
                 square([tileW, halfW]);
                 
             for(i = [0:9]) {
-            translate([0, tileW * 0.45])
-            linear_extrude(layerH * 9)
-                square([tileW, layerH]);
+                translate([0, tileW * 0.45])
+                linear_extrude(layerH * 9)
+                    square([tileW, layerH]);
             }
         }
     }

@@ -12,8 +12,8 @@ rotate([90, 0, -109])
     
 translate([0, -2, -2])    
 ellipse_extrude(semi_minor_axis, height = 4, slices = slices) 
-    translate([3, 0, -2])   
-        polygon(midpt_smooth(shape_taiwan(170), smooth_times, true));
+translate([3, 0, -2])   
+    polygon(midpt_smooth(shape_taiwan(170), smooth_times, true));
 
 // From: https://www.thingiverse.com/thing:1362048        
 module SD_Mountain(scale) {polyhedron(

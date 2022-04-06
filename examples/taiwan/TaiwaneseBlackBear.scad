@@ -13,12 +13,12 @@ module blocks(points) {
 
 // Well, quick and dirty!!
 color("MediumSeaGreen") 
-    translate([3, -5, -27]) 
-        for(pt = vx_polygon([for(p = shape_taiwan(92, distance = 1)) [round(p[0]), round(p[1])]], filled = true)) {
-            translate(pt) 
-                linear_extrude(1, scale = 0.5) 
-                    square(1, center = true);
-        }
+translate([3, -5, -27]) 
+for(pt = vx_polygon([for(p = shape_taiwan(92, distance = 1)) [round(p[0]), round(p[1])]], filled = true)) {
+    translate(pt) 
+    linear_extrude(1, scale = 0.5) 
+        square(1, center = true);
+}
 
 color(c = [0.3, 0.3, 0.3]) {
     blocks(vx_sphere(10));

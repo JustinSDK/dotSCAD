@@ -14,36 +14,33 @@ module lavender(n, radius) {
 			module draw_acute_pie(p, r, a) {
 				hull() {
 					linear_extrude(layer_thickness * 2) 
-					offset(-radius / 175) {
-						translate(p)
-						rotate(a)
-							pie(r * 1.1, 72);
-					}
-
+					offset(-radius / 175) 
+					translate(p)
+					rotate(a)
+						pie(r * 1.1, 72);
+					
 					linear_extrude(layer_thickness * 3) 
-					offset(-radius / 100) {
-						translate(p)
-						rotate(a)
-							pie(r, 72);
-					}
+					offset(-radius / 100) 
+					translate(p)
+					rotate(a)
+						pie(r, 72);
+					
 				}
 			}
 			
 			module draw_obtuse_pie(p, r, a) {
 				hull() {
 					linear_extrude(layer_thickness * 2) 
-					offset(-radius / 175) {
-						translate(p)
-						rotate(a)
-							pie(r * 1.1, 36);
-					}
+					offset(-radius / 175) 
+					translate(p)
+					rotate(a)
+						pie(r * 1.1, 36);
 					
 					linear_extrude(layer_thickness * 3) 
-					offset(-radius / 100) {
-						translate(p)
-						rotate(a)
-							pie(r, 36);
-					}
+					offset(-radius / 100) 
+					translate(p)
+					rotate(a)
+						pie(r, 36);
 				}
 			}
 
@@ -81,7 +78,6 @@ module lavender(n, radius) {
 			color("Lime")
 			hull() {
 				linear_extrude(layer_thickness)
-
 					polygon(points);
 					
 				linear_extrude(layer_thickness * 2)

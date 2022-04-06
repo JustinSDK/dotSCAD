@@ -27,16 +27,12 @@ module magic_apartment(width, rows, columns, floors, up_down_rand, people) {
 
 	translate([0, 0, width / 4 + width / 30])
 	scale([1, 1, 0.5])
-	for(z = [0:floors - 1]) {
-		for(y = [0:rows - 1]) {
-			for(x = [0:columns - 1]) {
-				translate([x * width, y * width, z * width])
-				tile(width, [
-					edges[z][y][x][0], edges[z][y][x + 1][1], edges[z][y + 1][x][0], edges[z][y][x][1],
-					edges[z + 1][y][x][0], edges[z + 1][y][x + 1][1], edges[z + 1][y + 1][x][0], edges[z + 1][y][x][1],
-				], up_down_rand);
-			}
-		}
+	for(z = [0:floors - 1], y = [0:rows - 1], x = [0:columns - 1]) {
+		translate([x * width, y * width, z * width])
+		tile(width, [
+			edges[z][y][x][0], edges[z][y][x + 1][1], edges[z][y + 1][x][0], edges[z][y][x][1],
+			edges[z + 1][y][x][0], edges[z + 1][y][x + 1][1], edges[z + 1][y + 1][x][0], edges[z + 1][y][x][1],
+		], up_down_rand);
 	}
 
     // base
@@ -49,12 +45,10 @@ module magic_apartment(width, rows, columns, floors, up_down_rand, people) {
 		linear_extrude(width * floors / 2 + width / 15)
 			square([width * columns, width / 30]);
 	    
-		for(f = [1:2:floors * 4 - 1]) {
-			for(c = [1:2:columns * 4 - 1]) {
-				if(choose([true, false])) {
-					translate([width / 4 * c, 0, width / 8 * f]) 
-						cube([rand(width / 15, width / 15 * 2) , width / 15, rand(width / 15, width / 15 * 3)], center = true);
-				}
+		for(f = [1:2:floors * 4 - 1], c = [1:2:columns * 4 - 1]) {
+			if(choose([true, false])) {
+				translate([width / 4 * c, 0, width / 8 * f]) 
+					cube([rand(width / 15, width / 15 * 2) , width / 15, rand(width / 15, width / 15 * 3)], center = true);
 			}
 		}
 	}
@@ -63,12 +57,10 @@ module magic_apartment(width, rows, columns, floors, up_down_rand, people) {
 	difference() {
 		linear_extrude(width * floors / 2 + width / 15)
 			square([width / 30, width * rows + width / 30]);
-		for(f = [1:2:floors * 4 - 1]) {
-			for(r = [1:2:rows * 4 - 1]) {
-				if(choose([true, false])) {
-					translate([0, width / 4 * r, width / 8 * f]) 
-						cube([width / 15, rand(width / 15, width / 15 * 2), rand(width / 15, width / 15 * 3)], center = true);
-				}
+		for(f = [1:2:floors * 4 - 1], r = [1:2:rows * 4 - 1]) {
+			if(choose([true, false])) {
+				translate([0, width / 4 * r, width / 8 * f]) 
+					cube([width / 15, rand(width / 15, width / 15 * 2), rand(width / 15, width / 15 * 3)], center = true);
 			}
 		}
 	}
@@ -118,12 +110,12 @@ module magic_apartment(width, rows, columns, floors, up_down_rand, people) {
 				}
 				else if(edges[i + 4] == 0) {
 					rotate(90 * i)
-						hull() {
-							translate([0, -one_sixth_w, 0])
-								cube([w, t, double_t], center = true);
-							translate([0, -half_w + half_t , 0])
-								cube([w, t, double_t], center = true);
-						}
+					hull() {
+						translate([0, -one_sixth_w, 0])
+							cube([w, t, double_t], center = true);
+						translate([0, -half_w + half_t , 0])
+							cube([w, t, double_t], center = true);
+					}
 						
 				}
 			}

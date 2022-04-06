@@ -10,12 +10,8 @@ line_width = 1;
 $fn = 12; // 4, 8, 12 ....
 
 for(tile = tile_truchet(size)) {
-    x = tile[0];
-	y = tile[1];
-	i = tile[2];
-
-    translate([x, y] * tile_width)
-	select(i) {
+    translate([tile.x, tile.y] * tile_width)
+	select(tile[2]) {
 		tile00(tile_width, line_width);
 		tile01(tile_width, line_width);
 		tile02(tile_width, line_width);

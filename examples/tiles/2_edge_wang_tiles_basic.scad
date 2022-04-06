@@ -9,21 +9,15 @@ $fn = 24;
 
 translate([tile_width, tile_width] / 2)
 	for(tile = tile_w2e(size)) {
-		x = tile[0];
-		y = tile[1];
-		i = tile[2];
-		translate([x, y] * tile_width)
-			sample_tile(i, tile_width, tile_thickness);
+		translate([tile.x, tile.y] * tile_width)
+			sample_tile(tile[2], tile_width, tile_thickness);
 	}
 	
 translate([0, tile_width * (size[1] + 1)] + [tile_width, tile_width] / 2)
 	color("green")
 	for(tile = tile_w2e(size)) {
-		x = tile[0];
-		y = tile[1];
-		i = tile[2];
-		translate([x, y] * tile_width)
-			path_tile(i, tile_width);
+		translate([tile.x, tile.y] * tile_width)
+			path_tile(tile[2], tile_width);
 	}
 
 module sample_tile(n, width, thickness) {

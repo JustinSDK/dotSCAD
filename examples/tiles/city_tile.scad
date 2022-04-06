@@ -43,8 +43,8 @@ module city_tile(i, tile_width) {
         halfTW = tileW / 2;
         
         translate([0, halfTW / 1.6, 2.25])
-            linear_extrude(10)
-                rounded_square(halfRW / 1.25, corner_r = .8, center = true, $fn = 6);
+        linear_extrude(10)
+            rounded_square(halfRW / 1.25, corner_r = .8, center = true, $fn = 6);
                 
         translate([0, halfTW / 1.6, 11.56])
         rotate([90, 0, 0])
