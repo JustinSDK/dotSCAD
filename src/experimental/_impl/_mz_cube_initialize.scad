@@ -38,9 +38,8 @@ function _mz_mask(mask) =
                     :
                     cell(
                         x, y, z,
-                        // all cells have up/top/right walls
-                        7, // unvisited
-                        false 
+                        7, // all cells have up/top/right walls
+                        false // unvisited
                     )
             ]
         ]
