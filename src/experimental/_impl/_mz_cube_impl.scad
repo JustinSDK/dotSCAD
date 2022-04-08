@@ -161,7 +161,7 @@ function go_maze(x, y, z, cells, layers, rows, columns, x_wrapping = false, y_wr
     let(nxcells4 = next_cells(x, y, z, v_dirs[3], nxcells3, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping, seed))
     leng_v_dirs == 4 ? nxcells4 : 
     let(nxcells5 = next_cells(x, y, z, v_dirs[4], nxcells4, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping, seed))
-    leng_v_dirs == 5 ? nxcells5 : next_cells(x, y, v_dirs[5], nxcells5, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping, seed);
+    leng_v_dirs == 5 ? nxcells5 : next_cells(x, y, z, v_dirs[5], nxcells5, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping, seed);
 
 function next_cells(x, y, z, dir, cells, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping, seed) =
     let(
