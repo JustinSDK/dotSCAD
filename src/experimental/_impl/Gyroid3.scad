@@ -23,35 +23,51 @@
 // z2=upper starting value for z (need not be defined)
 // f1=gyroid function of z1 (need not be defined internal use only)
 // f1=gyroid function of z2 (need not be defined internal use only)
-function gyroid(x, y, z)=sin(x)*cos(y)+sin(y)*cos(z)+sin(z)*cos(x);
+function gyroid(x, y, z) = sin(x) * cos(y) + sin(y) * cos(z) + sin(z) * cos(x);
 
-function gyroid_point(n=50, x, y, z1=40, f1, z2=300, f2)=
-	(f1==undef || f2==undef) ?							// if f1, f2 are not defined, calculate them
-		gyroid_point(n=n-1, x=x, y=y, z1=z1, f1=gyroid(x=x, y=y, z=z1), z2=z2, f2=gyroid(x=x, y=y, z=z2))
-	:
-		let(z3=(z1+z2)/2)								// find the middle between both limits z1, z2	
-		let(f3=gyroid(x=x, y=y, z=z3))					// calculate zthe gyroid function of the middle
-		(n<0) ?	z3										// decide, whre the zero crossing of the gyroid function is
-		:
-			sign(f1)==sign(f3) ?											// next step of iteration
-				gyroid_point(n=n-1, x=x, y=y, z1=z3, f1=f3, z2=z2, f2=f2)	// zero crossing is between z2 and z3
-			:	gyroid_point(n=n-1, x=x, y=y, z1=z1, f1=f1, z2=z3, f2=f3);	// zero crossing is between z1 and z3
+function gyroid_point(n, x, y) =
+    let(
+		z1 = 70,
+		z2 = 200,
+		f1 = gyroid(x, y, z1),
+		f2 = gyroid(x, y, z2)
+	)
+    _gyroid_point(n + 3, x, y, z1, f1, z2, f2);
+
+function _gyroid_point(n, x, y, z1, f1, z2, f2)=
+	let(
+		z3 = (z1 + z2) / 2,								    // find the middle between both limits z1, z2	
+		f3 = gyroid(x, y, z3)                               // calculate zthe gyroid function of the middle
+	)					
+	n < 0 ?	z3 :						                    // decide, whre the zero crossing of the gyroid function is
+	sign(f1) == sign(f3) ?								    // next step of iteration
+			_gyroid_point(n - 1, x, y, z3, f3, z2, f2) :	// zero crossing is between z2 and z3
+	        _gyroid_point(n - 1, x, y, z1, f1, z3, f3);	    // zero crossing is between z1 and z3
 
 // Calculates the gradient of the gyroid function. This is a vector perpendicularly pointing to the surface.
 // The point x, y, z must be a point of the gyroid surface.
 // x, y, z=coordinates of point
 function grad_gyroid(x, y, z)=
-[	cos(x)*cos(y)-sin(z)*sin(x),		// df/dx
-	cos(y)*cos(z)-sin(x)*sin(y),		// df/dy
-	cos(z)*cos(x)-sin(y)*sin(z)			// df/dz
-];
+    let(
+		sinx = sin(x),
+		cosx = cos(x),
+		siny = sin(y),
+		cosy = cos(y),
+		sinz = sin(z),
+		cosz = cos(z)
+	)
+	[	
+		cosx * cosy - sinz * sinx,		// df/dx
+		cosy * cosz -sinx * siny,		// df/dy
+		cosz *cosx - siny * sinz		// df/dz
+	];
 
 // Calculates a point of a gyroid wall having a distance to the gyroid surface of w/2. 
 // x, y, z=point of gyroid surface
 // w=wall thickness to calculate the opposing wall point, w needs to be negatve
 function wall_gyroid(x, y, z, w)=
-	let(n=grad_gyroid(x=x, y=y, z=z))					// calculate the gardient of the gyroid function pointing to the wall vector
-	[x, y, z]+w*n/(2*norm(n));							// normalize gradient and multipy it with half of the wall thickness
+	let(n=grad_gyroid(x, y, z))				    	// calculate the gardient of the gyroid function pointing to the wall vector
+	[x, y, z] + w * n / ( 2 * norm(n));				// normalize gradient and multipy it with half of the wall thickness
 
 // Calculates points of a triangular part of a gyroid surface with edge points [0,0], [0,180] and [90,90].
 // All other points can be derived from these points by means of coodinate ransformation. The points are calculated in the form of 
@@ -60,25 +76,31 @@ function wall_gyroid(x, y, z, w)=
 // pp=number of rows
 // w=wall thickness
 function gyroid_points(pp, w)=
-	let(res=90/(pp-2))									// resolution of points = distance between two adjacent points
-	let(p=												// coordinates of points
-	[	for (i=[-w, w])									// for both wall directions (up/down)
-			for(j=[0:pp])								// for every row
-				let(jj=min(max(j, 1),pp-1)-1)
-				let(x=90-jj*res-((j==pp) ? abs(w)/2 : 0))						// x and y coordinate of start of current row
-				let(start=[(x*x/90+x)/2, x])					// starting point of current row
-				let(z=gyroid_point(x=start.x, y=start.y))			// z coordinate of start of current row
-				let(end=[180-z, 180-start.x])					// ending point of current row
-				for(k=[0:2*j])							// for every line in row
-					let(p_xy=
-						(j==0)				? [90+w/2, 90]
-					:	(k==0)				? start-[0, abs(w)/2]
-					:	(k==2*j)			? end+[0, abs(w)/2]
-					:	(j==1) && (k==1)	? [90, 90]
-					:						  start+(end-start)/(2*(j-1))*(k-1))
-					let(wall=(k==0 || k==2*j || j==pp) ? 0 : i)
-					wall_gyroid(p_xy.x,p_xy.y,gyroid_point(x=p_xy.x, y=p_xy.y),wall)	// calculate point in row, line within gyroid wall
-	])													// matrix of points for all primitives of a gyroid micro cell
+	let(
+		res=90/(pp-2),                                          // resolution of points = distance between two adjacent points
+		p= [											        // coordinates of points
+			for (i = [-w, w], j = [0:pp])						    // for both wall directions (up/down), for every row
+			let(
+				jj = min(max(j, 1), pp - 1) -1,
+				x = 90 - jj * res - (j==pp ? abs(w)/2 : 0),     // x and y coordinate of start of current row
+				start = [(x^2 / 90 + x) / 2, x],                        // starting point of current row
+				z = gyroid_point(pp, start.x, start.y),           // z coordinate of start of current row
+				end = [180 - z, 180 - start.x]                        // ending point of current row
+			)    			  	    
+			for(k=[0:2*j])							            // for every line in row
+				let(
+					p_xy=
+						(j == 0)				? [90 + w / 2, 90]         :
+						(k == 0)				? start - [0, abs(w) / 2]  :
+						(k == 2*j)			    ? end + [0, abs(w) / 2]    :
+						(j == 1) && (k == 1)	? [90, 90]                 :
+											      start + (end - start) / (2 * (j - 1)) * (k - 1),
+					wall=(k == 0 || k == 2 * j || j == pp) ? 0 : i
+				)
+				wall_gyroid(p_xy.x, p_xy.y, gyroid_point(pp, p_xy.x, p_xy.y), wall)	// calculate point in row, line within gyroid wall
+		]
+	)														
+	// matrix of points for all primitives of a gyroid micro cell
 	[	p,									            // copy of p
 		[for(i=p) [180,180,180]-i],						// diagonally oposing part of p
 		[for(i=p) [i.y,i.z,i.x]],						// first cyclic permutation of coordinates
@@ -90,19 +112,23 @@ function gyroid_points(pp, w)=
 // Calculates faces index matrix for gyroid polyhedron
 // pp=number of rows
 function gyroid_faces(pp)=
-	let(zs=(pp+1)*(pp+1))								// starting index of down wall points
+	let(zs = (pp + 1) * (pp + 1))								// starting index of down wall points
 	  		     										// calculate face index vetros for triangles of polyhedron
-	[	for(i=[0:pp-1])									// for every row
-			let(jm=i*(i+1))								// middle point index for current j vector
-			let(jfm=(i+1)*(i+2))						// middle point index for succeeding j vector
-			let(ii=min(i,pp-2))							// don't use the outer points in the last row
-			for(j=[0:ii], k=[-1,1], l=[0,1], m=[0,1])	// for every point
-				let(dm=(m==0) ? 0 : zs)
-				let(p1=jm+j*k+dm)				// first point of triangle
-				let(p2=(l==0) ? jfm+j*k+dm : jfm+(j+1)*k+dm)
-				let(p3=(l==0) ? jfm+(j+1)*k+dm : jm+(j+1)*k+dm)
-				if (j<i || l==0)
-					((k==1 && m==0) || (k==-1 && m==1)) ? [p2, p1, p3] : [p1, p2, p3]
+	[	
+		for(i=[0:pp-1])									// for every row
+		let(
+			jm = i*(i+1),                                  // middle point index for current j vector
+			jfm = (i+1)*(i+2),                             // middle point index for succeeding j vector
+			ii = min(i,pp-2)                               // don't use the outer points in the last row
+		)							
+		for(j = [0:ii], k = [-1,1], l = [0,1], m = [0,1])	// for every point
+		let(
+			dm=(m==0) ? 0 : zs,
+			p1=jm+j*k+dm,                        // first point of triangle
+			p2=(l==0) ? jfm+j*k+dm : jfm+(j+1)*k+dm,
+			p3=(l==0) ? jfm+(j+1)*k+dm : jm+(j+1)*k+dm
+		)
+		if(j < i || l == 0) ((k==1 && m==0) || (k==-1 && m==1)) ? [p2, p1, p3] : [p1, p2, p3]
 	];
 
 // Swaps x and y coordinate of all members in matrix m. Applied on a faces matrix for polyhedron creation, it swaps inside out. 
@@ -131,7 +157,7 @@ module gyroid_cell()
 		mirror([i[0].x, 0, 		0])			// mirror in x direction if necessary
 		mirror([0,		i[0].y,	0])			// mirror in y direction if necessary
 		mirror([0,		0,		i[0].z])	// mirror in z direction if necessary
-		children();							// polyhedron of gyroid triangle
+		    children();						// polyhedron of gyroid triangle
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
