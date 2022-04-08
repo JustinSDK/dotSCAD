@@ -13,8 +13,7 @@ use <mz_cube_initialize.scad>;
 
 function mz_cube(layers, rows, columns, start = [0, 0, 0], init_cells, x_wrapping = false, y_wrapping = false, z_wrapping = false, seed) = 
     let(
-        init_undef = is_undef(init_cells),
-        mz = init_undef ? mz_cube_initialize(layers, rows, columns) : init_cells
+        mz = is_undef(init_cells) ? mz_cube_initialize(layers, rows, columns) : init_cells
     )
     go_maze( 
         start.x, 
