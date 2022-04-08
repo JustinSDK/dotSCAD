@@ -146,13 +146,13 @@ function go_maze(x, y, z, cells, layers, rows, columns, x_wrapping = false, y_wr
     let(
         r_dirs = rand_dirs(x + y * columns + z * rows * columns, seed),
         v_dirs = visitable_dirs(r_dirs, x, y, z, cells, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping),
-        nx_cells0 = set_visited(x, y, z, cells),
+        nxcells0 = set_visited(x, y, z, cells),
         leng_v_dirs = len(v_dirs)
     )
     //  have visitable dirs?
-    leng_v_dirs == 0 ? nx_cells0 :      // road closed
+    leng_v_dirs == 0 ? nxcells0 :      // road closed
     // try four directions
-    let(nxcells1 = next_cells(x, y, z, v_dirs[0], nx_cells0, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping, seed))
+    let(nxcells1 = next_cells(x, y, z, v_dirs[0], nxcells0, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping, seed))
     leng_v_dirs == 1 ? nxcells1 :
     let(nxcells2 = next_cells(x, y, z, v_dirs[1], nxcells1, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping, seed))
     leng_v_dirs == 2 ? nxcells2 : 
