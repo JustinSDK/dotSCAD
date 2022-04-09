@@ -14,8 +14,7 @@ function _convex_hull_sort_by_xy(lt) =
         [each _convex_hull_sort_by_xy(before), pivot, each _convex_hull_sort_by_xy(after)];
 
 // oa->ob ct_clk : greater than 0
-function _convex_hull_impl_dir(o, a, b) =
-    (a.x - o.x) * (b.y - o.y) - (a.y - o.y) * (b.x - o.x);
+function _convex_hull_impl_dir(o, a, b) = cross(a - o, b - o);
 
 function _convex_hull_convex_hull_lower_m(chain, p, m) = 
     (m >= 2 && _convex_hull_impl_dir(chain[m - 2], chain[m - 1], p) <= 0) ? _convex_hull_convex_hull_lower_m(chain, p, m - 1) : m;
