@@ -6,6 +6,7 @@ function _cmp(a, b) =
 function _convex_hull_sort_by_xyz(pts) = 
     let(leng = len(pts))
     leng <= 1 ? pts : 
+    leng == 2 ? (_cmp(pts[1], pts[0]) ? pts : [pts[1], pts[0]]) :
         let(
             pivot = pts[0],
             before = [for(j = 1; j < leng; j = j + 1) if(_cmp(pts[j], pivot)) pts[j]],
