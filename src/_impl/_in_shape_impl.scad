@@ -29,9 +29,5 @@ function _in_shape_does_pt_cross(pts, i, j, pt) =
     
 
 function _in_shape_sub(shapt_pts, leng, pt, cond, i, j) =
-    j == leng ? cond : (
-        _in_shape_does_pt_cross(shapt_pts, i, j, pt) ? 
-            _in_shape_sub(shapt_pts, leng, pt, !cond, j, j + 1) :
-            _in_shape_sub(shapt_pts, leng, pt, cond, j, j + 1)
-    );
+    j == leng ? cond : _in_shape_sub(shapt_pts, leng, pt,  _in_shape_does_pt_cross(shapt_pts, i, j, pt) ? !cond : cond, j, j + 1);
  
