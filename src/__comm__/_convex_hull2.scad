@@ -6,6 +6,7 @@ function _convex_hull_lt_than_by_xy(p1, p2) =
 function _convex_hull_sort_by_xy(lt) = 
     let(leng = len(lt))
     leng <= 1 ? lt : 
+    leng == 2 ? (_convex_hull_lt_than_by_xy(lt[1], lt[0]) ? [lt[1], lt[0]] : lt) :
         let(
             pivot = lt[0],
             before = [for(j = 1; j < leng; j = j + 1) if(_convex_hull_lt_than_by_xy(lt[j], pivot)) lt[j]],
@@ -17,7 +18,7 @@ function _convex_hull_sort_by_xy(lt) =
 function _convex_hull_impl_dir(o, a, b) = cross(a - o, b - o);
 
 function _convex_hull_convex_hull_lower_m(chain, p, m) = 
-    (m >= 2 && _convex_hull_impl_dir(chain[m - 2], chain[m - 1], p) <= 0) ? _convex_hull_convex_hull_lower_m(chain, p, m - 1) : m;
+    (m < 2 || _convex_hull_impl_dir(chain[m - 2], chain[m - 1], p) > 0) ? m : _convex_hull_convex_hull_lower_m(chain, p, m - 1);
 
 function _convex_hull_lower_chain(points, leng, chain, m, i) =
     i == leng ? chain : 
@@ -33,8 +34,7 @@ function _convex_hull_lower_chain(points, leng, chain, m, i) =
         );
             
 function _convex_hull_upper_m(chain, p, m, t) =
-    (m >= t && _convex_hull_impl_dir(chain[m - 2], chain[m - 1], p) <= 0) ?
-        _convex_hull_upper_m(chain, p, m - 1, t) : m;
+    (m < t || _convex_hull_impl_dir(chain[m - 2], chain[m - 1], p) > 0) ? m : _convex_hull_upper_m(chain, p, m - 1, t);
         
 function _convex_hull_upper_chain(points, chain, m, t, i) =
     i < 0 ? chain :
