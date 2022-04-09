@@ -11,5 +11,11 @@
 use <__comm__/_convex_hull2.scad>;
 
 module polygon_hull(points) {
-    polygon(_convex_hull2(points));
+    poly = _convex_hull2(points);
+    polygon(poly);
+    test_convex_hull2(poly);
+}
+
+module test_convex_hull2(poly) {
+
 }

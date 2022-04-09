@@ -2,6 +2,7 @@
 include <test_rounded_square.scad>;
 include <test_line2d.scad>;
 include <test_hexagons.scad>;
+include <test_polygon_hull.scad>;
 
 // 3D
 include <test_rounded_cube.scad>;
