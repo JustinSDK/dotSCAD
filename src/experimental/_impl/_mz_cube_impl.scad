@@ -128,7 +128,7 @@ function carve(dir, x, y, z, cells, layers, rows, columns) =
     /*dir 5*/  carve_down(x, y, z, cells, layers);
     
 // go maze from (x, y, z)
-function go_maze(x, y, z, cells, layers, rows, columns, x_wrapping = false, y_wrapping = false, z_wrapping = false, seed) = 
+function go_maze(x, y, z, cells, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping, seed) = 
     let(
         r_dirs = rand_dirs(x + y * columns + z * rows * columns, seed),
         nxcells0 = set_visited(x, y, z, cells),

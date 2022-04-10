@@ -133,7 +133,7 @@ function carve(dir, x, y, cells, rows, columns) =
     /*dir 3*/  carve_bottom(x, y, cells, rows);
     
 // go maze from (x, y)
-function go_maze(x, y, cells, rows, columns, x_wrapping = false, y_wrapping = false, seed) = 
+function go_maze(x, y, cells, rows, columns, x_wrapping, y_wrapping, seed) = 
     let(
         r_dirs = rand_dirs(x + y * columns, seed),
         nxcells0 = set_visited(x, y, cells),
