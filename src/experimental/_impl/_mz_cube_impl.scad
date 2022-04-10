@@ -126,54 +126,18 @@ function carve(dir, x, y, z, cells, layers, rows, columns) =
     dir == 3 ? carve_bottom(x, y, z, cells, rows) : 
     dir == 4 ? carve_up(x, y, z, cells) : 
     /*dir 5*/  carve_down(x, y, z, cells, layers);
-
-// find out visitable dirs from (x, y)
-function visitable_dirs(r_dirs, x, y, z, cells, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping) = [
-    for(dir = r_dirs) 
-    if(
-        visitable(
-            next_x(x, dir, columns, x_wrapping), 
-            next_y(y, dir, rows, y_wrapping), 
-            next_z(z, dir, layers, z_wrapping), 
-            cells, layers, rows, columns
-        )
-    ) 
-    dir
-];  
     
 // go maze from (x, y, z)
 function go_maze(x, y, z, cells, layers, rows, columns, x_wrapping = false, y_wrapping = false, z_wrapping = false, seed) = 
     let(
         r_dirs = rand_dirs(x + y * columns + z * rows * columns, seed),
-        v_dirs = visitable_dirs(r_dirs, x, y, z, cells, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping),
         nxcells0 = set_visited(x, y, z, cells),
-        leng_v_dirs = len(v_dirs)
+        nxcells1 = next_cells(x, y, z, r_dirs[0], nxcells0, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping, seed),
+        nxcells2 = next_cells(x, y, z, r_dirs[1], nxcells1, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping, seed),
+        nxcells3 = next_cells(x, y, z, r_dirs[2], nxcells2, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping, seed),
+        nxcells4 = next_cells(x, y, z, r_dirs[3], nxcells3, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping, seed)
     )
-    //  have visitable dirs?
-    leng_v_dirs == 0 ? nxcells0 :      // road closed
-    // try four directions
-    let(
-        dir = v_dirs[0],
-        nx = next_x(x, dir, columns, x_wrapping),
-        ny = next_y(y, dir, rows, y_wrapping),
-        nz = next_z(z, dir, layers, z_wrapping),
-        nxcells1 = go_maze(  // try the cell 
-            nx, ny, nz, 
-            carve(dir, x, y, z, nxcells0, layers, rows, columns),
-            layers, rows, columns,
-            x_wrapping, y_wrapping, z_wrapping,
-            seed
-        )
-    )
-    leng_v_dirs == 1 ? nxcells1 :
-    let(nxcells2 = next_cells(x, y, z, v_dirs[1], nxcells1, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping, seed))
-    leng_v_dirs == 2 ? nxcells2 : 
-    let(nxcells3 = next_cells(x, y, z, v_dirs[2], nxcells2, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping, seed))
-    leng_v_dirs == 3 ? nxcells3 : 
-    let(nxcells4 = next_cells(x, y, z, v_dirs[3], nxcells3, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping, seed))
-    leng_v_dirs == 4 ? nxcells4 : 
-    let(nxcells5 = next_cells(x, y, z, v_dirs[4], nxcells4, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping, seed))
-    leng_v_dirs == 5 ? nxcells5 : next_cells(x, y, z, v_dirs[5], nxcells5, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping, seed);
+     next_cells(x, y, z, r_dirs[4], nxcells4, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping, seed);
 
 function next_cells(x, y, z, dir, cells, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping, seed) =
     let(
