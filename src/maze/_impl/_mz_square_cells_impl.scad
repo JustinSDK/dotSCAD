@@ -46,7 +46,7 @@ _rand_dir_table = [
     [3, 2, 1, 0]
 ];
 function rand_dirs(c, seed) =
-   let(r = is_undef(seed) ? rands(0, 24, 1) : rands(0, 24, 1, c + seed))
+   let(r = is_undef(seed) ? rands(0, 23, 1) : rands(0, 23, 1, c + seed))
     _rand_dir_table[round(r[0])]; 
 
 // get x value by dir
@@ -131,43 +131,18 @@ function carve(dir, x, y, cells, rows, columns) =
     dir == 1 ? carve_top(x, y, cells) : 
     dir == 2 ? carve_left(x, y, cells, columns) : 
     /*dir 3*/  carve_bottom(x, y, cells, rows);
-
-// find out visitable dirs from (x, y)
-function visitable_dirs(r_dirs, x, y, cells, rows, columns, x_wrapping, y_wrapping) = [
-    for(dir = r_dirs) 
-    if(visitable(next_x(x, dir, columns, x_wrapping), next_y(y, dir, rows, y_wrapping), cells, rows, columns)) 
-        dir
-];  
     
 // go maze from (x, y)
 function go_maze(x, y, cells, rows, columns, x_wrapping = false, y_wrapping = false, seed) = 
     let(
         r_dirs = rand_dirs(x + y * columns, seed),
-        v_dirs = visitable_dirs(r_dirs, x, y, cells, rows, columns, x_wrapping, y_wrapping),
         nxcells0 = set_visited(x, y, cells),
-        leng_v_dirs = len(v_dirs)
+        nxcells1 = next_cells(x, y, r_dirs[0], nxcells0, rows, columns, x_wrapping, y_wrapping, seed),
+        nxcells2 = next_cells(x, y, r_dirs[1], nxcells1, rows, columns, x_wrapping, y_wrapping, seed),
+        nxcells3 = next_cells(x, y, r_dirs[2], nxcells2, rows, columns, x_wrapping, y_wrapping, seed)
     )
-    //  have visitable dirs?
-    leng_v_dirs == 0 ? nxcells0 :      // road closed
-    // try four directions
-    let(
-        dir = v_dirs[0],
-        nx = next_x(x, dir, columns, x_wrapping),
-        ny = next_y(y, dir, rows, y_wrapping),
-        nxcells1 = go_maze(  // try the cell 
-            nx, ny, 
-            carve(dir, x, y, nxcells0, rows, columns),
-            rows, columns,
-            x_wrapping, y_wrapping,
-            seed
-        )
-    )
-    leng_v_dirs == 1 ? nxcells1 :
-    let(nxcells2 = next_cells(x, y, v_dirs[1], nxcells1, rows, columns, x_wrapping, y_wrapping, seed))
-    leng_v_dirs == 2 ? nxcells2 : 
-    let(nxcells3 = next_cells(x, y, v_dirs[2], nxcells2, rows, columns, x_wrapping, y_wrapping, seed))
-    leng_v_dirs == 3 ? nxcells3 : next_cells(x, y, v_dirs[3], nxcells3, rows, columns, x_wrapping, y_wrapping, seed);
-
+    next_cells(x, y, r_dirs[3], nxcells3, rows, columns, x_wrapping, y_wrapping, seed);
+    
 function next_cells(x, y, dir, cells, rows, columns, x_wrapping, y_wrapping, seed) =
     let(
         nx = next_x(x, dir, columns, x_wrapping),
