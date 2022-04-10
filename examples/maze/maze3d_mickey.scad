@@ -7,9 +7,9 @@ cell_width = 15;
 road_width = 6;
 $fn = 4;  // [4, 8, 12]
 
-3dmaze_mickey();
+maze3d_mickey();
 
-module 3dmaze_mickey() {
+module maze3d_mickey() {
     function mask_sphere(face_radius) = 
         let(
             range = [-face_radius * 1.5: face_radius * 1.5 - 1],
