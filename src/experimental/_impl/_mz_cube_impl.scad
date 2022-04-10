@@ -152,7 +152,19 @@ function go_maze(x, y, z, cells, layers, rows, columns, x_wrapping = false, y_wr
     //  have visitable dirs?
     leng_v_dirs == 0 ? nxcells0 :      // road closed
     // try four directions
-    let(nxcells1 = next_cells(x, y, z, v_dirs[0], nxcells0, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping, seed))
+    let(
+        dir = v_dirs[0],
+        nx = next_x(x, dir, columns, x_wrapping),
+        ny = next_y(y, dir, rows, y_wrapping),
+        nz = next_z(z, dir, layers, z_wrapping),
+        nxcells1 = go_maze(  // try the cell 
+            nx, ny, nz, 
+            carve(dir, x, y, z, nxcells0, layers, rows, columns),
+            layers, rows, columns,
+            x_wrapping, y_wrapping, z_wrapping,
+            seed
+        )
+    )
     leng_v_dirs == 1 ? nxcells1 :
     let(nxcells2 = next_cells(x, y, z, v_dirs[1], nxcells1, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping, seed))
     leng_v_dirs == 2 ? nxcells2 : 
