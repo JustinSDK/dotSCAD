@@ -14,29 +14,38 @@ maze3d();
 
 module maze3d() {
     cells = mz_cube(layers, rows, columns);
+    draw_3dmaze(cells, cell_width, road_width);
+}
+
+module draw_3dmaze(cells, cell_width, road_width) {
+    layers = len(cells);
+    rows = len(cells[0]);
+    columns = len(cells[0][0]);
 
     for(z = [0:layers - 1], y = [0:rows - 1], x = [0:columns - 1]) {
         cell = cells[z][y][x];
         type = mz_cube_get(cell, "t");
         
-        channels = [
-            z_road(type),
-            z != 0 && z_road(mz_cube_get(cells[z - 1][y][x], "t")),
-            y_road(type),
-            x_road(type),
-            y != 0 && y_road(mz_cube_get(cells[z][y - 1][x], "t")),
-            x != 0 && x_road(mz_cube_get(cells[z][y][x - 1], "t"))
-        ];
-        
-        translate([x, y, z] * cell_width)
-            drawCell(cell_width, road_width, channels);
+        if(type != "MASK") {
+            channels = [
+                z_road(type) ,
+                z != 0 && z_road(mz_cube_get(cells[z - 1][y][x], "t")),
+                y_road(type),
+                x_road(type),
+                y != 0 && y_road(mz_cube_get(cells[z][y - 1][x], "t")),
+                x != 0 && x_road(mz_cube_get(cells[z][y][x - 1], "t"))
+            ];
+            
+            translate([x, y, z] * cell_width)
+                drawCell(cell_width, road_width, channels);
+        }
     }
 
-    function z_road(type) = !has(["Z_WALL", "Z_Y_WALL", "Z_X_WALL", "Z_Y_X_WALL"], type);
+    function z_road(type) = !has(["Z_WALL", "Z_Y_WALL", "Z_X_WALL", "Z_Y_X_WALL", "MASK"], type);
 
-    function y_road(type) = !has(["Y_WALL", "Y_X_WALL", "Z_Y_WALL", "Z_Y_X_WALL"], type);
+    function y_road(type) = !has(["Y_WALL", "Y_X_WALL", "Z_Y_WALL", "Z_Y_X_WALL", "MASK"], type);
 
-    function x_road(type) = !has(["X_WALL", "Y_X_WALL", "Z_X_WALL", "Z_Y_X_WALL"], type);
+    function x_road(type) = !has(["X_WALL", "Y_X_WALL", "Z_X_WALL", "Z_Y_X_WALL", "MASK"], type);
 
     module drawCell(cell_width, road_width, channels) {
         half_cw = cell_width / 2;
