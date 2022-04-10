@@ -135,9 +135,10 @@ function go_maze(x, y, z, cells, layers, rows, columns, x_wrapping = false, y_wr
         nxcells1 = next_cells(x, y, z, r_dirs[0], nxcells0, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping, seed),
         nxcells2 = next_cells(x, y, z, r_dirs[1], nxcells1, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping, seed),
         nxcells3 = next_cells(x, y, z, r_dirs[2], nxcells2, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping, seed),
-        nxcells4 = next_cells(x, y, z, r_dirs[3], nxcells3, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping, seed)
+        nxcells4 = next_cells(x, y, z, r_dirs[3], nxcells3, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping, seed),
+        nxcells5 = next_cells(x, y, z, r_dirs[4], nxcells4, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping, seed)
     )
-     next_cells(x, y, z, r_dirs[4], nxcells4, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping, seed);
+    next_cells(x, y, z, r_dirs[5], nxcells5, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping, seed);
 
 function next_cells(x, y, z, dir, cells, layers, rows, columns, x_wrapping, y_wrapping, z_wrapping, seed) =
     let(
