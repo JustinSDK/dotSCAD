@@ -32,3 +32,14 @@ _dedup_add_search = function(buckets, i_elem, eq, hash, bucket_numbers)
 function _add(buckets, bucket, i_elem, b_idx) = 
     let(leng = len(buckets))
 	[for(i = 0; i < leng; i = i + 1) i == b_idx ? [each bucket, i_elem] : buckets[i]];
+
+function _sort(lt) = 
+    let(leng = len(lt))
+	leng == 0 ? [] :
+	leng == 1 ? [lt[0][1]] :
+	let(
+		pivot = lt[0],
+		before = [for(j = 1; j < leng; j = j + 1) if(lt[j][0] < pivot[0]) lt[j]],
+		after =  [for(j = 1; j < leng; j = j + 1) if(lt[j][0] >= pivot[0]) lt[j]]
+	)
+	[each _sort(before), pivot[1], each _sort(after)];
