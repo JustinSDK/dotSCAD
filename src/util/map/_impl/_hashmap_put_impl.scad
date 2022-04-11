@@ -9,6 +9,15 @@ function _hashmap_put(buckets, b_numbers, key, value, eq, hash) =
 	k_idx != -1 ? _replace(buckets, b_numbers, bucket, key, value, b_idx, k_idx) : 
 	              _put(buckets, b_numbers, bucket, key, value, b_idx);
 
+function _hashmap_put_by(buckets, b_numbers, key, value, eq, hash, f_eq) =
+    let(
+	    b_idx = hash(key) % b_numbers,
+		bucket = buckets[b_idx],
+		k_idx = f_eq(bucket, key, eq)
+	)
+	k_idx != -1 ? _replace(buckets, b_numbers, bucket, key, value, b_idx, k_idx) : 
+	              _put(buckets, b_numbers, bucket, key, value, b_idx);
+
 function _replace(buckets, b_numbers, bucket, key, value, b_idx, k_idx) = 
     let(leng_bucket = len(bucket))
 	[
