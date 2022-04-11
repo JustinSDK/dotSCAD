@@ -59,12 +59,9 @@ function get_state_weight(weights, state) = weights[search([state], weights)[0]]
 function wf_collapse(wf, x, y, weights) =
     let(
 		states = wf_eigenstates_at(wf, x, y),
-		wets = is_undef(weights) ? 
-		    let(all_weights = wf_weights(wf)) [for(state = states) get_state_weight(all_weights, state)] : 
-			weights,
-		threshold = rand() * sum(wets)
+		threshold = rand() * sum(weights)
 	)		
-	_wf_collapse(wf, x, y, states, wets, len(states), threshold);
+	_wf_collapse(wf, x, y, states, weights, len(states), threshold);
 
 function _wf_collapse(wf, x, y, states, weights, leng, threshold, i = 0) =
     threshold < 0 || i == leng ? wf : 

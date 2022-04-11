@@ -11,11 +11,15 @@ function tile_wfc(size, sample) =
 		w = tilemap_width(tm),
 	    h = tilemap_height(tm),
 		compatibilities = tilemap_compatibilities(tm),
+        wf = tilemap_wf(tm),
+        all_weights = wf_weights(wf),
+        states = wf_eigenstates_at(wf, x, y),
+		weights = [for(state = states) get_state_weight(all_weights, state)],
         first_collasped_propagated = propagate(
 			w,
 			h,
 			compatibilities,
-			wf_collapse(tilemap_wf(tm), x, y), 
+			wf_collapse(wf, x, y, weights), 
             x, 
             y
         ),
