@@ -3,6 +3,7 @@ use <../some.scad>;
 function _dedup(elems, leng, buckets, eq, hash, bucket_numbers) = 
     let(
         end = leng - 1,
+        _dedup_add = is_undef(eq) ? _dedup_add_search : _dedup_add_some,
         n_buckets_lt = [
         for(i = 0, n_buckets = _dedup_add(buckets, [i, elems[i]], eq, hash, bucket_numbers), is_continue = i < end;
             is_continue; 
@@ -12,17 +13,21 @@ function _dedup(elems, leng, buckets, eq, hash, bucket_numbers) =
     )
     _dedup_add(n_buckets_lt[end - 1], [end, elems[end]], eq, hash, bucket_numbers); 
 
-function _dedup_add(buckets, i_elem, eq, hash, bucket_numbers) =
+_dedup_add_some = function(buckets, i_elem, eq, hash, bucket_numbers)
     let(
 		elem = i_elem[1],
 	    b_idx = hash(elem) % bucket_numbers,
 		bucket = buckets[b_idx]
 	)
-    (
-        is_undef(eq) ? 
-            search([elem], bucket, num_returns_per_match = 1, index_col_num = 1) != [[]] : 
-            some(bucket, function(i_e) eq(i_e[1], elem))
-    ) ? buckets : _add(buckets, bucket, i_elem, b_idx);
+    some(bucket, function(i_e) eq(i_e[1], elem)) ? buckets : _add(buckets, bucket, i_elem, b_idx);
+
+_dedup_add_search = function(buckets, i_elem, eq, hash, bucket_numbers) 
+    let(
+		elem = i_elem[1],
+	    b_idx = hash(elem) % bucket_numbers,
+		bucket = buckets[b_idx]
+	)
+    search([elem], bucket, num_returns_per_match = 1, index_col_num = 1) != [[]] ? buckets : _add(buckets, bucket, i_elem, b_idx);
 
 function _add(buckets, bucket, i_elem, b_idx) = 
     let(leng = len(buckets))
