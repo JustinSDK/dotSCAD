@@ -18,10 +18,10 @@ function _cells_lt_before_intersection(shape, size, points, pt, half_region_size
         for(p = points)
             let(
                 v = p - pt,
-                offset = (pt + p) / 2 - v / norm(v) * half_region_size,
-                a = atan2(v.y, v.x),
-                cosa = cos(a),
-                sina = sin(a),
+                nv = v / norm(v),
+                offset = (pt + p) / 2 - nv * half_region_size,
+                cosa = nv.x,
+                sina = nv.y,
                 m = [
                         [1, 0, offset.x],
                         [0, 1, offset.y],
