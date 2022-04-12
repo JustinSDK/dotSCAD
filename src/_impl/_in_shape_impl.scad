@@ -2,12 +2,9 @@ use <__comm__/__in_line.scad>;
 
 function _in_shape_in_line_equation(edge, pt) = 
     let(
-        x1 = edge[0].x,
-        y1 = edge[0].y,
-        x2 = edge[1].x,
-        y2 = edge[1].y,
-        a = (y2 - y1) / (x2 - x1),
-        b = y1 - a * x1
+        v = edge[1] - edge[0],
+        a = v.y / v.x,
+        b = edge[0].y - a * edge[0].x
     )
     (pt.y == a * pt.x + b);
 
