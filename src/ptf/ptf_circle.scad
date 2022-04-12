@@ -12,8 +12,11 @@ function ptf_circle(size, point) =
     let(
         p_offset = -size / 2,
         p = point + p_offset,
-        n = max(abs(p.x), abs(p.y)),
-        r = n * 1.414,
-        a = atan2(p.x, p.y)
+        leng = norm(p)
     )
-    [r * cos(a), r * sin(a)];
+    leng == 0 ? [0, 0] :
+    let(
+        n = max(abs(p.x), abs(p.y)),
+        r = n * 1.414
+    )
+    [p.y, p.x] * (r / leng);
