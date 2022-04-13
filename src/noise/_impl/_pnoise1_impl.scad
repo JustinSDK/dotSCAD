@@ -1,17 +1,16 @@
 use <_pnoise_comm.scad>;
+use <../../util/lerp.scad>;
 
-function _pnoise1_grad1(hashvalue, x) = (hashvalue % 2 == 0) ? x : -x; 
+_signs = [1, -1];
+function _pnoise1_grad1(hashvalue, x) = _signs[hashvalue % 2] * x; 
 
 function _pnoise1_impl(x, seed) =
     let(
         xi = floor(x),
-        xf = x - xi,
-        u = _pnoise_fade(xf),
-        a = _pnoise_lookup_pnoise_table(seed + xi),
-        b = _pnoise_lookup_pnoise_table(seed + xi + 1)
+        xf = x - xi
     )
-    _pnoise_lerp(
-        _pnoise1_grad1(a, xf),
-        _pnoise1_grad1(b, xf - 1),
-        u
+    lerp(
+        _pnoise1_grad1(_pnoise_lookup_pnoise_table(seed + xi), xf),
+        _pnoise1_grad1(_pnoise_lookup_pnoise_table(seed + xi + 1), xf - 1),
+        _pnoise_fade(xf)
     );

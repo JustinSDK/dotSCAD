@@ -1,14 +1,8 @@
 use <_pnoise_comm.scad>;
+use <../../util/lerp.scad>;
 
-function _pnoise2_grad2(hashvalue, x, y) = 
-    let(case = hashvalue % 8)
-    case == 0 ? y :
-    case == 1 ? x + y :
-    case == 2 ? x:
-    case == 3 ? x - y:
-    case == 4 ? -y:
-    case == 5 ? -x - y:
-    case == 6 ? -x : -x + y;
+_signs = [[0, 1], [1, 1], [1, 0], [1, -1], [0, -1], [-1, -1], [-1, 0], [-1, 1]];
+function _pnoise2_grad2(hashvalue, x, y) = _signs[hashvalue % 8] * [x, y];
 
 function _pnoise2(x, y, seed) =
     let(
@@ -22,15 +16,15 @@ function _pnoise2(x, y, seed) =
         ba = _pnoise_lookup_pnoise_table(_pnoise_lookup_pnoise_table(seed + xi + 1) + yi),
         ab = _pnoise_lookup_pnoise_table(_pnoise_lookup_pnoise_table(seed + xi) + yi + 1),
         bb = _pnoise_lookup_pnoise_table(_pnoise_lookup_pnoise_table(seed + xi + 1) + yi + 1),
-        y1 = _pnoise_lerp(
+        y1 = lerp(
             _pnoise2_grad2(aa, xf, yf),
             _pnoise2_grad2(ba, xf - 1, yf),
             u
         ),
-        y2 = _pnoise_lerp(
+        y2 = lerp(
             _pnoise2_grad2(ab, xf, yf - 1),
             _pnoise2_grad2(bb, xf - 1, yf - 1),
             u
         )             
     )
-    _pnoise_lerp(y1, y2, v);
+    lerp(y1, y2, v);
