@@ -8,4 +8,4 @@
 *
 **/ 
 
-function lerp(v1, v2, amt) = let(v = v2 - v1) v1 + v * amt;
+function lerp(v1, v2, amt) = v1 + (v2 - v1) * amt;
