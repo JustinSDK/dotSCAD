@@ -116,17 +116,21 @@ function _isolines_of(cell_pts, threshold) =
 function _marching_squares_isolines(points, threshold) = 
     let(labeled_pts = _isolines_pn_label(points, threshold))
     [
-        for(y = [0:len(labeled_pts) - 2], x = [0:len(labeled_pts[0]) - 2])            
+        for(y = [0:len(labeled_pts) - 2])            
             let(
-                p0 = labeled_pts[y][x],
-                p1 = labeled_pts[y + 1][x],
-                p2 = labeled_pts[y + 1][x + 1],
-                p3 = labeled_pts[y][x + 1],
-                cell_pts = [p0, p1, p2, p3],
-                isolines_lt = _isolines_of(cell_pts, threshold)
+                labeled_pts_y = labeled_pts[y],
+                labeled_pts_y_1 = labeled_pts[y + 1]
             )
-            if(isolines_lt != [])
-            each isolines_lt
+            for(x = [0:len(labeled_pts[0]) - 2])
+            each _isolines_of(
+                [
+                    labeled_pts_y[x],
+                    labeled_pts_y_1[x],
+                    labeled_pts_y_1[x + 1],
+                    labeled_pts_y[x + 1]
+                ], 
+                threshold
+            )
     ];               
 
 /*
@@ -143,9 +147,8 @@ function _isobands_tri_label(pts, lower, upper) =
         [
             for(p = row) 
             let(
-                z = p.z,
-                label = z < lower ? "0" : 
-                        z >= lower && z <= upper ? "1" : "2"
+                label = p.z < lower ? 0 : 
+                        p.z > upper ? 2 : 1
             )
             [each p, label]
         ]
@@ -1391,17 +1394,18 @@ function _isobands_of(cell_pts, lower, upper) =
 function _marching_squares_isobands(points, lower, upper) = 
     let(labeled_pts = _isobands_tri_label(points, lower, upper))
     [
-        for(y = [0:len(labeled_pts) - 2], x = [0:len(labeled_pts[0]) - 2])
-            let(
-                p0 = labeled_pts[y][x],
-                p1 = labeled_pts[y + 1][x],
-                p2 = labeled_pts[y + 1][x + 1],
-                p3 = labeled_pts[y][x + 1],
-                cell_pts = [p0, p1, p2, p3],
-                isobands_lt = _isobands_of(cell_pts, lower, upper)
-            )
-            if(isobands_lt != [])
-            each isobands_lt
+        for(y = [0:len(labeled_pts) - 2])
+            let(labeled_pts_y = labeled_pts[y], labeled_pts_y_1 = labeled_pts[y + 1])
+            for(x = [0:len(labeled_pts[0]) - 2])
+                each _isobands_of(
+                    [
+                        labeled_pts_y[x],
+                        labeled_pts_y_1[x],
+                        labeled_pts_y_1[x + 1],
+                        labeled_pts_y[x + 1]
+                    ], 
+                    lower, upper
+                )
     ];
     
 /*
