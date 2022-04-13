@@ -1,6 +1,6 @@
 # along_with
 
-Puts children along the given path. If there's only one child, it will put the child for each point. 
+If you want to place objects precisely, their points and angles are required. When you have only points or you don't care their precise angles, `along_with` puts children along the given path. If there's only one child, it will put the child for each point. 
 
 ## Parameters
 
