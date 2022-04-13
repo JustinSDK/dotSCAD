@@ -60,6 +60,7 @@ include <test_sphere_spiral_extrude.scad>;
 include <test_path_extrude.scad>;
 
 // Utilities
+include <util/test_lerp.scad>;
 include <util/test_sub_str.scad>;
 include <util/test_split_str.scad>;
 include <util/test_parse_number.scad>;
@@ -79,6 +80,7 @@ include <util/test_spherical_coordinate.scad>;
 include <util/test_count.scad>;
 include <util/set/test_hashset.scad>;
 include <util/map/test_hashmap.scad>;
+
 
 // Voxel
 include <voxel/test_vx_line.scad>;
