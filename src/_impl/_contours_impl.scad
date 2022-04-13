@@ -1,4 +1,4 @@
-function _lerp(v1, v2, amt) = let(v = v2 - v1) v1 + v * amt;
+function _lerp(v1, v2, amt) = v1 + (v2 - v1) * amt;
 
 function interpolated_pt(p0, p1, threshold) = 
    let(p = _lerp(p0, p1, (threshold - p0.z) / (p1.z - p0.z)))
