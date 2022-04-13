@@ -1,11 +1,8 @@
-use <../util/lerp.scad>;
+function _lerp(v1, v2, amt) = let(v = v2 - v1) v1 + v * amt;
 
 function interpolated_pt(p0, p1, threshold) = 
-    lerp(
-        [p0.x, p0.y, p0.z], 
-        [p1.x, p1.y, p1.z], 
-        (threshold - p0.z) / (p1.z - p0.z)
-    );
+   let(p = _lerp(p0, p1, (threshold - p0.z) / (p1.z - p0.z)))
+   [p.x, p.y, p.z];
 
 /*
     Grid indexes
