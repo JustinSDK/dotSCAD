@@ -34,11 +34,11 @@ function _intersection_ps(shape, line_pts, epsilon) =
 
 function _convex_intersection(shape1, shape2, epsilon = 0.0001) =
     (shape1 == [] || shape2 == []) ? [] :
-    let(pts = [each shape1, shape1[0]])
     _convex_ct_clk_order(
         concat(
             [for(p = shape1) if(_in_convex(shape2, p)) p], 
             [for(p = shape2) if(_in_convex(shape1, p)) p],
-            [for(i = [0:len(shape1) - 1]) each _intersection_ps(shape2, [pts[i], pts[i + 1]], epsilon)] 
+            [for(i = [0:len(shape1) - 2]) each _intersection_ps(shape2, [shape1[i], shape1[i + 1]], epsilon)],
+            _intersection_ps(shape2, [shape1[len(shape1) - 1], shape1[0]], epsilon)
         )
     );  
