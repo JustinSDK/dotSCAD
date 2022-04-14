@@ -17,13 +17,11 @@ function _in_convex(convex_pts, pt) =
     )
 	_in_convex_r(0, 1, c, convex_pts, pt, leng, convex_pts, pt);
 	
-
-function _intersection_ps(shape, line_pts, epsilon) = 
+function _intersection_ps(closed_shape, line_pts, epsilon) = 
     let(
-        pts = [each shape, shape[0]],
         npts = [
-            for(i = [0:len(shape) - 1]) 
-            let(p = lines_intersection(line_pts, [pts[i], pts[i + 1]], epsilon = epsilon))
+            for(i = [0:len(closed_shape) - 2]) 
+            let(p = lines_intersection(line_pts, [closed_shape[i], closed_shape[i + 1]], epsilon = epsilon))
             if(p != []) p
         ],
         leng = len(npts)
@@ -34,11 +32,12 @@ function _intersection_ps(shape, line_pts, epsilon) =
 
 function _convex_intersection(shape1, shape2, epsilon = 0.0001) =
     (shape1 == [] || shape2 == []) ? [] :
+    let(closed_shape2 = [each shape2, shape2[0]])
     _convex_ct_clk_order(
         concat(
             [for(p = shape1) if(_in_convex(shape2, p)) p], 
             [for(p = shape2) if(_in_convex(shape1, p)) p],
-            [for(i = [0:len(shape1) - 2]) each _intersection_ps(shape2, [shape1[i], shape1[i + 1]], epsilon)],
-            _intersection_ps(shape2, [shape1[len(shape1) - 1], shape1[0]], epsilon)
+            [for(i = [0:len(shape1) - 2]) each _intersection_ps(closed_shape2, [shape1[i], shape1[i + 1]], epsilon)],
+            _intersection_ps(closed_shape2, [shape1[len(shape1) - 1], shape1[0]], epsilon)
         )
     );  
