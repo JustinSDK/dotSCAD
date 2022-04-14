@@ -1,18 +1,4 @@
-function _cmp(a, b) =
-    a.x != b.x ? a.x < b.x : 
-    a.y != b.y ? a.y < b.y :
-    a.z < b.z;
-    
-function _convex_hull_sort_by_xyz(pts) = 
-    let(leng = len(pts))
-    leng <= 1 ? pts : 
-    leng == 2 ? (_cmp(pts[1], pts[0]) ? [pts[1], pts[0]] : pts) :
-        let(
-            pivot = pts[0],
-            before = [for(j = 1; j < leng; j = j + 1) if(_cmp(pts[j], pivot)) pts[j]],
-            after =  [for(j = 1; j < leng; j = j + 1) if(!_cmp(pts[j], pivot)) pts[j]]
-        )
-        [each _convex_hull_sort_by_xyz(before), pivot, each _convex_hull_sort_by_xyz(after)];
+use <../util/sort.scad>;
 
 function normal(pts, f) = cross(pts[f[1]] - pts[f[0]], pts[f[2]] - pts[f[0]]);
 
@@ -83,7 +69,7 @@ function _all_faces(v0, v1, v2, v3, pts, pts_leng, vis, cur_faces, i = 0) =
 
 function _convex_hull3(pts) = 
     let(
-        sorted = _convex_hull_sort_by_xyz(pts),
+        sorted = sort(pts, by = function(p1, p2) p1 < p2 ? -1 : 1),
         leng = len(sorted),
         v0 = 0,
         v1 =  _fst_v1(sorted, leng, v0 + 1),
