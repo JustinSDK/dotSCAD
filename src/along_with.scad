@@ -90,7 +90,7 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
     module axis_angle_align_with_pts_rs(a, s) {
         angleyz = __angy_angz(pts[0], pts[1]);
         rotate([0, -angleyz[0], angleyz[1]])
-        rotate([0, 0, a - 90])
+        rotate(a - 90)
         scale(s) 
             children(0);
     }
@@ -122,7 +122,7 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
         )
         [
             [0, -angs[0][0], angs[0][1]], 
-            each[for(a = angs) [0, -a[0], a[1]]]
+            each [for(a = angs) [0, -a[0], a[1]]]
         ];
 
     module euler_angle_align(i, angs, look_at) {
