@@ -83,6 +83,7 @@ include <util/map/test_hashmap.scad>;
 
 
 // Voxel
+include <voxel/test_vx_bezier.scad>;
 include <voxel/test_vx_line.scad>;
 include <voxel/test_vx_polyline.scad>;
 include <voxel/test_vx_circle.scad>;
