@@ -8,9 +8,13 @@
 *
 **/ 
 
-use <../util/sort.scad>;
-use <../util/has.scad>;
+use <../util/set/hashset.scad>;
+use <../util/set/hashset_has.scad>;
+use <../__comm__/_pt3_hash.scad>;
 
 function vx_difference(points1, points2) =
-    let(sorted = sort(points2, by = "vt"))
-    [for(p = points1) if(!has(sorted, p, sorted = true)) p];
+    let(
+        hash = function(p) _pt3_hash(p),
+        set = hashset(points2, hash = hash)
+    )
+    [for(p = points1) if(!hashset_has(set, p, hash = hash)) p];
