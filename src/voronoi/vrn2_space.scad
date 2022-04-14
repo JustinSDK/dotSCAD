@@ -11,13 +11,12 @@
 module vrn2_space(size, grid_w, seed, spacing = 1, r = 0, delta = 0, chamfer = false, region_type = "square") {
     function cell_pt(fcord, seed, x, y, gw, gh) = 
         let(
-            nx = fcord.x + x,
-            ny = fcord.y + y,
-            sd_x = (nx + gw) % gw,
-            sd_y = (ny + gh) % gh,                 
+            nv = fcord + [x, y],
+            sd_x = (nv.x + gw) % gw,
+            sd_y = (nv.y + gh) % gh,                 
             sd_base = abs(sd_x + sd_y * grid_w)
         )
-        ([nx, ny] + rands(0.1, 0.9, 2, seed_value = seed + sd_base)) * grid_w;
+        (nv + rands(0.1, 0.9, 2, seed_value = seed + sd_base)) * grid_w;
 
     // 9-nearest-neighbor 
     function _neighbors(fcord, seed, grid_w, gw, gh) = 

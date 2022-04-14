@@ -16,12 +16,10 @@ module vrn3_space(size, grid_w, seed, spacing = 1) {
         let(range = [-1:1])
         for(z = range, y = range, x = range)    
         let(
-            nx = fcord.x + x,
-            ny = fcord.y + y,
-            nz = fcord.z + z,
-            sd_base = abs(nx + ny * grid_w + nz * grid_w * grid_w)
+            nv = fcord + [x, y, z],
+            sd_base = abs(nv * [1, grid_w, grid_w ^ 2])
         )
-        ([nx, ny, nz] + rands(0.1, 0.9, 3, seed_value = seed + sd_base)) * grid_w
+        (nv + rands(0.1, 0.9, 3, seed_value = seed + sd_base)) * grid_w
     ];    
     
     space_size = grid_w * 3;    
