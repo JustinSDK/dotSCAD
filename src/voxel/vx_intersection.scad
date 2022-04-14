@@ -18,6 +18,6 @@ function vx_intersection(points1, points2) =
         leng2 = len(points2),
         pts_pair = leng1 > leng2 ? [points1, points2] : [points2, points1],
         hash = function(p) _pt3_hash(p),
-        sorted = hashset(pts_pair[1], hash = hash)
+        set = hashset(pts_pair[1], hash = hash)
     )
-    [for(p = pts_pair[0]) if(hashset_has(sorted, p, hash = hash)) p];
+    [for(p = pts_pair[0]) if(hashset_has(set, p, hash = hash)) p];
