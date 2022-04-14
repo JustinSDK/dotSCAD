@@ -23,9 +23,7 @@ function _convex_hull_upper_m(chain, p, m, t) =
         
 function _convex_hull_upper_chain(points, chain, m, t, i) =
     i < 0 ? chain :
-        let(
-            current_m = _convex_hull_upper_m(chain, points[i], m, t)
-        )
+        let(current_m = _convex_hull_upper_m(chain, points[i], m, t))
         _convex_hull_upper_chain(
             points,
             [each slice(chain, 0, current_m), points[i]],
@@ -36,7 +34,7 @@ function _convex_hull_upper_chain(points, chain, m, t, i) =
 
 function _convex_hull2(points) = 
     let(
-        sorted = sort(points, by = function(p1, p2) p1.x < p2.x || (p1.x == p2.x && p1.y < p2.y) ? -1 : 1),
+        sorted = sort(points, by = function(p1, p2) p1 < p2 ? -1 : 1),
         leng = len(sorted),
         lwr_ch = _convex_hull_lower_chain(sorted, leng, [], 0, 0),
         leng_lwr_ch = len(lwr_ch),
