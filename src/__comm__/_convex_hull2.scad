@@ -1,18 +1,5 @@
 use <../util/slice.scad>;
-
-function _convex_hull_lt_than_by_xy(p1, p2) =
-    p1.x < p2.x || (p1.x == p2.x && p1.y < p2.y);
-
-function _convex_hull_sort_by_xy(lt) = 
-    let(leng = len(lt))
-    leng <= 1 ? lt : 
-    leng == 2 ? (_convex_hull_lt_than_by_xy(lt[1], lt[0]) ? [lt[1], lt[0]] : lt) :
-        let(
-            pivot = lt[0],
-            before = [for(j = 1; j < leng; j = j + 1) if(_convex_hull_lt_than_by_xy(lt[j], pivot)) lt[j]],
-            after =  [for(j = 1; j < leng; j = j + 1) if(!_convex_hull_lt_than_by_xy(lt[j], pivot)) lt[j]]
-        )
-        [each _convex_hull_sort_by_xy(before), pivot, each _convex_hull_sort_by_xy(after)];
+use <../util/sort.scad>;
 
 // oa->ob ct_clk : greater than 0
 function _convex_hull_impl_dir(o, a, b) = cross(a - o, b - o);
@@ -22,9 +9,7 @@ function _convex_hull_convex_hull_lower_m(chain, p, m) =
 
 function _convex_hull_lower_chain(points, leng, chain, m, i) =
     i == leng ? chain : 
-        let(
-            current_m = _convex_hull_convex_hull_lower_m(chain, points[i], m)
-        )
+        let(current_m = _convex_hull_convex_hull_lower_m(chain, points[i], m))
         _convex_hull_lower_chain(
             points,
             leng,
@@ -51,7 +36,7 @@ function _convex_hull_upper_chain(points, chain, m, t, i) =
 
 function _convex_hull2(points) = 
     let(
-        sorted = _convex_hull_sort_by_xy(points),
+        sorted = sort(points, by = function(p1, p2) p1.x < p2.x || (p1.x == p2.x && p1.y < p2.y) ? -1 : 1),
         leng = len(sorted),
         lwr_ch = _convex_hull_lower_chain(sorted, leng, [], 0, 0),
         leng_lwr_ch = len(lwr_ch),
