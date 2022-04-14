@@ -90,6 +90,7 @@ include <voxel/test_vx_circle.scad>;
 include <voxel/test_vx_cylinder.scad>;
 include <voxel/test_vx_sphere.scad>;
 include <voxel/test_vx_polygon.scad>;
+include <voxel/test_vx_intersection.scad>;
 
 // Matrix
 include <matrix/test_m_scaling.scad>;
