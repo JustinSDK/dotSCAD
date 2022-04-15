@@ -1,6 +1,6 @@
 use <experimental/mz_cube.scad>;
 use <experimental/mz_cube_get.scad>;
-use <util/has.scad>;
+use <util/contains.scad>;
 use <crystal_ball.scad>;
 
 layers = 4;
@@ -41,11 +41,11 @@ module draw_3dmaze(cells, cell_width, road_width) {
         }
     }
 
-    function z_road(type) = !has(["Z_WALL", "Z_Y_WALL", "Z_X_WALL", "Z_Y_X_WALL", "MASK"], type);
+    function z_road(type) = !contains(["Z_WALL", "Z_Y_WALL", "Z_X_WALL", "Z_Y_X_WALL", "MASK"], type);
 
-    function y_road(type) = !has(["Y_WALL", "Y_X_WALL", "Z_Y_WALL", "Z_Y_X_WALL", "MASK"], type);
+    function y_road(type) = !contains(["Y_WALL", "Y_X_WALL", "Z_Y_WALL", "Z_Y_X_WALL", "MASK"], type);
 
-    function x_road(type) = !has(["X_WALL", "Y_X_WALL", "Z_X_WALL", "Z_Y_X_WALL", "MASK"], type);
+    function x_road(type) = !contains(["X_WALL", "Y_X_WALL", "Z_X_WALL", "Z_Y_X_WALL", "MASK"], type);
 
     module drawCell(cell_width, road_width, channels) {
         half_cw = cell_width / 2;

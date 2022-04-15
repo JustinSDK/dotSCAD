@@ -1,6 +1,6 @@
 use <pie.scad>;
 use <util/parse_number.scad>;
-use <util/has.scad>;
+use <util/contains.scad>;
 use <util/rand.scad>;
 use <util/choose.scad>;
 use <experimental/tile_wfc.scad>;
@@ -58,25 +58,25 @@ module random_town_square(size, tileW, layerH) {
     }
 
     module draw_tile(tile, tileW, layerH) {
-        if(has(["F2", "F4", "F6"], tile)) {
+        if(contains(["F2", "F4", "F6"], tile)) {
             layers = parse_number(tile[len(tile) - 1]);
             floor(tileW, layers * layerH);
         }
-        else if(has(["CCRS0", "CCRS1", "CCRS2", "CCRS3"], tile)) {
+        else if(contains(["CCRS0", "CCRS1", "CCRS2", "CCRS3"], tile)) {
             type = parse_number(tile[len(tile) - 1]);
             ccr_stairs(tileW, layerH, type);
         }
-        else if(has(["VCRS02", "VCRS12", "VCRS22", "VCRS32", "VCRS04", "VCRS14", "VCRS24", "VCRS34"], tile)) {
+        else if(contains(["VCRS02", "VCRS12", "VCRS22", "VCRS32", "VCRS04", "VCRS14", "VCRS24", "VCRS34"], tile)) {
             type = parse_number(tile[len(tile) - 2]);
             stairs = parse_number(tile[len(tile) - 1]);
             vcr_stairs(tileW, layerH, type, stairs);
         }
-        else if(has(["SS02", "SS12", "SS22", "SS32", "SS04", "SS14", "SS24", "SS34"], tile)) {
+        else if(contains(["SS02", "SS12", "SS22", "SS32", "SS04", "SS14", "SS24", "SS34"], tile)) {
             type = parse_number(tile[len(tile) - 2]);
             stairs = parse_number(tile[len(tile) - 1]);
             side_stairs(tileW, layerH, type, stairs);
         }
-        else if(has(["FW0", "FW1", "FW2", "FW3"], tile)) {
+        else if(contains(["FW0", "FW1", "FW2", "FW3"], tile)) {
             type = parse_number(tile[len(tile) - 1]);
             floor_wall(tileW, layerH, type);
         }
