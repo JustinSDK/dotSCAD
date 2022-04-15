@@ -21,5 +21,9 @@ new:
 
 - rands_disk, rands_sphere?
 
+- sorted, contains
+
 deprecated:
     rails2sections: use m_transpose
+    has
+    bsearch?
