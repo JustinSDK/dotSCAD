@@ -18,45 +18,36 @@ function init(x, y, n, ix, iy, in) =
 		]
 	];
 
-function gray_scott(u, v, feel, kill, Du, Dv, uy_ly, rx_lx, space_x, space_y) =
-    let(
-		nuv = [
-			for(y = [0:space_y - 1])
+function gray_scott(uv, feel, kill, Du, Dv, uy_ly, rx_lx, space_x, space_y) =
+    [
+		for(y = [0:space_y - 1])
+		let(
+			uy = uy_ly[y][0],
+			ly = uy_ly[y][1],
+			ruv = uv[y],
+			ruv_u = uv[uy],
+			ruv_l = uv[ly]
+		)
+		[
+			for(x = [0:space_x - 1])
 			let(
-				uy = uy_ly[y][0],
-				ly = uy_ly[y][1],
-				row_u = u[y],
-				row_v = v[y],
-				row_uu = u[uy],
-				row_ul = u[ly],
-				row_vu = v[uy],
-				row_vl = v[ly]
+				rx = rx_lx[x][0],
+				lx = rx_lx[x][1],
+				cu = ruv[x][0],
+				cv = ruv[x][1],
+				reaction = cu * (cv ^ 2)
 			)
 			[
-				for(x = [0:space_x - 1])
-				let(
-					rx = rx_lx[x][0],
-					lx = rx_lx[x][1],
-					cu = row_u[x],
-					cv = row_v[x],
-					reaction = cu * (cv ^ 2)
-				)
-                [
-					cu + Du * (row_uu[x] + row_u[rx] + row_ul[x] + row_u[lx] - 4 * cu) - reaction + feel * (1 - cu), 
-					cv + Dv * (row_vu[x] + row_v[rx] + row_vl[x] + row_v[lx] - 4 * cv) + reaction - (feel + kill) * cv
-				]
+				cu + Du * (ruv_u[x][0] + ruv[rx][0] + ruv_l[x][0] + ruv[lx][0] - 4 * cu) - reaction + feel * (1 - cu), 
+				cv + Dv * (ruv_u[x][1] + ruv[rx][1] + ruv_l[x][1] + ruv[lx][1] - 4 * cv) + reaction - (feel + kill) * cv
 			]
 		]
-	)
-	[
-	    [for(row = nuv) [for(uv = row) uv[0]]], 
-		[for(row = nuv) [for(uv = row) uv[1]]]
 	];
-	
-function _reaction_diffusion(feel, kill, generation, u, v, Du, Dv, uy_ly, rx_lx, space_x, space_y) = 
-    generation == 0 ? [u, v] :
-	let(nuv = gray_scott(u, v, feel, kill, Du, Dv, uy_ly, rx_lx, space_x, space_y))
-	_reaction_diffusion(feel, kill, generation - 1, nuv[0], nuv[1], Du, Dv, uy_ly, rx_lx, space_x, space_y);
+
+function _reaction_diffusion(feel, kill, generation, uv, Du, Dv, uy_ly, rx_lx, space_x, space_y) = 
+    generation == 0 ? uv :
+	let(nuv = gray_scott(uv, feel, kill, Du, Dv, uy_ly, rx_lx, space_x, space_y))
+	_reaction_diffusion(feel, kill, generation - 1, nuv, Du, Dv, uy_ly, rx_lx, space_x, space_y);
 	
 function reaction_diffusion(
     feel, kill, generation, space_size = [50, 50], init_size = [10, 10], init_u = 0.5, init_v = 0.25, Du = 0.2, Dv = 0.1) =
@@ -65,6 +56,14 @@ function reaction_diffusion(
 		space_y = space_size.y,
 		u = init(space_x, space_y, 1, init_size.x, init_size.y, init_u),
 		v = init(space_x, space_y, 0, init_size.x, init_size.y, init_v),
+		uv = [
+			for(y = [0:space_y - 1])
+			let(ru = u[y], rv = v[y])
+			[
+				for(x = [0:space_x - 1]) 
+				[ru[x], rv[x]]
+			]
+		],
 		uy_ly = [
 			for(y = [0:space_y - 1])
 			[(y + 1 + space_y) % space_y, (y - 1 + space_y) % space_y]
@@ -72,9 +71,13 @@ function reaction_diffusion(
 		rx_lx = [
 			for(x = [0:space_x - 1]) 
 			[(x + 1 + space_x) % space_x, (x - 1 + space_x) % space_x]
-		]
+		],
+		nuv = _reaction_diffusion(feel, kill, generation, uv, Du, Dv, uy_ly, rx_lx, space_x, space_y)
 	)
-	_reaction_diffusion(feel, kill, generation, u, v, Du, Dv, uy_ly, rx_lx, space_x, space_y);
+	[
+	    [for(row = nuv) [for(uv = row) uv[0]]], 
+		[for(row = nuv) [for(uv = row) uv[1]]]
+	];
 
 
 /*
