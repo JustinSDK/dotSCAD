@@ -1,11 +1,15 @@
-use <util/has.scad>;
+use <../../util/set/hashset.scad>;
+use <../../util/set/hashset_has.scad>;
+use <../../__comm__/_pt2_hash.scad>;
+
+hash = function(p) _pt2_hash(p);
 
 function _vx_contour_corner_value(pts, x, y) =
     let(
-        c1 = has(pts, [x, y - 1], sorted = true) || has(pts, [x - 1, y - 1], sorted = true) ? 1 : 0,
-        c2 = has(pts, [x - 1, y], sorted = true) || has(pts, [x - 1, y + 1], sorted = true) ? 2 : 0,
-        c3 = has(pts, [x, y + 1], sorted = true) || has(pts, [x + 1, y + 1], sorted = true) ? 4 : 0,
-        c4 = has(pts, [x + 1, y], sorted = true) || has(pts, [x + 1, y - 1], sorted = true) ? 8 : 0
+        c1 = hashset_has(pts, [x, y - 1], hash = hash) || hashset_has(pts, [x - 1, y - 1], hash = hash) ? 1 : 0,
+        c2 = hashset_has(pts, [x - 1, y], hash = hash) || hashset_has(pts, [x - 1, y + 1], hash = hash) ? 2 : 0,
+        c3 = hashset_has(pts, [x, y + 1], hash = hash) || hashset_has(pts, [x + 1, y + 1], hash = hash) ? 4 : 0,
+        c4 = hashset_has(pts, [x + 1, y], hash = hash) || hashset_has(pts, [x + 1, y - 1], hash = hash) ? 8 : 0
     )
     c1 + c2 + c3 + c4;
 
@@ -17,6 +21,13 @@ _vx_contour_dir_table = [
 ];
 function _vx_contour_dir(cr_value) = 
     lookup(cr_value, _vx_contour_dir_table);
+
+function _vx_contour(points) = 
+    let(
+        // always start from the left-bottom pt
+        fst = min(points) + [-1, -1]
+    )
+    _vx_contour_travel(hashset(points, hash = function(p) _pt2_hash(p)), fst, fst);
 
 _vx_contour_nxt_offset = [
     [1,  0],   // RIGHT
