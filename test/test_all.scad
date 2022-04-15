@@ -65,7 +65,7 @@ include <util/test_sub_str.scad>;
 include <util/test_split_str.scad>;
 include <util/test_parse_number.scad>;
 include <util/test_slice.scad>;
-include <util/test_sort.scad>;
+include <util/test_sorted.scad>;
 include <util/test_reverse.scad>;
 include <util/test_fibseq.scad>;
 include <util/test_bsearch.scad>;
@@ -80,7 +80,7 @@ include <util/test_spherical_coordinate.scad>;
 include <util/test_count.scad>;
 include <util/set/test_hashset.scad>;
 include <util/map/test_hashmap.scad>;
-
+include <util/test_sort.scad>;
 
 // Voxel
 include <voxel/test_vx_bezier.scad>;
