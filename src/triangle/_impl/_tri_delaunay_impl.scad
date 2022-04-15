@@ -4,7 +4,7 @@ use <../../util/map/hashmap_get.scad>;
 use <../../util/map/hashmap_del.scad>;
 use <../../util/map/hashmap_keys.scad>;
 use <../../util/map/hashmap_put.scad>;
-use <../../util/has.scad>;
+use <../../util/contains.scad>;
 use <../../util/find_index.scad>;
 
 function ihash(a, b, c) = a * 961 + b * 31 + c;
@@ -129,7 +129,7 @@ function _adjustNeighborsDtri(d, newTriangles, leng, _indices_hash, i = 0) =
 					let(
 						neighbors = hashmap_get(delaunay_triangles(d), delaunayTri, hash = _indices_hash),
 						leng_nbrs = len(neighbors),
-						nbri = find_index(neighbors, function(nbr) nbr != undef && has(nbr, edge[1]) && has(nbr, edge[0])),
+						nbri = find_index(neighbors, function(nbr) nbr != undef && contains(nbr, edge[1]) && contains(nbr, edge[0])),
 						nd = nbri == -1 ? d : updateNbrs(d, delaunayTri, [
 							for(j = 0; j < leng_nbrs; j = j + 1)
 								j == nbri ? t : neighbors[j]
