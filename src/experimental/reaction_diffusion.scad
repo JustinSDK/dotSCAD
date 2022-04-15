@@ -25,8 +25,7 @@ function gray_scott(uv, feed, kill, Du, Dv, uy_ly, rx_lx, space_x, space_y) =
 			uy = uy_ly[y][0],
 			ly = uy_ly[y][1],
 			ruv = uv[y],
-			ruv_u = uv[uy_ly[y][0]],
-			ruv_l = uv[uy_ly[y][1]]
+			sum_of_ruv_ul = uv[uy] + uv[ly]
 		)
 		[
 			for(x = [0:space_x - 1])
@@ -38,21 +37,23 @@ function gray_scott(uv, feed, kill, Du, Dv, uy_ly, rx_lx, space_x, space_y) =
 				reaction = cu * (cv ^ 2)
 			)
 			[
-				cu + Du * (ruv_u[x][0] + ruv[rx][0] + ruv_l[x][0] + ruv[lx][0] - 4 * cu) - reaction + feed * (1 - cu), 
-				cv + Dv * (ruv_u[x][1] + ruv[rx][1] + ruv_l[x][1] + ruv[lx][1] - 4 * cv) + reaction - (feed + kill) * cv
+				cu + Du * (sum_of_ruv_ul[x][0] + ruv[rx][0]+ ruv[lx][0] - 4 * cu) - reaction + feed * (1 - cu), 
+				cv + Dv * (sum_of_ruv_ul[x][1] + ruv[rx][1] + ruv[lx][1] - 4 * cv) + reaction - (feed + kill) * cv
 			]
 		]
 	];
 
 function _reaction_diffusion(feed, kill, generation, uv, Du, Dv, uy_ly, rx_lx, space_x, space_y) = 
     generation == 0 ? uv :
-	let(nuv = gray_scott(uv, feed, kill, Du, Dv, uy_ly, rx_lx, space_x, space_y))
-	_reaction_diffusion(feed, kill, generation - 1, nuv, Du, Dv, uy_ly, rx_lx, space_x, space_y);
+	_reaction_diffusion(feed, kill, generation - 1, 
+	    gray_scott(uv, feed, kill, Du, Dv, uy_ly, rx_lx, space_x, space_y), 
+		Du, Dv, uy_ly, rx_lx, space_x, space_y
+	);
 	
 function reaction_diffusion(
     feed, kill, generation, space_size = [50, 50], init_size = [10, 10], init_u = 0.5, init_v = 0.25, Du = 0.2, Dv = 0.1) =
 	let(
-		space_x =  space_size.x,
+		space_x = space_size.x,
 		space_y = space_size.y,
 		uv = init(space_x, space_y, init_size.x, init_size.y, init_u, init_v),
 		uy_ly = [
@@ -62,10 +63,9 @@ function reaction_diffusion(
 		rx_lx = [
 			for(x = [0:space_x - 1]) 
 			[(x + 1 + space_x) % space_x, (x - 1 + space_x) % space_x]
-		],
-		nuv = _reaction_diffusion(feed, kill, generation, uv, Du, Dv, uy_ly, rx_lx, space_x, space_y)
+		]
 	)
-	nuv;
+	_reaction_diffusion(feed, kill, generation, uv, Du, Dv, uy_ly, rx_lx, space_x, space_y);
 
 
 /*
