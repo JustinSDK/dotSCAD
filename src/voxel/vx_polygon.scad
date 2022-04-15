@@ -1,6 +1,6 @@
 use <../__comm__/_pt2_hash.scad>;
 use <../in_shape.scad>;
-use <../util/sort.scad>;
+use <../util/sorted.scad>;
 use <vx_polyline.scad>;
 use <../util/set/hashset.scad>;
 use <../util/set/hashset_elems.scad>;
@@ -9,7 +9,7 @@ function vx_polygon(points, filled = false) =
     let(contour = vx_polyline([each points, points[0]]))
     !filled ? contour :
     let(
-        sortedXY = sort(contour, by = "vt"),
+        sortedXY = sorted(contour),
         ys = [for(p = sortedXY) p.y],
         rows = [
             for(y = [min(ys):max(ys)])
