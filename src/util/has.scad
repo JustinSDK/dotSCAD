@@ -8,4 +8,8 @@
 *
 **/ 
 
-function has(lt, elem) = search([elem], lt) != [[]];
+use <bsearch.scad>;
+
+function has(lt, elem, sorted = false) = 
+    sorted ? bsearch(lt, elem) != -1 :
+             search([elem], lt) != [[]];
