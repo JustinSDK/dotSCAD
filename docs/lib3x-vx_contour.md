@@ -7,7 +7,6 @@ Given a list of points that form a closed area, `vx_contour` returns the contour
 ## Parameters
 
 - `points` : A list of `[x, y]` points.
-- `sorted` : Default to `false`. If your points is sorted by x y, setting it to `true` will accelerate the calculation speed.
 
 ## Examples
 
