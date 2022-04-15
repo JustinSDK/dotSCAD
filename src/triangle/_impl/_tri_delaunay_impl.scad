@@ -195,7 +195,7 @@ function _delaunayBoundaries(d, badTriangles, boundaries, t, vi, _indices_hash) 
 	    triangles = delaunay_triangles(d),
 	    opTri = hashmap_get(triangles, t, hash = _indices_hash)[vi]
 	)
-	has(badTriangles, opTri) ?
+	contains(badTriangles, opTri) ?
 		let(
 		    i = search([t], hashmap_get(triangles, opTri, hash = _indices_hash))[0],
 			nvi = (i + 1) % 3,
