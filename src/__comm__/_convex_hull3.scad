@@ -1,4 +1,4 @@
-use <../util/sort.scad>;
+use <../util/sorted.scad>;
 
 function normal(pts, f) = cross(pts[f[1]] - pts[f[0]], pts[f[2]] - pts[f[0]]);
 
@@ -69,15 +69,15 @@ function _all_faces(v0, v1, v2, v3, pts, pts_leng, vis, cur_faces, i = 0) =
 
 function _convex_hull3(pts) = 
     let(
-        sorted = sort(pts, by = function(p1, p2) p1 < p2 ? -1 : 1),
-        leng = len(sorted),
+        sorted_pts = sorted(pts),
+        leng = len(sorted_pts),
         v0 = 0,
-        v1 =  _fst_v1(sorted, leng, v0 + 1),
+        v1 =  _fst_v1(sorted_pts, leng, v0 + 1),
         v2 = assert(v1 < leng, "common points") 
-             _fst_v2(sorted, leng, v1, v1 + 1),
+             _fst_v2(sorted_pts, leng, v1, v1 + 1),
         n = assert(v2 < leng, "collinear points") 
-            cross(sorted[v1] - sorted[v0], sorted[v2] - sorted[v0]),
-        v3_d = _fst_v3(sorted, leng, n, 0, v2 + 1),
+            cross(sorted_pts[v1] - sorted_pts[v0], sorted_pts[v2] - sorted_pts[v0]),
+        v3_d = _fst_v3(sorted_pts, leng, n, 0, v2 + 1),
         v3 = v3_d[0],
         d = assert(v3 < leng, "coplanar points")
             v3_d[1],
@@ -96,13 +96,13 @@ function _convex_hull3(pts) =
             ],
         zeros = [for(j = [0:leng - 1]) 0],
         init_vis = [for(i = [0:leng - 1]) zeros],
-        faces = _all_faces(v0, v1, v2, v3, sorted, leng, init_vis, fst_tetrahedron), // counter-clockwise
+        faces = _all_faces(v0, v1, v2, v3, sorted_pts, leng, init_vis, fst_tetrahedron), // counter-clockwise
         reversed = [
             for(face = faces)      // OpenSCAD requires clockwise.
             [face[2], face[1], face[0]]
         ]
     )
     [
-        sorted,
+        sorted_pts,
         reversed   
     ];

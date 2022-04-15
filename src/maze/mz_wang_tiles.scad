@@ -11,7 +11,7 @@
 use <../__comm__/_pt2_hash.scad>;
 use <_impl/_mz_wang_tiles_impl.scad>;
 use <mz_square_get.scad>;
-use <../util/sort.scad>;
+use <../util/sorted.scad>;
 use <../util/set/hashset.scad>;
 use <../util/set/hashset_elems.scad>;
 
@@ -45,7 +45,10 @@ function mz_wang_tiles(cells, left_border = true, bottom_border = true) =
                 [type == "TOP_WALL" || type == "NO_WALL" ? 1 : 0, y * 2 + 1]
             ]
         ),
-        dot_pts = sort(hashset_elems(hashset(all, hash = function(p) _pt2_hash(p))), by = "vt")
+        dot_pts = sorted(
+            hashset_elems(hashset(all, hash = function(p) _pt2_hash(p))), 
+            function(a, b) let(d = a - b) d.y == 0 ? d.x : d.y
+        )
     )
     [
         for(y = [0:rows - 1], x = [0:columns - 1])

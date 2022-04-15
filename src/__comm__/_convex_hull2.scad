@@ -1,5 +1,5 @@
 use <../util/slice.scad>;
-use <../util/sort.scad>;
+use <../util/sorted.scad>;
 
 // oa->ob ct_clk : greater than 0
 function _convex_hull_impl_dir(o, a, b) = cross(a - o, b - o);
@@ -34,10 +34,10 @@ function _convex_hull_upper_chain(points, chain, m, t, i) =
 
 function _convex_hull2(points) = 
     let(
-        sorted = sort(points, by = function(p1, p2) p1 < p2 ? -1 : 1),
-        leng = len(sorted),
-        lwr_ch = _convex_hull_lower_chain(sorted, leng, [], 0, 0),
+        sorted_pts = sorted(points),
+        leng = len(sorted_pts),
+        lwr_ch = _convex_hull_lower_chain(sorted_pts, leng, [], 0, 0),
         leng_lwr_ch = len(lwr_ch),
-        chain = _convex_hull_upper_chain(sorted, lwr_ch, leng_lwr_ch, leng_lwr_ch + 1, leng - 2)
+        chain = _convex_hull_upper_chain(sorted_pts, lwr_ch, leng_lwr_ch, leng_lwr_ch + 1, leng - 2)
     )
     [for(i = [0:len(chain) - 2]) chain[i]];

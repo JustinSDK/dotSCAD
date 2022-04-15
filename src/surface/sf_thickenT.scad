@@ -9,7 +9,7 @@
 **/ 
 
 use <../__comm__/_face_normal.scad>;
-use <../util/sort.scad>;
+use <../util/sorted.scad>;
 use <../util/sum.scad>;
 use <../surface/sf_solidifyT.scad>;
 use <../triangle/tri_delaunay.scad>;
@@ -43,7 +43,7 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH", con
 
     if(is_list(direction)) {
         dir_v = direction / norm(direction);
-        mid = sort(points)[leng_pts / 2];
+        mid = sorted(points)[leng_pts / 2];
         tri = cnn_tris[search([mid], points)[0]][0];
         nv = _face_normal([points[tri[0]], points[tri[1]], points[tri[2]]]);
         off = dir_v * thickness;
