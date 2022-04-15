@@ -3,8 +3,9 @@ use <util/sorted.scad>;
 module test_sorted() {
     echo("==== test_sorted ====");
 
-    assert([1, 2, 3, 4, 5, 6] == sorted([1, 6, 2, 5, 4, 3])
-);
+    assert([1, 2, 3, 4, 5, 6] == sorted([1, 6, 2, 5, 4, 3]));
+
+    assert(["b", "c", "d", "m", "x"] == sorted(["x", "c", "b", "d", "m"]));
 
     assert(
         [[2, 0, 0], [5, 0, 0], [7, 0, 0], [9, 0, 0], [10, 0, 0]] == 
