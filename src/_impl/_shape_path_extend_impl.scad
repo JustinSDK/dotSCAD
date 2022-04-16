@@ -15,7 +15,7 @@ function __polytransversals(transversals) =
         lefts
     );
 
-function _shape_path_extend_az(p1, p2) = -90 + atan2((p2.y - p1.y), (p2.x - p1.x));
+function _shape_path_extend_az(p1, p2) = let(v = p2 - p1) -90 + atan2(v.y, v.x);
 
 function _shape_path_first_stroke(stroke_pts, path_pts) =
     let(
@@ -28,23 +28,22 @@ function _shape_path_first_stroke(stroke_pts, path_pts) =
 function _shape_path_extend_stroke(stroke_pts, p1, p2, scale_step, i) =
     let(
         leng = norm(__to3d(p2) - __to3d(p1)),
-        a = _shape_path_extend_az(p1, p2)
+        a = _shape_path_extend_az(p1, p2),
+        s = 1 + scale_step * i,
+        off_p = [0, leng]
     )
-    [
-        for(p = stroke_pts)
-            ptf_rotate(p * (1 + scale_step * i) + [0, leng], a) + p1
-    ];
+    [for(p = stroke_pts) ptf_rotate(p * s + off_p, a) + p1];
     
 function _shape_path_extend_inner(stroke_pts, path_pts, leng_path_pts, scale_step) =
     [
         for(i = 1; i < leng_path_pts; i = i + 1)
-            _shape_path_extend_stroke(
-                stroke_pts, 
-                path_pts[i - 1], 
-                path_pts[i ], 
-                scale_step, 
-                i 
-            )
+        _shape_path_extend_stroke(
+            stroke_pts, 
+            path_pts[i - 1], 
+            path_pts[i ], 
+            scale_step, 
+            i 
+        )
     ];
 
 function _shape_path_extend_impl(stroke_pts, path_pts, scale, closed) =
