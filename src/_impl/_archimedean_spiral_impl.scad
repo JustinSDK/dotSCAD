@@ -17,9 +17,9 @@ function _find_radians(b, point_distance, radians, n, count = 1) =
     );
 
 function _archimedean_spiral_impl(arm_distance, init_angle, point_distance, num_of_points, rt_dir) =
-    let(b = arm_distance / (2 * PI), init_radian = init_angle * PI / 180)
+    let(b = arm_distance / (2 * PI), init_radian = init_angle * PI / 180, sgn = rt_dir == "CT_CLK" ? 1 : -1)
     [
         for(theta = _find_radians(b, point_distance, [init_radian], num_of_points)) 
-           let(r = b * theta, a = (rt_dir == "CT_CLK" ? 1 : -1) * theta * 57.2958)
+           let(r = b * theta, a = sgn * theta * 57.2958)
            [r * [cos(a), sin(a)], a]
     ];
