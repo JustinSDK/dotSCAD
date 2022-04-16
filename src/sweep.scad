@@ -41,8 +41,7 @@ module sweep(sections, triangles = "SOLID") {
 
     function the_same_after_twisting(f_sect, l_sect, leng_pts_sect) =
         let(found = search([l_sect[0]], f_sect)[0])
-        found == [] || found == 0 ? false : 
-                          l_sect == concat(slice(f_sect, found), slice(f_sect, 0, found));
+        found != [] && found != 0 && l_sect == concat(slice(f_sect, found), slice(f_sect, 0, found));
 
     function to_v_pts(sects) = [for(sect = sects) each sect];                   
 
@@ -52,7 +51,7 @@ module sweep(sections, triangles = "SOLID") {
         first_sect = sects[0];
         last_sect = sects[leng_sects - 1];
    
-        v_pts = [for(sect = sects) each sect];
+        v_pts = to_v_pts(sects);
 
         begin_end_the_same =
             first_sect == last_sect || the_same_after_twisting(first_sect, last_sect, leng_pts_sect);
@@ -94,9 +93,7 @@ module sweep(sections, triangles = "SOLID") {
 
         function strip_sects(begin_idx, end_idx) = 
             let(range = [begin_idx:end_idx])
-            [
-                for(sect = sects) [for(j = range) sect[j]]
-            ]; 
+            [for(sect = sects) [for(j = range) sect[j]]]; 
 
         range = [0:half_leng_sect - 1];
         function first_idxes() = 
@@ -124,14 +121,11 @@ module sweep(sections, triangles = "SOLID") {
         outer_sects = strip_sects(0, half_leng_sect - 1);
         inner_sects = strip_sects(half_leng_sect, leng_sect - 1);
 
-        outer_v_pts =  to_v_pts(outer_sects);
+        outer_v_pts = to_v_pts(outer_sects);
         inner_v_pts = to_v_pts(inner_sects);
 
         outer_idxes = side_indexes(outer_sects);
-        inner_idxes = [ 
-            for(idxes = side_indexes(inner_sects, half_leng_v_pts))
-                reverse(idxes)
-        ];
+        inner_idxes = [for(idxes = side_indexes(inner_sects, half_leng_v_pts)) reverse(idxes)];
 
         first_outer_sect = outer_sects[0];
         last_outer_sect = outer_sects[leng_sects - 1];
