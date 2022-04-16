@@ -42,25 +42,21 @@ module hypnotic_squares(x_grids, y_grids, grid_size, final_size, line_width) {
         }
     }
 
-    rand_lt = [for(x = 0; x < x_grids; x = x + 1) 
-                  [for(y = 0; y < y_grids; y = y + 1) 
-                      rands(0, 1, 2)
-                  ]
+    rand_lt = [for(x = [0:x_grids - 1]) 
+                  [for(y = [0:y_grids - 1]) rands(0, 1, 2)]
               ];
               
     module grids() {
         translate([0, half_lw]) 
-            for(x = [0:x_grids - 1]) {
-                for(y = [0:y_grids - 1]) {
-                    draw(
-                        x * grid_size, 
-                        y * grid_size, 
-                        grid_size, 
-                        dirs[floor(rand_lt[x][y][0] * 3)], 
-                        dirs[floor(rand_lt[x][y][1] * 3)],
-                        start_steps - 1
-                    );
-                }
+            for(x = [0:x_grids - 1], y = [0:y_grids - 1]) {
+                draw(
+                    x * grid_size, 
+                    y * grid_size, 
+                    grid_size, 
+                    dirs[floor(rand_lt[x][y][0] * 3)], 
+                    dirs[floor(rand_lt[x][y][1] * 3)],
+                    start_steps - 1
+                );
             }    
     }
 
