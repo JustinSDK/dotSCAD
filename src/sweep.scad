@@ -67,12 +67,12 @@ module sweep(sections, triangles = "SOLID") {
             // hook for testing
             test_sweep_solid(v_pts, f_idxes, triangles);
         } else {
-            first_idxes = [for(i = leng_pts_sect - 1; i >= 0; i = i - 1) i];  
+            first_idxes = [each [leng_pts_sect - 1:-1:0]];
            
             from = leng_pts_sect * (leng_sects - 1);
             to = from + leng_pts_sect - 1;
-
             last_idxes = [each [from:to]];    
+            
             f_idxes = [first_idxes, each side_indexes(sects), last_idxes];
             
             polyhedron(
@@ -121,9 +121,6 @@ module sweep(sections, triangles = "SOLID") {
         outer_sects = strip_sects(0, half_leng_sect - 1);
         inner_sects = strip_sects(half_leng_sect, leng_sect - 1);
 
-        outer_v_pts = to_v_pts(outer_sects);
-        inner_v_pts = to_v_pts(inner_sects);
-
         outer_idxes = side_indexes(outer_sects);
         inner_idxes = [for(idxes = side_indexes(inner_sects, half_leng_v_pts)) reverse(idxes)];
 
@@ -141,7 +138,7 @@ module sweep(sections, triangles = "SOLID") {
                the_same_after_twisting(first_inner_sect, last_inner_sect, leng_pts_sect)
            ); 
 
-        v_pts = concat(outer_v_pts, inner_v_pts);
+        v_pts = concat(to_v_pts(outer_sects), to_v_pts(inner_sects));
 
         if(begin_end_the_same) {
             f_idxes = concat(outer_idxes, inner_idxes);
