@@ -1,12 +1,5 @@
 use <__comm__/__in_line.scad>;
 
-function _in_shape_in_line_equation(edge, pt) = 
-    let(
-        p0 = edge[0],
-        v = edge[1] - p0
-    )
-    pt.y == (v.y / v.x) * (pt.x - p0.x) + p0.y;
-
 function _in_shape_in_any_edges(edges, pt, epsilon) = 
     let(
         leng = len(edges),
