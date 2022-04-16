@@ -25,6 +25,7 @@ include <test_midpt_smooth.scad>;
 include <test_angle_between.scad>;
 include <test_contours.scad>;
 include <test_in_shape.scad>;
+include <test_lines_intersection.scad>;
 
 // Path
 include <test_bezier_curve.scad>;
