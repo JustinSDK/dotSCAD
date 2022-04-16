@@ -26,5 +26,5 @@ function __line_intersection3(line_pts1, line_pts2, epsilon = 0.0001) =
     )
     cross(a, s) * (b2 - a1) != 0 ||   // they aren't coplanar
     n1p < epsilon ^ 2 ? [] :          // they are parallel or conincident edges
-        let(n2 = cross(s, b))
-        a1 + a * (sqrt(n2 * n2 / n1p) * (n1 * n2 >= 0 ? 1 : -1));
+    let(n2 = cross(s, b))
+    a1 + a * (sqrt(n2 * n2 / n1p) * (n1 * n2 >= 0 ? 1 : -1));
