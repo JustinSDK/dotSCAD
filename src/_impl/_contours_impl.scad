@@ -1,7 +1,7 @@
-function _lerp(v1, v2, amt) = v1 + (v2 - v1) * amt;
+use <../util/lerp.scad>;
 
 function interpolated_pt(p0, p1, threshold) = 
-   let(p = _lerp(p0, p1, (threshold - p0.z) / (p1.z - p0.z)))
+   let(p = lerp(p0, p1, (threshold - p0.z) / (p1.z - p0.z)))
    [p.x, p.y, p.z];
 
 /*
