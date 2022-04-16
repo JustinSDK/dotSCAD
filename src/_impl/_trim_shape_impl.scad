@@ -3,9 +3,7 @@ use <../__comm__/__in_line.scad>;
 use <../__comm__/__lines_from.scad>;
 
 function _trim_shape_any_intersection_sub(lines, line, lines_leng, i, epsilon) =
-    let(
-        p = __line_intersection2(lines[i], line, epsilon)
-    )
+    let(p = __line_intersection2(lines[i], line, epsilon))
     (p != [] && __in_line(line, p, epsilon) && __in_line(lines[i], p, epsilon)) ? [i, p] : _trim_shape_any_intersection(lines, line, lines_leng, i + 1, epsilon);
 
 // return [idx, [x, y]] or []
@@ -23,14 +21,11 @@ function _trim_sub(lines, leng, epsilon) =
         inter_p = _trim_shape_any_intersection(lines_from_next2, current_line, leng_lines_from_next2, 0, epsilon)
     )
     // no intersecting pt, collect current_p and trim remain lines
-    inter_p == [] ? [current_p, each _trim_shape_trim_lines(lines_from_next, epsilon)]
-         : (
-        // collect current_p, intersecting pt and the last pt
-        (leng == 3 || (inter_p.x == (leng_lines_from_next2 - 1))) ? [current_p, inter_p.y, lines[leng - 1]] : (
-            // collect current_p, intersecting pt and trim remain lines
-            [current_p, inter_p.y, each _trim_shape_trim_lines([for(i = inter_p.x + 1; i < leng_lines_from_next2; i = i + 1) lines_from_next2[i]], epsilon)]
-        )
-    );
+    inter_p == [] ? [current_p, each _trim_shape_trim_lines(lines_from_next, epsilon)] : 
+    // collect current_p, intersecting pt and the last pt
+    leng == 3 || (inter_p.x == (leng_lines_from_next2 - 1)) ? [current_p, inter_p.y, lines[leng - 1]] : 
+        // collect current_p, intersecting pt and trim remain lines
+        [current_p, inter_p.y, each _trim_shape_trim_lines([for(i = inter_p.x + 1; i < leng_lines_from_next2; i = i + 1) lines_from_next2[i]], epsilon)];
     
 function _trim_shape_trim_lines(lines, epsilon) = 
     let(leng = len(lines))
