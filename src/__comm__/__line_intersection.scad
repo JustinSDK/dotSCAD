@@ -22,9 +22,9 @@ function __line_intersection3(line_pts1, line_pts2, epsilon = 0.0001) =
         b = b2 - b1, 
         s = b1 - a1,
         n1 = cross(a, b),
-        norm_n1 = norm(n1)
+        n1p = n1 * n1
     )
     cross(a, s) * (b2 - a1) != 0 ||   // they aren't coplanar
-    norm_n1 < epsilon ? [] :          // they are parallel or conincident edges
+    n1p < epsilon ^ 2 ? [] :          // they are parallel or conincident edges
         let(n2 = cross(s, b))
-        a1 + a * (norm(n2) / norm_n1 * (n1 * n2 >= 0 ? 1 : -1));
+        a1 + a * (sqrt(n2 * n2 / n1p) * (n1 * n2 >= 0 ? 1 : -1));
