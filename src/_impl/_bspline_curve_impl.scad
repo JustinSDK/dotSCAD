@@ -1,6 +1,4 @@
-function _bspline_curve_knots(n, degree) = 
-    let(end = n + degree + 1)
-    [for(i = 0; i < end; i = i + 1) i];
+function _bspline_curve_knots(n, degree) = [each [0:n + degree]];
     
 function _bspline_curve_weights(n) = [for(i = 0; i < n; i = i + 1) 1];
 
@@ -22,10 +20,8 @@ function _bspline_curve_alpha(i, l, t, degree, knots) =
     (t - knots[i]) / (knots[i + degree + 1 - l] - knots[i]);
 
 function _bspline_curve_nvi(v, i, l, t, degree, knots, d) =
-    let(
-        alpha = _bspline_curve_alpha(i, l, t, degree, knots)
-    )
-    [[for(j = 0; j< d + 1; j = j + 1) ((1 - alpha) * v[i - 1][j] + alpha * v[i][j])]];
+    let(alpha = _bspline_curve_alpha(i, l, t, degree, knots))
+    [[for(j = 0; j < d + 1; j = j + 1) ((1 - alpha) * v[i - 1][j] + alpha * v[i][j])]];
 
 function _bspline_curve_nvl(v, l, s, t, degree, knots, d, i) = 
     i == (s - degree - 1 + l) ? v :
