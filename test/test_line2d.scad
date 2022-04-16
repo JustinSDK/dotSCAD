@@ -10,8 +10,7 @@ module test_line2d_cap(point, style) {
     );
 }
 
-module test_line2d_line(angle, length, width, frags) {
-    assertEqualNum(0, angle);
+module test_line2d_line(length, width, frags) {
     assertEqualNum(5, length);
     assertEqualNum(1, width);
     assertEqualNum(24, frags);

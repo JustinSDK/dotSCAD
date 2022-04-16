@@ -15,14 +15,21 @@ module line2d(p1, p2, width = 1, p1Style = "CAP_SQUARE", p2Style =  "CAP_SQUARE"
     half_width = 0.5 * width;    
 
     v = p2 - p1;
-    atan_angle = atan2(v.y, v.x);
     leng = norm(v);
+    c = v.x / leng;
+    s = v.y/ leng;
+    rotation_m = [
+        [c, -s, 0, 0],
+        [s, c, 0, 0],
+        [0, 0, 1, 0],
+        [0, 0, 0, 1]
+    ];
 
     frags = __nearest_multiple_of_4(__frags(half_width));
         
     module square_end(point) {
         translate(point) 
-        rotate(atan_angle) 
+        multmatrix(rotation_m) 
             square(width, center = true);
 
         // hook for testing
@@ -31,7 +38,7 @@ module line2d(p1, p2, width = 1, p1Style = "CAP_SQUARE", p2Style =  "CAP_SQUARE"
 
     module round_end(point) {
         translate(point) 
-        rotate(atan_angle) 
+        multmatrix(rotation_m) 
             circle(half_width, $fn = frags);    
 
         // hook for testing
@@ -45,7 +52,7 @@ module line2d(p1, p2, width = 1, p1Style = "CAP_SQUARE", p2Style =  "CAP_SQUARE"
     }
 
     translate(p1) 
-    rotate(atan_angle) 
+    multmatrix(rotation_m) 
     translate([0, -width / 2]) 
         square([leng, width]);
     
@@ -56,13 +63,13 @@ module line2d(p1, p2, width = 1, p1Style = "CAP_SQUARE", p2Style =  "CAP_SQUARE"
     }
 
     // hook for testing
-    test_line2d_line(atan_angle, leng, width, frags);
+    test_line2d_line(leng, width, frags);
 }
 
 // override them to test
 module test_line2d_cap(point, style) {
 }
 
-module test_line2d_line(angle, length, width, frags) {
+module test_line2d_line(length, width, frags) {
 }
 
