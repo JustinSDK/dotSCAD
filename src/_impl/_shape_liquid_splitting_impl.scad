@@ -9,10 +9,7 @@ function _liquid_splitting_pie_curve(radius, centre_dist, tangent_angle) =
         leng = len(shape_pts),
         offset_p = [centre_dist / 2, 0]
     )
-    [
-        for(i = 1; i < leng; i = i + 1)
-            shape_pts[i] + offset_p
-    ];
+    [for(i = 1; i < leng; i = i + 1) shape_pts[i] + offset_p];
     
 function _liquid_splitting_bezier(radius, centre_dist, tangent_angle, t_step, ctrl_p1) = 
     let(
@@ -43,11 +40,9 @@ function _liquid_splitting_half_liquid_splitting(radius, centre_dist, tangent_an
         pie_curve_pts = _liquid_splitting_pie_curve(radius, centre_dist, tangent_angle),
         curve_pts = _liquid_splitting_bezier(radius, centre_dist, tangent_angle, t_step, pie_curve_pts[0]),
         lower_curve_pts = _liquid_splitting_lower_half_curve(curve_pts, len(curve_pts)),
-        leng_half_curve_pts = len(lower_curve_pts),
         upper_curve_pts = [
-            for(i = 0; i < leng_half_curve_pts; i = i + 1)
-                let(pt = lower_curve_pts[leng_half_curve_pts - 1 - i])
-                [pt.x, -pt.y]
+            for(i = len(lower_curve_pts) - 1; i > -1; i = i - 1)
+            let(p = lower_curve_pts[i]) [p.x, -p.y]
         ]
     ) concat(
         lower_curve_pts,
@@ -58,10 +53,9 @@ function _liquid_splitting_half_liquid_splitting(radius, centre_dist, tangent_an
 function _shape_liquid_splitting_impl(radius, centre_dist, tangent_angle, t_step) =
     let(
         half_liquid_splittings = _liquid_splitting_half_liquid_splitting(radius, centre_dist, tangent_angle, t_step),
-        leng_half_liquid_splittings = len(half_liquid_splittings),
         left_half_liquid_splittings = [
-            for(i = 0; i < leng_half_liquid_splittings; i = i + 1)
-                let(pt = half_liquid_splittings[leng_half_liquid_splittings - 1 - i])
-                [-pt.x, pt.y]
-        ]    
-    ) concat(half_liquid_splittings, left_half_liquid_splittings);
+            for(i = len(half_liquid_splittings) - 1; i > -1; i = i - 1)
+            let(p = half_liquid_splittings[i]) [-p.x, p.y]
+        ]
+    ) 
+    concat(half_liquid_splittings, left_half_liquid_splittings);
