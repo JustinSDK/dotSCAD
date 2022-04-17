@@ -33,13 +33,21 @@ function _add(buckets, bucket, i_elem, b_idx) =
     let(leng = len(buckets))
 	[for(i = 0; i < leng; i = i + 1) i == b_idx ? [each bucket, i_elem] : buckets[i]];
 
+function before_after(lt, pivot, leng, before = [], after = [], j = 1) =
+    j == leng ? [before, after] :
+    let(cond = lt[j][0] < pivot[0])
+    before_after(lt, pivot, leng,
+         cond ? [each before, lt[j]] : before, 
+         cond ? after : [each after, lt[j]], 
+         j + 1
+    );
+
 function _sort(lt) = 
     let(leng = len(lt))
 	leng == 0 ? [] :
 	leng == 1 ? [lt[0][1]] :
 	let(
 		pivot = lt[0],
-		before = [for(j = 1; j < leng; j = j + 1) if(lt[j][0] < pivot[0]) lt[j]],
-		after =  [for(j = 1; j < leng; j = j + 1) if(lt[j][0] >= pivot[0]) lt[j]]
+		b_a = before_after(lt, pivot, leng)
 	)
-	[each _sort(before), pivot[1], each _sort(after)];
+	[each _sort(b_a[0]), pivot[1], each _sort(b_a[1])];
