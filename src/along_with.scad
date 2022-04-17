@@ -25,8 +25,8 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
         is_num(scale) ? 
         let(s = scale - 1) [s, s, s] : 
         len(scale) == 2 ? [each (scale - [1, 1]), 0]:
-                          sscale - scale_one
-    ) / leng_points_minus_one;
+                          scale - scale_one
+    ) / leng_points_minus_one; 
 
     /* 
          Sadly, children(n) cannot be used with inner modules 
