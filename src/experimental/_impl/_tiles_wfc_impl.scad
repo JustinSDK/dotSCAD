@@ -86,13 +86,21 @@ function _replaceStatesAt(wf, x, y, states) =
 		rowY = eigenstates[y],
 		leng_rowY = len(rowY),	
 		leng_eigenstates = len(eigenstates),
-		newRowY = [for(i = 0; i < leng_rowY; i = i + 1) i == x ? states : rowY[i]]	
+		newRowY = [
+			each [for(i = 0; i < x; i = i + 1) rowY[i]],
+			states,
+			each [for(i = x + 1; i < leng_rowY; i = i + 1) rowY[i]]
+		]	
 	)
 	[
 	    wf_width(wf),
 		wf_height(wf),
 		wf_weights(wf),
-		[for(i = 0; i < leng_eigenstates; i = i + 1) i == y ? newRowY : eigenstates[i]]
+		[
+			each [for(i = 0; i < y; i = i + 1) eigenstates[i]],
+			newRowY,
+			each [for(i = y + 1; i < leng_eigenstates; i = i + 1) eigenstates[i]]
+		]
 	];
 
 function wf_not_collapsed_coords(wf, notCollaspedCoords) = 
