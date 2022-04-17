@@ -8,6 +8,7 @@ use <util/map/hashmap_keys.scad>;
 use <util/map/hashmap_entries.scad>;
 use <util/set/hashset.scad>;
 use <util/set/hashset_elems.scad>;
+use <matrix/m_replace.scad>;
 
 function weights_of_tiles(sample) = 
     let(
@@ -81,26 +82,11 @@ function wf_entropy_weights(wf, x, y) =
 	[ln(sumOfWeights) - (sumOfWeightLogWeights / sumOfWeights) - rand() / 1000, weights];
 
 function _replaceStatesAt(wf, x, y, states) = 
-    let(
-	    eigenstates = wf_eigenstates(wf),
-		rowY = eigenstates[y],
-		leng_rowY = len(rowY),	
-		leng_eigenstates = len(eigenstates),
-		newRowY = [
-			each [for(i = 0; i < x; i = i + 1) rowY[i]],
-			states,
-			each [for(i = x + 1; i < leng_rowY; i = i + 1) rowY[i]]
-		]	
-	)
 	[
 	    wf_width(wf),
 		wf_height(wf),
 		wf_weights(wf),
-		[
-			each [for(i = 0; i < y; i = i + 1) eigenstates[i]],
-			newRowY,
-			each [for(i = y + 1; i < leng_eigenstates; i = i + 1) eigenstates[i]]
-		]
+		m_replace(wf_eigenstates(wf), x, y, states)
 	];
 
 function wf_not_collapsed_coords(wf, notCollaspedCoords) = 
