@@ -23,6 +23,8 @@ new:
 
 - sorted, contains
 
+- m_replace?
+
 deprecated:
     rails2sections: use m_transpose
     has
