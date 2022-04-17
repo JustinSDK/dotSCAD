@@ -3,14 +3,14 @@ function m_replace(m, x, y, value) =
 		rowY = m[y],
         leng_rowY = len(rowY),
 		newRowY = [
-			each [for(i = 0; i < x; i = i + 1) rowY[i]],
-			value,
-			each [for(i = x + 1; i < leng_rowY; i = i + 1) rowY[i]]
-		],
+            for(i = [0:leng_rowY - 1]) 
+            if(i == x) value
+            else rowY[i]
+        ],
         row_leng = len(m)
 	)
     [
-        each [for(i = 0; i < y; i = i + 1) m[i]],
-        newRowY,
-        each [for(i = y + 1; i < row_leng; i = i + 1) m[i]]
+        for(i = [0:row_leng - 1])
+        if(i == y) newRowY
+        else m[i]
     ];
