@@ -1,23 +1,15 @@
 use <_mz_cube_comm.scad>;
 use <../../util/shuffle.scad>;
+use <../../matrix/m_replace.scad>;
 
 function update(cells, cell) = 
     let(
         x = cell.x,
         y = cell.y,
         z = cell.z,
-        rowY = [for(c = cells[z][y]) if(c.x == x) cell else c],
-        layerZ = [
-            for(r = [0:len(cells[z]) - 1])
-            if(r == y) rowY
-            else cells[z][r]
-        ]
+        rowY = [for(c = cells[z][y]) if(c.x == x) cell else c]
     )
-    [
-        for(layer = [0:len(cells) - 1])
-        if(layer == z) layerZ
-        else cells[layer]
-    ];
+    m_replace(cells, y, z, rowY);
 
 // is (x, y) visited?
 function visited(x, y, z, cells) = cells[z][y][x][4];
