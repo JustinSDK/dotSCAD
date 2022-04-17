@@ -1,9 +1,9 @@
 function before_after(lt, pivot, less, leng, before = [], after = [], j = 1) =
     j == leng ? [before, after] :
-    let(cond = less(lt[j], pivot))
+    let(is_less = less(lt[j], pivot))
     before_after(lt, pivot, less, leng,
-         cond ? [each before, lt[j]] : before, 
-         cond ? after : [each after, lt[j]], 
+         is_less ? [each before, lt[j]] : before, 
+         is_less ? after : [each after, lt[j]], 
          j + 1
     );
 

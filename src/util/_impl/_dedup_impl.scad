@@ -35,10 +35,10 @@ function _add(buckets, bucket, i_elem, b_idx) =
 
 function before_after(lt, pivot, leng, before = [], after = [], j = 1) =
     j == leng ? [before, after] :
-    let(cond = lt[j][0] < pivot[0])
+    let(is_less = lt[j][0] < pivot[0])
     before_after(lt, pivot, leng,
-         cond ? [each before, lt[j]] : before, 
-         cond ? after : [each after, lt[j]], 
+         is_less ? [each before, lt[j]] : before, 
+         is_less ? after : [each after, lt[j]], 
          j + 1
     );
 
