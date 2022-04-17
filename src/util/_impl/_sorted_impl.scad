@@ -1,13 +1,21 @@
+function before_after(lt, pivot, less, leng, before = [], after = [], j = 1) =
+    j == leng ? [before, after] :
+    let(cond = less(lt[j], pivot))
+    before_after(lt, pivot, less, leng,
+         cond ? [each before, lt[j]] : before, 
+         cond ? after : [each after, lt[j]], 
+         j + 1
+    );
+
 function _sorted(lt, less) = 
     let(leng = len(lt))
     leng <= 1 ? lt : 
     leng == 2 ? !less(lt[1], lt[0]) ? lt : [lt[1], lt[0]] :
         let(
             pivot = lt[0],
-            before = [for(j = 1; j < leng; j = j + 1) if(less(lt[j], pivot)) lt[j]],
-            after =  [for(j = 1; j < leng; j = j + 1) if(!less(lt[j], pivot)) lt[j]]
+            b_a = before_after(lt, pivot, less, leng)
         )
-        [each _sorted(before, less), pivot, each _sorted(after, less)];
+        [each _sorted(b_a[0], less), pivot, each _sorted(b_a[1], less)];
 
 function _sorted_default(lt) = _sorted(lt, function(a, b) a < b);
 
