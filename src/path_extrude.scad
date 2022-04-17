@@ -33,8 +33,8 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
         scale_step_vt = (
             is_num(scale) ? 
             let(s = scale - 1) [s, s, s] : 
-            len(s) == 2 ? [each (scale - [1, 1]), 0]:
-                        scale - one
+            len(scale) == 2 ? [each (scale - [1, 1]), 0]:
+                              scale - one
         ) / len_path_pts_minus_one;
 
         // get rotation matrice for sections
