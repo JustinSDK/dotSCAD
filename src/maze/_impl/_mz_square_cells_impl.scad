@@ -1,4 +1,5 @@
 use <_mz_square_comm.scad>;
+use <../../matrix/m_replace.scad>;
 
 // is (x, y) visited?
 function visited(x, y, cells) = cells[y][x][3];
@@ -11,12 +12,7 @@ function visitable(x, y, cells, rows, columns) =
 
 // setting (x, y) as being visited
 function set_visited(x, y, cells) = 
-    let(rowY = [for(cell = cells[y]) if(cell.x == x) [x, y, get_type(cell), true] else cell])
-    [
-        for(r = [0:len(cells) - 1])
-        if(r == y) rowY
-        else cells[r]
-    ];
+    m_replace(cells, x, y, [x, y, get_type(cells[y][x]), true]);
     
 // 0(right), 1(top), 2(left), 3(bottom)
 _rand_dir_table = [
@@ -63,67 +59,27 @@ function next_y(y, dir, rows, wrapping) =
     
 // go right and carve the right wall
 function carve_right(x, y, cells) = 
-    let(
-        rowY = [
-            for(cell = cells[y]) 
-            if(cell.x != x) cell
-            else (top_right_wall(cell) ? [x, y, 1, true] : [x, y, 0, true]) 
-        ]
-    )
-    [
-        for(r = [0:len(cells) - 1])
-        if(r == y) rowY
-        else cells[r]
-    ];
+    m_replace(cells, x, y, top_right_wall(cells[y][x]) ? [x, y, 1, true] : [x, y, 0, true]);
 
 // go up and carve the top wall
 function carve_top(x, y, cells) = 
-    let(
-        rowY = [
-            for(cell = cells[y]) 
-            if(cell.x != x) cell
-            else (top_right_wall(cell) ? [x, y, 2, true] : [x, y, 0, true]) 
-        ]
-    )
-    [
-        for(r = [0:len(cells) - 1])
-        if(r == y) rowY
-        else cells[r]
-    ];
+    m_replace(cells, x, y, top_right_wall(cells[y][x]) ? [x, y, 2, true] : [x, y, 0, true]);
 
 // go left and carve the right wall of the left cell
 function carve_left(x, y, cells, columns) = 
     let(
         x_minus_one = x - 1,
-        nx = x_minus_one < 0 ? x_minus_one + columns : x_minus_one,
-        rowY = [
-            for(cell = cells[y]) 
-            if(cell.x != nx) cell
-            else [nx, y, 1, false]
-        ]
+        nx = x_minus_one < 0 ? x_minus_one + columns : x_minus_one
     )
-    [
-        for(r = [0:len(cells) - 1])
-        if(r == y) rowY
-        else cells[r]
-    ];
+    m_replace(cells, nx, y, [nx, y, 1, false]);
 
 // go down and carve the top wall of the bottom cell
 function carve_bottom(x, y, cells, rows) = 
     let(
         y_minus_one = y - 1,
-        ny = y_minus_one < 0 ? y_minus_one + rows : y_minus_one,
-        rowNY = [
-            for(cell = cells[ny]) 
-            if(cell.x != x) cell
-            else [x, ny, 2, false]
-        ]
+        ny = y_minus_one < 0 ? y_minus_one + rows : y_minus_one
     )
-    [
-        for(r = [0:len(cells) - 1])
-        if(r == ny) rowNY
-        else cells[r]
-    ];
+    m_replace(cells, x, ny, [x, ny, 2, false]);
 
 // 0(right), 1(top), 2(left), 3(bottom)
 function carve(dir, x, y, cells, rows, columns) =
