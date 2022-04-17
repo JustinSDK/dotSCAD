@@ -17,14 +17,16 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
     leng_points = len(points);
     leng_points_minus_one = leng_points - 1;
     twist_step_a = twist / leng_points;
+    
+    scale_one = [1, 1, 1];
 
-    scale_step_vt = is_num(scale) ? 
-        let(s =  (scale - 1) / leng_points_minus_one) [s, s, s] :
-        [
-            (scale.x - 1) / leng_points_minus_one, 
-            (scale.y - 1) / leng_points_minus_one,
-            is_undef(scale.z) ? 0 : (scale.z - 1) / leng_points_minus_one
-        ]; 
+
+    scale_step_vt = (
+        is_num(scale) ? 
+        let(s = scale - 1) [s, s, s] : 
+        len(s) == 2 ? [each (scale - [1, 1]), 0]:
+                      scale - scale_one
+    ) / leng_points_minus_one;
 
     /* 
          Sadly, children(n) cannot be used with inner modules 
@@ -75,8 +77,6 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
             prev_matrix = matrice[len(matrice) - 1]
         )
         [each matrice, curr_matrix * prev_matrix];
-
-    scale_one = [1, 1, 1];
 
     // align modules
 

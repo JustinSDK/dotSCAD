@@ -23,19 +23,19 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
     len_path_pts_minus_one = len_path_pts - 1;
 
     m_rot_90_0_n90 = m_rotation([90, 0, -90]);
+    one = [1, 1, 1];
     
     module axis_angle_path_extrude() {
         twist_step_a = twist / len_path_pts;
         
         function translate_pts(pts, t) = [for(p = pts) p + t];
 
-        scale_step_vt = is_num(scale) ? 
-            let(s =  (scale - 1) / len_path_pts_minus_one) [s, s, s] : 
-            [
-                (scale.x - 1) / len_path_pts_minus_one, 
-                (scale.y - 1) / len_path_pts_minus_one,
-                is_undef(scale.z) ? 0 : (scale.z - 1) / len_path_pts_minus_one
-            ];   
+        scale_step_vt = (
+            is_num(scale) ? 
+            let(s = scale - 1) [s, s, s] : 
+            len(s) == 2 ? [each (scale - [1, 1]), 0]:
+                        scale - one
+        ) / len_path_pts_minus_one;
 
         // get rotation matrice for sections
 
@@ -45,7 +45,7 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
                 let(
                     vt0 = pth_pts[i] - pth_pts[i - 1],
                     vt1 = pth_pts[i + 1] - pth_pts[i],
-                    a = acos((vt0 * vt1) / (norm(vt0) * norm(vt1))),
+                    a = acos((vt0 * vt1) / sqrt(vt0 * vt0 * vt1 * vt1)),
                     v = cross(vt0, vt1)
                 )
                 [a, v]
@@ -124,13 +124,12 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
 
         sections =
             let(
-                fst_section = 
-                    translate_pts(local_rotate_section(0, 0, [1, 1, 1]), pth_pts[0]),
+                fst_section = translate_pts(local_rotate_section(0, 0, one), pth_pts[0]),
                 end_i = len_path_pts - 1,
                 remain_sections = [
                     for(i = 0; i < end_i; i = i + 1) 
                         translate_pts(
-                            local_rotate_section(i, i * twist_step_a, [1, 1, 1] + scale_step_vt * (i + 1)),
+                            local_rotate_section(i, i * twist_step_a, one + scale_step_vt * (i + 1)),
                             pth_pts[i + 1]
                         )
                 ]
@@ -151,9 +150,7 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
     }
 
     module euler_angle_path_extrude() {
-        scale_step_vt = is_num(scale) ? 
-            [(scale - 1) / len_path_pts_minus_one, (scale - 1) / len_path_pts_minus_one] : 
-            [(scale.x - 1) / len_path_pts_minus_one, (scale.y - 1) / len_path_pts_minus_one];
+        scale_step_vt = ((is_num(scale) ? [scale, scale] : scale) - [1, 1]) / len_path_pts_minus_one;
 
         twist_step = twist / len_path_pts_minus_one;
 
