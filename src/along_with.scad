@@ -25,7 +25,7 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
         is_num(scale) ? 
         let(s = scale - 1) [s, s, s] : 
         len(scale) == 2 ? [each (scale - [1, 1]), 0]:
-                      scale - scale_one
+                          sscale - scale_one
     ) / leng_points_minus_one;
 
     /* 
