@@ -18,10 +18,9 @@ function fibonacci_lattice(n, radius = 1, dir = "CT_CLK") =
     [
         for(i = [0:n - 1])
         let(
-            z = 1 - (2 * i + 1) / n,
-            r = sqrt(1 - z ^ 2),
-            theta = phi * i * clk,
-            deg = degrees(theta)
+            z = 1 - (2 * i + 1) / n,        // cos_phi
+            sin_phi = sqrt(1 - z ^ 2),
+            theta = clk * i * degrees(phi)
         )
-        [cos(deg) * r, sin(deg) * r, z] * radius
+        [cos(theta) * sin_phi, sin(theta) * sin_phi, z] * radius
     ];
