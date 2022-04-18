@@ -16,8 +16,7 @@ function hashset(lt, eq = undef, hash = function(e) _str_hash(e), number_of_buck
     let(
 	    lt_undef = is_undef(lt),
 		leng_lt = lt_undef ? -1 : len(lt),
-		number_of_buckets_undef = is_undef(number_of_buckets),
-		b_numbers = number_of_buckets_undef ? 
+		b_numbers = is_undef(number_of_buckets) ? 
 		               (lt_undef || leng_lt < 256 ? 16 : ceil(sqrt(leng_lt))) : number_of_buckets,
 	    buckets = [for(i = [0:b_numbers - 1]) []]
 	)

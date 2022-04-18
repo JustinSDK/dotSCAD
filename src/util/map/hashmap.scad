@@ -15,8 +15,7 @@ function hashmap(kv_lt, eq = undef, hash = function(e) _str_hash(e), number_of_b
     let(
 	    kv_lt_undef = is_undef(kv_lt),
 		leng_kv_lt = kv_lt_undef ? -1 : len(kv_lt),
-		number_of_buckets_undef = is_undef(number_of_buckets),
-		b_numbers = number_of_buckets_undef ? 
+		b_numbers = is_undef(number_of_buckets) ? 
 		               (kv_lt_undef || leng_kv_lt < 256 ? 16 : ceil(sqrt(leng_kv_lt))) : number_of_buckets,
 	    buckets = [for(i = [0:b_numbers - 1]) []]
 	)
