@@ -8,6 +8,9 @@
 *
 **/ 
 
-use <_impl/_zip_impl.scad>;
-
-function zip(lts, combine) = is_function(combine) ? _zipAll(lts, combine) : _zipAll(lts);
+function zip(lts, combine = function(elems) elems) = 
+    let(end_lts = len(lts) - 1)
+    [
+        for(i = [0:len(lts[0]) - 1])
+        combine([for(j = [0:end_lts]) lts[j][i]])
+    ];
