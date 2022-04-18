@@ -16,4 +16,8 @@ function shape_circle(radius, n) =
         step_a = 360 / _frags,
         end = (is_undef(n) || n > _frags) ? _frags - 1: n - 1
     )
-    [for(a = [0:step_a:end * step_a]) [radius * cos(a), radius * sin(a)]];
+    [
+        for(i = [0:end]) 
+        let(a = i * step_a)
+        [radius * cos(a), radius * sin(a)]
+    ];
