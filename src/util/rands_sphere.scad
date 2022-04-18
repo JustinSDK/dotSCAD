@@ -6,24 +6,24 @@ function rands_sphere(radius, value_count, seed = undef) =
 		for(i = [0:value_count - 1])
 		let(
 			theta = degrees(2 * PI * r_nums[i]),
-			phi = acos(r_nums[i + value_count] * 2 - 1),
-			sin_phi = sin(phi),
+			cos_phi = r_nums[i + value_count] * 2 - 1,
+			sin_phi = sqrt(1 - cos_phi ^ 2),
 			x = sin_phi * cos(theta),
 			y = sin_phi * sin(theta),
-			z = cos(phi)
+			z = cos_phi
 		)
 		[x, y, z]
 	] * radius;
 
 /*
 
-use <experimental/rand_pts_sphere.scad>;
+use <util/rands_sphere.scad>;
 use <polyhedron_hull.scad>;
 
 number = 20;
 radius = 2;
 
-points = rand_pts_sphere(radius, number);
+points = rands_sphere(radius, number);
 
 polyhedron_hull(points);
 
