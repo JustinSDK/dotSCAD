@@ -8,9 +8,14 @@
 *
 **/ 
 
-function zip(lts, combine = function(elems) elems) = 
+function zip(lts, combine) = 
     let(end_lts = len(lts) - 1)
-    [
-        for(i = [0:len(lts[0]) - 1])
-        combine([for(j = [0:end_lts]) lts[j][i]])
-    ];
+    is_undef(combine) ? 
+        [
+            for(i = [0:len(lts[0]) - 1])
+            [for(j = [0:end_lts]) lts[j][i]]
+        ] :
+        [
+            for(i = [0:len(lts[0]) - 1])
+            combine([for(j = [0:end_lts]) lts[j][i]])
+        ];
