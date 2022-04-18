@@ -19,13 +19,11 @@ function bauer_spiral(n, radius = 1, rt_dir = "CT_CLK") =
     [
         for(k = 1; k <= n; k = k + 1)
         let(
-            zk = 1 - (2 * k - 1) / n,
-            phik = radians(acos(zk)),
-            thetak = L * phik * clk,
-            phikDegrees = degrees(phik),
-            thetakDegrees = degrees(thetak),
-            xk = sin(phikDegrees) * cos(thetakDegrees),
-            yk = sin(phikDegrees) * sin(thetakDegrees)
+            z = 1 - (2 * k - 1) / n,
+            sin_phi = sqrt(1 - z ^ 2),
+            theta = clk * L * acos(z),
+            x = sin_phi * cos(theta),
+            y = sin_phi * sin(theta)
         )
-        [xk, yk, zk] * radius
+        [x, y, z] * radius
     ];
