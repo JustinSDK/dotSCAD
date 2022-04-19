@@ -55,7 +55,7 @@ function get_state_weight(weights, state) = weights[search([state], weights)[0]]
 
 function wf_collapse(wf, x, y, weights) =
     let(
-		states = wf_eigenstates_at(wf, x, y),
+		states = wf_eigenstates(wf)[y][x],
 		threshold = rand() * sum(weights)
 	)		
 	_wf_collapse(wf, x, y, states, weights, len(states), threshold);
@@ -71,7 +71,7 @@ function _wf_collapse(wf, x, y, states, weights, leng, threshold, i = 0) =
 function wf_entropy_weights(wf, x, y) = 
     let(
 		all_weights = wf_weights(wf),
-		weights = [for(state = wf_eigenstates_at(wf, x, y)) get_state_weight(all_weights, state)],
+		weights = [for(state = wf_eigenstates(wf)[y][x]) get_state_weight(all_weights, state)],
 		sumOfWeights = sum(weights),
 		sumOfWeightLogWeights = sum([for(w = weights) w * ln(w)]) 
 	)
@@ -87,14 +87,13 @@ function _replaceStatesAt(wf, x, y, states) =
 
 function wf_not_collapsed_coords(wf, notCollaspedCoords) = 
     is_undef(notCollaspedCoords) ?
-	let(rx = [0:wf_width(wf) - 1])
 	[
-		for(y = [0:wf_height(wf) - 1], x = rx)
-		if(len(wf_eigenstates_at(wf, x, y)) != 1) [x, y]
+		for(y = [0:wf_height(wf) - 1], x = [0:wf_width(wf) - 1])
+		if(len(wf_eigenstates(wf)[y][x]) != 1) [x, y]
 	] :
 	[
 		for(coord = notCollaspedCoords)
-		if(len(wf_eigenstates_at(wf, coord.x, coord.y)) != 1) coord
+		if(len(wf_eigenstates(wf)[coord.y][coord.x]) != 1) coord
 	];
 
 function wf_coord_weights_min_entropy(wf, notCollaspedCoords) = 
@@ -104,8 +103,11 @@ function wf_coord_weights_min_entropy(wf, notCollaspedCoords) =
 			let(x = coord.x, y = coord.y)
 			[x, y, wf_entropy_weights(wf, x, y)] 
 		],
-		m = coord_entropy_weights_lt[0],
-		min_coord_entropy_weights = _coord_entropy_weights(coord_entropy_weights_lt, len(coord_entropy_weights_lt), m)
+		min_coord_entropy_weights = _coord_entropy_weights(
+			coord_entropy_weights_lt, 
+			len(coord_entropy_weights_lt), 
+			coord_entropy_weights_lt[0]
+		)
 	)
     [min_coord_entropy_weights.x, min_coord_entropy_weights.y, min_coord_entropy_weights[2][1]];
 
@@ -122,10 +124,10 @@ function _coord_entropy_weights(coord_entropy_weights_lt, leng, m, i = 1) =
 		- tilemap_wf(tm)
 */
 
-function tilemap(width, height, sample) = [
+function tilemap(width, height, sample, nbr_dirs) = [
 	width, 
 	height, 
-	compatibilities_of_tiles(sample), 
+	compatibilities_of_tiles(sample, nbr_dirs), 
 	wave_function(width, height, weights_of_tiles(sample))
 ];
 
@@ -134,66 +136,60 @@ function tilemap_height(tm) = tm[1];
 function tilemap_compatibilities(tm) = tm[2];
 function tilemap_wf(tm) = tm[3];
 
-function propagate(w, h, compatibilities, wf, x, y) = 
+function propagate(nbr_dirs, compatibilities, wf, coord) = 
 	_propagate(
-		w, 
-		h,
+		nbr_dirs,
 		compatibilities,
-		wf,
-		create_stack([x, y])
+		[wf, create_stack(coord)]
 	);
 
-function _propagate(w, h, compatibilities, wf, stack) =
+function _propagate(nbr_dirs, compatibilities, wf_stack) =
+    let(wf = wf_stack[0], stack = wf_stack[1])
     stack == [] ? wf :
 	let(
 		current_coord = stack[0],
-		cs = stack[1],
 		cx = current_coord.x, 
 		cy = current_coord.y,
-		current_tiles = wf_eigenstates_at(wf, cx, cy),
-		dirs = neighbor_dirs(cx, cy, w, h),
-		wf_stack = _doDirs(compatibilities, wf, cs, cx, cy, current_tiles, dirs, len(dirs))
+		current_tiles = wf_eigenstates(wf)[cy][cx],
+		dirs = nbr_dirs[cy][cx],
+		nx_wf_stack = _doDirs(compatibilities, [wf, stack[1]], current_coord, current_tiles, dirs, len(dirs))
 	)
-    _propagate(w, h, compatibilities, wf_stack[0], wf_stack[1]);
+    _propagate(nbr_dirs, compatibilities, nx_wf_stack);
 
-function _doDirs(compatibilities, wf, stack, cx, cy, current_tiles, dirs, leng, i = 0) = 
-    i == leng ? [wf, stack] :
+contradiction_msg = "A contradiction happens. Tiles have all been ruled out by your previous choices. Please try again.";
+function _doDirs(compatibilities, wf_stack, current_coord, current_tiles, dirs, leng, i = 0) = 
+    i == leng ? wf_stack :
 	let(
 		dir = dirs[i],
-		nbrx = cx + dir[0],
-		nbry = cy + dir[1],
-		nbr_tiles = wf_eigenstates_at(wf, nbrx, nbry),
+		nbr = dir + current_coord,
+		nbr_tiles = wf_eigenstates(wf_stack[0])[nbr.y][nbr.x],
 		compatible_nbr_tiles = [
 			for(nbr_tile = nbr_tiles) 
 			if(compatible_nbr_tile(compatibilities, current_tiles, nbr_tile, dir)) nbr_tile
 		],
 		leng_compatible_nbr_tiles = len(compatible_nbr_tiles),
 
-		wf_stack =
-			assert(leng_compatible_nbr_tiles > 0,
-					str("(", nbrx, ", ", nbry, ")", 
-					" reaches a contradiction. Tiles have all been ruled out by your previous choices. Please try again."))
+		mx_wf_stack =
+			assert(leng_compatible_nbr_tiles > 0, contradiction_msg)
 
 			leng_compatible_nbr_tiles == len(nbr_tiles) ? 
-				[wf, stack] 
+				wf_stack
 				: 
 				[   
-					_replaceStatesAt(wf, nbrx, nbry, compatible_nbr_tiles), 
-					stack_push(stack, [nbrx, nbry])
+					_replaceStatesAt(wf_stack[0], nbr.x, nbr.y, compatible_nbr_tiles), 
+					stack_push(wf_stack[1], nbr)
 				]
 	)
-	_doDirs(compatibilities, wf_stack[0], wf_stack[1], cx, cy, current_tiles, dirs, leng, i + 1);
+	_doDirs(compatibilities, mx_wf_stack, current_coord, current_tiles, dirs, leng, i + 1);
 
-function generate(w, h, compatibilities, wf, notCollaspedCoords) =
+function generate(nbr_dirs, compatibilities, wf, notCollaspedCoords) =
 	len(notCollaspedCoords) == 0 ? collapsed_tiles(wf) :
 	let(
 		coord_weights = wf_coord_weights_min_entropy(wf, notCollaspedCoords),
-		x = coord_weights.x,
-		y = coord_weights.y,
 		weights = coord_weights[2],
-		nwf = propagate(w, h, compatibilities, wf_collapse(wf, x, y, weights), x, y)
+		nwf = propagate(nbr_dirs, compatibilities, wf_collapse(wf, coord_weights.x, coord_weights.y, weights), coord_weights)
 	)
-	generate(w, h, compatibilities, nwf, wf_not_collapsed_coords(nwf));
+	generate(nbr_dirs, compatibilities, nwf, wf_not_collapsed_coords(nwf));
 
 function neighbor_dirs(x, y, width, height) = [
 	if(x > 0)          [-1,  0],   // left
@@ -202,11 +198,11 @@ function neighbor_dirs(x, y, width, height) = [
 	if(y < height - 1) [ 0,  1]    // bottom
 ];
 
-function neighbor_compatibilities(sample, x, y, width, height) = 
+function neighbor_compatibilities(sample, x, y, nbr_dirs) = 
     let(me = sample[y][x])
-	[for(dir = neighbor_dirs(x, y, width, height)) [me, sample[y + dir[1]][x + dir[0]], dir]];
+	[for(dir = nbr_dirs[y][x]) [me, sample[y + dir.y][x + dir.x], dir]];
 
-function compatibilities_of_tiles(sample) =
+function compatibilities_of_tiles(sample, nbr_dirs) =
     let(
 		width = len(sample[0]), 
 		height = len(sample),
@@ -214,7 +210,7 @@ function compatibilities_of_tiles(sample) =
 	)
 	hashset_elems(hashset([
 		for(y = [0:height - 1], x = rx)
-		each neighbor_compatibilities(sample, x, y, width, height)
+		each neighbor_compatibilities(sample, x, y, nbr_dirs)
 	], number_of_buckets = width * height));
 
 function collapsed_tiles(wf) =
@@ -225,7 +221,8 @@ function collapsed_tiles(wf) =
 	)
 	[
 		for(y = [0:wf_h - 1])
-		[for(x = rx) wf_eigenstates_at(wf, x, y)[0]]
+		let(wfy = wf_eigenstates(wf)[y])
+		[for(x = rx) wfy[x][0]]
 	];
 
 function compatible_nbr_tile(compatibilities, current_tiles, nbr_tile, dir) =

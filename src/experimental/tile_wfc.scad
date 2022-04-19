@@ -4,28 +4,30 @@ use <../util/rand.scad>;
 // An implementation of [Wave Function Collapse](https://github.com/mxgmn/WaveFunctionCollapse)
 function tile_wfc(size, sample) =
     let(
-        tm = tilemap(size[0], size[1], sample),
+        w = size.x,
+        h = size.y,
+        nbr_dirs = [
+            for(y = [0:h - 1])
+            [for(x = [0:w - 1]) neighbor_dirs(x, y, w, h)]
+        ],
+        tm = tilemap(w, h, sample, nbr_dirs),
         // random start
-        x = floor(rand(size[0] * 0.25, size[0] * 0.75)),
-        y = floor(rand(size[1] * 0.25, size[1] * 0.75)),
-		w = tilemap_width(tm),
-	    h = tilemap_height(tm),
+        x = floor(rand(w * 0.25, w * 0.75)),
+        y = floor(rand(h * 0.25, h * 0.75)),
 		compatibilities = tilemap_compatibilities(tm),
         wf = tilemap_wf(tm),
         all_weights = wf_weights(wf),
         states = wf_eigenstates_at(wf, x, y),
 		weights = [for(state = states) get_state_weight(all_weights, state)],
         first_collasped_propagated = propagate(
-			w,
-			h,
+			nbr_dirs,
 			compatibilities,
 			wf_collapse(wf, x, y, weights), 
-            x, 
-            y
+            [x, y]
         ),
         notCollapsedCoords = wf_not_collapsed_coords(first_collasped_propagated)
     )
-    generate(w, h, compatibilities, first_collasped_propagated, notCollapsedCoords);
+    generate(nbr_dirs, compatibilities, first_collasped_propagated, notCollapsedCoords);
 
 /*
 
