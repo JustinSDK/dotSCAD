@@ -1,29 +1,25 @@
 use <util/rand.scad>;
 use <util/some.scad>;
 use <util/sum.scad>;
-use <util/map/hashmap.scad>;
-use <util/map/hashmap_put.scad>;
-use <util/map/hashmap_get.scad>;
-use <util/map/hashmap_keys.scad>;
-use <util/map/hashmap_entries.scad>;
+use <util/sorted.scad>;
 use <util/set/hashset.scad>;
 use <util/set/hashset_elems.scad>;
 use <matrix/m_replace.scad>;
 
-function weights_of_tiles(sample) = 
-    let(
-	    symbols = [for(row = sample) each row],
-		leng = len(symbols)
-	)
-    hashmap_entries(_weights_of_tiles(hashmap(number_of_buckets = leng), symbols, leng));
+function count_from(lt, from, leng_lt) = 
+    len([
+        for(i = from; i < leng_lt && lt[i] == lt[from]; i = i + 1)
+        undef
+    ]);
+    
+function count_items(lt) = 
+    let(leng_lt = len(lt))
+    [
+        for(i = 0, c = count_from(lt, 0, leng_lt); i < leng_lt; i = i + c, c = count_from(lt, i, leng_lt))
+        [lt[i], c]
+    ];
 
-function _weights_of_tiles(weights, symbols, leng, i = 0) =
-    i == leng ? weights :
-	    let(
-		    tile = symbols[i],
-			w = hashmap_get(weights, tile)
-	    )
-		_weights_of_tiles(hashmap_put(weights, tile, w == undef ? 1 : w + 1), symbols, leng, i + 1);
+function weights_of_tiles(sample) = count_items(sorted([for(row = sample) each row]));
 
 /* 
     oo-style
