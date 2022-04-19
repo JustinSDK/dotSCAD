@@ -1,13 +1,14 @@
 include <_mz_cube_constants.scad>;
 
-function no_wall(cell) = get_type(cell) == 0;
-function y_wall(cell) = get_type(cell) == 1;
-function x_wall(cell) = get_type(cell) == 2;
-function y_x_wall(cell) = get_type(cell) == 3;
-function z_wall(cell) = get_type(cell) == 4;
-function z_y_wall(cell) = get_type(cell) == 5;
-function z_x_wall(cell) = get_type(cell) == 6;
-function z_y_x_wall(cell) = get_type(cell) == 7;
+function no_wall(cell) = get_type(cell) == NO_WALL;
+function y_wall(cell) = get_type(cell) == Y_WALL;
+function x_wall(cell) = get_type(cell) == X_WALL;
+function y_x_wall(cell) = get_type(cell) == Y_X_WALL;
+function z_wall(cell) = get_type(cell) == Z_WALL;
+function z_y_wall(cell) = get_type(cell) == Z_Y_WALL;
+function z_x_wall(cell) = get_type(cell) == Z_X_WALL;
+function z_y_x_wall(cell) = get_type(cell) == Z_Y_X_WALL;
+function mask(cell) = get_type(cell) == MASK;
 
 function cell(x, y, z, type, visited) = [x, y, z, type, visited];
 function get_x(cell) = cell.x;
