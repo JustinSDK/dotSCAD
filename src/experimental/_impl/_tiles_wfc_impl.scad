@@ -61,10 +61,11 @@ function wf_collapse(wf, x, y, weights) =
 	_wf_collapse(wf, x, y, states, weights, len(states), threshold);
 
 function _wf_collapse(wf, x, y, states, weights, leng, threshold, i = 0) =
-    threshold < 0 || i == leng ? wf : 
+    threshold < 0 || i == leng ? wf :
+	let(weight = weights[i]) 
 	_wf_collapse(
-		threshold < weights[i] ? _replaceStatesAt(wf, x, y, [states[i]]) : wf, 
-		x, y, states, weights, leng, threshold - weights[i], i + 1
+		threshold < weight ? _replaceStatesAt(wf, x, y, [states[i]]) : wf, 
+		x, y, states, weights, leng, threshold - weight, i + 1
 	);
 
 // Shannon entropy
