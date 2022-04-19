@@ -1,5 +1,7 @@
 use <_mz_cube_comm.scad>;
 
+include <_mz_cube_constants.scad>;
+
 // create a starting maze for being visited later.
 function _lrc_maze(layers, rows, columns) =  
     [
@@ -11,9 +13,9 @@ function _lrc_maze(layers, rows, columns) =
                 cell(
                     x, y, z,
                     // all cells have up/top/right walls
-                    7, 
+                    Z_Y_X_WALL, 
                     // unvisited
-                    false 
+                    UNVISITED 
                 )
             ]
         ]
@@ -32,14 +34,14 @@ function _mz_mask(mask) =
                 mask[layers - z - 1][rows - y - 1][x] == 0 ?
                     cell(
                         x, y, z,		
-                        8,   // mask
-                        true // visited
+                        MASK,  
+                        VISITED // visited
                     )
                     :
                     cell(
                         x, y, z,
-                        7, // all cells have up/top/right walls
-                        false // unvisited
+                        Z_Y_X_WALL,
+                        UNVISITED // unvisited
                     )
             ]
         ]

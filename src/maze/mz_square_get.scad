@@ -8,6 +8,8 @@
 *
 **/
 
+include <_impl/_mz_square_cell_constants.scad>;
+
 function mz_square_get(cell, query) = 
     let(
         i = search(query, [
@@ -16,4 +18,4 @@ function mz_square_get(cell, query) =
             ["t", 2]
  	    ])[0]
     )
-    i != 2 ? cell[i] : ["NO_WALL", "TOP_WALL", "RIGHT_WALL", "TOP_RIGHT_WALL", "MASK"][cell[i]];
+    i != 2 ? cell[i] : CELL_TYPE[cell[i]];

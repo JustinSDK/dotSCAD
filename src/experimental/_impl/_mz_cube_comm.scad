@@ -1,12 +1,4 @@
-// NO_WALL = 0;       
-// Y_WALL = 1;    
-// X_WALL = 2;    
-// Y_X_WALL = 3; 
-// Z_WALL = 4;
-// Z_Y_WALL = 5;    
-// Z_X_WALL = 6;    
-// Z_Y_X_WALL = 7; 
-// MASK = 8; 
+include <_mz_cube_constants.scad>;
 
 function no_wall(cell) = get_type(cell) == 0;
 function y_wall(cell) = get_type(cell) == 1;

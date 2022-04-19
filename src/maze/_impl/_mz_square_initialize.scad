@@ -1,5 +1,7 @@
 use <_mz_square_comm.scad>;
 
+include <_mz_square_cell_constants.scad>;
+
 // create a starting maze for being visited later.
 function _rc_maze(rows, columns) =  [
     for(y = [0:rows - 1]) 
@@ -8,9 +10,8 @@ function _rc_maze(rows, columns) =  [
         cell(
             x, y, 
             // all cells have top and right walls
-            3, 
-            // unvisited
-            false 
+            TOP_RIGHT_WALL, 
+            UNVISITED 
         )
     ]
 ];
@@ -26,15 +27,14 @@ function _mz_mask(mask) =
             mask[rows - y - 1][x] == 0 ?
                 cell(
                     x, y, 						
-                    4, // mask
-                    true // visited
+                    MASK, 
+                    VISITED 
                 )
                 :
                 cell(
                     x, y, 
-                    // all cells have top and right walls
-                    3, // unvisited
-                    false 
+                    TOP_RIGHT_WALL, 
+                    UNVISITED 
                 )
         ]
     ];

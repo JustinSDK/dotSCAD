@@ -5,8 +5,10 @@ NO_WALL = 0;
 INWARD_WALL = 1;
 CCW_WALL = 2;
 INWARD_CCW_WALL = 3;
+UNVISITED = true;
+VISITED = false;
 
-function cell(ri, ci, wallType, notVisited = true, inward = undef, outwards = undef, cw = undef, ccw = undef) = 
+function cell(ri, ci, wallType, notVisited = UNVISITED, inward = undef, outwards = undef, cw = undef, ccw = undef) = 
     [ri, ci, wallType, notVisited, inward, outwards, cw, ccw];
 
 function get_ri(cell) = cell[0];
@@ -22,7 +24,7 @@ function set_wallType(cell, wallType) = [
 ];
 
 function set_visited(cell) = [
-    cell[0], cell[1], cell[2], false, cell[4], cell[5], cell[6], cell[7]
+    cell[0], cell[1], cell[2], VISITED, cell[4], cell[5], cell[6], cell[7]
 ];
 
 function set_outwards(cell, outwards) = [
@@ -213,12 +215,12 @@ function visitIN(maze, next, currentCell) =
 
 function visitOUT(maze, next, currentCell) = update_maze(
     maze, 
-	cell(next[0], next[1], CCW_WALL, false, next[4], next[5], next[6], next[7])
+	cell(next[0], next[1], CCW_WALL, VISITED, next[4], next[5], next[6], next[7])
 );
 
 function visitCW(maze, next, currentCell) = update_maze(
     maze, 
-	cell(next[0], next[1], INWARD_WALL, false, next[4], next[5], next[6], next[7])
+	cell(next[0], next[1], INWARD_WALL, VISITED, next[4], next[5], next[6], next[7])
 );
 
 function visitCCW(maze, next, currentCell) = 
