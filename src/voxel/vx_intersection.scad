@@ -10,14 +10,14 @@
 
 use <../util/set/hashset.scad>;
 use <../util/set/hashset_has.scad>;
-use <../__comm__/_pt3_hash.scad>;
+
+include <../__comm__/_pt3_hash.scad>;
 
 function vx_intersection(points1, points2) =
     let(
         leng1 = len(points1),
         leng2 = len(points2),
         pts_pair = leng1 > leng2 ? [points1, points2] : [points2, points1],
-        hash = function(p) _pt3_hash(p),
-        set = hashset(pts_pair[1], hash = hash)
+        set = hashset(pts_pair[1], hash = _pt3_hash)
     )
-    [for(p = pts_pair[0]) if(hashset_has(set, p, hash = hash)) p];
+    [for(p = pts_pair[0]) if(hashset_has(set, p, hash = _pt3_hash)) p];

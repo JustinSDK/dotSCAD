@@ -1,4 +1,4 @@
-function _str_hash(value) = 
+_str_hash = function(value)
     let(
 		chars = str(value),
 		end = len(chars) - 1

@@ -8,11 +8,12 @@
 *
 **/ 
 
-use <../__comm__/_pt3_hash.scad>;
 use <../util/set/hashset.scad>;
 use <../util/set/hashset_elems.scad>;
 
+include <../__comm__/_pt3_hash.scad>;
+
 function vx_union(points1, points2) = 
     hashset_elems(
-        hashset(concat(points1, points2), hash = function(p) _pt3_hash(p))
+        hashset(concat(points1, points2), hash = _pt3_hash)
     );

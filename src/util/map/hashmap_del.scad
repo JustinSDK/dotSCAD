@@ -8,10 +8,10 @@
 *
 **/
 
-use <../../__comm__/_str_hash.scad>;
 use <../_impl/_find_eq.scad>;
+include <../../__comm__/_str_hash.scad>;
 
-function hashmap_del(map, key, eq = undef, hash = function(e) _str_hash(e)) =
+function hashmap_del(map, key, eq = undef, hash = _str_hash) =
     let(
 	    bidx = hash(key) % len(map),
 		bucket = map[bidx],

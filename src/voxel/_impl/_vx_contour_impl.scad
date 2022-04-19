@@ -1,15 +1,16 @@
 use <../../util/set/hashset.scad>;
 use <../../util/set/hashset_has.scad>;
-use <../../__comm__/_pt2_hash.scad>;
+
+include <../../__comm__/_pt2_hash.scad>;
 
 hash = function(p) _pt2_hash(p);
 
 function _vx_contour_corner_value(pts, x, y) =
     let(
-        c1 = hashset_has(pts, [x, y - 1], hash = hash) || hashset_has(pts, [x - 1, y - 1], hash = hash) ? 1 : 0,
-        c2 = hashset_has(pts, [x - 1, y], hash = hash) || hashset_has(pts, [x - 1, y + 1], hash = hash) ? 2 : 0,
-        c3 = hashset_has(pts, [x, y + 1], hash = hash) || hashset_has(pts, [x + 1, y + 1], hash = hash) ? 4 : 0,
-        c4 = hashset_has(pts, [x + 1, y], hash = hash) || hashset_has(pts, [x + 1, y - 1], hash = hash) ? 8 : 0
+        c1 = hashset_has(pts, [x, y - 1], hash = _pt2_hash) || hashset_has(pts, [x - 1, y - 1], hash = _pt2_hash) ? 1 : 0,
+        c2 = hashset_has(pts, [x - 1, y], hash = _pt2_hash) || hashset_has(pts, [x - 1, y + 1], hash = _pt2_hash) ? 2 : 0,
+        c3 = hashset_has(pts, [x, y + 1], hash = _pt2_hash) || hashset_has(pts, [x + 1, y + 1], hash = _pt2_hash) ? 4 : 0,
+        c4 = hashset_has(pts, [x + 1, y], hash = _pt2_hash) || hashset_has(pts, [x + 1, y - 1], hash = _pt2_hash) ? 8 : 0
     )
     c1 + c2 + c3 + c4;
 
@@ -27,7 +28,7 @@ function _vx_contour(points) =
         // always start from the left-bottom pt
         fst = min(points) + [-1, -1]
     )
-    _vx_contour_travel(hashset(points, hash = function(p) _pt2_hash(p)), fst, fst);
+    _vx_contour_travel(hashset(points, hash = _pt2_hash), fst, fst);
 
 _vx_contour_nxt_offset = [
     [1,  0],   // RIGHT

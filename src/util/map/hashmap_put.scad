@@ -8,8 +8,9 @@
 *
 **/
 
-use <../../__comm__/_str_hash.scad>;
 use <_impl/_hashmap_put_impl.scad>;
 
-function hashmap_put(map, key, value, eq = undef, hash = function(e) _str_hash(e)) =
+include <../../__comm__/_str_hash.scad>;
+
+function hashmap_put(map, key, value, eq = undef, hash = _str_hash) =
     _hashmap_put(map, len(map), key, value, eq, hash);

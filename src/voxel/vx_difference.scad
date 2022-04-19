@@ -10,11 +10,9 @@
 
 use <../util/set/hashset.scad>;
 use <../util/set/hashset_has.scad>;
-use <../__comm__/_pt3_hash.scad>;
+
+include <../__comm__/_pt3_hash.scad>;
 
 function vx_difference(points1, points2) =
-    let(
-        hash = function(p) _pt3_hash(p),
-        set = hashset(points2, hash = hash)
-    )
-    [for(p = points1) if(!hashset_has(set, p, hash = hash)) p];
+    let(set = hashset(points2, hash = _pt3_hash))
+    [for(p = points1) if(!hashset_has(set, p, hash = _pt3_hash)) p];

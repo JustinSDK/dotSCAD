@@ -8,10 +8,11 @@
 *
 **/
 
-use <../../__comm__/_str_hash.scad>;
 use <../_impl/_find_eq.scad>;
 
-function hashset_del(set, elem, eq = undef, hash = function(e) _str_hash(e)) =
+include <../../__comm__/_str_hash.scad>;
+
+function hashset_del(set, elem, eq = undef, hash = _str_hash) =
     let(
 	    leng_set = len(set),
 	    bidx = hash(elem) % leng_set,

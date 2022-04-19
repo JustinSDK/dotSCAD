@@ -1,4 +1,4 @@
-function _pt3_hash(p) = 
+_pt3_hash = function(p)
     let(
         x = p.x >= 0 ? 2 * p.x : -2 * p.x - 1,
         y = p.y >= 0 ? 2 * p.y : -2 * p.y - 1,

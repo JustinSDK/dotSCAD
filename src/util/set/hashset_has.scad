@@ -8,9 +8,10 @@
 *
 **/
 
-use <../../__comm__/_str_hash.scad>;
 use <../_impl/_find_eq.scad>;
 
-function hashset_has(set, elem, eq = undef, hash = function(e) _str_hash(e)) =
+include <../../__comm__/_str_hash.scad>;
+
+function hashset_has(set, elem, eq = undef, hash = _str_hash) =
     let(bucket = set[hash(elem) % len(set)])
     bucket != [] && _find_eq(bucket, elem, eq) != -1;

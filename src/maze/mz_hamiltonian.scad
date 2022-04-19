@@ -8,13 +8,14 @@
 *
 **/
 
-use <../__comm__/_pt2_hash.scad>;
 use <_impl/_mz_hamiltonian_impl.scad>;
 use <mz_square.scad>;
 use <mz_square_initialize.scad>;
 use <mz_square_get.scad>;
 use <../util/set/hashset.scad>;
 use <../util/set/hashset_elems.scad>;
+
+include <../__comm__/_pt2_hash.scad>;
 
 function mz_hamiltonian(rows, columns, start = [0, 0], init_cells, seed) =
     let(
@@ -42,7 +43,7 @@ function mz_hamiltonian(rows, columns, start = [0, 0], init_cells, seed) =
         dot_pts = hashset_elems(
             hashset(
                 all, 
-                hash = function(p) _pt2_hash(p)
+                hash = _pt2_hash
             )
         ),
         falseRow = [for(c = [0:c * 2]) false],

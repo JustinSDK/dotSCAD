@@ -8,10 +8,10 @@
 *
 **/
 
-use <../../__comm__/_str_hash.scad>;
 use <_impl/_hashmap_impl.scad>;
+include <../../__comm__/_str_hash.scad>;
 	
-function hashmap(kv_lt, eq = undef, hash = function(e) _str_hash(e), number_of_buckets) =
+function hashmap(kv_lt, eq = undef, hash = _str_hash, number_of_buckets) =
     let(
 	    kv_lt_undef = is_undef(kv_lt),
 		leng_kv_lt = kv_lt_undef ? -1 : len(kv_lt),

@@ -11,10 +11,11 @@
 use <../__comm__/__to3d.scad>;
 use <../__comm__/__to2d.scad>;
 use <../__comm__/__lines_from.scad>;
-use <../__comm__/_pt2_hash.scad>;
-use <../__comm__/_pt3_hash.scad>;
 use <../util/dedup.scad>;
 use <vx_line.scad>;
+
+include <../__comm__/_pt2_hash.scad>;
+include <../__comm__/_pt3_hash.scad>;
 
 function vx_polyline(points) =
     let(
@@ -24,5 +25,5 @@ function vx_polyline(points) =
     )
     dedup(
         is_2d ? [for(pt = polyline) __to2d(pt)] : polyline, 
-        hash = is_2d ? function(p) _pt2_hash(p) : function(p) _pt3_hash(p)
+        hash = is_2d ? _pt2_hash : _pt3_hash
     );

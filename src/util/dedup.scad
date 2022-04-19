@@ -8,10 +8,11 @@
 *
 **/ 
 
-use <../__comm__/_str_hash.scad>;
 use <_impl/_dedup_impl.scad>;
+
+include <../__comm__/_str_hash.scad>;
 		
-function dedup(lt, eq = undef, hash = function(e) _str_hash(e), number_of_buckets) =
+function dedup(lt, eq = undef, hash = _str_hash, number_of_buckets) =
     let(leng_lt = len(lt))
     leng_lt < 2 ? lt :
 	let(

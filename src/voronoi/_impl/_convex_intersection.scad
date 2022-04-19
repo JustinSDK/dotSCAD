@@ -1,8 +1,9 @@
-use <../../__comm__/_pt2_hash.scad>;
 use <../../lines_intersection.scad>;
 use <_convex_ct_clk_order.scad>;
 use <../../util/set/hashset.scad>;
 use <../../util/set/hashset_elems.scad>;
+
+include <../../__comm__/_pt2_hash.scad>;
 
 function _in_convex_r(i, j, preC, convex_pts, pt, leng, convex_pts, pt) =
     j == leng || (
@@ -28,7 +29,7 @@ function _intersection_ps(closed_shape, line_pts, epsilon) =
     )
     leng < 2 ? npts : 
     leng == 2 ? (npts[0] != npts[1] ? npts : [npts[0]]) :
-    hashset_elems(hashset(npts, hash = function(p) _pt2_hash(p)));
+    hashset_elems(hashset(npts, hash = _pt2_hash));
 
 function _convex_intersection(shape1, shape2, epsilon = 0.0001) =
     (shape1 == [] || shape2 == []) ? [] :
