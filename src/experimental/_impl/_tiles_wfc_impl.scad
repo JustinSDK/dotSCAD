@@ -116,26 +116,6 @@ function _coord_entropy_weights(coord_entropy_weights_lt, leng, m, i = 1) =
     i == leng ? m :
 	let(cm = coord_entropy_weights_lt[i])
 	_coord_entropy_weights(coord_entropy_weights_lt, leng, m[2][0] <= cm[2][0] ? m : cm, i + 1);
-	
-/*
-	- tilemap(width, height, sample)
-		- tilemap_width(tm)
-		- tilemap_height(tm)
-		- tilemap_compatibilities(tm)
-		- tilemap_wf(tm)
-*/
-
-function tilemap(width, height, sample) = [
-	width, 
-	height, 
-	compatibilities_of_tiles(sample), 
-	wave_function(width, height, weights_of_tiles(sample))
-];
-
-function tilemap_width(tm) = tm[0];
-function tilemap_height(tm) = tm[1];
-function tilemap_compatibilities(tm) = tm[2];
-function tilemap_wf(tm) = tm[3];
 
 function propagate(nbr_dirs, compatibilities, wf, coord) = 
 	_propagate(

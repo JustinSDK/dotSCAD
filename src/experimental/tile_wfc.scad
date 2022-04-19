@@ -10,12 +10,11 @@ function tile_wfc(size, sample) =
             for(y = [0:h - 1])
             [for(x = [0:w - 1]) neighbor_dirs(x, y, w, h)]
         ],
-        tm = tilemap(w, h, sample),
         // random start
         x = floor(rand(w * 0.25, w * 0.75)),
         y = floor(rand(h * 0.25, h * 0.75)),
-		compatibilities = tilemap_compatibilities(tm),
-        wf = tilemap_wf(tm),
+		compatibilities = compatibilities_of_tiles(sample),
+        wf = wave_function(w, h, weights_of_tiles(sample)),
         all_weights = wf_weights(wf),
         states = wf_eigenstates_at(wf, x, y),
 		weights = [for(state = states) get_state_weight(all_weights, state)],
