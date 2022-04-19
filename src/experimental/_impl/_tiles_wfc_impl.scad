@@ -124,10 +124,10 @@ function _coord_entropy_weights(coord_entropy_weights_lt, leng, m, i = 1) =
 		- tilemap_wf(tm)
 */
 
-function tilemap(width, height, sample, nbr_dirs) = [
+function tilemap(width, height, sample) = [
 	width, 
 	height, 
-	compatibilities_of_tiles(sample, nbr_dirs), 
+	compatibilities_of_tiles(sample), 
 	wave_function(width, height, weights_of_tiles(sample))
 ];
 
@@ -198,11 +198,11 @@ function neighbor_dirs(x, y, width, height) = [
 	if(y < height - 1) [ 0,  1]    // bottom
 ];
 
-function neighbor_compatibilities(sample, x, y, nbr_dirs) = 
+function neighbor_compatibilities(sample, x, y, width, height) = 
     let(me = sample[y][x])
-	[for(dir = nbr_dirs[y][x]) [me, sample[y + dir.y][x + dir.x], dir]];
+	[for(dir = neighbor_dirs(x, y, width, height)) [me, sample[y + dir.y][x + dir.x], dir]];
 
-function compatibilities_of_tiles(sample, nbr_dirs) =
+function compatibilities_of_tiles(sample) =
     let(
 		width = len(sample[0]), 
 		height = len(sample),
@@ -210,7 +210,7 @@ function compatibilities_of_tiles(sample, nbr_dirs) =
 	)
 	hashset_elems(hashset([
 		for(y = [0:height - 1], x = rx)
-		each neighbor_compatibilities(sample, x, y, nbr_dirs)
+		each neighbor_compatibilities(sample, x, y, width, height)
 	], number_of_buckets = width * height));
 
 function collapsed_tiles(wf) =
