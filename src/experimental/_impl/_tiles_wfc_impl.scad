@@ -86,14 +86,15 @@ function _replaceStatesAt(wf, x, y, states) =
 	];
 
 function wf_not_collapsed_coords(wf, notCollaspedCoords) = 
+    let(eigenstates = wf_eigenstates(wf), we = wf_width(wf) - 1, he = wf_height(wf) - 1, rx = [0:we])
     is_undef(notCollaspedCoords) ?
 	[
-		for(y = [0:wf_height(wf) - 1], x = [0:wf_width(wf) - 1])
-		if(len(wf_eigenstates(wf)[y][x]) != 1) [x, y]
+		for(y = [0:he], x = rx)
+		if(len(eigenstates[y][x]) != 1) [x, y]
 	] :
 	[
 		for(coord = notCollaspedCoords)
-		if(len(wf_eigenstates(wf)[coord.y][coord.x]) != 1) coord
+		if(len(eigenstates[coord.y][coord.x]) != 1) coord
 	];
 
 function wf_coord_weights_min_entropy(wf, notCollaspedCoords) = 
@@ -198,10 +199,6 @@ function neighbor_dirs(x, y, width, height) = [
 	if(y < height - 1) [ 0,  1]    // bottom
 ];
 
-function neighbor_compatibilities(sample, x, y, width, height) = 
-    let(me = sample[y][x])
-	[for(dir = neighbor_dirs(x, y, width, height)) [me, sample[y + dir.y][x + dir.x], dir]];
-
 function compatibilities_of_tiles(sample) =
     let(
 		width = len(sample[0]), 
@@ -209,19 +206,20 @@ function compatibilities_of_tiles(sample) =
 		rx = [0:width - 1]
 	)
 	hashset_elems(hashset([
-		for(y = [0:height - 1], x = rx)
-		each neighbor_compatibilities(sample, x, y, width, height)
+		for(y = [0:height - 1], x = rx, dir = neighbor_dirs(x, y, width, height))
+		[sample[y][x], sample[y + dir.y][x + dir.x], dir] // neighbor_compatibilities
 	], number_of_buckets = width * height));
 
 function collapsed_tiles(wf) =
     let(
 		wf_h = wf_height(wf),
 		wf_w = wf_width(wf),
-		rx = [0:wf_w - 1]
+		rx = [0:wf_w - 1],
+		eigenstates = wf_eigenstates(wf)
 	)
 	[
 		for(y = [0:wf_h - 1])
-		let(wfy = wf_eigenstates(wf)[y])
+		let(wfy = eigenstates[y])
 		[for(x = rx) wfy[x][0]]
 	];
 
