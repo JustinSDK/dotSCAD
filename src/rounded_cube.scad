@@ -12,37 +12,34 @@ use <__comm__/__frags.scad>;
 use <__comm__/__nearest_multiple_of_4.scad>;
 
 module rounded_cube(size, corner_r, center = false) {
-    is_flt = is_num(size);
-    x = is_flt ? size : size.x;
-    y = is_flt ? size : size.y;
-    z = is_flt ? size : size.z;
+    dimension = is_num(size) ? [size, size, size] : size;
+    half_dim = dimension / 2;
 
-    corner_frags = __nearest_multiple_of_4(__frags(corner_r));
-    edge_d = corner_r * cos(180 / corner_frags);
+    $fn = __nearest_multiple_of_4(__frags(corner_r));
+    edge_d = corner_r * cos(180 / $fn);
 
-    half_x = x / 2;
-    half_y = y / 2;
-    half_z = z / 2;
-    
-    half_l = half_x - edge_d;
-    half_w = half_y - edge_d;
-    half_h = half_z - edge_d;
+    half_dim_m_edge = half_dim - [edge_d, edge_d, edge_d];
         
     pair = [1, -1];
     corners = [
         for(z = pair, y = pair, x = pair) 
-        [half_l * x, half_w * y, half_h * z]
+        [
+            half_dim_m_edge.x * x, 
+            half_dim_m_edge.y * y, 
+            half_dim_m_edge.z * z
+        ]
     ];
 
     module corner(i) {
         translate(corners[i]) 
-            sphere(corner_r, $fn = corner_frags);        
+            sphere(corner_r);        
     }
 
-    center_pts = center ? [0, 0, 0] : [half_x, half_y, half_z];
+    center_pts = center ? [0, 0, 0] : half_dim;
     
     // Don't use `hull() for(...) {...}` because it's slow.
-    translate(center_pts) hull() {
+    translate(center_pts) 
+    hull() {
         corner(0);
         corner(1);
         corner(2);
@@ -54,7 +51,7 @@ module rounded_cube(size, corner_r, center = false) {
     }
 
     // hook for testing
-    test_rounded_edge_corner_center(corner_frags, corners, center_pts);
+    test_rounded_edge_corner_center($fn, corners, center_pts);
 }
 
 // override it to test
