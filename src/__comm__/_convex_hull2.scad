@@ -22,8 +22,8 @@ function _convex_hull_upper_m(chain, p, m, t) =
     (m < t || _convex_hull_impl_dir(chain[m - 2], chain[m - 1], p) > 0) ? m : _convex_hull_upper_m(chain, p, m - 1, t);
         
 function _convex_hull_upper_chain(points, chain, m, t, i) =
-    i < 0 ? chain :
-        let(current_m = _convex_hull_upper_m(chain, points[i], m, t))
+    let(current_m = _convex_hull_upper_m(chain, points[i], m, t))
+    i == 2 ? slice(chain, 0, current_m) :
         _convex_hull_upper_chain(
             points,
             [each slice(chain, 0, current_m), points[i]],
@@ -37,7 +37,6 @@ function _convex_hull2(points) =
         sorted_pts = sorted(points),
         leng = len(sorted_pts),
         lwr_ch = _convex_hull_lower_chain(sorted_pts, leng, [], 0, 0),
-        leng_lwr_ch = len(lwr_ch),
-        chain = _convex_hull_upper_chain(sorted_pts, lwr_ch, leng_lwr_ch, leng_lwr_ch + 1, leng - 2)
+        leng_lwr_ch = len(lwr_ch)
     )
-    slice(chain, 0, len(chain) - 1);
+    _convex_hull_upper_chain(sorted_pts, lwr_ch, leng_lwr_ch, leng_lwr_ch + 1, leng - 2);
