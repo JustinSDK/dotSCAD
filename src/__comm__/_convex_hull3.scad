@@ -1,7 +1,8 @@
 use <../util/sorted.scad>;
 use <../matrix/m_replace.scad>;
 
-function normal(pts, f) = cross(pts[f[1]] - pts[f[0]], pts[f[2]] - pts[f[0]]);
+function normal(pts, f) = 
+    let(p = pts[f[0]]) cross(pts[f[1]] - p, pts[f[2]] - p);
 
 function _fst_v1(pts, leng, i) =
     i == leng || (pts[i] - pts[0]) != [0, 0, 0] ? i : _fst_v1(pts, leng, i + 1);
