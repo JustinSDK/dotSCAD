@@ -12,7 +12,7 @@ use <__comm__/_convex_hull2.scad>;
 
 module polygon_hull(points, polygon_abuse = false) {
     if(polygon_abuse) {
-        // It's workable only because `polyhedron` doesn't complain about mis-ordered faces.
+        // It's workable only because `polygon` doesn't complain about mis-ordered points.
         // It's fast but might be invalid in later versions.
         hull() polygon(points);
     }
