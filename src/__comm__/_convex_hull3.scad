@@ -1,4 +1,5 @@
 use <../util/sorted.scad>;
+use <../matrix/m_replace.scad>;
 
 function normal(pts, f) = cross(pts[f[1]] - pts[f[0]], pts[f[2]] - pts[f[0]]);
 
@@ -13,16 +14,6 @@ function _fst_v3(pts, leng, n, d, i) =
     let(nd = n * (pts[i] - pts[0]))
     nd != 0 ? [i, nd] : _fst_v3(pts, leng, n, nd, i + 1);
 
-function m_assign(m, i, j, v) =
-    let(lt = m[i])
-    [
-        for(r = [0:len(m) - 1]) 
-        if(r == i) 
-            [for(c = [0:len(lt) - 1]) c == j ? v : lt[c]] 
-        else 
-            m[r]
-    ];
-
 function next_vis(i, pts, cur_faces, cur_faces_leng, next, vis, j = 0) = 
     j == cur_faces_leng ? [next, vis] :
     let(
@@ -30,9 +21,9 @@ function next_vis(i, pts, cur_faces, cur_faces_leng, next, vis, j = 0) =
         d = (pts[f[0]] - pts[i]) * normal(pts, f),
         nx = d >= 0 ? [each next, f] : next,
         s = sign(d),
-        vis1 = m_assign(vis, f[0], f[1], s),
-        vis2 = m_assign(vis1, f[1], f[2], s),
-        vis3 = m_assign(vis2, f[2], f[0], s)
+        vis1 = m_replace(vis, f[1], f[0], s),
+        vis2 = m_replace(vis1, f[2], f[1], s),
+        vis3 = m_replace(vis2, f[0], f[2], s)
     )
     next_vis(i, pts, cur_faces, cur_faces_leng, nx, vis3, j + 1);
     
