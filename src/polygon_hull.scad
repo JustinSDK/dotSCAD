@@ -10,10 +10,17 @@
 
 use <__comm__/_convex_hull2.scad>;
 
-module polygon_hull(points) {
-    poly = _convex_hull2(points);
-    polygon(poly);
-    test_convex_hull2(poly);
+module polygon_hull(points, polygon_abuse = false) {
+    if(polygon_abuse) {
+        // It's workable only because `polyhedron` doesn't complain about mis-ordered faces.
+        // It's fast but might be invalid in later versions.
+        hull() polygon(points);
+    }
+    else {
+        poly = _convex_hull2(points);
+        polygon(poly);
+        test_convex_hull2(poly);
+    }
 }
 
 module test_convex_hull2(poly) {
