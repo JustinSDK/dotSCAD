@@ -2,6 +2,7 @@ use <util/rand.scad>;
 use <util/some.scad>;
 use <util/sum.scad>;
 use <util/sorted.scad>;
+use <util/contains.scad>;
 use <util/set/hashset.scad>;
 use <util/set/hashset_elems.scad>;
 use <matrix/m_replace.scad>;
@@ -200,7 +201,7 @@ function collapsed_tiles(wf) =
 	];
 
 function compatible_nbr_tile(compatibilities, current_tiles, nbr_tile, dir) =
-    some(current_tiles, function(tile) search([[tile, nbr_tile, dir]], compatibilities) != [[]]);
+    some(current_tiles, function(tile) contains(compatibilities, [tile, nbr_tile, dir]));
 
 function create_stack(elem) = [elem, []];
 function stack_push(stack, elem) = [elem, stack];
