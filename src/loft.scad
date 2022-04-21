@@ -9,25 +9,23 @@
 **/
 
 use <sweep.scad>;
+use <util/lerp.scad>;
    
 module loft(sections, slices = 1) {
     function gcd(m, n) = n == 0 ? m : gcd(n, m % n);
     function lcm(m, n) = m * n / gcd(m, n);
 
-    function inter_pts(p1, p2, n) =
-        let(dv = (p2 - p1) / n)
-        [for(i = [1:n - 1]) p1 + dv * i];
-
-    function _interpolate(sect, leng, n, i = 0) = 
-        i == leng ? [] :
-        let(
-            p1 = sect[i],
-            p2 = sect[(i + 1) % leng]
-        )
-        [p1, each inter_pts(p1, p2, n), each _interpolate(sect, leng, n, i + 1)];
-
-    function interpolate(sect, n) = 
-        n <= 1 ? sect : _interpolate(sect, len(sect), n);
+    function interpolate(sect, leng, n) = 
+        n <= 1 ? sect :
+        let(amts = [each [1:n-1]] / n)
+        [
+            for(i = 0; i < leng; i = i + 1)
+            let(
+                p1 = sect[i],
+                p2 = sect[(i + 1) % leng]
+            )
+            each [p1, each [for(amt = amts) lerp(p1, p2, amt)]]
+        ];
         
     module _loft(sect1, sect2, slices) {
         function inter_sects(s1, s2, s_leng, slices) = 
@@ -40,9 +38,11 @@ module loft(sections, slices = 1) {
                 )
                 [for(i = [1:slices - 1]) s1 + dps * i];
 
-        lcm_n = lcm(len(sect1), len(sect2));
-        new_sect1 = interpolate(sect1, lcm_n / len(sect1));
-        new_sect2 = interpolate(sect2, lcm_n / len(sect2));
+        leng_sect1 = len(sect1);
+        leng_sect2 = len(sect2);
+        lcm_n = lcm(leng_sect1, leng_sect2);
+        new_sect1 = interpolate(sect1, leng_sect1, lcm_n / leng_sect1);
+        new_sect2 = interpolate(sect2, leng_sect2, lcm_n / leng_sect2);
         
         sweep([new_sect1, each inter_sects(new_sect1, new_sect2, lcm_n, slices), new_sect2]);
     }
