@@ -21,6 +21,7 @@ function tile_wfc(size, sample) =
         first_collasped_propagated = propagate(
 			nbr_dirs,
 			compatibilities,
+            [for(cy = [0:h - 1], cx = [0:w - 1]) [cx, cy]],
 			wf_collapse(wf, x, y, weights), 
             [x, y]
         ),
