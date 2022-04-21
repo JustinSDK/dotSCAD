@@ -86,16 +86,11 @@ function _replaceStatesAt(wf, x, y, states) =
 		m_replace(wf_eigenstates(wf), x, y, states)
 	];
 
-function wf_not_collapsed_coords(wf, notCollaspedCoords) = 
+function wf_not_collapsed_coords(wf) = 
     let(eigenstates = wf_eigenstates(wf), we = wf_width(wf) - 1, he = wf_height(wf) - 1, rx = [0:we])
-    is_undef(notCollaspedCoords) ?
-	[
+    [
 		for(y = [0:he], x = rx)
 		if(len(eigenstates[y][x]) != 1) [x, y]
-	] :
-	[
-		for(coord = notCollaspedCoords)
-		if(len(eigenstates[coord.y][coord.x]) != 1) coord
 	];
 
 function wf_coord_weights_min_entropy(wf, notCollaspedCoords) = 
