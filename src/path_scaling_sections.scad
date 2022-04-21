@@ -8,25 +8,13 @@
 *
 **/
 
-use <util/reverse.scad>;
-use <matrix/m_scaling.scad>;
-
 function path_scaling_sections(shape_pts, edge_path) = 
-    let(
-        start_point = edge_path[0],
-        base_leng = norm(start_point),
-        scaling_matrice = [
-            for(p = edge_path) 
-            let(s = norm([p.x, p.y, 0]) / base_leng)
-            m_scaling([s, s, 1])
-        ],
-        leng_edge_path = len(edge_path)
-    )
-    reverse([
-        for(i = 0; i < leng_edge_path; i = i + 1)
+    let(base_leng = norm(edge_path[0]))
+    [
+        for(i = [len(edge_path) - 1:-1:0])
+        let(edge_p = edge_path[i], s = norm([edge_p.x, edge_p.y] / base_leng))
         [
-            for(p = shape_pts) 
-            let(scaled_p = scaling_matrice[i] * [p.x, p.y, edge_path[i].z, 1])
-            [scaled_p.x, scaled_p.y, scaled_p.z]
+            for(p = shape_pts * s) 
+            [p.x, p.y, edge_p.z]
         ]
-    ]);
+    ];
