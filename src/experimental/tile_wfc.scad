@@ -2,7 +2,8 @@ use <_impl/_tiles_wfc_impl.scad>;
 use <../util/rand.scad>;
 
 // An implementation of [Wave Function Collapse](https://github.com/mxgmn/WaveFunctionCollapse)
-function tile_wfc(size, sample) =
+// method: how to choose wave element. length or entropy?
+function tile_wfc(size, sample, method = "length") =
     let(
         w = size.x,
         h = size.y,
@@ -26,7 +27,7 @@ function tile_wfc(size, sample) =
         ),
         notCollapsedCoords = wf_not_collapsed_coords(first_collasped_propagated)
     )
-    generate(nbr_dirs, compatibilities, first_collasped_propagated, notCollapsedCoords);
+    generate(nbr_dirs, compatibilities, first_collasped_propagated, notCollapsedCoords, collapsing(method));
 
 /*
 

@@ -22,20 +22,6 @@ function count_items(lt) =
 
 function weights_of_tiles(sample) = count_items(sorted([for(row = sample) each row]));
 
-/* 
-    oo-style
-
-    wave_function(width, height, weights)
-	    - wf_width(wf)
-        - wf_height(wf)
-        - wf_weights(wf)
-		- wf_eigenstates(wf)
-		- wf_eigenstates_at(wf, x, y)
-		- wf_collapse(wf, x, y, weights)
-		- wf_entropy_weights(wf, x, y)
-		- wf_coord_weights_min_entropy(wf, notCollaspedCoords)
-		- wf_not_collapsed_coords(wf, notCollaspedCoords)
-*/
 function wave_function(width, height, weights) = 
     [width, height, weights, _initialEigenstates(width, height, weights)];	
 
@@ -94,7 +80,23 @@ function wf_not_collapsed_coords(wf) =
 		if(len(eigenstates[y][x]) != 1) [x, y]
 	];
 
-function wf_coord_weights_min_entropy(wf, notCollaspedCoords) = 
+function collapsing(method) =
+    method == "length" ? wf_coord_weights_min_leng : wf_coord_weights_min_entropy;
+
+function _min_states_coord(wf, lt, leng, m, i = 1) = 
+    i == leng ? m :
+	let(coord = lt[i])
+	_min_states_coord(wf, lt, leng, len(wf_eigenstates_at(wf, m.x, m.y)) <= len(wf_eigenstates_at(wf, coord.x, coord.y)) ? m : coord, i + 1);
+
+wf_coord_weights_min_leng = function(wf, notCollaspedCoords)
+    let(
+		coord = _min_states_coord(wf, notCollaspedCoords, len(notCollaspedCoords), notCollaspedCoords[0]),
+		all_weights = wf_weights(wf),
+		weights = [for(state = wf_eigenstates(wf)[coord.y][coord.x]) get_state_weight(all_weights, state)]
+	)
+    [each coord, weights];
+
+wf_coord_weights_min_entropy = function(wf, notCollaspedCoords)
     let(
 		coord_entropy_weights_lt = [
 			for(coord = notCollaspedCoords)
@@ -163,14 +165,14 @@ function _doDirs(compatibilities, wf_stack, current_coord, current_tiles, dirs, 
 	)
 	_doDirs(compatibilities, mx_wf_stack, current_coord, current_tiles, dirs, leng, i + 1);
 
-function generate(nbr_dirs, compatibilities, wf, notCollaspedCoords) =
+function generate(nbr_dirs, compatibilities, wf, notCollaspedCoords, collapsing_method) =
 	len(notCollaspedCoords) == 0 ? collapsed_tiles(wf) :
 	let(
-		coord_weights = wf_coord_weights_min_entropy(wf, notCollaspedCoords),
+		coord_weights = collapsing_method(wf, notCollaspedCoords),
 		weights = coord_weights[2],
 		nwf = propagate(nbr_dirs, compatibilities, wf_collapse(wf, coord_weights.x, coord_weights.y, weights), coord_weights)
 	)
-	generate(nbr_dirs, compatibilities, nwf, wf_not_collapsed_coords(nwf));
+	generate(nbr_dirs, compatibilities, nwf, wf_not_collapsed_coords(nwf), collapsing_method);
 
 function neighbor_dirs(x, y, width, height) = [
 	if(x > 0)          [-1,  0],   // left
