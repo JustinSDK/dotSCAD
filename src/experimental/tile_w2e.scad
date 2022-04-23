@@ -26,12 +26,14 @@ function tile_w2e(size, mask, seed) =
 				[round(rs[0]), round(rs[1])]
 			]
 		],
+		ones = [for(x = x_range) 1],
 		m = is_undef(mask) ? [
 			for(y = y_range)
-				[for(x = x_range) 1]
+				ones
 		] : [
 			for(y = rows - 1; y > -1; y = y - 1)
-				[for(x = x_range) mask[y][x]]
+			let(my = mask[y])
+				[for(x = x_range) my[x]]
 		],
 		/*
 			1
@@ -42,8 +44,9 @@ function tile_w2e(size, mask, seed) =
 		*/
 		tiles = [
 			for(y = y_range)
+			let(my = m[y])
 				for(x = x_range)
-				if(m[y][x] == 1)
+				if(my[x] == 1)
 					[x, y, 
 						(edges[(y + 1) % rows][x][0] == 1 ? 1 : 0) +
 						(edges[y][(x + 1) % columns][1] == 1 ? 2 : 0) +

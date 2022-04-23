@@ -28,10 +28,14 @@ function _mz_mask(mask) =
         columns = len(mask[0][1])
     )
     [
-        for(z = [0:layers - 1]) [
-            for(y = [0:rows - 1]) [
+        for(z = [0:layers - 1])
+        let(maze_z = mask[layers - z - 1]) 
+        [
+            for(y = [0:rows - 1]) 
+            let(maze_zy = maze_z[rows - y - 1])
+            [
                 for(x = [0:columns - 1])
-                mask[layers - z - 1][rows - y - 1][x] == 0 ?
+                maze_zy[x] == 0 ?
                     cell(
                         x, y, z,		
                         MASK,  

@@ -22,9 +22,11 @@ function _mz_mask(mask) =
         columns = len(mask[0])
     )
     [
-        for(y = [0:rows - 1]) [
+        for(y = [0:rows - 1])
+        let(mask_y = mask[rows - y - 1])
+        [
             for(x = [0:columns - 1])
-            mask[rows - y - 1][x] == 0 ?
+            mask_y[x] == 0 ?
                 cell(
                     x, y, 						
                     MASK, 
