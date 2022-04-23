@@ -77,8 +77,7 @@ function wf_not_collapsed_coords(wf, notCollaspedCoords) =
     let(eigenstates = wf_eigenstates(wf))
     [
 		for(coord = notCollaspedCoords)
-		let(y = coord.y, x = coord.x)
-		if(len(eigenstates[y][x]) != 1) [x, y]
+		if(len(eigenstates[coord.y][coord.x]) != 1) coord
 	];
 
 function collapsing(method) =
