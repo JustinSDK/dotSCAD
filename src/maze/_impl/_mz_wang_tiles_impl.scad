@@ -1,5 +1,6 @@
-use <../../__comm__/_pt2_hash.scad>;
 use <../../util/set/hashset_has.scad>;
+
+include <../../__comm__/_pt2_hash.scad>;
 
 function _mz_wang_tiles_top(x, y) =
     let(
