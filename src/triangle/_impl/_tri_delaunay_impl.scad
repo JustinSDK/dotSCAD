@@ -66,9 +66,11 @@ function delaunay_addpoint(d, p, _indices_hash) =
 		boundaries = delaunayBoundaries(ndelaunay, badTriangles, _indices_hash),
 		ndelaunay2 = delBadTriangles(ndelaunay, badTriangles, _indices_hash),
 		newTriangles = [
-		    for(b = boundaries) [
-			    [idx, b[0][0], b[0][1], ihash(idx, b[0][0], b[0][1])], // t
-				b[0],                    // edge
+		    for(b = boundaries) 
+			let(edge = b[0])
+			[
+			    [idx, edge[0], edge[1], ihash(idx, edge[0], edge[1])], // t
+				edge,                    
 				b[1]                     // delaunayTri
 			]
 		]
@@ -84,8 +86,8 @@ function adjustNeighbors(d, newTriangles, _indices_hash) =
 		],
 	    ncs = [
 		    for(nt = newTriangles)
-			let(nt0 = nt[0])
-			[nt0, _tri_circumcircle([coords[nt0[0]], coords[nt0[1]], coords[nt0[2]]])]
+			let(t = nt[0])
+			[t, _tri_circumcircle([coords[t[0]], coords[t[1]], coords[t[2]]])]
 		],
 		nd = [
 		    coords, 
@@ -165,8 +167,8 @@ function delaunayBadTriangles(d, p, _indices_hash) =
 	) 
 	[
         for(t = hashmap_keys(triangles))
-	        if(inCircumcircle(t, p, circles, _indices_hash))
-	            t
+		if(inCircumcircle(t, p, circles, _indices_hash))
+			t
     ];
 
 /* 
@@ -229,4 +231,5 @@ function _tri_delaunay(d, points, leng, _indices_hash, i = 0) =
     i == leng ? d :
 	_tri_delaunay(
 		delaunay_addpoint(d, points[i], _indices_hash), 
-	points, leng, _indices_hash, i + 1);
+	    points, leng, _indices_hash, i + 1
+	);
