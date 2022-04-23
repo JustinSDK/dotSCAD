@@ -7,9 +7,11 @@ function tile_wfc(size, sample, method = "length") =
     let(
         w = size.x,
         h = size.y,
+        rangey = [0:h - 1],
+        rangex = [0:w - 1],
         nbr_dirs = [
-            for(y = [0:h - 1])
-            [for(x = [0:w - 1]) neighbor_dirs(x, y, w, h)]
+            for(y = rangey)
+            [for(x = rangex) neighbor_dirs(x, y, w, h)]
         ],
         // random start
         x = floor(rand(w * 0.25, w * 0.75)),
@@ -17,15 +19,20 @@ function tile_wfc(size, sample, method = "length") =
 		compatibilities = compatibilities_of_tiles(sample),
         wf = wave_function(w, h, weights_of_tiles(sample)),
         all_weights = wf_weights(wf),
-        states = wf_eigenstates_at(wf, x, y),
-		weights = [for(state = states) get_state_weight(all_weights, state)],
+		weights = [for(state = wf_eigenstates_at(wf, x, y)) get_state_weight(all_weights, state)],
         first_collasped_propagated = propagate(
 			nbr_dirs,
 			compatibilities,
 			wf_collapse(wf, x, y, weights), 
             [x, y]
         ),
-        notCollapsedCoords = wf_not_collapsed_coords(first_collasped_propagated)
+        fstp_states = wf_eigenstates(wf),
+        notCollapsedCoords =     [
+            for(y = rangey)
+            let(y_states = fstp_states[y])
+                for(x = rangex) 
+                if(len(y_states[x]) != 1) [x, y]
+        ]
     )
     generate(nbr_dirs, compatibilities, first_collasped_propagated, notCollapsedCoords, collapsing(method));
 

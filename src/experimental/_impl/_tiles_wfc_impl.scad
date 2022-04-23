@@ -73,10 +73,11 @@ function _replaceStatesAt(wf, x, y, states) =
 		m_replace(wf_eigenstates(wf), x, y, states)
 	];
 
-function wf_not_collapsed_coords(wf) = 
-    let(eigenstates = wf_eigenstates(wf), we = wf_width(wf) - 1, he = wf_height(wf) - 1, rx = [0:we])
+function wf_not_collapsed_coords(wf, notCollaspedCoords) = 
+    let(eigenstates = wf_eigenstates(wf))
     [
-		for(y = [0:he], x = rx)
+		for(coord = notCollaspedCoords)
+		let(y = coord.y, x = coord.x)
 		if(len(eigenstates[y][x]) != 1) [x, y]
 	];
 
@@ -172,7 +173,7 @@ function generate(nbr_dirs, compatibilities, wf, notCollaspedCoords, collapsing_
 		weights = coord_weights[2],
 		nwf = propagate(nbr_dirs, compatibilities, wf_collapse(wf, coord_weights.x, coord_weights.y, weights), coord_weights)
 	)
-	generate(nbr_dirs, compatibilities, nwf, wf_not_collapsed_coords(nwf), collapsing_method);
+	generate(nbr_dirs, compatibilities, nwf, wf_not_collapsed_coords(nwf, notCollaspedCoords), collapsing_method);
 
 function neighbor_dirs(x, y, width, height) = [
 	if(x > 0)          [-1,  0],   // left
