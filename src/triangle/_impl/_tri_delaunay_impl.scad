@@ -7,7 +7,8 @@ use <../../util/map/hashmap_put.scad>;
 use <../../util/contains.scad>;
 use <../../util/find_index.scad>;
 
-function ihash(a, b, c) = a * 961 + b * 31 + c;
+cof =[961, 31, 1];
+function ihash(a, b, c) = [a, b, c] * cof;
 
 function _tri_circumcircle(shape_pts) =
    let(
@@ -15,13 +16,11 @@ function _tri_circumcircle(shape_pts) =
       p1 = shape_pts[1],
       p2 = shape_pts[2],
       v0 = p1 - p0,
+  	  v1 = p2 - p1,
       d0 = (p1 + p0) / 2 * v0,
-      v1 = p2 - p1,
       d1 = (p2 + p1) / 2 * v1,
       det = -cross(v0 , v1),
-	  x = (d1 * v0.y - d0 * v1.y) / det,
-	  y = (d0 * v1.x - d1 * v0.x) / det,
-	  center = [x, y],
+	  center = [cross([d1, d0], [v1.y, v0.y]), cross([d0, d1], [v0.x, v1.x])] / det,
 	  v = p0 - center
    )
    [center, v * v];
