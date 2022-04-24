@@ -18,15 +18,15 @@ s_s = -150;
 s_step = 20;
 s_e = 90;
 
-thickness = .2;
+thickness = 1.5;
 
 seashell();
 
 module seashell() {
-    e =  2.71828;
-    real_e = e / 2.74;
-	pow_a = (a / 10) ^ 2;
-	pow_b = (b / 10) ^ 2;
+    e = 2.7182818284590452;
+    real_e = e * 0.3615;     // avoid inf
+	pow_a = a ^ 2 / 100;
+	pow_b = b ^ 2 / 100;
 
 	function cot(degree) = 1 / tan(degree);
 
