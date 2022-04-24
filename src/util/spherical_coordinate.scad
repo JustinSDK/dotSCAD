@@ -10,8 +10,9 @@
 
 function spherical_coordinate(point) = 
     // mathematics [r, theta, phi]
+    let(r = norm(point))
     [
         norm(point), 
         atan2(point.y, point.x), 
-        atan2(norm([point.x, point.y]), point.z)
+        acos(point.z / r)
     ];
