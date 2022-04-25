@@ -26,10 +26,9 @@ module vrn3_from(points, spacing = 1) {
     
     module space(pt) {
         intersection_for(p = [for(p = points) if(pt != p) p]) {
-            v = p - pt;
             ryz = __angy_angz(p, pt);
 
-            translate((pt + p) / 2 - normalize(v) * offset_leng)
+            translate((pt + p) / 2 - normalize(p - pt) * offset_leng)
             rotate([0, -ryz[0], ryz[1]]) 
                 cube([space_size, double_space_size, double_space_size], center = true); 
         }
