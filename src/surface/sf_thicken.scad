@@ -28,15 +28,14 @@ module sf_thicken(points, thickness, direction = "BOTH", convexity = 1) {
             normals = [
                 for(i = [0:3])
                 let(
-                    vi0 = xy,
                     vi1 = vi[i],
                     vi2 = vi[(i + 1) % 4],
-                    v0= sf[vi0[1]][vi0[0]], 
+                    v0 = sf[xy[1]][xy[0]], 
                     v1 = sf[vi1[1]][vi1[0]], 
                     v2 = sf[vi2[1]][vi2[0]]
                 )
                 if(!(is_undef(v0) || is_undef(v1) || is_undef(v2))) 
-                    tri_normal([v0, v1, v2])
+                tri_normal([v0, v1, v2])
             ]
         )
         sum(normals) / len(normals);
