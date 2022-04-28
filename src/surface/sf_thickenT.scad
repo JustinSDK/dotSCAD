@@ -43,7 +43,7 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH", con
         dir_v = direction / norm(direction);
         mid = sorted(points)[leng_pts / 2];
         tri = cnn_tris[search([mid], points)[0]][0];
-        nv = _face_normal([points[tri[0]], points[tri[1]], points[tri[2]]]);
+        nv = _face_normal([for(i = [0:2]) points[tri[i]]]);
         off = dir_v * thickness;
         pts = [for(p = points) p + off];
 
@@ -60,11 +60,7 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH", con
             let(
                 normals = [
                     for(tri = cnn_tris[i])
-                    _face_normal([
-                        points[tri[0]], 
-                        points[tri[1]], 
-                        points[tri[2]]]
-                    )
+                    _face_normal([for(j = [0:2]) points[tri[j]]])
                 ]
             )
             sum(normals) / len(normals)
