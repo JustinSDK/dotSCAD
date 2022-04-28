@@ -13,7 +13,6 @@ use <../__comm__/_face_normal.scad>;
 use <../util/sorted.scad>;
 use <../util/sum.scad>;
 use <../util/contains.scad>;
-use <../util/reverse.scad>;
 use <../surface/sf_solidifyT.scad>;
 use <../triangle/tri_delaunay.scad>;
 
@@ -28,7 +27,7 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH", con
 	function _connected_tris(triangles, leng, leng_pts, cnt_tris, i = 0) = 
 		i == leng ? cnt_tris :
 		let(
-			tri = reverse(triangles[i]), // OpenSCAD requires clockwise
+			tri = triangles[i], 
             n_cnt_tris = [
                 for(k = [0:leng_pts - 1])
                 contains(tri, k) ? [each cnt_tris[k], tri] : cnt_tris[k]
@@ -43,7 +42,7 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH", con
         dir_v = direction / norm(direction);
         mid = sorted(points)[leng_pts / 2];
         tri = cnn_tris[search([mid], points)[0]][0];
-        nv = _face_normal([for(i = [0:2]) points[tri[i]]]);
+        nv = _face_normal([for(i = [2, 1, 0]) points[tri[i]]]);   // OpenSCAD requires clockwise
         off = dir_v * thickness;
         pts = [for(p = points) p + off];
 
@@ -60,7 +59,7 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH", con
             let(
                 normals = [
                     for(tri = cnn_tris[i])
-                    _face_normal([for(j = [0:2]) points[tri[j]]])
+                    _face_normal([for(j = [2, 1, 0]) points[tri[j]]]) // OpenSCAD requires clockwise
                 ]
             )
             sum(normals) / len(normals)
