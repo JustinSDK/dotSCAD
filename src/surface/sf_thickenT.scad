@@ -22,21 +22,16 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH", con
     real_triangles = is_undef(triangles) ? tri_delaunay([for(p = points) __to2d(p)]) : triangles;
 
 	function connected_tris(leng_pts, triangles) =
-		let(
-			leng = len(triangles),
-			cnt_tris = [for(i = [0:leng_pts - 1]) []]
-		)
-		_connected_tris(triangles, leng, leng_pts, cnt_tris);
+		let(leng = len(triangles))
+		_connected_tris(triangles, leng, leng_pts, []);
 		
 	function _connected_tris(triangles, leng, leng_pts, cnt_tris, i = 0) = 
 		i == leng ? cnt_tris :
 		let(
-			tri = reverse(triangles[i]),
+			tri = reverse(triangles[i]), // OpenSCAD requires clockwise
             n_cnt_tris = [
                 for(k = [0:leng_pts - 1])
-                contains(tri, k) ? 
-                      // OpenSCAD requires clockwise
-                      [each cnt_tris[k], tri] : cnt_tris[k]
+                contains(tri, k) ? [each cnt_tris[k], tri] : cnt_tris[k]
             ]
 		)
 		_connected_tris(triangles, leng, leng_pts, n_cnt_tris, i + 1);
