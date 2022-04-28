@@ -66,20 +66,14 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH", con
         ];
 
         if(direction == "BOTH") {
-            half_thickness = thickness / 2;
-            pts1 = points + vertex_normals * half_thickness;
-            pts2 = points - vertex_normals * half_thickness;
-            sf_solidifyT(pts1, pts2, real_triangles, convexity = convexity);
+            off = vertex_normals * (thickness / 2);
+            sf_solidifyT(points + off, points - off, real_triangles, convexity = convexity);
         }
         else if(direction == "FORWARD") {
-            pts1 = points + vertex_normals * thickness;
-            pts2 = points;
-            sf_solidifyT(pts1, pts2, real_triangles, convexity = convexity);
+            sf_solidifyT(points + vertex_normals * thickness, points, real_triangles, convexity = convexity);
         }
         else {
-            pts1 = points;
-            pts2 = points - vertex_normals * thickness;
-            sf_solidifyT(pts1, pts2, real_triangles, convexity = convexity);
+            sf_solidifyT(points, points - vertex_normals * thickness, real_triangles, convexity = convexity);
         }
     }
 }
