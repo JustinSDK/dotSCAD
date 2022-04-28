@@ -8,15 +8,18 @@
 *
 **/ 
 
+use <../__comm__/__to2d.scad>;
 use <../__comm__/_face_normal.scad>;
 use <../util/sorted.scad>;
 use <../util/sum.scad>;
+use <../util/contains.scad>;
+use <../util/reverse.scad>;
 use <../surface/sf_solidifyT.scad>;
 use <../triangle/tri_delaunay.scad>;
 
 module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH", convexity = 1) {
     // triangles : counter-clockwise
-    real_triangles = is_undef(triangles) ? tri_delaunay([for(p = points) [p.x, p.y]]) : triangles;
+    real_triangles = is_undef(triangles) ? tri_delaunay([for(p = points) __to2d(p)]) : triangles;
 
 	function connected_tris(leng_pts, triangles) =
 		let(
@@ -28,12 +31,12 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH", con
 	function _connected_tris(triangles, leng, leng_pts, cnt_tris, i = 0) = 
 		i == leng ? cnt_tris :
 		let(
-			tri = triangles[i],
+			tri = reverse(triangles[i]),
             n_cnt_tris = [
                 for(k = [0:leng_pts - 1])
-                search([k], tri)[0] != [] ? 
+                contains(tri, k) ? 
                       // OpenSCAD requires clockwise
-                      [each cnt_tris[k], [tri[2], tri[1], tri[0]]] : cnt_tris[k]
+                      [each cnt_tris[k], tri] : cnt_tris[k]
             ]
 		)
 		_connected_tris(triangles, leng, leng_pts, n_cnt_tris, i + 1);
