@@ -41,8 +41,9 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH", con
     if(is_list(direction)) {
         dir_v = direction / norm(direction);
         mid = sorted(points)[leng_pts / 2];
-        tri = cnn_tris[search([mid], points)[0]][0];
-        nv = _face_normal([for(i = [2, 1, 0]) points[tri[i]]]);   // OpenSCAD requires clockwise
+        tris = cnn_tris[search([mid], points)[0]];
+        nvs = [for(tri = tris) _face_normal([for(i = [2, 1, 0]) points[tri[i]]])]; // OpenSCAD requires clockwise
+        nv = sum(nvs) / len(nvs);   
         off = dir_v * thickness;
         pts = [for(p = points) p + off];
 
