@@ -14,7 +14,7 @@ function elems(lt, elem) = [for(e = lt) elem(e)];
 function _sorted(lt, less, elem = identity) = 
     let(leng = len(lt))
     leng <= 1 ? elems(lt, elem) : 
-    leng == 2 ? !less(lt[1], lt[0]) ? elems(lt, elem) : elems([lt[1], lt[0]], elem) :
+    leng == 2 ? !less(lt[1], lt[0]) ? elems(lt, elem) : [elem(lt[1]), elem(lt[0])] :
         let(
             pivot = lt[0],
             b_a = before_after(lt, pivot, less, leng)
