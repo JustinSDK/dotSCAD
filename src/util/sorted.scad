@@ -10,5 +10,7 @@
 
 use <_impl/_sorted_impl.scad>;
 
-function sorted(lt, cmp = undef) = 
-    is_undef(cmp) ? _sorted_default(lt) : _sorted_cmp(lt, cmp);
+function sorted(lt, cmp = undef, key = undef) = 
+    !is_undef(cmp) ? _sorted_cmp(lt, cmp) :
+    !is_undef(key) ? _sorted_key(lt, key) :
+                     _sorted_default(lt);
