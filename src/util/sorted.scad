@@ -10,8 +10,8 @@
 
 use <_impl/_sorted_impl.scad>;
 
-function sorted(lt, cmp = undef, key = undef) = 
+function sorted(lt, cmp = undef, key = undef, reverse = false) = 
     let(is_cmp_undef = is_undef(cmp))
-    is_cmp_undef && is_undef(key) ? _sorted_default(lt) :
-    is_cmp_undef ?                  _sorted_key(lt, key) :
-                                    _sorted_cmp(lt, cmp);
+    is_cmp_undef && is_undef(key) ? _sorted_default(lt, reverse) :
+    is_cmp_undef ?                  _sorted_key(lt, key, reverse) :
+                                    _sorted_cmp(lt, cmp, reverse);

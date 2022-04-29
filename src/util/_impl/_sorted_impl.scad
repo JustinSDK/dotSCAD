@@ -21,10 +21,10 @@ function _sorted(lt, less, elem = identity) =
         )
         [each _sorted(b_a[0], less, elem), elem(pivot), each _sorted(b_a[1], less, elem)];
 
-function _sorted_default(lt) = _sorted(lt, function(a, b) a < b);
+function _sorted_default(lt, reverse) = _sorted(lt, reverse ? function(a, b) a > b : function(a, b) a < b);
 
-function _sorted_cmp(lt, cmp) = _sorted(lt, function(a, b) cmp(a, b) < 0);   
+function _sorted_cmp(lt, cmp, reverse) = _sorted(lt, reverse ? function(a, b) cmp(a, b) > 0 : function(a, b) cmp(a, b) < 0);   
 
-function _sorted_key(lt, key) =
+function _sorted_key(lt, key, reverse) =
     let(key_elem_lt = [for(elem = lt) [key(elem), elem]])  
-    _sorted(key_elem_lt, function(a, b) a[0] < b[0], function(elem) elem[1]);
+    _sorted(key_elem_lt, reverse ? function(a, b) a[0] > b[0] : function(a, b) a[0] < b[0], function(elem) elem[1]);
