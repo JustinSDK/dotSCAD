@@ -23,18 +23,20 @@ module sweep(sections, triangles = "SOLID") {
         concat(
             [
                 for(j = range_j, i = range_i)
+                let(i2 = j + (i + 1) % leng_pts_sect)
                 [
                     j + i, 
-                    j + (i + 1) % leng_pts_sect, 
-                    j + (i + 1) % leng_pts_sect + leng_pts_sect
+                    i2, 
+                    i2 + leng_pts_sect
                 ]
             ],
             [
                 for(j = range_j, i = range_i)
+                let(ji = j + i)
                 [
-                    j + i, 
+                    ji, 
                     j + (i + 1) % leng_pts_sect + leng_pts_sect , 
-                    j + i + leng_pts_sect
+                    ji + leng_pts_sect
                 ]
             ]      
         );
@@ -59,10 +61,7 @@ module sweep(sections, triangles = "SOLID") {
         if(begin_end_the_same) {
             f_idxes = side_indexes(sects);
 
-            polyhedron(
-                v_pts, 
-                f_idxes
-            ); 
+            polyhedron(v_pts, f_idxes); 
 
             // hook for testing
             test_sweep_solid(v_pts, f_idxes, triangles);
@@ -70,15 +69,11 @@ module sweep(sections, triangles = "SOLID") {
             first_idxes = [each [leng_pts_sect - 1:-1:0]];
            
             from = leng_pts_sect * (leng_sects - 1);
-            to = from + leng_pts_sect - 1;
-            last_idxes = [each [from:to]];    
+            last_idxes = [each [from:from + leng_pts_sect - 1]];    
             
             f_idxes = [first_idxes, each side_indexes(sects), last_idxes];
             
-            polyhedron(
-                v_pts, 
-                f_idxes
-            );   
+            polyhedron(v_pts, f_idxes);   
 
             // hook for testing
             test_sweep_solid(v_pts, f_idxes, triangles);             
@@ -99,22 +94,24 @@ module sweep(sections, triangles = "SOLID") {
         function first_idxes() = 
             [
                 for(i = range) 
+                let(i3 = (i + 1) % half_leng_sect)
                 [
                     i,
                     i + half_leng_v_pts,
-                    (i + 1) % half_leng_sect + half_leng_v_pts, 
-                    (i + 1) % half_leng_sect
+                    i3 + half_leng_v_pts, 
+                    i3
                 ] 
             ];
 
         function last_idxes(begin_idx) = 
             [
                 for(i = range) 
+                let(bi = begin_idx + i, i2 = begin_idx + (i + 1) % half_leng_sect)
                 [
-                    begin_idx + i,
-                    begin_idx + (i + 1) % half_leng_sect,
-                    begin_idx + (i + 1) % half_leng_sect + half_leng_v_pts,
-                    begin_idx + i + half_leng_v_pts
+                    bi,
+                    i2,
+                    i2 + half_leng_v_pts,
+                    bi + half_leng_v_pts
                 ]     
             ];            
 
@@ -167,31 +164,19 @@ module sweep(sections, triangles = "SOLID") {
     }
     
     module triangles_defined_sections() {
-        module tri_sections(tri1, tri2) {
-            polyhedron(
-                points = concat(tri1, tri2),
-                faces = [
-                    [0, 1, 2], 
-                    [3, 5, 4], 
-                    [1, 3, 4], [2, 1, 4], [2, 3, 0], 
-                    [0, 3, 1], [2, 4, 5], [2, 5, 3]
-                ]
-            );  
-        }
-
+        faces = [
+            [0, 1, 2], [3, 5, 4], 
+            [1, 3, 4], [2, 1, 4], [2, 3, 0], 
+            [0, 3, 1], [2, 4, 5], [2, 5, 3]
+        ];
         module two_sections(section1, section2) {
             for(idx = triangles) {
-                tri_sections(
-                    [
-                        section1[idx[0]], 
-                        section1[idx[1]], 
-                        section1[idx[2]]
-                    ], 
-                    [
-                        section2[idx[0]], 
-                        section2[idx[1]], 
-                        section2[idx[2]]
-                    ]
+                polyhedron(
+                    concat(
+                        [for(i = idx) section1[i]], 
+                        [for(i = idx) section2[i]]
+                    ),
+                    faces
                 );
             }
         }
