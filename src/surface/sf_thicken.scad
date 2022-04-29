@@ -8,13 +8,11 @@
 *
 **/ 
 
+use <../__comm__/_face_normal.scad>;
 use <../util/sum.scad>;
 use <sf_solidify.scad>;
 
 module sf_thicken(points, thickness, direction = "BOTH", convexity = 1) {
-    function tri_normal(tri) =
-        let(v = cross(tri[2] - tri[0], tri[1] - tri[0])) v / norm(v);    
-
     function vertex_normal(sf, xi, yi) =    
         let(
             xy = [xi, yi],
@@ -35,7 +33,7 @@ module sf_thicken(points, thickness, direction = "BOTH", convexity = 1) {
                     v2 = sf[vi2[1]][vi2[0]]
                 )
                 if(!(is_undef(v0) || is_undef(v1) || is_undef(v2))) 
-                tri_normal([v0, v1, v2])
+                _face_normal([v0, v1, v2])
             ]
         )
         sum(normals) / len(normals);
@@ -52,7 +50,7 @@ module sf_thicken(points, thickness, direction = "BOTH", convexity = 1) {
 
         midy = leng_points / 2;
         midx = leng_point0 / 2;
-        nv = tri_normal([points[midy][midx], points[midy + 1][midx], points[midy][midx + 1]]);
+        nv = _face_normal([points[midy][midx], points[midy + 1][midx], points[midy][midx + 1]]);
 
         if(nv * dir_v > 0) {
             sf_solidify(surface_another, points, convexity = convexity);
