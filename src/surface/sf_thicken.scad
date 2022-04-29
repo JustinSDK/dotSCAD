@@ -13,24 +13,19 @@ use <../util/sum.scad>;
 use <sf_solidify.scad>;
 
 module sf_thicken(points, thickness, direction = "BOTH", convexity = 1) {
+    // clockwise
+    dirs1 = [[1, 0], [0, -1], [-1, 0], [0, 1]];
+    dirs2 = [[0, -1], [-1, 0], [0, 1], [1, 0]];
     function vertex_normal(sf, xi, yi) =    
         let(
-            xy = [xi, yi],
-            // clockwise
-            vi = [
-                [1, 0]  + xy, 
-                [0, -1] + xy, 
-                [-1, 0] + xy, 
-                [0, 1]  + xy
-            ],
             normals = [
                 for(i = [0:3])
                 let(
-                    vi1 = vi[i],
-                    vi2 = vi[(i + 1) % 4],
-                    v0 = sf[xy[1]][xy[0]], 
-                    v1 = sf[vi1[1]][vi1[0]], 
-                    v2 = sf[vi2[1]][vi2[0]]
+                    v0 = sf[yi][xi], 
+                    dir1 = dirs1[i],
+                    dir2 = dirs2[i],
+                    v1 = sf[dir1.y + yi][dir1.x + xi], 
+                    v2 = sf[dir2.y + yi][dir2.x + xi]
                 )
                 if(!(is_undef(v0) || is_undef(v1) || is_undef(v2))) 
                 _face_normal([v0, v1, v2])
@@ -69,20 +64,14 @@ module sf_thicken(points, thickness, direction = "BOTH", convexity = 1) {
         ];        
         
         if(direction == "BOTH") {
-            half_thickness = thickness / 2;
-            surface_top = points + half_thickness * vertex_normals;
-            surface_bottom = points - half_thickness * vertex_normals;    
-            sf_solidify(surface_top, surface_bottom, convexity = convexity);
+            off = vertex_normals * (thickness / 2);
+            sf_solidify(points + off, points - off, convexity = convexity);
         }
         else if(direction == "FORWARD") {
-            surface_top = points + thickness * vertex_normals;
-            surface_bottom = points;    
-            sf_solidify(surface_top, surface_bottom, convexity = convexity);
+            sf_solidify(points + thickness * vertex_normals, points, convexity = convexity);
         }
         else {
-            surface_top = points;
-            surface_bottom = points - thickness * vertex_normals;    
-            sf_solidify(surface_top, surface_bottom, convexity = convexity);
+            sf_solidify(points, points - thickness * vertex_normals, convexity = convexity);
         }
     }
 }
