@@ -1,7 +1,7 @@
 use <_nz_worley_comm.scad>;
 use <../../util/sorted.scad>;
 
-_cmp = function(a, b) a[3] - b[3];
+_key = function(elem) elem[3];
 
 function _neighbors(fcord, seed, grid_w) = 
     let(range = [-1:1])
@@ -27,7 +27,7 @@ function _nz_worley3_classic(p, nbrs, dist) =
                 dist == "chebyshev" ? [for(nbr = nbrs) [each nbr, _chebyshev(nbr, p)]] : 
                                assert("Unknown distance option")   
     )
-    sorted(cells, _cmp)[0];
+    sorted(cells, key = _key)[0];
 
 function _nz_worley3_border(p, nbrs) = 
     let(
@@ -35,7 +35,7 @@ function _nz_worley3_border(p, nbrs) =
             for(nbr = nbrs) 
                 [each nbr, norm(nbr - p)]
         ],
-        sorted_cells = sorted(cells, _cmp),
+        sorted_cells = sorted(cells, key = _key),
         a = [sorted_cells[0].x, sorted_cells[0].y, sorted_cells[0].z],
         m = (a + [sorted_cells[1].x, sorted_cells[1].y, sorted_cells[1].z]) / 2        
     )

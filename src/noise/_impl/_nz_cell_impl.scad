@@ -23,7 +23,7 @@ function _nz_cell_border(cells, p) =
             [each cell, norm(cell - p)]
         ],
         idx = len(cells[0]),
-        sorted_dists = sorted(dists, cmp = function(a, b) a[idx] - b[idx]),
+        sorted_dists = sorted(dists, key = function(elem) elem[idx]),
         sorted0 = sorted_dists[0],
         sorted1 = sorted_dists[1],
         a = [for(i = [0:idx - 1]) sorted0[i]],
