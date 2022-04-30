@@ -17,7 +17,6 @@ function dedup(lt, eq = undef, hash = _str_hash, number_of_buckets) =
     leng_lt < 2 ? lt :
 	let(
 		b_numbers = is_undef(number_of_buckets) ? ceil(sqrt(leng_lt)) : number_of_buckets,
-	    buckets = [for(i = [0:b_numbers - 1]) []],
-		deduped = _dedup(lt, leng_lt, buckets, eq, hash, b_numbers)
+	    buckets = [for(i = [0:b_numbers - 1]) []]
 	)
-	_sort([for(bucket = deduped) each bucket]);
+	_sort([for(bucket = _dedup(lt, leng_lt, buckets, eq, hash, b_numbers)) each bucket]);
