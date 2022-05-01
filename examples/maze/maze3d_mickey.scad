@@ -1,5 +1,5 @@
-use <experimental/mz_cube.scad>;
-use <experimental/mz_cube_initialize.scad>;
+use <maze/mz_cube.scad>;
+use <maze/mz_cube_initialize.scad>;
 use <maze3d.scad>;
 
 face_radius = 9;  

@@ -1,5 +1,5 @@
-use <experimental/mz_cube.scad>;
-use <experimental/mz_cube_get.scad>;
+use <maze/mz_cube.scad>;
+use <maze/mz_cube_get.scad>;
 use <util/contains.scad>;
 use <crystal_ball.scad>;
 
