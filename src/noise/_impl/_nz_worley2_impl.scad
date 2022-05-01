@@ -1,7 +1,5 @@
 use <_nz_worley_comm.scad>;
 
-_less = function(a, b) a[2] < b[2];
-
 function _neighbors(fcord, seed, grid_w) = 
     let(range = [-1:1], fx = fcord.x, fy = fcord.y)
     [
@@ -17,30 +15,10 @@ function _neighbors(fcord, seed, grid_w) =
         nbr
     ];
 
-function _nz_worley2_classic(p, nbrs, dist) = 
-    let(
-        cells = dist == "euclidean" ? [for(nbr = nbrs) [each nbr, norm(nbr - p)]] :
-                dist == "manhattan" ? [for(nbr = nbrs) [each nbr, _manhattan(nbr - p)]]  :
-                dist == "chebyshev" ? [for(nbr = nbrs) [each nbr, _chebyshev(nbr, p)]] : 
-                               assert("Unknown distance option")
-    )
-    _euclidean_half_sorted(cells, _less)[0];
-
-function _nz_worley2_border(p, nbrs) = 
-    let(
-        cells = [for(nbr = nbrs) [each nbr, norm(nbr - p)]],
-        sorted_cells = _border_half_sorted(cells, _less),
-        fst = sorted_cells[0],
-        snd = orted_cells[1],
-        a = [fst.x, fst.y],
-        m = (a + [snd.x, snd.y]) / 2
-    )
-    [fst.x, fst.y, (p - m) * (a - m)];
-    
 function _nz_worley2(p, seed, grid_w, dist) = 
     let(
         fcord = [floor(p.x / grid_w), floor(p.y / grid_w)],
         nbrs = _neighbors(fcord, seed, grid_w)
     )
-    dist == "border" ? _nz_worley2_border(p, nbrs) : 
-                       _nz_worley2_classic(p, nbrs, dist);
+    dist == "border" ? _nz_worley_border(p, nbrs) : 
+                       _nz_worley_classic(p, nbrs, dist);

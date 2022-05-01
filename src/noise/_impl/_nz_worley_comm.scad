@@ -9,25 +9,28 @@ function _manhattan(v) = sum([for(d = v) abs(d)]);
 function _chebyshev(p1, p2) =
     max([for(i = [0:len(p1) - 1]) abs(p1[i] - p2[i])]);
 
-function _euclidean_half_sorted(cells, less) = 
-    let(leng = len(cells))
-    leng <= 1 ? cells : 
-    leng == 2 ? less(cells[0], cells[1]) ? cells : [cells[1], cells[0]] :
-        let(
-            pivot = cells[0],
-            before = [for(j = 1; j < leng; j = j + 1) if(less(cells[j], pivot)) cells[j]]
-        )
-        [each _euclidean_half_sorted(before, less), pivot];
+function _nz_worley_classic(p, nbrs, dist) =
+    let(
+        dists = dist == "euclidean" ? [for(nbr = nbrs) norm(nbr - p)] :
+                dist == "manhattan" ? [for(nbr = nbrs) _manhattan(nbr - p)]  :
+                dist == "chebyshev" ? [for(nbr = nbrs) _chebyshev(nbr, p)] : 
+                               assert("Unknown distance option"),
+        m = min(dists),
+        i = search(m, dists)[0]
+    )
+    [each nbrs[i], m];
 
-function _border_half_sorted(cells, less) = 
-    let(leng = len(cells))
-    leng <= 1 ? cells : 
-    leng == 2 ? less(cells[0], cells[1]) ? cells : [cells[1], cells[0]] :
-        let(
-            pivot = cells[0],
-            before = [for(j = 1; j < leng; j = j + 1) if(less(cells[j], pivot)) cells[j]]
-        )
-        before == [] ? 
-            [pivot, each _border_half_sorted([for(j = 1; j < leng; j = j + 1) if(!less(cells[j], pivot)) cells[j]], less)] :
-            [each _border_half_sorted(before, less), pivot];
-    
+function _nz_worley_border(p, nbrs) = 
+    let(
+        dists = [for(nbr = nbrs) norm(nbr - p)],
+        m1 = min(dists),
+        i1 = search(m1, dists)[0],
+        dists2 = [for(i = [0:len(dists) - 1]) if(i != i1) dists[i]],
+        nbrs2 = [for(i = [0:len(nbrs) - 1]) if(i != i1) nbrs[i]],
+        m2 = min(dists2),
+        i2 = search(m2, dists2)[0],
+        fst = nbrs[i1],
+        snd = nbrs2[i2],
+        m = (fst + snd) / 2        
+    )
+    [each fst, (p - m) * (fst - m)];
