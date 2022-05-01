@@ -1,5 +1,4 @@
 use <util/rand.scad>;
-use <noise/nz_worley3s.scad>;
 use <noise/_impl/_nz_worley3_impl.scad>;
 use <polyhedra/geom_icosahedron.scad>;
 
