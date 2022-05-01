@@ -8,4 +8,26 @@ function _manhattan(v) = sum([for(d = v) abs(d)]);
 
 function _chebyshev(p1, p2) =
     max([for(i = [0:len(p1) - 1]) abs(p1[i] - p2[i])]);
+
+function _euclidean_half_sorted(cells, less) = 
+    let(leng = len(cells))
+    leng <= 1 ? cells : 
+    leng == 2 ? less(cells[0], cells[1]) ? cells : [cells[1], cells[0]] :
+        let(
+            pivot = cells[0],
+            before = [for(j = 1; j < leng; j = j + 1) if(less(cells[j], pivot)) cells[j]]
+        )
+        [each _euclidean_half_sorted(before, less), pivot];
+
+function _border_half_sorted(cells, less) = 
+    let(leng = len(cells))
+    leng <= 1 ? cells : 
+    leng == 2 ? less(cells[0], cells[1]) ? cells : [cells[1], cells[0]] :
+        let(
+            pivot = cells[0],
+            before = [for(j = 1; j < leng; j = j + 1) if(less(cells[j], pivot)) cells[j]]
+        )
+        before == [] ? 
+            [pivot, each _border_half_sorted([for(j = 1; j < leng; j = j + 1) if(!less(cells[j], pivot)) cells[j]], less)] :
+            [each _border_half_sorted(before, less), pivot];
     
