@@ -1,20 +1,14 @@
 use <_nz_worley_comm.scad>;
 
 function _neighbors(fcord, seed, grid_w) = 
-    let(range = [-1:1], fx = fcord.x, fy = fcord.y, fz = fcord.z)
+    let(range = [-1:1], gwv = [1, grid_w, grid_w ^ 2])
     [
         for(z = range, y = range, x = range)
         let(
-            nx = fx + x,
-            ny = fy + y,
-            nz = fz + z,
-            sd_base = abs(nx + ny * grid_w + nz * grid_w ^ 2),
-            sd1 = _lookup_noise_table(seed + sd_base),
-            sd2 = _lookup_noise_table(sd1 * 255 + sd_base),
-            sd3 = _lookup_noise_table(sd2 * 255 + sd_base),
-            nbr = [(nx + sd1) * grid_w, (ny + sd2) * grid_w, (nz + sd3) * grid_w]
+            cord = [x, y, z] + fcord,
+            sds = rands(0, 1, 3, abs(cord * gwv) + seed)
         )
-        nbr
+        (cord + sds) * grid_w
     ];
 
 function _nz_worley3(p, seed, grid_w, dist) = 

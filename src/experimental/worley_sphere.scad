@@ -12,7 +12,7 @@ worley_sphere(radius, detail, amplitude, dist);
 module worley_sphere(radius, detail, amplitude, dist = "border", grid_w = undef, seed = undef) {
     gw = is_undef(grid_w) ? radius : grid_w;
     points_faces = geom_icosahedron(1, detail);
-	sd = is_undef(seed) ? floor(rand(0, 256)) : seed % 256;
+	sd = is_undef(seed) ? rand() : seed;
 	polyhedron(
 		[for(p = points_faces[0]) p * (radius + _nz_worley3(p * radius, sd, gw, dist)[3] * amplitude)], 
 		points_faces[1]
