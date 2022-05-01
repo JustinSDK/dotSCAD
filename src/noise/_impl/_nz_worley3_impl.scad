@@ -4,14 +4,14 @@ use <../../util/sorted.scad>;
 _key = function(elem) elem[3];
 
 function _neighbors(fcord, seed, grid_w) = 
-    let(range = [-1:1])
+    let(range = [-1:1], fx = fcord.x, fy = fcord.y, fz = fcord.z)
     [
         for(z = range, y = range, x = range)
         let(
-            nx = fcord.x + x,
-            ny = fcord.y + y,
-            nz = fcord.z + z,
-            sd_base = abs(nx + ny * grid_w + nz * grid_w * grid_w),
+            nx = fx + x,
+            ny = fy + y,
+            nz = fz + z,
+            sd_base = abs(nx + ny * grid_w + nz * grid_w ^ 2),
             sd1 = _lookup_noise_table(seed + sd_base),
             sd2 = _lookup_noise_table(sd1 * 255 + sd_base),
             sd3 = _lookup_noise_table(sd2 * 255 + sd_base),
@@ -31,15 +31,14 @@ function _nz_worley3_classic(p, nbrs, dist) =
 
 function _nz_worley3_border(p, nbrs) = 
     let(
-        cells = [
-            for(nbr = nbrs) 
-                [each nbr, norm(nbr - p)]
-        ],
+        cells = [for(nbr = nbrs) [each nbr, norm(nbr - p)]],
         sorted_cells = sorted(cells, key = _key),
-        a = [sorted_cells[0].x, sorted_cells[0].y, sorted_cells[0].z],
-        m = (a + [sorted_cells[1].x, sorted_cells[1].y, sorted_cells[1].z]) / 2        
+        fst = sorted_cells[0],
+        snd = sorted_cells[1],
+        a = [fst.x, fst.y, fst.z],
+        m = (a + [snd.x, snd.y, snd.z]) / 2        
     )
-    [a[0], a[1], a[2], (p - m) * (a - m)];
+    [fst.x, fst.y, fst.z, (p - m) * (a - m)];
     
 function _nz_worley3(p, seed, grid_w, dist) = 
     let(
