@@ -10,7 +10,7 @@ function _pnoise1_impl(x, seed) =
         xf = x - xi
     )
     lerp(
-        _pnoise1_grad1(_pnoise_lookup_pnoise_table(seed + xi), xf),
-        _pnoise1_grad1(_pnoise_lookup_pnoise_table(seed + xi + 1), xf - 1),
+        _pnoise1_grad1(rands(0, 256, 1, seed + xi)[0], xf),
+        _pnoise1_grad1(rands(0, 256, 1, seed + xi + 1)[0], xf - 1),
         _pnoise_fade(xf)
     );

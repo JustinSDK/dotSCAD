@@ -16,46 +16,23 @@ function _pnoise3(x, y, z, seed) =
         v = _pnoise_fade(yf),
         w = _pnoise_fade(zf),
 
-        aaa = _pnoise_lookup_pnoise_table(
-            _pnoise_lookup_pnoise_table(
-                    _pnoise_lookup_pnoise_table(seed + xi) + yi
-                ) + zi            
-        ),
-        aba = _pnoise_lookup_pnoise_table(
-            _pnoise_lookup_pnoise_table(
-                    _pnoise_lookup_pnoise_table(seed + xi) + yi + 1
-                ) + zi            
-        ),        
-        aab = _pnoise_lookup_pnoise_table(
-            _pnoise_lookup_pnoise_table(
-                    _pnoise_lookup_pnoise_table(seed + xi) + yi
-                ) + zi + 1     
-        ),
-        abb = _pnoise_lookup_pnoise_table(
-            _pnoise_lookup_pnoise_table(
-                    _pnoise_lookup_pnoise_table(seed + xi) + yi + 1
-                ) + zi + 1
-        ),
-        baa = _pnoise_lookup_pnoise_table(
-            _pnoise_lookup_pnoise_table(
-                    _pnoise_lookup_pnoise_table(seed + xi + 1) + yi
-                ) + zi            
-        ),
-        bba = _pnoise_lookup_pnoise_table(
-            _pnoise_lookup_pnoise_table(
-                    _pnoise_lookup_pnoise_table(seed + xi + 1) + yi + 1
-                ) + zi            
-        ),    
-        bab = _pnoise_lookup_pnoise_table(
-            _pnoise_lookup_pnoise_table(
-                    _pnoise_lookup_pnoise_table(seed + xi + 1) + yi
-                ) + zi + 1
-        ),
-        bbb = _pnoise_lookup_pnoise_table(
-            _pnoise_lookup_pnoise_table(
-                    _pnoise_lookup_pnoise_table(seed + xi + 1) + yi + 1
-                ) + zi + 1
-        ),        
+        rnd1 = rands(0, 256, 1, seed + xi)[0] + yi,
+        rnd2 = rands(0, 256, 1, seed + xi + 1)[0] + yi,
+
+        rnd3 = rands(0, 256, 1, rnd1)[0] + zi,
+        rnd4 = rands(0, 256, 1, rnd1 + 1)[0] + zi,
+        rnd5 = rands(0, 256, 1, rnd2)[0] + zi,
+        rnd6 = rands(0, 256, 1, rnd2 + 1)[0] + zi,
+
+        aaa = rands(0, 256, 1, rnd3)[0],
+        aba = rands(0, 256, 1, rnd4)[0],       
+        aab = rands(0, 256, 1, rnd3 + 1)[0],
+        abb = rands(0, 256, 1, rnd4 + 1)[0],
+        baa = rands(0, 256, 1, rnd5)[0],
+        bab = rands(0, 256, 1, rnd5 + 1)[0],
+        bba = rands(0, 256, 1, rnd6)[0],
+        bbb = rands(0, 256, 1, rnd6 + 1)[0],
+
         x1 = lerp(
             _pnoise3_grad3(aaa, xf, yf, zf),
             _pnoise3_grad3(baa, xf - 1, yf, zf),
