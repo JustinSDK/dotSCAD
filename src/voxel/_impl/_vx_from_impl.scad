@@ -17,6 +17,5 @@ function _vx_from_impl(binaries, center, invert) =
     )
     [
         for(i = height - 1; i > -1; i = i - 1) 
-        let(row = _vx_from_row(height - i - 1, binaries[i], width, height, center, invert))
-        if(row != []) each row
+        each _vx_from_row(height - i - 1, binaries[i], width, height, center, invert)
     ];
