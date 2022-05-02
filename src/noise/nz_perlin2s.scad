@@ -12,5 +12,5 @@ use <../util/rand.scad>;
 use <_impl/_pnoise2_impl.scad>;
 
 function nz_perlin2s(points, seed) = 
-    let(sd = is_undef(seed) ? floor(rand(0, 256)) : seed % 256)
+    let(sd = is_undef(seed) ? rand() : seed)
     [for(p = points) _pnoise2(p.x, p.y, sd)];    
