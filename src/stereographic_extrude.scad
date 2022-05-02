@@ -23,7 +23,7 @@ module stereographic_extrude(shadow_side_leng, convexity = 1) {
             sphere(outer_sphere_r);
             sphere((outer_sphere_r + inner_sphere_r) / 2);
             
-            #translate([0, 0, outer_sphere_r / 2]) 
+            translate([0, 0, outer_sphere_r / 2]) 
             linear_extrude(outer_sphere_r) 
                 circle(inner_sphere_r / 2);
         }
