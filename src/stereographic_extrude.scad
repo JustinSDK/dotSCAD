@@ -11,18 +11,22 @@
 module stereographic_extrude(shadow_side_leng, convexity = 1) {
     half_side_length = shadow_side_leng / 2;
     outer_sphere_r = half_side_length / 3;
-    a = atan(sqrt(2) * half_side_length / (2 * outer_sphere_r));
-    inner_sphere_r = outer_sphere_r * sin(a);
+
+    denominator = sqrt(4 * outer_sphere_r ^ 2 + 2 * half_side_length ^ 2);
+    cosa = 2 * outer_sphere_r / denominator;
+    sina = sqrt(2) * half_side_length / denominator;
+
+    inner_sphere_r = outer_sphere_r * sina;
     
     intersection() { 
         translate([0, 0, outer_sphere_r]) 
         difference() {
             sphere(outer_sphere_r);
-            sphere(outer_sphere_r / 2 + inner_sphere_r / 2);
+            sphere((outer_sphere_r + inner_sphere_r) / 2);
             
             translate([0, 0, outer_sphere_r / 2]) 
             linear_extrude(outer_sphere_r) 
-                circle(inner_sphere_r * cos(a));
+                circle(inner_sphere_r * cosa);
         }
      
         linear_extrude(outer_sphere_r * 2, scale = 0.01, convexity = convexity) 
