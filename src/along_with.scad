@@ -56,27 +56,14 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
         ];
 
     function axis_angle_cumulated_rot_matrice(i, rot_matrice) = 
-        let(
-            leng_rot_matrice = len(rot_matrice),
-            leng_rot_matrice_minus_one = leng_rot_matrice - 1,
-            leng_rot_matrice_minus_two = leng_rot_matrice - 2
-        )
-        leng_rot_matrice == 0 ? [identity_matrix] : 
-        leng_rot_matrice == 1 ? [rot_matrice[0], identity_matrix] : 
-        i == leng_rot_matrice_minus_two ? 
-            [
-                rot_matrice[leng_rot_matrice_minus_one], 
-                rot_matrice[leng_rot_matrice_minus_two] * rot_matrice[leng_rot_matrice_minus_one]
-            ] 
-            : axis_angle_cumulated_rot_matrice_sub(i, rot_matrice);
-
-    function axis_angle_cumulated_rot_matrice_sub(i, rot_matrice) = 
-        let(
-            matrice = axis_angle_cumulated_rot_matrice(i + 1, rot_matrice),
-            curr_matrix = rot_matrice[i],
-            prev_matrix = matrice[len(matrice) - 1]
-        )
-        [each matrice, curr_matrix * prev_matrix];
+        let(leng = len(rot_matrice))
+        leng <= 1 ? [each rot_matrice, identity_matrix] : 
+        i == leng - 2 ? 
+            let(m = rot_matrice[leng - 1])
+            [m, rot_matrice[i] * m] 
+            : 
+            let(matrice = axis_angle_cumulated_rot_matrice(i + 1, rot_matrice))
+            [each matrice, rot_matrice[i] * matrice[len(matrice) - 1]];
 
     // align modules
 
