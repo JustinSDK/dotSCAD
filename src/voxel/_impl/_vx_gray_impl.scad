@@ -25,6 +25,5 @@ function _vx_gray_impl(levels, center, invert, normalize) =
     )
     [
         for(i = height - 1; i > -1; i = i - 1) 
-        let(row = _vx_gray_row(height - i - 1, levels[i], width, height, center, invert, normalize))
-        if(row != []) each row
+        each _vx_gray_row(height - i - 1, levels[i], width, height, center, invert, normalize)
     ];
