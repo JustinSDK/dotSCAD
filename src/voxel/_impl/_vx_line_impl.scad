@@ -1,8 +1,6 @@
 
 use <../../__comm__/__to3d.scad>;
 use <../../__comm__/__to2d.scad>;
-
-function _vx_line_zsgn(a) = a == 0 ? a : a / abs(a);
     
 // x-dominant
 function _vx_line_xdominant_y(y, yd, sy) = yd >= 0 ? y + sy : y;
@@ -134,15 +132,10 @@ function _vx_line_impl(p1, p2) =
         start_pt = is_2d ? __to3d(p1) : p1,
         end_pt = is_2d ? __to3d(p2) : p2,
         dt = end_pt - start_pt,
-        ax = floor(abs(dt[0]) * 2),
-        ay = floor(abs(dt[1]) * 2),
-        az = floor(abs(dt[2]) * 2),
-        sx = _vx_line_zsgn(dt[0]),
-        sy = _vx_line_zsgn(dt[1]),
-        sz = _vx_line_zsgn(dt[2]),
-        points = ax >= max(ay, az) ? _vx_line_xdominant(start_pt, end_pt, [ax, ay, az], [sx, sy, sz]) : (
-            ay >= max(ax, az) ? _vx_line_ydominant(start_pt, end_pt, [ax, ay, az], [sx, sy, sz]) :
-                _vx_line_zdominant(start_pt, end_pt, [ax, ay, az], [sx, sy, sz])
-        )
+        a = [for(c = dt) floor(abs(c) * 2)],
+        s = [for(c = dt) sign(c)],
+        points = a.x >= max(a.y, a.z) ? _vx_line_xdominant(start_pt, end_pt, a, s) : 
+                 a.y >= max(a.x, a.z) ? _vx_line_ydominant(start_pt, end_pt, a, s) :
+                                        _vx_line_zdominant(start_pt, end_pt, a, s)
     )   
     is_2d ? [for(pt = points) __to2d(pt)] : points;
