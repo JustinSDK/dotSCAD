@@ -18,15 +18,15 @@ function _nz_cell_classic(cells, p, dist) =
 
 function _nz_cell_border(cells, p) =
     let(
-        dists = [
-            for(cell = cells)
-            [each cell, norm(cell - p)]
-        ],
-        idx = len(cells[0]),
-        sorted_dists = sorted(dists, key = function(elem) elem[idx]),
-        sorted0 = sorted_dists[0],
-        sorted1 = sorted_dists[1],
-        a = [for(i = [0:idx - 1]) sorted0[i]],
-        m = (a + [for(i = [0:idx - 1]) sorted1[i]]) / 2
+        dists = [for(cell = cells) norm(cell - p)],
+        m1 = min(dists),
+        i1 = search(m1, dists)[0],
+        dists2 = [for(i = [0:len(dists) - 1]) if(i != i1) dists[i]],
+        cells2 = [for(i = [0:len(cells) - 1]) if(i != i1) cells[i]],
+        m2 = min(dists2),
+        i2 = search(m2, dists2)[0],
+        fst = cells[i1],
+        snd = cells2[i2],
+        m = (fst + snd) / 2
     )
-    (p - m) * (a - m);
+    (p - m) * (fst - m);
