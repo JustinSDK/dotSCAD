@@ -4,7 +4,7 @@ use <square_maze.scad>;
 maze_rows = 10;
 cell_width = 40;
 wall_thickness = 20;
-fn = 24;
+fn = 36;
 shadow = "YES"; // [YES, NO]
 wall_height = 2;
 
@@ -16,7 +16,7 @@ module stereographic_projection_maze2(maze_rows, cell_width, wall_thickness, fn,
             square_maze(maze_rows, cell_width, wall_thickness);
     }
     
-    stereographic_extrude(shadow_side_leng = length, $fn = fn)
+    stereographic_extrude(shadow_side_leng = length, $fn = fn, convexity = 10)
         maze();
     
     if(shadow == "YES") {

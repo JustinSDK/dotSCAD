@@ -6,7 +6,7 @@ use <maze/mz_hexwalls.scad>;
 columns = 10;
 cell_radius = 20;
 wall_thickness = 12;
-fn = 24;
+fn = 36;
 shadow = "YES"; // [YES, NO]
 wall_height = 1;
 
@@ -28,7 +28,7 @@ module hex_maze_stereographic_projection(columns, cell_radius, wall_thickness, f
 
     walls = mz_hexwalls(cells, cell_radius, wall_thickness);
     
-    stereographic_extrude(square_w, $fn = fn) 
+    stereographic_extrude(square_w, $fn = fn, convexity = 10) 
     translate([grid_w - square_w / 2, grid_h - square_w / 2, 0]) 
         for(wall = walls) {
             polyline2d(

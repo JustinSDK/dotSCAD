@@ -119,7 +119,7 @@ module shadow(levels, px_width) {
     }
 }
 
-stereographic_extrude(shadow_side_leng = len(levels), $fn = 48) 
+stereographic_extrude(shadow_side_leng = len(levels), $fn = 48, convexity = 2) 
     shadow(levels, px_width);
     
 if($preview) {

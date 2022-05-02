@@ -33,7 +33,7 @@ module four_chars(txt, square_size, font_name, font_size) {
     }
 }
 
-stereographic_extrude(square_size * 2.975) 
+stereographic_extrude(square_size * 2.975, convexity = 10) 
     four_chars(txt, square_size, font_name, font_size);
 
 if(shadow == "YES") {

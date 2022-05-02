@@ -17,7 +17,7 @@ module grid(rows, block_width, line_width) {
         }
 }
  
-stereographic_extrude(block_width * rows + line_width, $fn = 48) 
+stereographic_extrude(block_width * rows + line_width, $fn = 48, convexity = 15) 
     grid(rows, block_width, line_width);
   
 if($preview) {
