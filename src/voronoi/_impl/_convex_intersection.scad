@@ -5,16 +5,17 @@ use <../../util/set/hashset_elems.scad>;
 
 include <../../__comm__/_pt2_hash.scad>;
 
-function _in_convex_r(s, convex_pts, pt, leng, i = 0) =
+function _in_convex_r(convex_pts, pt, leng, i = 0) =
     let(i1 = i + 1)
     i1 == leng || 
-	s * cross(convex_pts[i] - pt, convex_pts[i1] - pt) > 0 && 
-    _in_convex_r(s, convex_pts, pt, leng, i1);
+	cross(convex_pts[i] - pt, convex_pts[i1] - pt) > 0 && 
+    _in_convex_r(convex_pts, pt, leng, i1);
 
 function _in_convex(convex_pts, pt) = 
     let(leng = len(convex_pts))
+    // all counter-clockwise?
+    cross(convex_pts[leng - 1] - pt, convex_pts[0] - pt) > 0 &&
 	_in_convex_r(
-        cross(convex_pts[leng - 1] - pt, convex_pts[0] - pt), 
         convex_pts, 
         pt, 
         leng
