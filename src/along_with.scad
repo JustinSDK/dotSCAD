@@ -43,18 +43,6 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
         [0, 0, 0, 1]
     ];    
 
-    function axis_angle_local_ang_vects(j, pts) = 
-        [
-            for(i = j; i > 0; i = i - 1) 
-            let(
-                vt0 = pts[i] - pts[i - 1],
-                vt1 = pts[i + 1] - pts[i],
-                a = acos((vt0 * vt1) / sqrt((vt0 * vt0) * (vt1 * vt1))),
-                v = cross(vt0, vt1)
-            )
-            [a, v]
-        ];
-
     function axis_angle_cumulated_rot_matrice(rot_matrice, leng) = 
         [
             for(
@@ -132,9 +120,16 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
         }
         else {
             rot_matrice = [
-                for(ang_vect = axis_angle_local_ang_vects(leng_points - 2, pts)) 
-                    m_rotation(ang_vect[0], ang_vect[1])
+                for(i = leng_points - 2; i > 0; i = i - 1) 
+                let(
+                    vt0 = pts[i] - pts[i - 1],
+                    vt1 = pts[i + 1] - pts[i],
+                    a = acos((vt0 * vt1) / sqrt((vt0 * vt0) * (vt1 * vt1))),
+                    v = cross(vt0, vt1)
+                )
+                m_rotation(a, v)
             ];
+
             leng = len(rot_matrice);
             cumu_rot_matrice = leng <= 1 ? [each rot_matrice, identity_matrix] :
                                            axis_angle_cumulated_rot_matrice(rot_matrice, leng);

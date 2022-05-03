@@ -37,30 +37,23 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
                               scale - one
         ) / len_path_pts_minus_one;
 
-        // get rotation matrice for sections
-
-        function local_ang_vects(j) = 
-            [
-                for(i = j; i > 0; i = i - 1) 
-                let(
-                    vt0 = pth_pts[i] - pth_pts[i - 1],
-                    vt1 = pth_pts[i + 1] - pth_pts[i],
-                    a = acos((vt0 * vt1) / sqrt(vt0 * vt0 * vt1 * vt1)),
-                    v = cross(vt0, vt1)
-                )
-                [a, v]
-            ];
-
         identity_matrix = [
             [1, 0, 0, 0],
             [0, 1, 0, 0],
             [0, 0, 1, 0],
             [0, 0, 0, 1]
         ];
-
+        
+        // get rotation matrice for sections
         rot_matrice = [
-            for(ang_vect = local_ang_vects(len_path_pts - 2)) 
-                m_rotation(ang_vect[0], ang_vect[1])
+            for(i = len_path_pts - 2; i > 0; i = i - 1) 
+            let(
+                vt0 = pth_pts[i] - pth_pts[i - 1],
+                vt1 = pth_pts[i + 1] - pth_pts[i],
+                a = acos((vt0 * vt1) / sqrt(vt0 * vt0 * vt1 * vt1)),
+                v = cross(vt0, vt1)
+            )
+            m_rotation(a, v)
         ];
 
         leng_rot_matrice = len(rot_matrice);
@@ -124,7 +117,7 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
         
         sweep(
             calculated_sections,
-            triangles = triangles
+            triangles
         );   
 
         // hook for testing
@@ -154,11 +147,10 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
                 [transformed.x, transformed.y, transformed.z]
             ];
         
-        path_extrude_inner =
-            [
-                for(i = 1; i < len_path_pts; i = i + 1)
-                    section(pth_pts[i - 1], pth_pts[i],  i)
-            ];
+        path_extrude_inner = [
+            for(i = 1; i < len_path_pts; i = i + 1)
+            section(pth_pts[i - 1], pth_pts[i],  i)
+        ];
 
         calculated_sections =
             closed && pth_pts[0] == pth_pts[len_path_pts_minus_one] ?
@@ -167,7 +159,7 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
 
         sweep(
             calculated_sections,
-            triangles = triangles
+            triangles
         );   
 
         // hook for testing
