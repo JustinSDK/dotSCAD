@@ -10,9 +10,8 @@ function _convex_intersection_for_impl(shapes, pre, leng, i = 2) =
                             );
                 
 function _convex_intersection_for(shapes) = 
-    let(leng = len(shapes))
     _convex_intersection_for_impl(
         shapes, 
         _convex_intersection(shapes[0], shapes[1]), 
-        leng
+        len(shapes)
     );
