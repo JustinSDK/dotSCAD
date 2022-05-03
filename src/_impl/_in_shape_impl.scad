@@ -8,8 +8,7 @@ function _in_shape_in_any_edges(edges, pt, epsilon) =
     is_undef(maybe_last);
 
 function _in_shape_interpolate_x(y, p1, p2) = 
-    p1.y == p2.y ? p1.x : 
-    let(v = p2 - p1) p1.x + v.x * (y - p1.y) / v.y;
+    lookup(y, [[p1.y, p1.x], [p2.y, p2.x]]);
     
 function _in_shape_does_pt_cross(pts, i, j, pt) = 
     let(pi = pts[i], pj = pts[j])
