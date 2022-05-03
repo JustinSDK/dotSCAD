@@ -141,7 +141,7 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
     
             x_90 = [90, 0, 0];
 
-            #for(i = [0, 1]) {
+            for(i = [0, 1]) {
                 translate(pts[i])
                 axis_angle_align_with_pts_rs(0, scale_one + scale_step_vt * i) 
                 rotate(x_90)
