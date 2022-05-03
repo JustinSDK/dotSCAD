@@ -59,9 +59,9 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
             children(0);
     }
 
+    angleyz_pts01 = __angy_angz(pts[0], pts[1]);
     module axis_angle_align_with_pts_rs(a, s) {
-        angleyz = __angy_angz(pts[0], pts[1]);
-        rotate([0, -angleyz[0], angleyz[1]])
+        rotate([0, -angleyz_pts01[0], angleyz_pts01[1]])
         rotate(a - 90)
         scale(s) 
             children(0);

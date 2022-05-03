@@ -69,12 +69,9 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
             ];
 
         // get all sections
-
+        angleyz_pts01 = __angy_angz(pth_pts[0], pth_pts[1]);
         function init_section(a, s) =
-            let(
-                angleyz = __angy_angz(pth_pts[0], pth_pts[1]),
-                transform_m = m_rotation([0, -angleyz[0], angleyz[1]]) * m_rot_90_0_n90 * m_rotation(a) * m_scaling(s)
-            )
+            let(transform_m = m_rotation([0, -angleyz_pts01[0], angleyz_pts01[1]]) * m_rot_90_0_n90 * m_rotation(a) * m_scaling(s))
             [
                 for(p = sh_pts) 
                 let(transformed = transform_m * p)
