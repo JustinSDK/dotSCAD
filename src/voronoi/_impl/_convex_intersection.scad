@@ -6,10 +6,10 @@ use <../../util/set/hashset_elems.scad>;
 include <../../__comm__/_pt2_hash.scad>;
 
 function _in_convex_r(convex_pts, pt, leng, i = 0) =
-    let(i1 = i + 1)
-    i1 == leng || 
-	cross(convex_pts[i] - pt, convex_pts[i1] - pt) > 0 && 
-    _in_convex_r(convex_pts, pt, leng, i1);
+    let(j = i + 1)
+    j == leng || 
+	cross(convex_pts[i] - pt, convex_pts[j] - pt) > 0 && 
+    _in_convex_r(convex_pts, pt, leng, j);
 
 function _in_convex(convex_pts, pt) = 
     let(leng = len(convex_pts))
