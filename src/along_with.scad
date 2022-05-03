@@ -143,7 +143,7 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
 
             for(i = [0, 1]) {
                 translate(pts[i])
-                axis_angle_align_with_pts_rs(0, scale_one) 
+                axis_angle_align_with_pts_rs(0, scale_one + scale_step_vt * (i + 1)) 
                 rotate(x_90)
                     children(0); 
             }
@@ -151,7 +151,7 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
             if($children == 1) { 
                 for(i = [1:leng_points - 2]) {
                     translate(pts[i + 1])
-                    axis_angle_align_with_local_rotate(i, i * twist_step_a, scale_one + scale_step_vt * i, cumu_rot_matrice)
+                    axis_angle_align_with_local_rotate(i, i * twist_step_a, scale_one + scale_step_vt * (i + 1), cumu_rot_matrice)
                     rotate(x_90)
                         children(0);          
                 }          
