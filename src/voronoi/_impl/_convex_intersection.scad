@@ -5,18 +5,19 @@ use <../../util/set/hashset_elems.scad>;
 
 include <../../__comm__/_pt2_hash.scad>;
 
-function _in_convex_r(i, j, preC, convex_pts, pt, leng, convex_pts, pt) =
-    j == leng || (
-		let(c = cross(convex_pts[i] - pt, convex_pts[j] - pt))
-		c * preC > 0 && _in_convex_r(j, j + 1, c, convex_pts, pt, leng, convex_pts, pt)
-    );
+function _in_convex_r(s, convex_pts, pt, leng, i = 0) =
+    i + 1 == leng || 
+	s * cross(convex_pts[i] - pt, convex_pts[i + 1] - pt) > 0 && 
+    _in_convex_r(s, convex_pts, pt, leng, i + 1);
 
 function _in_convex(convex_pts, pt) = 
-    let(
-	    leng = len(convex_pts),
-		c = cross(convex_pts[leng - 1] - pt, convex_pts[0] - pt)
-    )
-	_in_convex_r(0, 1, c, convex_pts, pt, leng, convex_pts, pt);
+    let(leng = len(convex_pts))
+	_in_convex_r(
+        cross(convex_pts[leng - 1] - pt, convex_pts[0] - pt), 
+        convex_pts, 
+        pt, 
+        leng
+    );
 	
 function _intersection_ps(closed_shape, line_pts, epsilon) = 
     let(
