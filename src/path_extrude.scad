@@ -16,7 +16,7 @@ use <matrix/m_translation.scad>;
 use <matrix/m_rotation.scad>;
 
 module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale = 1.0, closed = false, method = "AXIS_ANGLE") {
-    sh_pts = len(shape_pts[0]) == 3 ? shape_pts : [for(p = shape_pts) __to3d(p)];
+    sh_pts = len(shape_pts[0]) == 3 ? [for(p = shape_pts) [each p, 1]] : [for(p = shape_pts) [p.x, p.y, 0, 1]];
     pth_pts = len(path_pts[0]) == 3 ? path_pts : [for(p = path_pts) __to3d(p)];
         
     len_path_pts = len(pth_pts);
@@ -84,7 +84,7 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
             )
             [
                 for(p = sh_pts) 
-                let(transformed = transform_m * [each p, 1])
+                let(transformed = transform_m * p)
                 [transformed.x, transformed.y, transformed.z]
             ];
             
@@ -100,7 +100,7 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
             )
             [
                 for(p = init_section(init_a, init_s)) 
-                    [ms0p * p, ms1p * p, ms2p * p]
+                [ms0p * p, ms1p * p, ms2p * p]
             ];        
 
         sections =
@@ -150,7 +150,7 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
             )
             [
                 for(p = sh_pts) 
-                let(transformed = transform_m * [each p, 1])
+                let(transformed = transform_m * p)
                 [transformed.x, transformed.y, transformed.z]
             ];
         
