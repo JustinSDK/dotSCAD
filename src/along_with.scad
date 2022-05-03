@@ -55,17 +55,15 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
             [a, v]
         ];
 
-    function axis_angle_cumulated_rot_matrice(i, rot_matrice) = 
-        let(leng = len(rot_matrice))
-        leng <= 1 ? [each rot_matrice, identity_matrix] : 
-        i == leng - 2 ? 
-            let(m = rot_matrice[leng - 1])
-            [m, rot_matrice[i] * m] 
-            : 
-            let(matrice = axis_angle_cumulated_rot_matrice(i + 1, rot_matrice))
-            [each matrice, rot_matrice[i] * matrice[len(matrice) - 1]];
-
-    // align modules
+    function axis_angle_cumulated_rot_matrice(rot_matrice, leng) = 
+        [
+            for(
+                i = leng - 1, m = rot_matrice[i]; 
+                i > -1; 
+                i = i - 1, m = i == -1 ? undef : rot_matrice[i] * m
+            )
+            m
+        ];
 
     module axis_angle_align_with_pts_angles(i) {
         translate(pts[i]) 
@@ -83,15 +81,9 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
     }
     
     module axis_angle_align_with_local_rotate(j, a, s, cumu_rot_matrice) {
-        if(j == 0) {  // first child
-            axis_angle_align_with_pts_rs(a, s) 
-                children(0);
-        }
-        else {
-            multmatrix(cumu_rot_matrice[j - 1])
-            axis_angle_align_with_pts_rs(a, s) 
-                children(0);
-        }
+        multmatrix(cumu_rot_matrice[j - 1])
+        axis_angle_align_with_pts_rs(a, s) 
+            children(0);
     } 
 
     // <<< end: modules and functions for "AXIS-ANGLE"
@@ -100,17 +92,18 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
     // >>> begin: modules and functions for "EULER-ANGLE"
 
     function _euler_angle_path_angles(pts, end_i) = 
-        [for(i = 0; i < end_i; i = i + 1) __angy_angz(pts[i], pts[i + 1])];
+        [
+            for(i = 0; i < end_i; i = i + 1) 
+            let(ayz = __angy_angz(pts[i], pts[i + 1]))
+            [0, -ayz[0], ayz[1]]
+        ];
             
     function euler_angle_path_angles(children) = 
        let(
            end_i = children == 1 ? leng_points_minus_one : children - 1,
            angs = _euler_angle_path_angles(pts, end_i)
         )
-        [
-            [0, -angs[0][0], angs[0][1]], 
-            each [for(a = angs) [0, -a[0], a[1]]]
-        ];
+        [angs[0], each angs];
 
     module euler_angle_align(i, angs, look_at) {
         translate(pts[i]) 
@@ -138,27 +131,32 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
             }
         }
         else {
-            cumu_rot_matrice = axis_angle_cumulated_rot_matrice(0, [
+            rot_matrice = [
                 for(ang_vect = axis_angle_local_ang_vects(leng_points - 2, pts)) 
                     m_rotation(ang_vect[0], ang_vect[1])
-            ]);
+            ];
+            leng = len(rot_matrice);
+            cumu_rot_matrice = leng <= 1 ? [each rot_matrice, identity_matrix] :
+                                           axis_angle_cumulated_rot_matrice(rot_matrice, leng);
     
             x_90 = [90, 0, 0];
 
-            translate(pts[0])
-            axis_angle_align_with_local_rotate(0, 0, scale_one, cumu_rot_matrice)
-            rotate(x_90)
-                children(0); 
-
+            for(i = [0, 1]) {
+                translate(pts[i])
+                axis_angle_align_with_pts_rs(0, scale_one) 
+                rotate(x_90)
+                    children(0); 
+            }
+            
             if($children == 1) { 
-                for(i = [0:leng_points - 2]) {
+                for(i = [1:leng_points - 2]) {
                     translate(pts[i + 1])
                     axis_angle_align_with_local_rotate(i, i * twist_step_a, scale_one + scale_step_vt * i, cumu_rot_matrice)
                     rotate(x_90)
                         children(0);          
                 }          
             } else {
-                for(i = [0:min(leng_points, $children) - 2]) {
+                for(i = [1:min(leng_points, $children) - 2]) {
                     translate(pts[i + 1])
                     axis_angle_align_with_local_rotate(i, i * twist_step_a, scale_one + scale_step_vt * i, cumu_rot_matrice)
                     rotate(x_90)
