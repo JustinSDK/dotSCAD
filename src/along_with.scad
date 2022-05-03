@@ -35,7 +35,6 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
 
     // >>> begin: modules and functions for "AXIS-ANGLE"
 
-    // get rotation matrice for sections
     identity_matrix = [
         [1, 0, 0, 0],
         [0, 1, 0, 0],
@@ -119,6 +118,7 @@ module along_with(points, angles, twist = 0, scale = 1.0, method = "AXIS_ANGLE")
             }
         }
         else {
+            // get rotation matrice for sections
             rot_matrice = [
                 for(i = leng_points - 2; i > 0; i = i - 1) 
                 let(
