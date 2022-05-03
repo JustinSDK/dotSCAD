@@ -16,11 +16,13 @@ function arc_path(radius, angle) =
     let(
         a_step = 360 / __frags(radius),
         angles = is_num(angle) ? [0, angle] : angle,
-        m = floor(angles[0] / a_step) + 1,
-        n = floor(angles[1] / a_step),
+        a0 = angles[0],
+        a1 = angles[1],
+        m = floor(a0 / a_step) + 1,
+        n = floor(a1 / a_step),
         points = [
-            __ra_to_xy(__edge_r_begin(radius, angles[0], a_step, m), angles[0]),
+            __ra_to_xy(__edge_r_begin(radius, a0, a_step, m), a0),
             if(m <= n) each [for(i = m; i <= n; i = i + 1) __ra_to_xy(radius, a_step * i)],
-            if(angles[1] != a_step * n) __ra_to_xy(__edge_r_end(radius, angles[1], a_step, n), angles[1])
+            if(a1 != a_step * n) __ra_to_xy(__edge_r_end(radius, a1, a_step, n), a1)
         ]
     ) points;
