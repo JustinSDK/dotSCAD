@@ -10,10 +10,10 @@ function _in_shape_in_any_edges(edges, pt, epsilon) =
 function _in_shape_interpolate_x(y, p1, p2) = 
     lookup(y, [[p1.y, p1.x], [p2.y, p2.x]]);
     
-function _in_shape_does_pt_cross(pts, i, j, pt) = 
-    let(pi = pts[i], pj = pts[j])
+function _in_shape_does_pt_cross(pi, pj, pt) = 
     ((pi.y - pt.y) * (pj.y - pt.y) < 0) && (pt.x < _in_shape_interpolate_x(pt.y, pi, pj));
     
-function _in_shape_sub(shapt_pts, leng, pt, cond, i, j) =
-    j == leng ? cond : _in_shape_sub(shapt_pts, leng, pt,  _in_shape_does_pt_cross(shapt_pts, i, j, pt) ? !cond : cond, j, j + 1);
+function _in_shape_sub(shapt_pts, leng, pt, cond, i) =
+    let(j = i + 1)
+    j == leng ? cond : _in_shape_sub(shapt_pts, leng, pt, _in_shape_does_pt_cross(shapt_pts[i], shapt_pts[j], pt) ? !cond : cond, j);
  

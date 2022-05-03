@@ -17,4 +17,4 @@ function in_shape(shapt_pts, pt, include_edge = false, epsilon = 0.0001) =
         edges = __lines_from(shapt_pts, true)
     )
     _in_shape_in_any_edges(edges, pt, epsilon) ? include_edge : 
-    _in_shape_sub(shapt_pts, leng, pt, false, leng - 1, 0);
+    _in_shape_sub(shapt_pts, leng, pt, _in_shape_does_pt_cross(shapt_pts[leng - 1], shapt_pts[0], pt), 0);
