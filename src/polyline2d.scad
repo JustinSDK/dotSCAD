@@ -34,8 +34,8 @@ module polyline2d(points, width = 1, startingStyle = "CAP_SQUARE", endingStyle =
                p1Style = p1Style, p2Style = p2Style);
     }
 
-    module joins(line, radius, i_end, i) {
-        if(i < i_end) {
+    module joins(line, radius, i_end, j) {
+        for(i = [j:i_end - 1]) {
             p1 = line[i];
             p2 = line[i + 1];
             p3 = line[i + 2];
@@ -46,25 +46,28 @@ module polyline2d(points, width = 1, startingStyle = "CAP_SQUARE", endingStyle =
             normv1xv2 = sqrt(v1 * v1 * v2 * v2);
             cosa = (v1 * v2) / normv1xv2;
             sina = -c / normv1xv2;
+
+            a = acos(cosa);
             
             translate(p2) 
-            rotate(atan2(v1.y, v1.x) + (c > 0 ? -90 : asin(cosa))) {
+            rotate(90 + atan2(v1.y, v1.x))
+            {
                 if(joinStyle == "JOIN_ROUND") {
-                    a = acos(cosa);
+                    rotate(c > 0 ? 180 : -a)
                     pie(
                         radius = radius, 
                         angle = [0, a], 
                         $fn = fn * 360 / a
                     ); 
-                } else if(joinStyle == "JOIN_MITER") {
-                    tana2 = sina / (1 + cosa); // tan(a / 2)
-                    polygon(radius * [[0, 0], [1, 0], [1, tana2], [cosa, sina]]);    
-                } else { // "JOIN_BEVEL"
-                    polygon(radius * [[0, 0], [1, 0], [cosa, sina]]);
+                } else {
+                    rotate(c > 0 ? 180 + a : -a)
+                    if(joinStyle == "JOIN_MITER") {
+                        polygon(radius * [[0, 0], [1, 0], [1, sina / (1 + cosa)], [cosa, sina]]);    
+                    } else { // "JOIN_BEVEL"
+                        polygon(radius * [[0, 0], [1, 0], [cosa, sina]]);
+                    }
                 }
             }
-  
-            joins(line, radius, i_end, i + 1);        
         }
     }
 
