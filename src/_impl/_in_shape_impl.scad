@@ -7,13 +7,10 @@ function _in_shape_in_any_edges(edges, pt, epsilon) =
     )
     is_undef(maybe_last);
 
-function _in_shape_interpolate_x(y, p1, p2) = 
-    lookup(y, [[p1.y, p1.x], [p2.y, p2.x]]);
-    
 function _in_shape_does_pt_cross(pi, pj, pt) = 
-    ((pi.y - pt.y) * (pj.y - pt.y) < 0) && (pt.x < _in_shape_interpolate_x(pt.y, pi, pj));
+    ((pi.y - pt.y) * (pj.y - pt.y) < 0) && (pt.x < lookup(pt.y, [[pi.y, pi.x], [pj.y, pj.x]]));
     
-function _in_shape_sub(shapt_pts, leng, pt, cond, i) =
+function _in_shape_sub(shapt_pts, leng, pt, cond, i = 0) =
     let(j = i + 1)
     j == leng ? cond : _in_shape_sub(shapt_pts, leng, pt, _in_shape_does_pt_cross(shapt_pts[i], shapt_pts[j], pt) ? !cond : cond, j);
  
