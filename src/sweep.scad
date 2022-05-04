@@ -41,7 +41,7 @@ module sweep(sections, triangles = "SOLID") {
             ]      
         );
 
-    function the_same_after_twisting(f_sect, l_sect, leng_pts_sect) =
+    function the_same_after_twisting(f_sect, l_sect) =
         let(found = search([l_sect[0]], f_sect)[0])
         found != [] && found != 0 && l_sect == concat(slice(f_sect, found), slice(f_sect, 0, found));
 
@@ -56,7 +56,7 @@ module sweep(sections, triangles = "SOLID") {
         v_pts = to_v_pts(sects);
 
         begin_end_the_same =
-            first_sect == last_sect || the_same_after_twisting(first_sect, last_sect, leng_pts_sect);
+            first_sect == last_sect || the_same_after_twisting(first_sect, last_sect);
 
         if(begin_end_the_same) {
             f_idxes = side_indexes(sects);
@@ -131,8 +131,8 @@ module sweep(sections, triangles = "SOLID") {
         begin_end_the_same = 
            (first_outer_sect == last_outer_sect && first_inner_sect == last_inner_sect) ||
            (
-               the_same_after_twisting(first_outer_sect, last_outer_sect, leng_pts_sect) && 
-               the_same_after_twisting(first_inner_sect, last_inner_sect, leng_pts_sect)
+               the_same_after_twisting(first_outer_sect, last_outer_sect) && 
+               the_same_after_twisting(first_inner_sect, last_inner_sect)
            ); 
 
         v_pts = concat(to_v_pts(outer_sects), to_v_pts(inner_sects));
