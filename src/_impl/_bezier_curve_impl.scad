@@ -1,3 +1,5 @@
+use <../util/sum.scad>;
+
 function _combi(n, k) =
     let(  
         bi_coef = [      
@@ -10,45 +12,17 @@ function _combi(n, k) =
     n < 4 ? bi_coef[n][k] : 
     k == 0 ? 1 : (_combi(n, k - 1) * (n - k + 1) / k);
         
-function bezier_curve_coordinate(t, pn, n, i = 0) = 
-    i == n + 1 ? 0 : 
-        (_combi(n, i) * pn[i] * pow(1 - t, n - i) * pow(t, i) + 
-            bezier_curve_coordinate(t, pn, n, i + 1));
+function bezier_curve_coordinate(t, pn, n, i) = 
+    let(one_t = 1 - t)
+    sum([for(j = [0:n]) _combi(n, j) * pn[j][i] * one_t ^ (n - j) * t ^ j]);
         
 function _bezier_curve_point2(t, points) = 
     let(n = len(points) - 1) 
-    [
-        bezier_curve_coordinate(
-            t, 
-            [for(p = points) p.x], 
-            n
-        ),
-        bezier_curve_coordinate(
-            t,  
-            [for(p = points) p.y], 
-            n
-        )
-    ];
+    [for(i = [0, 1]) bezier_curve_coordinate(t, points, n, i)];
 
 function _bezier_curve_point3(t, points) = 
     let(n = len(points) - 1) 
-    [
-        bezier_curve_coordinate(
-            t, 
-            [for(p = points) p.x], 
-            n
-        ),
-        bezier_curve_coordinate(
-            t,  
-            [for(p = points) p.y], 
-            n
-        ),
-        bezier_curve_coordinate(
-            t, 
-            [for(p = points) p.z], 
-            n
-        )
-    ];
+    [for(i = [0:2]) bezier_curve_coordinate(t, points, n, i)];
 
 function _bezier_curve_impl(t_step, points) = 
     let(t_end = ceil(1 / t_step)) 
