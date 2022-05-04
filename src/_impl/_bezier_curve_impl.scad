@@ -16,19 +16,16 @@ function bezier_curve_coordinate(t, pn, n, i) =
     let(one_t = 1 - t)
     sum([for(j = [0:n]) _combi(n, j) * pn[j][i] * one_t ^ (n - j) * t ^ j]);
          
-_bezier_curve_point2 = function(t, points, n)
-    [for(i = [0, 1]) bezier_curve_coordinate(t, points, n, i)];
-
-_bezier_curve_point3 = function(t, points, n)
-    [for(i = [0:2]) bezier_curve_coordinate(t, points, n, i)];
+function _bezier_curve(range, t, points, n) = 
+    [for(i = range) bezier_curve_coordinate(t, points, n, i)];
 
 function _bezier_curve_impl(t_step, points) = 
     let(
         t_end = ceil(1 / t_step), 
         n = len(points) - 1, 
-        _bezier_curve = len(points[0]) == 3 ? _bezier_curve_point3 : _bezier_curve_point2
+        range = [0:len(points[0]) - 1]
     ) 
     [
-        each [for(t = 0; t < t_end; t = t + 1) _bezier_curve(t * t_step, points, n)], 
-        _bezier_curve(1, points, n)
+        each [for(t = 0; t < t_end; t = t + 1) _bezier_curve(range, t * t_step, points, n)], 
+        _bezier_curve(range, 1, points, n)
     ];
