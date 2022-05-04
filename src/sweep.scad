@@ -41,9 +41,12 @@ module sweep(sections, triangles = "SOLID") {
             ]      
         );
 
+    
     function the_same_after_twisting(f_sect, l_sect) =
-        let(found = search([l_sect[0]], f_sect)[0])
-        found != [] && found != 0 && l_sect == concat(slice(f_sect, found), slice(f_sect, 0, found));
+        let(found = search([l_sect[0]], f_sect)[0], leng = len(l_sect))
+        found != [] && 
+        // l_sect == concat(slice(f_sect, found), slice(f_sect, 0, found))
+        len([for(i = 0; i < leng && l_sect[i] == f_sect[(found + i) % leng]; i = i + 1) undef]) == leng;
 
     function to_v_pts(sects) = [for(sect = sects) each sect];                   
 
