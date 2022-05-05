@@ -17,5 +17,5 @@ function _m_determinant_sub(matrix, leng, fc) =
 
 function _m_determinant(matrix) = 
     let(leng = len(matrix))
-    leng == 2 ? matrix[0][0] * matrix[1][1] - matrix[1][0] * matrix[0][1] :
+    leng == 2 ? cross(matrix[0], matrix[1]) :
         sum([for(fc = [0:leng - 1]) _m_determinant_sub(matrix, leng, fc)]);
