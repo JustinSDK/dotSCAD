@@ -16,18 +16,19 @@ function shape_pie(radius, angle) =
         a_step = 360 / __frags(radius),
         leng = radius * cos(a_step / 2),
         angles = is_num(angle) ? [0, angle] : angle,
-        m = floor(angles[0] / a_step) + 1,
-        n = floor(angles[1] / a_step),
-        edge_r_begin = leng / cos((m - 0.5) * a_step - angles[0]),
-        edge_r_end = leng / cos((n + 0.5) * a_step - angles[1]),
+        a0 = angles[0],
+        a1 = angles[1],
+        m = floor(a0 / a_step) + 1,
+        n = floor(a1 / a_step),
+        edge_r_begin = leng / cos((m - 0.5) * a_step - a0),
+        edge_r_end = leng / cos((n + 0.5) * a_step - a1),
         shape_pts = [
             [0, 0], 
-            __ra_to_xy(edge_r_begin, angles[0]), 
+            __ra_to_xy(edge_r_begin, a0), 
             if(m <= n) each [
                 for(i = m; i <= n; i = i + 1)
-                let(a = a_step * i) 
-                __ra_to_xy(radius, a)
+                __ra_to_xy(radius, a_step * i)
             ],
-            if(angles[1] != a_step * n) __ra_to_xy(edge_r_end, angles[1])
+            if(a1 != a_step * n) __ra_to_xy(edge_r_end, a1)
         ]
     ) shape_pts;
