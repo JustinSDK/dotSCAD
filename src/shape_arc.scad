@@ -37,8 +37,7 @@ function shape_arc(radius, angle, width, width_mode = "LINE_CROSS") =
             // inner arc path
             if(m <= n) each [
                 for(i = m; i <= n; i = i + 1)
-                let(idx = n + m - i)
-                __ra_to_xy(r_inner, a_step * idx)
+                __ra_to_xy(r_inner, a_step * (n + m - i))
 
             ],
             __ra_to_xy(__edge_r_begin(r_inner, a0, a_step, m), a0)
