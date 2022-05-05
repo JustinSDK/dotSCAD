@@ -6,7 +6,7 @@ function _neighbors(fcord, seed, grid_w) =
         for(z = range, y = range, x = range)
         let(
             cord = [x, y, z] + fcord,
-            sds = rands(0, 1, 3, abs(cord * gwv) + seed)
+            sds = rands(0, 1, 3, cord * gwv + seed)
         )
         (cord + sds) * grid_w
     ];
