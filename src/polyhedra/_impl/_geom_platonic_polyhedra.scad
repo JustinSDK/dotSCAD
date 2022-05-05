@@ -37,8 +37,8 @@ function _subdivide_project(points, faces, radius, detail) =
 		pts_number_per_tri = (rows + 1) * (rows + 2) / 2,
 	    subdivided_faces = _tri_subdivide_faces(rows),
 		flatten_faces = [
-			for(i = [0:len(faces) - 1], face = subdivided_faces)
-			face + [i, i, i] * pts_number_per_tri
+			for(i = [0:pts_number_per_tri:(len(faces) - 1) * pts_number_per_tri], face = subdivided_faces)
+			face + [i, i, i]
 		]
 	)   
 	[subdivided_pts, flatten_faces];
