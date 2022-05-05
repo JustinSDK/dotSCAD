@@ -21,3 +21,20 @@ function _nz_worley3(p, seed, grid_w, dist) =
     dist == "chebyshev" ? _nz_worley_chebyshev(p, nbrs) : 
     dist == "border"    ? _nz_worley_border(p, nbrs) :
     assert("Unknown distance option");
+
+function _nz_worley3s(points, seed, grid_w, dist) = 
+    let(
+        noise = dist == "euclidean" ? function(p, nbrs) _nz_worley_euclidean(p, nbrs) :
+                dist == "manhattan" ? function(p, nbrs) _nz_worley_manhattan(p, nbrs) :
+                dist == "chebyshev" ? function(p, nbrs) _nz_worley_chebyshev(p, nbrs) : 
+                dist == "border"    ? function(p, nbrs) _nz_worley_border(p, nbrs) :
+                assert("Unknown distance option")
+    )
+    [
+        for(p = points)
+        let(
+            fcord = [floor(p.x / grid_w), floor(p.y / grid_w), floor(p.z / grid_w)],
+            nbrs = _neighbors(fcord, seed, grid_w)
+        )
+        noise(p, nbrs)
+    ];
