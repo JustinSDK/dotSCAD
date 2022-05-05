@@ -12,11 +12,13 @@ use <__comm__/__frags.scad>;
 
 function shape_ellipse(axes) =
     let(
-        frags = __frags(axes[0]),
+        axes0 = axes[0],
+        axes1 = axes[1],
+        frags = __frags(axes0),
         step_a = 360 / frags
     ) 
     [
         for(i = [0:frags - 1]) 
         let(a = i * step_a)
-            [axes[0] * cos(a), axes[1] * sin(a)]
+            [axes0 * cos(a), axes1 * sin(a)]
     ];
