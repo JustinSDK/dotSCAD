@@ -1,6 +1,6 @@
 use <matrix/m_determinant.scad>;
 
-module test_m_scaling() {
+module test_m_determinant() {
     echo("==== test_m_determinant ====");
 
     assert(
