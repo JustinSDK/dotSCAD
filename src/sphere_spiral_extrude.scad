@@ -26,11 +26,9 @@ module sphere_spiral_extrude(shape_pts, radius, za_step,
         rt_dir = rt_dir
     );
 
-    v_clk = vt_dir == "SPI_DOWN" ? 90 : -90;
-    r_clk = rt_dir == "CT_CLK" ? 0 : 180;
-
+    vr_clk = [vt_dir == "SPI_DOWN" ? 90 : -90, 0, rt_dir == "CT_CLK" ? 0 : 180];
     points = [for(pa = points_angles) pa[0]];
-    angles = [for(pa = points_angles) [pa[1][0] + v_clk, pa[1][1], pa[1][2] + r_clk]];
+    angles = [for(pa = points_angles) pa[1] + vr_clk];
 
     sections = cross_sections(
         shape_pts, points, angles, twist = twist, scale = scale
@@ -38,7 +36,7 @@ module sphere_spiral_extrude(shape_pts, radius, za_step,
 
     sweep(
         sections, 
-        triangles = triangles
+        triangles
     );
 
     // testing hook
