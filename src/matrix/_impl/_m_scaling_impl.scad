@@ -5,11 +5,12 @@ function __m_scaling_to_3_elems_scaling_vect(s) =
 
 function __m_scaling_to_scaling_vect(s) = is_num(s) ? [s, s, s] : __m_scaling_to_3_elems_scaling_vect(s);
 
+FINAL_ROW = [0, 0, 0, 1];
 function _m_scaling_impl(s) = 
     let(v = __m_scaling_to_scaling_vect(s))
     [
         [v.x, 0, 0, 0],
         [0, v.y, 0, 0],
         [0, 0, v.z, 0],
-        [0, 0, 0, 1]
+        FINAL_ROW
     ];

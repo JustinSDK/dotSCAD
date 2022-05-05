@@ -1,34 +1,25 @@
 use <../../__comm__/__to_ang_vect.scad>;
 
+FINAL_ROW = [0, 0, 0, 1];
 function __m_rotation_q_rotation(a, v) = 
     let(
-        half_a = a / 2,
-        axis = v / norm(v),
-        s = sin(half_a),
-        x = s * axis.x,
-        y = s * axis.y,
-        z = s * axis.z,
-        w = cos(half_a),
-        
-        x2 = x + x,
-        y2 = y + y,
-        z2 = z + z,
+        uv = v / norm(v),
+        s = sin(a / 2) * uv,
+        w = sin(a) * uv,
 
-        xx = x * x2,
-        yx = y * x2,
-        yy = y * y2,
-        zx = z * x2,
-        zy = z * y2,
-        zz = z * z2,
-        wx = w * x2,
-        wy = w * y2,
-        wz = w * z2        
+        xx = 2 * s.x ^ 2,
+        yy = 2 * s.y ^ 2,
+        zz = 2 * s.z ^ 2,
+
+        xy = 2 * s.x * s.y,
+        xz = 2 * s.x * s.z,
+        yz = 2 * s.y * s.z
     )
     [
-        [1 - yy - zz, yx - wz, zx + wy, 0],
-        [yx + wz, 1 - xx - zz, zy - wx, 0],
-        [zx - wy, zy + wx, 1 - xx - yy, 0],
-        [0, 0, 0, 1]
+        [1 - yy - zz, xy - w.z, xz + w.y, 0],
+        [xy + w.z, 1 - xx - zz, yz - w.x, 0],
+        [xz - w.y, yz + w.x, 1 - xx - yy, 0],
+        FINAL_ROW
     ];
 
 function __m_rotation_xRotation(a) = 
@@ -37,7 +28,7 @@ function __m_rotation_xRotation(a) =
         [1, 0, 0, 0],
         [0, c, -s, 0],
         [0, s, c, 0],
-        [0, 0, 0, 1]
+        FINAL_ROW
     ];
 
 function __m_rotation_yRotation(a) = 
@@ -46,7 +37,7 @@ function __m_rotation_yRotation(a) =
         [c, 0, s, 0],
         [0, 1, 0, 0],
         [-s, 0, c, 0],
-        [0, 0, 0, 1]
+        FINAL_ROW
     ];    
 
 function __m_rotation_zRotation(a) = 
@@ -55,7 +46,7 @@ function __m_rotation_zRotation(a) =
         [c, -s, 0, 0],
         [s, c, 0, 0],
         [0, 0, 1, 0],
-        [0, 0, 0, 1]
+        FINAL_ROW
     ];    
 
 function __m_rotation_xyz_rotation(a) =
@@ -67,5 +58,5 @@ function _m_rotation_impl(a, v) =
         [1, 0, 0, 0],
         [0, 1, 0, 0],
         [0, 0, 1, 0],
-        [0, 0, 0, 1]
+        FINAL_ROW
     ] : (is_undef(v) ? __m_rotation_xyz_rotation(a) : __m_rotation_q_rotation(a, v));
