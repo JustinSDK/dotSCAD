@@ -100,6 +100,7 @@ include <voxel/test_vx_contour.scad>;
 include <matrix/test_m_scaling.scad>;
 include <matrix/test_m_translation.scad>;
 include <matrix/test_m_determinant.scad>;
+include <matrix/test_m_rotation.scad>;
 
 // Voronoi
 include <voronoi/test_vrn2_cells_space.scad>;
