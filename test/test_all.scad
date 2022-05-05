@@ -29,6 +29,7 @@ include <test_lines_intersection.scad>;
 
 // Path
 include <test_bezier_curve.scad>;
+include <test_bspline_curve.scad>;
 include <test_bezier_smooth.scad>;
 include <test_helix.scad>;
 include <test_golden_spiral.scad>;
