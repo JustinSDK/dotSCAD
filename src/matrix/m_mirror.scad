@@ -11,12 +11,12 @@
 function m_mirror(v) = 
     let(
         nv = v / norm(v),
-        txx = -2* nv.x * nv.x,
-        txy = -2* nv.x * nv.y,
-        txz = -2* nv.x * nv.z,
-        tyy = -2* nv.y * nv.y,
-        tyz = -2* nv.y * nv.z,
-        tzz = -2* nv.z * nv.z
+        txx = -2 * nv.x ^ 2,
+        txy = -2 * nv.x * nv.y,
+        txz = -2 * nv.x * nv.z,
+        tyy = -2 * nv.y ^ 2,
+        tyz = -2 * nv.y * nv.z,
+        tzz = -2 * nv.z ^ 2
     )
     [
         [1 + txx, txy, txz, 0],
