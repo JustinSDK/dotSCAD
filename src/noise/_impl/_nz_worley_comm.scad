@@ -5,16 +5,21 @@ function _manhattan(v) = sum([for(d = v) abs(d)]);
 function _chebyshev(p1, p2) =
     max([for(i = [0:len(p1) - 1]) abs(p1[i] - p2[i])]);
 
-function _nz_worley_classic(p, nbrs, dist) =
+function _nz_worley_euclidean(p, nbrs) =
+    _nz_worley_from(nbrs, [for(nbr = nbrs) norm(nbr - p)]);
+
+function _nz_worley_manhattan(p, nbrs) =
+    _nz_worley_from(nbrs, [for(nbr = nbrs) _manhattan(nbr - p)]);
+
+function _nz_worley_chebyshev(p, nbrs) =
+    _nz_worley_from(nbrs, [for(nbr = nbrs) _chebyshev(nbr, p)]);
+
+function _nz_worley_from(nbrs, dists) = 
     let(
-        dists = dist == "euclidean" ? [for(nbr = nbrs) norm(nbr - p)] :
-                dist == "manhattan" ? [for(nbr = nbrs) _manhattan(nbr - p)]  :
-                dist == "chebyshev" ? [for(nbr = nbrs) _chebyshev(nbr, p)] : 
-                               assert("Unknown distance option"),
         m = min(dists),
         i = search(m, dists)[0]
     )
-    [each nbrs[i], m];
+    [each nbrs[i], m];    
 
 function _nz_worley_border(p, nbrs) = 
     let(

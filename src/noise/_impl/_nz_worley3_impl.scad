@@ -16,5 +16,8 @@ function _nz_worley3(p, seed, grid_w, dist) =
         fcord = [floor(p.x / grid_w), floor(p.y / grid_w), floor(p.z / grid_w)],
         nbrs = _neighbors(fcord, seed, grid_w)
     )
-    dist == "border" ? _nz_worley_border(p, nbrs) :
-                       _nz_worley_classic(p, nbrs, dist);
+    dist == "euclidean" ? _nz_worley_euclidean(p, nbrs) :
+    dist == "manhattan" ? _nz_worley_manhattan(p, nbrs) :
+    dist == "chebyshev" ? _nz_worley_chebyshev(p, nbrs) : 
+    dist == "border"    ? _nz_worley_border(p, nbrs) :
+    assert("Unknown distance option");
