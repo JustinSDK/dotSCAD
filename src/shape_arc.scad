@@ -19,23 +19,28 @@ function shape_arc(radius, angle, width, width_mode = "LINE_CROSS") =
         a_step = 360 / __frags(radius),
         half_a_step = a_step / 2,
         angles = is_num(angle) ? [0, angle] : angle,
-        m = floor(angles[0] / a_step) + 1,
-        n = floor(angles[1] / a_step),
+        a0 = angles[0],
+        a1 = angles[1],
+        m = floor(a0 / a_step) + 1,
+        n = floor(a1 / a_step),
         r_outer = radius + w_offset[0],
         r_inner = radius + w_offset[1],
         points = [
             // outer arc path
-            __ra_to_xy(__edge_r_begin(r_outer, angles[0], a_step, m), angles[0]),
+            __ra_to_xy(__edge_r_begin(r_outer, a0, a_step, m), a0),
             if(m <= n) each [for(i = m; i <= n; i = i + 1)  __ra_to_xy(r_outer, a_step * i)],
-            if(angles[1] != a_step * n) __ra_to_xy(__edge_r_end(r_outer, angles[1], a_step, n), angles[1]),
+            if(a1 != a_step * n) each [
+                __ra_to_xy(__edge_r_end(r_outer, a1, a_step, n), a1),
             // inner arc path
-            if(angles[1] != a_step * n) __ra_to_xy(__edge_r_end(r_inner, angles[1], a_step, n), angles[1]),
+                __ra_to_xy(__edge_r_end(r_inner, a1, a_step, n), a1)
+            ],
+            // inner arc path
             if(m <= n) each [
                 for(i = m; i <= n; i = i + 1)
-                let(idx = (n + (m - i)))
+                let(idx = n + m - i)
                 __ra_to_xy(r_inner, a_step * idx)
 
             ],
-            __ra_to_xy(__edge_r_begin(r_inner, angles[0], a_step, m), angles[0])
+            __ra_to_xy(__edge_r_begin(r_inner, a0, a_step, m), a0)
         ]
     ) points;
