@@ -22,7 +22,7 @@ module ripple_sphere(radius, detail, amplitude, dist = "border", grid_w, seed) {
     f1 = 2;
     f2 = amplitude / 75;
 	noises = [
-        for(p = points / 2)
+        for(p = points / f1)
         let(
             pnz = (p + p * nz_worley3(p.x * f1, p.y * f1, p.z * f1, seed, grid_w, dist)[3] * f2) 
         )
