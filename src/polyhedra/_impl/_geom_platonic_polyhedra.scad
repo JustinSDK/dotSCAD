@@ -14,16 +14,17 @@ function _tri_subdivide_faces(rows) =
 		ri_base = [for(ri = 0, row_2 = rows + 2; ri <= rows; ri = ri + 1) ri * row_2 - ri * (ri + 1) * 0.5]
     )
     [
-		for(ri = [0:rows - 1], base_i = ri_base[ri], base_i1 = ri_base[ri + 1])
-			let(cols = rows - ri - 1)
+		for(ri = [0:rows - 1])
+			let(cols = rows - ri - 1, base_i = ri_base[ri], base_i1 = ri_base[ri + 1])
 			for(ci = [0:cols]) 
+			let(ci_base_i = ci + base_i, ci_base_i1 = ci + base_i1, ci_base_i_1 = ci_base_i + 1)
 			if(ci != cols)
 				each [
-					[ci + 1 + base_i, ci + base_i1, ci + base_i], 
-					[ci + 1 + base_i1, ci + base_i1, ci + 1 + base_i]
+					[ci_base_i_1, ci_base_i1, ci_base_i], 
+					[ci_base_i1 + 1, ci_base_i1, ci_base_i_1]
 				]
 			else 
-				[ci + 1 + base_i, ci + base_i1, ci + base_i]
+				[ci_base_i_1, ci_base_i1, ci_base_i]
 	];
 
 function _subdivide_project(points, faces, radius, detail) = 
