@@ -12,5 +12,4 @@ use <../util/rand.scad>;
 use <_impl/_nz_worley2_impl.scad>;
 
 function nz_worley2(x, y, seed, grid_w = 10, dist = "euclidean") =
-    let(sd = is_undef(seed) ? rand() : seed)
-    _nz_worley2([x, y], sd, grid_w, dist); 
+    _nz_worley2([x, y], seed, grid_w, dist); 

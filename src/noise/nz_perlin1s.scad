@@ -12,5 +12,5 @@ use <../util/rand.scad>;
 use <_impl/_pnoise1_impl.scad>;
 
 function nz_perlin1s(xs, seed) = 
-    let(sd = is_undef(seed) ? rand() : seed)
+    let(sd = is_undef(seed) ? rand() * 1000: seed)
     [for(x = xs) _pnoise1_impl(x, sd)];
