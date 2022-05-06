@@ -12,12 +12,12 @@ use <__comm__/__angy_angz.scad>;
 
 // slow but workable
 module vrn3_space(size, grid_w, seed, spacing = 1) {
-    function _neighbors(fcord, seed, grid_w) = [
+    function _neighbors(fcord, seed, grid_w, gw) = [
         let(range = [-1:1])
         for(z = range, y = range, x = range)    
         let(
             nv = fcord + [x, y, z],
-            sd_base = abs(nv * [1, grid_w, grid_w ^ 2])
+            sd_base = abs(nv * gw)
         )
         (nv + rands(0.1, 0.9, 3, seed_value = seed + sd_base)) * grid_w
     ];    
@@ -39,6 +39,7 @@ module vrn3_space(size, grid_w, seed, spacing = 1) {
     
     sd = is_undef(seed) ? rands(0, 255, 1)[0] : seed; 
 
+    gw = [1, grid_w, grid_w ^ 2];
     // 27-nearest-neighbor cells
     cell_nbrs_lt = [
         for(cz = [0:grid_w:size.z], cy = [0:grid_w:size.y], cx = [0:grid_w:size.x]) 
@@ -46,7 +47,8 @@ module vrn3_space(size, grid_w, seed, spacing = 1) {
             nbrs = _neighbors(
                 [floor(cx / grid_w), floor(cy / grid_w), floor(cz / grid_w)],
                 sd, 
-                grid_w
+                grid_w,
+                gw
             ),
             p = nbrs[13],
             points = concat(
