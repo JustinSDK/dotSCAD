@@ -3,9 +3,9 @@ use <noise/_impl/_pnoise3_impl.scad>;
 use <polyhedra/geom_icosahedron.scad>;
 
 radius = 30;
-detail = 15;
+detail = 20;
 amplitude = 10;
-period = 1;
+period = 2;
 	
 perlin_sphere(radius, detail, amplitude, period);
 
@@ -17,7 +17,7 @@ module perlin_sphere(radius, detail, amplitude, period = 1, seed = undef) {
 	sd = is_undef(seed) ? floor(rand(0, 256)) : seed % 256;
     noisy_points = [
 		for(p = points) 
-		p * (radius + _pnoise3(p.x, p.y, p.z, sd) * amplitude)
+		p * (radius + _pnoise3(p.x * period, p.y * period, p.z * period, sd) * amplitude)
 	];    
 	
 	polyhedron(noisy_points, faces);
