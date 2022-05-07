@@ -21,5 +21,5 @@ function tri_circumcenter(shape_pts) =
    )
    det == 0 ? undef : [
       cross([d1, d0], [v1.y, v0.y]),
-      cross([d0, d1], [v0.x, v1.x]) / det
-   ];
+      cross([d0, d1], [v0.x, v1.x])
+   ] / det;
