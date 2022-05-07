@@ -8,7 +8,7 @@
 *
 **/
 
-use <__comm__/__angy_angz.scad>;
+use <../__comm__/__angy_angz.scad>;
 
 // slow but workable
 module vrn3_space(size, grid_w, seed, spacing = 1) {
