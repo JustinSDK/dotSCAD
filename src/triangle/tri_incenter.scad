@@ -15,13 +15,14 @@ function tri_incenter(shape_pts) =
         pc = shape_pts[2],
 		a = norm(pb - pc),
 		b = norm(pc - pa),
-		c = norm(pa - pb)
+		c = norm(pa - pb),
+        abc = [a, b, c] 
     )
     (len(pa) == 2 ? [
-        (a * pa.x + b * pb.x + c * pc.x), 
-        (a * pa.y + b * pb.y + c * pc.y)
+        abc * [pa.x, pb.x, pc.x], 
+        abc * [pa.y, pb.y, pc.y]
     ] : [
-        (a * pa.x + b * pb.x + c * pc.x), 
-        (a * pa.y + b * pb.y + c * pc.y),
-        (a * pa.z + b * pb.z + c * pc.z)
+        abc * [pa.x, pb.x, pc.x], 
+        abc * [pa.y, pb.y, pc.y],
+        abc * [pa.z, pb.z, pc.z]
     ]) / (a + b + c);

@@ -13,10 +13,9 @@ function _triangulate_snipable(shape_pts, u, v, w, n, indices, epsilon = 0.0001)
     let(
         a = shape_pts[indices[u]],
         b = shape_pts[indices[v]],
-        c = shape_pts[indices[w]],
-        determinant = cross([b.x - a.x, b.y - a.y],  [c.x - a.x, c.y - a.y])
+        c = shape_pts[indices[w]]
     )
-    epsilon <= determinant && _triangulate_snipable_sub(shape_pts, n, u, v, w, a, b, c, indices);
+    epsilon <= cross(b - a, c - a) && _triangulate_snipable_sub(shape_pts, n, u, v, w, a, b, c, indices);
     
 function _triangulate_snipable_sub(shape_pts, n, u, v, w, a, b, c, indices, p = 0) = 
     p == n || (
