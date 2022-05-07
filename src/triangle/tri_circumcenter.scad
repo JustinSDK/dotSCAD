@@ -14,12 +14,12 @@ function tri_circumcenter(shape_pts) =
       p1 = shape_pts[1],
       p2 = shape_pts[2],
       v0 = p1 - p0,
-      d0 = (p1 + p0) / 2 * v0,
       v1 = p2 - p1,  
+      d0 = (p1 + p0) / 2 * v0,
       d1 = (p2 + p1) / 2 * v1,
       det = -cross(v0 , v1)
    )
    det == 0 ? undef : [
-       (d1 * v0.y - d0 * v1.y) / det,
-       (d0 * v1.x - d1 * v0.x) / det
+      cross([d1, d0], [v1.y, v0.y]),
+      cross([d0, d1], [v0.x, v1.x]) / det
    ];
