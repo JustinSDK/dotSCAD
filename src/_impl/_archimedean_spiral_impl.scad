@@ -1,15 +1,15 @@
 use <../util/radians.scad>;
 use <../util/degrees.scad>;
 
-function _radian_step(b, radian, pow2_dist) =
-    radians(acos(1 - pow2_dist / (2 * (b * radian) ^ 2)));
+function _radian_step(r, pow2_dist) =
+    radians(acos(1 - pow2_dist / (2 * r ^ 2)));
 
 function _find_radians(b, pow2_dist, init_radian, n) = 
     [
         for(
             count = 0, radian = init_radian; 
             count < n; 
-            count = count + 1, radian = radian + _radian_step(b, radian, pow2_dist)
+            count = count + 1, radian = radian + _radian_step(b * radian, pow2_dist)
         )
         radian
     ];
