@@ -1,4 +1,5 @@
 use <_tri_delaunay_comm_impl.scad>;
+use <../tri_circumcenter.scad>;
 use <../../util/map/hashmap.scad>;
 use <../../util/map/hashmap_get.scad>;
 use <../../util/map/hashmap_del.scad>;
@@ -12,16 +13,8 @@ function ihash(a, b, c) = [a, b, c] * cof;
 
 function _tri_circumcircle(shape_pts) =
    let(
-      p0 = shape_pts[0],
-      p1 = shape_pts[1],
-      p2 = shape_pts[2],
-      v0 = p1 - p0,
-  	  v1 = p2 - p1,
-      d0 = (p1 + p0) / 2 * v0,
-      d1 = (p2 + p1) / 2 * v1,
-      det = -cross(v0 , v1),
-	  center = [cross([d1, d0], [v1.y, v0.y]), cross([d0, d1], [v0.x, v1.x])] / det,
-	  v = p0 - center
+	  center = tri_circumcenter(shape_pts),
+	  v = shape_pts[0] - center
    )
    [center, v * v];
 
