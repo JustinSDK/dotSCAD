@@ -36,8 +36,7 @@ function _golden_spiral_from_ls_or_eql_to(from, to, point_distance, rt_dir) =
     ); 
 
 function _golden_spiral(from, to, point_distance, rt_dir) = 
-    from <= to ? 
-        _golden_spiral_from_ls_or_eql_to(from, to, point_distance, rt_dir) : [];
+    from > to ? [] : _golden_spiral_from_ls_or_eql_to(from, to, point_distance, rt_dir);
  
 function _golden_spiral_impl(from, to, point_distance, rt_dir) =    
     _golden_spiral(from, to, point_distance, (rt_dir == "CT_CLK" ? 1 : -1));
