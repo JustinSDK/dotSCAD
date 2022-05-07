@@ -19,7 +19,5 @@ function tri_circumcenter(shape_pts) =
       d1 = (p2 + p1) / 2 * v1,
       det = -cross(v0 , v1)
    )
-   det == 0 ? undef : [
-      cross([d1, d0], [v1.y, v0.y]),
-      cross([d0, d1], [v0.x, v1.x])
-   ] / det;
+   assert(det != 0, "shape_pts is not a triangle")
+   [cross([d1, d0], [v1.y, v0.y]), cross([d0, d1], [v0.x, v1.x])] / det;
