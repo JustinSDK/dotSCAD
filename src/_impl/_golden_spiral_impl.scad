@@ -14,15 +14,18 @@ function _golden_spiral_from_ls_or_eql_to(from, to, point_distance, rt_dir) =
         fn = floor(f1 * PI * 2 / point_distance), 
         $fn = fn + 4 - (fn % 4),
         circle_pts = shape_circle(radius = f1, n = $fn / 4 + 1),
+        len_pts_1 = len(circle_pts) - 1,
+        a_step = 360 / $fn * rt_dir,
+        range_i = [0:len_pts_1],
+        as = [each range_i] * a_step,
+        c_idx = rt_dir == 1 ? function(i) i : function(i) len_pts_1 - i,
+
         d_f1f2 = f1 - __fast_fibonacci(from + 1),
         off_p = rt_dir == 1 ? [0, d_f1f2, 0] : [d_f1f2, 0, 0],
         za =  90 * rt_dir,
-        ra = [0, 0, za],
-        len_pts_1 = len(circle_pts) - 1,
-        as = [each [0:len_pts_1]] * (360 / $fn * rt_dir),
-        range = rt_dir == 1 ? [0:len_pts_1] : [len_pts_1:-1:-1]
+        ra = [0, 0, za]
     ) _remove_same_pts(
-        [for(i = range) [circle_pts[i], as[i]]], 
+        [for(i = range_i) [circle_pts[c_idx(i)], as[i]]], 
         [
             for(pt_a = _golden_spiral(from + 1, to, point_distance, rt_dir)) 
             [ 
@@ -33,7 +36,8 @@ function _golden_spiral_from_ls_or_eql_to(from, to, point_distance, rt_dir) =
     ); 
 
 function _golden_spiral(from, to, point_distance, rt_dir) = 
-    from > to ? [] : _golden_spiral_from_ls_or_eql_to(from, to, point_distance, rt_dir);
+    from <= to ? 
+        _golden_spiral_from_ls_or_eql_to(from, to, point_distance, rt_dir) : [];
  
 function _golden_spiral_impl(from, to, point_distance, rt_dir) =    
     _golden_spiral(from, to, point_distance, (rt_dir == "CT_CLK" ? 1 : -1));
