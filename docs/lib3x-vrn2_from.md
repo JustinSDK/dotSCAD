@@ -18,7 +18,7 @@ Create a [Voronoi diagram](https://en.wikipedia.org/wiki/Voronoi_diagram) from a
     points = [for(i = [0:50]) rands(-20, 20, 2)];
 
     vrn2_from(points);
-    translate([60, 0, 0]) 
+    translate([80, 0, 0]) 
         vrn2_from(points, region_type = "circle");
 
 ![vrn2_from](images/lib3x-vrn2_from-1.JPG)
