@@ -27,8 +27,8 @@ function tri_delaunay(points, ret = "TRI_INDICES") =
 		max_y = max(ys),
 		min_y = min(ys),
 		center = [max_x + min_x, max_y + min_y] / 2,
-		width = abs(max_x - center.x) * 4,
-		height = abs(max_y - center.y) * 4,
+		width = (max_x - min_x) * 2,
+		height = (max_y - min_y) * 2,
 		leng_pts = len(points),
         d = _tri_delaunay(
 			    delaunay_init(center, width, height, leng_pts, _indices_hash), 
