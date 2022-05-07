@@ -32,27 +32,29 @@ function _bezier_smooth_corners(pts, round_d, t_step, leng, angle_threshold) =
     let(end_i = leng - 2)
     [
         for(i = 0; i < end_i; i = i + 1) 
-        each angle_between(pts[i] - pts[i + 1], pts[i + 1] - pts[i + 2]) > angle_threshold  ? 
-                _bezier_corner(round_d, t_step, pts[i], pts[i + 1], pts[i + 2]) :
-                [pts[i + 1]]
+        let(pi = pts[i], pi1 = pts[i + 1], pi2 = pts[i + 2])
+        each angle_between(pi - pi1, pi1 - pi2) > angle_threshold ? 
+                _bezier_corner(round_d, t_step, pi, pi1, pi2) : [pi1]
     ];
 
 function _bezier_smooth_impl(path_pts, round_d, t_step, closed, angle_threshold) =
     let(
         pts = len(path_pts[0]) == 3 ? path_pts : [for(p = path_pts) __to3d(p)],
         leng = len(pts),
+        first = pts[0],
         middle_pts = _bezier_smooth_corners(pts, round_d, t_step, leng, angle_threshold),
+        last = pts[leng - 1],
         pth_pts = closed ?
             concat(
                 _bezier_smooth_corners(
-                    [pts[leng - 1], pts[0], pts[1]],
+                    [last, first, pts[1]],
                     round_d, t_step, 3, angle_threshold
                 ),
                 middle_pts,
                 _bezier_smooth_corners(
-                    [pts[leng - 2], pts[leng - 1], pts[0]],
+                    [pts[leng - 2], last, first],
                     round_d, t_step, 3, angle_threshold
                 )  
-            ) : [pts[0], each middle_pts, pts[leng - 1]]
+            ) : [first, each middle_pts, last]
     ) 
     len(path_pts[0]) == 2 ? [for(p = pth_pts) __to2d(p)] : pth_pts;
