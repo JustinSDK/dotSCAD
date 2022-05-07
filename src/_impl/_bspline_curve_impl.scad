@@ -21,18 +21,17 @@ function _bspline_curve_alpha(i, l, t, degree, knots) =
 
 function _bspline_curve_nvi(v, i, l, t, degree, knots, d) =
     let(alpha = _bspline_curve_alpha(i, l, t, degree, knots))
-    [[for(j = 0; j < d + 1; j = j + 1) ((1 - alpha) * v[i - 1][j] + alpha * v[i][j])]];
+    [for(j = 0; j < d + 1; j = j + 1) ((1 - alpha) * v[i - 1][j] + alpha * v[i][j])];
 
 function _bspline_curve_nvl(v, l, s, t, degree, knots, d, i) = 
     i == (s - degree - 1 + l) ? v :
     let(
         leng_v = len(v),
-        nvi = _bspline_curve_nvi(v, i, l, t, degree, knots, d),
-        nv = concat(
-            [for(j = 0; j < i; j = j + 1) v[j]],
-            nvi,
-            [for(j = i + 1; j < leng_v; j = j + 1) v[j]]
-        )
+        nv = [
+            each [for(j = 0; j < i; j = j + 1) v[j]],
+            _bspline_curve_nvi(v, i, l, t, degree, knots, d),
+            each [for(j = i + 1; j < leng_v; j = j + 1) v[j]]
+        ]
     )
     _bspline_curve_nvl(nv, l, s, t, degree, knots, d, i - 1);
 
