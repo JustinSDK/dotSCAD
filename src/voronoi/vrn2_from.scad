@@ -8,11 +8,14 @@
 *
 **/
 
-module vrn2_from(points, spacing = 1, r = 0, delta = 0, chamfer = false, region_type = "square") {
-    xs = [for(p = points) p.x];
-    ys = [for(p = points) abs(p.y)];
+use <../matrix/m_transpose.scad>;
 
-    region_size = max([(max(xs) -  min(xs) / 2), (max(ys) -  min(ys)) / 2]);    
+module vrn2_from(points, spacing = 1, r = 0, delta = 0, chamfer = false, region_type = "square") {
+    transposed = m_transpose(points);
+    xs = transposed[0];
+    ys = transposed[1];
+
+    region_size = max([max(xs) -  min(xs), max(ys) -  min(ys)]);    
     half_region_size = 0.5 * region_size; 
     offset_leng = spacing * 0.5 + half_region_size;
 

@@ -9,6 +9,8 @@
 **/
 
 use <_impl/_tri_delaunay_impl.scad>;
+use <../matrix/m_transpose.scad>;
+
 use <tri_delaunay_shapes.scad>;
 use <tri_delaunay_indices.scad>;
 use <tri_delaunay_voronoi.scad>;
@@ -17,8 +19,9 @@ use <tri_delaunay_voronoi.scad>;
 function tri_delaunay(points, ret = "TRI_INDICES") = 
     let(
 		_indices_hash = function(indices) indices[3],
-		xs = [for(p = points) p.x],
-		ys = [for(p = points) p.y],
+		transposed = m_transpose(points),
+		xs = transposed[0],
+		ys = transposed[1],
 		max_x = max(xs),
 		min_x = min(xs),
 		max_y = max(ys),
