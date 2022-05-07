@@ -13,10 +13,6 @@ use <__comm__/__angy_angz.scad>;
 // slow but workable
 
 module vrn3_from(points, spacing = 1) {
-    xs = [for(p = points) p.x];
-    ys = [for(p = points) abs(p.y)];
-    zs = [for(p = points) abs(p.z)];
-
     space_size = max(max(points) - min(points));
     half_space_size = 0.5 * space_size; 
     double_space_size = 2 * space_size;
