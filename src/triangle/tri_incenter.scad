@@ -18,11 +18,4 @@ function tri_incenter(shape_pts) =
 		c = norm(pa - pb),
         abc = [a, b, c] 
     )
-    (len(pa) == 2 ? [
-        abc * [pa.x, pb.x, pc.x], 
-        abc * [pa.y, pb.y, pc.y]
-    ] : [
-        abc * [pa.x, pb.x, pc.x], 
-        abc * [pa.y, pb.y, pc.y],
-        abc * [pa.z, pb.z, pc.z]
-    ]) / (a + b + c);
+    [for(i = [0:len(pa) - 1]) abc * [pa[i], pb[i], pc[i]]] / (a + b + c);
