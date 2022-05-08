@@ -6,11 +6,8 @@ function _lsystem2_join(str_lt) = _join(str_lt);
 function _lsystem2_derive(axiom, rules, n, rule_prs, seed) = _derive(axiom, rules, n, rule_prs, seed);
 
 function _next_stack(t, code, stack) = 
-    code == "[" ? [t, each stack] :
-    let(leng = len(stack))
-    code == "]" ? 
-            (leng > 1 ? [for(i = [1:leng - 1]) stack[i]] : []) :
-            stack;
+    code == "["                ? [t, stack] :
+    code == "]" && stack != [] ? stack[1] : stack;
 
 function _next_t1(t1, t2, code, stack) = 
     code == "[" ? t1 : 
