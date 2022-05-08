@@ -1,8 +1,7 @@
 use <../../util/rand.scad>;
 
 function _assoc_lookup(array, key) = 
-    let(idx = search([key], array)[0])
-    array[idx][1];
+    array[search([key], array)[0]][1];
 
 // It doesn't use recursion to avoid recursion error. 
 function _join(str_lt) = 
