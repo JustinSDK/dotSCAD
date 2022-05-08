@@ -21,14 +21,18 @@ function _derive1_p(base, rules, rules_pr) =
         v == [] ? c : c_or_v(c, v, rules, rules_pr, len(v))
     ]);
 
-function _derive_p(base, rules, rules_pr, n, i = 0) =
-    i == n ? base : _derive_p(_derive1_p(base, rules, rules_pr), rules, rules_pr, n, i + 1);
-
 function _derive1(base, rules) = _join([
     for(c = base) 
     let(v = _assoc_lookup(rules, c))
     is_undef(v) ? c : v
 ]);
 
-function _derive(base, rules, n, i = 0) =
-    i == n ? base : _derive(_derive1(base, rules), rules, n, i + 1);
+function _derive(base, rules, n, rule_prs) =
+    let(
+        derive = is_undef(rule_prs) ? function(base) _derive1(base, rules) : function(base) _derive1_p(base, rules, rules_pr),
+        bs = [
+            for(i = 0, b = derive(base); i < n; i = i + 1, b = i != n ? derive(b) : undef)
+            b
+        ]
+    )
+    bs[len(bs) - 1];
