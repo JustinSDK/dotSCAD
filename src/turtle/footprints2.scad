@@ -1,3 +1,4 @@
+
 /**
 * footprints2.scad
 *
@@ -8,9 +9,14 @@
 *
 **/ 
 
-use <_impl/_footprints2.scad>;
 use <turtle2d.scad>;
 
 function footprints2(cmds, start = [0, 0]) = 
-    let(t = turtle2d("create", start.x, start.y, 0))
-    [turtle2d("pt", t), each _footprints2(cmds, t, len(cmds))];
+    let(leng = len(cmds))
+    [start, each [
+        for(i = 0, t = turtle2d(cmds[i][0], turtle2d("create", start.x, start.y, 0), cmds[i][1]); 
+            i < leng;
+            i = i + 1,
+            t = turtle2d(cmds[i][0], t, cmds[i][1]))
+        if(cmds[i][0] == "forward") turtle2d("pt", t)
+    ]];
