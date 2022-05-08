@@ -17,7 +17,7 @@ function shape_cyclicpolygon(sides, circle_r, corner_r) =
         corner_a = (180 - frag_a),
         corner_circle_a = 180 - corner_a,
         half_corner_circle_a = corner_circle_a / 2,
-        corner_circle_center = circle_r - corner_r / sin(corner_a / 2),
+        corner_circle_center = [circle_r - corner_r / sin(corner_a / 2), 0],
         first_corner = [
             for(
                 pt = __pie_for_rounding(
@@ -27,7 +27,7 @@ function shape_cyclicpolygon(sides, circle_r, corner_r) =
                     __frags(corner_r) * corner_circle_a / 360
                 )
             )
-            [pt.x + corner_circle_center, pt.y]
+            pt + corner_circle_center
         ]
 
     )
