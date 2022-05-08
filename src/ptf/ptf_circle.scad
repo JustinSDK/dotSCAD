@@ -10,8 +10,7 @@
 
 function ptf_circle(size, point) =
     let(
-        p_offset = -size / 2,
-        p = point + p_offset,
+        p = point - size / 2,
         leng = norm(p)
     )
     leng == 0 ? [0, 0] :
