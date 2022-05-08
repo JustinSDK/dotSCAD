@@ -59,17 +59,19 @@ function _lines(t, codes, angle, leng, next_t2, turtle_p) =
     [
         for(
             i = 0,
+            code = codes[i],
             stack = [],            
             t1 = t, 
-            t2 = next_t2(t1, codes[i], angle, leng);
+            t2 = next_t2(t1, code, angle, leng);
             
             i < codes_leng; 
             
-            t1 = _next_t1(t1, t2, codes[i], stack), 
-            stack = _next_stack(t1, codes[i], stack),
+            t1 = _next_t1(t1, t2, code, stack), 
+            stack = _next_stack(t1, code, stack),
             i = i + 1, 
-            t2 = next_t2(t1, codes[i], angle, leng)
+            code = codes[i],
+            t2 = next_t2(t1, code, angle, leng)
         )
-        if(codes[i] == "F")
+        if(code == "F")
         [turtle_p(t1), turtle_p(t2)]
     ];
