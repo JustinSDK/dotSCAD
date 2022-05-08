@@ -4,32 +4,22 @@ use <../../__comm__/__to_ang_vect.scad>;
 
 function _q_rotate_p_3d(p, a, v) = 
     let(
-        half_a = a / 2,
-        axis = v / norm(v),
-        s = sin(half_a),
-        x = s * axis.x,
-        y = s * axis.y,
-        z = s * axis.z,
-        w = cos(half_a),
-        
-        x2 = x + x,
-        y2 = y + y,
-        z2 = z + z,
+        uv = v / norm(v),
+        s = sin(a / 2) * uv,
+        w = sin(a) * uv,
 
-        xx = x * x2,
-        yx = y * x2,
-        yy = y * y2,
-        zx = z * x2,
-        zy = z * y2,
-        zz = z * z2,
-        wx = w * x2,
-        wy = w * y2,
-        wz = w * z2        
+        xx = 2 * s.x ^ 2,
+        yy = 2 * s.y ^ 2,
+        zz = 2 * s.z ^ 2,
+
+        xy = 2 * s.x * s.y,
+        xz = 2 * s.x * s.z,
+        yz = 2 * s.y * s.z
     )
     p * [
-        [1 - yy - zz, yx + wz, zx - wy],
-        [yx - wz, 1 - xx - zz, zy + wx],
-        [zx + wy, zy - wx, 1 - xx - yy]
+        [1 - yy - zz, xy - w.z, xz + w.y],
+        [xy + w.z, 1 - xx - zz, yz - w.x],
+        [xz - w.y, yz + w.x, 1 - xx - yy]
     ];
 
 function _rotx(pt, a) = 
