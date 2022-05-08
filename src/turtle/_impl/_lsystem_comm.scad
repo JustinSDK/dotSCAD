@@ -28,7 +28,7 @@ function _derive1(base, rules) = _join([
 
 function _derive(base, rules, n, rule_prs) =
     let(
-        derive = is_undef(rule_prs) ? function(base) _derive1(base, rules) : function(base) _derive1_p(base, rules, rules_pr),
+        derive = is_undef(rule_prs) ? function(base) _derive1(base, rules) : function(base) _derive1_p(base, rules, rule_prs),
         bs = [
             for(i = 0, b = derive(base); i < n; i = i + 1, b = i != n ? derive(b) : undef)
             b
