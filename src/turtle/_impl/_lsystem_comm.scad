@@ -70,7 +70,6 @@ function _lines(t, codes, angle, leng, next_t2, turtle_p) =
             i = i + 1, 
             t2 = next_t2(t1, codes[i], angle, leng)
         )
-        let(p1 = turtle_p(t1), p2 = turtle_p(t2))
-        if(p1 != p2 && search(codes[i], "F+-") != [])
-        [p1, p2]
+        if(codes[i] == "F")
+        [turtle_p(t1), turtle_p(t2)]
     ];
