@@ -11,9 +11,9 @@
 use <_impl/_lsystem3_impl.scad>;
 use <turtle3d.scad>;
 
-function lsystem3(axiom, rules, n, angle, leng = 1, heading = 0, start = [0, 0, 0], forward_chars = "F", rule_prs) =
+function lsystem3(axiom, rules, n, angle, leng = 1, heading = 0, start = [0, 0, 0], forward_chars = "F", rule_prs, seed) =
     let(
-        derived = _lsystem3_derive(axiom, rules, n, rule_prs),
+        derived = _lsystem3_derive(axiom, rules, n, rule_prs, seed),
         codes = forward_chars == "F" ? derived : _lsystem3_join([
             for(c = derived)
             let(idx = search(c, forward_chars))

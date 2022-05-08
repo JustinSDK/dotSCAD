@@ -25,6 +25,8 @@ new:
 
 - m_replace?
 
+- lsystem2, lsystem3, add seed param
+
 deprecated:
     rails2sections: use m_transpose
     has

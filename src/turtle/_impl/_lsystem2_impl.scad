@@ -3,7 +3,7 @@ use <../turtle2d.scad>;
 
 function _lsystem2_join(str_lt) = _join(str_lt);
 
-function _lsystem2_derive(axiom, rules, n, rule_prs) = _derive(axiom, rules, n, rule_prs);
+function _lsystem2_derive(axiom, rules, n, rule_prs, seed) = _derive(axiom, rules, n, rule_prs, seed);
 
 function _next_stack(t, code, stack) = 
     code == "[" ? [t, each stack] :
