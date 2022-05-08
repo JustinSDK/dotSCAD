@@ -1,5 +1,21 @@
 use <../../util/rand.scad>;
 
+function _codes(axiom, rules, n, forward_chars, rule_prs, seed) = 
+    let(derived = _derive(axiom, rules, n, rule_prs, seed))
+    forward_chars == "F" ? derived : _join([
+        for(c = derived)
+        let(idx = search(c, forward_chars))
+        idx == [] ? c : "F"
+    ]);
+
+function _next_stack(t, code, stack) = 
+    code == "["                ? [t, stack] :
+    code == "]" && stack != [] ? stack[1] : stack;
+
+function _next_t1(t1, t2, code, stack) = 
+    code == "[" ? t1 : 
+    code == "]" ? stack[0] : t2; 
+
 function _assoc_lookup(array, key) = 
     array[search([key], array)[0]][1];
 
@@ -36,3 +52,25 @@ function _derive(base, rules, n, rule_prs, seed) =
         ]
     )
     bs[len(bs) - 1];
+
+// It doesn't use recursion to avoid recursion error.    
+function _lines(t, codes, angle, leng, next_t2, turtle_p) = 
+    let(codes_leng = len(codes))
+    [
+        for(
+            i = 0,
+            stack = [],            
+            t1 = t, 
+            t2 = next_t2(t1, codes[i], angle, leng);
+            
+            i < codes_leng; 
+            
+            t1 = _next_t1(t1, t2, codes[i], stack), 
+            stack = _next_stack(t1, codes[i], stack),
+            i = i + 1, 
+            t2 = next_t2(t1, codes[i], angle, leng)
+        )
+        let(p1 = turtle_p(t1), p2 = turtle_p(t2))
+        if(search(codes[i], "F+-") != [] && p1 != p2)
+        [p1, p2]
+    ];
