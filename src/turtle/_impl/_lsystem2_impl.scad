@@ -42,6 +42,7 @@ function _lines(t, codes, angle, leng) =
             i = i + 1, 
             t2 = _next_t2(t1, codes[i], angle, leng)
         )
-        if(search(codes[i], "F+-") != [])
-            [turtle2d("pt", t1), turtle2d("pt", t2)]
+        let(p1 = turtle2d("pt", t1), p2 = turtle2d("pt", t2))
+        if(search(codes[i], "F+-") != [] && p1 != p2)
+         [p1, p2]
     ];
