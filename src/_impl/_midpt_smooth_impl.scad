@@ -8,7 +8,5 @@ function _midpt_smooth_sub(points, iend, closed) =
     ];
 
 function _midpt_smooth_impl(points, n, closed) =
-    let(
-        smoothed = _midpt_smooth_sub(points, len(points) - 1, closed)
-    )
+    let(smoothed = _midpt_smooth_sub(points, len(points) - 1, closed))
     n == 1 ? smoothed : _midpt_smooth_impl(smoothed, n - 1, closed);

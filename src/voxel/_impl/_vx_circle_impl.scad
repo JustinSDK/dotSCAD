@@ -1,15 +1,15 @@
-function _vx_circle_y(f, y) = f >= 0 ? y - 1 : y;
-function _vx_circle_ddf_y(f, ddf_y) = f >= 0 ? ddf_y + 2 : ddf_y;
-function _vx_circle_f(f, ddf_y) = f >= 0 ? f + ddf_y : f;
+function _y(f, y) = f >= 0 ? y - 1 : y;
+function _ddf_y(f, ddf_y) = f >= 0 ? ddf_y + 2 : ddf_y;
+function _f(f, ddf_y) = f >= 0 ? f + ddf_y : f;
 
 function _vx_circle(f, ddf_x, ddf_y, x, y, filled) = 
     x >= y ? [] : 
     let(
-        ny = _vx_circle_y(f, y),
-        nddf_y = _vx_circle_ddf_y(f, ddf_y),
+        ny = _y(f, y),
+        nddf_y = _ddf_y(f, ddf_y),
         nx = x + 1,
         nddf_x = ddf_x + 2,
-        nf = _vx_circle_f(f, ddf_y) + nddf_x
+        nf = _f(f, ddf_y) + nddf_x
     )
     concat(
         filled ? 

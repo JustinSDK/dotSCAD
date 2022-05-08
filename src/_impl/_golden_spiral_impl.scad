@@ -8,7 +8,7 @@ function _remove_same_pts(pts1, pts2) =
         pts1[len(pts1) - 1] == pts2[0] ? [for(i = [1:len(pts2) - 1]) pts2[i]] : pts2
     );
 
-function _golden_spiral_from_ls_or_eql_to(from, to, point_distance, rt_dir) = 
+function _from_ls_or_eql_to(from, to, point_distance, rt_dir) = 
     let(
         f1 = __fast_fibonacci(from),
         fn = floor(f1 * PI * 2 / point_distance), 
@@ -36,7 +36,7 @@ function _golden_spiral_from_ls_or_eql_to(from, to, point_distance, rt_dir) =
     ); 
 
 function _golden_spiral(from, to, point_distance, rt_dir) = 
-    from > to ? [] : _golden_spiral_from_ls_or_eql_to(from, to, point_distance, rt_dir);
+    from > to ? [] : _from_ls_or_eql_to(from, to, point_distance, rt_dir);
  
 function _golden_spiral_impl(from, to, point_distance, rt_dir) =    
     _golden_spiral(from, to, point_distance, (rt_dir == "CT_CLK" ? 1 : -1));

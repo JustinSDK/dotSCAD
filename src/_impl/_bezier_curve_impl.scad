@@ -12,12 +12,12 @@ function _combi(n, k) =
     n < 4 ? bi_coef[n][k] : 
     k == 0 ? 1 : (_combi(n, k - 1) * (n - k + 1) / k);
         
-function bezier_curve_component(t, points, n, i) = 
+function _component(t, points, n, i) = 
     let(one_t = 1 - t)
     sum([for(j = [0:n]) _combi(n, j) * points[j][i] * one_t ^ (n - j) * t ^ j]);
          
-function _bezier_curve_coordinate(range, t, points, n) = 
-    [for(i = range) bezier_curve_component(t, points, n, i)];
+function _coordinate(range, t, points, n) = 
+    [for(i = range) _component(t, points, n, i)];
 
 function _bezier_curve_impl(t_step, points) = 
     let(
@@ -26,6 +26,6 @@ function _bezier_curve_impl(t_step, points) =
         range = [0:len(points[0]) - 1]
     ) 
     [
-        each [for(t = 0; t < t_end; t = t + 1) _bezier_curve_coordinate(range, t * t_step, points, n)], 
-        _bezier_curve_coordinate(range, 1, points, n)
+        each [for(t = 0; t < t_end; t = t + 1) _coordinate(range, t * t_step, points, n)], 
+        _coordinate(range, 1, points, n)
     ];

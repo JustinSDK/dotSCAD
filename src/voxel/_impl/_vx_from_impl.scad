@@ -1,4 +1,4 @@
-function _vx_from_row(r_count, row_bits, width, height, center, invert) =
+function _row(r_count, row_bits, width, height, center, invert) =
     let(
         half_w = width / 2,
         half_h = height / 2,
@@ -17,5 +17,5 @@ function _vx_from_impl(binaries, center, invert) =
     )
     [
         for(i = height - 1; i > -1; i = i - 1) 
-        each _vx_from_row(height - i - 1, binaries[i], width, height, center, invert)
+        each _row(height - i - 1, binaries[i], width, height, center, invert)
     ];

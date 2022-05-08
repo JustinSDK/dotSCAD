@@ -3,12 +3,12 @@ use <../../__comm__/__to3d.scad>;
 use <../../__comm__/__to2d.scad>;
     
 // x-dominant
-function _vx_line_xdominant_y(y, yd, sy) = yd >= 0 ? y + sy : y;
-function _vx_line_xdominant_yd(yd, ax, ay) = (yd >= 0 ? yd - ax : yd) + ay;
-function _vx_line_xdominant_z(z, zd, sz) = zd >= 0 ? z + sz : z;
-function _vx_line_xdominant_zd(zd, ax, az) = (zd >= 0 ? zd - ax : zd) + az;
+function _xdominant_y(y, yd, sy) = yd >= 0 ? y + sy : y;
+function _xdominant_yd(yd, ax, ay) = (yd >= 0 ? yd - ax : yd) + ay;
+function _xdominant_z(z, zd, sz) = zd >= 0 ? z + sz : z;
+function _xdominant_zd(zd, ax, az) = (zd >= 0 ? zd - ax : zd) + az;
 
-function _vx_line_xdominant(start, end, a, s) = 
+function _xdominant(start, end, a, s) = 
     let(     
         shrx = floor(a.x / 2),
         yd = a.y - shrx,
@@ -16,40 +16,40 @@ function _vx_line_xdominant(start, end, a, s) =
     )
     [
         start,
-        each _vx_line_xdominant_sub(
+        each _xdominant_sub(
             start.x + s.x, 
-            _vx_line_xdominant_y(start.y, yd, s.y), 
-            _vx_line_xdominant_z(start.z, zd, s.z), 
+            _xdominant_y(start.y, yd, s.y), 
+            _xdominant_z(start.z, zd, s.z), 
             end.x, 
             a, 
             s, 
-            _vx_line_xdominant_yd(yd, a.x, a.y), 
-            _vx_line_xdominant_zd(zd, a.x, a.z)
+            _xdominant_yd(yd, a.x, a.y), 
+            _xdominant_zd(zd, a.x, a.z)
         )
     ];
 
-function _vx_line_xdominant_sub(x, y, z, endx, a, s, yd, zd) = 
+function _xdominant_sub(x, y, z, endx, a, s, yd, zd) = 
     x == endx ? [] : [
         [x, y, z], 
-        each _vx_line_xdominant_sub(
+        each _xdominant_sub(
             x + s.x, 
-            _vx_line_xdominant_y(y, yd, s.y), 
-            _vx_line_xdominant_z(z, zd, s.z), 
+            _xdominant_y(y, yd, s.y), 
+            _xdominant_z(z, zd, s.z), 
             endx, 
             a, 
             s, 
-            _vx_line_xdominant_yd(yd, a.x, a.y), 
-            _vx_line_xdominant_zd(zd, a.x, a.z)
+            _xdominant_yd(yd, a.x, a.y), 
+            _xdominant_zd(zd, a.x, a.z)
         )
     ];
         
 // y-dominant
-function _vx_line_ydominant_x(x, xd, sx) = xd >= 0 ? x + sx : x;
-function _vx_line_ydominant_xd(xd, ax, ay) = (xd >= 0 ? xd - ay : xd) + ax;
-function _vx_line_ydominant_z(z, zd, sz) = zd >= 0 ? z + sz : z;
-function _vx_line_ydominant_zd(zd, ay, az) = (zd >= 0 ? zd - ay : zd) + az;
+function _ydominant_x(x, xd, sx) = xd >= 0 ? x + sx : x;
+function _ydominant_xd(xd, ax, ay) = (xd >= 0 ? xd - ay : xd) + ax;
+function _ydominant_z(z, zd, sz) = zd >= 0 ? z + sz : z;
+function _ydominant_zd(zd, ay, az) = (zd >= 0 ? zd - ay : zd) + az;
         
-function _vx_line_ydominant(start, end, a, s) = 
+function _ydominant(start, end, a, s) = 
     let(   
         shry = floor(a.y / 2),
         xd = a.x - shry,
@@ -57,41 +57,41 @@ function _vx_line_ydominant(start, end, a, s) =
     )
     [
         start,
-        each _vx_line_ydominant_sub(
-            _vx_line_ydominant_x(start.x, xd, s.x), 
+        each _ydominant_sub(
+            _ydominant_x(start.x, xd, s.x), 
             start.y + s.y,
-            _vx_line_ydominant_z(start.z, zd, s.z), 
+            _ydominant_z(start.z, zd, s.z), 
             end.y, 
             a, 
             s, 
-            _vx_line_ydominant_xd(xd, a.x, a.y), 
-            _vx_line_ydominant_zd(zd, a.y, a.z)
+            _ydominant_xd(xd, a.x, a.y), 
+            _ydominant_zd(zd, a.y, a.z)
         )
     ];
 
-function _vx_line_ydominant_sub(x, y, z, endy, a, s, xd, zd) = 
+function _ydominant_sub(x, y, z, endy, a, s, xd, zd) = 
     y == endy ? [] : [
         [x, y, z],
-        each _vx_line_ydominant_sub(
-            _vx_line_ydominant_x(x, xd, s.x), 
+        each _ydominant_sub(
+            _ydominant_x(x, xd, s.x), 
             y + s.y,
-            _vx_line_ydominant_z(z, zd, s.z), 
+            _ydominant_z(z, zd, s.z), 
             endy, 
             a, 
             s, 
-            _vx_line_ydominant_xd(xd, a.x, a.y), 
-            _vx_line_ydominant_zd(zd, a.y, a.z)
+            _ydominant_xd(xd, a.x, a.y), 
+            _ydominant_zd(zd, a.y, a.z)
         )
     ];
 
 // z-dominant
-function _vx_line_zdominant_x(x, xd, sx) = xd >= 0 ? x + sx : x;
-function _vx_line_zdominant_xd(xd, ax, az) = (xd >= 0 ? xd - az : xd) + ax;
+function _zdominant_x(x, xd, sx) = xd >= 0 ? x + sx : x;
+function _zdominant_xd(xd, ax, az) = (xd >= 0 ? xd - az : xd) + ax;
 
-function _vx_line_zdominant_y(y, yd, sy) = yd >= 0 ? y + sy : y;
-function _vx_line_zdominant_yd(yd, ay, az) = (yd >= 0 ? yd - az : yd) + ay;
+function _zdominant_y(y, yd, sy) = yd >= 0 ? y + sy : y;
+function _zdominant_yd(yd, ay, az) = (yd >= 0 ? yd - az : yd) + ay;
         
-function _vx_line_zdominant(start, end, a, s) = 
+function _zdominant(start, end, a, s) = 
     let(   
         shrz = floor(a.z / 2),
         xd = a.x - shrz,
@@ -99,30 +99,30 @@ function _vx_line_zdominant(start, end, a, s) =
     )
     [
         start, 
-        each _vx_line_zdominant_sub(
-            _vx_line_zdominant_x(start.x, xd, s.x), 
-            _vx_line_zdominant_y(start.y, yd, s.y), 
+        each _zdominant_sub(
+            _zdominant_x(start.x, xd, s.x), 
+            _zdominant_y(start.y, yd, s.y), 
             start.z + s.z,
             end.z, 
             a, 
             s, 
-            _vx_line_zdominant_xd(xd, a.x, a.z), 
-            _vx_line_zdominant_yd(yd, a.y, a.z)
+            _zdominant_xd(xd, a.x, a.z), 
+            _zdominant_yd(yd, a.y, a.z)
         )
     ];
 
-function _vx_line_zdominant_sub(x, y, z, endz, a, s, xd, yd) = 
+function _zdominant_sub(x, y, z, endz, a, s, xd, yd) = 
     z == endz ? [] : [
         [x, y, z],
-        each _vx_line_zdominant_sub(
-            _vx_line_zdominant_x(x, xd, s.x), 
-            _vx_line_zdominant_y(y, yd, s.y), 
+        each _zdominant_sub(
+            _zdominant_x(x, xd, s.x), 
+            _zdominant_y(y, yd, s.y), 
             z + s.z,
             endz, 
             a, 
             s, 
-            _vx_line_zdominant_xd(xd, a.x, a.z), 
-            _vx_line_zdominant_yd(yd, a.y, a.z)
+            _zdominant_xd(xd, a.x, a.z), 
+            _zdominant_yd(yd, a.y, a.z)
         )
     ];
 
@@ -134,8 +134,8 @@ function _vx_line_impl(p1, p2) =
         dt = end_pt - start_pt,
         a = [for(c = dt) floor(abs(c) * 2)],
         s = [for(c = dt) sign(c)],
-        points = a.x >= max(a.y, a.z) ? _vx_line_xdominant(start_pt, end_pt, a, s) : 
-                 a.y >= max(a.x, a.z) ? _vx_line_ydominant(start_pt, end_pt, a, s) :
-                                        _vx_line_zdominant(start_pt, end_pt, a, s)
+        points = a.x >= max(a.y, a.z) ? _xdominant(start_pt, end_pt, a, s) : 
+                 a.y >= max(a.x, a.z) ? _ydominant(start_pt, end_pt, a, s) :
+                                        _zdominant(start_pt, end_pt, a, s)
     )   
     is_2d ? [for(pt = points) __to2d(pt)] : points;

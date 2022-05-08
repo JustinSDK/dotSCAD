@@ -1,25 +1,25 @@
 use <../__comm__/__lines_from.scad>;
 use <../__comm__/__line_intersection.scad>;
     
-function _bijection_outward_edge_normal(edge) =     
+function _outward_edge_normal(edge) =     
     let(
         v = edge[1] - edge[0],
         nv = v / norm(v)
     )
     [nv.y, -nv.x];
 
-function _bijection_offset_edge(edge, dxy) = edge + [dxy, dxy];
+function _edge(edge, dxy) = edge + [dxy, dxy];
     
-function _bijection__bijection_offset_edges(edges, d) = 
+function _offset_edges(edges, d) = 
     [ 
         for(edge = edges)
-        _bijection_offset_edge(edge, _bijection_outward_edge_normal(edge) * d)
+        _edge(edge, _outward_edge_normal(edge) * d)
     ];
 
 function _bijection_offset_impl(pts, d, epsilon) = 
     let(
         es = __lines_from(pts, true), 
-        offset_es = _bijection__bijection_offset_edges(es, d),
+        offset_es = _offset_edges(es, d),
         leng_minus_one = len(offset_es) - 1,
         last_p = __line_intersection2(offset_es[leng_minus_one], offset_es[0], epsilon)
     )

@@ -1,4 +1,4 @@
-function _vx_cylinder_vx_circle(radius, filled, thickness) = 
+function _vx_circle(radius, filled, thickness) = 
     let(range = [-radius: radius - 1], powr = radius ^ 2)
     filled ? [
         for(y = range, x = range)    
@@ -15,22 +15,22 @@ function _vx_cylinder_vx_circle(radius, filled, thickness) =
         if(pow_leng < powr && pow_leng > ishell) v    
     ];
 
-function _vx_cylinder_diff_r(r, h, filled, thickness) =
+function _diff_r(r, h, filled, thickness) =
     let(
         r1 = r[0],
         r2 = r[1]
     )
-    r1 == r2 ? _vx_cylinder_same_r(r1, h, filled, thickness) :
+    r1 == r2 ? _same_r(r1, h, filled, thickness) :
     let(dr = (r2 - r1) / (h - 1))
     [
         for(i = 0; i < h; i = i + 1)
         let(r = round(r1 + dr * i))
-            for(pt = _vx_cylinder_vx_circle(r, filled, thickness))
+            for(pt = _vx_circle(r, filled, thickness))
             [each pt, i]
     ]; 
 
-function _vx_cylinder_same_r(r, h, filled, thickness) =
-    let(c = _vx_cylinder_vx_circle(r, filled, thickness))
+function _same_r(r, h, filled, thickness) =
+    let(c = _vx_circle(r, filled, thickness))
     [
         for(i = 0; i < h; i = i + 1)
             for(pt = c) [each pt, i]
@@ -38,5 +38,5 @@ function _vx_cylinder_same_r(r, h, filled, thickness) =
 
 function _vx_cylinder_impl(r, h, filled, thickness) =
     is_num(r) ? 
-        _vx_cylinder_same_r(r, h, filled, thickness) :
-        _vx_cylinder_diff_r(r, h, filled, thickness); 
+        _same_r(r, h, filled, thickness) :
+        _diff_r(r, h, filled, thickness); 

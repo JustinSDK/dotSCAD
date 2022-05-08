@@ -1,4 +1,4 @@
-function _vx_gray_row(r_count, row_bits, width, height, center, invert, normalize) =
+function _row(r_count, row_bits, width, height, center, invert, normalize) =
     let(
         half_w = width / 2,
         half_h = height / 2,
@@ -25,5 +25,5 @@ function _vx_gray_impl(levels, center, invert, normalize) =
     )
     [
         for(i = height - 1; i > -1; i = i - 1) 
-        each _vx_gray_row(height - i - 1, levels[i], width, height, center, invert, normalize)
+        each _row(height - i - 1, levels[i], width, height, center, invert, normalize)
     ];

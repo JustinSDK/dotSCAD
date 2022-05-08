@@ -2,7 +2,7 @@ use <_pnoise_comm.scad>;
 use <../../util/lerp.scad>;
 
 _signs = [[1, 1, 0], [-1, 1, 0], [1, -1, 0], [-1, -1, 0], [1, 0, 1], [-1, 0, 1], [1, 0, -1], [-1, 0, -1], [0, 1, 1], [0, -1, 1], [0, 1, -1], [0, -1, -1], [1, 1, 0], [0, -1, 1], [-1, 1, 0], [0, -1, -1]];
-function _pnoise3_grad3(hashvalue, x, y, z) = _signs[hashvalue % 16] * [x, y, z];
+function _grad3(hashvalue, x, y, z) = _signs[hashvalue % 16] * [x, y, z];
 
 function _pnoise3(x, y, z, seed) =
     let(
@@ -34,24 +34,24 @@ function _pnoise3(x, y, z, seed) =
         bbb = rands(0, 256, 1, rnd6 + 1)[0],
 
         x1 = lerp(
-            _pnoise3_grad3(aaa, xf, yf, zf),
-            _pnoise3_grad3(baa, xf - 1, yf, zf),
+            _grad3(aaa, xf, yf, zf),
+            _grad3(baa, xf - 1, yf, zf),
             u
         ),
         x2 = lerp(
-            _pnoise3_grad3(aba, xf, yf - 1, zf),
-            _pnoise3_grad3(bba, xf - 1, yf - 1, zf),
+            _grad3(aba, xf, yf - 1, zf),
+            _grad3(bba, xf - 1, yf - 1, zf),
             u
         ),
         y1 = lerp(x1, x2, v),
         x3 = lerp(
-            _pnoise3_grad3(aab, xf, yf, zf - 1),
-            _pnoise3_grad3(bab, xf - 1, yf, zf - 1),
+            _grad3(aab, xf, yf, zf - 1),
+            _grad3(bab, xf - 1, yf, zf - 1),
             u
         ),
         x4 = lerp(
-            _pnoise3_grad3(abb, xf, yf - 1, zf - 1),
-            _pnoise3_grad3(bbb, xf - 1, yf - 1, zf - 1),
+            _grad3(abb, xf, yf - 1, zf - 1),
+            _grad3(bbb, xf - 1, yf - 1, zf - 1),
             u
         ),
         y2 = lerp(x3, x4, v)      

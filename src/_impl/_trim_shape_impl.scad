@@ -2,13 +2,13 @@ use <../__comm__/__line_intersection.scad>;
 use <../__comm__/__in_line.scad>;
 use <../__comm__/__lines_from.scad>;
 
-function _trim_shape_any_intersection_sub(lines, line, lines_leng, i, epsilon) =
+function _any_intersection_sub(lines, line, lines_leng, i, epsilon) =
     let(p = __line_intersection2(lines[i], line, epsilon))
-    (p != [] && __in_line(line, p, epsilon) && __in_line(lines[i], p, epsilon)) ? [i, p] : _trim_shape_any_intersection(lines, line, lines_leng, i + 1, epsilon);
+    (p != [] && __in_line(line, p, epsilon) && __in_line(lines[i], p, epsilon)) ? [i, p] : _any_intersection(lines, line, lines_leng, i + 1, epsilon);
 
 // return [idx, [x, y]] or []
-function _trim_shape_any_intersection(lines, line, lines_leng, i, epsilon) =
-    i == lines_leng ? [] : _trim_shape_any_intersection_sub(lines, line, lines_leng, i, epsilon);
+function _any_intersection(lines, line, lines_leng, i, epsilon) =
+    i == lines_leng ? [] : _any_intersection_sub(lines, line, lines_leng, i, epsilon);
 
 function _trim_sub(lines, leng, epsilon) = 
     let(
@@ -18,25 +18,25 @@ function _trim_sub(lines, leng, epsilon) =
         lines_from_next2 = [for(j = 2; j < leng; j = j + 1) lines[j]],
         current_p = current_line[0],
         leng_lines_from_next2 = len(lines_from_next2),
-        inter_p = _trim_shape_any_intersection(lines_from_next2, current_line, leng_lines_from_next2, 0, epsilon)
+        inter_p = _any_intersection(lines_from_next2, current_line, leng_lines_from_next2, 0, epsilon)
     )
     // no intersecting pt, collect current_p and trim remain lines
-    inter_p == [] ? [current_p, each _trim_shape_trim_lines(lines_from_next, epsilon)] : 
+    inter_p == [] ? [current_p, each _trim_lines(lines_from_next, epsilon)] : 
     // collect current_p, intersecting pt and the last pt
     leng == 3 || (inter_p.x == (leng_lines_from_next2 - 1)) ? [current_p, inter_p.y, lines[leng - 1]] : 
         // collect current_p, intersecting pt and trim remain lines
-        [current_p, inter_p.y, each _trim_shape_trim_lines([for(i = inter_p.x + 1; i < leng_lines_from_next2; i = i + 1) lines_from_next2[i]], epsilon)];
+        [current_p, inter_p.y, each _trim_lines([for(i = inter_p.x + 1; i < leng_lines_from_next2; i = i + 1) lines_from_next2[i]], epsilon)];
     
-function _trim_shape_trim_lines(lines, epsilon) = 
+function _trim_lines(lines, epsilon) = 
     let(leng = len(lines))
-    leng > 2 ? _trim_sub(lines, leng, epsilon) : _trim_shape_collect_pts_from(lines, leng);
+    leng > 2 ? _trim_sub(lines, leng, epsilon) : _collect_pts_from(lines, leng);
 
-function _trim_shape_collect_pts_from(lines, leng) = 
+function _collect_pts_from(lines, leng) = 
     [each [for(line = lines) line[0]], lines[leng - 1][1]];
 
 function _trim_shape_impl(shape_pts, from, to, epsilon) = 
     let(
         pts = [for(i = from; i <= to; i = i + 1) shape_pts[i]],
-        trimmed = _trim_shape_trim_lines(__lines_from(pts), epsilon)
+        trimmed = _trim_lines(__lines_from(pts), epsilon)
     )
     len(shape_pts) == len(trimmed) ? trimmed : _trim_shape_impl(trimmed, 0, len(trimmed) - 1, epsilon);
