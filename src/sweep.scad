@@ -9,7 +9,6 @@
 **/
 
 use <util/reverse.scad>;
-use <util/slice.scad>;
 
 module sweep(sections, triangles = "SOLID") {
 
