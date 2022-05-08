@@ -36,7 +36,7 @@ function plant(n = 4, angle = 30, leng = 1, heading = 0, start = [0, 0, 0]) =
             ["B", "A/B"]
         ]
     )
-    lsystem3(axiom, rules, n, angle, leng, heading, start, forward_chars = "AB", rules_pr = [1, .5, .5]);
+    lsystem3(axiom, rules, n, angle, leng, heading, start, forward_chars = "AB", rule_prs = [1, .5, .5]);
 
 function hilbert_curve(n = 3, angle = 90, leng = 1, heading = 0, start = [0, 0, 0]) = 
     let(
