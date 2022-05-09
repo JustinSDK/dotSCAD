@@ -8,4 +8,4 @@
 *
 **/ 
 
-function polar_coordinate(point) = [norm(point), atan2(point.y, point.x)]; // r, theta 
+function polar_coordinate(point) = point == [0, 0] ? point : [norm(point), atan2(point.y, point.x)]; // r, theta 
