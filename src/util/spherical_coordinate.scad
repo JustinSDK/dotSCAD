@@ -10,7 +10,7 @@
 
 function spherical_coordinate(point) = 
     // mathematics [r, theta, phi]
-    point == [0, 0, 0] ? [0, 0, 0] :
+    point == [0, 0, 0] ? point :
     let(r = norm(point))
     [
         r, 
