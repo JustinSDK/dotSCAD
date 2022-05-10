@@ -1,0 +1,19 @@
+/**
+* bsearch.scad
+*
+* @copyright Justin Lin, 2020
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib3x-bsearch.html
+*
+**/
+
+use <_impl/_binary_search_impl.scad>;
+
+function binary_search(sorted, target) = 
+    _binary_search_impl(
+        sorted, 
+        is_function(target) ? target : function(elem) elem == target ? 0 : elem > target ? 1 : -1, 
+        0, 
+        len(sorted) - 1
+    );

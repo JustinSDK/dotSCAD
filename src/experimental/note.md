@@ -15,7 +15,7 @@ new:
 - t3d - roll/pitch/forward
 - polyline_join: doc multi-childs
 
-- util/count
+- util/count、binary_search
 - lemniscate_curve?
 - perlin_sphere?
 
