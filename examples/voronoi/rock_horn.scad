@@ -2,8 +2,7 @@ use <golden_spiral.scad>;
 use <sweep.scad>;
 use <noise/nz_worley3.scad>;
 use <shape_circle.scad>;
-use <ptf/ptf_rotate.scad>;
-
+use <matrix/m_rotation.scad>;
 
 quarter = 1;
 detail = 4;
@@ -53,7 +52,7 @@ module rock_horn(quarter, detail, seed) {
         ]
     ] / 4;
    
-    rx = [90, 0, 0];
+    mrx = m_rotation([90, 0, 0]);
     sweep(
         [
             for(i = [0:leng - 1])
@@ -61,14 +60,15 @@ module rock_horn(quarter, detail, seed) {
                 section = sections[i],
                 pt_angle = pts_angles[i],
                 off = [pt_angle[0].x, pt_angle[0].y, 0],
-                a = pt_angle[1]
+                a = pt_angle[1],
+                m = m_rotation(a) * mrx
             )
             [
                 for(p = section)
-                off + ptf_rotate(ptf_rotate(p, rx), a)
+                let(rotated = m * [each p, 1])
+                off + [rotated.x, rotated.y, rotated.z]
             ]
         ], 
         "HOLLOW"
     );
 }
-
