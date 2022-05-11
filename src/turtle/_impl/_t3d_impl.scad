@@ -1,5 +1,3 @@
-use <../../matrix/m_rotation.scad>;
-
 function _create(pt, unit_vts) = 
     [
         is_undef(pt) ? [0, 0, 0] : pt, 
@@ -27,22 +25,40 @@ function _zu_forward(turtle, leng) = _create(
     _unit_vts(turtle)
 );
 
+function _q_rotation(a, v) = 
+    let(
+        uv = v / norm(v),
+        s = sin(a / 2) * uv,
+        w = sin(a) * uv,
+
+        xx = 2 * s.x ^ 2,
+        yy = 2 * s.y ^ 2,
+        zz = 2 * s.z ^ 2,
+
+        xy = 2 * s.x * s.y,
+        xz = 2 * s.x * s.z,
+        yz = 2 * s.y * s.z
+    )
+    [
+        [1 - yy - zz, xy - w.z, xz + w.y],
+        [xy + w.z, 1 - xx - zz, yz - w.x],
+        [xz - w.y, yz + w.x, 1 - xx - yy]
+    ];
+    
 // turn the turtle around the x'-axis
 // return a new unit vector
 function _xu_turn(turtle, a) = 
     let(
         unit_vts = _unit_vts(turtle),
         xu = unit_vts.x,
-        m = m_rotation(a, xu),
-        nyu = m * [each unit_vts.y, 1],
-        nzu = m * [each unit_vts.z, 1]
+        m = _q_rotation(a, xu)
     )
     _create(
         _pt(turtle),
         [
             xu, 
-            [nyu.x, nyu.y, nyu.z], 
-            [nzu.x, nzu.y, nzu.z]
+            m * unit_vts.y, 
+            m * unit_vts.z
         ]
     );
 
@@ -52,16 +68,14 @@ function _yu_turn(turtle, a) =
     let(
         unit_vts = _unit_vts(turtle),
         yu = unit_vts.y,
-        m = m_rotation(a, yu),
-        nxu = m * [each unit_vts.x, 1],
-        nzu = m * [each unit_vts.z, 1]
+        m = _q_rotation(a, yu)
     )
     _create(
         _pt(turtle),
         [
-            [nxu.x, nxu.y, nxu.z], 
+            m * unit_vts.x, 
             yu, 
-            [nzu.x, nzu.y, nzu.z]
+            m * unit_vts.z
         ]
     );
 
@@ -71,15 +85,13 @@ function _zu_turn(turtle, a) =
     let(
         unit_vts = _unit_vts(turtle),
         zu = unit_vts.z,
-        m = m_rotation(a, zu),
-        nxu = m * [each unit_vts.x, 1],
-        nyu = m * [each unit_vts.y, 1]
+        m = _q_rotation(a, zu)
     )
     _create(
         _pt(turtle),
         [
-            [nxu.x, nxu.y, nxu.z], 
-            [nyu.x, nyu.y, nyu.z],
+            m * unit_vts.x, 
+            m * unit_vts.y,
             zu
         ]
     );
