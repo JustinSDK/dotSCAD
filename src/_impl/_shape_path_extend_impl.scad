@@ -1,5 +1,4 @@
 use <../__comm__/__to3d.scad>;
-use <../ptf/ptf_rotate.scad>;
 use <../util/reverse.scad>;
 
 function __polytransversals(transversals) =
