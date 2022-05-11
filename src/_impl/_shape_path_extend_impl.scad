@@ -19,8 +19,8 @@ function _az(p1, p2) = let(v = p2 - p1) -90 + atan2(v.y, v.x);
 function _rz_matrix(p1, p2) = 
     let(v = p2 - p1, a = -90 + atan2(v.y, v.x), c = cos(a), s = sin(a)) 
     [
-        [ c, s],
-        [-s, c],
+        [c, -s],
+        [s,  c],
     ];  
 
 function _first_stroke(stroke_pts, path_pts) =
@@ -29,7 +29,7 @@ function _first_stroke(stroke_pts, path_pts) =
         p2 = path_pts[1],
         m = _rz_matrix(p1, p2)
     )
-    [for(p = stroke_pts) p * m + p1];    
+    [for(p = stroke_pts) m * p + p1];    
 
 function _stroke(stroke_pts, p1, p2, scale_step, i) =
     let(
@@ -38,7 +38,7 @@ function _stroke(stroke_pts, p1, p2, scale_step, i) =
         s = 1 + scale_step * i,
         off_p = [0, leng]
     )
-    [for(p = stroke_pts * s) (p + off_p) * m + p1];
+    [for(p = stroke_pts * s) m * (p + off_p) + p1];
     
 function _inner(stroke_pts, path_pts, leng_path_pts, scale_step) =
     [
