@@ -10,7 +10,6 @@
 
 use <_impl/_sf_square_surfaces.scad>;
 use <sf_solidify.scad>;
-use <../ptf/ptf_rotate.scad>;
 
 module sf_curve(levels, curve_path, thickness, depth, invert = false, convexity = 1) {
     rows = len(levels);
@@ -29,10 +28,19 @@ module sf_curve(levels, curve_path, thickness, depth, invert = false, convexity 
             curve_path[idx > to ? to : idx]
         ];
 
+    function __ry_matrix(a) = 
+        let(c = cos(a), s = sin(a))
+        [
+            [c, 0, -s],
+            [0, 1,  0],
+            [s, 0,  c]
+        ];    
+        
+    m = __ry_matrix(-90);
     normal_vts = [
 		for(i = [0:columns - 1]) 
 		let(v = pts[i + 1] - pts[i])
-		ptf_rotate(v / norm(v), [0, -90, 0])
+        v / norm(v) * m
 	];
 		
 	dp = is_undef(depth) ? thickness / 2 : depth;
