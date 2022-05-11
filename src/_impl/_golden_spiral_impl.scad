@@ -8,6 +8,13 @@ function _remove_same_pts(pts1, pts2) =
         pts1[len(pts1) - 1] == pts2[0] ? [for(i = [1:len(pts2) - 1]) pts2[i]] : pts2
     );
 
+function _rz_matrix(a) = 
+    let(c = cos(a), s = sin(a)) 
+    [
+        [ c, s],
+        [-s, c],
+    ];  
+    
 function _from_ls_or_eql_to(from, to, point_distance, rt_dir) = 
     let(
         f1 = __fast_fibonacci(from),
@@ -23,13 +30,13 @@ function _from_ls_or_eql_to(from, to, point_distance, rt_dir) =
         d_f1f2 = f1 - __fast_fibonacci(from + 1),
         off_p = rt_dir == 1 ? [0, d_f1f2, 0] : [d_f1f2, 0, 0],
         za =  90 * rt_dir,
-        ra = [0, 0, za]
+        m = _rz_matrix(za)
     ) _remove_same_pts(
         [for(i = range_i) [circle_pts[c_idx(i)], as[i]]], 
         [
             for(pt_a = _golden_spiral(from + 1, to, point_distance, rt_dir)) 
             [ 
-                ptf_rotate(pt_a[0], ra) + off_p, 
+                pt_a[0] * m + off_p, 
                 pt_a[1] + za
             ]
         ] 
