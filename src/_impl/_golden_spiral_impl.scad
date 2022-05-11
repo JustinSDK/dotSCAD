@@ -10,8 +10,8 @@ function _remove_same_pts(pts1, pts2) =
 function _rz_matrix(a) = 
     let(c = cos(a), s = sin(a)) 
     [
-        [ c, s],
-        [-s, c],
+        [c, -s],
+        [s,  c],
     ];  
     
 function _from_ls_or_eql_to(from, to, point_distance, rt_dir) = 
@@ -35,7 +35,7 @@ function _from_ls_or_eql_to(from, to, point_distance, rt_dir) =
         [
             for(pt_a = _golden_spiral(from + 1, to, point_distance, rt_dir)) 
             [ 
-                pt_a[0] * m + off_p, 
+                m * pt_a[0] + off_p, 
                 pt_a[1] + za
             ]
         ] 
