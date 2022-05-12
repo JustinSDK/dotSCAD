@@ -19,24 +19,13 @@ function _cells_lt_before_intersection(shape, size, points, pt, half_region_size
             let(
                 v = p - pt,
                 nv = v / norm(v),
-                offset = (pt + p) / 2 - nv * half_region_size,
+                off = (pt + p) / 2 - nv * half_region_size,
                 cosa = nv.x,
                 sina = nv.y,
-                m = [
-                        [1, 0, offset.x],
-                        [0, 1, offset.y],
-                        [0, 0, 1]
-                    ] 
-                    * 
-                    [
-                        [cosa, -sina, 0],
-                        [sina, cosa, 0],
-                        [0, 0, 1]    
-                    ]   
+                m = [[cosa, -sina], [sina, cosa]] 
             )
             [
                 for(sp = shape)
-                let(transformed = m * [each sp, 1])
-                [transformed.x, transformed.y]
+                m * sp + off
             ]
     ];
