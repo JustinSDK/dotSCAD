@@ -62,6 +62,7 @@ include <test_sphere_spiral_extrude.scad>;
 include <test_path_extrude.scad>;
 
 // Utilities
+
 include <util/test_lerp.scad>;
 include <util/test_sub_str.scad>;
 include <util/test_split_str.scad>;
@@ -82,6 +83,10 @@ include <util/set/test_hashset.scad>;
 include <util/map/test_hashmap.scad>;
 include <util/test_sorted.scad>;
 include <util/test_binary_search.scad>;
+include <util/test_contains.scad>;
+include <util/test_flat.scad>;
+include <util/test_sum.scad>;
+include <util/test_swap.scad>;
 
 // Voxel
 include <voxel/test_vx_bezier.scad>;
