@@ -45,7 +45,11 @@ function tri_delaunay_voronoi(d) =
 		]),
 		cells = [
 		    for(i = [4:coords_leng - 1])
-			reverse(indicesOfCell(connectedTris[i], triIndices)) // counter-clockwise
+			indicesOfCell(connectedTris[i], triIndices) 
 		]
     )
-	[for(cell = cells) [for(i = cell) vertices[i]]];
+	[
+		for(cell = cells) 
+		// counter-clockwise
+		[for(i = len(cell) - 1; i > -1; i = i - 1) vertices[cell[i]]] 
+	];
