@@ -1,32 +1,25 @@
 
 use <_face_normal.scad>;
 use <../util/sum.scad>;
+use <../util/contains.scad>;
 
-function connected_faces(leng_pts, faces) =
-	let(cnt_faces = [for(i = [0:leng_pts - 1]) []])
-	_connected_faces(faces, len(faces), leng_pts, cnt_faces);
-	
-function _connected_faces(faces, leng, leng_pts, cnt_faces, i = 0) = 
-	i == leng ? cnt_faces :
-	let(
-		n_cnt_faces = [
-		    for(k = [0:leng_pts - 1])
-            search([k], faces[i])[0] != [] ? [each cnt_faces[k], faces[i]] : cnt_faces[k]
-		]
-	)
-	_connected_faces(faces, leng, leng_pts, n_cnt_faces, i + 1);
-	
 function _vertex_normals(points, faces) = 
     let(
 	    leng_pts = len(points),
-	    cnn_faces = connected_faces(leng_pts, faces)
+		range = [0:leng_pts - 1],
+	    cnn_indices_faces = [
+			for(face = faces, i = range)
+			if(contains(face, i)) [i, face]
+		]
 	)
 	[
 		for(i = [0:leng_pts - 1])
 		let(
+			indices = search(i, cnn_indices_faces, num_returns_per_match = 0),
+			connected_faces = [for(j = indices) cnn_indices_faces[j][1]],
 			face_normals = [
-				for(face = cnn_faces[i])
-					_face_normal([for(i = face) points[i]])
+				for(face = connected_faces)
+					_face_normal([for(k = face) points[k]])
 			]
 		)
 		sum(face_normals) / len(face_normals)
