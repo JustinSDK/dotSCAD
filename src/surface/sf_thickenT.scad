@@ -22,7 +22,7 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH", con
 
     leng_pts = len(points);
     range = [0:leng_pts - 1];
-    cnn_indices_faces = [
+    conn_indices_tris = [
         for(tri = real_triangles, i = range)
         if(contains(tri, i)) [i, tri]
     ];
@@ -32,8 +32,8 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH", con
 
         mid_pt = sorted(points)[leng_pts / 2];
         mid_i = search([mid_pt], points)[0];
-        indices = search(mid_i, cnn_indices_faces, num_returns_per_match = 0);
-		connected_tris = [for(j = indices) cnn_indices_faces[j][1]];
+        indices = search(mid_i, conn_indices_tris, num_returns_per_match = 0);
+		connected_tris = [for(j = indices) conn_indices_tris[j][1]];
         nvs = [for(tri = connected_tris) _face_normal([for(i = [2, 1, 0]) points[tri[i]]])]; // OpenSCAD requires clockwise
         nv = sum(nvs) / len(nvs);   
         
@@ -51,8 +51,8 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH", con
         vertex_normals = [
             for(i = [0:leng_pts - 1])
             let(
-                indices = search(i, cnn_indices_faces, num_returns_per_match = 0),
-                connected_tris = [for(j = indices) cnn_indices_faces[j][1]],
+                indices = search(i, conn_indices_tris, num_returns_per_match = 0),
+                connected_tris = [for(j = indices) conn_indices_tris[j][1]],
                 face_normals = [ 
                     for(tri = connected_tris)
                     _face_normal([for(k = [2, 1, 0]) points[tri[k]]]) // OpenSCAD requires clockwise
