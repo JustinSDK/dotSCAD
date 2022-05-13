@@ -24,36 +24,24 @@ function tri_delaunay_voronoi(d) =
 		tris = hashmap_keys(delaunay_triangles(d)),
         // circumcircle centers
         vertices = [for(t = tris) hashmap_get(circles, t, hash = _indices_hash)[0]],
-		i_range = [0:len(tris) - 1],
 		i_rts = [
-			for(i = i_range)
-			let(
-				tris_i = tris[i],
-				a = tris_i[0],
-				b = tris_i[1],
-				c = tris_i[2],
-			    rt1 = [b, c, a],
-			    rt2 = [c, a, b],
-			    rt3 = [a, b, c]
-			) 
-			each [[a, rt1], [b, rt2], [c, rt3]]
+			for(tri = tris)
+			let(a = tri[0], b = tri[1], c = tri[2]) 
+			each [[a, [b, c, a]], [b, [c, a, b]], [c, tri]]
 		],
 		connectedTris = [
 		    for(i = [0:coords_leng - 1])
-			[for(i_rt = i_rts) if(i_rt[0] == i) i_rt[1]]
+			[for(j = search(i, i_rts, num_returns_per_match=0)) i_rts[j][1]]
 		],
 		triIndices = hashmap([
-			for(i = i_range)
+			for(i = [0:len(tris) - 1])
 			let(
-				tris_i = tris[i],
-				a = tris_i[0],
-				b = tris_i[1],
-				c = tris_i[2],
-			    rt1 = [b, c, a],
-			    rt2 = [c, a, b],
-			    rt3 = [a, b, c]
+				tri = tris[i],
+				a = tri[0],
+				b = tri[1],
+				c = tri[2]
 			) 
-			each [[rt1, i], [rt2, i], [rt3, i]]
+			each [[[b, c, a], i], [[c, a, b], i], [tri, i]]
 		]),
 		cells = [
 		    for(i = [4:coords_leng - 1])
