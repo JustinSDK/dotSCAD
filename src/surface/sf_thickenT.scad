@@ -20,30 +20,23 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH", con
     // triangles : counter-clockwise
     real_triangles = is_undef(triangles) ? tri_delaunay([for(p = points) __to2d(p)]) : triangles;
 
-	function connected_tris(leng_pts, triangles) =
-		let(leng = len(triangles))
-		_connected_tris(triangles, leng, leng_pts, []);
-		
-	function _connected_tris(triangles, leng, leng_pts, cnt_tris, i = 0) = 
-		i == leng ? cnt_tris :
-		let(
-			tri = triangles[i], 
-            n_cnt_tris = [
-                for(k = [0:leng_pts - 1])
-                contains(tri, k) ? [each cnt_tris[k], tri] : cnt_tris[k]
-            ]
-		)
-		_connected_tris(triangles, leng, leng_pts, n_cnt_tris, i + 1);
-
     leng_pts = len(points);
-    cnn_tris = connected_tris(leng_pts, real_triangles);
+    range = [0:leng_pts - 1];
+    cnn_indices_faces = [
+        for(tri = real_triangles, i = range)
+        if(contains(tri, i)) [i, tri]
+    ];
 
     if(is_list(direction)) {
         dir_v = direction / norm(direction);
-        mid = sorted(points)[leng_pts / 2];
-        tris = cnn_tris[search([mid], points)[0]];
-        nvs = [for(tri = tris) _face_normal([for(i = [2, 1, 0]) points[tri[i]]])]; // OpenSCAD requires clockwise
+
+        mid_pt = sorted(points)[leng_pts / 2];
+        mid_i = search([mid_pt], points)[0];
+        indices = search(mid_i, cnn_indices_faces, num_returns_per_match = 0);
+		connected_tris = [for(j = indices) cnn_indices_faces[j][1]];
+        nvs = [for(tri = connected_tris) _face_normal([for(i = [2, 1, 0]) points[tri[i]]])]; // OpenSCAD requires clockwise
         nv = sum(nvs) / len(nvs);   
+        
         off = dir_v * thickness;
         pts = [for(p = points) p + off];
 
@@ -58,12 +51,14 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH", con
         vertex_normals = [
             for(i = [0:leng_pts - 1])
             let(
-                normals = [
-                    for(tri = cnn_tris[i])
-                    _face_normal([for(j = [2, 1, 0]) points[tri[j]]]) // OpenSCAD requires clockwise
+                indices = search(i, cnn_indices_faces, num_returns_per_match = 0),
+                connected_tris = [for(j = indices) cnn_indices_faces[j][1]],
+                face_normals = [ 
+                    for(tri = connected_tris)
+                    _face_normal([for(k = [2, 1, 0]) points[tri[k]]]) // OpenSCAD requires clockwise
                 ]
             )
-            sum(normals) / len(normals)
+            sum(face_normals) / len(face_normals)
         ];
 
         if(direction == "BOTH") {
