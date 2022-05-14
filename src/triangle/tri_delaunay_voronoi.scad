@@ -27,7 +27,7 @@ function tri_delaunay_voronoi(d) =
 		i_rts = [
 			for(tri = tris)
 			let(a = tri[0], b = tri[1], c = tri[2]) 
-			each [[a, [b, c, a]], [b, [c, a, b]], [c, tri]]
+			each [[a, [b, c, a]], [b, [c, a, b]], [c, [a, b, c]]]
 		],
 		connectedTris = [
 		    for(i = [0:coords_leng - 1])
@@ -41,7 +41,7 @@ function tri_delaunay_voronoi(d) =
 				b = tri[1],
 				c = tri[2]
 			) 
-			each [[[b, c, a], i], [[c, a, b], i], [tri, i]]
+			each [[[b, c, a], i], [[c, a, b], i], [[a, b, c], i]]
 		]),
 		cells = [
 		    for(i = [4:coords_leng - 1])
