@@ -21,7 +21,6 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH", con
     real_triangles = is_undef(triangles) ? tri_delaunay([for(p = points) __to2d(p)]) : triangles;
 
     leng_pts = len(points);
-    range = [0:leng_pts - 1];
     conn_indices_tris = [for(tri = real_triangles, i = tri) [i, tri]];
 
     if(is_list(direction)) {
