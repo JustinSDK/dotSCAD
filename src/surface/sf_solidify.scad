@@ -18,7 +18,8 @@ module sf_solidify(surface1, surface2, slicing = "SLASH", convexity = 1) {
     // dimensionality reduction 
     indices = [
         for(y = [0:rows - 1])
-        [for(x = [0:columns - 1]) y * columns + x]
+        let(y_cols = y * columns)
+        [for(x = [0:columns - 1]) y_cols + x]
     ]; 
 
     flatted_sf1 = flat(surface1);
@@ -30,53 +31,64 @@ module sf_solidify(surface1, surface2, slicing = "SLASH", convexity = 1) {
     xi_range = [0:columns - 2];
 
     sf1_tri_faces1 = slicing == "SLASH" ? [
-        for(yi = yi_range, xi = xi_range) 
-        [
-            indices[yi][xi],
-            indices[yi + 1][xi + 1],
-            indices[yi][xi + 1]
-        ]    
+        for(yi = yi_range) 
+        let(indices_yi = indices[yi])
+            for(xi = xi_range) 
+            let(xi_1 = xi + 1)
+            [
+                indices_yi[xi],
+                indices[yi + 1][xi_1],
+                indices_yi[xi_1]
+            ]    
     ] : [
-        for(yi = yi_range, xi = xi_range)
-        [
-            indices[yi][xi],
-            dim_reduce(xi, yi + 1, columns),
-            dim_reduce(xi + 1, yi, columns)
-        ]    
+        for(yi = yi_range)
+            let(indices_yi = indices[yi])
+            for(xi = xi_range)
+            [
+                indices_yi[xi],
+                indices[yi + 1][xi],
+                indices_yi[xi + 1]
+            ]    
     ];
 
     sf1_tri_faces2 = slicing == "SLASH" ? [
-        for(yi = yi_range, xi = xi_range) 
-        [
-            indices[yi][xi],
-            indices[yi + 1][xi],
-            indices[yi + 1][xi + 1]
-        ]    
+        for(yi = yi_range)
+        let(indices_yi = indices[yi], indices_yi_1 = indices[yi + 1])
+            for(xi = xi_range) 
+            [
+                indices_yi[xi],
+                indices_yi_1[xi],
+                indices_yi_1[xi + 1]
+            ]    
     ] : [
-        for(yi = yi_range, xi = xi_range) 
-        [
-            indices[yi + 1][xi],
-            indices[yi + 1][xi + 1],
-            indices[yi][xi + 1]
-        ]    
+        for(yi = yi_range) 
+        let(indices_yi = indices[yi], indices_yi_1 = indices[yi + 1])
+            for(xi = xi_range)
+            let(xi_1 = xi + 1)
+            [
+                indices_yi_1[xi],
+                indices_yi_1[xi_1],
+                indices_yi[xi_1]
+            ]    
     ];        
 
     offset_v = [leng_pts, leng_pts, leng_pts];
     sf2_tri_faces1 = [
         for(face = sf1_tri_faces1)
-            reverse(face) + offset_v
+        reverse(face) + offset_v
     ];
 
     sf2_tri_faces2 = [
         for(face = sf1_tri_faces2)
-            reverse(face) + offset_v
+        reverse(face) + offset_v
     ];
     
+    indices_0 = indices[0];
     side_faces1 = [
         for(xi = xi_range)
             let(
-                idx1 = indices[0][xi],
-                idx2 = indices[0][xi + 1]
+                idx1 = indices_0[xi],
+                idx2 = indices_0[xi + 1]
             )
             [
                 idx1,
@@ -86,12 +98,12 @@ module sf_solidify(surface1, surface2, slicing = "SLASH", convexity = 1) {
             ]
     ];
 
+    last_xi = columns - 1;
     side_faces2 = [
         for(yi = yi_range)
             let(
-                xi = columns - 1,
-                idx1 = indices[yi][xi],
-                idx2 = indices[yi + 1][xi]
+                idx1 = indices[yi][last_xi],
+                idx2 = indices[yi + 1][last_xi]
             )
             [ 
                 idx1,
@@ -101,12 +113,12 @@ module sf_solidify(surface1, surface2, slicing = "SLASH", convexity = 1) {
             ]
     ];                  
     
+    indices_last = indices[rows - 1];
     side_faces3 = [
         for(xi = xi_range)
             let(
-                yi = rows - 1,
-                idx1 = indices[yi][xi], 
-                idx2 = indices[yi][xi + 1]
+                idx1 = indices_last[xi], 
+                idx2 = indices_last[xi + 1]
             )
             [
                 idx2,
