@@ -45,9 +45,10 @@ module sf_thicken(points, thickness, direction = "BOTH", convexity = 1) {
 
     leng_points = len(points);
     leng_point0 = len(points[0]);
+    x_range = [0:leng_point0 - 1];
     if(is_list(direction)) {
         dir_v = direction / norm(direction);
-        dir_vs = [for(x = [0:leng_point0 - 1]) dir_v];
+        dir_vs = [for(x = x_range) dir_v];
         surface_another = points + thickness * [
             for(y = [0:leng_points - 1])
             dir_vs
@@ -67,7 +68,7 @@ module sf_thicken(points, thickness, direction = "BOTH", convexity = 1) {
     else {
         vertex_normals = [
             for(y = [0:leng_points - 1])
-            vertex_normal_xs(points, [0:leng_point0 - 1], y)
+            vertex_normal_xs(points, x_range, y)
         ];        
         
         if(direction == "BOTH") {
