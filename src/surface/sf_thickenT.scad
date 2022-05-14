@@ -22,10 +22,7 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH", con
 
     leng_pts = len(points);
     range = [0:leng_pts - 1];
-    conn_indices_tris = [
-        for(tri = real_triangles, i = range)
-        if(contains(tri, i)) [i, tri]
-    ];
+    conn_indices_tris = [for(tri = real_triangles, i = tri) [i, tri]];
 
     if(is_list(direction)) {
         dir_v = direction / norm(direction);
