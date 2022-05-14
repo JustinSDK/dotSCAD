@@ -14,24 +14,34 @@ use <sf_solidify.scad>;
 
 module sf_thicken(points, thickness, direction = "BOTH", convexity = 1) {
     // clockwise
-    dirs1 = [[1, 0], [0, -1], [-1, 0], [0, 1]];
-    dirs2 = [[0, -1], [-1, 0], [0, 1], [1, 0]];
-    function vertex_normal(sf, xi, yi) =    
-        let(
-            normals = [
-                for(i = [0:3])
+    dirs = [
+        [[ 1,  0], [ 0, -1]],
+        [[ 0, -1], [-1,  0]],
+        [[-1,  0], [ 0,  1]],
+        [[ 0,  1], [ 1,  0]]
+    ];
+    function vertex_normal_xs(sf, x_range, yi) = 
+        let(sfyi = sf[yi])
+        [
+            for(xi = x_range) 
+            let(v0 = sfyi[xi])
+            if(!is_undef(v0))
                 let(
-                    v0 = sf[yi][xi], 
-                    dir1 = dirs1[i],
-                    dir2 = dirs2[i],
-                    v1 = sf[dir1.y + yi][dir1.x + xi], 
-                    v2 = sf[dir2.y + yi][dir2.x + xi]
+                    xyi = [xi, yi],
+                    normals = [
+                        for(dir = dirs)
+                        let(
+                            p1 = dir[0] + xyi,
+                            v1 = sf[p1.y][p1.x], 
+                            p2 = dir[1] + xyi,
+                            v2 = sf[p2.y][p2.x]
+                        )
+                        if(!(is_undef(v1) || is_undef(v2))) 
+                        _face_normal([v0, v1, v2])
+                    ]
                 )
-                if(!(is_undef(v0) || is_undef(v1) || is_undef(v2))) 
-                _face_normal([v0, v1, v2])
-            ]
-        )
-        sum(normals) / len(normals);
+                sum(normals) / len(normals)
+        ];
 
     leng_points = len(points);
     leng_point0 = len(points[0]);
@@ -57,10 +67,7 @@ module sf_thicken(points, thickness, direction = "BOTH", convexity = 1) {
     else {
         vertex_normals = [
             for(y = [0:leng_points - 1])
-            [
-                for(x = [0:leng_point0 - 1])
-                    vertex_normal(points, x, y)
-            ]
+            vertex_normal_xs(points, [0:leng_point0 - 1], y)
         ];        
         
         if(direction == "BOTH") {
