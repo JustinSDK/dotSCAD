@@ -4,12 +4,9 @@ use <../util/sum.scad>;
 use <../util/contains.scad>;
 
 function _vertex_normals(points, faces) = 
-    let(
-	    leng_pts = len(points),
-	    cnn_indices_faces = [for(face = faces, i = face) [i, face]]
-	)
+    let(cnn_indices_faces = [for(face = faces, i = face) [i, face]])
 	[
-		for(i = [0:leng_pts - 1])
+		for(i = [0:len(points) - 1])
 		let(
 			indices = search(i, cnn_indices_faces, num_returns_per_match = 0),
 			face_normals = [
