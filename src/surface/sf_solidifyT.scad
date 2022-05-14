@@ -27,9 +27,17 @@ module sf_solidifyT(points1, points2, triangles, convexity = 1) {
 		let(
 			edge = tri_edges[i], 
 			pair = [edge[1], edge[0]],
-			de_edges = [for(e = edges) if(e != pair) e]
+			indices = search([pair], edges, , num_returns_per_match=0)[0]
+			
 		)
-		_de_pairs(tri_edges, leng, len(de_edges) == len(edges) ? [each edges, edge] : de_edges, i + 1);
+		_de_pairs(
+			tri_edges, 
+			leng, 
+			indices == [] ? 
+			    [each edges, edge] : 
+				[for(j = [0:len(edges) - 1]) if(search(j, indices) == []) edges[j]], 
+			i + 1
+		);
 			
 	tri_edges = [
 		for(tri = tris)
