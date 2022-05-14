@@ -34,7 +34,7 @@ module sf_ring(levels, radius, thickness, depth, angle = 360, twist = 0, invert 
                     for(row = surface[0]) 
                     [
                         for(p = row) 
-                            ptf_ring(size, [p[0], p[1], -p[2]], radius, angle, twist)
+                            ptf_ring(size, [p.x, p.y, -p.z], radius, angle, twist)
                     ]
                 ],
                 convexity = convexity
