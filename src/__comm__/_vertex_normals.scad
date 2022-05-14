@@ -6,7 +6,6 @@ use <../util/contains.scad>;
 function _vertex_normals(points, faces) = 
     let(
 	    leng_pts = len(points),
-		range = [0:leng_pts - 1],
 	    cnn_indices_faces = [for(face = faces, i = face) [i, face]]
 	)
 	[
