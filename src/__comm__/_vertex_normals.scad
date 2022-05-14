@@ -13,10 +13,9 @@ function _vertex_normals(points, faces) =
 		for(i = [0:leng_pts - 1])
 		let(
 			indices = search(i, cnn_indices_faces, num_returns_per_match = 0),
-			connected_faces = [for(j = indices) cnn_indices_faces[j][1]],
 			face_normals = [
-				for(face = connected_faces)
-					_face_normal([for(k = face) points[k]])
+				for(j = indices)
+					_face_normal([for(k = cnn_indices_faces[j][1]) points[k]])
 			]
 		)
 		sum(face_normals) / len(face_normals)
