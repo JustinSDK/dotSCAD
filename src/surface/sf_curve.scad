@@ -23,8 +23,8 @@ module sf_curve(levels, curve_path, thickness, depth, invert = false, convexity 
         // resample 
         let(diff = leng_curve_path / columns)
         [
-            for(i = [0:columns]) 
-            let(idx = floor(diff * i))
+            for(i = [each [0:columns]] * diff) 
+            let(idx = floor(i))
             curve_path[idx > to ? to : idx]
         ];
 
@@ -48,10 +48,11 @@ module sf_curve(levels, curve_path, thickness, depth, invert = false, convexity 
 	
     function _curve(s) = [
 		for(y = [0:rows - 1])
+        let(off = [0, y, 0], sy = s[y])
 		[
 			for(x = [0:columns - 1]) 
 			let(p = (pts[x] + pts[x + 1]) / 2)
-			p + [0, y, 0] + normal_vts[x] * s[y][x][2]
+			p + off + normal_vts[x] *sy[x][2]
 		]
 	];
 	
