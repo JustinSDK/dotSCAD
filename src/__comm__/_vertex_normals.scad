@@ -7,10 +7,7 @@ function _vertex_normals(points, faces) =
     let(
 	    leng_pts = len(points),
 		range = [0:leng_pts - 1],
-	    cnn_indices_faces = [
-			for(face = faces, i = range)
-			if(contains(face, i)) [i, face]
-		]
+	    cnn_indices_faces = [for(face = faces, i = face) [i, face]]
 	)
 	[
 		for(i = [0:leng_pts - 1])
