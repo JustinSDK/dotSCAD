@@ -32,9 +32,9 @@ function mz_hamiltonian(rows, columns, start = [0, 0], init_cells, seed) =
             [
                 for(row = cells, cell = row)
                 let(type = mz_square_get(cell, "t"))
-                each if(type == "TOP_WALL") _mz_hamiltonian_top(cell.x, cell.y) else
-                     if(type == "RIGHT_WALL") _mz_hamiltonian_right(cell.x, cell.y) else
-                     if(type == "TOP_RIGHT_WALL" || type == "MASK") _mz_hamiltonian_top_right(cell.x, cell.y) 
+                each if(type == "TOP_WALL") _top(cell.x, cell.y) else
+                     if(type == "RIGHT_WALL") _right(cell.x, cell.y) else
+                     if(type == "TOP_RIGHT_WALL" || type == "MASK") _top_right(cell.x, cell.y) 
             ],
             [for(x = [0:c * 2 - 1]) [x, 0]],
             [for(y = [0:r * 2 - 1]) [0, y]]
@@ -53,4 +53,4 @@ function mz_hamiltonian(rows, columns, start = [0, 0], init_cells, seed) =
         path_leng = init_cells_undef ? r * c : 
             len([for(row = init_cells, cell = row) if(mz_square_get(cell, "t") != "MASK") undef])
     )
-    _mz_hamiltonian_travel(dotM, start * 2, path_leng * 4);
+    _travel(dotM, start * 2, path_leng * 4);
