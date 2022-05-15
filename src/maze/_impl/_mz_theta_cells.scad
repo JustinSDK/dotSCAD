@@ -252,8 +252,7 @@ function visit_dirs(maze, current_idx, dirs, dirs_leng, rows, seed, i = 0) =
     let(
 	    dir = dirs[i],
 		cell_idxs = [for(c = nextCells(maze, cell_from(maze, current_idx), dir)) [c[0], c[1]]],
-		cells_leng = len(cell_idxs),
-		m = visit_cells(maze, current_idx, dir, cell_idxs, cells_leng, rows, seed)
+		m = visit_cells(maze, current_idx, dir, cell_idxs, len(cell_idxs), rows, seed)
 	)
 	visit_dirs(m, current_idx, dirs, dirs_leng, rows, seed, i + 1);
 
