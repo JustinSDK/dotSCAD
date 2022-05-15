@@ -1,10 +1,9 @@
 function dot_m(dot_pts, leng, m, i = 0) =
     i == leng ? m :
-    let(p = dot_pts[i])
-    dot_m(dot_pts, leng, updated(p.x, p.y, m), i + 1);
+    dot_m(dot_pts, leng, updated(dot_pts[i], m), i + 1);
 
-function updated(x, y, dots) =
-    let(rowY = dots[y]) 
+function updated(p, dots) =
+    let(x = p.x, y = p.y, rowY = dots[y]) 
     [
         for(r = [0:len(dots) - 1])
         if(r == y) [for(c = [0:len(rowY) - 1]) c == x || rowY[c]]
@@ -28,23 +27,29 @@ function _top_right(x, y) =
     )
     [[nx, ny_2], [nx + 1, ny_2], [nx_2, ny_2], [nx_2, ny + 1], [nx_2, ny]];
 
-function _corner_value(dotM, x, y) =
+function _corner_value(dotM, p) =
     let(
+        x = p.x, 
+        y = p.y,
         dotMy = dotM[y],
         dotMy1 = dotM[y + 1],
-        x_1 = x + 1,
-        c1 = dotMy[x] ? 1 : 0,
-        c2 = dotMy1[x] ? 2 : 0,
-        c3 = dotMy1[x_1] ? 4 : 0,
-        c4 = dotMy[x_1] ? 8 : 0
+        x_1 = x + 1
     )
-    c1 + c2 + c3 + c4;
+    (dotMy[x] ?    1 : 0) + 
+    (dotMy1[x] ?   2 : 0) + 
+    (dotMy1[x_1] ? 4 : 0) + 
+    (dotMy[x_1] ?  8 : 0);
 
+
+//     [4,  0], [12, 0], [13, 0], // UP
+//     [1,  1], [3,  1], [7,  1], // DOWN
+//     [2,  2], [6,  2], [14, 2], // LEFT
+//     [8,  3], [9,  3], [11, 3]  // RIGHT
 _dir_table = [
-    [4,  0], [12, 0], [13, 0], // UP
-    [1,  1], [3,  1], [7,  1], // DOWN
-    [2,  2], [6,  2], [14, 2], // LEFT
-    [8,  3], [9,  3], [11, 3]  // RIGHT
+    undef, 1, 2, 1,
+    0, undef, 2, 1,
+    3, 3, undef, 3,
+    0, 0, 2, undef
 ];
 
 _nxt_offset = [
@@ -54,7 +59,7 @@ _nxt_offset = [
     [1,  0]   // RIGHT
 ];
 
-function nxtp(dotM, p) = p + _nxt_offset[lookup(_corner_value(dotM, p.x, p.y), _dir_table)];
+function nxtp(dotM, p) = p + _nxt_offset[_dir_table[_corner_value(dotM, p)]];
 
 function _travel(dotM, p, leng) = 
     let(
