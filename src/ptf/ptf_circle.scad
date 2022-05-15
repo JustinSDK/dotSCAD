@@ -16,6 +16,6 @@ function ptf_circle(size, point) =
     leng == 0 ? [0, 0] :
     let(
         n = max(abs(p.x), abs(p.y)),
-        r = n * 1.414
+        r = n * 1.41421356237
     )
     [p.y, p.x] * (r / leng);
