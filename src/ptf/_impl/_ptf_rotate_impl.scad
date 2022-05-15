@@ -27,8 +27,8 @@ function _rotx(pt, a) =
     let(cosa = cos(a), sina = sin(a))
     [
         pt.x, 
-        pt.y * cosa - pt[2] * sina,
-        pt.y * sina + pt[2] * cosa
+        pt.y * cosa - pt.z * sina,
+        pt.y * sina + pt.z * cosa
     ];
 
 function _roty(pt, a) = 
