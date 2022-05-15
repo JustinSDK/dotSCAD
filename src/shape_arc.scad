@@ -28,14 +28,14 @@ function shape_arc(radius, angle, width, width_mode = "LINE_CROSS") =
         points = [
             // outer arc path
             __ra_to_xy(__edge_r_begin(r_outer, a0, a_step, m), a0),
-            if(m <= n) each [for(i = m; i <= n; i = i + 1)  __ra_to_xy(r_outer, a_step * i)],
+            each [for(i = m; i <= n; i = i + 1)  __ra_to_xy(r_outer, a_step * i)],
             if(a1 != a_step * n) each [
                 __ra_to_xy(__edge_r_end(r_outer, a1, a_step, n), a1),
             // inner arc path
                 __ra_to_xy(__edge_r_end(r_inner, a1, a_step, n), a1)
             ],
             // inner arc path
-            if(m <= n) each [
+            each [
                 for(i = m; i <= n; i = i + 1)
                 __ra_to_xy(r_inner, a_step * (n + m - i))
 
