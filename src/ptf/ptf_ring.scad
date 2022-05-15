@@ -12,8 +12,5 @@ use <ptf_rotate.scad>;
 use <ptf_y_twist.scad>;
 
 function ptf_ring(size, point, radius, angle = 360, twist = 0) = 
-    let(
-        a_step = angle / size.y,
-        twisted = ptf_y_twist(size, point, twist)
-    )
-    ptf_rotate([radius + twisted.x, 0, twisted.z], a_step * twisted.y);
+    let(twisted = ptf_y_twist(size, point, twist))
+    ptf_rotate([radius + twisted.x, 0, twisted.z], angle / size.y * twisted.y);

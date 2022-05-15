@@ -12,8 +12,7 @@ function ptf_bend(size, point, radius, angle) =
     let(
         // ignored: size.y,
         x = is_undef(point.z) ? 0 : point.z,
-        a_step = angle / size.x,
-        a = a_step * point.x,
+        a = angle / size.x * point.x,
         r = radius + x
     )
     [r * cos(a), r * sin(a), point.y];
