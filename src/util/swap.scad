@@ -11,13 +11,12 @@
 function swap(lt, i, j) =
     i == j ? lt :
     let(
-	    leng = len(lt),
 		ab = i < j ? [i, j] : [j, i],
 		a = ab[0],
 		b = ab[1]
 	) 
 	[
-		for(i = [0:leng - 1])
+		for(i = [0:len(lt) - 1])
 		if(i == a) lt[b] 
 		else if(i == b) lt[a]
 		else lt[i]
