@@ -40,26 +40,19 @@ function _corner_value(dotM, p) =
     (dotMy1[x_1] ? 4 : 0) + 
     (dotMy[x_1] ?  8 : 0);
 
+UP = [0,  1];
+DOWN = [0, -1];
+LEFT = [-1, 0]; 
+RIGHT = [1,  0]; 
 
-//     [4,  0], [12, 0], [13, 0], // UP
-//     [1,  1], [3,  1], [7,  1], // DOWN
-//     [2,  2], [6,  2], [14, 2], // LEFT
-//     [8,  3], [9,  3], [11, 3]  // RIGHT
 _dir_table = [
-    undef, 1, 2, 1,
-    0, undef, 2, 1,
-    3, 3, undef, 3,
-    0, 0, 2, undef
+    undef, DOWN,  LEFT,  DOWN,
+    UP,    undef, LEFT,  DOWN,
+    RIGHT, RIGHT, undef, RIGHT,
+    UP,    UP,    LEFT,  undef
 ];
 
-_nxt_offset = [
-    [0,  1],  // UP
-    [0, -1],  // DOWN
-    [-1, 0],  // LEFT
-    [1,  0]   // RIGHT
-];
-
-function nxtp(dotM, p) = p + _nxt_offset[_dir_table[_corner_value(dotM, p)]];
+function nxtp(dotM, p) = p + _dir_table[_corner_value(dotM, p)];
 
 function _travel(dotM, p, leng) = 
     let(
