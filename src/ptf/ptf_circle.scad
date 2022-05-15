@@ -9,13 +9,10 @@
 **/ 
 
 function ptf_circle(size, point) =
-    let(
-        p = point - size / 2,
-        leng = norm(p)
-    )
-    leng == 0 ? [0, 0] :
+    let(p = point - size / 2)
+    p == [0, 0] ? p :
     let(
         n = max(abs(p.x), abs(p.y)),
         r = n * 1.41421356237
     )
-    [p.y, p.x] * (r / leng);
+    [p.y, p.x] * (r / norm(p));
