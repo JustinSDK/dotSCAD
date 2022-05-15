@@ -6,20 +6,13 @@ function _chebyshev(p1, p2) =
     max([for(i = [0:len(p1) - 1]) abs(p1[i] - p2[i])]);
 
 function _nz_worley_euclidean(p, cells) =
-    _nz_worley_from(cells, [for(cell = cells) norm(cell - p)]);
+    min([for(cell = cells) norm(cell - p)]);;
 
 function _nz_worley_manhattan(p, cells) =
-    _nz_worley_from(cells, [for(cell = cells) _manhattan(cell - p)]);
+    min([for(cell = cells) _manhattan(cell - p)]);
 
 function _nz_worley_chebyshev(p, cells) =
-    _nz_worley_from(cells, [for(cell = cells) _chebyshev(cell, p)]);
-
-function _nz_worley_from(cells, dists) = 
-    let(
-        m = min(dists),
-        i = search(m, dists)[0]
-    )
-    m;    
+    min([for(cell = cells) _chebyshev(cell, p)]);
 
 function _nz_worley_border(p, cells) = 
     let(
