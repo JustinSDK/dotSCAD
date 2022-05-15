@@ -15,6 +15,6 @@ function path_scaling_sections(shape_pts, edge_path) =
         let(edge_p = edge_path[i], s = norm([edge_p.x, edge_p.y] / base_leng))
         [
             for(p = shape_pts * s) 
-            [p.x, p.y, edge_p.z]
+            [each p, edge_p.z]
         ]
     ];
