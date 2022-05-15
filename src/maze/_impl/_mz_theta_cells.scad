@@ -47,25 +47,19 @@ function columnLengOfRow(ri, cellWidth, previousColumnLeng, dividedRatio) =
 	previousColumnLeng * ratio;
 
 function init_theta_maze(totalRows, beginingColumns, dividedRatio = 1.5) =
-    let(
-	    cellWidth = 1 / totalRows,
-		r0 = [
-			for(ci=0; ci < beginingColumns; ci = ci + 1)
-				cell(0, ci, INWARD_CCW_WALL)
-		]
-	)
-	_init_theta_maze(1, [r0], totalRows, dividedRatio, cellWidth);
-	
-function _init_theta_maze(ri, maze, totalRows, dividedRatio, cellWidth) = 
-    ri == totalRows ? maze : 
-		let(
-			columnLeng = columnLengOfRow(ri, cellWidth, len(maze[ri - 1]), dividedRatio),
-			row = [
-				for(ci = 0; ci < columnLeng; ci = ci + 1)
-					cell(ri, ci, INWARD_CCW_WALL)
-			]
-		)
-		_init_theta_maze(ri + 1, [each maze, row], totalRows, dividedRatio, cellWidth);
+    let(cellWidth = 1 / totalRows)
+	[
+		for(
+			ri = 0,
+			columnLeng = -1,
+			row = [for(ci = 0; ci < beginingColumns; ci = ci + 1) cell(0, ci, INWARD_CCW_WALL)]; 
+			ri < totalRows; 
+			ri = ri + 1,
+			columnLeng = ri < totalRows ? columnLengOfRow(ri, cellWidth, len(row), dividedRatio) : undef,
+			row = ri < totalRows ? [for(ci = 0; ci < columnLeng; ci = ci + 1) cell(ri, ci, INWARD_CCW_WALL)] : undef
+		)	
+		row
+	];
 
 function update_maze_row(row, cell) =
     let(leng = len(row))
@@ -86,14 +80,17 @@ function cell_from(maze, cell_idx) = maze[cell_idx[0]][cell_idx[1]];
 
 function _config_outwards(maze, cell_outwards_lt, leng, i = 0) = 
     i == leng ? maze :
-	let(
-		c = add_outward(
-			cell_from(maze, cell_outwards_lt[i][0]), 
-			cell_outwards_lt[i][1]
-		),
-		mz = update_maze(maze, c)
-	)
-	_config_outwards(mz, cell_outwards_lt, leng, i + 1);
+	_config_outwards(
+		update_maze(maze, 
+		    add_outward(
+				cell_from(maze, cell_outwards_lt[i][0]), 
+				cell_outwards_lt[i][1]
+		    )
+		), 
+		cell_outwards_lt, 
+		leng, 
+		i + 1
+	);
 
 function config_nbrs(maze) =
 	let(
