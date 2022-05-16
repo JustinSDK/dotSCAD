@@ -18,12 +18,13 @@ module bend_extrude(size, thickness, angle, frags = 24) {
     r = half_frag_width / sin(half_frag_angle);
     s =  (r - thickness) / r;
     
+    scale = [s, 1];
     transX = [x, 0, 0];
     mirrorX = [1, 0, 0];
     sq_size = [frag_width, y];
     module get_frag(i) {
         offsetX = i * frag_width;
-        linear_extrude(thickness, scale = [s, 1]) 
+        linear_extrude(thickness, scale = scale) 
         translate([-offsetX - half_frag_width, 0, 0]) 
         intersection() {
             translate(transX) 
