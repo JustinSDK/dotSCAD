@@ -18,7 +18,6 @@ function shape_ellipse(axes) =
         step_a = 360 / frags
     ) 
     [
-        for(i = [0:frags - 1]) 
-        let(a = i * step_a)
-            [axes0 * cos(a), axes1 * sin(a)]
+        for(a = [each [0:frags - 1]] * step_a) 
+        [axes0 * cos(a), axes1 * sin(a)]
     ];
