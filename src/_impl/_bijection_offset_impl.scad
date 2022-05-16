@@ -1,11 +1,9 @@
 use <../__comm__/__lines_from.scad>;
 use <../__comm__/__line_intersection.scad>;
-    
+use <../util/unit_vector.scad>;
+
 function _outward_edge_normal(edge) =     
-    let(
-        v = edge[1] - edge[0],
-        nv = v / norm(v)
-    )
+    let(nv = unit_vector(edge[1] - edge[0]))
     [nv.y, -nv.x];
 
 function _edge(edge, dxy) = edge + [dxy, dxy];

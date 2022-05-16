@@ -10,6 +10,7 @@
 
 use <../__comm__/__angy_angz.scad>;
 use <../matrix/m_transpose.scad>;
+use <../util/unit_vector.scad>;
 
 // slow but workable
 
@@ -23,14 +24,12 @@ module vrn3_from(points, spacing = 1) {
     half_space_size = 0.5 * space_size; 
     double_space_size = 2 * space_size;
     offset_leng = (spacing + space_size) * 0.5;
-
-    function normalize(v) = v / norm(v);
     
     module space(pt) {
         intersection_for(p = [for(p = points) if(pt != p) p]) {
             ryz = __angy_angz(p, pt);
 
-            translate((pt + p) / 2 - normalize(p - pt) * offset_leng)
+            translate((pt + p) / 2 - unit_vector(p - pt) * offset_leng)
             rotate([0, -ryz[0], ryz[1]]) 
                 cube([space_size, double_space_size, double_space_size], center = true); 
         }

@@ -9,6 +9,7 @@
 **/
 
 use <../__comm__/__angy_angz.scad>;
+use <../util/unit_vector.scad>;
 
 // slow but workable
 module vrn3_space(size, grid_w, seed, spacing = 1) {
@@ -24,14 +25,12 @@ module vrn3_space(size, grid_w, seed, spacing = 1) {
     
     space_size = grid_w * 3;    
     offset_leng = (spacing + space_size) * 0.5;
-
-    function normalize(v) = v / norm(v);
     
     module space(pt, points) {
         intersection_for(p = points) {            
             v = p - pt;
             ryz = __angy_angz(p, pt);
-            translate((pt + p) / 2 - normalize(v) * offset_leng)
+            translate((pt + p) / 2 - unit_vector(v) * offset_leng)
             rotate([0, -ryz[0], ryz[1]]) 
                 cube(space_size, center = true); 
         }

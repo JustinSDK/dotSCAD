@@ -9,6 +9,7 @@
 **/
 
 use <../matrix/m_transpose.scad>;
+use <../util/unit_vector.scad>;
 
 module vrn2_from(points, spacing = 1, r = 0, delta = 0, chamfer = false, region_type = "square") {
     transposed = m_transpose(points);
@@ -18,13 +19,11 @@ module vrn2_from(points, spacing = 1, r = 0, delta = 0, chamfer = false, region_
     region_size = max([max(xs) -  min(xs), max(ys) -  min(ys)]);    
     half_region_size = 0.5 * region_size; 
     offset_leng = spacing * 0.5 + half_region_size;
-
-    function normalize(v) = v / norm(v);
     
     module region(pt) {
         intersection_for(p = [for(p = points) if(pt != p) p]) {
             v = p - pt;
-            translate((pt + p) / 2 - normalize(v) * offset_leng)
+            translate((pt + p) / 2 - unit_vector(v) * offset_leng)
             rotate(atan2(v.y, v.x))
                 children();
         }

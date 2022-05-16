@@ -9,6 +9,7 @@
 **/ 
 
 use <_impl/_sf_square_surfaces.scad>;
+use <../util/unit_vector.scad>;
 use <sf_solidify.scad>;
 
 module sf_curve(levels, curve_path, thickness, depth, invert = false, convexity = 1) {
@@ -37,11 +38,7 @@ module sf_curve(levels, curve_path, thickness, depth, invert = false, convexity 
         ];    
         
     m = __ry_matrix(-90);
-    normal_vts = [
-		for(i = [0:columns - 1]) 
-		let(v = pts[i + 1] - pts[i])
-        v / norm(v) * m
-	];
+    normal_vts = [for(i = [0:columns - 1]) unit_vector(pts[i + 1] - pts[i]) * m];
 		
 	dp = is_undef(depth) ? thickness / 2 : depth;
 	surfaces = _sf_square_surfaces(levels, thickness, dp, invert);

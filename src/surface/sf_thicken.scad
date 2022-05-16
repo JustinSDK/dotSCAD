@@ -10,6 +10,7 @@
 
 use <../__comm__/_face_normal.scad>;
 use <../util/sum.scad>;
+use <../util/unit_vector.scad>;
 use <sf_solidify.scad>;
 
 module sf_thicken(points, thickness, direction = "BOTH", convexity = 1) {
@@ -47,7 +48,7 @@ module sf_thicken(points, thickness, direction = "BOTH", convexity = 1) {
     leng_point0 = len(points[0]);
     x_range = [0:leng_point0 - 1];
     if(is_list(direction)) {
-        dir_v = direction / norm(direction);
+        dir_v = unit_vector(direction);
         dir_vs = [for(x = x_range) dir_v];
         surface_another = points + thickness * [
             for(y = [0:leng_points - 1])

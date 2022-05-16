@@ -13,6 +13,7 @@ use <../__comm__/_face_normal.scad>;
 use <../util/sorted.scad>;
 use <../util/sum.scad>;
 use <../util/contains.scad>;
+use <../util/unit_vector.scad>;
 use <../surface/sf_solidifyT.scad>;
 use <../triangle/tri_delaunay.scad>;
 
@@ -24,7 +25,7 @@ module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH", con
     conn_indices_tris = [for(tri = real_triangles, i = tri) [i, tri]];
 
     if(is_list(direction)) {
-        dir_v = direction / norm(direction);
+        dir_v = unit_vector(direction);
 
         mid_pt = sorted(points)[leng_pts / 2];
         mid_i = search([mid_pt], points)[0];

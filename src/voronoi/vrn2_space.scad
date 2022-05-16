@@ -8,6 +8,8 @@
 *
 **/
 
+use <../util/unit_vector.scad>;
+
 module vrn2_space(size, grid_w, seed, spacing = 1, r = 0, delta = 0, chamfer = false, region_type = "square") {
     function cell_pt(fcord, seed, x, y, gw, gh) = 
         let(
@@ -26,13 +28,11 @@ module vrn2_space(size, grid_w, seed, spacing = 1, r = 0, delta = 0, chamfer = f
     region_size = grid_w * 3;
     half_region_size = 0.5 * region_size; 
     offset_leng = (spacing + region_size) * 0.5;
-
-    function normalize(v) = v / norm(v);
     
     module region(pt, points) {
         intersection_for(p = points) {
             v = p - pt;
-            translate((pt + p) / 2 - normalize(v) * offset_leng)
+            translate((pt + p) / 2 - unit_vector(v) * offset_leng)
             rotate(atan2(v.y, v.x)) 
                 children();
         }

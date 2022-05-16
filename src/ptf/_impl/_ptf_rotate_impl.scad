@@ -1,10 +1,11 @@
 use <../../__comm__/__to2d.scad>;
 use <../../__comm__/__to3d.scad>;
 use <../../__comm__/__to_ang_vect.scad>;
+use <../../util/unit_vector.scad>;
 
 function _q_rotate_p_3d(p, a, v) = 
     let(
-        uv = v / norm(v),
+        uv = unit_vector(v),
         s = sin(a / 2) * uv,
         w = sin(a) * uv,
 

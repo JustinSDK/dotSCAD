@@ -1,3 +1,5 @@
+use <../../util/unit_vector.scad>;
+
 function _tri_subdivide_pts(points, radius, rows) = 
    let(
 		p0 = points[0],
@@ -5,8 +7,7 @@ function _tri_subdivide_pts(points, radius, rows) =
    )
    [
 		for(ri = [0:rows], ci = [0:rows - ri])
-		let(p = p0 + [ri, ci] * basis)
-		radius * p / norm(p)
+		radius * unit_vector(p0 + [ri, ci] * basis)
    ];
 
 function _tri_subdivide_faces(rows) = 
