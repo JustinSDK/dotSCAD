@@ -1,5 +1,9 @@
 > Version numbers are based on [Semantic Versioning](https://semver.org/).
 
+# v3.2.2
+
+Maintenance release: bug fixes & performance improvements.
+
 # v3.2.1
 
 Maintenance release: bug fixes & performance improvements.
