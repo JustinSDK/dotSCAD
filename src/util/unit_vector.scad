@@ -1,0 +1,1 @@
+function unit_vector(v) = v / norm(v);
