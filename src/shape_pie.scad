@@ -25,7 +25,7 @@ function shape_pie(radius, angle) =
         shape_pts = [
             [0, 0], 
             __ra_to_xy(edge_r_begin, a0), 
-            if(m <= n) each [
+            each [
                 for(i = m; i <= n; i = i + 1)
                 __ra_to_xy(radius, a_step * i)
             ],
