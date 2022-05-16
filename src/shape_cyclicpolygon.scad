@@ -14,7 +14,7 @@ use <__comm__/__pie_for_rounding.scad>;
 function shape_cyclicpolygon(sides, circle_r, corner_r) =
     let(
         frag_a = 360 / sides,
-        corner_a = (180 - frag_a),
+        corner_a = 180 - frag_a,
         corner_circle_a = 180 - corner_a,
         half_corner_circle_a = corner_circle_a / 2,
         corner_circle_center = [circle_r - corner_r / sin(corner_a / 2), 0],
