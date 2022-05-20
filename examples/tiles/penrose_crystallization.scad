@@ -1,8 +1,8 @@
 use <ptf/ptf_rotate.scad>;
-use <triangle/tri_incenter.scad>;
+use <polyline_join.scad>;
 use <experimental/tile_penrose3.scad>;
 
-n = 8;
+n = 9;
 spacing = 0.1;
 invert = "NO";
 
@@ -110,23 +110,27 @@ levels = [
 ];
 
 
-module penrose3_crystallization(n, levels, spacing, invert) {
+module penrose_crystallization(n, levels, spacing, invert) {
     size = len(levels);
     
     s = size * 1.4;
     tris = tile_penrose3(n, [["OBTUSE", [ptf_rotate([1, 0], 108), [0, 0], [1, 0]]]]);
     for(t = tris) {
-        t_poly = t[1] * s;
-        p = tri_incenter(t_poly);
-        level = levels[size - p.y][p.x];
+        sample_p = s * (t[1][0] + t[1][2]) / 2;
+        level = levels[size - sample_p.y][sample_p.x];
         if(!is_undef(level)) {
             h = level / 255;
+            t_poly = t[1] * s;
             color([h, h, h])
             linear_extrude((invert == "YES" ? 10 - h * 10 : h * 10) + 2)
-            offset(-spacing)
+            difference() {
                 polygon(t_poly);
+                
+                polyline_join(t_poly)
+                    circle(spacing);
+            }
        }
     }
 }
 
-penrose3_crystallization(n, levels, spacing, invert);
+penrose_crystallization(n, levels, spacing, invert);
