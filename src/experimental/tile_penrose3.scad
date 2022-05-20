@@ -52,13 +52,14 @@ function tile_penrose3(n, triangles) =
 		a = 720 / fn,
 		tris = _penrose3(
 		    is_undef(triangles) ? 
+			    // star
 				let(shape_tri0 = [[1, 0], [1, 0] + _zRotation(-180 + a) * [-1, 0], [0, 0]])
 				[
 					for(i = [0:fn / 2 - 1]) 
 					let(m = _zRotation(i * a), t = [for(p = shape_tri0) m * p])
 					each tri2tile("OBTUSE", t)
 				] :
-            	[for(tri = triangles) each tri2tile(tri[0], tri[1])],
+            	[for(tri = triangles) let(t = tri[1]) each tri2tile(tri[0], [t[1], t[2], t[0]])],
 		    n
 		)
 	)
@@ -82,7 +83,7 @@ radius = 10;
 $fn = 12;
 
 draw(tile_penrose3(5, [
-    ["OBTUSE", [[0, 0], [2, 0], ptf_rotate([2, 0], 108)]]
+    ["OBTUSE", [ptf_rotate([2, 0], 108), [0, 0], [2, 0]]]
 ]), radius);
 
 translate([40, 0])

@@ -1,5 +1,3 @@
-use <hull_polyline2d.scad>;
-use <ptf/ptf_rotate.scad>;
 use <util/dedup.scad>;
 
 // tile type
@@ -131,7 +129,10 @@ function tile_penrose2(n, triangles) =
 			[type, [shape[0], shape[3], shape[2]]]
 		]
 	];
-	
+
+use <polyline_join.scad>;
+use <ptf/ptf_rotate.scad>;
+
 module draw(tris, radius) {
 	for(tri = tris) {
 		color(tri[0] == KITE ? "black" : "white")
@@ -139,7 +140,8 @@ module draw(tris, radius) {
 	}
 
 	for(tri = tris) {
-	    hull_polyline2d(tri[1] * radius, .1);
+	    polyline_join(tri[1] * radius)
+		    circle(.1);
 	}
 }
 
