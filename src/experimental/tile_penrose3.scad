@@ -28,29 +28,38 @@ function _sub_obtuse(a, b, c) =
 	[["OBTUSE", r, c, a], each _sub_acute(b, a, r)];
 
 function _penrose3(triangles, n, i = 0) = 
-	i == n ? triangles :
-			_penrose3(_subdivide(triangles), n, i+ 1);
+	i == n ? triangles : _penrose3(_subdivide(triangles), n, i+ 1);
 			
 function tri2tile(type, tri) =
     let(
-	    c = (tri[1] + tri[2]) / 2,
+		tri1 = tri[1],
+		tri2 = tri[2],
+	    c = (tri1 + tri2) / 2,
 		v = c - tri[0],
 		m = c + v
 	)
-	[[type, tri[0], tri[1], tri[2]], [type, m, tri[1], tri[2]]];
-			
+	[[type, each tri], [type, m, tri1, tri2]];
+
+function _zRotation(a) = 
+    let(c = cos(a), s = sin(a))
+    [
+        [c, -s],
+        [s, c]
+    ]; 
+
 function tile_penrose3(n, triangles) = 
     let(
 		fn = 10,
 		a = 720 / fn,
-		shape_tri0 = [[1, 0], [1, 0] + ptf_rotate([-1, 0], -180 + a), [0, 0]],
 		tris = _penrose3(
-		    is_undef(triangles) ? [
-				for(i = [0:fn / 2 - 1]) 
-				let(t = [for(p = shape_tri0) ptf_rotate(p, i * a)])
-					each tri2tile("OBTUSE", [t[0], t[1], t[2]])
-		    ] :
-            [for(tri = triangles) each tri2tile(tri[0], [tri[1][1], tri[1][2], tri[1][0]])],
+		    is_undef(triangles) ? 
+				let(shape_tri0 = [[1, 0], [1, 0] + ptf_rotate([-1, 0], -180 + a), [0, 0]])
+				[
+					for(i = [0:fn / 2 - 1]) 
+					let(m = _zRotation(i * a), t = [for(p = shape_tri0) m * p])
+					each tri2tile("OBTUSE", t)
+				] :
+            	[for(tri = triangles) each tri2tile(tri[0], [tri[1][1], tri[1][2], tri[1][0]])],
 		    n
 		)
 	)
