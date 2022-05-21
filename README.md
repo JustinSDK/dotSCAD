@@ -362,14 +362,14 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 
  Signature | Description
 --|--
-[**polyhedra/star**](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_star.html) | create a 3D star.
-[**polyhedra/polar_zonohedra**](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_polar_zonohedra.html) | create a [polar zonohedra](https://mathworld.wolfram.com/PolarZonohedron.html).
-[**polyhedra/tetrahedron**](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_tetrahedron.html) | create a tetrahedron.
-[**polyhedra/hexahedron**](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_hexahedron.html) | create a hexahedron.
-[**polyhedra/octahedron**](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_octahedron.html) | create a octahedron.
-[**polyhedra/dodecahedron**](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_dodecahedron.html) | create a dodecahedron.
-[**polyhedra/icosahedron**](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_icosahedron.html) | create a icosahedron.
-[**polyhedra/superellipsoid**](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_superellipsoid.html) | create a superellipsoid.
+[**polyhedra/star**([outerRadius, innerRadius, height, n])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_star.html) | create a 3D star.
+[**polyhedra/polar_zonohedra**(n[, theta])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_polar_zonohedra.html) | create a [polar zonohedra](https://mathworld.wolfram.com/PolarZonohedron.html).
+[**polyhedra/tetrahedron**(radius[, detail])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_tetrahedron.html) | create a tetrahedron.
+[**polyhedra/hexahedron**(radius[, detail])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_hexahedron.html) | create a hexahedron.
+[**polyhedra/octahedron**(radius[, detail])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_octahedron.html) | create a octahedron.
+[**polyhedra/dodecahedron**(radius[, detail])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_dodecahedron.html) | create a dodecahedron.
+[**polyhedra/icosahedron**(radius[, detail])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_icosahedron.html) | create a icosahedron.
+[**polyhedra/superellipsoid**(radius[, detail])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_superellipsoid.html) | create a superellipsoid.
 
 ----
 
@@ -379,13 +379,13 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 
  Signature | Description
 --|--
-**util/sort**(lt[, by, idx]) | use [`util/sorted`](https://openhome.cc/eGossip/OpenSCAD/lib3x-sorted.html) instead.
-**util/has**(lt, elem[, sorted]) | use [`util/contains`](https://openhome.cc/eGossip/OpenSCAD/lib3x-contains.html) instead.
-**util/bsearch**(sorted, target) | use [`util/binary_search`](https://openhome.cc/eGossip/OpenSCAD/lib3x-binary_search.html) instead.
-**maze/mz_square_cells**(rows, columns[, start, ...]) | use [`maze/mz_square`](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_square.html).
-**maze/mz_square_walls**(cells, rows, columns, cell_width, ...) | use [`maze/mz_squarewalls`](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_squarewalls.html) instead.
-**maze/mz_hex_walls**(cells, rows, columns, cell_radius, ...) | use [`maze/mz_hexwalls`](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_hexwalls.html) instead.
-**maze/mz_theta_cells**(rows, beginning_number[, start, seed]) | use [`maze/mz_theta`](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_theta.html) instead.
+**util/sort** | use [`util/sorted`](https://openhome.cc/eGossip/OpenSCAD/lib3x-sorted.html) instead.
+**util/has** | use [`util/contains`](https://openhome.cc/eGossip/OpenSCAD/lib3x-contains.html) instead.
+**util/bsearch** | use [`util/binary_search`](https://openhome.cc/eGossip/OpenSCAD/lib3x-binary_search.html) instead.
+**maze/mz_square_cells** | use [`maze/mz_square`](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_square.html).
+**maze/mz_square_walls** | use [`maze/mz_squarewalls`](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_squarewalls.html) instead.
+**maze/mz_hex_walls** | use [`maze/mz_hexwalls`](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_hexwalls.html) instead.
+**maze/mz_theta_cells** | use [`maze/mz_theta`](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_theta.html) instead.
 
 
 ## Util
