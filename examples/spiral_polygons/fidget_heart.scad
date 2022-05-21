@@ -1,6 +1,6 @@
 beginning_radius = 7.5;
 
-number_of_polygons = 9;
+number_of_polygons = 5;
 height = 20;
 thickness = 1.25;
 spacing = thickness * 1.75;
