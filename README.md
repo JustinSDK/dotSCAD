@@ -382,10 +382,10 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 **util/sort**(lt[, by, idx]) | use [`util/sorted`](https://openhome.cc/eGossip/OpenSCAD/lib3x-sorted.html) instead.
 **util/has**(lt, elem[, sorted]) | use [`util/contains`](https://openhome.cc/eGossip/OpenSCAD/lib3x-contains.html) instead.
 **util/bsearch**(sorted, target) | use [`util/binary_search`](https://openhome.cc/eGossip/OpenSCAD/lib3x-binary_search.html) instead.
-**maze/mz_square_cells**(rows, columns[, start, ...]) | use [maze/mz_square](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_square.html).
-**maze/mz_square_walls**(cells, rows, columns, cell_width, ...) | use [maze/mz_squarewalls](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_squarewalls.html) instead.
-**maze/mz_hex_walls**(cells, rows, columns, cell_radius, ...) | use [maze/mz_hexwalls](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_hexwalls.html) instead.
-**maze/mz_theta_cells**(rows, beginning_number[, start, seed]) | use [maze/mz_theta](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_theta.html) instead.
+**maze/mz_square_cells**(rows, columns[, start, ...]) | use [`maze/mz_square`](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_square.html).
+**maze/mz_square_walls**(cells, rows, columns, cell_width, ...) | use [`maze/mz_squarewalls`](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_squarewalls.html) instead.
+**maze/mz_hex_walls**(cells, rows, columns, cell_radius, ...) | use [`maze/mz_hexwalls`](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_hexwalls.html) instead.
+**maze/mz_theta_cells**(rows, beginning_number[, start, seed]) | use [`maze/mz_theta`](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_theta.html) instead.
 
 
 ## Util
