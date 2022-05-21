@@ -9,6 +9,8 @@ new:
 - mz_squarewalls, mz_hexwalls
 - mz_hamiltonian supports init_cells
 
+   update doc mz_square_initialize
+   
 - surface/sf_cylinder?
 - noise/worley_sphere?
 - voronoi/vrn_sphere?

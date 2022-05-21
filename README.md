@@ -382,6 +382,11 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 **util/sort**(lt[, by, idx]) | use [`util/sorted`](https://openhome.cc/eGossip/OpenSCAD/lib3x-sorted.html) instead.
 **util/has**(lt, elem[, sorted]) | use [`util/contains`](https://openhome.cc/eGossip/OpenSCAD/lib3x-contains.html) instead.
 **util/bsearch**(sorted, target) | use [`util/binary_search`](https://openhome.cc/eGossip/OpenSCAD/lib3x-binary_search.html) instead.
+**maze/mz_square_cells**(rows, columns[, start, ...]) | use [maze/mz_square](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_square.html).
+**maze/mz_square_walls**(cells, rows, columns, cell_width, ...) | use [maze/mz_squarewalls](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_squarewalls.html) instead.
+**maze/mz_hex_walls**(cells, rows, columns, cell_radius, ...) | use [maze/mz_hexwalls](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_hexwalls.html) instead.
+**maze/mz_theta_cells**(rows, beginning_number[, start, seed]) | use [maze/mz_theta](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_theta.html) instead.
+
 
 ## Util
 
@@ -390,5 +395,15 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 [**util/sorted**(lt[, cmp, key, reverse])](https://openhome.cc/eGossip/OpenSCAD/lib3x-sorted.html) | sort a list.
 [**util/contains**(lt, elem)](https://openhome.cc/eGossip/OpenSCAD/lib3x-contains.html) | return `true` if `lt` contains `elem`.
 [**util/binary_search**(sorted, target[, lo, hi])](https://openhome.cc/eGossip/OpenSCAD/lib3x-binary_search.html) | search a value in a sorted list.
+
+
+## Maze
+
+ Signature | Description
+--|--
+[**maze/mz_square**([rows, columns, start, init_cells, x_wrapping, y_wrapping, seed])](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_square.html) | return cell data of a square maze.
+[**maze/mz_squarewalls**(cells, cell_width[, left_border, bottom_border])](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_squarewalls.html) | a helper for creating square wall data from maze cells.
+[**maze/mz_hexwalls**(cells, cell_radius[, left_border, bottom_border])](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_hexwalls.html) | a helper for creating hex wall data from maze cells.
+[**maze/mz_theta**(rings, beginning_number[, start, seed])](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_theta.html) | return cell data of a theta maze.
 
 ----
