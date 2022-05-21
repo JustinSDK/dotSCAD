@@ -373,3 +373,22 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 
 ----
 
+# Preview
+
+## Deprecated
+
+ Signature | Description
+--|--
+**util/sort**(lt[, by, idx]) | use [`util/sorted`](https://openhome.cc/eGossip/OpenSCAD/lib3x-sorted.html) instead.
+**util/has**(lt, elem[, sorted]) | use [`util/contains`](https://openhome.cc/eGossip/OpenSCAD/lib3x-contains.html) instead.
+**util/bsearch**(sorted, target) | use [`util/binary_search`](https://openhome.cc/eGossip/OpenSCAD/lib3x-binary_search.html) instead.
+
+## Util
+
+ Signature | Description
+--|--
+[**util/sorted**(lt[, cmp, key, reverse])](https://openhome.cc/eGossip/OpenSCAD/lib3x-sorted.html) | sort a list.
+[**util/contains**(lt, elem)](https://openhome.cc/eGossip/OpenSCAD/lib3x-contains.html) | return `true` if `lt` contains `elem`.
+[**util/binary_search**(sorted, target[, lo, hi])](https://openhome.cc/eGossip/OpenSCAD/lib3x-binary_search.html) | search a value in a sorted list.
+
+----

@@ -1,5 +1,5 @@
 /**
-* sort.scad
+* sorted.scad
 *
 * @copyright Justin Lin, 2022
 * @license https://opensource.org/licenses/lgpl-3.0.html

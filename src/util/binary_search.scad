@@ -1,10 +1,10 @@
 /**
-* bsearch.scad
+* binary_search.scad
 *
-* @copyright Justin Lin, 2020
+* @copyright Justin Lin, 2022
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *
-* @see https://openhome.cc/eGossip/OpenSCAD/lib3x-bsearch.html
+* @see https://openhome.cc/eGossip/OpenSCAD/lib3x-binary_search.html
 *
 **/
 
