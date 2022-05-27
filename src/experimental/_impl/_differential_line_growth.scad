@@ -89,18 +89,22 @@ function updateAllSeperation(allSeperation, allSeperationFrom_i_1, leng, n) = [
 function differentiate(nodes, leng) = 
     [
         for(i = 0,
-            allSep = [for(i = [0:leng - 1]) ZERO_VT],
-            allSeperationFrom_i_1 = allSeperationFrom(nodes, leng, nodes[i], i + 1); 
-            i < leng;
-            allSep = updateAllSeperation(allSep, allSeperationFrom_i_1, leng, i + 1), 
+            j = 1,
+            allSeperationFrom_i_1 = allSeperationFrom(nodes, leng, nodes[i], j),
+            allSep = [ZERO_VT, each -allSeperationFrom_i_1],
+            running = i < leng; 
+            running; 
             i = i + 1,
-            allSeperationFrom_i_1 = i < leng ? allSeperationFrom(nodes, leng, nodes[i], i + 1) : undef
+            j = j + 1,
+            running = i < leng,
+            allSeperationFrom_i_1 = running ? allSeperationFrom(nodes, leng, nodes[i], j) : undef,
+            allSep = running ? updateAllSeperation(allSep, allSeperationFrom_i_1, leng, j) : undef
         )
-        let(
-            seperation_i = sum([allSep[i], each allSeperationFrom_i_1]),
-            cohesion_i = cohesion(nodes, leng, i)
+        applyForceTo(
+            nodes[i], 
+            sum([allSep[i], each allSeperationFrom_i_1]), 
+            cohesion(nodes, leng, i)
         )
-        applyForceTo(nodes[i], seperation_i, cohesion_i)
     ];
     
 function _differential_line_growth(nodes) = 
