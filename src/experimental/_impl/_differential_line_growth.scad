@@ -80,11 +80,12 @@ function allSeperationFrom(nodes, leng, node, n) = [
     seperationFrom(node, nodes[j])
 ];
 
-function updateAllSeperation(allSeperation, allSeperationFrom_i_1, leng, n) = [
-    for(i = 0; i < leng; i = i + 1)
-    if(i < n)  allSeperation[i]
-    else allSeperation[i] - allSeperationFrom_i_1[i - n]
-]; 
+function updateAllSeperation(allSeperation, allSeperationFrom_i_1) = 
+    let(leng = len(allSeperationFrom_i_1))
+    [
+        for(k = 0; k < leng; k = k + 1)
+        allSeperation[k + 1] - allSeperationFrom_i_1[k]
+    ]; 
 
 function differentiate(nodes, leng) = 
     [
@@ -97,12 +98,12 @@ function differentiate(nodes, leng) =
             i = i + 1,
             j = j + 1,
             running = i < leng,
-            allSeperationFrom_i_1 = running ? allSeperationFrom(nodes, leng, nodes[i], j) : undef,
-            allSep = running ? updateAllSeperation(allSep, allSeperationFrom_i_1, leng, j) : undef
+            allSep = running ? updateAllSeperation(allSep, allSeperationFrom_i_1) : undef,
+            allSeperationFrom_i_1 = running ? allSeperationFrom(nodes, leng, nodes[i], j) : undef
         )
         applyForceTo(
             nodes[i], 
-            sum([allSep[i], each allSeperationFrom_i_1]), 
+            sum([allSep[0], each allSeperationFrom_i_1]), 
             cohesion(nodes, leng, i)
         )
     ];
