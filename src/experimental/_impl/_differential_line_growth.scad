@@ -1,8 +1,6 @@
 use <../../util/unit_vector.scad>;
 use <../../util/sum.scad>;
 
-ZERO_VT = [0, 0];
-
 ZERO_VTS = [undef, undef, [0, 0], [0, 0, 0]];
 
 function limit(vt, magnitude) = 
