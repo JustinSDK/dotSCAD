@@ -3,17 +3,19 @@ use <../../util/sum.scad>;
 
 ZERO_VT = [0, 0];
 
+ZERO_VTS = [undef, undef, [0, 0], [0, 0, 0]];
+
 function limit(vt, magnitude) = 
     let(m = norm(vt))
     m > magnitude ? vt / m * magnitude : vt;
     
-function setMagnitude(vt, magnitude) = vt == ZERO_VT ? vt : unit_vector(vt) * magnitude;
+function setMagnitude(vt, magnitude) = vt == ZERO_VTS[len(vt)] ? vt : unit_vector(vt) * magnitude;
 
 // node
 function node(position, option) = [
-    position,       // position
-    rands(0, 1, 2), // velocity
-    option          // option
+    position,                   // position
+    rands(0, 1, len(position)), // velocity
+    option                      // option
 ];
 
 function position_of(node) = node[0];
@@ -36,7 +38,7 @@ function seperationFrom(node, other) =
         v = position_of(node) - position_of(other),
         dist = norm(v)
     )
-    dist < separationDistance_of(node) ? v / dist : ZERO_VT;
+    dist < separationDistance_of(node) ? v / dist : ZERO_VTS[len(v)];
 
 function applyForceTo(node, seperation, cohesion) = 
     let(
@@ -88,6 +90,7 @@ function updateAllSeperation(allSeperation, allSeperationFrom_i_1) =
     ]; 
 
 function differentiate(nodes, leng) = 
+    let(ZERO_VT = ZERO_VTS[len(position_of(nodes[0]))])
     [
         for(i = 0,
             j = 1,

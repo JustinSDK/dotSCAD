@@ -1,9 +1,9 @@
 use <_impl/_differential_line_growth.scad>;
 
-function differential_line_growth(init_shape, option, times) = 
+function differential_line_growth(points, option, times) = 
     let(
         init_nodes = [
-            for(p = init_shape)
+            for(p = points)
             node(p, option)
         ],
         nodes_lt = [
