@@ -67,44 +67,36 @@ function cohesion(nodes, leng, i) =
 
 function grow(nodes, leng) =
     [
-        for(i = 0, j = 1; i < leng; i = i + 1, j = j + 1)
+        for(i = 0; i < leng; i = i + 1)
         let(
             node = nodes[i],
-            nxNode = nodes[j % leng]
+            nxNode = nodes[(i + 1) % leng]
         )
         each [node, if(suitableForGrowth(node, nxNode)) growNode(node, nxNode)]
     ];
 
 function allSeperationFrom(nodes, leng, node, n) = [
-    for(j = n; j < leng; j = j + 1)
-    seperationFrom(node, nodes[j])
+    for(j = n; j < leng; j = j + 1) seperationFrom(node, nodes[j])
 ];
 
-function updateAllSeperation(allSeperation, allSeperationFrom_i_1) = 
-    let(leng = len(allSeperationFrom_i_1))
-    [
-        for(k = 0; k < leng; k = k + 1)
-        allSeperation[k + 1] - allSeperationFrom_i_1[k]
-    ]; 
+function updateAllSeperation(allSeperation, allSeperationFromj) = 
+    let(leng = len(allSeperationFromj))
+    [for(k = 1; k <= leng; k = k + 1) allSeperation[k]] - allSeperationFromj; 
 
 function differentiate(nodes, leng) = 
     let(ZERO_VT = ZERO_VTS[len(position_of(nodes[0]))])
     [
         for(i = 0,
-            j = 1,
-            allSeperationFrom_i_1 = allSeperationFrom(nodes, leng, nodes[i], j),
-            allSep = [ZERO_VT, each -allSeperationFrom_i_1],
-            running = i < leng; 
-            running; 
+            allSeperationFromj = allSeperationFrom(nodes, leng, nodes[i], i + 1),
+            allSep = [ZERO_VT, each -allSeperationFromj]; 
+            i < leng; 
             i = i + 1,
-            j = j + 1,
-            running = i < leng,
-            allSep = running ? updateAllSeperation(allSep, allSeperationFrom_i_1) : undef,
-            allSeperationFrom_i_1 = running ? allSeperationFrom(nodes, leng, nodes[i], j) : undef
+            allSep = updateAllSeperation(allSep, allSeperationFromj),
+            allSeperationFromj = allSeperationFrom(nodes, leng, nodes[i], i + 1)
         )
         applyForceTo(
             nodes[i], 
-            sum([allSep[0], each allSeperationFrom_i_1]), 
+            allSeperationFromj == [] ? allSep[0] : allSep[0] + sum(allSeperationFromj), 
             cohesion(nodes, leng, i)
         )
     ];
