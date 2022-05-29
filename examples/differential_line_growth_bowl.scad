@@ -11,7 +11,7 @@ use <experimental/ptf_c2sphere.scad>;
 
 $fn = 24;
 r = 10;
-times = 80;
+times = 50;
 line_r = 2;
 smooth = true;
 smooth_times = 2;
