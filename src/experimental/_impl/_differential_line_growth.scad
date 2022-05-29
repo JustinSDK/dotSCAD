@@ -7,7 +7,7 @@ function limit(vt, magnitude) =
     let(m = norm(vt))
     m > magnitude ? vt / m * magnitude : vt;
     
-function setMagnitude(vt, magnitude) = vt == ZERO_VTS[len(vt)] ? vt : unit_vector(vt) * magnitude;
+function setMagnitude(vt, magnitude) = unit_vector(vt) * magnitude;
 
 // node
 function node(position, option) = [
@@ -26,8 +26,9 @@ function separationCohesionRatio_of(node) = node[2][3];
 function maxEdgeLength_of(node) = node[2][4];
 
 function cohesionWith(node, other) =
+    let(pos = position_of(node))
     limit(
-        setMagnitude(other - position_of(node), maxSpeed_of(node)) - velocity_of(node),
+        other == pos ? -velocity_of(node) : setMagnitude(other - pos, maxSpeed_of(node)) - velocity_of(node),
         maxForce_of(node)
     );
     
@@ -41,8 +42,7 @@ function seperationFrom(node, other) =
 function applyForceTo(node, seperation, cohesion) = 
     let(
         acceleration = limit(seperation, maxForce_of(node)) * separationCohesionRatio_of(node) + cohesion,
-        velocity = limit(velocity_of(node) + acceleration,
-        maxSpeed_of(node))
+        velocity = limit(velocity_of(node) + acceleration, maxSpeed_of(node))
     )
     [
         position_of(node) + velocity,
