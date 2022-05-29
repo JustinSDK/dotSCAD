@@ -15,6 +15,7 @@ times = 80;
 line_r = 2;
 smooth = true;
 smooth_times = 2;
+filled = true;
 node_option = [
     0.4,    // maxForce 
     0.5,    // maxSpeed
@@ -30,13 +31,15 @@ smoothed = smooth ? midpt_smooth(poly, smooth_times, true) : poly;
 sphere_r = norm(max(smoothed));
 sphere_path = [for(p = smoothed) ptf_c2sphere(p, sphere_r)];
 
-triangles = [
-    for(t = tri_delaunay(smoothed))
-    let(tri = [for(i = t) smoothed[i]])
-    if(in_shape(smoothed, tri_incenter(tri))) t
-];
+if(filled) {
+    triangles = [
+        for(t = tri_delaunay(smoothed))
+        let(tri = [for(i = t) smoothed[i]])
+        if(in_shape(smoothed, tri_incenter(tri))) t
+    ];
 
-sf_thickenT(sphere_path, line_r, triangles);
+    sf_thickenT(sphere_path, line_r, triangles);
+}
 
 polyline_join([each sphere_path, sphere_path[0]])
     icosahedron(line_r);
