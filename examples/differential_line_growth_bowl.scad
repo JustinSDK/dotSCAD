@@ -23,6 +23,6 @@ init_shape = shape_circle(r);
 poly = differential_line_growth(init_shape, node_option, times);
 smoothed = smooth ? midpt_smooth(poly, smooth_times, true) : poly;
 
-sphere_r = max(max(smoothed));
+sphere_r = norm(max(smoothed));
 polyline_join([for(p = [each smoothed, smoothed[0]]) ptf_c2sphere(p, sphere_r)])
     icosahedron(line_r);
