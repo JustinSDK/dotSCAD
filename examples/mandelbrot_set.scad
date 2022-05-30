@@ -1,4 +1,5 @@
-use <surface/sf_thicken.scad>;
+use <surface/sf_solidify.scad>;
+use <util/sum.scad>;
 
 Z0 = [0, 0];
 NL = 50;
@@ -8,7 +9,7 @@ step = .5;
 cw = 1.5;
 cc = [-0.75, 0];
 
-thickness = 2;
+thickness = 4;
 
 function pow2(z) = [z.x ^ 2 - z.y ^ 2, 2 * z.x * z.y];
 
@@ -21,30 +22,28 @@ function znxt(c) =
         ],
         leng = len(slt)
     )
-    //leng == NL ? 0 : 
-    leng == 0 ? c * c : slt[leng - 1];
+    leng == NL ? sum(slt) / (thickness * 2) : 
+    leng == 0 ? c * c : sum(slt) / leng * thickness;
 
-left = -PW * 0.9;
-right = PW * 1.25;
+left = -PW * 0.84;
+right = PW * 1.18;
+top = PW * 0.9;
 pts = [
-    for(py = 0; py <= PW; py = py + step) 
+    for(py = -top; py <= top; py = py + step) 
     let(y = cw / PW * py + cc.y)
     [
         for(px = left; px <= right; px = px + step) 
-        let(x = cw / PW * px + cc.x, v = znxt([x, y]))
-        [px, py, v]
+        let(x = cw / PW * px + cc.x)
+        [px, py, znxt([x, y])]
     ]
 ];
 
-intersection() {
-    union() {
-    sf_thicken(pts, thickness);
-    mirror([0, 1, 0])
-        sf_thicken(pts, thickness);
-    }
+b_pts = [
+    for(py = -top; py <= top; py = py + step) 
+    [
+        for(px = left; px <= right; px = px + step) 
+        [px, py, -thickness]
+    ]
+];
 
-linear_extrude(thickness * 10, center = true)
-translate([(left + right) / 2, 0] + cc)
-scale([1, 0.95 * 2 * PW / (right - left)])
-    circle((right - left) / 2, $fn = 48);
-}
+sf_solidify(pts, b_pts);
