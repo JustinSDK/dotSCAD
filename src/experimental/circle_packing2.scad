@@ -6,10 +6,10 @@ use <triangle/tri_incenter.scad>;
 function circle_packing2(points, density = 1) =
     [
         for(t = tri_delaunay(points, ret = "TRI_SHAPES"))
-        each circle_packing_triangle(t, density)
+        each circle_packing_triangle2(t, density)
     ];
     
-function circle_packing_triangle(t, density) =
+function circle_packing_triangle2(t, density) =
     [
         for(st = tri_subdivide(t, density))
         let(
