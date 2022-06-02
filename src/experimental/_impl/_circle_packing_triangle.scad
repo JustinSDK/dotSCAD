@@ -1,5 +1,7 @@
 use <triangle/tri_incenter.scad>;
 
+function r(sin, leng_cv, pre_R) = sin * (leng_cv - pre_R) / (1 + sin);
+
 function circle_packing_triangle(t, density, min_r) =
     let(
         center = tri_incenter(t),
@@ -10,7 +12,6 @@ function circle_packing_triangle(t, density, min_r) =
         leng_s2 = norm(s2),
         leng_s3 = norm(s3),
         R = abs(cross(s1, s2)) / (leng_s1 + leng_s2 + leng_s3),
-        r = function(sin, leng_cv, pre_R) sin * (leng_cv - pre_R) / (1 + sin),
         ca = center - t[0],
         leng_ca = norm(ca),
         unit_ca = ca / leng_ca,
