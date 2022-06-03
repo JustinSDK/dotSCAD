@@ -26,14 +26,12 @@ new:
 
 - lsystem2, lsystem3, add seed param
 
-deprecated:
-    rails2sections: use m_transpose
-
 doc-ed
 
     deprecated:
     - util/sort, util/bsearch, util/has
     - maze/mz_square_cells, maze/mz_theta_cells, maze/mz_square_walls, maze/mz_hex_walls
+    - rails2sections
 
     new:
     - util/sorted, util/binary_search, util/contains

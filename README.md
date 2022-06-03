@@ -386,7 +386,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 **maze/mz_square_walls** | use [`maze/mz_squarewalls`](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_squarewalls.html) instead.
 **maze/mz_hex_walls** | use [`maze/mz_hexwalls`](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_hexwalls.html) instead.
 **maze/mz_theta_cells** | use [`maze/mz_theta`](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_theta.html) instead.
-
+**rails2sections** | use [**maxtrix/m_transpose**(m)](https://openhome.cc/eGossip/OpenSCAD/lib3x-m_transpose.html) instead.
 
 ## Util
 
