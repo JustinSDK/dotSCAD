@@ -13,25 +13,25 @@ function c3_a(r1, r2, r3) =
     )
     acos((b ^ 2 + c ^ 2 - a ^ 2) / (2 * b * c));
 
-function tri_circle_packing(t, min_r) =
+function tri_circle_packing(shape_pts, min_r) =
     let(
-        center = tri_incenter(t),
-        s1 = t[1] - t[0],
-        s2 = t[2] - t[1],
-        s3 = t[0] - t[2],
+        center = tri_incenter(shape_pts),
+        s1 = shape_pts[1] - shape_pts[0],
+        s2 = shape_pts[2] - shape_pts[1],
+        s3 = shape_pts[0] - shape_pts[2],
         R = abs(cross(s1, s2)) / (norm(s1) + norm(s2) + norm(s3)),
 
-        ca = center - t[0],
+        ca = center - shape_pts[0],
         leng_ca = norm(ca),
         unit_ca = ca / leng_ca,
         sina = R / leng_ca,
 
-        cb = center - t[1],
+        cb = center - shape_pts[1],
         leng_cb = norm(cb),
         unit_cb = cb / leng_cb,
         sinb = R / leng_cb,
 
-        cc = center - t[2],
+        cc = center - shape_pts[2],
         leng_cc = norm(cc),
         unit_cc = cc / leng_cc,
         sinc = R / leng_cc,
