@@ -4,8 +4,6 @@ use <util/rand.scad>;
 use <shape_circle.scad>;
 use <util/rands_disk.scad>;
 
-use <experimental/tri_circle_packing.scad>;
-use <experimental/tri_subdivide.scad>;
 use <experimental/circle_packing.scad>;
 
 trunk_leng = 1.5;
