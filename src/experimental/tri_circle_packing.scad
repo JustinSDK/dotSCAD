@@ -1,7 +1,7 @@
 use <triangle/tri_incenter.scad>;
 use <ptf/ptf_rotate.scad>;
 
-function r(sin, leng_cv, pre_R) = sin * (leng_cv - pre_R) / (1 + sin);
+function r2(sinv, leng_cv, pre_R) = sinv * (leng_cv - pre_R) / (1 + sinv);
 
 // the 3rd circle
 function c3_r(r1, r2) = (r1 * r2) / (r1 + r2 + 2 * sqrt(r1 * r2));
@@ -13,7 +13,7 @@ function c3_a(r1, r2, r3) =
     )
     acos((b ^ 2 + c ^ 2 - a ^ 2) / (2 * b * c));
 
-function tri_circle_packing(t, density, min_r) =
+function tri_circle_packing(t, min_r) =
     let(
         center = tri_incenter(t),
         s1 = t[1] - t[0],
@@ -35,45 +35,29 @@ function tri_circle_packing(t, density, min_r) =
         leng_cc = norm(cc),
         unit_cc = cc / leng_cc,
         sinc = R / leng_cc,
-        _small_circles = function(density, pre_leng_a = R, pre_leng_b = R, pre_leng_c = R, pre_ra = R, pre_rb = R, pre_rc = R) 
-            density <= 0 ? [] :
+        pack_a = function(sinv, leng_cv, unit_cv, pre_leng = R, pre_r = R) 
             let(
-                ra = r(sina, leng_ca, pre_leng_a),
-                Ra = pre_leng_a + ra,
-                ct_a = center - unit_ca * Ra,
+                r2 = r2(sinv, leng_cv, pre_leng),
+                leng = pre_leng + r2,
+                r2_ct = center - unit_cv * leng,
 
-                rb = r(sinb, leng_cb, pre_leng_b),
-                Rb = pre_leng_b + rb,
-                ct_b = center - unit_cb * Rb,
-
-                rc = r(sinc, leng_cc, pre_leng_c),
-                Rc = pre_leng_c + rc,
-                ct_c = center - unit_cc * Rc,
-
-                r3a = c3_r(pre_ra, ra),
-                alpha3a = c3_a(pre_ra, ra, r3a),
-                vta = unit_ca * (r3a + ra),
-                ct1a = ct_a + ptf_rotate(vta, alpha3a),
-                ct2a = ct_a + ptf_rotate(vta, -alpha3a),
-
-                r3b = c3_r(pre_rb, rb),
-                alpha3b = c3_a(pre_rb, rb, r3b),
-                vtb = unit_cb * (r3b + rb),
-                ct1b = ct_b + ptf_rotate(vtb, alpha3b),
-                ct2b = ct_b + ptf_rotate(vtb, -alpha3b),
-
-                r3c = c3_r(pre_rc, rc),
-                alpha3c = c3_a(pre_rc, rc, r3c),
-                vtc = unit_cc * (r3c + rc),
-                ct1c = ct_c + ptf_rotate(vtc, alpha3c),
-                ct2c = ct_c + ptf_rotate(vtc, -alpha3c)                  
+                r3 = c3_r(pre_r, r2),
+                a = c3_a(pre_r, r2, r3),
+                vta = unit_cv * (r3 + r2),
+                r3_ct1 = r2_ct + ptf_rotate(vta, a),
+                r3_ct2 = r2_ct + ptf_rotate(vta, -a)           
             )
-            [
-                if(ra > min_r) each [[ct_a, ra], if(r3a > min_r) each [[ct1a, r3a], [ct2a, r3a]]], 
-                if(rb > min_r) each [[ct_b, rb], if(r3b > min_r) each [[ct1b, r3b], [ct2b, r3b]]], 
-                if(rc > min_r) each [[ct_c, rc], if(r3c > min_r) each [[ct1c, r3c], [ct2c, r3c]]], 
-                each _small_circles(density - 1, ra + Ra, rb + Rb, rc + Rc, ra, rb, rc)
-            ]
+            r2 > min_r ? 
+                concat(
+                    [[r2_ct, r2], if(r3 > min_r) each [[r3_ct1, r3], [r3_ct2, r3]]], 
+                    pack_a(sinv, leng_cv, unit_cv, r2 + leng, r2)
+                )
+                : []
     )
-    [[center, R], each _small_circles(density - 1)];    
+    [
+        [center, R], 
+        each pack_a(sina, leng_ca, unit_ca), 
+        each pack_a(sinb, leng_cb, unit_cb), 
+        each pack_a(sinc, leng_cc, unit_cc), 
+    ];    
     

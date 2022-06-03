@@ -13,7 +13,7 @@ function circle_packing3(points, density = 1, min_r = 1) =
 function circle_packing_triangle3(t, density, min_r) =
     [
         for(st = tri_subdivide(t, density))
-        each tri_circle_packing(st, density, min_r)
+        each tri_circle_packing(st, min_r)
     ];
     
 $fn = 24;
