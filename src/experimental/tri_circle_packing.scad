@@ -13,6 +13,26 @@ function c3_a(r1, r2, r3) =
     )
     acos((b ^ 2 + c ^ 2 - a ^ 2) / (2 * b * c));
 
+
+function pack_one(min_r, center, sinv, leng_cv, unit_cv, pre_leng, pre_r) = 
+            let(
+                r2 = r2(sinv, leng_cv, pre_leng),
+                leng = pre_leng + r2,
+                r2_ct = center - unit_cv * leng,
+
+                r3 = c3_r(pre_r, r2),
+                a = c3_a(pre_r, r2, r3),
+                vta = unit_cv * (r3 + r2),
+                r3_ct1 = r2_ct + ptf_rotate(vta, a),
+                r3_ct2 = r2_ct + ptf_rotate(vta, -a)           
+            )
+            r2 > min_r ? 
+                concat(
+                    [[r2_ct, r2], if(r3 > min_r) each [[r3_ct1, r3], [r3_ct2, r3]]], 
+                    pack_one(min_r, center, sinv, leng_cv, unit_cv, r2 + leng, r2)
+                )
+                : [];
+
 function tri_circle_packing(shape_pts, min_r) =
     let(
         center = tri_incenter(shape_pts),
@@ -34,31 +54,12 @@ function tri_circle_packing(shape_pts, min_r) =
         cc = center - shape_pts[2],
         leng_cc = norm(cc),
         unit_cc = cc / leng_cc,
-        sinc = R / leng_cc,
-        
-        pack_one = function(sinv, leng_cv, unit_cv, pre_leng = R, pre_r = R) 
-            let(
-                r2 = r2(sinv, leng_cv, pre_leng),
-                leng = pre_leng + r2,
-                r2_ct = center - unit_cv * leng,
-
-                r3 = c3_r(pre_r, r2),
-                a = c3_a(pre_r, r2, r3),
-                vta = unit_cv * (r3 + r2),
-                r3_ct1 = r2_ct + ptf_rotate(vta, a),
-                r3_ct2 = r2_ct + ptf_rotate(vta, -a)           
-            )
-            r2 > min_r ? 
-                concat(
-                    [[r2_ct, r2], if(r3 > min_r) each [[r3_ct1, r3], [r3_ct2, r3]]], 
-                    pack_one(sinv, leng_cv, unit_cv, r2 + leng, r2)
-                )
-                : []
+        sinc = R / leng_cc
     )
     [
         [center, R], 
-        each pack_one(sina, leng_ca, unit_ca), 
-        each pack_one(sinb, leng_cb, unit_cb), 
-        each pack_one(sinc, leng_cc, unit_cc), 
+        each pack_one(min_r, center, sina, leng_ca, unit_ca, R, R), 
+        each pack_one(min_r, center, sinb, leng_cb, unit_cb, R, R), 
+        each pack_one(min_r, center, sinc, leng_cc, unit_cc, R, R), 
     ];    
     
