@@ -379,6 +379,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 
  Signature | Description
 --|--
+**rails2sections** | use [`maxtrix/m_transpose`](https://openhome.cc/eGossip/OpenSCAD/lib3x-m_transpose.html) instead.
 **util/sort** | use [`util/sorted`](https://openhome.cc/eGossip/OpenSCAD/lib3x-sorted.html) instead.
 **util/has** | use [`util/contains`](https://openhome.cc/eGossip/OpenSCAD/lib3x-contains.html) instead.
 **util/bsearch** | use [`util/binary_search`](https://openhome.cc/eGossip/OpenSCAD/lib3x-binary_search.html) instead.
@@ -386,7 +387,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 **maze/mz_square_walls** | use [`maze/mz_squarewalls`](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_squarewalls.html) instead.
 **maze/mz_hex_walls** | use [`maze/mz_hexwalls`](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_hexwalls.html) instead.
 **maze/mz_theta_cells** | use [`maze/mz_theta`](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_theta.html) instead.
-**rails2sections** | use [**maxtrix/m_transpose**(m)](https://openhome.cc/eGossip/OpenSCAD/lib3x-m_transpose.html) instead.
+
 
 ## Util
 
