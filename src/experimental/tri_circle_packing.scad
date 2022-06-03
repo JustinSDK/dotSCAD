@@ -35,7 +35,7 @@ function tri_circle_packing(t, min_r) =
         leng_cc = norm(cc),
         unit_cc = cc / leng_cc,
         sinc = R / leng_cc,
-        pack_a = function(sinv, leng_cv, unit_cv, pre_leng = R, pre_r = R) 
+        pack_one = function(sinv, leng_cv, unit_cv, pre_leng = R, pre_r = R) 
             let(
                 r2 = r2(sinv, leng_cv, pre_leng),
                 leng = pre_leng + r2,
@@ -50,14 +50,14 @@ function tri_circle_packing(t, min_r) =
             r2 > min_r ? 
                 concat(
                     [[r2_ct, r2], if(r3 > min_r) each [[r3_ct1, r3], [r3_ct2, r3]]], 
-                    pack_a(sinv, leng_cv, unit_cv, r2 + leng, r2)
+                    pack_one(sinv, leng_cv, unit_cv, r2 + leng, r2)
                 )
                 : []
     )
     [
         [center, R], 
-        each pack_a(sina, leng_ca, unit_ca), 
-        each pack_a(sinb, leng_cb, unit_cb), 
-        each pack_a(sinc, leng_cc, unit_cc), 
+        each pack_one(sina, leng_ca, unit_ca), 
+        each pack_one(sinb, leng_cb, unit_cb), 
+        each pack_one(sinc, leng_cc, unit_cc), 
     ];    
     
