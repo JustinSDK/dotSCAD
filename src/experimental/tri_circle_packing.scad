@@ -19,22 +19,23 @@ function tri_circle_packing(t, min_r) =
         s1 = t[1] - t[0],
         s2 = t[2] - t[1],
         s3 = t[0] - t[2],
-        leng_s1 = norm(s1),
-        leng_s2 = norm(s2),
-        leng_s3 = norm(s3),
-        R = abs(cross(s1, s2)) / (leng_s1 + leng_s2 + leng_s3),
+        R = abs(cross(s1, s2)) / (norm(s1) + norm(s2) + norm(s3)),
+
         ca = center - t[0],
         leng_ca = norm(ca),
         unit_ca = ca / leng_ca,
         sina = R / leng_ca,
+
         cb = center - t[1],
         leng_cb = norm(cb),
         unit_cb = cb / leng_cb,
         sinb = R / leng_cb,
+
         cc = center - t[2],
         leng_cc = norm(cc),
         unit_cc = cc / leng_cc,
         sinc = R / leng_cc,
+        
         pack_one = function(sinv, leng_cv, unit_cv, pre_leng = R, pre_r = R) 
             let(
                 r2 = r2(sinv, leng_cv, pre_leng),
