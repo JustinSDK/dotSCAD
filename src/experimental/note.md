@@ -4,6 +4,8 @@ to_do:
 
 new:
 
+- triangle/tri_subdivide
+
 - maze/mz_wang_tiles?
 
 - mz_hamiltonian supports init_cells

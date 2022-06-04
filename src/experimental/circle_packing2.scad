@@ -1,5 +1,4 @@
-use <experimental/tri_subdivide.scad>;
-
+use <triangle/tri_subdivide.scad>;
 use <triangle/tri_delaunay.scad>;
 use <triangle/tri_incenter.scad>;
 

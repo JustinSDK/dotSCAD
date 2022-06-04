@@ -26,14 +26,3 @@ function _tri_subdivide_indices(n) =
 			else 
 				[ci_base_i_1, ci_base_i1, ci_base_i]
 	];
-    
-function tri_subdivide(shape_pts, n) =
-    let(
-        pts = _tri_subdivide_pts(shape_pts, n),
-        indices = _tri_subdivide_indices(n)
-    )
-    [
-        for(ti = indices) 
-        [pts[ti[0]], pts[ti[1]], pts[ti[2]]]
-    ];
-    
