@@ -1,12 +1,12 @@
 use <polyline_join.scad>;
 use <util/radians.scad>;
+use <util/lerp.scad>;
 use <ptf/ptf_rotate.scad>;
 
-use <util/lerp.scad>;
-
 spirals = 8;
+start_n = 1;   // spiral start from 360 / spirals * start_n
 degrees = 150;
-thickness = 3;
+thickness = 2.5;
 offset_r = 0.4;
 $fn = 24;
 
@@ -14,9 +14,11 @@ golden_spiral_jigsaw();
 
 module golden_spiral_jigsaw() {
     offset_rr = offset_r / 40;
-    start = 360 / spirals;
+    a_step = 360 / spirals;
+    start = 360 / spirals * start_n;
+    
     phi = (1 + sqrt(5)) / 2;
-
+    
     function piece_polygons(start, step, to) = 
         let(
             points = [
@@ -66,7 +68,7 @@ module golden_spiral_jigsaw() {
     linear_extrude(thickness)
     scale(40) 
     {
-        a_step = 360 / spirals;
+       
         polygons = piece_polygons(start, a_step, degrees * 2);
         
         for(i = [0:spirals - 1]) {
@@ -95,7 +97,7 @@ module golden_spiral_jigsaw() {
         }
 
         // plate 
-        polygons2 = piece_polygons(-a_step, a_step, start * 3);
+        polygons2 = piece_polygons(-a_step, a_step, start + a_step * 4);
         points = [
                 for(d = [-start:a_step / 4:start])
                 let(
@@ -111,10 +113,10 @@ module golden_spiral_jigsaw() {
                 for(i = [0:spirals - 1]) {
                     rotate(a_step * i) 
                     difference() {
-                    
+                        
                         offset(-offset_rr / 2) 
                         union()
-                        for(j = [0:len(polygons2) - 5]) {
+                        for(j = [0:len(polygons2) - 13]) {
                             poly = polygons2[j];
                             polygon(poly);
                         }
@@ -132,11 +134,11 @@ module golden_spiral_jigsaw() {
                                ];
                                
                                union() {
-                                   if(j > 3) {
+                                    if(j >= start_n * 4) {
                                         interlocking_part2(r_poly, offset_rr);   
-                                   }  
+                                    }
 
-                                   if(j > 6) {
+                                   if(j >= start_n * 4 + 3) {
                                         interlocking_part1(u_poly, offset_rr);
                                    }        
                                }                       
