@@ -3,12 +3,15 @@ use <util/radians.scad>;
 use <util/lerp.scad>;
 use <ptf/ptf_rotate.scad>;
 
-spirals = 8;
+spirals = 7;
 start_n = 1;   // spiral start from 360 / spirals * start_n
 degrees = 150;
 thickness = 2.5;
 offset_r = 0.4;
 $fn = 24;
+
+model = "ALL";
+one_spiral = false;
 
 golden_spiral_jigsaw();
 
@@ -71,89 +74,93 @@ module golden_spiral_jigsaw() {
        
         polygons = piece_polygons(start, a_step, degrees * 2);
         
-        for(i = [0:spirals - 1]) {
-            rotate(a_step * i)
-            for(j = [0:len(polygons) - 5]) {
-                poly = polygons[j];
-                u_poly = polygons[j + 1];
-                r_poly = [
-                    for(p = polygons[j + 4]) 
-                        ptf_rotate(p, a_step * (spirals - 1))
-                ];
-                
-                // a piece with blanks
-                difference() {
-                    offset(-offset_rr / 2)
-                        polygon(poly);
-                        
-                    interlocking_part1(u_poly, offset_rr);
-                    interlocking_part2(r_poly, offset_rr);                
+        if(model != "PLATE") {
+            for(i = [0:one_spiral ? 0 : spirals - 1]) {
+                rotate(a_step * i)
+                for(j = [0:len(polygons) - 5]) {
+                    poly = polygons[j];
+                    u_poly = polygons[j + 1];
+                    r_poly = [
+                        for(p = polygons[j + 4]) 
+                            ptf_rotate(p, a_step * (spirals - 1))
+                    ];
+                    
+                    // a piece with blanks
+                    difference() {
+                        offset(-offset_rr / 2)
+                            polygon(poly);
+                            
+                        interlocking_part1(u_poly, offset_rr);
+                        interlocking_part2(r_poly, offset_rr);                
+                    }
+                    
+                    // tabs
+                    interlocking_part1(poly, 0);
+                    interlocking_part2(poly, 0);
                 }
-                
-                // tabs
-                interlocking_part1(poly, 0);
-                interlocking_part2(poly, 0);
             }
         }
 
-        // plate 
-        polygons2 = piece_polygons(-a_step, a_step, start + a_step * 4);
-        points = [
-                for(d = [-start:a_step / 4:start])
-                let(
-                    theta = radians(d),
-                    r = pow(phi, theta * 2 / PI)
-                )
-                r * [cos(d), sin(d)]
-            ];
-            
-        render() 
-        difference() {
-            union() {
-                for(i = [0:spirals - 1]) {
-                    rotate(a_step * i) 
-                    difference() {
-                        
-                        offset(-offset_rr / 2) 
-                        union()
-                        for(j = [0:len(polygons2) - 13]) {
-                            poly = polygons2[j];
-                            polygon(poly);
-                        }
-                        
-                        
-                        for(j = [0:len(polygons2) - 5]) {
-                            poly = polygons2[j];
-                            // a piece with blanks
-                            difference() {
-                               //polygon(poly);
-                               u_poly = polygons2[j + 1];
-                               r_poly = [
-                                    for(p = polygons2[j + 4]) 
-                                        ptf_rotate(p, a_step * (spirals - 1))
-                               ];
-                               
-                               union() {
-                                    if(j >= start_n * 4) {
-                                        interlocking_part2(r_poly, offset_rr);   
-                                    }
+        if(model != "SPIRALS") {
+            // plate 
+            polygons2 = piece_polygons(-a_step, a_step, start + a_step * 4);
+            points = [
+                    for(d = [-start:a_step / 4:start])
+                    let(
+                        theta = radians(d),
+                        r = pow(phi, theta * 2 / PI)
+                    )
+                    r * [cos(d), sin(d)]
+                ];
+                
+            render() 
+            difference() {
+                union() {
+                    for(i = [0:spirals - 1]) {
+                        rotate(a_step * i) 
+                        difference() {
+                            
+                            offset(-offset_rr / 2) 
+                            union()
+                            for(j = [0:len(polygons2) - 13]) {
+                                poly = polygons2[j];
+                                polygon(poly);
+                            }
+                            
+                            
+                            for(j = [0:len(polygons2) - 5]) {
+                                poly = polygons2[j];
+                                // a piece with blanks
+                                difference() {
+                                   //polygon(poly);
+                                   u_poly = polygons2[j + 1];
+                                   r_poly = [
+                                        for(p = polygons2[j + 4]) 
+                                            ptf_rotate(p, a_step * (spirals - 1))
+                                   ];
+                                   
+                                   union() {
+                                        if(j >= start_n * 4) {
+                                            interlocking_part2(r_poly, offset_rr);   
+                                        }
 
-                                   if(j >= start_n * 4 + 3) {
-                                        interlocking_part1(u_poly, offset_rr);
-                                   }        
-                               }                       
+                                       if(j >= start_n * 4 + 3) {
+                                            interlocking_part1(u_poly, offset_rr);
+                                       }        
+                                   }                       
+                                }
                             }
                         }
                     }
+                    circle(pow(phi, radians(start)  / PI) * 0.95);
                 }
-                circle(pow(phi, radians(start)  / PI) * 0.95);
-            }
-            
-            union() 
-            for(i = [0:spirals - 1]) {
-                rotate(a_step * i) 
-                polyline_join(points)
-                    circle(offset_rr / 2);
+                
+                union() 
+                for(i = [0:spirals - 1]) {
+                    rotate(a_step * i) 
+                    polyline_join(points)
+                        circle(offset_rr / 2);
+                }
             }
         }
     }
