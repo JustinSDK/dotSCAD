@@ -10,8 +10,7 @@ thickness = 2.5;
 offset_r = 0.4;
 $fn = 24;
 
-model = "ALL";
-one_spiral = false;
+model = "ALL"; // [ALL, PLATE, SPIRAL]
 
 golden_spiral_jigsaw();
 
@@ -75,7 +74,7 @@ module golden_spiral_jigsaw() {
         polygons = piece_polygons(start, a_step, degrees * 2);
         
         if(model != "PLATE") {
-            for(i = [0:one_spiral ? 0 : spirals - 1]) {
+            for(i = [0:model == "SPIRAL" ? 0 : spirals - 1]) {
                 rotate(a_step * i)
                 for(j = [0:len(polygons) - 5]) {
                     poly = polygons[j];
@@ -101,7 +100,7 @@ module golden_spiral_jigsaw() {
             }
         }
 
-        if(model != "SPIRALS") {
+        if(model != "SPIRAL") {
             // plate 
             polygons2 = piece_polygons(-a_step, a_step, start + a_step * 4);
             points = [
