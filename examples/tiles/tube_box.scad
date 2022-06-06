@@ -1,6 +1,6 @@
-use <experimental/tile_w2e.scad>;
-use <select.scad>;
-use <box_extrude.scad>;
+use <experimental/tile_w2e.scad>
+use <select.scad>
+use <box_extrude.scad>
 
 size = [15, 8];
 tile_width = 10;

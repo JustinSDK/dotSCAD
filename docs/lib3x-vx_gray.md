@@ -13,7 +13,7 @@ Given a list of numbers (0 ~ 255) that represent a gray image. This function tra
  
 ## Examples
 
-    use <voxel/vx_gray.scad>;
+    use <voxel/vx_gray.scad>
 
     levels = [
         [255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255],
@@ -73,7 +73,7 @@ I provide a tool [img2gray](https://github.com/JustinSDK/img2gray) for convertin
 
 After converting the image, use the data in the text file as the `levels` value of `voxel_gray`, you can build a model like this:
 
-    use <voxel/vx_gray.scad>;
+    use <voxel/vx_gray.scad>
 
     levels = [
         [255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255], 

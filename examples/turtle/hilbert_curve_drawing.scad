@@ -1,7 +1,7 @@
-use <bezier_smooth.scad>;
-use <polyline_join.scad>;
-use <util/dedup.scad>;
-use <turtle/lsystem3.scad>;
+use <bezier_smooth.scad>
+use <polyline_join.scad>
+use <util/dedup.scad>
+use <turtle/lsystem3.scad>
 
 diameter = 0.3;
 corner_r = 0.5;

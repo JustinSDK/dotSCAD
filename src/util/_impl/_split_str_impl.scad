@@ -1,4 +1,4 @@
-use <../sub_str.scad>;
+use <../sub_str.scad>
 
 function _split_t_by(idxs, t) =
     let(leng = len(idxs))

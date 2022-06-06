@@ -11,8 +11,8 @@ Draws a voxel-by-voxel curve from control points. The curve is drawn only from t
 
 ## Examples
 
-    use <voxel/vx_curve.scad>;
-    use <polyline_join.scad>;
+    use <voxel/vx_curve.scad>
+    use <polyline_join.scad>
 
     pts = [
         [28, 2, 1],

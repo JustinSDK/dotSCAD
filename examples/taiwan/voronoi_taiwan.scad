@@ -1,6 +1,6 @@
-use <triangle/tri_delaunay.scad>;
-use <shape_taiwan.scad>;
-use <in_shape.scad>;
+use <triangle/tri_delaunay.scad>
+use <shape_taiwan.scad>
+use <in_shape.scad>
 
 voronoi_taiwan();
 

@@ -16,8 +16,8 @@ An implementation of Turtle Graphics with Fluent API. It moves on the xy plane. 
 
 ## Examples
 	    
-	use <line2d.scad>;
-	use <turtle/t2d.scad>;
+	use <line2d.scad>
+	use <turtle/t2d.scad>
 	
 	module turtle_spiral(t, times, side_leng, angle, width) {
 	    $fn = 24;
@@ -48,8 +48,8 @@ An implementation of Turtle Graphics with Fluent API. It moves on the xy plane. 
 
 The code below creates the same drawing.
 
-	use <line2d.scad>;
-	use <turtle/t2d.scad>;
+	use <line2d.scad>
+	use <turtle/t2d.scad>
 
 	module turtle_spiral(t, times, side_leng, angle, width) {
 		$fn = 24;
@@ -81,8 +81,8 @@ The code below creates the same drawing.
 
 ![t2d](images/lib3x-t2d-1.JPG)
 	
-	use <polyline_join.scad>;
-	use <turtle/t2d.scad>;
+	use <polyline_join.scad>
+	use <turtle/t2d.scad>
 	
 	side_leng = 100;
 	min_leng = 4;

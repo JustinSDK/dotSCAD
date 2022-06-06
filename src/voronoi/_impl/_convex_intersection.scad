@@ -1,9 +1,9 @@
-use <../../lines_intersection.scad>;
-use <_convex_ct_clk_order.scad>;
-use <../../util/set/hashset.scad>;
-use <../../util/set/hashset_elems.scad>;
+use <../../lines_intersection.scad>
+use <_convex_ct_clk_order.scad>
+use <../../util/set/hashset.scad>
+use <../../util/set/hashset_elems.scad>
 
-include <../../__comm__/_pt2_hash.scad>;
+include <../../__comm__/_pt2_hash.scad>
 
 function _in_convex_r(convex_pts, pt, leng, i = 0) =
     let(j = i + 1)

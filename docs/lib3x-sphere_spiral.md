@@ -14,8 +14,8 @@ Creates all points and angles on the path of a spiral around a sphere. It return
 
 ## Examples
     
-	use <polyline_join.scad>;
-	use <sphere_spiral.scad>;
+	use <polyline_join.scad>
+	use <sphere_spiral.scad>
 	
 	points_angles = sphere_spiral(
 	    radius = 40, 
@@ -36,7 +36,7 @@ Creates all points and angles on the path of a spiral around a sphere. It return
 
 ![sphere_spiral](images/lib3x-sphere_spiral-3.JPG)
 
-	use <sphere_spiral.scad>;
+	use <sphere_spiral.scad>
 
 	points_angles = sphere_spiral(
 	    radius = 40, 
@@ -55,8 +55,8 @@ Creates all points and angles on the path of a spiral around a sphere. It return
 
 ![sphere_spiral](images/lib3x-sphere_spiral-5.JPG)
 
-	use <polyline_join.scad>;
-	use <sphere_spiral.scad>;
+	use <polyline_join.scad>
+	use <sphere_spiral.scad>
 	
 	points_angles = sphere_spiral(
 	    radius = 40, 

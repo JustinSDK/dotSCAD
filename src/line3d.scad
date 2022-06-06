@@ -8,8 +8,8 @@
 *
 **/
 
-use <__comm__/__frags.scad>;
-use <__comm__/__nearest_multiple_of_4.scad>;
+use <__comm__/__frags.scad>
+use <__comm__/__nearest_multiple_of_4.scad>
 
 module line3d(p1, p2, diameter = 1, p1Style = "CAP_CIRCLE", p2Style = "CAP_CIRCLE") {
     r = diameter / 2;

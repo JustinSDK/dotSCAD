@@ -8,7 +8,7 @@
 *
 **/ 
 
-use <_impl/_t3d_impl.scad>;
+use <_impl/_t3d_impl.scad>
 
 function t3d(t, cmd, point, unit_vectors, leng, angle) =
     _t3d_impl(t, cmd, point, unit_vectors, leng, angle);

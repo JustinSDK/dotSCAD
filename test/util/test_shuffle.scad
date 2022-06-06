@@ -1,4 +1,4 @@
-use <util/shuffle.scad>;
+use <util/shuffle.scad>
 
 module test_shuffle() {
     echo("==== test_shuffle ====");

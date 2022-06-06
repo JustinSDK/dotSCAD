@@ -1,5 +1,5 @@
-use <_impl/_vrn_sphere_impl.scad>;
-use <vrn2_cells_from.scad>;
+use <_impl/_vrn_sphere_impl.scad>
+use <vrn2_cells_from.scad>
 
 function vrn_sphere(points) = 
     let(
@@ -14,9 +14,9 @@ function vrn_sphere(points) =
 	];
 	
 /*
-use <voronoi/vrn_sphere.scad>;
-use <fibonacci_lattice.scad>;
-use <polyline_join.scad>;
+use <voronoi/vrn_sphere.scad>
+use <fibonacci_lattice.scad>
+use <polyline_join.scad>
 
 n = 60;
 radius = 2;

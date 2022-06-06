@@ -8,7 +8,7 @@
 *
 **/
 
-use <__comm__/__trapezium.scad>;
+use <__comm__/__trapezium.scad>
 
 module rounded_square(size, corner_r, center = false) {
     is_flt = is_num(size);

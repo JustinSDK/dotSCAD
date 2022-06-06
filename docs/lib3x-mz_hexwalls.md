@@ -13,9 +13,9 @@ It's a helper for creating wall data from maze cells. You can transform wall poi
 
 ## Examples
     
-	use <maze/mz_square.scad>;
-	use <maze/mz_hexwalls.scad>;
-	use <polyline_join.scad>;
+	use <maze/mz_square.scad>
+	use <maze/mz_hexwalls.scad>
+	use <polyline_join.scad>
 
 	rows = 10;
 	columns = 12;

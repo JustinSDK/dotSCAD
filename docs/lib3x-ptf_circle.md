@@ -13,8 +13,8 @@ Transform a point inside a rectangle to a point inside a circle. You can use it 
 
 ## Examples
 
-    use <polyline_join.scad>;
-    use <ptf/ptf_circle.scad>;
+    use <polyline_join.scad>
+    use <ptf/ptf_circle.scad>
 
     size = [10, 10];
 

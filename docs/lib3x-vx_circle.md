@@ -11,7 +11,7 @@ Returns points that can be used to draw a voxel-style circle.
 
 ## Examples
 
-	use <voxel/vx_circle.scad>;
+	use <voxel/vx_circle.scad>
 
 	for(pt = vx_circle(10)) {
 		translate(pt)
@@ -20,7 +20,7 @@ Returns points that can be used to draw a voxel-style circle.
 
 ![vx_circle](images/lib3x-vx_circle-1.JPG)
 
-	use <voxel/vx_circle.scad>;
+	use <voxel/vx_circle.scad>
 
 	for(pt = vx_circle(10, filled = true)) {
 		translate(pt)

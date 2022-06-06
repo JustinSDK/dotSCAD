@@ -13,7 +13,7 @@ Shear all child elements along the X-axis, Y-axis, or Z-axis in 3D.
 
 ## Examples
 
-	use <shear.scad>;
+	use <shear.scad>
 
 	color("red") {
 		shear(sx = [1, 0])

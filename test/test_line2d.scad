@@ -1,5 +1,5 @@
-use <unittest.scad>;
-include <line2d.scad>;
+use <unittest.scad>
+include <line2d.scad>
 
 module test_line2d_cap(point, style) {
     p1 = [0, 0];

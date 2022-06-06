@@ -1,6 +1,6 @@
-use <maze/mz_cube.scad>;
-use <maze/mz_cube_initialize.scad>;
-use <maze3d.scad>;
+use <maze/mz_cube.scad>
+use <maze/mz_cube_initialize.scad>
+use <maze3d.scad>
 
 face_radius = 9;  
 cell_width = 15;

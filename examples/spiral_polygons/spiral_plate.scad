@@ -1,5 +1,5 @@
-use <ellipse_extrude.scad>;
-use <util/sum.scad>;
+use <ellipse_extrude.scad>
+use <util/sum.scad>
 
 beginning_radius = 15;
 fn = 5;

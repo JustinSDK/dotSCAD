@@ -11,7 +11,7 @@ Creates a [superellipsoid](https://en.wikipedia.org/wiki/Superellipsoid).
 
 ## Examples
 
-	use <polyhedra/superellipsoid.scad>;
+	use <polyhedra/superellipsoid.scad>
 
 	$fn = 24;
 

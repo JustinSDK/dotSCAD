@@ -8,7 +8,7 @@
 *
 **/
 
-use <__comm__/__in_line.scad>;
+use <__comm__/__in_line.scad>
 
 function in_polyline(line_pts, pt, epsilon = 0.0001) = 
     let(

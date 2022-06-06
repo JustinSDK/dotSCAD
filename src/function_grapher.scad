@@ -8,10 +8,10 @@
 *
 **/ 
 
-use <util/reverse.scad>;
-use <hull_polyline3d.scad>;
-use <path_extrude.scad>;
-use <shape_circle.scad>;
+use <util/reverse.scad>
+use <hull_polyline3d.scad>
+use <path_extrude.scad>
+use <shape_circle.scad>
 
 module function_grapher(points, thickness = 1, style = "FACES") {
     echo("`function_grapher` is deprecated since 3.1. Use `sf_thicken` instead.");

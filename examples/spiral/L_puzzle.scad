@@ -1,4 +1,4 @@
-use <util/fibseq.scad>;
+use <util/fibseq.scad>
 
 model = "ALL"; // [ALL, PIECE1, PIECE2]
 

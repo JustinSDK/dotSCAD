@@ -12,7 +12,7 @@ Extrudes a 2D object roundly from 0 to 180 degrees.
 
 ## Examples
 
-	use <rounded_extrude.scad>;
+	use <rounded_extrude.scad>
 
 	$fn = 48;
 

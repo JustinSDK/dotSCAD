@@ -9,7 +9,7 @@ Returns shape points of a [Superformula](https://en.wikipedia.org/wiki/Superform
 
 ## Examples
 
-    use <shape_superformula.scad>;   
+    use <shape_superformula.scad>   
         
     phi_step = 0.05;
 
@@ -41,8 +41,8 @@ Returns shape points of a [Superformula](https://en.wikipedia.org/wiki/Superform
 
 ![shape_superformula](images/lib3x-shape_superformula-1.JPG)
 
-    use <shape_superformula.scad>; 
-    use <golden_spiral_extrude.scad>;  
+    use <shape_superformula.scad> 
+    use <golden_spiral_extrude.scad>  
         
     phi_step = 0.05;
 

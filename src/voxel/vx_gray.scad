@@ -8,7 +8,7 @@
 *
 **/ 
 
-use <_impl/_vx_gray_impl.scad>;
+use <_impl/_vx_gray_impl.scad>
 
 function vx_gray(levels, center = false, invert = false, normalize = false) = 
     _vx_gray_impl(levels, center, invert, normalize);

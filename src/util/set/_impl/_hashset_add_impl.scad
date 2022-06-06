@@ -1,4 +1,4 @@
-use <../../_impl/_find_eq.scad>;
+use <../../_impl/_find_eq.scad>
  
 function _hashset_add(buckets, b_numbers, elem, eq, hash) =
     let(

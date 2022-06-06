@@ -12,9 +12,9 @@ Given a 2D path, this function constructs a mid-point smoothed version by joinin
 
 ## Examples
 
-    use <polyline_join.scad>;
-    use <shape_taiwan.scad>;
-    use <midpt_smooth.scad>;
+    use <polyline_join.scad>
+    use <shape_taiwan.scad>
+    use <midpt_smooth.scad>
 
     taiwan = shape_taiwan(50);  
     smoothed = midpt_smooth(taiwan, 20, true);

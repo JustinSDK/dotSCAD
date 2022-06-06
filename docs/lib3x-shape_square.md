@@ -10,7 +10,7 @@ Returns shape points of a rounded square or rectangle. They can be used with xxx
 
 ## Examples
 
-	use <shape_square.scad>;
+	use <shape_square.scad>
 
 	polygon(
 		shape_square(size = 50, corner_r = 5)
@@ -18,8 +18,8 @@ Returns shape points of a rounded square or rectangle. They can be used with xxx
 
 ![shape_square](images/lib3x-shape_square-1.JPG)
 
-	use <shape_square.scad>;
-	use <ring_extrude.scad>;
+	use <shape_square.scad>
+	use <ring_extrude.scad>
 
 	$fn = 36;
 

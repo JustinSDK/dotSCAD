@@ -17,7 +17,7 @@ Create a joint_T for rotatable models.
 
 ## Examples
 
-	use <part/joint_T.scad>;
+	use <part/joint_T.scad>
 
 	$fn = 48;
 

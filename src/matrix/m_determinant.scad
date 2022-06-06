@@ -8,6 +8,6 @@
 *
 **/
 
-use <_impl/_m_determinant_impl.scad>;
+use <_impl/_m_determinant_impl.scad>
 
 function m_determinant(m) = _m_determinant(m);

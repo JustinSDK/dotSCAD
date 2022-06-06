@@ -1,4 +1,4 @@
-use <voxel/vx_sphere.scad>;
+use <voxel/vx_sphere.scad>
 
 module test_vx_sphere() {
     echo("==== test_vx_sphere ====");

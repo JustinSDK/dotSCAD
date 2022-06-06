@@ -1,7 +1,7 @@
-use <shape_pie.scad>;
-use <polyhedron_hull.scad>;
-use <util/rand.scad>;
-use <experimental/worley_sphere.scad>;
+use <shape_pie.scad>
+use <polyhedron_hull.scad>
+use <util/rand.scad>
+use <experimental/worley_sphere.scad>
 
 base_r = 10;
 crystals = 10;

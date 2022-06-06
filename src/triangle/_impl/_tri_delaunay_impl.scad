@@ -1,12 +1,12 @@
-use <_tri_delaunay_comm_impl.scad>;
-use <../tri_circumcenter.scad>;
-use <../../util/map/hashmap.scad>;
-use <../../util/map/hashmap_get.scad>;
-use <../../util/map/hashmap_del.scad>;
-use <../../util/map/hashmap_keys.scad>;
-use <../../util/map/hashmap_put.scad>;
-use <../../util/contains.scad>;
-use <../../util/find_index.scad>;
+use <_tri_delaunay_comm_impl.scad>
+use <../tri_circumcenter.scad>
+use <../../util/map/hashmap.scad>
+use <../../util/map/hashmap_get.scad>
+use <../../util/map/hashmap_del.scad>
+use <../../util/map/hashmap_keys.scad>
+use <../../util/map/hashmap_put.scad>
+use <../../util/contains.scad>
+use <../../util/find_index.scad>
 
 cof =[961, 31, 1];
 function ihash(a, b, c) = [a, b, c] * cof;

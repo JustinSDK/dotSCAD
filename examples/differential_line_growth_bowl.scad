@@ -1,13 +1,13 @@
-use <shape_circle.scad>;
-use <midpt_smooth.scad>;
-use <polyline_join.scad>;
-use <in_shape.scad>;
-use <polyhedra/icosahedron.scad>;
-use <triangle/tri_delaunay.scad>;
-use <triangle/tri_incenter.scad>;
-use <surface/sf_thickenT.scad>;
-use <experimental/differential_line_growth.scad>;
-use <experimental/ptf_c2sphere.scad>;
+use <shape_circle.scad>
+use <midpt_smooth.scad>
+use <polyline_join.scad>
+use <in_shape.scad>
+use <polyhedra/icosahedron.scad>
+use <triangle/tri_delaunay.scad>
+use <triangle/tri_incenter.scad>
+use <surface/sf_thickenT.scad>
+use <experimental/differential_line_growth.scad>
+use <experimental/ptf_c2sphere.scad>
 
 $fn = 24;
 r = 10;

@@ -1,5 +1,5 @@
-use <voxel/vx_ascii.scad>;
-use <voxel/vx_contour.scad>;
+use <voxel/vx_ascii.scad>
+use <voxel/vx_contour.scad>
 
 module test_vx_contour() {
     echo("==== test_vx_contour ====");

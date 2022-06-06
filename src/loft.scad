@@ -8,8 +8,8 @@
 *
 **/
 
-use <sweep.scad>;
-use <util/lerp.scad>;
+use <sweep.scad>
+use <util/lerp.scad>
    
 module loft(sections, slices = 1) {
     function gcd(m, n) = n == 0 ? m : gcd(n, m % n);

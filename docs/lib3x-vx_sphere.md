@@ -12,7 +12,7 @@ Returns points that can be used to draw a voxel-style sphere.
 
 ## Examples
 
-	use <voxel/vx_sphere.scad>;
+	use <voxel/vx_sphere.scad>
 
 	for(pt = vx_sphere(10)) {
 		translate(pt)

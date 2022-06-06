@@ -8,9 +8,9 @@
 *
 **/ 
 
-use <_impl/_sf_square_surfaces.scad>;
-use <sf_solidify.scad>;
-use <../ptf/ptf_bend.scad>;
+use <_impl/_sf_square_surfaces.scad>
+use <sf_solidify.scad>
+use <../ptf/ptf_bend.scad>
 
 module sf_bend(levels, radius, thickness, depth, angle = 180, invert = false, convexity = 1) {
     dp = is_undef(depth) ? thickness / 2 : depth;

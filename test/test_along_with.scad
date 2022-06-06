@@ -1,5 +1,5 @@
-use <shape_circle.scad>;
-include <along_with.scad>;
+use <shape_circle.scad>
+include <along_with.scad>
 
 module test_along_with_angles(angles, children) {
     if(children == 1) {

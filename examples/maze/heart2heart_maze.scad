@@ -1,6 +1,6 @@
-use <arc.scad>;
-use <heart_maze.scad>;
-use <maze/mz_square.scad>;
+use <arc.scad>
+use <heart_maze.scad>
+use <maze/mz_square.scad>
 
 names = ["Justin", "Monica"];
 font_name = "Arial Black";

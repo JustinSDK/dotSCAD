@@ -1,9 +1,9 @@
-use <polyline_join.scad>;
-use <util/rand.scad>;
-use <maze/mz_square.scad>;
-use <maze/mz_squarewalls.scad>;
-use <ptf/ptf_circle.scad>;
-use <noise/nz_perlin2.scad>;
+use <polyline_join.scad>
+use <util/rand.scad>
+use <maze/mz_square.scad>
+use <maze/mz_squarewalls.scad>
+use <ptf/ptf_circle.scad>
+use <noise/nz_perlin2.scad>
 
 module noisy_circle_maze(r_cells, cell_width, wall_thickness, origin_offset, noisy_factor) {
     double_r_cells = r_cells * 2;

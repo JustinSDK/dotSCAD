@@ -10,8 +10,8 @@ Create cell shapes of Voronoi from a list of points.
 
 ## Examples
 
-    use <polyline_join.scad>;
-    use <voronoi/vrn2_cells_from.scad>;
+    use <polyline_join.scad>
+    use <voronoi/vrn2_cells_from.scad>
 
     points = [for(i = [0:50]) rands(-100, 100, 2)]; 
 

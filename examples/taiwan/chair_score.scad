@@ -1,4 +1,4 @@
-use <util/rand.scad>;
+use <util/rand.scad>
 
 layer = 15;  // [1:15]
 radial = 30; // [1:30]
@@ -37,7 +37,7 @@ faces=[[0,1,2],[3,4,5],[6,7,8],[9,10,11],[12,13,14],[15,16,17],[18,19,20],[21,22
 
 
 /*
-include <rounded_square.scad>;
+include <rounded_square.scad>
 
 module chair() {
     fw = 4;

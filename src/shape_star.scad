@@ -8,6 +8,6 @@
 *
 **/
 
-use <_impl/_shape_star_impl.scad>;
+use <_impl/_shape_star_impl.scad>
 
 function shape_star(outer_radius = 1, inner_radius = 0.381966, n = 5) = _shape_star_impl(outer_radius, inner_radius, n);

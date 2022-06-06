@@ -1,4 +1,4 @@
-use <square_maze.scad>;
+use <square_maze.scad>
 
 maze_rows = 8;
 cell_width = 2;

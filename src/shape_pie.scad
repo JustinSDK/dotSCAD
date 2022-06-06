@@ -8,8 +8,8 @@
 *
 **/
 
-use <__comm__/__frags.scad>;
-use <__comm__/__ra_to_xy.scad>;
+use <__comm__/__frags.scad>
+use <__comm__/__ra_to_xy.scad>
 
 function shape_pie(radius, angle) =
     let(

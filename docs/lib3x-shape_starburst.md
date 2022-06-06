@@ -11,14 +11,14 @@ Returns shape points of a star. They can be used with xxx_extrude modules of dot
 
 ## Examples
 
-	use <shape_starburst.scad>;
+	use <shape_starburst.scad>
 	
 	polygon(shape_starburst(30, 12, 6));
 
 ![shape_starburst](images/lib3x-shape_starburst-1.JPG)
 
-	use <shape_starburst.scad>;
-	use <golden_spiral_extrude.scad>;
+	use <shape_starburst.scad>
+	use <golden_spiral_extrude.scad>
 	
 	shape_pts = shape_starburst(5, 2, 8);
 	

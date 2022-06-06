@@ -8,7 +8,7 @@
 *
 **/
 
-use <__comm__/__frags.scad>;
+use <__comm__/__frags.scad>
 
 function shape_circle(radius, n) =
     let(

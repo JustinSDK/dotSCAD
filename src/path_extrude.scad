@@ -8,12 +8,12 @@
 *
 **/
 
-use <__comm__/__to3d.scad>;
-use <__comm__/__angy_angz.scad>;
-use <sweep.scad>;
-use <matrix/m_scaling.scad>;
-use <matrix/m_translation.scad>;
-use <matrix/m_rotation.scad>;
+use <__comm__/__to3d.scad>
+use <__comm__/__angy_angz.scad>
+use <sweep.scad>
+use <matrix/m_scaling.scad>
+use <matrix/m_translation.scad>
+use <matrix/m_rotation.scad>
 
 module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale = 1.0, closed = false, method = "AXIS_ANGLE") {
     sh_pts = len(shape_pts[0]) == 3 ? [for(p = shape_pts) [each p, 1]] : [for(p = shape_pts) [p.x, p.y, 0, 1]];

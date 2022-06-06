@@ -1,4 +1,4 @@
-include <_mz_square_cell_constants.scad>;
+include <_mz_square_cell_constants.scad>
 
 function no_wall(cell) = get_type(cell) == NO_WALL;
 function top_wall(cell) = get_type(cell) == TOP_WALL;

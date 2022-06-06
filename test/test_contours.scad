@@ -1,5 +1,5 @@
-use <unittest.scad>;
-use <contours.scad>;
+use <unittest.scad>
+use <contours.scad>
 
 module test_contours() {
     echo("==== test_contours  ====");

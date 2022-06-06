@@ -1,6 +1,6 @@
-use <unittest.scad>;
-use <shape_taiwan.scad>;
-use <in_shape.scad>;
+use <unittest.scad>
+use <shape_taiwan.scad>
+use <in_shape.scad>
 
 module test_in_shape() {
     echo("==== test_in_shape ====");

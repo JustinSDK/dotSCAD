@@ -1,4 +1,4 @@
-use <../some.scad>;
+use <../some.scad>
 
 function _dedup(elems, leng, buckets, eq, hash, bucket_numbers) = 
     let(

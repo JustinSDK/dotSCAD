@@ -1,5 +1,5 @@
-use <../../util/unit_vector.scad>;
-use <../../util/sum.scad>;
+use <../../util/unit_vector.scad>
+use <../../util/sum.scad>
 
 ZERO_VTS = [undef, undef, [0, 0], [0, 0, 0]];
 

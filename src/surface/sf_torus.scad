@@ -8,9 +8,9 @@
 *
 **/ 
 
-use <_impl/_sf_square_surfaces.scad>;
-use <sf_solidify.scad>;
-use <../ptf/ptf_torus.scad>;
+use <_impl/_sf_square_surfaces.scad>
+use <sf_solidify.scad>
+use <../ptf/ptf_torus.scad>
 
 module sf_torus(levels, radius, thickness, depth, angle = [360, 360], twist = 0, invert = false, convexity = 1) {
     dp = is_undef(depth) ? thickness / 2 : depth;

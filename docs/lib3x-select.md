@@ -26,7 +26,7 @@ If you write code like this:
 
 You may use `select`:
 
-	use <select.scad>;
+	use <select.scad>
 
 	i = 0;
 

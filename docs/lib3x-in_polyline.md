@@ -12,7 +12,7 @@ Checks whether a point is on a line.
 
 ## Examples
 
-    use <in_polyline.scad>;
+    use <in_polyline.scad>
 
     pts = [
         [0, 0],
@@ -27,7 +27,7 @@ Checks whether a point is on a line.
 
 ----
 
-    use <in_polyline.scad>;
+    use <in_polyline.scad>
 
     pts = [
         [10, 0, 10],

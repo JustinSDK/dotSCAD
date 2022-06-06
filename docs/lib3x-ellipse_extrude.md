@@ -10,7 +10,7 @@ Extrudes a 2D object along the path of an ellipse from 0 to 180 degrees. The sem
 
 ## Examples
 
-	use <ellipse_extrude.scad>;
+	use <ellipse_extrude.scad>
 	
 	semi_minor_axis = 5;
 	 
@@ -19,7 +19,7 @@ Extrudes a 2D object along the path of an ellipse from 0 to 180 degrees. The sem
 
 ![ellipse_extrude](images/lib3x-ellipse_extrude-1.JPG)
 
-	use <ellipse_extrude.scad>;
+	use <ellipse_extrude.scad>
 	
 	semi_minor_axis = 5;
 	 
@@ -28,7 +28,7 @@ Extrudes a 2D object along the path of an ellipse from 0 to 180 degrees. The sem
 
 ![ellipse_extrude](images/lib3x-ellipse_extrude-2.JPG)
 
-    use <ellipse_extrude.scad>;
+    use <ellipse_extrude.scad>
 
 	semi_minor_axis = 5;
 	 
@@ -41,7 +41,7 @@ Extrudes a 2D object along the path of an ellipse from 0 to 180 degrees. The sem
 
 ![ellipse_extrude](images/lib3x-ellipse_extrude-3.JPG)
 
-	use <ellipse_extrude.scad>;
+	use <ellipse_extrude.scad>
 	
 	semi_minor_axis = 10;
 	 

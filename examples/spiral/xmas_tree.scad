@@ -1,6 +1,6 @@
-use <line2d.scad>;
-use <polyhedra/star.scad>;
-use <util/rand.scad>;
+use <line2d.scad>
+use <polyhedra/star.scad>
+use <util/rand.scad>
 
 base = 100;
 segments = 150;

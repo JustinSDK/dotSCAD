@@ -1,6 +1,6 @@
-use <daruma.scad>;
-use <arc.scad>;
-use <polyline_join.scad>;
+use <daruma.scad>
+use <arc.scad>
+use <polyline_join.scad>
 
 text = "順暢";
 font = "思源黑體 Medium";

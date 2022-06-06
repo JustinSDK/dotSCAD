@@ -1,7 +1,7 @@
-use <../../util/set/hashset.scad>;
-use <../../util/set/hashset_has.scad>;
+use <../../util/set/hashset.scad>
+use <../../util/set/hashset_has.scad>
 
-include <../../__comm__/_pt2_hash.scad>;
+include <../../__comm__/_pt2_hash.scad>
 
 hash = function(p) _pt2_hash(p);
 

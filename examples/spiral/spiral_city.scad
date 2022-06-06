@@ -1,7 +1,7 @@
-use <archimedean_spiral.scad>;
-use <arc.scad>;
-use <rounded_cube.scad>;
-use <util/reverse.scad>;
+use <archimedean_spiral.scad>
+use <arc.scad>
+use <rounded_cube.scad>
+use <util/reverse.scad>
 
 num_of_buildings = 10;
 seed_value = 15; 

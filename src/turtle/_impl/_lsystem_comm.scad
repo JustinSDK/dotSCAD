@@ -1,4 +1,4 @@
-use <../../util/rand.scad>;
+use <../../util/rand.scad>
 
 function _codes(axiom, rules, n, forward_chars, rule_prs, seed) = 
     let(derived = _derive(axiom, rules, n, rule_prs, seed))

@@ -1,4 +1,4 @@
-use <_nz_worley_comm.scad>;
+use <_nz_worley_comm.scad>
 
 function _neighbors(fcord, seed, grid_w) = 
     let(range = [-1:1], gwv = [1, grid_w])

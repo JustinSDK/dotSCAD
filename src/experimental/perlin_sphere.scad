@@ -1,6 +1,6 @@
-use <util/rand.scad>;
-use <noise/_impl/_pnoise3_impl.scad>;
-use <polyhedra/geom_icosahedron.scad>;
+use <util/rand.scad>
+use <noise/_impl/_pnoise3_impl.scad>
+use <polyhedra/geom_icosahedron.scad>
 
 radius = 30;
 detail = 20;

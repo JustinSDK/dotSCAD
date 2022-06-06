@@ -1,5 +1,5 @@
-use <voxel/vx_gray.scad>;
-use <stereographic_extrude.scad>;
+use <voxel/vx_gray.scad>
+use <stereographic_extrude.scad>
 
 px_width = 0.8;
 

@@ -12,7 +12,7 @@ The 2D polygon should center at the origin and you have to determine the side le
 
 ## Examples
     
-    use <stereographic_extrude.scad>;
+    use <stereographic_extrude.scad>
     
 	dimension = 100;
 	

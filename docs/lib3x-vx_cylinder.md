@@ -13,7 +13,7 @@ Returns points that can be used to draw a voxel-style cylinder.
 
 ## Examples
 
-	use <voxel/vx_cylinder.scad>;
+	use <voxel/vx_cylinder.scad>
 
 	for(pt = vx_cylinder([10, 15], 10)) {
 		translate(pt)
@@ -22,7 +22,7 @@ Returns points that can be used to draw a voxel-style cylinder.
 
 ![vx_cylinder](images/lib3x-vx_cylinder-1.JPG)
 
-	use <voxel/vx_cylinder.scad>;
+	use <voxel/vx_cylinder.scad>
 
 	for(pt = vx_cylinder([20, 15], h = 10, thickness = 3)) {
 		translate(pt)

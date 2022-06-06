@@ -1,6 +1,6 @@
-use <polyhedra/geom_icosahedron.scad>;
-use <polyline_join.scad>;
-use <bend_extrude.scad>;
+use <polyhedra/geom_icosahedron.scad>
+use <polyline_join.scad>
+use <bend_extrude.scad>
 
 detail = 1;
 object = "OpenSCAD";

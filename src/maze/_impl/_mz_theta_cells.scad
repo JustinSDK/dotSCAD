@@ -1,5 +1,5 @@
-use <../../util/rand.scad>;
-use <../../util/some.scad>;
+use <../../util/rand.scad>
+use <../../util/some.scad>
 
 NO_WALL = 0;
 INWARD_WALL = 1;

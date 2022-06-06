@@ -1,7 +1,7 @@
 /*
-use <lemniscate_curve.scad>;
-use <path_extrude.scad>;
-use <shape_star.scad>;
+use <lemniscate_curve.scad>
+use <path_extrude.scad>
+use <shape_star.scad>
 
 shape_pts = [
     [3, -1.5],

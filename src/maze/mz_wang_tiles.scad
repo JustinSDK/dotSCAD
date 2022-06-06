@@ -8,11 +8,11 @@
 *
 **/
 
-use <_impl/_mz_wang_tiles_impl.scad>;
-use <mz_square_get.scad>;
-use <../util/set/hashset.scad>;
+use <_impl/_mz_wang_tiles_impl.scad>
+use <mz_square_get.scad>
+use <../util/set/hashset.scad>
 
-include <../__comm__/_pt2_hash.scad>;
+include <../__comm__/_pt2_hash.scad>
 
 function mz_wang_tiles(cells, left_border = true, bottom_border = true) =
     let(

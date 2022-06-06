@@ -1,4 +1,4 @@
-use <voronoi/vrn2_cells_space.scad>;
+use <voronoi/vrn2_cells_space.scad>
 
 grid_w = 5;
 spacing = 0.2;

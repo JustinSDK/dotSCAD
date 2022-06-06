@@ -1,6 +1,6 @@
-use <experimental/tile_w2e.scad>;
-use <select.scad>;
-use <arc.scad>;
+use <experimental/tile_w2e.scad>
+use <select.scad>
+use <arc.scad>
 
 size = [15, 10];
 tile_width = 10;

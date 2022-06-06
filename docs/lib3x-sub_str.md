@@ -10,7 +10,7 @@ Returns the part of the string from `begin` to `end`, or to the `end` of the str
 
 ## Examples
 
-    use <util/sub_str.scad>;
+    use <util/sub_str.scad>
     
 	assert(sub_str("helloworld", 0, 5) == "hello");
 	assert(sub_str("helloworld", 5) == "world"); 

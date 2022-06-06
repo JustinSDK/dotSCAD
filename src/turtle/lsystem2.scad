@@ -8,8 +8,8 @@
 *
 **/ 
 
-use <_impl/_lsystem_comm.scad>;
-use <turtle2d.scad>;
+use <_impl/_lsystem_comm.scad>
+use <turtle2d.scad>
 
 function lsystem2(axiom, rules, n, angle, leng = 1, heading = 0, start = [0, 0], forward_chars = "F", rule_prs, seed) =
     let(

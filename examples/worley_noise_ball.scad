@@ -1,5 +1,5 @@
-use <noise/nz_worley3s.scad>;
-use <sweep.scad>;
+use <noise/nz_worley3s.scad>
+use <sweep.scad>
 
 radius = 25;
 a_step = 5;

@@ -10,7 +10,7 @@ Converts from Cartesian to Spherical coordinates (used in mathematics). It retur
 
 ## Examples
 
-    use <util/spherical_coordinate.scad>;
+    use <util/spherical_coordinate.scad>
     
 	coord = spherical_coordinate([100, 100, 100]);
 	r = round(coord[0]);

@@ -1,4 +1,4 @@
-use <util/find_index.scad>;
+use <util/find_index.scad>
 
 module test_find_index() {
     echo("==== test_find_index ====");

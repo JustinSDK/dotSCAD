@@ -10,7 +10,7 @@ Create a convex polygon by hulling a list of points. It avoids using `hull` and 
 
 ## Examples
 
-	use <polygon_hull.scad>;
+	use <polygon_hull.scad>
 
 	polygon_hull([
 		[1, 1],

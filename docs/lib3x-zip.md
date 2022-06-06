@@ -11,8 +11,8 @@ Make a list that aggregates elements from each of the lists. Returns a list of l
 
 ## Examples
 
-    use <util/zip.scad>;
-    use <util/sum.scad>;
+    use <util/zip.scad>
+    use <util/sum.scad>
 
     xs = [10, 20, 30];
     ys = [5, 15, 25];

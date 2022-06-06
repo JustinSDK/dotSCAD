@@ -1,5 +1,5 @@
-use <voronoi/vrn2_cells_space.scad>;
-use <unittest.scad>;
+use <voronoi/vrn2_cells_space.scad>
+use <unittest.scad>
 
 module test_vrn2_cells_space() {
     echo("==== test_vrn2_cells_space ====");

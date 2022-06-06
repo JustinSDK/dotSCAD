@@ -1,7 +1,7 @@
-use <matrix/m_rotation.scad>;
-use <maze/mz_square.scad>;
-use <maze/mz_squarewalls.scad>;
-use <ptf/ptf_sphere.scad>;
+use <matrix/m_rotation.scad>
+use <maze/mz_square.scad>
+use <maze/mz_squarewalls.scad>
+use <ptf/ptf_sphere.scad>
 
 r = 10;
 rows = 24;

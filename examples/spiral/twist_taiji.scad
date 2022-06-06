@@ -1,4 +1,4 @@
-use <pie.scad>;
+use <pie.scad>
 
 radius = 15;
 height = 90;

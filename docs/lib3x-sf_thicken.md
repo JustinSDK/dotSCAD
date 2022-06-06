@@ -10,7 +10,7 @@ It thickens a surface, described by a m * n list of `[x, y, z]`s.
 
 ## Examples
 
-	use <surface/sf_thicken.scad>;
+	use <surface/sf_thicken.scad>
 
 	points = [
 		[[0, 0, 1], [1, 0, 2.5], [2, 0, 2], [3, 0, 2.5]],
@@ -25,7 +25,7 @@ It thickens a surface, described by a m * n list of `[x, y, z]`s.
 
 ![sf_thicken](images/lib3x-sf_thicken-1.JPG)
 
-	use <surface/sf_thicken.scad>;
+	use <surface/sf_thicken.scad>
 
 	function f(x, y) = 
         let(leng = norm([x, y]))
@@ -47,7 +47,7 @@ It thickens a surface, described by a m * n list of `[x, y, z]`s.
 
 ![sf_thicken](images/lib3x-sf_thicken-2.JPG)
 
-	use <surface/sf_thicken.scad>;
+	use <surface/sf_thicken.scad>
 
 	function f(x, y) = x + y;
 

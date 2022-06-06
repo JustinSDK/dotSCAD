@@ -11,7 +11,7 @@ Create a 3D version of [Voronoi diagram](https://en.wikipedia.org/wiki/Voronoi_d
 
 ## Examples
 
-    use <voronoi/vrn3_from.scad>;
+    use <voronoi/vrn3_from.scad>
 
     r = 30;
 
@@ -38,7 +38,7 @@ Create a 3D version of [Voronoi diagram](https://en.wikipedia.org/wiki/Voronoi_d
 
 ![vrn3_from](images/lib3x-vrn3_from-1.JPG)
 
-    use <voronoi/vrn3_from.scad>;
+    use <voronoi/vrn3_from.scad>
 
     r = 30;
     thickness = 2;

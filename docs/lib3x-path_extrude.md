@@ -16,8 +16,8 @@ When using this module, you should use points to represent the 2D shape. If your
 
 ## Examples
 
-	use <path_extrude.scad>;
-	use <bezier_curve.scad>;
+	use <path_extrude.scad>
+	use <bezier_curve.scad>
 
 	t_step = 0.05;
 	width = 2;
@@ -43,8 +43,8 @@ When using this module, you should use points to represent the 2D shape. If your
 
 ![path_extrude](images/lib3x-path_extrude-1.JPG)
 
-	use <path_extrude.scad>;
-	use <bezier_curve.scad>;
+	use <path_extrude.scad>
+	use <bezier_curve.scad>
 
 	t_step = 0.05;
 
@@ -75,8 +75,8 @@ When using this module, you should use points to represent the 2D shape. If your
 
 ![path_extrude](images/lib3x-path_extrude-2.JPG)
 
-	use <path_extrude.scad>;
-	use <bezier_curve.scad>;
+	use <path_extrude.scad>
+	use <bezier_curve.scad>
 	
 	t_step = 0.05;
 	
@@ -122,7 +122,7 @@ When using this module, you should use points to represent the 2D shape. If your
 
 If you want to extrude a shape along a path precisely, providing enough information about how to rotate sections is necessary. If you want to extrude a shape along a helix, `helix_extrude` is more suitable because it knows how to dig out necessary data for rotating sections precisely.
 
-	use <helix_extrude.scad>;
+	use <helix_extrude.scad>
 
 	shape_pts = [
 		[0,0],
@@ -141,8 +141,8 @@ If you want to extrude a shape along a path precisely, providing enough informat
 
 If you have only points, what `path_extrude` can do is to **guess** data about rotations. The different algorithm will dig out different data. For example:
 
-	use <helix.scad>;
-	use <path_extrude.scad>;
+	use <helix.scad>
+	use <path_extrude.scad>
 
 	shape_pts = [
 		[0,0],
@@ -165,8 +165,8 @@ You might think this is wrong. Actually, it's not. It's the correct/default beha
 
  The `method` parameter is default to `"AXIS_ANGLE"`, a way to guess information from points. It accepts `"EULER_ANGLE"`, too. 
 
-	use <helix.scad>;
-	use <path_extrude.scad>;
+	use <helix.scad>
+	use <path_extrude.scad>
 
 	shape_pts = [
 		[0,0],
@@ -189,7 +189,7 @@ You might think this is wrong. Actually, it's not. It's the correct/default beha
 
 `"EULER_ANGLE"` will generate an abrupt when the path is exactly vertical. [The problem happened in (older) Blender, too.](https://download.blender.org/documentation/htmlI/ch09s04.html) 
 
-	use <path_extrude.scad>;
+	use <path_extrude.scad>
 
 	shape_pts = [[5, -5], [5, 5], [-5, 5], [-5, -5]];
 
@@ -213,7 +213,7 @@ You might think this is wrong. Actually, it's not. It's the correct/default beha
 
 The problem doesn't happen when `method` is `"AXIS_ANGLE"`.
 
-	use <path_extrude.scad>;
+	use <path_extrude.scad>
 
 	shape_pts = [[5, -5], [5, 5], [-5, 5], [-5, -5]];
 
@@ -241,9 +241,9 @@ So, which is the correct method? Both methods are correct when you provide only 
 
 `"EULER_ANGLE"`, however, generates the same section at the same point. This means that you don't have to adjust sections if you want to extrude along a closed path. It's an advantage when extruding. For example:
 
-	use <shape_pentagram.scad>;
-	use <path_extrude.scad>;
-	use <torus_knot.scad>;
+	use <shape_pentagram.scad>
+	use <path_extrude.scad>
+	use <torus_knot.scad>
 
 	p = 2;
 	q = 3;

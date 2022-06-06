@@ -1,7 +1,7 @@
-use <util/rand.scad>;
-use <polyhedra/geom_icosahedron.scad>;
-use <noise/nz_worley3.scad>;
-use <noise/nz_perlin3.scad>;
+use <util/rand.scad>
+use <polyhedra/geom_icosahedron.scad>
+use <noise/nz_worley3.scad>
+use <noise/nz_perlin3.scad>
 
 radius = 150;
 detail = 30;

@@ -1,5 +1,5 @@
-use <polyline_join.scad>;
-use <turtle/t2d.scad>;
+use <polyline_join.scad>
+use <turtle/t2d.scad>
 
 side_leng = 100;
 min_leng = 4;

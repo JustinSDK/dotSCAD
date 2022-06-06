@@ -9,14 +9,14 @@ Returns shape points of [Taiwan](https://www.google.com.tw/maps?q=taiwan&um=1&ie
 
 ## Examples
 
-	use <shape_taiwan.scad>;
+	use <shape_taiwan.scad>
 
 	polygon(shape_taiwan(10));
 
 ![shape_taiwan](images/lib3x-shape_taiwan-1.JPG)
 
-	use <shape_taiwan.scad>;
-	use <golden_spiral_extrude.scad>;
+	use <shape_taiwan.scad>
+	use <golden_spiral_extrude.scad>
 
 	mirror_taiwan = [for(pt = shape_taiwan(15)) [pt[0] * -1, pt[1]]];
 
@@ -30,8 +30,8 @@ Returns shape points of [Taiwan](https://www.google.com.tw/maps?q=taiwan&um=1&ie
 
 ![shape_taiwan](images/lib3x-shape_taiwan-2.JPG)
 
-	use <shape_taiwan.scad>;
-	use <helix_extrude.scad>;
+	use <shape_taiwan.scad>
+	use <helix_extrude.scad>
 
 	r1 = 15;
 	r2 = 100;

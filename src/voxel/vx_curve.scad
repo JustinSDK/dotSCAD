@@ -8,11 +8,11 @@
 *
 **/ 
 
-use <_impl/_vx_curve_impl.scad>;
-use <../util/dedup.scad>;
+use <_impl/_vx_curve_impl.scad>
+use <../util/dedup.scad>
 
-include <../__comm__/_pt2_hash.scad>;
-include <../__comm__/_pt3_hash.scad>;
+include <../__comm__/_pt2_hash.scad>
+include <../__comm__/_pt3_hash.scad>
 
 function vx_curve(points, tightness = 0) = 
     let(leng = len(points))

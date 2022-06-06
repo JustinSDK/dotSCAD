@@ -1,4 +1,4 @@
-use <util/sort.scad>;
+use <util/sort.scad>
 
 module test_sort() {
     echo("==== test_sort ====");

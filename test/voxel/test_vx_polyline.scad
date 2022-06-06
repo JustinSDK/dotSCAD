@@ -1,4 +1,4 @@
-use <voxel/vx_polyline.scad>;
+use <voxel/vx_polyline.scad>
 
 module test_vx_polyline() {
     echo("==== test_vx_polyline ====");

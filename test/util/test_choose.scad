@@ -1,4 +1,4 @@
-use <util/choose.scad>;
+use <util/choose.scad>
 
 module test_choose() {
     echo("==== test_choose ====");

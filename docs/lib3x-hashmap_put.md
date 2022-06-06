@@ -14,9 +14,9 @@ Puts a key/value pair to a [util/map/hashmap](https://openhome.cc/eGossip/OpenSC
 
 ## Examples
 
-    use <util/map/hashmap.scad>;
-    use <util/map/hashmap_put.scad>;
-    use <util/map/hashmap_get.scad>;
+    use <util/map/hashmap.scad>
+    use <util/map/hashmap_put.scad>
+    use <util/map/hashmap_get.scad>
 
     m1 = hashmap([["k1", 10], ["k2", 20], ["k3", 30]]);
 

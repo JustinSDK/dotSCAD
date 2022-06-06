@@ -1,6 +1,6 @@
-use <voronoi/vrn2_cells_space.scad>;
-use <polyline_join.scad>;
-use <ptf/ptf_torus.scad>;
+use <voronoi/vrn2_cells_space.scad>
+use <polyline_join.scad>
+use <ptf/ptf_torus.scad>
 
 size = [40, 80];
 grid_w = 5;

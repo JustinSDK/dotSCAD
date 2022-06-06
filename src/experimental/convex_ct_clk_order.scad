@@ -1,5 +1,5 @@
-use <util/sorted.scad>;
-use <experimental/convex_centroid.scad>;
+use <util/sorted.scad>
+use <experimental/convex_centroid.scad>
 
 function convex_ct_clk_order(points) =
     let(cpt = convex_centroid(points))

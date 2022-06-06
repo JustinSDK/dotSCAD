@@ -11,7 +11,7 @@ returns a new list with all sub-list elements concatenated into it recursively u
 
 ## Examples
 
-	use <util/flat.scad>;
+	use <util/flat.scad>
 
 	vt = [[[[1, 2], [3, 4]], [[5, 6], [7, 8]]]];
 

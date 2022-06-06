@@ -8,8 +8,8 @@
 *
 **/
 
-use <../__comm__/__frags.scad>;
-use <../sweep.scad>;
+use <../__comm__/__frags.scad>
+use <../sweep.scad>
 
 module superellipsoid(e, n) {
 	function _c(w, m) = 

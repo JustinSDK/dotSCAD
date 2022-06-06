@@ -1,9 +1,9 @@
-use <curve.scad>;;
-use <shape_circle.scad>;
-use <path_extrude.scad>;
-use <bezier_curve.scad>;
-use <surface/sf_splines.scad>;
-use <surface/sf_thicken.scad>;
+use <curve.scad>;
+use <shape_circle.scad>
+use <path_extrude.scad>
+use <bezier_curve.scad>
+use <surface/sf_splines.scad>
+use <surface/sf_thicken.scad>
 
 $fn = 48;
 t_step = 0.05;

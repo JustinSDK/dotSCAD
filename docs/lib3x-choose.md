@@ -11,6 +11,6 @@ Choose an element from the given list randomly.
 
 ## Examples
 
-    use <util/choose.scad>;
+    use <util/choose.scad>
     
     echo(choose([1, 2, 3, 4]));

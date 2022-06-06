@@ -1,8 +1,8 @@
-use <maze/mz_square_initialize.scad>;
-use <maze/mz_square.scad>;
-use <maze/mz_wang_tiles.scad>;
-use <util/rand.scad>;
-use <../tiles/city_tile.scad>;
+use <maze/mz_square_initialize.scad>
+use <maze/mz_square.scad>
+use <maze/mz_wang_tiles.scad>
+use <util/rand.scad>
+use <../tiles/city_tile.scad>
 
 rows = 10;
 columns = 10;

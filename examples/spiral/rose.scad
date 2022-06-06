@@ -1,5 +1,5 @@
-use <sweep.scad>;
-use <util/reverse.scad>;
+use <sweep.scad>
+use <util/reverse.scad>
 
 thickness = 0.05;
 

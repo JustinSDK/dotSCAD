@@ -11,7 +11,7 @@ Given two points. `vx_line` returns points that can be used to draw a voxel-styl
 
 ## Examples
 
-	use <voxel/vx_line.scad>;
+	use <voxel/vx_line.scad>
 
 	for(pt = vx_line([-10, 0], [20, 50])) {
 		translate(pt) 
@@ -20,7 +20,7 @@ Given two points. `vx_line` returns points that can be used to draw a voxel-styl
 
 ![vx_line](images/lib3x-vx_line-1.JPG)
 
-	use <voxel/vx_line.scad>;
+	use <voxel/vx_line.scad>
 
 	for(pt = vx_line([-10, 0, -10], [20, 50, 10])) {
 		translate(pt) 

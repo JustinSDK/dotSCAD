@@ -12,8 +12,8 @@ It's an implementation of [Worley noise](https://en.wikipedia.org/wiki/Worley_no
 
 ## Examples
 
-    use <noise/nz_cell.scad>;
-    use <golden_spiral.scad>;
+    use <noise/nz_cell.scad>
+    use <golden_spiral.scad>
 
     size = [100, 50];
     half_size = size / 2;

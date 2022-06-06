@@ -32,8 +32,8 @@
 
 [lsystem3-collections.scad](https://github.com/JustinSDK/dotSCAD/blob/master/examples/turtle/lsystem3_collection.scad) collects several L-system grammars. Here's one of them.
 
-	use <turtle/lsystem3.scad>;
-	use <polyline_join.scad>;
+	use <turtle/lsystem3.scad>
+	use <polyline_join.scad>
 
 	for(line = hilbert_curve()) {
 		polyline_join([line[0], line[1]])
@@ -56,8 +56,8 @@
 
     // a stochastic L-system
 
-	use <turtle/lsystem3.scad>;
-	use <polyline_join.scad>;
+	use <turtle/lsystem3.scad>
+	use <polyline_join.scad>
 
 	for(line = vine()) {
 		polyline_join([line[0], line[1]])

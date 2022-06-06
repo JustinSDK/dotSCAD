@@ -8,6 +8,6 @@
 *
 **/ 
 
-use <_impl/_bezier_curve_impl.scad>;
+use <_impl/_bezier_curve_impl.scad>
 
 function bezier_curve(t_step, points) = _bezier_curve_impl(t_step, points);

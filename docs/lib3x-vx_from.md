@@ -12,7 +12,7 @@ Given a list of 0s and 1s that represent a black-and-white image. This function 
 
 ## Examples
 
-    use <voxel/vx_from.scad>;
+    use <voxel/vx_from.scad>
 
     pts = vx_from([
         [0,0,0,0,0,0,0,0],
@@ -43,7 +43,7 @@ I provide a tool [img2binary](https://github.com/JustinSDK/img2binary) for conve
 
 The tool converts it into binaries. Combined with the `voxel_from`, you can build a model like this:
 
-    use <voxel/vx_from.scad>;
+    use <voxel/vx_from.scad>
 
     pts = vx_from([
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],

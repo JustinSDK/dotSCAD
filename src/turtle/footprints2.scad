@@ -9,7 +9,7 @@
 *
 **/ 
 
-use <turtle2d.scad>;
+use <turtle2d.scad>
 
 function footprints2(cmds, start = [0, 0]) = 
     let(leng = len(cmds))

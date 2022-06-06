@@ -1,5 +1,5 @@
-use <voxel/vx_gray.scad>;
-use <ptf/ptf_sphere.scad>;
+use <voxel/vx_gray.scad>
+use <ptf/ptf_sphere.scad>
 
 photo_size = [100, 100];
 radius = 50;

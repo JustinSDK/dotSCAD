@@ -1,7 +1,7 @@
-use <maze/mz_theta.scad>;
-use <util/find_index.scad>;
-use <arc.scad>;
-use <polyline2d.scad>;
+use <maze/mz_theta.scad>
+use <util/find_index.scad>
+use <arc.scad>
+use <polyline2d.scad>
 
 $fn = 48;
 

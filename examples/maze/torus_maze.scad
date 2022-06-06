@@ -1,7 +1,7 @@
-use <polyline_join.scad>;
-use <ptf/ptf_torus.scad>;
-use <maze/mz_square.scad>;
-use <maze/mz_squarewalls.scad>;
+use <polyline_join.scad>
+use <ptf/ptf_torus.scad>
+use <maze/mz_square.scad>
+use <maze/mz_squarewalls.scad>
 
 rows = 36;
 columns = 12;

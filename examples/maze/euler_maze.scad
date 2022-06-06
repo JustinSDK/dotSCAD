@@ -1,6 +1,6 @@
-use <line2d.scad>;
-use <arc.scad>;
-use <util/rand.scad>;
+use <line2d.scad>
+use <arc.scad>
+use <util/rand.scad>
 
 number_of_circles = 15;
 minimum_radius = 3;

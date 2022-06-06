@@ -8,6 +8,6 @@
 *
 **/ 
 
-use <_impl/_vx_line_impl.scad>;
+use <_impl/_vx_line_impl.scad>
 
 function vx_line(p1, p2) = _vx_line_impl(p1, p2);

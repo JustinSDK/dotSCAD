@@ -12,7 +12,7 @@ Given a 2D shape. This function performs a polygon triangulation based on [Ear c
 
 ## Examples
 
-    use <triangle/tri_ear_clipping.scad>; 
+    use <triangle/tri_ear_clipping.scad> 
 
     shape = [
         [0, 0],
@@ -35,7 +35,7 @@ Given a 2D shape. This function performs a polygon triangulation based on [Ear c
 
 ![tri_ear_clipping](images/lib3x-tri_ear_clipping-1.JPG)
 
-    use <triangle/tri_ear_clipping.scad>; 
+    use <triangle/tri_ear_clipping.scad> 
 
     shape = [
         [0, 0],

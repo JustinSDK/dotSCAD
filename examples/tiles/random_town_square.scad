@@ -1,12 +1,12 @@
-use <pie.scad>;
-use <util/parse_number.scad>;
-use <util/contains.scad>;
-use <util/rand.scad>;
-use <util/choose.scad>;
-use <experimental/tile_wfc.scad>;
-use <rounded_square.scad>;
-use <box_extrude.scad>;
-use <polyhedron_hull.scad>;
+use <pie.scad>
+use <util/parse_number.scad>
+use <util/contains.scad>
+use <util/rand.scad>
+use <util/choose.scad>
+use <experimental/tile_wfc.scad>
+use <rounded_square.scad>
+use <box_extrude.scad>
+use <polyhedron_hull.scad>
 
 size = [5, 5];
 tileW = 10;

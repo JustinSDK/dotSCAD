@@ -8,13 +8,13 @@
 *
 **/ 
 
-use <../__comm__/__to2d.scad>;
-use <../__comm__/__to3d.scad>;
-use <_impl/_vx_bezier_impl.scad>;
-use <../util/dedup.scad>;
+use <../__comm__/__to2d.scad>
+use <../__comm__/__to3d.scad>
+use <_impl/_vx_bezier_impl.scad>
+use <../util/dedup.scad>
 
-include <../__comm__/_pt2_hash.scad>;
-include <../__comm__/_pt3_hash.scad>;
+include <../__comm__/_pt2_hash.scad>
+include <../__comm__/_pt3_hash.scad>
 
 function vx_bezier(p1, p2, p3, p4) = 
     let(

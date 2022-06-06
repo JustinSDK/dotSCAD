@@ -1,5 +1,5 @@
-use <unittest.scad>;
-include <line3d.scad>;
+use <unittest.scad>
+include <line3d.scad>
 
 module test_line3d_butt(p, r, frags, length, angles) {
     p1 = [0, 0, 0];

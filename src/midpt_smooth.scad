@@ -8,6 +8,6 @@
 *
 **/
 
-use <_impl/_midpt_smooth_impl.scad>;
+use <_impl/_midpt_smooth_impl.scad>
 
 function midpt_smooth(points, n, closed = false) = _midpt_smooth_impl(points, n, closed);

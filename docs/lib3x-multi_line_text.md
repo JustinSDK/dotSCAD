@@ -9,7 +9,7 @@ Creates multi-line text from a list of strings. Parameters are the same as the b
 
 ## Examples
     
-	use <multi_line_text.scad>;
+	use <multi_line_text.scad>
 
 	multi_line_text(
 		["Welcome", "to", "Taiwan"],

@@ -13,7 +13,7 @@ Creates a rounded cylinder.
 
 ## Examples
 
-	use <rounded_cylinder.scad>;
+	use <rounded_cylinder.scad>
 
 	rounded_cylinder(
 		radius = [20, 10], 

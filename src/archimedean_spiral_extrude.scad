@@ -8,9 +8,9 @@
 *
 **/
 
-use <archimedean_spiral.scad>;
-use <cross_sections.scad>;
-use <sweep.scad>;
+use <archimedean_spiral.scad>
+use <cross_sections.scad>
+use <sweep.scad>
 
 module archimedean_spiral_extrude(shape_pts, arm_distance, init_angle, point_distance, num_of_points, 
                                   rt_dir = "CT_CLK", twist = 0, scale = 1.0, triangles = "SOLID") {

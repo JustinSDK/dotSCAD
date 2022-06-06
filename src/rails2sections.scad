@@ -8,6 +8,6 @@
 *
 **/
 
-use <matrix/m_transpose.scad>;
+use <matrix/m_transpose.scad>
 
 function rails2sections(rails) = m_transpose(rails);

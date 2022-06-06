@@ -1,5 +1,5 @@
-use <shape_star.scad>;
-use <hollow_out.scad>;
+use <shape_star.scad>
+use <hollow_out.scad>
 
 // The idea is from Walk Torus83 Fort.
 // https://sketchfab.com/3d-models/walk-torus83-fort-44dc701f676d40f7aa1bee874db6fde9

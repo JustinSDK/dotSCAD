@@ -1,4 +1,4 @@
-use <_impl/_geom_platonic_polyhedra.scad>;
+use <_impl/_geom_platonic_polyhedra.scad>
 
 function geom_dodecahedron(radius, detail = 0) =
     let(

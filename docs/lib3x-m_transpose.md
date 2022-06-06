@@ -10,7 +10,7 @@ It transposes a matrix.
 
 ## Examples
 
-    use <matrix/m_transpose.scad>;
+    use <matrix/m_transpose.scad>
 
     original_m = [
         [1, 2, 3, 4],

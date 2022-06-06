@@ -12,8 +12,8 @@ Create cell shapes of Voronoi in the first quadrant. You specify a space and a g
 
 ## Examples
 
-    use <polyline_join.scad>;
-    use <voronoi/vrn2_cells_space.scad>;
+    use <polyline_join.scad>
+    use <voronoi/vrn2_cells_space.scad>
 
     size = [20, 20];
     grid_w = 5;
@@ -36,9 +36,9 @@ Create cell shapes of Voronoi in the first quadrant. You specify a space and a g
 
 ![vrn2_cells_space](images/lib3x-vrn2_cells_space-1.JPG)
 
-    use <polyline_join.scad>;
-    use <ptf/ptf_torus.scad>;
-    use <voronoi/vrn2_cells_space.scad>;
+    use <polyline_join.scad>
+    use <ptf/ptf_torus.scad>
+    use <voronoi/vrn2_cells_space.scad>
     
     size = [40, 80];
     grid_w = 5;

@@ -1,4 +1,4 @@
-use <util/dedup.scad>;
+use <util/dedup.scad>
 
 // tile type
 KITE = 0;
@@ -130,8 +130,8 @@ function tile_penrose2(n, triangles) =
 		]
 	];
 
-use <polyline_join.scad>;
-use <ptf/ptf_rotate.scad>;
+use <polyline_join.scad>
+use <ptf/ptf_rotate.scad>
 
 module draw(tris, radius) {
 	for(tri = tris) {

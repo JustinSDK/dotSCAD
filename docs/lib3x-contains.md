@@ -11,8 +11,8 @@ If `lt` contains `elem`, this function returns `true`.
 
 ## Examples
 
-    use <voxel/vx_circle.scad>;
-    use <util/contains.scad>;
+    use <voxel/vx_circle.scad>
+    use <util/contains.scad>
 
     pts = vx_circle(10);
     assert(contains(pts, [2, -10])); 

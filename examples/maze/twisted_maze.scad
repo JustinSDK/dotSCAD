@@ -1,8 +1,8 @@
-use <polyline_join.scad>;
-use <maze/mz_square.scad>;
-use <maze/mz_squarewalls.scad>;
-use <ptf/ptf_x_twist.scad>;
-use <ptf/ptf_y_twist.scad>;
+use <polyline_join.scad>
+use <maze/mz_square.scad>
+use <maze/mz_squarewalls.scad>
+use <ptf/ptf_x_twist.scad>
+use <ptf/ptf_y_twist.scad>
 
 rows = 10;
 columns = 10;

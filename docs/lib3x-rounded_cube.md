@@ -11,13 +11,13 @@ Creates a cube in the first octant.
 
 ## Examples
 
-	use <rounded_cube.scad>;
+	use <rounded_cube.scad>
 	
 	rounded_cube(20, 5);
 
 ![rounded_cube](images/lib3x-rounded_cube-1.JPG)
 
-	use <rounded_cube.scad>;
+	use <rounded_cube.scad>
 	
 	rounded_cube(
 	    size = [50, 25, 15], 
@@ -27,7 +27,7 @@ Creates a cube in the first octant.
 
 ![rounded_cube](images/lib3x-rounded_cube-2.JPG)
 
-	use <rounded_cube.scad>;
+	use <rounded_cube.scad>
 	
 	$fn = 8;
 	

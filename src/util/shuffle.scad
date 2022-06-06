@@ -8,7 +8,7 @@
 *
 **/ 
 
-use <_impl/_shuffle_impl.scad>;
+use <_impl/_shuffle_impl.scad>
 
 function shuffle(lt, seed) = 
     let(

@@ -11,9 +11,9 @@ It' slow, in case you want to create an intersection of two lists of points dire
 
 ## Examples
 
-	use <voxel/vx_cylinder.scad>;
-	use <voxel/vx_sphere.scad>;
-	use <voxel/vx_intersection.scad>;
+	use <voxel/vx_cylinder.scad>
+	use <voxel/vx_sphere.scad>
+	use <voxel/vx_intersection.scad>
 
 	voxels = vx_intersection(
 		vx_cylinder([1, 8], 8, filled = true),

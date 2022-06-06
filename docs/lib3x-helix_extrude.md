@@ -21,7 +21,7 @@ Its `$fa`, `$fs` and `$fn` parameters are consistent with the `cylinder` module.
 
 ## Examples
     
-	use <helix_extrude.scad>;
+	use <helix_extrude.scad>
 
 	shape_pts = [
 		[5, -2],
@@ -43,7 +43,7 @@ Its `$fa`, `$fs` and `$fn` parameters are consistent with the `cylinder` module.
 
 ![helix_extrude](images/lib3x-helix_extrude-1.JPG)
 
-	use <helix_extrude.scad>;
+	use <helix_extrude.scad>
 
 	r1 = 40;
 	r2 = 20;

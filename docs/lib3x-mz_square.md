@@ -24,8 +24,8 @@ The cell data is seperated from views. You can use cell data to construct [diffe
 
 ## Examples
     
-	use <maze/mz_square.scad>;
-	use <line2d.scad>;
+	use <maze/mz_square.scad>
+	use <line2d.scad>
 
 	rows = 10;
 	columns = 10;

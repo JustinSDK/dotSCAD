@@ -18,7 +18,7 @@ If your 2D shape is not solid, indexes of triangles are required. See [sweep](ht
 
 ## Examples
 
-	use <ring_extrude.scad>;
+	use <ring_extrude.scad>
 
 	shape_pts = [
 		[2, -10],
@@ -31,7 +31,7 @@ If your 2D shape is not solid, indexes of triangles are required. See [sweep](ht
 
 ![ring_extrude](images/lib3x-ring_extrude-1.JPG)
 
-	use <ring_extrude.scad>;
+	use <ring_extrude.scad>
 
 	shape_pts = [
 		[2, -10],

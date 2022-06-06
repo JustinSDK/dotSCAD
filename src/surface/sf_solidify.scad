@@ -8,8 +8,8 @@
 *
 **/ 
 
-use <../util/reverse.scad>;
-use <../util/flat.scad>;
+use <../util/reverse.scad>
+use <../util/flat.scad>
 
 module sf_solidify(surface1, surface2, slicing = "SLASH", convexity = 1) {
     rows = len(surface1);

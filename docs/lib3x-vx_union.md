@@ -11,9 +11,9 @@ It' slow, in case you want to create a union of two lists of points directly.
 
 ## Examples
 
-	use <voxel/vx_cylinder.scad>;
-	use <voxel/vx_sphere.scad>;
-	use <voxel/vx_union.scad>;
+	use <voxel/vx_cylinder.scad>
+	use <voxel/vx_sphere.scad>
+	use <voxel/vx_union.scad>
 
 	voxels = vx_union(
 		vx_cylinder([10, 15], 10),

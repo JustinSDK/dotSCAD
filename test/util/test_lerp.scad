@@ -1,4 +1,4 @@
-use <util/lerp.scad>;
+use <util/lerp.scad>
 
 module test_lerp() {
     echo("==== test_lerp ====");

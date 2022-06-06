@@ -1,4 +1,4 @@
-use <shear.scad>;
+use <shear.scad>
 
 text = "順暢";
 font = "思源黑體 Heavy";

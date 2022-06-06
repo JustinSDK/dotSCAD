@@ -8,10 +8,10 @@
 *
 **/ 
 
-use <../util/set/hashset.scad>;
-use <../util/set/hashset_elems.scad>;
+use <../util/set/hashset.scad>
+use <../util/set/hashset_elems.scad>
 
-include <../__comm__/_pt3_hash.scad>;
+include <../__comm__/_pt3_hash.scad>
 
 function vx_union(points1, points2) = 
     hashset_elems(

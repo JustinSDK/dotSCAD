@@ -18,13 +18,13 @@ OpenSCAD uses three library locations, the installation library, built-in librar
 
 Every public module/function has the same name as the .scad file. Here's an example using the `line2d` module: 
 
-	use <line2d.scad>;
+	use <line2d.scad>
 
 	line2d(p1 = [0, 0], p2 = [5, 0], width = 1);
 
 The library uses directories to categorize some modules/functions. For example, vx_circle.scad exists in `voxel` directory. Prefix the directory name when using `vx_circle`.
 
-    use <voxel/vx_circle.scad>;
+    use <voxel/vx_circle.scad>
 	
 	points = vx_circle(radius = 10);
 	for(pt = points) {

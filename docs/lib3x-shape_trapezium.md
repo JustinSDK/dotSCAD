@@ -11,7 +11,7 @@ Returns shape points of an isosceles trapezoid. They can be used with xxx_extrud
 
 ## Examples
 
-	use <shape_trapezium.scad>;
+	use <shape_trapezium.scad>
 
 	polygon(
 		shape_trapezium([40, 20], 
@@ -21,9 +21,9 @@ Returns shape points of an isosceles trapezoid. They can be used with xxx_extrud
 
 ![shape_trapezium](images/lib3x-shape_trapezium-1.JPG)
 
-	use <shape_trapezium.scad>;
-	use <path_extrude.scad>;
-	use <bezier_curve.scad>;
+	use <shape_trapezium.scad>
+	use <path_extrude.scad>
+	use <bezier_curve.scad>
 
 	t_step = 0.05;
 	width = 2;

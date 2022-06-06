@@ -11,7 +11,7 @@ Creates a [polar zonohedra](https://mathworld.wolfram.com/PolarZonohedron.html).
 
 ## Examples
 
-	use <polyhedra/polar_zonohedra.scad>;
+	use <polyhedra/polar_zonohedra.scad>
 
 	for(n = [3:8]) {
 		translate([0.5 * n * (n - 3), 0, 0])

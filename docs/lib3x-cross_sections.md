@@ -12,9 +12,9 @@ Given a 2D shape, points and angles along the path, this function will return al
 
 ## Examples
 
-	use <sweep.scad>;
-	use <cross_sections.scad>;
-	use <archimedean_spiral.scad>;
+	use <sweep.scad>
+	use <cross_sections.scad>
+	use <archimedean_spiral.scad>
 
 	shape_pts = [
 		[-2, -10],

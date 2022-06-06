@@ -8,7 +8,7 @@
 *
 **/ 
 
-use <_impl/_turtle2d_impl.scad>;
+use <_impl/_turtle2d_impl.scad>
 
 function turtle2d(cmd, arg1, arg2, arg3) = 
     _turtle2d_impl(cmd, arg1, arg2, arg3);

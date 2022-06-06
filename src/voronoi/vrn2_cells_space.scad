@@ -8,9 +8,9 @@
 *
 **/
 
-use <_impl/_vrn2_space_cells_impl.scad>;
-use <_impl/_convex_intersection_for.scad>;
-use <../shape_square.scad>;
+use <_impl/_vrn2_space_cells_impl.scad>
+use <_impl/_convex_intersection_for.scad>
+use <../shape_square.scad>
 
 function vrn2_cells_space(size, grid_w, seed) = 
     let(

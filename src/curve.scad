@@ -8,7 +8,7 @@
 *
 **/ 
 
-use <_impl/_catmull_rom_spline.scad>;
+use <_impl/_catmull_rom_spline.scad>
 
 function curve(t_step, points, tightness = 0) = 
     let(leng = len(points))

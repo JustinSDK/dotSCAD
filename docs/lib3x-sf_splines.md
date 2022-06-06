@@ -14,9 +14,9 @@ Given a set of control points and spline functions, the `sf_splines` function re
 
 If you want to make a bezier surface:
 
-	use <bezier_curve.scad>;
-	use <surface/sf_splines.scad>;
-	use <surface/sf_thicken.scad>;
+	use <bezier_curve.scad>
+	use <surface/sf_splines.scad>
+	use <surface/sf_thicken.scad>
 
 	ctrl_pts = [
 		[[0, 0, 20],  [60, 0, -35],   [90, 0, 60],    [200, 0, 5]],
@@ -40,9 +40,9 @@ The following figure shows controll points and bazier curves around the surface.
 
 If you want to make a bspline surface:
 
-	use <bspline_curve.scad>;
-	use <surface/sf_thicken.scad>;
-	use <surface/sf_splines.scad>;
+	use <bspline_curve.scad>
+	use <surface/sf_thicken.scad>
+	use <surface/sf_splines.scad>
 
 	ctrl_pts = [
 		[[0, 0, 20],  [60, 0, -35],   [90, 0, 60],    [200, 0, 5]],

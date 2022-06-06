@@ -10,9 +10,9 @@ You paths should be indexed count-clockwisely.
 
 ## Examples
 
-	use <paths2sections.scad>;
-	use <polyline_join.scad>;
-	use <sweep.scad>;
+	use <paths2sections.scad>
+	use <polyline_join.scad>
+	use <sweep.scad>
 	
 	paths = [
 	    [[5, 0, 5], [15, 10, 10], [25, 20, 5]],
@@ -32,10 +32,10 @@ You paths should be indexed count-clockwisely.
 
 ![paths2sections](images/lib3x-paths2sections-1.JPG)
 
-	use <bezier_curve.scad>;
-	use <paths2sections.scad>;
-	use <polyline_join.scad>;
-	use <sweep.scad>;
+	use <bezier_curve.scad>
+	use <paths2sections.scad>
+	use <polyline_join.scad>
+	use <sweep.scad>
 	
 	t_step = 0.05;
 	

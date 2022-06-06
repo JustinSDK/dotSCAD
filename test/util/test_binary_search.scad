@@ -1,5 +1,5 @@
-use <util/sorted.scad>;
-use <util/binary_search.scad>;
+use <util/sorted.scad>
+use <util/binary_search.scad>
 
 module test_binary_search() {
     echo("==== test_binary_search ====");

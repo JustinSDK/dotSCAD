@@ -8,7 +8,7 @@
 *
 **/
 
-use <_impl/_shape_path_extend_impl.scad>;
+use <_impl/_shape_path_extend_impl.scad>
 
 function shape_path_extend(stroke_pts, path_pts, scale = 1.0, closed = false) =
     _shape_path_extend_impl(stroke_pts, path_pts, scale, closed);

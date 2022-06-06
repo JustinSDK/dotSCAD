@@ -11,9 +11,9 @@ Returns 3D [Perlin noise](https://en.wikipedia.org/wiki/Perlin_noise) values at 
 
 ## Examples
 
-    use <util/rand.scad>;
-    use <noise/nz_perlin2s.scad>;
-    use <noise/nz_perlin3s.scad>;
+    use <util/rand.scad>
+    use <noise/nz_perlin2s.scad>
+    use <noise/nz_perlin3s.scad>
 
     points = [
         for(y = [0:.2:10])

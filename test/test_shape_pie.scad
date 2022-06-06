@@ -1,5 +1,5 @@
-use <unittest.scad>;
-use <shape_pie.scad>;
+use <unittest.scad>
+use <shape_pie.scad>
 
 module test_shape_pie() {
     echo("==== test_shape_pie ====");

@@ -19,12 +19,12 @@ This function models the mathematical set, backed by a hash table. You can use t
 
 ## Examples
 
-    use <util/set/hashset.scad>;
-    use <util/set/hashset_add.scad>;
-    use <util/set/hashset_has.scad>;
-    use <util/set/hashset_del.scad>;
-    use <util/set/hashset_len.scad>;
-    use <util/set/hashset_elems.scad>;
+    use <util/set/hashset.scad>
+    use <util/set/hashset_add.scad>
+    use <util/set/hashset_has.scad>
+    use <util/set/hashset_del.scad>
+    use <util/set/hashset_len.scad>
+    use <util/set/hashset_elems.scad>
 
     s1 = hashset([1, 2, 3, 4, 5, 2, 3, 5]);
     assert(hashset_len(s1) == 5);

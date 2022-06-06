@@ -1,5 +1,5 @@
-use <shape_circle.scad>;
-use <ring_extrude.scad>;
+use <shape_circle.scad>
+use <ring_extrude.scad>
 
 ball_radius = 10;
 mobius_radius = 30;

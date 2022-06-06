@@ -11,10 +11,10 @@ When having uniform cross sections, you can use [sweep](https://openhome.cc/eGos
 
 ## Examples
 
-	use <shape_star.scad>;
-	use <shape_circle.scad>;
-	use <ptf/ptf_rotate.scad>;
-	use <loft.scad>;
+	use <shape_star.scad>
+	use <shape_circle.scad>
+	use <ptf/ptf_rotate.scad>
+	use <loft.scad>
 		
 	sects = [
 		for(i = 10; i >= 4; i = i - 1)

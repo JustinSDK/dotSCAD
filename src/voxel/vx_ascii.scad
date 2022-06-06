@@ -8,7 +8,7 @@
 *
 **/ 
 
-use <vx_from.scad>;
+use <vx_from.scad>
 
 function vx_ascii(char, center = false, invert = false) = 
     let(code = ord(char))

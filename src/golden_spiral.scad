@@ -8,7 +8,7 @@
 *
 **/ 
 
-use <_impl/_golden_spiral_impl.scad>;
+use <_impl/_golden_spiral_impl.scad>
 
 function golden_spiral(from, to, point_distance, rt_dir = "CT_CLK") =    
     _golden_spiral_impl(from, to, point_distance, rt_dir);

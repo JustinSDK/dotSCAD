@@ -18,7 +18,7 @@ Create a cone for rotatable models.
 
 ## Examples
 
-	use <part/cone.scad>;
+	use <part/cone.scad>
 
 	radius = 2.5;
     length = 2;
@@ -41,7 +41,7 @@ Create a cone for rotatable models.
 
 ![cone](images/lib3x-cone-2.JPG)
 
-	use <part/cone.scad>;
+	use <part/cone.scad>
 
 	radius = 2.5;
     length = 2;

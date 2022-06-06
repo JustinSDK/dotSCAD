@@ -10,6 +10,6 @@ The `tri_circumcenter` function returns the circumcenter of a 2D triangle.
 
 ## Examples
 
-    use <triangle/tri_circumcenter.scad>;
+    use <triangle/tri_circumcenter.scad>
    
     assert(tri_circumcenter([[0, 0], [10, 20], [15, 10]]) == [3.75, 10.625]);

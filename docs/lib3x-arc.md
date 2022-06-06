@@ -13,7 +13,7 @@ Creates an arc. You can pass a 2 element vector to define the central angle. Its
 
 ## Examples
   
-    use <arc.scad>;
+    use <arc.scad>
     
     $fn = 24;
     arc(radius = 20, angle = [45, 290], width = 2);
@@ -21,7 +21,7 @@ Creates an arc. You can pass a 2 element vector to define the central angle. Its
 
 ![arc](images/lib3x-arc-1.JPG)
 
-    use <arc.scad>;
+    use <arc.scad>
     
     $fn = 24;
     arc(radius = 20, angle = [45, 290], width = 2, width_mode = "LINE_OUTWARD");
@@ -29,7 +29,7 @@ Creates an arc. You can pass a 2 element vector to define the central angle. Its
 
 ![arc](images/lib3x-arc-2.JPG)
 
-    use <arc.scad>;
+    use <arc.scad>
     
     $fn = 24;
     arc(radius = 20, angle = [45, 290], width = 2, width_mode = "LINE_INWARD");

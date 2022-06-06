@@ -11,8 +11,8 @@ A 3D verion of [footprint2](https://openhome.cc/eGossip/OpenSCAD/lib3x-footprint
 
 ## Examples
 	    
-	use <polyline_join.scad>;
-	use <turtle/footprints3.scad>;
+	use <polyline_join.scad>
+	use <turtle/footprints3.scad>
 	
 	function xy_arc_cmds(radius, angle, steps) = 
 		let(

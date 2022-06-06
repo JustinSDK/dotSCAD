@@ -1,6 +1,6 @@
-use <shape_pentagram.scad>;
-use <path_extrude.scad>;
-use <torus_knot.scad>;
+use <shape_pentagram.scad>
+use <path_extrude.scad>
+use <torus_knot.scad>
 
 p = 2;
 q = 3;

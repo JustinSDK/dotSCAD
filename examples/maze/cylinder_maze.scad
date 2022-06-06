@@ -1,6 +1,6 @@
-use <bend.scad>;
-use <maze/mz_square.scad>;
-use <maze/mz_squarewalls.scad>;
+use <bend.scad>
+use <maze/mz_square.scad>
+use <maze/mz_squarewalls.scad>
 
 radius = 30; 
 height = 60;

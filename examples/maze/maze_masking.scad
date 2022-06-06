@@ -1,7 +1,7 @@
-use <maze/mz_square.scad>;
-use <maze/mz_squarewalls.scad>;
-use <maze/mz_square_initialize.scad>;
-use <voxel/vx_contour.scad>;
+use <maze/mz_square.scad>
+use <maze/mz_squarewalls.scad>
+use <maze/mz_square_initialize.scad>
+use <voxel/vx_contour.scad>
 
 start = [1, 1];
 mask = [

@@ -11,8 +11,8 @@ The `bsearch` function is a general-purpose function to search a value in a list
 
 ## Examples
 
-	use <util/sort.scad>;
-	use <util/bsearch.scad>;
+	use <util/sort.scad>
+	use <util/bsearch.scad>
 
     points = [[1, 1], [3, 4], [7, 2], [5, 2]];
     sorted = sort(points, by = "vt"); //  [[1, 1], [5, 2], [7, 2], [3, 4]]

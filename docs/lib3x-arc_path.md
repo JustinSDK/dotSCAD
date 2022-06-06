@@ -11,8 +11,8 @@ Creates an arc path. You can pass a 2 element vector to define the central angle
 
 ## Examples
   
-	use <arc_path.scad>;
-	use <polyline_join.scad>;
+	use <arc_path.scad>
+	use <polyline_join.scad>
 
 	$fn = 24;
 	points = arc_path(radius = 20, angle = [45, 290]);
@@ -21,8 +21,8 @@ Creates an arc path. You can pass a 2 element vector to define the central angle
 
 ![arc_path](images/lib3x-arc_path-1.JPG)
 
-    use <arc_path.scad>;
-    use <polyline_join.scad>;
+    use <arc_path.scad>
+    use <polyline_join.scad>
     
     $fn = 24;
     points = arc_path(radius = 20, angle = 135);

@@ -10,7 +10,7 @@ It can calculate a determinant, a special number that can be calculated from a s
 
 ## Examples
 
-    use <matrix/m_determinant.scad>;
+    use <matrix/m_determinant.scad>
 
     assert(
         m_determinant([

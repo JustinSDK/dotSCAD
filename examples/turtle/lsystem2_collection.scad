@@ -1,6 +1,6 @@
-use <turtle/lsystem2.scad>;
-use <util/dedup.scad>;
-use <line2d.scad>;
+use <turtle/lsystem2.scad>
+use <util/dedup.scad>
+use <line2d.scad>
 
 for(line = dedup(fern())) {
     line2d(

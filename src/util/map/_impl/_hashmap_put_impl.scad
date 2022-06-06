@@ -1,4 +1,4 @@
-use <../../_impl/_find_eq.scad>;
+use <../../_impl/_find_eq.scad>
 
 function _hashmap_put(buckets, b_numbers, key, value, eq, hash) =
     let(

@@ -1,4 +1,4 @@
-use <util/sum.scad>;
+use <util/sum.scad>
 
 module test_sum() {
     echo("==== test_sum ====");

@@ -8,7 +8,7 @@
 *
 **/ 
 
-use <_impl/_sort_impl.scad>;
+use <_impl/_sort_impl.scad>
 
 function sort(lt, by = "idx", idx = 0) = 
     is_function(by) ? _sort_by_cmp(lt, by) :  // support function literal

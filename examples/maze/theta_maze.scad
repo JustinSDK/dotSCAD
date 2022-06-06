@@ -1,6 +1,6 @@
-use <maze/mz_theta.scad>;
-use <maze/mz_theta_get.scad>;
-use <polyline_join.scad>;
+use <maze/mz_theta.scad>
+use <maze/mz_theta_get.scad>
+use <polyline_join.scad>
 
 rings = 5;
 beginning_number = 8;

@@ -1,5 +1,5 @@
-use <../sub_str.scad>;
-use <../split_str.scad>;
+use <../sub_str.scad>
+use <../split_str.scad>
 
 function _str_to_int(t) =  ord(t) - 48;
     

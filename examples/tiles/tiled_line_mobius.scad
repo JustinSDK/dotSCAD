@@ -1,6 +1,6 @@
-use <experimental/tile_truchet.scad>;
-use <polyline_join.scad>;
-use <ptf/ptf_ring.scad>;
+use <experimental/tile_truchet.scad>
+use <polyline_join.scad>
+use <ptf/ptf_ring.scad>
 
 size = [20, 100];
 line_diameter = 1;

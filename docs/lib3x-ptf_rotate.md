@@ -14,7 +14,7 @@ Rotates a point `a` degrees around the axis of the coordinate system or an arbit
 
 ## Examples
 
-    use <ptf/ptf_rotate.scad>;
+    use <ptf/ptf_rotate.scad>
 
 	point = [20, 0, 0];
 	a = [0, -45, 45];
@@ -28,7 +28,7 @@ Rotates a point `a` degrees around the axis of the coordinate system or an arbit
 
 ![ptf_rotate](images/lib3x-ptf_rotate-1.JPG)
 
-    use <ptf/ptf_rotate.scad>;
+    use <ptf/ptf_rotate.scad>
 
 	radius = 40;
 	step_angle = 10;
@@ -50,7 +50,7 @@ Rotates a point `a` degrees around the axis of the coordinate system or an arbit
 
 ![ptf_rotate](images/lib3x-ptf_rotate-2.JPG)
 
-	use <ptf/ptf_rotate.scad>;
+	use <ptf/ptf_rotate.scad>
 
 	v = [10, 10, 10];
 

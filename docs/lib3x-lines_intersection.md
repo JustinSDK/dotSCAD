@@ -13,7 +13,7 @@ Find the intersection of two line segments. Return `[]` if lines don't intersect
 
 ## Examples
 
-    use <lines_intersection.scad>;
+    use <lines_intersection.scad>
 
     line1 = [[0, 0], [0, 10]];
     line2 = [[5, 0], [-5, 5]];

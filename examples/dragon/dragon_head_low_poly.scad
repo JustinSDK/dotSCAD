@@ -1,6 +1,6 @@
-use <bezier_curve.scad>;
-use <path_extrude.scad>;
-use <shape_circle.scad>;
+use <bezier_curve.scad>
+use <path_extrude.scad>
+use <shape_circle.scad>
 
 module dragon_head_low_poly() {
     module palate() {

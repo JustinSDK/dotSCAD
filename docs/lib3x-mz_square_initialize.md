@@ -12,10 +12,10 @@ It's a helper for initializing cell data of a maze.
 
 ## Examples
     
-	use <maze/mz_square_initialize.scad>;
-	use <maze/mz_square_cells.scad>;
-	use <maze/mz_square_walls.scad>;
-	use <polyline2d.scad>;
+	use <maze/mz_square_initialize.scad>
+	use <maze/mz_square_cells.scad>
+	use <maze/mz_square_walls.scad>
+	use <polyline2d.scad>
 
 	rows = 10;
 	columns = 10;
@@ -32,10 +32,10 @@ It's a helper for initializing cell data of a maze.
 	
 ![mz_square_initialize](images/lib3x-mz_square_initialize-1.JPG)
 
-    use <maze/mz_square_cells.scad>;
-    use <maze/mz_square_walls.scad>;
-    use <maze/mz_square_initialize.scad>;
-    use <polyline2d.scad>;
+    use <maze/mz_square_cells.scad>
+    use <maze/mz_square_walls.scad>
+    use <maze/mz_square_initialize.scad>
+    use <polyline2d.scad>
 
     mask = [
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],

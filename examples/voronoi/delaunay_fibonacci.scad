@@ -1,8 +1,8 @@
-use <golden_spiral.scad>;
-use <ptf/ptf_rotate.scad>;
-use <triangle/tri_delaunay.scad>;
-use <triangle/tri_incenter.scad>;
-use <util/dedup.scad>;
+use <golden_spiral.scad>
+use <ptf/ptf_rotate.scad>
+use <triangle/tri_delaunay.scad>
+use <triangle/tri_incenter.scad>
+use <util/dedup.scad>
 
 spirals = 2; 
 tri_thickness = 2;

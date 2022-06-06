@@ -13,9 +13,9 @@ This function adds an element to a [util/set/hashset](https://openhome.cc/eGossi
 
 ## Examples
 
-    use <util/set/hashset.scad>;
-    use <util/set/hashset_add.scad>;
-    use <util/set/hashset_has.scad>;
+    use <util/set/hashset.scad>
+    use <util/set/hashset_add.scad>
+    use <util/set/hashset_has.scad>
 
     s1 = hashset([1, 2, 3, 4, 5]);
     s2 = hashset_add(s1, 9);

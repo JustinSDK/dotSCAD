@@ -1,7 +1,7 @@
-use <_mz_square_comm.scad>;
-use <../../matrix/m_replace.scad>;
+use <_mz_square_comm.scad>
+use <../../matrix/m_replace.scad>
 
-include <_mz_square_cell_constants.scad>;
+include <_mz_square_cell_constants.scad>
 
 // is (x, y) visited?
 function visited(x, y, cells) = cells[y][x][3];

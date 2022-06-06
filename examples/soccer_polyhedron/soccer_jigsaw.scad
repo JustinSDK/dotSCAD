@@ -1,4 +1,4 @@
-use <soccer_polyhedron.scad>;
+use <soccer_polyhedron.scad>
 
 style = "POLYHEDRON"; // [SPHERE, POLYHEDRON]
 r = 30;

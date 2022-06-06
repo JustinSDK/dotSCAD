@@ -8,9 +8,9 @@
 *
 **/
 
-use <golden_spiral.scad>;
-use <cross_sections.scad>;
-use <sweep.scad>;
+use <golden_spiral.scad>
+use <cross_sections.scad>
+use <sweep.scad>
 
 module golden_spiral_extrude(shape_pts, from, to, point_distance, 
                              rt_dir = "CT_CLK", twist = 0, scale = 1.0, triangles = "SOLID") {

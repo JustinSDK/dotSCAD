@@ -11,8 +11,8 @@ Given a set of control points, the `bezier_curve` function returns points of the
 
 If you have four control points:
 
-    use <polyline_join.scad>;
-	use <bezier_curve.scad>;
+    use <polyline_join.scad>
+	use <bezier_curve.scad>
 
 	t_step = 0.05;
 	radius = 2;

@@ -1,4 +1,4 @@
-use <polyline_join.scad>;
+use <polyline_join.scad>
 
 length = 100;
 width = 50;

@@ -16,8 +16,8 @@ Transforms a point inside a rectangle to a point of a torus. It can create thing
 
 ## Examples
 
-    use <polyline_join.scad>;
-    use <ptf/ptf_torus.scad>;
+    use <polyline_join.scad>
+    use <ptf/ptf_torus.scad>
 
     size = [20, 10];
     radius = [10, 5];

@@ -8,9 +8,9 @@
 *
 **/
 
-use <_impl/_hashset_add_impl.scad>;
+use <_impl/_hashset_add_impl.scad>
 
-include <../../__comm__/_str_hash.scad>;
+include <../../__comm__/_str_hash.scad>
 
 function hashset_add(set, elem, eq = undef, hash = _str_hash) =
     _hashset_add(set, len(set), elem, eq, hash);

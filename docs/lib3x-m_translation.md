@@ -10,7 +10,7 @@ Generate a 4x4 transformation matrix which can pass into `multmatrix` to transla
 
 ## Examples
 
-	use <matrix/m_translation.scad>;
+	use <matrix/m_translation.scad>
 
 	cube(2, center = true); 
 	multmatrix(m_translation([5, 0, 0]))

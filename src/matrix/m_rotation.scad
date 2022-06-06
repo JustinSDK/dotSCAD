@@ -8,6 +8,6 @@
 *
 **/
 
-use <_impl/_m_rotation_impl.scad>;
+use <_impl/_m_rotation_impl.scad>
 
 function m_rotation(a, v) = _m_rotation_impl(a, v);

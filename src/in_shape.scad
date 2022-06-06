@@ -8,8 +8,8 @@
 *
 **/
 
-use <__comm__/__lines_from.scad>;
-use <_impl/_in_shape_impl.scad>;
+use <__comm__/__lines_from.scad>
+use <_impl/_in_shape_impl.scad>
 
 function in_shape(shapt_pts, pt, include_edge = false, epsilon = 0.0001) = 
     let(

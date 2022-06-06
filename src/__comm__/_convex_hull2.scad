@@ -1,5 +1,5 @@
-use <../util/slice.scad>;
-use <../util/sorted.scad>;
+use <../util/slice.scad>
+use <../util/sorted.scad>
 
 // oa->ob ct_clk : greater than 0
 function _convex_hull_impl_dir(o, a, b) = cross(a - o, b - o);

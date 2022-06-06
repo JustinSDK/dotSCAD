@@ -8,7 +8,7 @@
 *
 **/
 
-use <__comm__/_convex_hull3.scad>;
+use <__comm__/_convex_hull3.scad>
 
 module polyhedron_hull(points, polyhedron_abuse = false) {
     if(polyhedron_abuse) {

@@ -11,9 +11,9 @@ It' slow, in case you want to create a difference of two lists of points directl
 
 ## Examples
 
-	use <voxel/vx_difference.scad>;
-	use <voxel/vx_cylinder.scad>;
-	use <voxel/vx_sphere.scad>;
+	use <voxel/vx_difference.scad>
+	use <voxel/vx_cylinder.scad>
+	use <voxel/vx_sphere.scad>
 
 	voxels = vx_difference(
 		vx_cylinder(6, 3, filled = true),

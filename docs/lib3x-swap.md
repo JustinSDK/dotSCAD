@@ -12,6 +12,6 @@ Swaps two elements in a list.
 
 ## Examples
 
-    use <util/swap.scad>;
+    use <util/swap.scad>
     
     assert(swap([10, 20, 30, 40], 1, 3) == [10, 40, 30, 20]);

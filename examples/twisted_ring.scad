@@ -1,6 +1,6 @@
-use <ring_extrude.scad>;
-use <arc_path.scad>;
-use <shape_liquid_splitting.scad>;
+use <ring_extrude.scad>
+use <arc_path.scad>
+use <shape_liquid_splitting.scad>
 
 $fn = 96;
 

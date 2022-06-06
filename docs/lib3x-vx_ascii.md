@@ -12,7 +12,7 @@ Generate 8x8 voxel points of printable ASCII characters (codes 32dec to 126dec).
 
 ## Examples
 
-    use <voxel/vx_ascii.scad>;
+    use <voxel/vx_ascii.scad>
 
     for(i = [0:94]) {
         translate([8 * (i % 10), -8 * floor(i / 10), 0]) 
@@ -25,7 +25,7 @@ Generate 8x8 voxel points of printable ASCII characters (codes 32dec to 126dec).
 
 ![vx_ascii](images/lib3x-vx_ascii-1.JPG)
 
-    use <voxel/vx_ascii.scad>;
+    use <voxel/vx_ascii.scad>
 
     t = "dotSCAD";
      

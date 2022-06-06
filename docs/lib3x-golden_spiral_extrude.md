@@ -17,7 +17,7 @@ When using this module, you should use points to represent the 2D shape. If your
 
 ## Examples
     
-	use <golden_spiral_extrude.scad>;
+	use <golden_spiral_extrude.scad>
 
 	shape_pts = [
 		[2, -10],
@@ -38,8 +38,8 @@ When using this module, you should use points to represent the 2D shape. If your
 
 ![golden_spiral_extrude](images/lib3x-golden_spiral_extrude-1.JPG)
 
-    use <shape_circle.scad>;
-	use <golden_spiral_extrude.scad>;
+    use <shape_circle.scad>
+	use <golden_spiral_extrude.scad>
 
 	$fn = 12;
 

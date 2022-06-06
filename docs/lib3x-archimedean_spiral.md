@@ -16,8 +16,8 @@ An `init_angle` less than 180 degrees is not recommended because the function us
 
 ## Examples
 
-	use <polyline2d.scad>;
-    use <archimedean_spiral.scad>;
+	use <polyline2d.scad>
+    use <archimedean_spiral.scad>
 	
 	points_angles = archimedean_spiral(
 	    arm_distance = 10,
@@ -32,7 +32,7 @@ An `init_angle` less than 180 degrees is not recommended because the function us
 
 ![archimedean_spiral](images/lib3x-archimedean_spiral-1.JPG)
 	
-    use <archimedean_spiral.scad>;
+    use <archimedean_spiral.scad>
     
 	points_angles = archimedean_spiral(
 	    arm_distance = 10,  
@@ -48,7 +48,7 @@ An `init_angle` less than 180 degrees is not recommended because the function us
 
 ![archimedean_spiral](images/lib3x-archimedean_spiral-2.JPG)
 	
-	use <archimedean_spiral.scad>;
+	use <archimedean_spiral.scad>
 	
 	t = "3.141592653589793238462643383279502884197169399375105820974944592307816406286";
 	

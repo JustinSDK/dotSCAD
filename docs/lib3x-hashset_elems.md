@@ -10,8 +10,8 @@ Returns a list containing all elements in a [util/set/hashset](https://openhome.
 
 ## Examples
 
-    use <util/set/hashset.scad>;
-    use <util/set/hashset_elems.scad>;
+    use <util/set/hashset.scad>
+    use <util/set/hashset_elems.scad>
 
     s = hashset([1, 2, 3, 4, 5]);
     assert(hashset_elems(s) == [1, 2, 3, 4, 5]); 

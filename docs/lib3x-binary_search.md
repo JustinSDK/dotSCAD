@@ -13,8 +13,8 @@ A general-purpose function to search a value in a sorted list.
 
 ## Examples
 
-    use <util/sorted.scad>;
-    use <util/binary_search.scad>;
+    use <util/sorted.scad>
+    use <util/binary_search.scad>
 
     points = [[1, 1], [3, 4], [7, 2], [5, 2]];
     lt = sorted(points); // [[1, 1], [3, 4], [5, 2], [7, 2]]

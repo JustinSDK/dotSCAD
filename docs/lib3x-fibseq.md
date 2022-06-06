@@ -11,6 +11,6 @@ Generate a Fibonacci sequence.
 
 ## Examples
     
-	use <util/fibseq.scad>;
+	use <util/fibseq.scad>
 	
 	echo(fibseq(1, 10));  // ECHO: [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]

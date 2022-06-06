@@ -1,4 +1,4 @@
-use <crystal_ball.scad>;
+use <crystal_ball.scad>
 
 radius = 15;
 

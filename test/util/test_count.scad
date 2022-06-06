@@ -1,4 +1,4 @@
-use <util/count.scad>;
+use <util/count.scad>
 
 module test_count() {
     echo("==== test_count ====");

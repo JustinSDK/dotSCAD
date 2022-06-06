@@ -1,7 +1,7 @@
-use <voronoi/vrn3_from.scad>;
-use <bezier_curve.scad>;
-use <hollow_out.scad>;
-use <sweep.scad>;
+use <voronoi/vrn3_from.scad>
+use <bezier_curve.scad>
+use <hollow_out.scad>
+use <sweep.scad>
 
 r = 13;
 h = 60;

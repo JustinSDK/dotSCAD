@@ -1,5 +1,5 @@
-use <unittest.scad>;
-use <matrix/m_rotation.scad>;
+use <unittest.scad>
+use <matrix/m_rotation.scad>
 
 module test_m_rotation() {
     echo("==== test_m_rotation ====");

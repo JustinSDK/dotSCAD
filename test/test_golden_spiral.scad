@@ -1,5 +1,5 @@
-use <unittest.scad>;
-use <golden_spiral.scad>;
+use <unittest.scad>
+use <golden_spiral.scad>
 
 module test_golden_spiral() {
     echo("==== test_golden_spiral ====");

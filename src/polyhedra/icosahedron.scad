@@ -8,7 +8,7 @@
 *
 **/
 
-use <geom_icosahedron.scad>;
+use <geom_icosahedron.scad>
 
 module icosahedron(radius, detail = 0) {
 	points_faces = geom_icosahedron(radius, detail);

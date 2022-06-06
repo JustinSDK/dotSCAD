@@ -1,5 +1,5 @@
-use <../util/radians.scad>;
-use <../util/degrees.scad>;
+use <../util/radians.scad>
+use <../util/degrees.scad>
 
 function _radian_step(r, pow2_dist) =
     radians(acos(1 - pow2_dist / (2 * r ^ 2)));

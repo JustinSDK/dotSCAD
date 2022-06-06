@@ -12,9 +12,9 @@ Rails should be indexed count-clockwisely.
 
 ## Examples
 
-	use <rails2sections.scad>;
-	use <polyline_join.scad>;
-	use <sweep.scad>;
+	use <rails2sections.scad>
+	use <polyline_join.scad>
+	use <sweep.scad>
 	
 	rails = [
 	    [[5, 0, 5], [15, 10, 10], [25, 20, 5]],
@@ -34,10 +34,10 @@ Rails should be indexed count-clockwisely.
 
 ![rails2sections](images/lib3x-rails2sections-1.JPG)
 
-	use <bezier_curve.scad>;
-	use <rails2sections.scad>;
-	use <polyline_join.scad>;
-	use <sweep.scad>;
+	use <bezier_curve.scad>
+	use <rails2sections.scad>
+	use <polyline_join.scad>
+	use <sweep.scad>
 	
 	t_step = 0.05;
 	

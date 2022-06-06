@@ -11,8 +11,8 @@ Returns points that can be used to draw a voxel-style polygon.
 
 ## Examples
 
-    use <voxel/vx_polygon.scad>;
-	use <shape_pentagram.scad>;
+    use <voxel/vx_polygon.scad>
+	use <shape_pentagram.scad>
 
 	pentagram = [
 		for(pt = shape_pentagram(15)) 

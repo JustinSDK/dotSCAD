@@ -12,7 +12,7 @@ Sorts the elements of a list in ascending order. The list is a list-of-list cons
 
 ## Examples
 
-    use <util/sort.scad>;
+    use <util/sort.scad>
 
     assert(
         [[2, 0, 0], [5, 0, 0], [7, 0, 0], [9, 0, 0], [10, 0, 0]] == 

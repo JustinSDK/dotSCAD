@@ -13,9 +13,9 @@ When using this function, you should use points to represent the 2D stroke.
 
 ## Examples
 
-	use <shape_path_extend.scad>;
-	use <shape_circle.scad>;
-	use <archimedean_spiral.scad>;
+	use <shape_path_extend.scad>
+	use <shape_circle.scad>
+	use <archimedean_spiral.scad>
 	
 	$fn = 96;
 	
@@ -44,9 +44,9 @@ When using this function, you should use points to represent the 2D stroke.
 
 ![shape_path_extend](images/lib3x-shape_path_extend-1.JPG)
 
-	use <bezier_curve.scad>;
-	use <shape_path_extend.scad>;
-	use <path_extrude.scad>;
+	use <bezier_curve.scad>
+	use <shape_path_extend.scad>
+	use <path_extrude.scad>
 		
 	t_step = 0.1;
 	width = 2;

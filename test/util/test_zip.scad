@@ -1,5 +1,5 @@
-use <util/zip.scad>;
-use <util/sum.scad>;
+use <util/zip.scad>
+use <util/sum.scad>
 
 module test_zip() {
     echo("==== test_zip ====");

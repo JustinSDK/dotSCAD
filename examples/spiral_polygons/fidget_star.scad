@@ -1,4 +1,4 @@
-use <shape_star.scad>;
+use <shape_star.scad>
 
 model = "STAR"; // [STAR, BASE, BOTH]
 r1 = 12;

@@ -13,7 +13,7 @@ Create a star. Default to a pentagram.
 
 ## Examples
 
-	use <polyhedra/star.scad>;
+	use <polyhedra/star.scad>
 
 	for(i = [3:6]) {
 		translate([(i - 3) * 2, 0])

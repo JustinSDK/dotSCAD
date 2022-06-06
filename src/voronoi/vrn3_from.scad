@@ -8,9 +8,9 @@
 *
 **/
 
-use <../__comm__/__angy_angz.scad>;
-use <../matrix/m_transpose.scad>;
-use <../util/unit_vector.scad>;
+use <../__comm__/__angy_angz.scad>
+use <../matrix/m_transpose.scad>
+use <../util/unit_vector.scad>
 
 // slow but workable
 

@@ -1,4 +1,4 @@
-use <../../util/map/hashmap_get.scad>;
+use <../../util/map/hashmap_get.scad>
 
 function indicesOfCell(iTris, triIndices) = 
     let(leng = len(iTris))

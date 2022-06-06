@@ -1,5 +1,5 @@
-use <../__comm__/__fast_fibonacci.scad>;
-use <../shape_circle.scad>;
+use <../__comm__/__fast_fibonacci.scad>
+use <../shape_circle.scad>
     
 function _remove_same_pts(pts1, pts2) = 
     concat(

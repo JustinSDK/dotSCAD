@@ -12,7 +12,7 @@ Move 2D outlines outward or inward by a given amount. Each point of the offsette
 
 ## Examples
 
-	use <bijection_offset.scad>;
+	use <bijection_offset.scad>
 
 	shape = [
 		[15, 0],
@@ -32,9 +32,9 @@ Move 2D outlines outward or inward by a given amount. Each point of the offsette
 
 ![bijection_offset](images/lib3x-bijection_offset-1.JPG)
 
-	use <bijection_offset.scad>;
-	use <path_extrude.scad>;
-	use <bezier_curve.scad>;
+	use <bijection_offset.scad>
+	use <path_extrude.scad>
+	use <bezier_curve.scad>
 
 	shape = [
 		[5, 0],

@@ -1,4 +1,4 @@
-include <_mz_cube_constants.scad>;
+include <_mz_cube_constants.scad>
 
 function no_wall(cell) = get_type(cell) == NO_WALL;
 function y_wall(cell) = get_type(cell) == Y_WALL;

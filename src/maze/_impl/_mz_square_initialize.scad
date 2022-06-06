@@ -1,6 +1,6 @@
-use <_mz_square_comm.scad>;
+use <_mz_square_comm.scad>
 
-include <_mz_square_cell_constants.scad>;
+include <_mz_square_cell_constants.scad>
 
 // create a starting maze for being visited later.
 function _rc_maze(rows, columns) =  [

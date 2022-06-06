@@ -1,7 +1,7 @@
-use <maze/mz_cube.scad>;
-use <maze/mz_cube_get.scad>;
-use <util/contains.scad>;
-use <crystal_ball.scad>;
+use <maze/mz_cube.scad>
+use <maze/mz_cube_get.scad>
+use <util/contains.scad>
+use <crystal_ball.scad>
 
 layers = 4;
 rows = 4;

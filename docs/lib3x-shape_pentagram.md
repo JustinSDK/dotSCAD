@@ -8,14 +8,14 @@ Returns shape points of a pentagram. They can be used with xxx_extrude modules o
 
 ## Examples
 
-	use <shape_pentagram.scad>;
+	use <shape_pentagram.scad>
 
 	polygon(shape_pentagram(5));
 
 ![shape_pentagram](images/lib3x-shape_pentagram-1.JPG)
 
-	use <shape_pentagram.scad>;
-	use <golden_spiral_extrude.scad>;
+	use <shape_pentagram.scad>
+	use <golden_spiral_extrude.scad>
 
 	shape_pts = shape_pentagram(2);
 

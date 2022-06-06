@@ -12,9 +12,9 @@ If `lt` contains `elem`, this function returns `true`. If you want to test eleme
 
 ## Examples
 
-    use <voxel/vx_circle.scad>;
-    use <util/sort.scad>;
-    use <util/has.scad>;
+    use <voxel/vx_circle.scad>
+    use <util/sort.scad>
+    use <util/has.scad>
 
     pts = vx_circle(10);
     assert(has(pts, [2, -10])); 

@@ -8,7 +8,7 @@
 *
 **/
 
-use <_impl/_bspline_curve_impl.scad>;
+use <_impl/_bspline_curve_impl.scad>
 
 function bspline_curve(t_step, degree, points, knots, weights) = 
     _bspline_curve_impl(t_step, degree, points, knots, weights);    

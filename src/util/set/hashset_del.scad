@@ -8,9 +8,9 @@
 *
 **/
 
-use <../_impl/_find_eq.scad>;
+use <../_impl/_find_eq.scad>
 
-include <../../__comm__/_str_hash.scad>;
+include <../../__comm__/_str_hash.scad>
 
 function hashset_del(set, elem, eq = undef, hash = _str_hash) =
     let(

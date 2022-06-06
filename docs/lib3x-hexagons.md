@@ -10,7 +10,7 @@ This module creates hexagons in a hexagon.
 
 ## Examples
 
-	use <hexagons.scad>;
+	use <hexagons.scad>
 	
 	radius = 20;
 	spacing = 2;
@@ -20,7 +20,7 @@ This module creates hexagons in a hexagon.
 
 ![hexagons](images/lib3x-hexagons-1.JPG)
 
-	use <hexagons.scad>;
+	use <hexagons.scad>
 	
 	radius = 20;
 	spacing = 2;

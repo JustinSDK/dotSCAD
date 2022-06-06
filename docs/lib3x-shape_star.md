@@ -12,7 +12,7 @@ Create a star. Default to a pentagram.
 
 ## Examples
 
-	use <shape_star.scad>;
+	use <shape_star.scad>
 
 	polygon(shape_star());
 	translate([3, 0, 0]) 

@@ -1,5 +1,5 @@
-use <unittest.scad>;
-include <ring_extrude.scad>;
+use <unittest.scad>
+include <ring_extrude.scad>
 
 module test_ring_extrude(sections, angle) {
     if(angle == 360) {

@@ -8,7 +8,7 @@
 *
 **/ 
 
-use <__comm__/_convex_hull2.scad>;
+use <__comm__/_convex_hull2.scad>
 
 module polygon_hull(points, polygon_abuse = false) {
     if(polygon_abuse) {

@@ -1,4 +1,4 @@
-use <polyline_join.scad>;
+use <polyline_join.scad>
 
 side_leng = 100;
 min_leng = 5;

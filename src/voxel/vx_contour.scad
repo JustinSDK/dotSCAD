@@ -8,6 +8,6 @@
 *
 **/ 
 
-use <_impl/_vx_contour_impl.scad>;
+use <_impl/_vx_contour_impl.scad>
 
 function vx_contour(points) = _vx_contour(points);

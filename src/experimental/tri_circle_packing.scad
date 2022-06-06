@@ -1,5 +1,5 @@
-use <triangle/tri_incenter.scad>;
-use <ptf/ptf_rotate.scad>;
+use <triangle/tri_incenter.scad>
+use <ptf/ptf_rotate.scad>
 
 function r2(sinv, leng_cv, pre_R) = sinv * (leng_cv - pre_R) / (1 + sinv);
 

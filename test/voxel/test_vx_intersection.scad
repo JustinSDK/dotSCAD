@@ -1,6 +1,6 @@
-use <voxel/vx_cylinder.scad>;
-use <voxel/vx_sphere.scad>;
-use <voxel/vx_intersection.scad>;
+use <voxel/vx_cylinder.scad>
+use <voxel/vx_sphere.scad>
+use <voxel/vx_intersection.scad>
 
 module test_vx_intersection() {
     echo("==== test_vx_intersection ====");

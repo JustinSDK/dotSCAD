@@ -1,7 +1,7 @@
-use <voronoi/vrn_sphere.scad>;
-use <polyline_join.scad>;
-use <util/rands_sphere.scad>;
-use <experimental/r_union3.scad>;
+use <voronoi/vrn_sphere.scad>
+use <polyline_join.scad>
+use <util/rands_sphere.scad>
+use <experimental/r_union3.scad>
 
 eyelets = 800;
 radius = 50;

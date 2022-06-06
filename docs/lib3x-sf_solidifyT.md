@@ -12,8 +12,8 @@ It solidifies two surfaces with triangular mesh.
 
 ## Examples
 
-    use <triangle/tri_delaunay.scad>;
-    use <surface/sf_solidifyT.scad>;
+    use <triangle/tri_delaunay.scad>
+    use <surface/sf_solidifyT.scad>
 
     points = [for(i = [0:50]) rands(-300, 300, 2)]; 
     triangles = tri_delaunay(points);
@@ -25,8 +25,8 @@ It solidifies two surfaces with triangular mesh.
 
 ![sf_solidifyT](images/lib3x-sf_solidifyT-1.JPG)
 
-    use <triangle/tri_delaunay.scad>;
-    use <surface/sf_solidifyT.scad>;
+    use <triangle/tri_delaunay.scad>
+    use <surface/sf_solidifyT.scad>
 
     thickness = .2;
     a_step = 15;

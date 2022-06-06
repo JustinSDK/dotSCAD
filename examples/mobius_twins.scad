@@ -1,5 +1,5 @@
-use <shape_liquid_splitting.scad>;
-use <ring_extrude.scad>;
+use <shape_liquid_splitting.scad>
+use <ring_extrude.scad>
 
 $fn = 48;
 r = 100;

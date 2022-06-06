@@ -13,7 +13,7 @@ Sorts a list. It uses comparison operators between elements by default.
 
 ## Examples
 
-    use <util/sorted.scad>;
+    use <util/sorted.scad>
 
     assert([1, 2, 3, 4, 5, 6] == sorted([1, 6, 2, 5, 4, 3]));
     assert([6, 5, 4, 3, 2, 1] == sorted([1, 6, 2, 5, 4, 3], reverse = true));

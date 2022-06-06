@@ -14,8 +14,8 @@ Twist a point along the x-axis. You can use it to create something such as a [tw
 
 ## Examples
 
-    use <polyline_join.scad>;
-    use <ptf/ptf_x_twist.scad>;
+    use <polyline_join.scad>
+    use <ptf/ptf_x_twist.scad>
 
     size = [20, 10];
 

@@ -14,7 +14,7 @@
 
 ## Examples
 
-    use <bspline_curve.scad>;
+    use <bspline_curve.scad>
     
 	points = [
 		[-10, 0],
@@ -37,7 +37,7 @@
 
 ![bspline_curve](images/lib3x-bspline_curve-1.JPG)
 
-    use <bspline_curve.scad>;
+    use <bspline_curve.scad>
     
 	points = [
 		[-10, 0],
@@ -62,7 +62,7 @@
 
 ![bspline_curve](images/lib3x-bspline_curve-2.JPG)
 
-	use <bspline_curve.scad>;
+	use <bspline_curve.scad>
 		
 	points = [
 		[-10, 0],

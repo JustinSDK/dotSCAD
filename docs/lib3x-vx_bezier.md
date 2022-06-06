@@ -13,7 +13,7 @@ Given 4 control points, returns voxel-by-voxel points of Bézier Curve .
 
 ## Examples
 
-	use <voxel/vx_bezier.scad>;
+	use <voxel/vx_bezier.scad>
 
 	t_step = 0.05;
 	width = 2;

@@ -8,7 +8,7 @@
 *
 **/
 
-use <../util/unit_vector.scad>;
+use <../util/unit_vector.scad>
 
 module vrn2_space(size, grid_w, seed, spacing = 1, r = 0, delta = 0, chamfer = false, region_type = "square") {
     function cell_pt(fcord, seed, x, y, gw, gh) = 

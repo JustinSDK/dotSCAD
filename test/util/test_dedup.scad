@@ -1,4 +1,4 @@
-use <util/dedup.scad>;
+use <util/dedup.scad>
 
 module test_dedup() {
     echo("==== test_dedup ====");

@@ -11,7 +11,7 @@ Returns shape points of a regular cyclic polygon. They can be used with xxx_extr
 
 ## Examples
 
-    use <shape_cyclicpolygon.scad>;
+    use <shape_cyclicpolygon.scad>
 
     circle_r = 10;
     corner_r = 3;
@@ -42,8 +42,8 @@ Returns shape points of a regular cyclic polygon. They can be used with xxx_extr
 
 ![shape_cyclicpolygon](images/lib3x-shape_cyclicpolygon-1.JPG)
 
-    use <shape_cyclicpolygon.scad>;
-    use <ring_extrude.scad>;
+    use <shape_cyclicpolygon.scad>
+    use <ring_extrude.scad>
 
     shape_pts = shape_cyclicpolygon(
         sides = 5, 

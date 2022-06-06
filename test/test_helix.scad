@@ -1,5 +1,5 @@
-use <unittest.scad>;
-use <helix.scad>;
+use <unittest.scad>
+use <helix.scad>
 
 module test_helix_the_same_radius() {
     echo("==== test_helix_the_same_radius ====");

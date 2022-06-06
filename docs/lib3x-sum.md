@@ -10,7 +10,7 @@ Use `+` to sum up all elements in a list.
 
 ## Examples
 
-    use <util/sum.scad>;
+    use <util/sum.scad>
 
     assert(sum([1, 2, 3, 4, 5]) == 15);
     assert(sum([[1, 2, 3], [4, 5, 6]]) == [5, 7, 9]);

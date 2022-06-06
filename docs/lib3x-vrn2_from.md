@@ -13,7 +13,7 @@ Create a [Voronoi diagram](https://en.wikipedia.org/wiki/Voronoi_diagram) from a
 
 ## Examples
 
-    use <voronoi/vrn2_from.scad>;
+    use <voronoi/vrn2_from.scad>
 
     points = [for(i = [0:50]) rands(-20, 20, 2)];
 
@@ -23,8 +23,8 @@ Create a [Voronoi diagram](https://en.wikipedia.org/wiki/Voronoi_diagram) from a
 
 ![vrn2_from](images/lib3x-vrn2_from-1.JPG)
 
-    use <voronoi/vrn2_from.scad>;
-    use <hollow_out.scad>;
+    use <voronoi/vrn2_from.scad>
+    use <hollow_out.scad>
 
     xs = rands(0, 40, 50);
     ys = rands(0, 20, 50);

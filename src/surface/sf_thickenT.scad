@@ -8,14 +8,14 @@
 *
 **/ 
 
-use <../__comm__/__to2d.scad>;
-use <../__comm__/_face_normal.scad>;
-use <../util/sorted.scad>;
-use <../util/sum.scad>;
-use <../util/contains.scad>;
-use <../util/unit_vector.scad>;
-use <../surface/sf_solidifyT.scad>;
-use <../triangle/tri_delaunay.scad>;
+use <../__comm__/__to2d.scad>
+use <../__comm__/_face_normal.scad>
+use <../util/sorted.scad>
+use <../util/sum.scad>
+use <../util/contains.scad>
+use <../util/unit_vector.scad>
+use <../surface/sf_solidifyT.scad>
+use <../triangle/tri_delaunay.scad>
 
 module sf_thickenT(points, thickness, triangles = undef, direction = "BOTH", convexity = 1) {
     // triangles : counter-clockwise

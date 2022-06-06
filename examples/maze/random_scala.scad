@@ -1,4 +1,4 @@
-use <maze/mz_hamiltonian.scad>;
+use <maze/mz_hamiltonian.scad>
 
 module random_scala(rows, columns, start, width, height) {
     line = mz_hamiltonian(rows, columns, start);

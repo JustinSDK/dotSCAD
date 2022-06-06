@@ -12,11 +12,11 @@ Returns the 2D [Perlin noise](https://en.wikipedia.org/wiki/Perlin_noise) value 
 
 ## Examples
 
-    use <util/rand.scad>;
-    use <polyline_join.scad>;
-    use <surface/sf_thicken.scad>;
-    use <noise/nz_perlin2.scad>;
-    use <contours.scad>;
+    use <util/rand.scad>
+    use <polyline_join.scad>
+    use <surface/sf_thicken.scad>
+    use <noise/nz_perlin2.scad>
+    use <contours.scad>
 
     seed = rand(0, 255);
     points = [

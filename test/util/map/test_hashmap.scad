@@ -1,11 +1,11 @@
-use <util/map/hashmap.scad>;
-use <util/map/hashmap_entries.scad>;
-use <util/map/hashmap_keys.scad>;
-use <util/map/hashmap_values.scad>;
-use <util/map/hashmap_put.scad>;
-use <util/map/hashmap_len.scad>;
-use <util/map/hashmap_del.scad>;
-use <util/map/hashmap_get.scad>;
+use <util/map/hashmap.scad>
+use <util/map/hashmap_entries.scad>
+use <util/map/hashmap_keys.scad>
+use <util/map/hashmap_values.scad>
+use <util/map/hashmap_put.scad>
+use <util/map/hashmap_len.scad>
+use <util/map/hashmap_del.scad>
+use <util/map/hashmap_get.scad>
 
 module test_hashmap() {
     echo("==== test_hashmap ====");

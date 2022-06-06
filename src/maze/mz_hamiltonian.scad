@@ -8,14 +8,14 @@
 *
 **/
 
-use <_impl/_mz_hamiltonian_impl.scad>;
-use <mz_square.scad>;
-use <mz_square_initialize.scad>;
-use <mz_square_get.scad>;
-use <../util/set/hashset.scad>;
-use <../util/set/hashset_elems.scad>;
+use <_impl/_mz_hamiltonian_impl.scad>
+use <mz_square.scad>
+use <mz_square_initialize.scad>
+use <mz_square_get.scad>
+use <../util/set/hashset.scad>
+use <../util/set/hashset_elems.scad>
 
-include <../__comm__/_pt2_hash.scad>;
+include <../__comm__/_pt2_hash.scad>
 
 function mz_hamiltonian(rows, columns, start = [0, 0], init_cells, seed) =
     let(

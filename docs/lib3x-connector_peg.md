@@ -17,7 +17,7 @@ Create a connector peg.
 
 ## Examples
 
-	use <part/connector_peg.scad>;
+	use <part/connector_peg.scad>
 
 	radius = 2.5;
 	spacing = 0.5;
@@ -37,7 +37,7 @@ Create a connector peg.
 
 ![connector_peg](images/lib3x-connector_peg-1.JPG)
 
-	use <part/connector_peg.scad>;
+	use <part/connector_peg.scad>
 
 	radius = 2.5;
 	spacing = 0.5;

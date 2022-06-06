@@ -10,7 +10,7 @@ Generate a 4x4 transformation matrix which can pass into `multmatrix` to mirror 
 
 ## Examples
 
-	use <matrix/m_mirror.scad>;
+	use <matrix/m_mirror.scad>
 
 	rotate([0, 0, 10]) 
 		cube([3, 2, 1]);

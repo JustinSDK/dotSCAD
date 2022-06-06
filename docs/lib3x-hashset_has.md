@@ -13,8 +13,8 @@ Returns `true` if a [util/set/hashset](https://openhome.cc/eGossip/OpenSCAD/lib3
 
 ## Examples
 
-    use <util/set/hashset.scad>;
-    use <util/set/hashset_has.scad>;
+    use <util/set/hashset.scad>
+    use <util/set/hashset_has.scad>
 
     s = hashset([1, 2, 3, 4, 5]);
     assert(hashset_has(s, 3));

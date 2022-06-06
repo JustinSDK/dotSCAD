@@ -11,7 +11,7 @@ function rands_disk(radius, value_count, seed = undef) =
 	];
 	
 /*
-use <util/rands_disk.scad>;
+use <util/rands_disk.scad>
 
 number = 10000;
 radius = 2;

@@ -1,5 +1,5 @@
-use <util/sort.scad>;
-use <util/bsearch.scad>;
+use <util/sort.scad>
+use <util/bsearch.scad>
 
 module test_bsearch() {
     echo("==== test_bsearch ====");

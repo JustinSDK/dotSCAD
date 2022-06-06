@@ -8,7 +8,7 @@
 *
 **/ 
 
-use <ptf_rotate.scad>;
+use <ptf_rotate.scad>
 
 function ptf_torus(size, point, radius, angle = [360, 360], twist = 0) =
     let(

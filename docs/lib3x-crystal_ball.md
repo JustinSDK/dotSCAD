@@ -14,7 +14,7 @@ Uses spherical coordinate system to create a crystal ball.
 
 ## Examples
 
-	use <crystal_ball.scad>;
+	use <crystal_ball.scad>
 
 	crystal_ball(radius = 6);
 

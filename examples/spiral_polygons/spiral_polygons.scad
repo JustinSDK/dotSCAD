@@ -1,6 +1,6 @@
-use <shape_circle.scad>;
-use <polyline_join.scad>;
-use <util/sum.scad>;
+use <shape_circle.scad>
+use <polyline_join.scad>
+use <util/sum.scad>
 
 beginning_radius = 10;
 line_width = 2;

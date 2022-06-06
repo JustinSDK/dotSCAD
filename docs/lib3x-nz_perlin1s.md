@@ -11,8 +11,8 @@ Returns 1D [Perlin noise](https://en.wikipedia.org/wiki/Perlin_noise) values at 
 
 ## Examples
 
-    use <polyline_join.scad>;
-    use <noise/nz_perlin1s.scad>;
+    use <polyline_join.scad>
+    use <noise/nz_perlin1s.scad>
 
     xs = [for(x = [0:.1:10]) x];
     ys = nz_perlin1s(xs);

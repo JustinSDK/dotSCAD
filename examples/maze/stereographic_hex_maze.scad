@@ -1,7 +1,7 @@
-use <polyline2d.scad>;
-use <stereographic_extrude.scad>;
-use <maze/mz_square.scad>;
-use <maze/mz_hexwalls.scad>;
+use <polyline2d.scad>
+use <stereographic_extrude.scad>
+use <maze/mz_square.scad>
+use <maze/mz_hexwalls.scad>
 
 columns = 10;
 cell_radius = 20;

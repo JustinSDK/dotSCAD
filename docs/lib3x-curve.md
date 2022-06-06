@@ -16,8 +16,8 @@ Draws a curved line from control points. The curve is drawn only from the 2nd co
 
 ## Examples
 
-	use <curve.scad>;
-	use <polyline_join.scad>;
+	use <curve.scad>
+	use <polyline_join.scad>
 
 	pts = [
 		[28, 2, 1],

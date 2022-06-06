@@ -11,6 +11,6 @@ Randomizes the order of the elements of a list.
 
 ## Examples
 
-    use <util/shuffle.scad>;
+    use <util/shuffle.scad>
     
     echo(shuffle([1, 2, 3, 4]));

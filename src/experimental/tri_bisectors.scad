@@ -1,4 +1,4 @@
-use <experimental/convex_centroid.scad>;
+use <experimental/convex_centroid.scad>
 
 function tri_bisectors(points) = 
     let(

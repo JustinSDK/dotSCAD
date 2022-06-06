@@ -8,7 +8,7 @@
 *
 **/
 
-use <_impl/_mz_theta_cells.scad>;
+use <_impl/_mz_theta_cells.scad>
 
 function mz_theta_cells(rows, beginning_number, start = [0, 0], seed) =
     let(

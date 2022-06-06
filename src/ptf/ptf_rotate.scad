@@ -8,6 +8,6 @@
 *
 **/ 
 
-use <_impl/_ptf_rotate_impl.scad>;
+use <_impl/_ptf_rotate_impl.scad>
 
 function ptf_rotate(point, a, v) = _rotate_p_impl(point, a, v);

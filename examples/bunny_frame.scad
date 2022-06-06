@@ -1,4 +1,4 @@
-use <experimental/wireframe.scad>;
+use <experimental/wireframe.scad>
 
 deep = 1;
 thickness = .5;

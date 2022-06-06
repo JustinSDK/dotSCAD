@@ -13,8 +13,8 @@ Transforms a point inside a rectangle to a point of an arc.
 
 ## Examples
 
-    use <voxel/vx_ascii.scad>;
-    use <ptf/ptf_bend.scad>;
+    use <voxel/vx_ascii.scad>
+    use <ptf/ptf_bend.scad>
 
     t = "dotSCAD";
     size = [len(t) * 8, 8];

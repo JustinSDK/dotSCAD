@@ -28,8 +28,8 @@
 
 [lsystem2-collections.scad](https://github.com/JustinSDK/dotSCAD/blob/master/examples/turtle/lsystem2_collection.scad) collects several L-system grammars. Here's one of them.
 
-	use <turtle/lsystem2.scad>;
-	use <line2d.scad>;
+	use <turtle/lsystem2.scad>
+	use <line2d.scad>
 
 	for(line = fern()) {
 		line2d(
@@ -56,8 +56,8 @@
 
     // a stochastic L-system
 
-	use <turtle/lsystem2.scad>;
-	use <line2d.scad>;
+	use <turtle/lsystem2.scad>
+	use <line2d.scad>
 
 	for(line = weed()) {
 		line2d(

@@ -8,8 +8,8 @@
 *
 **/
 
-use <../util/rand.scad>;
-use <_impl/_nz_worley3_impl.scad>;
+use <../util/rand.scad>
+use <_impl/_nz_worley3_impl.scad>
 
 function nz_worley3s(points, seed, grid_w = 10, dist = "euclidean") =
     let(sd = is_undef(seed) ? rand() * 1000: seed)

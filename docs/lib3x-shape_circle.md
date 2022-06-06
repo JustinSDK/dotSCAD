@@ -12,7 +12,7 @@ Sometimes you need all points on the path of a circle. Here's the function. Its 
 
 ## Examples
 
-    use <shape_circle.scad>;
+    use <shape_circle.scad>
 
 	$fn = 24;
 	

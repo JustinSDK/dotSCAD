@@ -8,7 +8,7 @@ Hollows out a 2D object.
 
 ## Examples
 
-    use <hollow_out.scad>;
+    use <hollow_out.scad>
 
 	hollow_out(shell_thickness = 1) 
         circle(r = 3, $fn = 48);

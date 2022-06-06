@@ -19,8 +19,8 @@ For more details, please see [3D turtle graphics](https://openhome.cc/eGossip/Op
 
 ## Examples
 	    
-	use <turtle/t3d.scad>;
-	use <polyline_join.scad>;
+	use <turtle/t3d.scad>
+	use <polyline_join.scad>
 	
 	leng = 10;
 	angle = 120;
@@ -43,8 +43,8 @@ For more details, please see [3D turtle graphics](https://openhome.cc/eGossip/Op
 
 ![t3d](images/lib3x-t3d-1.JPG)
 	
-	use <line3d.scad>;
-	use <turtle/t3d.scad>;
+	use <line3d.scad>
+	use <turtle/t3d.scad>
 
 	module tree(t, leng, leng_scale1, leng_scale2, leng_limit, 
 				angleZ, angleX, width) {

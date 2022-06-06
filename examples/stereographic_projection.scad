@@ -1,4 +1,4 @@
-use <stereographic_extrude.scad>;
+use <stereographic_extrude.scad>
 
 rows = 8;
 line_width = 15;

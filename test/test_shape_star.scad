@@ -1,5 +1,5 @@
-use <unittest.scad>;
-use <shape_star.scad>;
+use <unittest.scad>
+use <shape_star.scad>
 
 module test_shape_star() {
     echo("==== test_shape_star ====");

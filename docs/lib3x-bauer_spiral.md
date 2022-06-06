@@ -14,8 +14,8 @@ Creates visually even spacing of n points on the surface of the sphere. Successi
 
 ## Examples
 
-    use <bauer_spiral.scad>;
-    use <polyline_join.scad>;
+    use <bauer_spiral.scad>
+    use <polyline_join.scad>
 
     n = 200;
     radius = 20;

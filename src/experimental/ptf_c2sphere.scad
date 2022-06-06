@@ -1,4 +1,4 @@
-use <ptf/ptf_rotate.scad>;
+use <ptf/ptf_rotate.scad>
 
 function ptf_c2sphere(point, radius) = 
     let(
@@ -8,8 +8,8 @@ function ptf_c2sphere(point, radius) =
 	ptf_rotate([radius * sin(ya), 0, radius * cos(ya)], za);
 
 /*
-use <experimental/tile_penrose3.scad>;
-use <experimental/ptf_c2sphere.scad>;
+use <experimental/tile_penrose3.scad>
+use <experimental/ptf_c2sphere.scad>
 
 r_circle = 19;
 points = [

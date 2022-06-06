@@ -1,5 +1,5 @@
-use <unittest.scad>;
-include <stereographic_extrude.scad>;
+use <unittest.scad>
+include <stereographic_extrude.scad>
 
 module test_stereographic_extrude_rs(outer_sphere_r, inner_sphere_r) {
     assertEqualPoint([16.6667, 15.0756], [outer_sphere_r, inner_sphere_r]);

@@ -40,8 +40,8 @@ The indexes of the above triangles is:
 
 ## Examples
 
-	use <ptf/ptf_rotate.scad>;
-	use <sweep.scad>;
+	use <ptf/ptf_rotate.scad>
+	use <sweep.scad>
 
 	section1 = [
 		[20, 0, 0],
@@ -64,8 +64,8 @@ The indexes of the above triangles is:
 
 ![sweep](images/lib3x-sweep-7.JPG)
 
-	use <ptf/ptf_rotate.scad>;
-	use <sweep.scad>;
+	use <ptf/ptf_rotate.scad>
+	use <sweep.scad>
 	
 	section1 = [
 	    // outer
@@ -94,8 +94,8 @@ The indexes of the above triangles is:
 
 ![sweep](images/lib3x-sweep-8.JPG)
 
-	use <ptf/ptf_rotate.scad>;
-	use <sweep.scad>;
+	use <ptf/ptf_rotate.scad>
+	use <sweep.scad>
 	
 	section1 = [
 	    // outer

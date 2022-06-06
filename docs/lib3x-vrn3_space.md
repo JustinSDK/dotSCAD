@@ -13,7 +13,7 @@ Create a [Voronoi diagram](https://en.wikipedia.org/wiki/Voronoi_diagram) in the
 
 ## Examples
 
-    use <voronoi/vrn3_space.scad>;
+    use <voronoi/vrn3_space.scad>
 
     vrn3_space(
         size = [20, 15, 10],

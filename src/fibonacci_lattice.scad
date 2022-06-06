@@ -8,7 +8,7 @@
 *
 **/
 
-use <util/degrees.scad>;
+use <util/degrees.scad>
 
 function fibonacci_lattice(n, radius = 1, dir = "CT_CLK") =
     let(

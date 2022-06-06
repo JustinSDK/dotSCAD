@@ -1,6 +1,6 @@
-use <rounded_square.scad>;
-use <part/joint_T.scad>;
-use <shape_taiwan.scad>;
+use <rounded_square.scad>
+use <part/joint_T.scad>
+use <shape_taiwan.scad>
 
 rows = 3; // [2:100]
 cube_width = 20;

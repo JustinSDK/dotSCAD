@@ -11,8 +11,8 @@ Join a set of points to make a [Delaunay triangulation](https://en.wikipedia.org
 
 ## Examples
 
-    use <triangle/tri_delaunay.scad>;
-    use <polyline_join.scad>;
+    use <triangle/tri_delaunay.scad>
+    use <polyline_join.scad>
 
     points = [for(i = [0:20]) rands(-100, 100, 2)]; 
 

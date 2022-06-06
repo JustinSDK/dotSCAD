@@ -13,9 +13,9 @@ This function deletes the mapping for the specified key from a [util/map/hashmap
 
 ## Examples
 
-    use <util/map/hashmap.scad>;
-    use <util/map/hashmap_get.scad>;
-    use <util/map/hashmap_del.scad>;
+    use <util/map/hashmap.scad>
+    use <util/map/hashmap_get.scad>
+    use <util/map/hashmap_del.scad>
 
     m1 = hashmap([["k1", 10], ["k2", 20], ["k3", 30]]);
     m2 = hashmap_del(m1, "k1");

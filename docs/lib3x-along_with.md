@@ -12,8 +12,8 @@ If you want to place objects precisely, their points and angles are required. Wh
 
 ## Examples
 
-	use <along_with.scad>;
-	use <shape_circle.scad>;
+	use <along_with.scad>
+	use <shape_circle.scad>
 	
 	$fn = 24;
 	
@@ -24,8 +24,8 @@ If you want to place objects precisely, their points and angles are required. Wh
 
 ![along_with](images/lib3x-along_with-1.JPG)
 
-	use <along_with.scad>;
-	use <shape_circle.scad>;
+	use <along_with.scad>
+	use <shape_circle.scad>
 
 	$fn = 24;
 
@@ -44,8 +44,8 @@ If you want to place objects precisely, their points and angles are required. Wh
 
 ![along_with](images/lib3x-along_with-2.JPG)
 
-	use <along_with.scad>;
-	use <golden_spiral.scad>;
+	use <along_with.scad>
+	use <golden_spiral.scad>
 
 	pts_angles = golden_spiral(
 		from = 5, 
@@ -63,8 +63,8 @@ If you want to place objects precisely, their points and angles are required. Wh
 
 ![along_with](images/lib3x-along_with-3.JPG)
 
-	use <bezier_curve.scad>;
-	use <along_with.scad>;
+	use <bezier_curve.scad>
+	use <along_with.scad>
 
 	module scales() {
 		module one_scale() {

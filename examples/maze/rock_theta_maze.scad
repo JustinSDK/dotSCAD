@@ -1,7 +1,7 @@
-use <along_with.scad>;
-use <polyhedron_hull.scad>;
-use <maze/mz_theta.scad>;
-use <maze/mz_theta_get.scad>;
+use <along_with.scad>
+use <polyhedron_hull.scad>
+use <maze/mz_theta.scad>
+use <maze/mz_theta_get.scad>
 
 rings = 4;
 begining_columns = 6;

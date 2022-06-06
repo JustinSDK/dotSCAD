@@ -1,5 +1,5 @@
-use <hollow_out.scad>;
-use <part/cone.scad>;
+use <hollow_out.scad>
+use <part/cone.scad>
 
 module floor_stand(width, height, thickness, spacing) {
     half_w = width / 2;

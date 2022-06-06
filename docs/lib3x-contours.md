@@ -11,9 +11,9 @@ Computes contour polygons by applying [marching squares](https://en.wikipedia.or
 
 ## Examples
 
-    use <polyline_join.scad>;
-	use <surface/sf_thicken.scad>;
-    use <contours.scad>;
+    use <polyline_join.scad>
+	use <surface/sf_thicken.scad>
+    use <contours.scad>
 
     min_value =  1;
     max_value = 360;

@@ -8,7 +8,7 @@
 *
 **/
 
-use <_impl/_contours_impl.scad>;
+use <_impl/_contours_impl.scad>
 
 function contours(points, threshold) = 
     is_undef(threshold[1]) ? 

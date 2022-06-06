@@ -10,7 +10,7 @@ Creates a pie (circular sector). Its `$fa`, `$fs` and `$fn` are consistent with 
 
 ## Examples
 
-    use <pie.scad>;
+    use <pie.scad>
 
     pie(radius = 20, angle = [210, 310]);   
     translate([-15, 0, 0]) 

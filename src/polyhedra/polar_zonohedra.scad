@@ -8,7 +8,7 @@
 *
 **/
 
-use <geom_polar_zonohedra.scad>;
+use <geom_polar_zonohedra.scad>
 
 module polar_zonohedra(n, theta = 35.5) {
     points_faces = geom_polar_zonohedra(n, theta);

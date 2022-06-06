@@ -8,7 +8,7 @@
 *
 **/
 
-use <__comm__/__half_trapezium.scad>;
+use <__comm__/__half_trapezium.scad>
 
 module rounded_cylinder(radius, h, round_r, convexity = 2, center = false) {  
     r_corners = __half_trapezium(radius, h, round_r);

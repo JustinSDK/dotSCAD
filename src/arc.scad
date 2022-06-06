@@ -8,7 +8,7 @@
 *
 **/ 
 
-use <shape_arc.scad>;
+use <shape_arc.scad>
 
 module arc(radius, angle, width = 1, width_mode = "LINE_CROSS") {
     polygon(shape_arc(radius, angle, width, width_mode));

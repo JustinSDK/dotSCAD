@@ -1,4 +1,4 @@
-use <voxel/vx_circle.scad>;
+use <voxel/vx_circle.scad>
 
 module test_vx_circle() {
     echo("==== test_vx_circle ====");

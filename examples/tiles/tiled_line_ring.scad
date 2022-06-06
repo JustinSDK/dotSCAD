@@ -1,6 +1,6 @@
-use <experimental/tile_truchet.scad>;
-use <polyline_join.scad>;
-use <polyhedra/icosahedron.scad>;
+use <experimental/tile_truchet.scad>
+use <polyline_join.scad>
+use <polyhedra/icosahedron.scad>
 
 radius = 15;
 height = 10;

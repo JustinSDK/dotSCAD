@@ -1,5 +1,5 @@
-use <unittest.scad>;
-use <bspline_curve.scad>;
+use <unittest.scad>
+use <bspline_curve.scad>
 
 module test_bspline_curve() {
     echo("==== test_bspline_curve ====");

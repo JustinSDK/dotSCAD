@@ -1,8 +1,8 @@
-use <golden_spiral.scad>;
-use <sweep.scad>;
-use <noise/nz_worley3.scad>;
-use <shape_circle.scad>;
-use <matrix/m_rotation.scad>;
+use <golden_spiral.scad>
+use <sweep.scad>
+use <noise/nz_worley3.scad>
+use <shape_circle.scad>
+use <matrix/m_rotation.scad>
 
 quarter = 1;
 detail = 4;

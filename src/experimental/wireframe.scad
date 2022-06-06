@@ -1,6 +1,6 @@
-use <convex_offset.scad>;
-use <__comm__/_vertex_normals.scad>;
-use <util/reverse.scad>;
+use <convex_offset.scad>
+use <__comm__/_vertex_normals.scad>
+use <util/reverse.scad>
 
 module wireframe(points, faces, deep, outer_thickness, inner_thickness = 0, vertex_normals = undef) {
 	function hollow_face(pts, inner_pts) =

@@ -8,7 +8,7 @@
 *
 **/
 
-use <_impl/_trim_shape_impl.scad>;
+use <_impl/_trim_shape_impl.scad>
 
 function trim_shape(shape_pts, from, to, epsilon = 0.0001) = 
     _trim_shape_impl(shape_pts, from, to, epsilon);

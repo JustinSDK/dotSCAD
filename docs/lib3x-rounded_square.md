@@ -11,13 +11,13 @@ Creates a rounded square or rectangle in the first quadrant.
 
 ## Examples
 
-    use <rounded_square.scad>;
+    use <rounded_square.scad>
 
     rounded_square(size = 50, corner_r = 5);
 
 ![rounded_square](images/lib3x-rounded_square-1.JPG)
 
-	use <rounded_square.scad>;
+	use <rounded_square.scad>
 	
 	rounded_square(
 	    size = [50, 25],
@@ -27,7 +27,7 @@ Creates a rounded square or rectangle in the first quadrant.
 
 ![rounded_square](images/lib3x-rounded_square-2.JPG)
 
-	use <rounded_square.scad>;
+	use <rounded_square.scad>
 	
 	$fn = 4;
 	rounded_square(

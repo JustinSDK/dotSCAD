@@ -1,9 +1,9 @@
-use <maze/mz_square.scad>;
-use <maze/mz_squarewalls.scad>;
-use <maze/mz_square_initialize.scad>;
-use <polyline_join.scad>;
-use <hollow_out.scad>;
-use <maze/mz_hamiltonian.scad>;
+use <maze/mz_square.scad>
+use <maze/mz_squarewalls.scad>
+use <maze/mz_square_initialize.scad>
+use <polyline_join.scad>
+use <hollow_out.scad>
+use <maze/mz_hamiltonian.scad>
 
 cell_width = 5;
 wall_thickness = 1.6;

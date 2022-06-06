@@ -15,8 +15,8 @@ It divides the space into grids. The nucleus of each cell is randomly placed in 
 
 ## Examples
 
-    use <voxel/vx_sphere.scad>;
-    use <noise/nz_worley3s.scad>;
+    use <voxel/vx_sphere.scad>
+    use <noise/nz_worley3s.scad>
 
     grid_w = 10;
     dist = "euclidean"; // [euclidean, manhattan, chebyshev, border] 

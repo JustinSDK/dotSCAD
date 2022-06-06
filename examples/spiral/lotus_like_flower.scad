@@ -1,5 +1,5 @@
-use <crystal_ball.scad>;
-use <util/fibseq.scad>;
+use <crystal_ball.scad>
+use <util/fibseq.scad>
 
 spirals = 10;
 petals_per_spiral = 4; 

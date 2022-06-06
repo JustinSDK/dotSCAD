@@ -1,6 +1,6 @@
-use <box_extrude.scad>;
-use <part/joint_T.scad>;
-use <triangle2square.scad>;
+use <box_extrude.scad>
+use <part/joint_T.scad>
+use <triangle2square.scad>
 
 tri_side_leng = 100;
 height = 30;

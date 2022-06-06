@@ -11,9 +11,9 @@ It's a helper for getting data from a square-maze cell.
 
 ## Examples
     
-	use <maze/mz_square_cells.scad>;
-	use <maze/mz_square_get.scad>;
-	use <line2d.scad>;
+	use <maze/mz_square_cells.scad>
+	use <maze/mz_square_get.scad>
+	use <line2d.scad>
 
 	rows = 10;
 	columns = 10;

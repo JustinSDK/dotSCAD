@@ -1,11 +1,11 @@
-use <util/map/hashmap.scad>;
-use <util/map/hashmap_get.scad>;
-use <polyhedra/geom_tetrahedron.scad>;
-use <polyhedra/geom_hexahedron.scad>;
-use <polyhedra/geom_octahedron.scad>;
-use <polyhedra/geom_dodecahedron.scad>;
-use <polyhedra/geom_icosahedron.scad>;
-use <experimental/wireframe.scad>;
+use <util/map/hashmap.scad>
+use <util/map/hashmap_get.scad>
+use <polyhedra/geom_tetrahedron.scad>
+use <polyhedra/geom_hexahedron.scad>
+use <polyhedra/geom_octahedron.scad>
+use <polyhedra/geom_dodecahedron.scad>
+use <polyhedra/geom_icosahedron.scad>
+use <experimental/wireframe.scad>
 
 number_of_faces = 8; // [3, 6, 8, 12, 20]
 radius = 10;

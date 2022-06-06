@@ -10,8 +10,8 @@ Returns a list containing all keys in a [util/map/hashmap](https://openhome.cc/e
 
 ## Examples
 
-    use <util/map/hashmap.scad>;
-    use <util/map/hashmap_keys.scad>;
+    use <util/map/hashmap.scad>
+    use <util/map/hashmap_keys.scad>
 
     m = hashmap([["k1", 10], ["k2", 20], ["k3", 30]]);
 

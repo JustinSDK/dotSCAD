@@ -8,7 +8,7 @@
 *
 **/
 
-use <_impl/_bsearch_impl.scad>;
+use <_impl/_bsearch_impl.scad>
 
 function bsearch(sorted, target) = 
     is_function(target) ? _bsearch_cmp(sorted, target, 0, len(sorted) - 1) :

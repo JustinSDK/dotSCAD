@@ -1,6 +1,6 @@
-use <shape_star.scad>;
-use <polyline_join.scad>;
-use <experimental/tri_bisectors.scad>;
+use <shape_star.scad>
+use <polyline_join.scad>
+use <experimental/tri_bisectors.scad>
 
 r1 = 30;
 r2 = 12;

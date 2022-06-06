@@ -11,16 +11,16 @@ Returns shape points of an arc shape. They can be used with xxx_extrude modules 
 
 ## Examples
 
-    use <shape_arc.scad>;
+    use <shape_arc.scad>
 
     shape_pts = shape_arc(radius = 10, angle = [-90, 90], width = 5);
     polygon(shape_pts);
 
 ![shape_arc](images/lib3x-shape_arc-1.JPG)
 
-    use <shape_arc.scad>;
-    use <path_extrude.scad>;
-    use <bezier_curve.scad>;
+    use <shape_arc.scad>
+    use <path_extrude.scad>
+    use <bezier_curve.scad>
 
     t_step = 0.05;
     width = 2;

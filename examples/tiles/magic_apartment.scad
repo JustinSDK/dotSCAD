@@ -1,6 +1,6 @@
-use <rounded_square.scad>;
-use <util/choose.scad>;
-use <util/rand.scad>;
+use <rounded_square.scad>
+use <util/choose.scad>
+use <util/rand.scad>
 
 width = 25;
 rows = 1;

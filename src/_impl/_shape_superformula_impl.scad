@@ -1,5 +1,5 @@
-use <../__comm__/__ra_to_xy.scad>;
-use <../__comm__/__to_degree.scad>;
+use <../__comm__/__ra_to_xy.scad>
+use <../__comm__/__to_degree.scad>
 
 function _superformula_r(angle, m1, m2, n1, n2 = 1, n3 = 1, a = 1, b = 1) = 
     let(a_d4 = angle / 4)

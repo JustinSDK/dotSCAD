@@ -8,7 +8,7 @@
 *
 **/
 
-include <shape_pie.scad>;
+include <shape_pie.scad>
  
 module pie(radius, angle) {
     polygon(shape_pie(radius, angle));

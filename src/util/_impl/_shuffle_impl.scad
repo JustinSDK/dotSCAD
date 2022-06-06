@@ -1,4 +1,4 @@
-use <../swap.scad>;
+use <../swap.scad>
 
 function _shuffle(lt, indices, leng) =
     let(end = len(lt) - 1)

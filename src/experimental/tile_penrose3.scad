@@ -1,4 +1,4 @@
-use <polyline_join.scad>;
+use <polyline_join.scad>
 
 function _subdivide(triangles) = 
 	[
@@ -65,8 +65,8 @@ function tile_penrose3(n, triangles) =
 	)
     [for(t = tris) [t[0], [t[3], t[1], t[2]]]];
 
-use <polyline_join.scad>;
-use <ptf/ptf_rotate.scad>;
+use <polyline_join.scad>
+use <ptf/ptf_rotate.scad>
 
 module draw(tris, radius) {
 	for(t = tris) {

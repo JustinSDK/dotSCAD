@@ -1,15 +1,15 @@
-use <polyhedra/polar_zonohedra.scad>;
-use <polyhedra/octahedron.scad>;
-use <polyhedra/icosahedron.scad>;
-use <shear.scad>;
-use <polyline_join.scad>;
-use <bezier_curve.scad>;
-use <matrix/m_transpose.scad>;
-use <sweep.scad>;
-use <experimental/worley_sphere.scad>;
-use <curve.scad>;
-use <ptf/ptf_rotate.scad>;
-use <util/dedup.scad>;
+use <polyhedra/polar_zonohedra.scad>
+use <polyhedra/octahedron.scad>
+use <polyhedra/icosahedron.scad>
+use <shear.scad>
+use <polyline_join.scad>
+use <bezier_curve.scad>
+use <matrix/m_transpose.scad>
+use <sweep.scad>
+use <experimental/worley_sphere.scad>
+use <curve.scad>
+use <ptf/ptf_rotate.scad>
+use <util/dedup.scad>
 
 detail = 1;
 head_angles = [5, 0, 20];

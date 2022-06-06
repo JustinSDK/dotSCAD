@@ -25,7 +25,7 @@ The containing square of the target shape should be laid down on the x-y plane. 
 
 Once you have the size of the containing square, you can use it as the `size` argument of the `bend_extrude` module.
 
-	use <bend_extrude.scad>;
+	use <bend_extrude.scad>
 
 	x = 9.25;
 	y = 9.55;

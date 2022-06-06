@@ -1,4 +1,4 @@
-use <voxel/vx_bezier.scad>;
+use <voxel/vx_bezier.scad>
 
 module test_vx_bezier() {
     echo("==== test_vx_bezier ====");

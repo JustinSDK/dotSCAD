@@ -16,8 +16,8 @@ Transforms a point inside a rectangle to a point of a ring. It can create things
 
 ## Examples
 
-    use <polyline_join.scad>;
-    use <ptf/ptf_ring.scad>;
+    use <polyline_join.scad>
+    use <ptf/ptf_ring.scad>
 
     size = [20, 10];
     radius = 5;

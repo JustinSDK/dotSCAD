@@ -12,7 +12,7 @@ It solidifies two square surfaces, described by a m * n list of `[x, y, z]`s.
 
 ## Examples
 
-    use <surface/sf_solidify.scad>;
+    use <surface/sf_solidify.scad>
 
     function f(x, y) = 
     30 * (

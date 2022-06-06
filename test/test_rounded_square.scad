@@ -1,5 +1,5 @@
-use <unittest.scad>;
-include <rounded_square.scad>;
+use <unittest.scad>
+include <rounded_square.scad>
 
 module test_rounded_square(position, points) {
     assertEqualPoint([25, 25], position);

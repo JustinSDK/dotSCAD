@@ -1,7 +1,7 @@
-use <experimental/tri_subdivide.scad>;
-use <experimental/tri_circle_packing.scad>;
+use <experimental/tri_subdivide.scad>
+use <experimental/tri_circle_packing.scad>
 
-use <triangle/tri_delaunay.scad>;
+use <triangle/tri_delaunay.scad>
 
 
 function circle_packing3(points, density = 1, min_r = 1) =

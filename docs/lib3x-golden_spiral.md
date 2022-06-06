@@ -13,7 +13,7 @@ It returns a vector of `[[x, y], angle]`.
 
 ## Examples
     
-	use <golden_spiral.scad>;
+	use <golden_spiral.scad>
 	        
 	pts_angles = golden_spiral(
 	    from = 3, 
@@ -28,7 +28,7 @@ It returns a vector of `[[x, y], angle]`.
 
 ![golden_spiral](images/lib3x-golden_spiral-1.JPG)
 	
-	use <golden_spiral.scad>;
+	use <golden_spiral.scad>
 	        
 	pts_angles = golden_spiral(
 	    from = 5, 

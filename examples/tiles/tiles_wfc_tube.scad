@@ -1,5 +1,5 @@
-use <experimental/tile_wfc.scad>;
-use <select.scad>;
+use <experimental/tile_wfc.scad>
+use <select.scad>
 
 sample = [
     [ 6, 12,  0,  0,  0,  0,  0,  0, 0,   6, 12],

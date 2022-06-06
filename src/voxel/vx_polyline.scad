@@ -8,14 +8,14 @@
 *
 **/ 
 
-use <../__comm__/__to3d.scad>;
-use <../__comm__/__to2d.scad>;
-use <../__comm__/__lines_from.scad>;
-use <../util/dedup.scad>;
-use <vx_line.scad>;
+use <../__comm__/__to3d.scad>
+use <../__comm__/__to2d.scad>
+use <../__comm__/__lines_from.scad>
+use <../util/dedup.scad>
+use <vx_line.scad>
 
-include <../__comm__/_pt2_hash.scad>;
-include <../__comm__/_pt3_hash.scad>;
+include <../__comm__/_pt2_hash.scad>
+include <../__comm__/_pt3_hash.scad>
 
 function vx_polyline(points) =
     let(

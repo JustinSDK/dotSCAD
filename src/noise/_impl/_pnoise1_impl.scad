@@ -1,5 +1,5 @@
-use <_pnoise_comm.scad>;
-use <../../util/lerp.scad>;
+use <_pnoise_comm.scad>
+use <../../util/lerp.scad>
 
 _signs = [1, -1];
 function _grad1(hashvalue, x) = _signs[hashvalue % 2] * x; 

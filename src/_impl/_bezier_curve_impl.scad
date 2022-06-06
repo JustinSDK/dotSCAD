@@ -1,4 +1,4 @@
-use <../util/sum.scad>;
+use <../util/sum.scad>
 
 function _combi(n, k) =
     let(  

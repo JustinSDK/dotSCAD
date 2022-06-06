@@ -10,6 +10,6 @@ Converts a degree measurement to the corresponding value in radians.
 
 ## Examples
 		
-	use <util/radians.scad>;
+	use <util/radians.scad>
 		
 	assert(radians(180) == PI);  

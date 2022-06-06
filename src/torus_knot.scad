@@ -8,7 +8,7 @@
 *
 **/
 
-use <util/degrees.scad>;
+use <util/degrees.scad>
 
 function torus_knot(p, q, phi_step) = 
     [

@@ -11,7 +11,7 @@ Returns the angle between two vectors.
 
 ## Examples
 
-    use <angle_between.scad>;
+    use <angle_between.scad>
 
     assert(angle_between([0, 1], [1, 0]) == 90);
     assert(angle_between([0, 1, 0], [1, 0, 0]) == 90);

@@ -10,8 +10,8 @@ Returns the length of the elements in a [util/set/hashset](https://openhome.cc/e
 
 ## Examples
 
-    use <util/set/hashset.scad>;
-    use <util/set/hashset_len.scad>;
+    use <util/set/hashset.scad>
+    use <util/set/hashset_len.scad>
 
     s = hashset([1, 2, 3, 4, 5]);
     assert(hashset_len(s) == 5);

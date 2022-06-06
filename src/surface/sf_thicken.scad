@@ -8,10 +8,10 @@
 *
 **/ 
 
-use <../__comm__/_face_normal.scad>;
-use <../util/sum.scad>;
-use <../util/unit_vector.scad>;
-use <sf_solidify.scad>;
+use <../__comm__/_face_normal.scad>
+use <../util/sum.scad>
+use <../util/unit_vector.scad>
+use <sf_solidify.scad>
 
 module sf_thicken(points, thickness, direction = "BOTH", convexity = 1) {
     // clockwise

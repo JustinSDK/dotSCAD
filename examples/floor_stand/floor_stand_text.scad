@@ -1,6 +1,6 @@
-use <util/split_str.scad>;
-use <floor_stand.scad>;
-use <multi_line_text.scad>;
+use <util/split_str.scad>
+use <floor_stand.scad>
+use <multi_line_text.scad>
 
 text = "Coder at Work";
 font = "Arial Black";

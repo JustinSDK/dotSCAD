@@ -1,4 +1,4 @@
-use <matrix/m_scaling.scad>;
+use <matrix/m_scaling.scad>
 
 module test_m_scaling() {
     echo("==== test_m_scaling ====");

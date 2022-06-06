@@ -11,9 +11,9 @@ Returns the 1D [Perlin noise](https://en.wikipedia.org/wiki/Perlin_noise) value 
 
 ## Examples
 
-    use <polyline_join.scad>;
-    use <util/rand.scad>;
-    use <noise/nz_perlin1.scad>;
+    use <polyline_join.scad>
+    use <util/rand.scad>
+    use <noise/nz_perlin1.scad>
 
     seed = rand(0, 255);
     polyline_join([for(x = [0:.1:10]) [x, nz_perlin1(x, seed)]])

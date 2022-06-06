@@ -1,5 +1,5 @@
-use <../util/sum.scad>;
-use <../util/flat.scad>;
+use <../util/sum.scad>
+use <../util/flat.scad>
 
 // http://archive.bridgesmathart.org/2021/bridges2021-7.pdf
 

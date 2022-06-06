@@ -11,7 +11,7 @@ The `some` function tests whether at least one element in the list passes the te
 
 ## Examples
 
-    use <util/some.scad>;
+    use <util/some.scad>
    
     isOdd = function(elem) elem % 2 == 1;
     assert(some([1, 30, 39, 29, 10, 13], isOdd));

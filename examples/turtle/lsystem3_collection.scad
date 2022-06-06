@@ -1,6 +1,6 @@
-use <turtle/lsystem3.scad>;
-use <util/dedup.scad>;
-use <polyline_join.scad>;
+use <turtle/lsystem3.scad>
+use <util/dedup.scad>
+use <polyline_join.scad>
 
 for(line = dedup(hilbert_curve())) {
     polyline_join([line[0], line[1]])

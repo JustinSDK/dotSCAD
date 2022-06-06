@@ -17,7 +17,7 @@ It divides the space into grids. The nucleus of each cell is randomly placed in 
 
 ## Examples
 
-    use <noise/nz_worley2s.scad>;
+    use <noise/nz_worley2s.scad>
 
     size = [100, 50];
     grid_w = 10;

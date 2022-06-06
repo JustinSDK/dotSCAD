@@ -1,4 +1,4 @@
-use <util/split_str.scad>;
+use <util/split_str.scad>
 
 module test_split_str() {
     echo("==== test_split_str ====");

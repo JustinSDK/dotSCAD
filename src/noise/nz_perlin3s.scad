@@ -8,8 +8,8 @@
 *
 **/
 
-use <../util/rand.scad>;
-use <_impl/_pnoise3_impl.scad>;
+use <../util/rand.scad>
+use <_impl/_pnoise3_impl.scad>
 
 function nz_perlin3s(points, seed) = 
     let(sd = is_undef(seed) ? rand() * 1000 : seed)

@@ -11,8 +11,8 @@ Returns 2D [Perlin noise](https://en.wikipedia.org/wiki/Perlin_noise) values at 
 
 ## Examples
 
-    use <util/rand.scad>;
-    use <noise/nz_perlin2s.scad>;
+    use <util/rand.scad>
+    use <noise/nz_perlin2s.scad>
 
     seed = rand(0, 255);
 

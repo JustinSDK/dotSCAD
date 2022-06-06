@@ -1,4 +1,4 @@
-use <voxel/vx_cylinder.scad>;
+use <voxel/vx_cylinder.scad>
 
 module test_vx_cylinder() {
     echo("==== test_vx_cylinder ====");

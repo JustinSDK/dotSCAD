@@ -10,8 +10,8 @@ Given a list of points. `vx_polyline` returns points that can be used to draw a 
 
 ## Examples
 
-	use <voxel/vx_polyline.scad>;
-	use <shape_pentagram.scad>;
+	use <voxel/vx_polyline.scad>
+	use <shape_pentagram.scad>
 
 	pentagram = [
 		for(pt = shape_pentagram(15)) 
@@ -26,8 +26,8 @@ Given a list of points. `vx_polyline` returns points that can be used to draw a 
 
 ![vx_polyline](images/lib3x-vx_polyline-1.JPG)
 
-	use <voxel/vx_polyline.scad>;
-	use <sphere_spiral.scad>;
+	use <voxel/vx_polyline.scad>
+	use <sphere_spiral.scad>
 
 	points_angles = sphere_spiral(
 		radius = 20, 

@@ -8,8 +8,8 @@
 *
 **/
 
-use <line2d.scad>;
-use <pie.scad>;
+use <line2d.scad>
+use <pie.scad>
 
 module polyline2d(points, width = 1, startingStyle = "CAP_SQUARE", endingStyle = "CAP_SQUARE", joinStyle = "JOIN_ROUND") {
     leng_pts = len(points);

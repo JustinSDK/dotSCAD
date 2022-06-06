@@ -1,4 +1,4 @@
-use <../vx_bezier.scad>;
+use <../vx_bezier.scad>
 
 function _vx_catmull_rom_spline_4pts(points, tightness) = 
     let(

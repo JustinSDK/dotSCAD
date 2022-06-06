@@ -1,4 +1,4 @@
-use <lines_intersection.scad>;
+use <lines_intersection.scad>
 
 module test_lines_intersection() {
     echo("==== test_lines_intersection ====");

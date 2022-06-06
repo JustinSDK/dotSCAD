@@ -8,8 +8,8 @@
 *
 **/
 
-use <../__comm__/__angy_angz.scad>;
-use <../util/unit_vector.scad>;
+use <../__comm__/__angy_angz.scad>
+use <../util/unit_vector.scad>
 
 // slow but workable
 module vrn3_space(size, grid_w, seed, spacing = 1) {

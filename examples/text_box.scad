@@ -1,4 +1,4 @@
-use <box_extrude.scad>;
+use <box_extrude.scad>
 
 model_type = "Both"; // [Both, Lid, Container]
 t = "XD"; 

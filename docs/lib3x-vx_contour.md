@@ -10,8 +10,8 @@ Given a list of points that form a closed area, `vx_contour` returns the contour
 
 ## Examples
 
-    use <voxel/vx_ascii.scad>;
-    use <voxel/vx_contour.scad>;
+    use <voxel/vx_ascii.scad>
+    use <voxel/vx_contour.scad>
 
     t = "dotSCAD";
 

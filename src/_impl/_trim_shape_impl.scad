@@ -1,6 +1,6 @@
-use <../__comm__/__line_intersection.scad>;
-use <../__comm__/__in_line.scad>;
-use <../__comm__/__lines_from.scad>;
+use <../__comm__/__line_intersection.scad>
+use <../__comm__/__in_line.scad>
+use <../__comm__/__lines_from.scad>
 
 function _any_intersection_sub(lines, line, lines_leng, i, epsilon) =
     let(p = __line_intersection2(lines[i], line, epsilon))

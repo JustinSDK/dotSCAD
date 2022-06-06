@@ -1,8 +1,8 @@
-use <unittest.scad>;
+use <unittest.scad>
 
-use <shape_path_extend.scad>;
-use <shape_circle.scad>;
-use <archimedean_spiral.scad>;
+use <shape_path_extend.scad>
+use <shape_circle.scad>
+use <archimedean_spiral.scad>
 
 module test_shape_path_extend_stroke1() {
     echo("==== test_shape_path_extend_stroke1 ====");

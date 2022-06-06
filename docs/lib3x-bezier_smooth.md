@@ -12,8 +12,8 @@ Given a path, the `bezier_smooth` function uses bazier curves to smooth all corn
 
 ## Examples
 
-	use <polyline_join.scad>;
-	use <bezier_smooth.scad>;
+	use <polyline_join.scad>
+	use <bezier_smooth.scad>
 
 	width = 2;
 	round_d = 15;
@@ -37,7 +37,7 @@ Given a path, the `bezier_smooth` function uses bazier curves to smooth all corn
 
 ![bezier_smooth](images/lib3x-bezier_smooth-1.JPG)
 
-	use <bezier_smooth.scad>;
+	use <bezier_smooth.scad>
 
 	round_d = 10;
 

@@ -1,5 +1,5 @@
-use <unittest.scad>;
-use <ptf/ptf_rotate.scad>;
+use <unittest.scad>
+use <ptf/ptf_rotate.scad>
 
 module test_ptf_rotate() {
     echo("==== test_ptf_rotate ====");

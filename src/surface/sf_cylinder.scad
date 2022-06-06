@@ -1,4 +1,4 @@
-use <../sweep.scad>;
+use <../sweep.scad>
 
 module sf_cylinder(levels, radius, thickness, depth, invert = false, convexity = 1) {
     row_leng = len(levels[0]);

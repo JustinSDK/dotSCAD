@@ -15,10 +15,10 @@ You can use any point as the first point of the edge path. Just remember that yo
 
 ## Examples
 
-	use <polyline_join.scad>;
-	use <shape_taiwan.scad>;
-	use <path_scaling_sections.scad>;
-	use <sweep.scad>;
+	use <polyline_join.scad>
+	use <shape_taiwan.scad>
+	use <path_scaling_sections.scad>
+	use <sweep.scad>
 
 	taiwan = shape_taiwan(100);
 	fst_pt = [13, 0, 0];
@@ -39,11 +39,11 @@ You can use any point as the first point of the edge path. Just remember that yo
 
 ![path_scaling_sections](images/lib3x-path_scaling_sections-1.JPG)
 
-	use <polyline_join.scad>;
-	use <shape_taiwan.scad>;
-	use <path_scaling_sections.scad>;
-	use <sweep.scad>;
-	use <bezier_curve.scad>;
+	use <polyline_join.scad>
+	use <shape_taiwan.scad>
+	use <path_scaling_sections.scad>
+	use <sweep.scad>
+	use <bezier_curve.scad>
 
 	taiwan = shape_taiwan(100);
 	fst_pt = [13, 0, 0];
@@ -64,11 +64,11 @@ You can use any point as the first point of the edge path. Just remember that yo
 
 ![path_scaling_sections](images/lib3x-path_scaling_sections-2.JPG)
 
-	use <shape_taiwan.scad>;
-	use <path_scaling_sections.scad>;
-	use <sweep.scad>;
-	use <bezier_curve.scad>;
-	use <ptf/ptf_rotate.scad>;
+	use <shape_taiwan.scad>
+	use <path_scaling_sections.scad>
+	use <sweep.scad>
+	use <bezier_curve.scad>
+	use <ptf/ptf_rotate.scad>
 
 	taiwan = shape_taiwan(100);
 	fst_pt = [13, 0, 0];
@@ -100,11 +100,11 @@ You can use any point as the first point of the edge path. Just remember that yo
 
 ![path_scaling_sections](images/lib3x-path_scaling_sections-3.JPG)	
 
-	use <polyline_join.scad>;
-	use <shape_taiwan.scad>;
-	use <path_scaling_sections.scad>;
-	use <sweep.scad>;
-    use <ptf/ptf_rotate.scad>;
+	use <polyline_join.scad>
+	use <shape_taiwan.scad>
+	use <path_scaling_sections.scad>
+	use <sweep.scad>
+    use <ptf/ptf_rotate.scad>
 
 	taiwan = shape_taiwan(100);
 

@@ -1,4 +1,4 @@
-use <../../util/sum.scad>;
+use <../../util/sum.scad>
 
 function _manhattan(v) = sum([for(d = v) abs(d)]);
 

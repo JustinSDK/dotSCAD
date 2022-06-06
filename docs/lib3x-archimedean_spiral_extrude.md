@@ -14,7 +14,7 @@ When using this module, you should use points to represent the 2D shape. If your
 
 ## Examples
     
-	use <archimedean_spiral_extrude.scad>;
+	use <archimedean_spiral_extrude.scad>
 
 	shape_pts = [
 		[5, 0],

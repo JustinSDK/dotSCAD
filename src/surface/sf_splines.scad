@@ -8,7 +8,7 @@
 *
 **/ 
 
-use <../matrix/m_transpose.scad>;
+use <../matrix/m_transpose.scad>
 
 function sf_splines(ctrl_pts, row_spline, column_spline) =
     let(

@@ -1,6 +1,6 @@
-use <ptf/ptf_rotate.scad>;
-use <polyline_join.scad>;
-use <shape_superformula.scad>; 
+use <ptf/ptf_rotate.scad>
+use <polyline_join.scad>
+use <shape_superformula.scad> 
 
 function shape2wire(shape, r) = 
 	let(

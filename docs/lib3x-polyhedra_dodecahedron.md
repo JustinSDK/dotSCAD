@@ -11,7 +11,7 @@ Creates a dodecahedron.
 
 ## Examples
 
-	use <polyhedra/dodecahedron.scad>;
+	use <polyhedra/dodecahedron.scad>
 
 	for(i = [0:5]) {
 		translate([i * 2, 0])

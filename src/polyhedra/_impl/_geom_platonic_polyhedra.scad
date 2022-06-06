@@ -1,4 +1,4 @@
-use <../../util/unit_vector.scad>;
+use <../../util/unit_vector.scad>
 
 function _tri_subdivide_pts(points, radius, rows) = 
    let(

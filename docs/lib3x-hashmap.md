@@ -21,14 +21,14 @@ This function maps keys to values. You can use the following to process the retu
 
 ## Examples
 
-    use <util/map/hashmap.scad>;
-	use <util/map/hashmap_len.scad>;
-    use <util/map/hashmap_put.scad>;
-    use <util/map/hashmap_get.scad>;
-    use <util/map/hashmap_del.scad>;
-    use <util/map/hashmap_keys.scad>;
-    use <util/map/hashmap_values.scad>;
-	use <util/map/hashmap_entries.scad>;
+    use <util/map/hashmap.scad>
+	use <util/map/hashmap_len.scad>
+    use <util/map/hashmap_put.scad>
+    use <util/map/hashmap_get.scad>
+    use <util/map/hashmap_del.scad>
+    use <util/map/hashmap_keys.scad>
+    use <util/map/hashmap_values.scad>
+	use <util/map/hashmap_entries.scad>
 
     m1 = hashmap([["k1", 10], ["k2", 20], ["k3", 30]]);
     assert(hashmap_len(m1) == 3);
@@ -45,8 +45,8 @@ This function maps keys to values. You can use the following to process the retu
 
 Want to simulate class-based OO in OpenSCAD? Here's my experiment.
 
-    use <util/map/hashmap.scad>;
-    use <util/map/hashmap_get.scad>;
+    use <util/map/hashmap.scad>
+    use <util/map/hashmap_get.scad>
 
     function methods(mths) = hashmap(mths);
     function _(name, instance) = hashmap_get(instance, name);

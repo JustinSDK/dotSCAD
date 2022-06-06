@@ -1,4 +1,4 @@
-use <../../__comm__/__fast_fibonacci.scad>;
+use <../../__comm__/__fast_fibonacci.scad>
 
 function _fibonacci_sequence(seq, n, i = 2) =
     i > n ? seq :

@@ -8,7 +8,7 @@
 *
 **/
 
-use <__comm__/__trapezium.scad>;
+use <__comm__/__trapezium.scad>
  
 function shape_square(size, corner_r = 0) = 
     let(

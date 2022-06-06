@@ -11,7 +11,7 @@ Creates a icosahedron.
 
 ## Examples
 
-	use <polyhedra/icosahedron.scad>;
+	use <polyhedra/icosahedron.scad>
 
 	for(i = [0:5]) {
 		translate([i * 2, 0])

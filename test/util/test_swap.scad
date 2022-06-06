@@ -1,4 +1,4 @@
-use <util/swap.scad>;
+use <util/swap.scad>
 
 module test_swap() {
     echo("==== test_swap ====");

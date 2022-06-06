@@ -9,7 +9,7 @@ Splits the given string around matches of the given delimiting character.
 
 ## Examples
     
-	use <util/split_str.scad>;
+	use <util/split_str.scad>
 	
 	assert(split_str("hello,world", ",") == ["hello", "world"]);
 

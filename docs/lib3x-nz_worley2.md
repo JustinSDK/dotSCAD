@@ -18,8 +18,8 @@ It divides the space into grids. The nucleus of each cell is randomly placed in 
 
 ## Examples
 
-    use <noise/nz_worley2.scad>;
-    use <util/dedup.scad>;
+    use <noise/nz_worley2.scad>
+    use <util/dedup.scad>
 
     size = [100, 50];
     grid_w = 10;

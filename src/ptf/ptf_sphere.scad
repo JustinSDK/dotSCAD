@@ -8,7 +8,7 @@
 *
 **/ 
 
-use <ptf_rotate.scad>;
+use <ptf_rotate.scad>
 
 function ptf_sphere(size, point, radius, angle = [180, 360]) =
     let(

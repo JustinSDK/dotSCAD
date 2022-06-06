@@ -13,8 +13,8 @@ Gets all points on the path of a spiral around a cylinder. Its `$fa`, `$fs` and 
 
 ## Examples
     
-	use <helix.scad>;
-	use <polyline_join.scad>;
+	use <helix.scad>
+	use <polyline_join.scad>
 	
 	$fn = 12;
 	
@@ -36,8 +36,8 @@ Gets all points on the path of a spiral around a cylinder. Its `$fa`, `$fs` and 
 
 ![helix](images/lib3x-helix-1.JPG)
 
-	use <helix.scad>;
-	use <polyline_join.scad>;
+	use <helix.scad>
+	use <polyline_join.scad>
 
 	$fn = 12;
 

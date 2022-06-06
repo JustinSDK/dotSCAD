@@ -1,4 +1,4 @@
-use <util/some.scad>;
+use <util/some.scad>
 
 module test_some() {
     echo("==== test_some ====");

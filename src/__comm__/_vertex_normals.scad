@@ -1,7 +1,7 @@
 
-use <_face_normal.scad>;
-use <../util/sum.scad>;
-use <../util/contains.scad>;
+use <_face_normal.scad>
+use <../util/sum.scad>
+use <../util/contains.scad>
 
 function _vertex_normals(points, faces) = 
     let(cnn_indices_faces = [for(face = faces, i = face) [i, face]])

@@ -1,11 +1,11 @@
-use <polyline_join.scad>;
-use <maze/mz_square.scad>;
-use <maze/mz_squarewalls.scad>;
-use <path_extrude.scad>;
-use <torus_knot.scad>;
-use <ptf/ptf_rotate.scad>;
-use <shape_square.scad>;
-use <util/spherical_coordinate.scad>;
+use <polyline_join.scad>
+use <maze/mz_square.scad>
+use <maze/mz_squarewalls.scad>
+use <path_extrude.scad>
+use <torus_knot.scad>
+use <ptf/ptf_rotate.scad>
+use <shape_square.scad>
+use <util/spherical_coordinate.scad>
 
 p = 2;
 q = 3;

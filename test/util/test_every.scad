@@ -1,4 +1,4 @@
-use <util/every.scad>;
+use <util/every.scad>
 
 module test_every() {
     echo("==== test_every ====");

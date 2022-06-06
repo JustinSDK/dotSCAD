@@ -13,8 +13,8 @@ Creates a hamiltonian path from a maze. The path is the result of maze traversal
 
 ## Examples
     
-    use <maze/mz_hamiltonian.scad>;
-    use <polyline_join.scad>;
+    use <maze/mz_hamiltonian.scad>
+    use <polyline_join.scad>
 
     rows = 5;
     columns = 10;

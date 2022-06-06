@@ -8,7 +8,7 @@
 *
 **/ 
 
-use <_impl/_sorted_impl.scad>;
+use <_impl/_sorted_impl.scad>
 
 function sorted(lt, cmp = undef, key = undef, reverse = false) = 
     let(is_cmp_undef = is_undef(cmp))

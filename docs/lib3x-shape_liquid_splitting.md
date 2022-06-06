@@ -14,7 +14,7 @@ Returns shape points of two splitting liquid shapes, kind of how cells divide. T
 
 ## Examples
 
-    use <shape_liquid_splitting.scad>;
+    use <shape_liquid_splitting.scad>
 
     $fn = 36;
 
@@ -26,7 +26,7 @@ Returns shape points of two splitting liquid shapes, kind of how cells divide. T
 
 ![shape_liquid_splitting](images/lib3x-shape_liquid_splitting-1.JPG)
 
-    use <shape_liquid_splitting.scad>;
+    use <shape_liquid_splitting.scad>
 
     $fn = 36;
 
@@ -46,7 +46,7 @@ Returns shape points of two splitting liquid shapes, kind of how cells divide. T
 
 ![shape_liquid_splitting](images/lib3x-shape_liquid_splitting-2.JPG)
 
-    use <shape_liquid_splitting.scad>;
+    use <shape_liquid_splitting.scad>
 
     $fn = 36;
 

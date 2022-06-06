@@ -1,4 +1,4 @@
-use <matrix/m_determinant.scad>;
+use <matrix/m_determinant.scad>
 
 module test_m_determinant() {
     echo("==== test_m_determinant ====");

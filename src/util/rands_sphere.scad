@@ -1,4 +1,4 @@
-use <degrees.scad>;
+use <degrees.scad>
 
 function rands_sphere(radius, value_count, seed = undef) =
     let(r_nums = is_undef(seed) ? rands(0, 1, value_count * 2) :  rands(0, 1, value_count * 2, seed))
@@ -17,8 +17,8 @@ function rands_sphere(radius, value_count, seed = undef) =
 
 /*
 
-use <util/rands_sphere.scad>;
-use <polyhedron_hull.scad>;
+use <util/rands_sphere.scad>
+use <polyhedron_hull.scad>
 
 number = 20;
 radius = 2;

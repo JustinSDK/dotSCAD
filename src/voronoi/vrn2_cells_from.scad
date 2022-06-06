@@ -8,6 +8,6 @@
 *
 **/
 
-use <../triangle/tri_delaunay.scad>;
+use <../triangle/tri_delaunay.scad>
 
 function vrn2_cells_from(points) = tri_delaunay(points, ret = "VORONOI_CELLS");

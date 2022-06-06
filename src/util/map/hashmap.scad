@@ -8,8 +8,8 @@
 *
 **/
 
-use <_impl/_hashmap_impl.scad>;
-include <../../__comm__/_str_hash.scad>;
+use <_impl/_hashmap_impl.scad>
+include <../../__comm__/_str_hash.scad>
 	
 function hashmap(kv_lt, eq = undef, hash = _str_hash, number_of_buckets) =
     let(

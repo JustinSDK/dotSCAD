@@ -1,4 +1,4 @@
-use <__half_trapezium.scad>;
+use <__half_trapezium.scad>
 
 function __trapezium(length, h, round_r) =
     let(

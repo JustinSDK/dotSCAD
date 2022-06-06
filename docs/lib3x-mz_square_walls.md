@@ -15,9 +15,9 @@ It's a helper for creating wall data from maze cells. You can transform wall poi
 
 ## Examples
     
-	use <maze/mz_square_cells.scad>;
-	use <maze/mz_square_walls.scad>;
-	use <polyline2d.scad>;
+	use <maze/mz_square_cells.scad>
+	use <maze/mz_square_walls.scad>
+	use <polyline2d.scad>
 
 	rows = 10;
 	columns = 10;

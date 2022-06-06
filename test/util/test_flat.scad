@@ -1,4 +1,4 @@
-use <util/flat.scad>;
+use <util/flat.scad>
 
 module test_flat() {
     echo("==== test_flat ====");

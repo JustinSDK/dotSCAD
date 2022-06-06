@@ -1,6 +1,6 @@
-use <polyline_join.scad>;
-use <ptf/ptf_bend.scad>;
-use <hollow_out_square.scad>;
+use <polyline_join.scad>
+use <ptf/ptf_bend.scad>
+use <hollow_out_square.scad>
 
 width = 5;
 columns = 30;

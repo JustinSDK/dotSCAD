@@ -8,8 +8,8 @@
 *
 **/ 
 
-use <bezier_curve.scad>;
-use <matrix/m_transpose.scad>;
+use <bezier_curve.scad>
+use <matrix/m_transpose.scad>
 
 function bezier_surface(t_step, ctrl_pts) =
     let(

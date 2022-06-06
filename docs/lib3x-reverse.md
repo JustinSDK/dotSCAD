@@ -10,7 +10,7 @@ Reverse a list.
 
 ## Examples
     
-	use <util/reverse.scad>;
+	use <util/reverse.scad>
 	
 	assert(reverse([1, 2, 3]) == [3, 2, 1]); 
 

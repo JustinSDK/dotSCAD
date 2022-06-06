@@ -1,6 +1,6 @@
-use <voxel/vx_difference.scad>;
-use <voxel/vx_cylinder.scad>;
-use <voxel/vx_sphere.scad>;
+use <voxel/vx_difference.scad>
+use <voxel/vx_cylinder.scad>
+use <voxel/vx_sphere.scad>
 
 module test_vx_difference() {
     echo("==== test_vx_difference ====");

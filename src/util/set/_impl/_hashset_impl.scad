@@ -1,6 +1,6 @@
-use <_hashset_add_impl.scad>;
+use <_hashset_add_impl.scad>
 
-include <../../_impl/_find_eq_search_some.scad>;
+include <../../_impl/_find_eq_search_some.scad>
 
 function _hashset(lt, leng, buckets, b_numbers, eq, hash) = 
     let(

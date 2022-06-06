@@ -12,7 +12,7 @@ Random number generator. Generates a pseudo random number.
 
 ## Examples
 
-    use <util/rand.scad>;
+    use <util/rand.scad>
     
     echo(rand());              
     echo(rand(1, 10));

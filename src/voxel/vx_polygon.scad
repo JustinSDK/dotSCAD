@@ -1,10 +1,10 @@
-use <../in_shape.scad>;
-use <../util/sorted.scad>;
-use <vx_polyline.scad>;
-use <../util/set/hashset.scad>;
-use <../util/set/hashset_elems.scad>;
+use <../in_shape.scad>
+use <../util/sorted.scad>
+use <vx_polyline.scad>
+use <../util/set/hashset.scad>
+use <../util/set/hashset_elems.scad>
 
-include <../__comm__/_pt2_hash.scad>;
+include <../__comm__/_pt2_hash.scad>
 
 function vx_polygon(points, filled = false) =
     let(contour = vx_polyline([each points, points[0]]))

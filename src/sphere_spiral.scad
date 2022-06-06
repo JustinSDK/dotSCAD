@@ -8,7 +8,7 @@
 *
 **/ 
 
-use <ptf/ptf_rotate.scad>;
+use <ptf/ptf_rotate.scad>
 
 function sphere_spiral(radius, za_step, z_circles = 1, begin_angle = 0, end_angle = 0, vt_dir = "SPI_DOWN", rt_dir = "CT_CLK") = 
     let(

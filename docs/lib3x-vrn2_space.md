@@ -15,7 +15,7 @@ Create a [Voronoi diagram](https://en.wikipedia.org/wiki/Voronoi_diagram) in the
 
 ## Examples
 
-    use <voronoi/vrn2_space.scad>;
+    use <voronoi/vrn2_space.scad>
 
     vrn2_space(
         size = [40, 20],
@@ -24,8 +24,8 @@ Create a [Voronoi diagram](https://en.wikipedia.org/wiki/Voronoi_diagram) in the
 
 ![vrn2_space](images/lib3x-vrn2_space-1.JPG)
 
-    use <bend_extrude.scad>;
-    use <voronoi/vrn2_space.scad>;
+    use <bend_extrude.scad>
+    use <voronoi/vrn2_space.scad>
 
     size = [60, 20];
 

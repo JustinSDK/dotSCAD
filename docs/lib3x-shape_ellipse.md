@@ -9,7 +9,7 @@ Returns shape points of an ellipse. They can be used with xxx_extrude modules of
 
 ## Examples
 
-	use <shape_ellipse.scad>;
+	use <shape_ellipse.scad>
 
 	polygon(
 		shape_ellipse([40, 20])
@@ -17,8 +17,8 @@ Returns shape points of an ellipse. They can be used with xxx_extrude modules of
 
 ![shape_ellipse](images/lib3x-shape_ellipse-1.JPG)
 
-	use <shape_ellipse.scad>;
-	use <helix_extrude.scad>;
+	use <shape_ellipse.scad>
+	use <helix_extrude.scad>
 
 	$fn = 8;
 		

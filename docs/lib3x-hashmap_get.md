@@ -13,8 +13,8 @@ This function gets the value of the specified key from a [util/map/hashmap](http
 
 ## Examples
 
-    use <util/map/hashmap.scad>;
-    use <util/map/hashmap_get.scad>;
+    use <util/map/hashmap.scad>
+    use <util/map/hashmap_get.scad>
 
     m = hashmap([["k1", 10], ["k2", 20], ["k3", 30]]);
     assert(hashmap_get(m, "k2") == 20);

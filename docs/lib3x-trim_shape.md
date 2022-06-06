@@ -13,11 +13,11 @@ Given a tangled-edge shape. This function trims the shape to a non-tangled shape
 
 ## Examples
 
-    use <polyline_join.scad>;
-    use <trim_shape.scad>;
-    use <shape_taiwan.scad>;
-    use <bijection_offset.scad>;
-    use <midpt_smooth.scad>;
+    use <polyline_join.scad>
+    use <trim_shape.scad>
+    use <shape_taiwan.scad>
+    use <bijection_offset.scad>
+    use <midpt_smooth.scad>
 
     taiwan = shape_taiwan(50);
     offseted = bijection_offset(taiwan, -2);

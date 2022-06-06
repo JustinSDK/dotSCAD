@@ -24,8 +24,8 @@ The value of `type` is the wall type of the cell. It can be `0`, `1`, `2` or `3`
 
 ## Examples
     
-	use <maze/mz_theta.scad>;
-	use <polyline_join.scad>;
+	use <maze/mz_theta.scad>
+	use <polyline_join.scad>
 
 	rings = 8;
 	beginning_number = 8;

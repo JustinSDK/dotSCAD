@@ -1,5 +1,5 @@
-use <experimental/tile_truchet.scad>;
-use <arc.scad>;
+use <experimental/tile_truchet.scad>
+use <arc.scad>
 
 size = [50, 25];
 tile_width = 5;

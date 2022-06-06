@@ -1,6 +1,6 @@
-use <arc.scad>;
-use <pie.scad>;
-use <polyline2d.scad>;
+use <arc.scad>
+use <pie.scad>
+use <polyline2d.scad>
 
 ball_radius = 15;
 thickness = 2.5;

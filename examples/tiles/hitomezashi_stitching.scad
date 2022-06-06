@@ -1,6 +1,6 @@
-use <line2d.scad>;
-use <experimental/tile_hitomezashi.scad>;
-use <select.scad>;
+use <line2d.scad>
+use <experimental/tile_hitomezashi.scad>
+use <select.scad>
 
 size = [50, 25];
 tile_width = 5;

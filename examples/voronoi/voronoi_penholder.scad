@@ -1,6 +1,6 @@
-use <voronoi/vrn2_space.scad>;
-use <bend_extrude.scad>;
-use <arc.scad>;
+use <voronoi/vrn2_space.scad>
+use <bend_extrude.scad>
+use <arc.scad>
 
 size = [300, 120];
 grid_w = 30;

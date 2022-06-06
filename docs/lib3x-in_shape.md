@@ -13,8 +13,8 @@ Checks whether a point is inside a shape.
 
 ## Examples
 
-    use <shape_taiwan.scad>;
-    use <in_shape.scad>;
+    use <shape_taiwan.scad>
+    use <in_shape.scad>
 
     points = shape_taiwan(30);
 

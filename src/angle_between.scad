@@ -8,7 +8,7 @@
 *
 **/
 
-use <_impl/_angle_between_impl.scad>;
+use <_impl/_angle_between_impl.scad>
 
 function angle_between(vt1, vt2, ccw = false) = 
     !ccw ? acos((vt1 * vt2) / sqrt((vt1 * vt1) * (vt2 * vt2))) :

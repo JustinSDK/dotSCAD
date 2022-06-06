@@ -1,5 +1,5 @@
-use <surface/sf_solidify.scad>;
-use <util/sum.scad>;
+use <surface/sf_solidify.scad>
+use <util/sum.scad>
 
 Z0 = [0, 0];
 NL = 50;

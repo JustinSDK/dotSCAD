@@ -1,10 +1,10 @@
-use <polyline_join.scad>;
-use <bezier_curve.scad>;
-use <maze/mz_square.scad>;
-use <maze/mz_square_get.scad>;
-use <shape_circle.scad>;
-use <angle_between.scad>;
-use <polyhedra/octahedron.scad>;
+use <polyline_join.scad>
+use <bezier_curve.scad>
+use <maze/mz_square.scad>
+use <maze/mz_square_get.scad>
+use <shape_circle.scad>
+use <angle_between.scad>
+use <polyhedra/octahedron.scad>
 
 $fn = 36;
 t_step = 0.04;

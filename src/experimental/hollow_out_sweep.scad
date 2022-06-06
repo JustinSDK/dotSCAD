@@ -1,7 +1,7 @@
-use <util/rand.scad>;
-use <line3d.scad>;
-use <polyline_join.scad>;
-use <experimental/tri_bisectors.scad>;
+use <util/rand.scad>
+use <line3d.scad>
+use <polyline_join.scad>
+use <experimental/tri_bisectors.scad>
 
 // style: LINES or HULL_LINES
 module hollow_out_sweep(sections, diameter, closed = false, style = "LINES") {

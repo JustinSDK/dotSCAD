@@ -1,4 +1,4 @@
-use <hollow_out.scad>;
+use <hollow_out.scad>
 
 $fn = 48;
 

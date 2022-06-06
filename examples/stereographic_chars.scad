@@ -1,4 +1,4 @@
-use <stereographic_extrude.scad>;
+use <stereographic_extrude.scad>
 
 txt = "";
 square_size = 100;

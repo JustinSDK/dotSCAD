@@ -8,10 +8,10 @@
 *
 **/ 
 
-use <../util/set/hashset.scad>;
-use <../util/set/hashset_has.scad>;
+use <../util/set/hashset.scad>
+use <../util/set/hashset_has.scad>
 
-include <../__comm__/_pt3_hash.scad>;
+include <../__comm__/_pt3_hash.scad>
 
 function vx_difference(points1, points2) =
     let(set = hashset(points2, hash = _pt3_hash))

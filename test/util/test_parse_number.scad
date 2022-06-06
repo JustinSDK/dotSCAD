@@ -1,4 +1,4 @@
-use <util/parse_number.scad>;
+use <util/parse_number.scad>
 
 module test_parse_number() {
     echo("==== test_parse_number ====");

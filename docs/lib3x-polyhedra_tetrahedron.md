@@ -11,7 +11,7 @@ Creates a tetrahedron.
 
 ## Examples
 
-	use <polyhedra/tetrahedron.scad>;
+	use <polyhedra/tetrahedron.scad>
 
 	for(i = [0:5]) {
 		translate([i * 2, 0])

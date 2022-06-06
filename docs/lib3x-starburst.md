@@ -13,7 +13,7 @@ A 3D version of `shape_starburst`.
 
 ## Examples
 
-    use <starburst.scad>;
+    use <starburst.scad>
 
 	starburst(10, 5, 5, 5);
 	translate([20, 0, 0]) starburst(10, 5, 6, 5);

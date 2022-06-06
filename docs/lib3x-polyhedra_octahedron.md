@@ -11,7 +11,7 @@ Creates a octahedron.
 
 ## Examples
 
-	use <polyhedra/octahedron.scad>;
+	use <polyhedra/octahedron.scad>
 
 	for(i = [0:5]) {
 		translate([i * 2, 0])

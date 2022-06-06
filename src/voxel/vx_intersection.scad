@@ -8,10 +8,10 @@
 *
 **/ 
 
-use <../util/set/hashset.scad>;
-use <../util/set/hashset_has.scad>;
+use <../util/set/hashset.scad>
+use <../util/set/hashset_has.scad>
 
-include <../__comm__/_pt3_hash.scad>;
+include <../__comm__/_pt3_hash.scad>
 
 function vx_intersection(points1, points2) =
     let(

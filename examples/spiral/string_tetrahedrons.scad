@@ -1,4 +1,4 @@
-use <polyline_join.scad>;
+use <polyline_join.scad>
 
 level = 1;
 leng = 50;

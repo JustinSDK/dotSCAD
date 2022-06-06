@@ -1,4 +1,4 @@
-use <angle_between.scad>;
+use <angle_between.scad>
 
 module test_angle_between() {
     echo("==== test_angle_between  ====");

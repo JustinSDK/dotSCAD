@@ -11,6 +11,6 @@ Returns the index of the first element in the list that satisfies the testing fu
 
 ## Examples
 
-    use <util/find_index.scad>;
+    use <util/find_index.scad>
     
     assert(find_index([10, 20, 30, 40], function(e) e > 10) == 1);

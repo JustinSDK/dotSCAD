@@ -1,4 +1,4 @@
-use <_mz_square_comm.scad>;
+use <_mz_square_comm.scad>
 
 function _cell_position(cell_radius, x_cell, y_cell) =
     let(

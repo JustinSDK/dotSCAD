@@ -8,8 +8,8 @@
 *
 **/
 
-use <../matrix/m_transpose.scad>;
-use <../util/unit_vector.scad>;
+use <../matrix/m_transpose.scad>
+use <../util/unit_vector.scad>
 
 module vrn2_from(points, spacing = 1, r = 0, delta = 0, chamfer = false, region_type = "square") {
     transposed = m_transpose(points);

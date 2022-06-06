@@ -8,11 +8,11 @@
 *
 **/ 
 
-use <_impl/_vx_circle_impl.scad>;
-use <../util/set/hashset.scad>;
-use <../util/set/hashset_elems.scad>;
+use <_impl/_vx_circle_impl.scad>
+use <../util/set/hashset.scad>
+use <../util/set/hashset_elems.scad>
 
-include <../__comm__/_pt2_hash.scad>;
+include <../__comm__/_pt2_hash.scad>
 
 function vx_circle(radius, filled = false) = 
     hashset_elems(

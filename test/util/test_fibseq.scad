@@ -1,4 +1,4 @@
-use <util/fibseq.scad>;
+use <util/fibseq.scad>
 
 module test_fibseq() {
     echo("==== test fibseq ====");

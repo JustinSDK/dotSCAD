@@ -8,9 +8,9 @@
 *
 **/
 
-use <matrix/m_scaling.scad>;
-use <matrix/m_translation.scad>;
-use <matrix/m_rotation.scad>;
+use <matrix/m_scaling.scad>
+use <matrix/m_translation.scad>
+use <matrix/m_rotation.scad>
 
 function cross_sections(shape_pts, path_pts, angles, twist = 0, scale = 1.0) =
     let(

@@ -1,5 +1,5 @@
-use <util/rand.scad>;
-use <experimental/tri_bisectors.scad>;
+use <util/rand.scad>
+use <experimental/tri_bisectors.scad>
 
 function h_lines_in_square(width) = 
     let(

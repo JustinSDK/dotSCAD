@@ -8,7 +8,7 @@
 *
 **/
 
-use <__comm__/__trapezium.scad>;
+use <__comm__/__trapezium.scad>
 
 function shape_trapezium(length, h, corner_r = 0) = 
     __trapezium(

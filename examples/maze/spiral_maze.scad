@@ -1,8 +1,8 @@
-use <archimedean_spiral.scad>;
-use <polyline_join.scad>;
+use <archimedean_spiral.scad>
+use <polyline_join.scad>
 
-use <maze/mz_square.scad>;
-use <maze/mz_squarewalls.scad>;
+use <maze/mz_square.scad>
+use <maze/mz_squarewalls.scad>
 
 rows = 8;
 columns = 50;

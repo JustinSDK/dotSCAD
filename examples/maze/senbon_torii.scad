@@ -1,4 +1,4 @@
-use <maze/mz_hamiltonian.scad>;
+use <maze/mz_hamiltonian.scad>
 
 rows = 2;
 columns = 2;

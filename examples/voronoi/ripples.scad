@@ -1,6 +1,6 @@
-use <noise/nz_worley2.scad>;
-use <noise/nz_perlin2.scad>;
-use <surface/sf_thicken.scad>;
+use <noise/nz_worley2.scad>
+use <noise/nz_perlin2.scad>
+use <surface/sf_thicken.scad>
 
 size = [30, 30];
 grid_w = 15;

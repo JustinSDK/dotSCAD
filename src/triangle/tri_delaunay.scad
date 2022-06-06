@@ -8,12 +8,12 @@
 *
 **/
 
-use <_impl/_tri_delaunay_impl.scad>;
-use <../matrix/m_transpose.scad>;
+use <_impl/_tri_delaunay_impl.scad>
+use <../matrix/m_transpose.scad>
 
-use <tri_delaunay_shapes.scad>;
-use <tri_delaunay_indices.scad>;
-use <tri_delaunay_voronoi.scad>;
+use <tri_delaunay_shapes.scad>
+use <tri_delaunay_indices.scad>
+use <tri_delaunay_voronoi.scad>
 
 // ret: "TRI_SHAPES", "TRI_INDICES", "VORONOI_CELLS", "DELAUNAY"
 function tri_delaunay(points, ret = "TRI_INDICES") = 

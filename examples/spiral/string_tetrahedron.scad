@@ -1,4 +1,4 @@
-use <polyline_join.scad>;
+use <polyline_join.scad>
 
 leng = 50;
 diameter = 5;

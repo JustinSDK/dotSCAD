@@ -1,6 +1,6 @@
-use <shape_circle.scad>;
-use <experimental/differential_line_growth.scad>;
-use <midpt_smooth.scad>;
+use <shape_circle.scad>
+use <experimental/differential_line_growth.scad>
+use <midpt_smooth.scad>
 
 $fn = 24;
 r = 10;

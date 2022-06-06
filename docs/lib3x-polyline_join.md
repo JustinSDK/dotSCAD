@@ -10,7 +10,7 @@ Place a join on each point. Hull each pair of joins and union all convex hulls.
 
 ## Examples
   
-    use <polyline_join.scad>;
+    use <polyline_join.scad>
     
     polyline_join([[0, 0], [10, 0], [10, 10], [0, 10]]) 
         square(1);
@@ -24,7 +24,7 @@ Place a join on each point. Hull each pair of joins and union all convex hulls.
 
 ![polyline_join](images/lib3x-polyline_join-1.JPG)
 
-    use <polyline_join.scad>;
+    use <polyline_join.scad>
         
     polyline_join([[0, 0, 0], [10, 0, 0], [10, 0, 10], [10, 10, 10]]) 
         cube(1);

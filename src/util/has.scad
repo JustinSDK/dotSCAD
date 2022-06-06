@@ -8,7 +8,7 @@
 *
 **/ 
 
-use <bsearch.scad>;
+use <bsearch.scad>
 
 function has(lt, elem, sorted = false) = 
     sorted ? bsearch(lt, elem) != -1 :

@@ -1,5 +1,5 @@
-use <shape_ellipse.scad>;
-use <shape_cyclicpolygon.scad>;
+use <shape_ellipse.scad>
+use <shape_cyclicpolygon.scad>
 
 beginning_radius = 7.5;
 

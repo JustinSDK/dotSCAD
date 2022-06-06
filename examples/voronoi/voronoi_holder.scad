@@ -1,6 +1,6 @@
-use <bend_extrude.scad>;
-use <arc.scad>;
-use <voronoi/vrn2_cells_space.scad>;
+use <bend_extrude.scad>
+use <arc.scad>
+use <voronoi/vrn2_cells_space.scad>
 
 size = [200, 72];
 grid_w = 8;        // grid_w must divide size equally.

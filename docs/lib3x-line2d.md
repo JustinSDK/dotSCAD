@@ -13,7 +13,7 @@ Creates a line from two points. When the end points are `CAP_ROUND`, you can use
 
 ## Examples
 
-    use <line2d.scad>;
+    use <line2d.scad>
     
     $fn = 24;
 

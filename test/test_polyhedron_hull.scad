@@ -1,4 +1,4 @@
-include <polyhedron_hull.scad>;
+include <polyhedron_hull.scad>
 
 module test_polyhedron_hull() {
     echo("==== test_polyhedron_hull ====");

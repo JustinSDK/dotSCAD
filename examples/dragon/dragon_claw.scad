@@ -1,6 +1,6 @@
-use <curve.scad>;
-use <ptf/ptf_rotate.scad>;
-use <util/dedup.scad>;
+use <curve.scad>
+use <ptf/ptf_rotate.scad>
+use <util/dedup.scad>
 
 module dragon_claw() {
 	pts = [

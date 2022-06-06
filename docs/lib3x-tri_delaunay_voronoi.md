@@ -10,11 +10,11 @@ A method of [`tri_delaunay`](lib3x-tri_delaunay.html). Returns voronoi cells fro
 
 ## Examples
 
-	use <triangle/tri_delaunay.scad>;
-	use <triangle/tri_delaunay_indices.scad>;
-	use <triangle/tri_delaunay_shapes.scad>;
-	use <triangle/tri_delaunay_voronoi.scad>;
-	use <polyline_join.scad>;
+	use <triangle/tri_delaunay.scad>
+	use <triangle/tri_delaunay_indices.scad>
+	use <triangle/tri_delaunay_shapes.scad>
+	use <triangle/tri_delaunay_voronoi.scad>
+	use <polyline_join.scad>
 
 	points = [for(i = [0:20]) rands(-100, 100, 2)]; 
 

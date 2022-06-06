@@ -1,6 +1,6 @@
-use <__comm__/__frags.scad>;
-use <path_extrude.scad>;
-use <shape_circle.scad>;
+use <__comm__/__frags.scad>
+use <path_extrude.scad>
+use <shape_circle.scad>
 
 function lemniscate_2circles(radius, c = 1) = 
     let(
@@ -20,8 +20,8 @@ function lemniscate_2circles(radius, c = 1) =
 	);
 
 /*
-use <path_extrude.scad>;
-use <lemniscate_2circles.scad>;
+use <path_extrude.scad>
+use <lemniscate_2circles.scad>
 	
 shape_pts = [
     [3, -1.5],

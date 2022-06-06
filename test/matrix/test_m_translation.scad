@@ -1,4 +1,4 @@
-use <matrix/m_translation.scad>;
+use <matrix/m_translation.scad>
 
 module test_m_translation() {
     echo("==== test_m_translation ====");

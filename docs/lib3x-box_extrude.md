@@ -12,14 +12,14 @@ Creates a box (container) from a 2D object.
 
 ## Examples
 
-    use <box_extrude.scad>;
+    use <box_extrude.scad>
     
 	box_extrude(height = 30, shell_thickness = 2) 
 	    circle(r = 30);
 
 ![box_extrude](images/lib3x-box_extrude-1.JPG)
 
-    use <box_extrude.scad>;
+    use <box_extrude.scad>
     
 	box_extrude(height = 30, shell_thickness = 2) 
 	    text("XD", size = 40, font = "Cooper Black");

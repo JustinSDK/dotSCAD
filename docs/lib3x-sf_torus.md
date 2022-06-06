@@ -23,7 +23,7 @@ Follow the steps described in [img2gray](https://github.com/JustinSDK/img2gray).
 ## Examples
 
     // The code of the above picture.
-    use <surface/sf_torus.scad>;
+    use <surface/sf_torus.scad>
 
     radius = [100, 50];
     thickness = 10;

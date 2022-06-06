@@ -13,8 +13,8 @@ Returns the 3D [Perlin noise](https://en.wikipedia.org/wiki/Perlin_noise) value 
 
 ## Examples
 
-    use <util/rand.scad>;
-    use <noise/nz_perlin3.scad>;
+    use <util/rand.scad>
+    use <noise/nz_perlin3.scad>
 
     seed = rand(0, 255);
     noised = [

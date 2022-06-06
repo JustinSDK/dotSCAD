@@ -1,6 +1,6 @@
-use <shape_circle.scad>;
-use <ptf/ptf_rotate.scad>;
-use <sweep.scad>;
+use <shape_circle.scad>
+use <ptf/ptf_rotate.scad>
+use <sweep.scad>
 
 r1 = 0.1;
 r2 = 50;

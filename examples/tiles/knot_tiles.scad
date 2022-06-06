@@ -1,7 +1,7 @@
-use <experimental/tile_truchet.scad>;
-use <arc.scad>;
-use <line2d.scad>;
-use <select.scad>;
+use <experimental/tile_truchet.scad>
+use <arc.scad>
+use <line2d.scad>
+use <select.scad>
 
 size = [50, 25];
 tile_width = 5;

@@ -12,7 +12,7 @@ Bends a 3D object into an arc shape.
 
 The containing cube of the target object should be laid down on the x-y plane. For example.
 
-    use <bend.scad>;
+    use <bend.scad>
 
 	x = 9.25;
 	y = 9.55;
@@ -25,7 +25,7 @@ The containing cube of the target object should be laid down on the x-y plane. F
 
 Once you have the size of the containing cube, you can use it as the `size` argument of the `bend` module.
 
-    use <bend.scad>;
+    use <bend.scad>
 
 	x = 9.25;
 	y = 9.55;
@@ -41,7 +41,7 @@ Once you have the size of the containing cube, you can use it as the `size` argu
 
 The arc shape is smoother if the `frags` value is larger. 
 
-    use <bend.scad>;
+    use <bend.scad>
 	
 	x = 9.25;
 	y = 9.55;

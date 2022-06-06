@@ -1,4 +1,4 @@
-include <polygon_hull.scad>;
+include <polygon_hull.scad>
 
 module test_polygon_hull() {
     echo("==== test_polygon_hull ====");

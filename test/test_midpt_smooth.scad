@@ -1,6 +1,6 @@
-use <unittest.scad>;
-use <shape_taiwan.scad>;
-use <midpt_smooth.scad>;
+use <unittest.scad>
+use <shape_taiwan.scad>
+use <midpt_smooth.scad>
 
 module test_midpt_smooth() {
     echo("==== test_midpt_smooth ====");

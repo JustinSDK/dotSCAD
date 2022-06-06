@@ -1,5 +1,5 @@
 use <polyline2d.scad>
-use <util/fibseq.scad>;
+use <util/fibseq.scad>
 
 smallest_length = 30;
 height1 = 60;

@@ -1,6 +1,6 @@
-use <../util/sorted.scad>;
-use <../util/some.scad>;
-use <../matrix/m_replace.scad>;
+use <../util/sorted.scad>
+use <../util/some.scad>
+use <../matrix/m_replace.scad>
 
 org = [0, 0, 0];
 

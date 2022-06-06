@@ -1,5 +1,5 @@
-use <unittest.scad>;
-use <shape_circle.scad>;
+use <unittest.scad>
+use <shape_circle.scad>
 
 module test_shape_circle() {
     echo("==== test_shape_circle ====");

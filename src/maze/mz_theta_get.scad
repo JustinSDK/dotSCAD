@@ -8,7 +8,7 @@
 *
 **/
 
-include <_impl/_mz_theta_cell_constants.scad>;
+include <_impl/_mz_theta_cell_constants.scad>
 
 function mz_theta_get(cell, query) = 
     let(

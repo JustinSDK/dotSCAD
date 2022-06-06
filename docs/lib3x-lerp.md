@@ -12,6 +12,6 @@ Linear interpolate the vector v1 to v2.
 
 ## Examples
 
-    use <util/lerp.scad>;
+    use <util/lerp.scad>
     
     assert(lerp([0, 0, 0], [100, 100, 100], 0.5) == [50, 50, 50]);  

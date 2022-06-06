@@ -12,7 +12,7 @@ Creates a polyline from a list of `[x, y, z]` coordinates.
 
 ## Examples
 
-    use <polyline3d.scad>;
+    use <polyline3d.scad>
 
 	polyline3d(
 	    points = [
@@ -27,7 +27,7 @@ Creates a polyline from a list of `[x, y, z]` coordinates.
 
 ![polyline3d](images/lib3x-polyline3d-1.JPG)
 
-    use <polyline3d.scad>;
+    use <polyline3d.scad>
 
 	polyline3d(
 	    points = [
@@ -43,7 +43,7 @@ Creates a polyline from a list of `[x, y, z]` coordinates.
 
 ![polyline3d](images/lib3x-polyline3d-2.JPG)
 
-    use <polyline3d.scad>;
+    use <polyline3d.scad>
 
 	polyline3d(
 	    points = [
@@ -60,7 +60,7 @@ Creates a polyline from a list of `[x, y, z]` coordinates.
 
 ![polyline3d](images/lib3x-polyline3d-3.JPG)
 
-    use <polyline3d.scad>;
+    use <polyline3d.scad>
     
 	r = 20;
 	h = 5;

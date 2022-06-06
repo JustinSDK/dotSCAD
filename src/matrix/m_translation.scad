@@ -8,6 +8,6 @@
 *
 **/
 
-use <_impl/_m_translation_impl.scad>;
+use <_impl/_m_translation_impl.scad>
 
 function m_translation(v) = _m_translation_impl(v);

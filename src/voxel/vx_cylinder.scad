@@ -8,7 +8,7 @@
 *
 **/ 
 
-use <_impl/_vx_cylinder_impl.scad>; 
+use <_impl/_vx_cylinder_impl.scad> 
 
 function vx_cylinder(r, h, filled = false, thickness = 1) =
     _vx_cylinder_impl(r, h, filled, thickness);

@@ -1,5 +1,5 @@
-use <unittest.scad>;
-use <shape_ellipse.scad>;
+use <unittest.scad>
+use <shape_ellipse.scad>
 
 module test_shape_ellipse() {
     echo("==== test_shape_ellipse ====");

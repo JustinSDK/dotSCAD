@@ -1,5 +1,5 @@
-use <unittest.scad>;
-use <shape_trapezium.scad>;
+use <unittest.scad>
+use <shape_trapezium.scad>
 
 module test_shape_trapezium() {
     echo("==== test_shape_trapezium ====");

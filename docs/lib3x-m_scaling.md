@@ -10,7 +10,7 @@ Generate a 4x4 transformation matrix which can pass into `multmatrix` to scale i
 
 ## Examples
 
-	use <matrix/m_scaling.scad>;
+	use <matrix/m_scaling.scad>
 
 	cube(10);
 	translate([15, 0, 0]) 

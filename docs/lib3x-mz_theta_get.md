@@ -11,9 +11,9 @@ It's a helper for getting data from a theta-maze cell.
 
 ## Examples
     
-	use <maze/mz_theta_cells.scad>;
-	use <maze/mz_theta_get.scad>;
-	use <polyline_join.scad>;
+	use <maze/mz_theta_cells.scad>
+	use <maze/mz_theta_get.scad>
+	use <polyline_join.scad>
 
 	rows = 8;
 	beginning_number = 8;

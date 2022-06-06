@@ -1,5 +1,5 @@
-use <../__comm__/__to3d.scad>;
-use <../util/reverse.scad>;
+use <../__comm__/__to3d.scad>
+use <../util/reverse.scad>
 
 function __polytransversals(transversals) =
     let(

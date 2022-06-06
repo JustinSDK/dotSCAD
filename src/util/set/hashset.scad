@@ -8,10 +8,10 @@
 *
 **/
 
-use <_impl/_hashset_impl.scad>;
-use <_impl/_hashset_add_impl.scad>;
+use <_impl/_hashset_impl.scad>
+use <_impl/_hashset_add_impl.scad>
 
-include <../../__comm__/_str_hash.scad>;
+include <../../__comm__/_str_hash.scad>
 	
 function hashset(lt, eq = undef, hash = _str_hash, number_of_buckets) =
     let(

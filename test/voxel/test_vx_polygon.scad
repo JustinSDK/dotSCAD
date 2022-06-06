@@ -1,4 +1,4 @@
-use <voxel/vx_polygon.scad>;
+use <voxel/vx_polygon.scad>
 
 module test_vx_polygon() { 
     echo("==== test_vx_polygon ====");
