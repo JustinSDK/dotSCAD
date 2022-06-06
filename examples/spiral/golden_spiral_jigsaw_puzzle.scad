@@ -12,9 +12,9 @@ $fn = 24;
 
 model = "ALL"; // [ALL, PLATE, SPIRAL]
 
-golden_spiral_jigsaw();
+golden_spiral_jigsaw_puzzle();
 
-module golden_spiral_jigsaw() {
+module golden_spiral_jigsaw_puzzle() {
     offset_rr = offset_r / 40;
     a_step = 360 / spirals;
     start = 360 / spirals * start_n;
