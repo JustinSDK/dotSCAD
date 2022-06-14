@@ -1,4 +1,4 @@
-# rands_disk
+# rands_sphere
 
 Pick random points on the surface of a sphere.
 
