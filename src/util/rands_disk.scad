@@ -1,3 +1,13 @@
+/**
+* rands_disk.scad
+*
+* @copyright Justin Lin, 2022
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib3x-rands_disk.html
+*
+**/ 
+
 function rands_disk(radius, value_count, seed = undef) =
     let(
 	    seed_undef = is_undef(seed),
@@ -10,17 +20,3 @@ function rands_disk(radius, value_count, seed = undef) =
 		[cos(theta[i]), sin(theta[i])] * sqrt(k[i])
 	];
 	
-/*
-use <util/rands_disk.scad>
-
-number = 10000;
-radius = 2;
-
-points = rands_disk(radius, number);
-
-for(p = points) {
-    translate(p)
-	    circle(.01);
-}
-
-%circle(radius, $fn = 96);*/

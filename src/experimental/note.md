@@ -18,11 +18,9 @@ new:
 - t3d - roll/pitch/forward
 - polyline_join: doc multi-childs
 
-- util/count
 - lemniscate_curve?
 - perlin_sphere?
 
-- rands_disk, rands_sphere?
 
 - m_replace?
 
@@ -31,7 +29,7 @@ new:
 doc-ed
 
     deprecated:
-    - util/sort, util/bsearch, util/has
+    - util/sort, util/bsearch, util/has, util/rands_disk, util/rands_sphere
     - maze/mz_square_cells, maze/mz_theta_cells, maze/mz_square_walls, maze/mz_hex_walls
     - rails2sections
 

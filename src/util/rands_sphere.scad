@@ -1,3 +1,13 @@
+/**
+* rands_sphere.scad
+*
+* @copyright Justin Lin, 2022
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib3x-rands_sphere.html
+*
+**/ 
+
 use <degrees.scad>
 
 function rands_sphere(radius, value_count, seed = undef) =
@@ -14,24 +24,3 @@ function rands_sphere(radius, value_count, seed = undef) =
 		)
 		[x, y, z]
 	] * radius;
-
-/*
-
-use <util/rands_sphere.scad>
-use <polyhedron_hull.scad>
-
-number = 20;
-radius = 2;
-
-points = rands_sphere(radius, number);
-
-polyhedron_hull(points);
-
-for(p = points) {
-    translate(p)
-	    sphere(.05);
-}
-
-%sphere(radius, $fn = 48);
-
-*/
