@@ -4,6 +4,11 @@ use <sweep.scad>
 use <matrix/m_transpose.scad>
 use <shape_trapezium.scad>
 use <ptf/ptf_rotate.scad>
+use <bezier_curve.scad>
+use <path_extrude.scad>
+use <shape_circle.scad>;
+
+dragon_head();
 
 module dragon_head() {
     module hair() {
@@ -34,13 +39,24 @@ module dragon_head() {
                 circle(3.5, $fn = 5);    
         }         
     }
-    
+
     module one_horn() {        
-        translate([-9, -4, -2]) 
-        rotate([45, -25, 0]) 
-        linear_extrude(27.5, scale = 0.1, twist = -90) 
-        translate([7.5, 0, 0]) 
-            circle(3, $fn = 4);    
+        t_step = 0.05;
+
+        p0 = [0, -10, -.4];
+        p1 = [0, 0, 10];
+        p2 = [5, -5, 20];
+        p3 = [-10, 10, 30];
+
+        points = bezier_curve(t_step, 
+            [p0, p1, p2, p3] * 0.75
+        );
+
+        c = shape_circle(2.8, $fn = 5);
+        rotate([30, 20, 0])
+        translate([2, 3, 9])
+        rotate([45, 20, 15])
+            path_extrude(c, points, scale = 0.05, twist = -60);
     }
     
     module mouth() {
@@ -123,7 +139,7 @@ module dragon_head() {
         {
             rotate(-90) {
                 one_horn();
-                mirror([-1, 0, 0]) one_horn();       
+                mirror([-1, 0, 0]) one_horn();  
             }
             
             mouth();
