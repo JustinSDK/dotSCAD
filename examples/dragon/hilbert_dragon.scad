@@ -7,6 +7,8 @@ use <turtle/lsystem3.scad>
 use <curve.scad>
 use <dragon_head.scad>
 use <dragon_scales.scad>
+use <path_extrude.scad>;
+use <bezier_curve.scad>;
 
 hilbert_dragon();
 
@@ -15,13 +17,14 @@ module hilbert_dragon() {
         rotate([-90, 0, 0])
             dragon_body_scales(body_r, body_fn, one_scale_data);
 
-        // dorsal fin
-        translate([0, 4, -1.5]) 
-        rotate([-105, 0, 0]) 
-        shear(sy = [0, .75])
-        linear_extrude(5, scale = 0.15)
-            square([2.5, 4], center = true);            
+        points = [[0, 0, 0], [0, .1, 1], [0, 1, 1.5]] * 4.5;
+        path = bezier_curve(0.1, points);
 
+        // dorsal fin
+        translate([0, 3.2, -3]) 
+        rotate([-65, 0, 0]) 
+        path_extrude([[0, -.25], [0.5, 0], [0, .75], [-0.5, 0]] * 4.5, path, scale = .05);  
+        
         translate([0, -2.5, 1]) 
         rotate([-10, 0, 0]) 
         scale([1.1, 0.8, 1.25])  

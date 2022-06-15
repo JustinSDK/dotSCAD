@@ -9,6 +9,8 @@ use <path_scaling_sections.scad>
 use <experimental/worley_sphere.scad>
 use <dragon_head.scad>
 use <dragon_scales.scad>
+use <path_extrude.scad>;
+use <bezier_curve.scad>;
 
 r1 = 25;
 r2 = 15;
@@ -20,12 +22,14 @@ module one_segment(body_r, body_fn, one_scale_data) {
     rotate([-90, 0, 0])
         dragon_body_scales(body_r, body_fn, one_scale_data);
 
+
+    points = [[0, 0, 0], [0, .1, 1], [0, 1, 1.5]] * 4;
+    path = bezier_curve(0.1, points);
+
     // dorsal fin
     translate([0, 3, -3]) 
-    rotate([-75, 0, 0]) 
-    shear(sy = [0, 3])
-    linear_extrude(2.25, scale = 0.2)
-        square([2, 12], center = true);            
+    rotate([-82.5, 5, 30]) 
+    path_extrude([[0, -.25], [0.5, 0], [0, .75], [-0.5, 0]] * 4, path, scale = .05);            
             
     // belly    
     translate([0, -2.5, .8]) 
@@ -159,7 +163,7 @@ module mountain() {
     difference() {
         union() {
             translate([0, 0, 12])
-            scale([1.05, .85, 2.35])	
+            scale([1.05, .85, 2.7])	
                 worley_sphere(radius, detail, amplitude, dist, seed = 5);
 
             translate([4, -4, -15])

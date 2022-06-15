@@ -7,21 +7,23 @@ use <polyhedron_hull.scad>
 use <dragon_head.scad>
 use <dragon_scales.scad>
 use <dragon_foot.scad>
+use <path_extrude.scad>;
+use <bezier_curve.scad>;
 
 dragon_and_perl();
-
 
 module one_segment(body_r, body_fn, one_scale_data) {
     // scales
     rotate([-90, 0, 0])
         dragon_body_scales(body_r, body_fn, one_scale_data);
 
+    points = [[0, 0, 0], [0, .1, 1], [0, 1, 1.5]] * 5;
+    path = bezier_curve(0.1, points);
+
     // dorsal fin
     translate([0, 3.2, -3]) 
-    rotate([-61, 0, 0]) 
-    shear(sy = [0, 2.25])
-    linear_extrude(3.25, scale = 0.3)
-        square([1.5, 10], center = true);            
+    rotate([-75, 0, 0]) 
+    path_extrude([[0, -.25], [0.6, 0], [0, .75], [-0.6, 0]] * 5, path, scale = .05); 
             
     // belly    
     translate([0, -2.5, .8]) 

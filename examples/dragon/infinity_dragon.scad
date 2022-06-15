@@ -6,6 +6,8 @@ use <dragon_head.scad>
 use <dragon_scales.scad>
 use <dragon_foot.scad>
 use <experimental/lemniscate_2circles.scad>
+use <path_extrude.scad>;
+use <bezier_curve.scad>;
 
 rotate([0, 90, 180])
     infinity_dragon();
@@ -15,19 +17,20 @@ module one_segment(body_r, body_fn, one_scale_data) {
     rotate([-90, 0, 0])
         dragon_body_scales(body_r, body_fn, one_scale_data);
 
+
+    points = [[0, 0, 0], [0, .1, 1], [0, 1, 1.5]] * 6;
+    path = bezier_curve(0.1, points);
+
     // dorsal fin
     translate([0, 3.2, -3]) 
     rotate([-61, 0, 0]) 
-    shear(sy = [0, 2.25])
-    linear_extrude(3.25, scale = 0.3)
-        square([1.5, 10], center = true);            
-            
+    path_extrude([[0, -.25], [0.5, 0], [0, .75], [-0.5, 0]] * 6, path, scale = .05);
+    
     // belly    
     translate([0, -2.5, .8]) 
     rotate([-5, 0, 0]) 
     scale([1, 1, 1.4])  
         sphere(body_r * 0.966, $fn = 8); 
-    
 }
 
 module tail() {

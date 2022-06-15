@@ -4,6 +4,8 @@ use <along_with.scad>
 use <util/reverse.scad>
 use <dragon_head.scad>
 use <dragon_scales.scad>
+use <path_extrude.scad>;
+use <bezier_curve.scad>;
 
 torus_knot_dragon();
 
@@ -52,12 +54,13 @@ module one_segment(body_r, body_fn, one_scale_data) {
     rotate([-90, 0, 0])
         dragon_body_scales(body_r, body_fn, one_scale_data);
 
+    points = [[0, 0, 0], [0, .1, 1], [0, 1, 1.5]] * 5.5;
+    path = bezier_curve(0.1, points);
+
     // dorsal fin
-    translate([0, 2.5, -3]) 
+    translate([0, 3.2, -3]) 
     rotate([-65, 0, 0]) 
-    shear(sy = [0, 2])
-    linear_extrude(4, scale = 0.2)
-        square([2, 10], center = true);            
+    path_extrude([[0, -.25], [0.5, 0], [0, .75], [-0.5, 0]] * 5.5, path, scale = .05);            
             
     // belly    
     translate([0, -2.5, .8]) 
