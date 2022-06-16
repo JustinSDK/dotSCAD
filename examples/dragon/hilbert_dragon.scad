@@ -1,4 +1,3 @@
-use <shear.scad>
 use <along_with.scad>
 use <bezier_smooth.scad>
 use <util/reverse.scad>
@@ -7,8 +6,8 @@ use <turtle/lsystem3.scad>
 use <curve.scad>
 use <dragon_head.scad>
 use <dragon_scales.scad>
-use <path_extrude.scad>;
-use <bezier_curve.scad>;
+use <path_extrude.scad>
+use <bezier_curve.scad>
 
 hilbert_dragon();
 

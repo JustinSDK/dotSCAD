@@ -10,8 +10,8 @@ use <experimental/worley_sphere.scad>
 use <dragon_head.scad>
 use <dragon_scales.scad>
 use <dragon_foot.scad>
-use <path_extrude.scad>;
-use <bezier_curve.scad>;
+use <path_extrude.scad>
+use <bezier_curve.scad>
 
 r1 = 25;
 r2 = 15;

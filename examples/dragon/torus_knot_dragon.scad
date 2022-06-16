@@ -1,11 +1,10 @@
 use <torus_knot.scad>
-use <shear.scad>
 use <along_with.scad>
 use <util/reverse.scad>
 use <dragon_head.scad>
 use <dragon_scales.scad>
-use <path_extrude.scad>;
-use <bezier_curve.scad>;
+use <path_extrude.scad>
+use <bezier_curve.scad>
 
 torus_knot_dragon();
 
