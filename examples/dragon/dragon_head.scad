@@ -12,32 +12,64 @@ dragon_head();
 
 module dragon_head() {
     module hair() {
-        for(i = [16:36]) {
-            rotate(i * 10 + rands(0, 5, 1, i)[0]) 
-            translate([0, -13, 0]) 
-            rotate([8 + rands(0, 2, 1, i)[0], 0, 0]) 
-            linear_extrude(12 + rands(0, 5, 1, i)[0], scale = 0.05, twist = 50 - rands(0, 100, 1, seed = i)[0]) 
-            translate([0, 10, 0]) 
-                circle(3, $fn = 5);    
-        }       
-
         for(i = [0:35]) {
             rotate(i * 12 + rands(0, 5, 1, i)[0]) 
-            translate([0, -11.5, 0]) 
-            rotate([4 + rands(0, 2, 1, i)[0], 0, 0]) 
-            linear_extrude(14 + rands(0, 5, 1, i)[0], scale = 0.05, twist = 50 - rands(0, 100, 1, seed = i + 1)[0]) 
+            translate([0, -11.5, .2]) 
+            rotate([rands(0, 2, 1, i)[0], 0, 0]) 
+            linear_extrude(10 + rands(0, 5, 1, i)[0], scale = 0.05, twist = 50 - rands(0, 100, 1, seed = i + 1)[0]) 
             translate([0, 10, 0]) 
                 circle(3.5, $fn = 6);    
         }
-        
-        for(i = [0:35]) {
-            rotate(i * 10) 
-            translate([0, -10, 0]) 
-            rotate([2, 0, 0]) 
-            linear_extrude(16 + rands(0, 5, 1, i)[0], scale = 0.05, twist = 50 - rands(0, 100, 1, seed = i + 2)[0]) 
-            translate([0, 10, 0]) 
-                circle(3.5, $fn = 5);    
-        }         
+
+        module face_fin() {
+            t_step = 0.05;
+
+            points = bezier_curve(t_step, 
+                [[-24.5, -31.5, -20], [20, 2, -15], [10, 15, 2], [25, 15, 10]] * 0.25
+            );
+
+            c = shape_circle(2.8, $fn = 5);
+            
+            translate([9.5, 0, 0])
+            rotate([-25, 0, 25])
+            translate([-8, 9, 20])
+            rotate([45, -5, 80])
+            scale([.5, 1.17, 1.4])
+                path_extrude(c * 1.2, points, scale = 0.05, twist = -60);   
+                
+            points2 = bezier_curve(t_step, 
+                [[-47, -35, -20], [-15, -5, 0], [-15, -20, 5], [-5, 15, 10]] * 0.25
+            );
+
+            translate([13.5, -.1, -1.2])
+            rotate([-26.5, 0, 25])
+            translate([-8, 9, 20])
+            rotate([60, -15, 70])
+            scale(.75)
+            scale([.5, 1.25, 1.5])
+                path_extrude(c, points2, scale = 0.05, twist = -60);   
+        }
+
+        face_fin();
+        mirror([0, 1, 0])
+            face_fin();
+    }
+
+
+    module middle_horn() {        
+        t_step = 0.05;
+
+        p0 = [0, 0, -.4];
+        p1 = [0, 0, 5];
+        p2 = [0, -5, 7];
+        p3 = [0, -5, 10];
+
+        points = bezier_curve(t_step, 
+            [p0, p1, p2, p3] 
+        );
+
+        c = shape_circle(2.8, $fn = 4);
+        path_extrude(c, points, scale = 0.05);
     }
 
     module one_horn() {        
@@ -70,11 +102,11 @@ module dragon_head() {
         rotate([90, 0, -90]) 
             sweep(m_transpose([path1, path2, path3, path4, path5]));
 
-        translate([0, 0, -3.25]) 
+        translate([-.15, 0, -3.3]) 
         rotate([90, 0, -90]) 
         ellipse_extrude(5.5, slices = 2) 
             polygon(
-                shape_trapezium([5, 18], 
+                shape_trapezium([5, 16.75], 
                 h = 20,
                 corner_r = 2, $fn = 4)
             );    
@@ -91,7 +123,6 @@ module dragon_head() {
                     corner_r = 2, $fn = 5)
                 );       
 
-            
             jpath1 = curve(0.4, [[-10, 16], [0, 8], [4, 5],  [3, 0], [2, -5], [2, -10], [0, -13.5], [-3, -14]]);
             rotate([90, -4, 0])
             linear_extrude(25, center = true)
@@ -139,9 +170,17 @@ module dragon_head() {
         {
             rotate(-90) {
                 one_horn();
-                mirror([-1, 0, 0]) one_horn();  
+                mirror([-1, 0, 0]) 
+                    one_horn();  
+                
+                translate([0, -5, 0])
+                    middle_horn();
+
+                translate([0, -5, 5])
+                scale([.4, .4, .45])
+                    middle_horn();
             }
-            
+
             mouth();
 
             one_eye();

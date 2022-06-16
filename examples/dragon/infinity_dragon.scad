@@ -119,9 +119,9 @@ module infinity_dragon() {
     leng_body_path = len(body_path);
     angy_angz = __angy_angz(body_path[16], body_path[17]);
 
-    translate(body_path[0])
-    scale(1.125)
-    rotate([90, angy_angz[0], angy_angz[1] - 90])
+    translate(body_path[0] + [0, -1.5, 0])
+    scale(1)
+    rotate([93, angy_angz[0] + 2, angy_angz[1] - 75])
         dragon_head();
 
     body_r = 6;

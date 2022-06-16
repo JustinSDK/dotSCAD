@@ -38,9 +38,9 @@ module torus_knot_dragon_and_pearl() {
         
     h_angy_angz = __angy_angz(d_path[len(d_path) - 2], d_path[len(d_path) - 1]);
     
-    translate([2.5, -1.1, .55])
-    scale(0.07)    
-    rotate([0, h_angy_angz[0] + 28, h_angy_angz[1] + 245])
+	translate([2.5, -1.2, .65])
+    scale(0.06)    
+    rotate([0, h_angy_angz[0] + 28, h_angy_angz[1] + 247])
         dragon_head();
         
     t_angy_angz = __angy_angz(d_path[1], d_path[0]);    

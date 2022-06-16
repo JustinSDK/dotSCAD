@@ -54,8 +54,9 @@ module hilbert_dragon() {
     mirror([0, 0, .2]) 
         tail();
 
-    translate([0, 0, -2.5])        
-    scale(0.035)         
+    translate([.06, 0, -2.4])        
+    scale(0.033)      
+    rotate([0, -15, 0])   
         dragon_head();     
 }
    

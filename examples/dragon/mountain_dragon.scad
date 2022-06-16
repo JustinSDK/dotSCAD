@@ -148,8 +148,8 @@ module mountain_dragon() {
     scale([.5, .725, 1.5])
         tail();
 
-    translate([17.5, 0, 63]) 
-    rotate([95, 0, -10]) 
+    translate([16, 0, 63]) 
+    rotate([95, 5, -5]) 
     rotate([0, angy_angz[0], angy_angz[1]])
         dragon_head();
 
