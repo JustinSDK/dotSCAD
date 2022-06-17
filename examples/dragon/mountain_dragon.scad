@@ -1,6 +1,5 @@
 use <helix.scad>
 use <along_with.scad>
-use <shear.scad>
 use <curve.scad>
 use <sweep.scad>
 use <shape_circle.scad>
@@ -154,26 +153,27 @@ module mountain_dragon() {
         dragon_head();
 
     rotate([-8, -2, -10])
-    translate([12, 3, 44])
-    rotate([16, -67.5, -200])
-    rotate(-2)
+    translate([12, 2, 44])
+    rotate([10, -67.5, -200])
     scale(.7)
         foot();
 
-    translate([13, 6.5, 45])
-    rotate([-75, -35, -92])
+    translate([13, 2.5, 45.5])
+    rotate([-76, -25, -95])
+    rotate([0, -20, 0])
     mirror([1, 0, 0])
     scale(.7)
+    translate([2, 0, 1])
         foot();
 
-    translate([-11, -13, 12])
-    rotate([15, -65, 47])
-    rotate(-18)
+    translate([-13, -13, 13])
+    rotate([54, -72, 30])
+    rotate(-30)
     scale(.65)
         foot();
 
-    translate([-15, -13.5, 12])
-    rotate([-69, -45, 145])
+    translate([-10, -15.5, 12])
+    rotate([-87, -45, 145])
     mirror([1, 0, 0])
     scale(.65)
         foot();
@@ -188,8 +188,8 @@ module mountain() {
     difference() {
         union() {
             translate([0, 0, 12])
-            scale([.925, .85, 2.5])	
-                worley_sphere(radius, detail, amplitude, dist, seed = 5);
+            scale([.925, .85, 2.4])	
+                worley_sphere(radius, detail, amplitude, dist, seed = 14);
 
             translate([4, -4, -15])
             scale([1.04, 1.04, 1])
@@ -206,6 +206,7 @@ module mountain() {
 rotate(180) {
     translate([0, 0, 7]) 
         mountain_dragon($fn = 12);
-    rotate(57)
+    translate([-1, -1, 0])
+    rotate(67.5)
         mountain();
 }

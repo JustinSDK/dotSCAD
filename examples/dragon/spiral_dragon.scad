@@ -21,7 +21,6 @@ module one_segment(body_r, body_fn, one_scale_data) {
     rotate([-90, 0, 0])
         dragon_body_scales(body_r, body_fn, one_scale_data);
 
-
     points = [[0, 0, 0], [0, .1, 1], [0, 1, 1.5]] * 4;
     path = bezier_curve(0.1, points);
 
@@ -110,7 +109,7 @@ module tail() {
     }
 }
 
-module spiral_dragon() {
+module mountain_dragon() {
     path_pts = helix(
         radius = [r1, r2], 
         levels = levels, 
@@ -138,13 +137,13 @@ module spiral_dragon() {
 
     one_body_scale_data = one_body_scale(body_r, body_fn, scale_fn, scale_tilt_a);
     scale(1.075) 
-    along_with(path_pts, scale = [0.575, 0.575, 0.85], method = "EULER_ANGLE")    
+    along_with(path_pts, twist = 45, scale = [0.575, 0.575, 0.85], method = "EULER_ANGLE")    
         one_segment(body_r, body_fn, one_body_scale_data);
     
-    translate([27.25, 3, -.5])
-    rotate([-88, 0, 0])
-    rotate([0, 0, 90])
-    scale([.65, .8, 1.4])
+    translate([27.25, 4, 1])
+    rotate([-78, 0, 0])
+    rotate([0, 0, 125])
+    scale([.5, .725, 1.5])
         tail();
 
     translate([16, 0, 63]) 
@@ -162,11 +161,11 @@ module mountain() {
     difference() {
         union() {
             translate([0, 0, 12])
-            scale([1.05, .85, 2.7])	
-                worley_sphere(radius, detail, amplitude, dist, seed = 5);
+            scale([.925, .85, 2.4])	
+                worley_sphere(radius, detail, amplitude, dist, seed = 14);
 
             translate([4, -4, -15])
-            scale([1.04, 1.04, .9])
+            scale([1.04, 1.04, 1])
             rotate(10)
                 worley_sphere(radius * 1.2, detail, amplitude, dist, seed = 1);
         }
@@ -179,6 +178,8 @@ module mountain() {
 
 rotate(180) {
     translate([0, 0, 7]) 
-        spiral_dragon($fn = 12);
-    mountain();
+        mountain_dragon($fn = 12);
+    translate([-1, -1, 0])
+    rotate(67.5)
+        mountain();
 }
