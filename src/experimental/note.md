@@ -29,7 +29,8 @@ new:
 doc-ed
 
     deprecated:
-    - util/sort, util/bsearch, util/has, util/rands_disk, util/rands_sphere
+    - util/sort, util/bsearch, util/has
+    - pp/pp_disk, pp/pp_sphere
     - maze/mz_square_cells, maze/mz_theta_cells, maze/mz_square_walls, maze/mz_hex_walls
     - rails2sections
 

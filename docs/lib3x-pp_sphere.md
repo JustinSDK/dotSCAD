@@ -1,4 +1,4 @@
-# rands_sphere
+# pp_sphere
 
 Pick random points on the surface of a sphere.
 
@@ -12,12 +12,12 @@ Pick random points on the surface of a sphere.
 
 ## Examples
 
-    use <util/rands_sphere.scad>
+    use <pp/pp_sphere.scad>
 
     number = 1000;
     radius = 2;
 
-    points = rands_sphere(radius, number);
+    points = pp_sphere(radius, number);
 
 
     for(p = points) {
@@ -27,4 +27,4 @@ Pick random points on the surface of a sphere.
 
     %sphere(radius, $fn = 48);
 
-![rands_sphere](images/lib3x-rands_sphere-1.JPG)
+![rands_sphere](images/lib3x-pp_sphere-1.JPG)

@@ -1,14 +1,14 @@
 /**
-* rands_disk.scad
+* pp_disk.scad
 *
 * @copyright Justin Lin, 2022
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *
-* @see https://openhome.cc/eGossip/OpenSCAD/lib3x-rands_disk.html
+* @see https://openhome.cc/eGossip/OpenSCAD/lib3x-pp_disk.html
 *
 **/ 
 
-function rands_disk(radius, value_count, seed = undef) =
+function pp_disk(radius, value_count, seed = undef) =
     let(
 	    seed_undef = is_undef(seed),
 		n = value_count * 2,

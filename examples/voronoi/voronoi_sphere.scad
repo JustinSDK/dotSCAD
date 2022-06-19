@@ -3,13 +3,13 @@ use <polyline_join.scad>
 use <sweep.scad>
 use <fibonacci_lattice.scad>
 use <experimental/convex_centroid.scad>
-use <util/rands_sphere.scad>
+use <pp/pp_sphere.scad>
 
 n = 60;
 radius = 5;
 
 // pts = fibonacci_lattice(n, radius);
-pts = rands_sphere(radius, n);
+pts = pp_sphere(radius, n);
 	
 region_hollow = true;
 region_offset = 0.2;

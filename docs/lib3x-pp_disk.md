@@ -1,4 +1,4 @@
-# rands_disk
+# pp_disk
 
 Generate random points over a disk.
 
@@ -12,16 +12,16 @@ Generate random points over a disk.
 
 ## Examples
 
-    use <util/rands_disk.scad>
+    use <pp/pp_disk.scad>
 
     number = 10000;
     radius = 2;
 
-    points = rands_disk(radius, number);
+    points = pp_disk(radius, number);
 
     for(p = points) {
         translate(p)
             circle(.01);
     }
 
-![rands_disk](images/lib3x-rands_disk-1.JPG)
+![rands_disk](images/lib3x-pp_disk-1.JPG)

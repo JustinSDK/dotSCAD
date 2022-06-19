@@ -1,16 +1,16 @@
 /**
-* rands_sphere.scad
+* pp_sphere.scad
 *
 * @copyright Justin Lin, 2022
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *
-* @see https://openhome.cc/eGossip/OpenSCAD/lib3x-rands_sphere.html
+* @see https://openhome.cc/eGossip/OpenSCAD/lib3x-pp_sphere.html
 *
 **/ 
 
-use <degrees.scad>
+use <../util/degrees.scad>
 
-function rands_sphere(radius, value_count, seed = undef) =
+function pp_sphere(radius, value_count, seed = undef) =
     let(r_nums = is_undef(seed) ? rands(0, 1, value_count * 2) :  rands(0, 1, value_count * 2, seed))
 	[
 		for(i = [0:value_count - 1])

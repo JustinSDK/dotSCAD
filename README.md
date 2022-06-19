@@ -397,8 +397,13 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 [**util/contains**(lt, elem)](https://openhome.cc/eGossip/OpenSCAD/lib3x-contains.html) | return `true` if `lt` contains `elem`.
 [**util/binary_search**(sorted, target[, lo, hi])](https://openhome.cc/eGossip/OpenSCAD/lib3x-binary_search.html) | search a value in a sorted list.
 [**util/count**(lt, test)](https://openhome.cc/eGossip/OpenSCAD/lib3x-count.html) | return the number of times `test` return `true` in the list.
-[**util/rands_disk**(radius, value_count[, seed])](https://openhome.cc/eGossip/OpenSCAD/lib3x-rands_disk.html) | generate random points over a disk.
-[**util/rands_sphere**(radius, value_count[, seed])](https://openhome.cc/eGossip/OpenSCAD/lib3x-rands_sphere.html) | pick random points on the surface of a sphere.
+
+## Point Picking
+
+ Signature | Description
+--|--
+[**pp/pp_disk**(radius, value_count[, seed])](https://openhome.cc/eGossip/OpenSCAD/lib3x-pp_disk.html) | generate random points over a disk.
+[**pp/pp_sphere**(radius, value_count[, seed])](https://openhome.cc/eGossip/OpenSCAD/lib3x-pp_sphere.html) | pick random points on the surface of a sphere.
 
 ## Maze
 
