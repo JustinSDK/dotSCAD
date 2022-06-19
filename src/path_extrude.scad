@@ -97,7 +97,7 @@ module path_extrude(shape_pts, path_pts, triangles = "SOLID", twist = 0, scale =
             let(
                 fst_section = translate_pts(init_section(0, one), pth_pts[0]),
                 snd_section = translate_pts(init_section(0, one + scale_step_vt), pth_pts[1]),
-                end_i = len_path_pts - 2,
+                end_i = closed ? len_path_pts - 2 : len_path_pts - 1,
                 remain_sections = [
                     for(i = 1; i < end_i; i = i + 1) 
                         translate_pts(
