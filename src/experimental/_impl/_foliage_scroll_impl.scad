@@ -46,25 +46,25 @@ function spiral_step(spiral, angle_step) =
         [each spiral_path(spiral), vt(c, r, sa, as, a)]
     );
 
-function _foliage_scroll(width, height, spirals, max_spirals, min_radius, angle_step, done) =
+function _foliage_scroll(size, spirals, max_spirals, min_radius, angle_step, done) =
     let(
-        more_spirals = try_add_spiral(width, height, spirals, max_spirals, min_radius, done),
+        more_spirals = try_add_spiral(size, spirals, max_spirals, min_radius, done),
         nx_spirals = [
             for(i = 0; i < len(more_spirals); i = i + 1)
             if(i < done) more_spirals[i] else spiral_step(more_spirals[i], angle_step)
         ],
         nx_done = count(nx_spirals, function(s) spiral_angle(s) > 630)
     )
-    nx_done < len(nx_spirals)? _foliage_scroll(width, height, nx_spirals, max_spirals, min_radius, angle_step, nx_done) : nx_spirals;
+    nx_done < len(nx_spirals)? _foliage_scroll(size, nx_spirals, max_spirals, min_radius, angle_step, nx_done) : nx_spirals;
 
-function try_add_spiral(width, height, spirals, max_spirals, min_radius, done) = 
+function try_add_spiral(size, spirals, max_spirals, min_radius, done) = 
     let(
         leng = len(spirals),
         more_spirals = [
             each spirals,
             each [
                 for(i = done; i < leng; i = i + 1) 
-                let(maybeSpiral = try_create_spiral(width, height, spirals, i, min_radius))
+                let(maybeSpiral = try_create_spiral(size, spirals, i, min_radius))
                 if(!is_undef(maybeSpiral)) maybeSpiral
             ]
         ],
@@ -72,7 +72,7 @@ function try_add_spiral(width, height, spirals, max_spirals, min_radius, done) =
     )
     leng_more_spirals > max_spirals ? [for(i = [0:max_spirals - 1]) more_spirals[i]] : more_spirals;
     
-function try_create_spiral(width, height, spirals, i, min_radius) = 
+function try_create_spiral(size, spirals, i, min_radius) = 
     let(spiral = spirals[i])
     spiral_angle(spiral) <= 270 ? undef :
     let(
@@ -89,10 +89,10 @@ function try_create_spiral(width, height, spirals, i, min_radius) =
         cx = center.x + offR * cos(ca - 180),
         cy = center.y + offR * sin(ca - 180)
     )
-    out_size(width, height, cx, cy, cr) || overlapped(spirals, i, cx, cy, cr) ? undef : spiral([cx, cy], cr, ca, -angleSign);
+    out_size(size, cx, cy, cr) || overlapped(spirals, i, cx, cy, cr) ? undef : spiral([cx, cy], cr, ca, -angleSign);
 
-function out_size(width, height, cx, cy, cr) =
-    let(half_width = width / 2, half_height = height / 2)
+function out_size(size, cx, cy, cr) =
+    let(half_width = size.x / 2, half_height = size.y / 2)
     cx < -half_width + cr || cx > half_width - cr || cy < -half_height + cr || cy > half_height - cr;
     
 function overlapped(spirals, i, cx, cy, cr, j = 0) = 
