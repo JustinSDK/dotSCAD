@@ -36,7 +36,6 @@ function spiral_step(spiral, angle_step) =
         sa = spiral_startAngle(spiral),
         as = spiral_angleSign(spiral),
         a = spiral_angle(spiral) + angle_step
-        
     )
     spiral(
         c,
@@ -93,7 +92,8 @@ function try_create_spiral(width, height, spirals, i, min_radius) =
     out_size(width, height, cx, cy, cr) || overlapped(spirals, i, cx, cy, cr) ? undef : spiral([cx, cy], cr, ca, -angleSign);
 
 function out_size(width, height, cx, cy, cr) =
-    cx < -width / 2 + cr || cx > width / 2 - cr || cy < -height / 2 + cr || cy > height / 2 - cr;
+    let(half_width = width / 2, half_height = height / 2)
+    cx < -half_width + cr || cx > half_width - cr || cy < -half_height + cr || cy > half_height - cr;
     
 function overlapped(spirals, i, cx, cy, cr, j = 0) = 
     j == len(spirals) ? false :
