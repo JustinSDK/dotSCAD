@@ -9,7 +9,7 @@ function foliage_scroll(size, max_spirals, init_radius, min_radius, angle_step =
     )
     [
         for(spiral = _foliage_scroll(size, init_spirals, max_spirals, min_radius, angle_step, done))
-        spiral_path(spiral)
+        [spiral_r(spiral), spiral_path(spiral)]
     ];
 
 
@@ -22,7 +22,11 @@ angle_step = 10;
 min_radius = 10; 
 init_radius = rands(min_radius * 2, min_radius * 4, 1)[0];
 
-for(spiral = foliage_scroll([width, height], max_spirals, init_radius, min_radius)) {
-    polyline_join(spiral)
-        circle(min_radius / 5);
+spirals = foliage_scroll([width, height], max_spirals, init_radius, min_radius);
+
+for(spiral = spirals) {
+    r = spiral[0];
+    path = spiral[1];
+    polyline_join(path)
+        circle(r / 5);
 }

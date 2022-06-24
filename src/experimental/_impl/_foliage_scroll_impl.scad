@@ -77,7 +77,7 @@ function try_create_spiral(size, spirals, i, min_radius) =
     spiral_angle(spiral) <= 270 ? undef :
     let(
         r = spiral_r(spiral),
-        cr = r * rands(0.5, 1.75, 1)[0]
+        cr = r * rands(0.5, 1.5, 1)[0]
     )
     cr < min_radius ? undef : 
     let(
