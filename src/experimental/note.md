@@ -26,6 +26,8 @@ new:
 
 - lsystem2, lsystem3, add seed param
 
+- pp_poisson?
+
 doc-ed
 
     deprecated:
