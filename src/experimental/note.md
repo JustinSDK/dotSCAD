@@ -26,7 +26,7 @@ new:
 
 - lsystem2, lsystem3, add seed param
 
-- pp_poisson?
+- pp_poisson2, pp_poisson3?
 
 doc-ed
 
