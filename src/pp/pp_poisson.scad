@@ -1,8 +1,8 @@
 use <_impl/_pp_poisson.scad>
 
-function pp_poisson(size, r, start, k = 30, history = false) =
+function pp_poisson(size, r, start, k = 30, seed = undef, history = false) =
     let(
-        s = _pp_poisson(sampling(size, r, start, k)),
+        s = _pp_poisson(sampling(size, r, start, k), is_undef(seed) ? floor(rands(0, 1000, 1)[0]) : seed),
         samples = [
             for(row = sampling_grid(s), sample = row)
             if(!is_undef(sample)) sample
@@ -15,7 +15,7 @@ use <pp/pp_poisson.scad>
 use <polyline_join.scad>
 
 
-pts_history = pp_poisson([100, 100], 5, history = true);
+pts_history = pp_poisson([100, 100], 5, seed = 1, history = true);
 for(p = pts_history[0]) {
     translate(p)
         circle(1);

@@ -1,6 +1,5 @@
 use <../../matrix/m_replace.scad>
 use <../../util/every.scad>
-use <../pp_disk.scad>
 
 function sampling(size, r, start, k) =
     let(
@@ -43,19 +42,19 @@ function sampling_noAdjacentNeighbor(s, sample, x, y) =
                           norm(sample - p) >= sampling_r(s))
     );
     
-function sampling_randomSample(s, pos) = 
+function sampling_randomSample(s, pos, seed) = 
     let(
         r = sampling_r(s),
-        a = rands(0, 360, 1)[0]
+        a = rands(0, 360, 1, seed)[0]
     )
-    rands(r, 2 * r, 1)[0] * [cos(a), sin(a)] + pos;
+    rands(r, 2 * r, 1, seed + 1)[0] * [cos(a), sin(a)] + pos;
     
 function sampling_hasActive(s) = len(sampling_active(s)) > 0;
 
-function sampling_kSamples(s, pos) = [
+function sampling_kSamples(s, pos, seed) = [
     for(n = [0:sampling_k(s) - 1])
     let(
-        sample = sampling_randomSample(s, pos),
+        sample = sampling_randomSample(s, pos, seed + n),
         w = sampling_w(s),
         x = floor(sample.x / w),
         y = floor(sample.y / w)
@@ -77,12 +76,12 @@ function _sampling_minDistSample(s, pos, samples, min_s, min_dist, i = 1) =
     )
     _sampling_minDistSample(s, pos, samples, params[0], params[1], i + 1);     
 
-function sampling_trySampleFromOneActive(s) =
+function sampling_trySampleFromOneActive(s, seed) =
     let(
         active = sampling_active(s),
-        i = floor(rands(0, len(active) - 1, 1)[0]),
+        i = floor(rands(0, len(active) - 1, 1, seed)[0]),
         pos = active[i],
-        samples = sampling_kSamples(s, pos)
+        samples = sampling_kSamples(s, pos, seed)
     )
     len(samples) == 0 ? 
         [
@@ -115,6 +114,6 @@ function sampling_trySampleFromOneActive(s) =
             [each sampling_history(s), [pos, sample]]
         ];
 
-function _pp_poisson(s) =
-    !sampling_hasActive(s) ? s : _pp_poisson(sampling_trySampleFromOneActive(s));
+function _pp_poisson(s, seed, count = 0) =
+    !sampling_hasActive(s) ? s : _pp_poisson(sampling_trySampleFromOneActive(s, seed + count), seed, count + 1);
     
