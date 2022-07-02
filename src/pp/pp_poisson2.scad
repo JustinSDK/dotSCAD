@@ -1,6 +1,6 @@
 use <_impl/_pp_poisson2.scad>
 
-function pp_poisson2(size, r, start, k = 30, seed = undef, history = false) =
+function pp_poisson2(size, r, start = undef, k = 30, seed = undef, history = false) =
     let(
         s = _pp_poisson(sampling(size, r, start, k), is_undef(seed) ? floor(rands(0, 1000, 1)[0]) : seed),
         samples = [
