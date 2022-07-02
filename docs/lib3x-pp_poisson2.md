@@ -15,7 +15,6 @@ Perform poisson sampling over a rectangle area. An implementation of [Fast Poiss
 ## Examples
 
     use <pp/pp_poisson2.scad>
-    use <polyline_join.scad>
 
     points = pp_poisson2([100, 100], 5);
     for(p = points) {

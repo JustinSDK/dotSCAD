@@ -15,7 +15,6 @@ Perform poisson sampling over a cube space. An 3D implementation of [Fast Poisso
 ## Examples
 
     use <pp/pp_poisson3.scad>
-    use <polyline_join.scad>
 
     points = pp_poisson3([50, 50, 50], 10);
     for(p = points) {
