@@ -8,7 +8,7 @@ Pick random points on the surface of a sphere.
 
 - `radius` : The radius of the sphere.
 - `value_count` : Number of random numbers to return as a vector.
-- `seed_value` : Optional. Seed value for random number generator for repeatable results. 
+- `seed` : Optional. Seed value for random number generator for repeatable results. 
 
 ## Examples
 

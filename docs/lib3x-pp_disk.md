@@ -8,7 +8,7 @@ Generate random points over a disk.
 
 - `radius` : The radius of the disk.
 - `value_count` : Number of random numbers to return as a vector.
-- `seed_value` : Optional. Seed value for random number generator for repeatable results. 
+- `seed` : Optional. Seed value for random number generator for repeatable results. 
 
 ## Examples
 
