@@ -404,6 +404,9 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 --|--
 [**pp/pp_disk**(radius, value_count[, seed])](https://openhome.cc/eGossip/OpenSCAD/lib3x-pp_disk.html) | generate random points over a disk.
 [**pp/pp_sphere**(radius, value_count[, seed])](https://openhome.cc/eGossip/OpenSCAD/lib3x-pp_sphere.html) | pick random points on the surface of a sphere.
+[**pp/pp_poisson2**(size, r[, start, k, seed])](https://openhome.cc/eGossip/OpenSCAD/lib3x-pp_poisson2.html) | perform poisson sampling over a rectangle area.
+
+[**pp/pp_poisson3**(size, r[, start, k, seed])](https://openhome.cc/eGossip/OpenSCAD/lib3x-pp_poisson3.html) | perform poisson sampling over a cube space.
 
 ## Maze
 
