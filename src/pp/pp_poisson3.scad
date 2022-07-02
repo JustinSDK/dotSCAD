@@ -1,3 +1,13 @@
+/**
+* pp_poisson3.scad
+*
+* @copyright Justin Lin, 2022
+* @license https://opensource.org/licenses/lgpl-3.0.html
+*
+* @see https://openhome.cc/eGossip/OpenSCAD/lib3x-pp_poisson3.html
+*
+**/ 
+
 use <_impl/_pp_poisson3.scad>
 
 function pp_poisson3(size, r, start = undef, k = 30, seed = undef, history = false) =
@@ -10,20 +20,3 @@ function pp_poisson3(size, r, start = undef, k = 30, seed = undef, history = fal
         ]
     )
     history ? [samples, sampling_history(s)] : samples;
-
-/*
-use <pp/pp_poisson.scad>
-use <polyline_join.scad>
-
-pts_history = pp_poisson3([50, 50, 50], 10, seed = 2, history = true);
-
-for(p = pts_history[0]) {
-    translate(p)
-        sphere(2);
-}
-
-for(h = pts_history[1]) {
-    polyline_join(h)
-        sphere(1);
-}
-*/
