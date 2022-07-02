@@ -1,12 +1,12 @@
 use <../../matrix/m_replace.scad>
 use <../../util/every.scad>
 
-function sampling(size, r, start, k) =
+function sampling(size, r, start, k, sd) =
     let(
         w = r / sqrt(2),
         rows = floor(size.y / w),
         columns = floor(size.x / w),
-        pt = is_undef(start) ? size / 2 : start,
+        pt = is_undef(start) ? [rands(0, size.x, 1, sd)[0], rands(0, size.y, 1, sd + 1)[0]] : start,
         active = [pt],
         px = floor(pt.x / w),
         py = floor(pt.y / w),
