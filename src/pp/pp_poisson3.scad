@@ -2,7 +2,8 @@ use <_impl/_pp_poisson3.scad>
 
 function pp_poisson3(size, r, start = undef, k = 30, seed = undef, history = false) =
     let(
-        s = _pp_poisson(sampling(size, r, start, k), is_undef(seed) ? floor(rands(0, 1000, 1)[0]) : seed),
+        sd = is_undef(seed) ? floor(rands(0, 1000, 1)[0]) : seed,
+        s = _pp_poisson(sampling(size, r, start, k, sd), sd),
         samples = [
             for(layer = sampling_grid(s), row = layer, sample = row)
             if(!is_undef(sample)) sample
