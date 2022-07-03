@@ -29,14 +29,19 @@ function sampling_inRow(s, y) = y > -1 && y < sampling_rows(s);
 function sampling_inGrid(s, x, y) = 
     sampling_inRow(s, y) && x > -1 && x < sampling_columns(s);
 
+NBRS = [
+    [-1, -1], [0, -1], [1, -1],
+    [-1,  0], [0,  0], [1,  0],
+    [-1,  1], [0,  1], [1,  1]
+];
+
 function sampling_noAdjacentNeighbor(s, sample, x, y) = 
+    let(me = [x, y])
     every(
-        [
-            [x - 1, y - 1], [x, y - 1], [x + 1, y - 1],
-            [x - 1, y], [x, y], [x + 1, y],
-            [x - 1, y + 1], [x, y + 1], [x + 1, y + 1]
-        ],
-        function(nbr) !sampling_inRow(s, nbr.y) ||
+        NBRS,
+        function(NBR)
+            let(nbr = me + NBR)
+            !sampling_inRow(s, nbr.y) ||
                           (let(p = sampling_grid(s)[nbr.y][nbr.x])
                           is_undef(p) ||
                           norm(sample - p) >= sampling_r(s))

@@ -71,7 +71,7 @@ function sampling_noAdjacentNeighbor(s, sample, x, y, z) =
 function sampling_randomSample(s, pos, seed) = 
     let(
         r = sampling_r(s),
-        theta = rands(0, 360, 1, seed)[0] - 180,
+        theta = rands(-180, 180, 1, seed)[0],
         phi = rands(0, 180, 1, seed + 1)[0],
         sin_phi = sin(phi)
     )
