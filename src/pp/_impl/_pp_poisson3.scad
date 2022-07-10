@@ -1,5 +1,6 @@
 use <../../matrix/m_replace.scad>
 use <../../util/every.scad>
+use <../../util/find_index.scad>
 
 function grid_replace(g, x, y, z, p) = 
     [
@@ -14,14 +15,25 @@ function sampling(size, r, start, k, sd) =
         layers = floor(size.z / w),
         rows = floor(size.y / w),
         columns = floor(size.x / w),
-        pt = is_undef(start) ? [rands(0, size.x, 1, sd)[0], rands(0, size.y, 1, sd + 1)[0], rands(0, size.z, 1, sd + 2)[0]] : start,
-        active = [pt],
-        px = floor(pt.x / w),
-        py = floor(pt.y / w),
-        pz = floor(pt.z / w),
-        grid_row = [for(i = [0:columns - 1]) undef],
-        grid_layer = [for(i = [0:rows - 1]) grid_row],
-        grid = grid_replace([for(i = [0:layers - 1]) grid_layer], px, py, pz, pt)
+        pts = is_undef(start) ? [[rands(0, size.x, 1, sd)[0], rands(0, size.y, 1, sd + 1)[0], rands(0, size.z, 1, sd + 2)[0]]] : 
+              is_num(start[0]) ? [start] : start,
+        active = pts,
+        pijk = [for(pt = pts) [floor(pt.x / w), floor(pt.y / w), floor(pt.z / w), pt]],
+        _ = echo(pijk),
+        grid = [
+            for(k = [0:layers - 1])
+            [
+                for(j = [0:rows - 1]) 
+                [
+                    for(i = [0:columns - 1])
+                    let(found = find_index(pijk, function(ijk) ijk[0] == i && ijk[1] == j && ijk[2] == k))
+                    if(found != -1)
+                        pijk[found][3]
+                    else 
+                        undef
+                ]
+            ]
+        ]
     )
     [r, k, w, active, grid, layers, rows, columns, []];
     
