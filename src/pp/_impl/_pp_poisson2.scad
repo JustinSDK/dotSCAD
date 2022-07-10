@@ -1,17 +1,27 @@
 use <../../matrix/m_replace.scad>
 use <../../util/every.scad>
+use <../../util/find_index.scad>
 
 function sampling(size, r, start, k, sd) =
     let(
         w = r / sqrt(2),
         rows = floor(size.y / w),
         columns = floor(size.x / w),
-        pt = is_undef(start) ? [rands(0, size.x, 1, sd)[0], rands(0, size.y, 1, sd + 1)[0]] : start,
-        active = [pt],
-        px = floor(pt.x / w),
-        py = floor(pt.y / w),
-        grid_row = [for(i = [0:columns - 1]) undef],
-        grid = m_replace([for(j = [0:rows - 1]) grid_row], px, py, pt)
+        pts = is_undef(start) ? [[rands(0, size.x, 1, sd)[0], rands(0, size.y, 1, sd + 1)[0]]] : 
+              is_num(start[0]) ? [start] : start,
+        active = pts,
+        pij = [for(pt = pts) [floor(pt.x / w), floor(pt.y / w), pt]],
+        grid = [
+            for(j = [0:rows - 1]) 
+            [
+                for(i = [0:columns - 1])
+                let(found = find_index(pij, function(ij) ij[0] == i && ij[1] == j))
+                if(found != -1)
+                    found[2]
+                else 
+                    undef
+            ]
+        ]
     )
     [r, k, w, active, grid, rows, columns, []];
     
