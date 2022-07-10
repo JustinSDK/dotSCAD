@@ -1,7 +1,6 @@
 use <archimedean_spiral.scad>
 use <curve.scad>
 use <along_with.scad>
-use <util/dedup.scad>
 
 use <dragon_head.scad>
 use <dragon_scales.scad>
@@ -192,11 +191,9 @@ module treble_clef_dragon() {
 
     points = [for(pa = points_angles) pa[0]];
 
-    p = points[len(points) -1];
-    p2 =  points[len(points) - 2];
     cpts = [
-        p2,
-        p,
+        points[len(points) - 2],
+        points[len(points) - 1],
         [5, 49],
         [6, 75],
         [-12, 70],
@@ -208,7 +205,7 @@ module treble_clef_dragon() {
     ];
 
     t_step = 0.1;     
-    path2d = dedup(concat(points, curve(t_step, cpts)));
+    path2d = concat([for(i = [0:len(points) - 2]) points[i]], curve(t_step, cpts));
     body_path = [for(i = [0:len(path2d) - 1]) [each path2d[i], 15 * cos(i * 6.9)]];
 
     leng_body_path = len(body_path);
