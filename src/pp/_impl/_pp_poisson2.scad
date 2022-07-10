@@ -17,7 +17,7 @@ function sampling(size, r, start, k, sd) =
                 for(i = [0:columns - 1])
                 let(found = find_index(pij, function(ij) ij[0] == i && ij[1] == j))
                 if(found != -1)
-                    found[2]
+                    pij[found][2]
                 else 
                     undef
             ]
