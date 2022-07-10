@@ -19,7 +19,7 @@ module one_segment(body_r, body_fn, one_scale_data) {
     path = bezier_curve(0.1, points);
 
     // dorsal fin
-    translate([0, 2.5, -2]) 
+    translate([0, 3, -2]) 
     rotate([-75, 0, 0]) 
     path_extrude([[0, -.25], [0.6, 0], [0, .75], [-0.6, 0]] * 5, path, scale = .05); 
             
