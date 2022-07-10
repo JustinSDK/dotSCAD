@@ -124,7 +124,6 @@ module dragon_and_perl() {
 
     translate([0, 10, 13.5])
     rotate([-138, -4, 8])
-    scale(1)
     rotate([0, angy_angz[0], angy_angz[1]])
         dragon_head();
 
