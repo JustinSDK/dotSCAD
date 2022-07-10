@@ -1,17 +1,12 @@
 use <archimedean_spiral.scad>
 use <curve.scad>
 use <along_with.scad>
-
 use <util/dedup.scad>
 
 use <dragon_head.scad>
 use <dragon_scales.scad>
-use <dragon_foot.scad>
-
 use <bezier_curve.scad>
 use <path_extrude.scad>
-
-use <fibonacci_lattice.scad>
 use <dragon_claw.scad>
 
 treble_clef_dragon();
@@ -187,7 +182,6 @@ module treble_clef_dragon() {
             atan2(v.y, v.x)
         ];
         
-
     points_angles = archimedean_spiral(
         arm_distance = 20,
         init_angle = 200,
@@ -214,17 +208,13 @@ module treble_clef_dragon() {
     ];
 
     t_step = 0.1;     
-    tightness = 0;
-    pp = curve(t_step, cpts);
-    path2d = dedup(concat(points, pp));
+    path2d = dedup(concat(points, curve(t_step, cpts)));
     body_path = [for(i = [0:len(path2d) - 1]) [each path2d[i], 15 * cos(i * 6.9)]];
 
     leng_body_path = len(body_path);
     angy_angz = __angy_angz(body_path[0], body_path[1]);
 
     translate(body_path[0])
-    //rotate([-138, -4, 8])
-    //scale(1)
     rotate([0, 90 + angy_angz[0], angy_angz[1]])
     rotate(-5)
         dragon_head();
