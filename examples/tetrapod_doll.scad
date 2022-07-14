@@ -5,6 +5,7 @@ use <pp/pp_poisson2.scad>
 
 radius = 20;
 $fn = 6; // multiples of 6
+model = "DOLL"; // [DOLL, EYES]
 
 if($preview) {
     points = pp_poisson2([150, 150], radius * 2.25);
@@ -26,6 +27,39 @@ module tetrapod_doll() {
             atan2(v.y, v.x)
         ];
         
+    module doll() {
+        vertices = geom_tetrahedron(radius = radius)[0];
+
+        ayz = __angy_angz(vertices[0], [0, 0, 0]);
+
+        color(rands(0, 1, 3))
+        difference() {
+            rotate([0, 90 - ayz[0], 0])
+            rotate(ayz[1])
+            for(p = vertices) {
+                ayz = __angy_angz(p, [0, 0, 0]);
+
+                rotate([0, 90 + ayz[0], ayz[1]])
+                translate([0, 0, 2 / 4.158])
+                rounded_cylinder(
+                    radius = [radius * .4, radius * .275], 
+                    h = radius, 
+                    round_r = 2
+                );    
+            }
+
+            rotate(40)
+            translate([radius * .2, 0, radius * .6])
+            scale(1.05)
+                eye();
+
+            rotate(-40)
+            translate([radius * .2, 0, radius * .6])
+            scale(1.05)
+                eye();
+        }
+    }
+
     module eye() {
         color("white")
         difference() {
@@ -36,38 +70,9 @@ module tetrapod_doll() {
         }
     }
 
-    vertices = geom_tetrahedron(radius = radius)[0];
-
-    ayz = __angy_angz(vertices[0], [0, 0, 0]);
-
-    color(rands(0, 1, 3))
-    difference() {
-        rotate([0, 90 - ayz[0], 0])
-        rotate(ayz[1])
-        for(p = vertices) {
-            ayz = __angy_angz(p, [0, 0, 0]);
-
-            rotate([0, 90 + ayz[0], ayz[1]])
-            translate([0, 0, 2 / 4.158])
-            rounded_cylinder(
-                radius = [radius * .4, radius * .275], 
-                h = radius, 
-                round_r = 2
-            );    
-        }
-
-        rotate(40)
-        translate([radius * .2, 0, radius * .6])
-        scale(1.05)
-            eye();
-
-        rotate(-40)
-        translate([radius * .2, 0, radius * .6])
-        scale(1.05)
-            eye();
-    }
-        
     if($preview) {
+        doll();
+
         rotate(40)
         translate([radius * .2, 0, radius * .6])
             eye();
@@ -89,12 +94,17 @@ module tetrapod_doll() {
             sphere(radius / 5.75 / 2, $fn = 48);
     }
     else {
-        translate([radius, 0, 0])
-        rotate([0, -90, 0])
-            eye();
-            
-        translate([radius * 1.5, 0, 0])
-        rotate([0, -90, 0])
-            eye();
+        if(model == "DOLL") {
+            doll();
+        }
+        else {
+            translate([radius, 0, 0])
+            rotate([0, -90, 0])
+                eye();
+                
+            translate([radius * 1.5, 0, 0])
+            rotate([0, -90, 0])
+                eye();
+        }
     }
 }
