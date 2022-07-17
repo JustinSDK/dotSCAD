@@ -9,9 +9,9 @@ draw_thickness = 1.25;
 drawer_numbers = 3;
 spacing = 0.6;
 
-storage_box(size, panel_thickness, draw_thickness, drawer_numbers, spacing);
+curved_cabinet(size, panel_thickness, draw_thickness, drawer_numbers, spacing);
 
-module storage_box(size, panel_thickness, draw_thickness, drawer_numbers, spacing) {
+module curved_cabinet(size, panel_thickness, draw_thickness, drawer_numbers, spacing) {
     p0 = [size.x * 0.5, size.y * 0.5, 0];
     p1 = [size.x * 0.75, size.y * 0.5, size.z * 0.25];
     p2 = [size.x * 0.5, size.y * 0.5, size.z * 0.5];
