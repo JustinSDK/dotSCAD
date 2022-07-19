@@ -29,6 +29,9 @@ Creates visually even spacing of n points on the surface of the sphere. Nearest-
 
 
 ![fibonacci_lattice](images/lib3x-fibonacci_lattice-1.JPG)
+    
+    use <fibonacci_lattice.scad>
+    use <polyline_join.scad>
 
     n = 200;
     radius = 20;
