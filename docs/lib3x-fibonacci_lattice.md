@@ -1,6 +1,6 @@
 # fibonacci_lattice
 
-Creates visually even spacing of n points on the surface of the sphere. Nearest-neighbor points will all be approximately the same distance apart. There're max 21 spirals on the sphere.
+Creates visually even spacing of n points on the surface of the sphere. Nearest-neighbor points will all be approximately the same distance apart. 
 
 (It's called "visually even spacing" because only the vertices of the 5 [Platonic solids](https://en.wikipedia.org/wiki/Platonic_solid) can be said to be truly evenly spaced around the surface of a sphere.)
 
@@ -41,6 +41,7 @@ Creates visually even spacing of n points on the surface of the sphere. Nearest-
 
     sphere(radius * 0.9);
 
+    // You can pick spirals from points.
     spirals = [for(j = [0:20]) 
         [for(i = j; i < len(pts); i = i + 21) pts[i]]
     ];
