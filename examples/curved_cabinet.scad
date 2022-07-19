@@ -4,14 +4,14 @@ use <matrix/m_transpose.scad>
 use <util/sum.scad>
 
 size = [100, 50, 120];
-panel_thickness = 1.5;
+shelf_thickness = 1.5;
 draw_thickness = 1.25;
 drawer_numbers = 3;
 spacing = 0.6;
 
-curved_cabinet(size, panel_thickness, draw_thickness, drawer_numbers, spacing);
+curved_cabinet(size, shelf_thickness, draw_thickness, drawer_numbers, spacing);
 
-module curved_cabinet(size, panel_thickness, draw_thickness, drawer_numbers, spacing) {
+module curved_cabinet(size, shelf_thickness, draw_thickness, drawer_numbers, spacing) {
     p0 = [size.x * 0.5, size.y * 0.5, 0];
     p1 = [size.x * 0.75, size.y * 0.5, size.z * 0.25];
     p2 = [size.x * 0.5, size.y * 0.5, size.z * 0.5];
@@ -69,28 +69,28 @@ module curved_cabinet(size, panel_thickness, draw_thickness, drawer_numbers, spa
     difference() {
         sweep(m_transpose([path4, path3, path2, path1]));
         
-        translate([0, size.y * 0.5 - panel_thickness, 0])
+        translate([0, size.y * 0.5 - shelf_thickness, 0])
         rotate([90, 0, 0])
         linear_extrude(size.y)
         for(profile = drawer_profiles) {
-            offset(-panel_thickness)
+            offset(-shelf_thickness)
                 polygon(profile);
         }
     }
 
-    translate([0, size.y * 0.5 - panel_thickness - spacing * 0.5, 0])
+    *translate([0, size.y * 0.5 - shelf_thickness - spacing * 0.5, 0])
     rotate([90, 0, 0])
     for(i = [0:drawer_numbers - 1]) {
         translate([0, 0, size.y * 0.9 - size.y / drawer_numbers * i]) {
             color(rands(0, 1, 3))
             difference() {
-                linear_extrude(size.y - panel_thickness - spacing * 0.5)
-                offset(-panel_thickness - spacing * 0.5)
+                linear_extrude(size.y - shelf_thickness - spacing * 0.5)
+                offset(-shelf_thickness - spacing * 0.5)
                     polygon(drawer_profiles[i]);
 
                 translate([0, 0, draw_thickness])
-                linear_extrude(size.y - panel_thickness - draw_thickness * 2)
-                offset(-panel_thickness - spacing * 0.5 - draw_thickness)
+                linear_extrude(size.y - shelf_thickness - draw_thickness * 2)
+                offset(-shelf_thickness - spacing * 0.5 - draw_thickness)
                     polygon(drawer_profiles2[i]);
             }
             
