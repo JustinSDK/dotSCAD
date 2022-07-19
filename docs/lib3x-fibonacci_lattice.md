@@ -1,6 +1,6 @@
 # fibonacci_lattice
 
-Creates visually even spacing of n points on the surface of the sphere. Nearest-neighbor points will all be approximately the same distance apart. There're 8 spirals on the sphere.
+Creates visually even spacing of n points on the surface of the sphere. Nearest-neighbor points will all be approximately the same distance apart. There're max 21 spirals on the sphere.
 
 (It's called "visually even spacing" because only the vertices of the 5 [Platonic solids](https://en.wikipedia.org/wiki/Platonic_solid) can be said to be truly evenly spaced around the surface of a sphere.)
 
@@ -30,9 +30,6 @@ Creates visually even spacing of n points on the surface of the sphere. Nearest-
 
 ![fibonacci_lattice](images/lib3x-fibonacci_lattice-1.JPG)
 
-    use <fibonacci_lattice.scad>
-    use <polyline_join.scad>
-
     n = 200;
     radius = 20;
     pts = fibonacci_lattice(n, radius);
@@ -41,16 +38,17 @@ Creates visually even spacing of n points on the surface of the sphere. Nearest-
         translate(p)
             sphere(1);
     }
-        
-    sphere(radius);
 
-    spirals = [for(j = [0:7]) 
-        [for(i = j; i < len(pts); i = i + 8) pts[i]]
+    sphere(radius * 0.9);
+
+    spirals = [for(j = [0:20]) 
+        [for(i = j; i < len(pts); i = i + 21) pts[i]]
     ];
+
 
     for(spiral = spirals) {
         polyline_join(spiral)
-		    sphere(.5);	
+            sphere(.25); 
     }
         
 ![fibonacci_lattice](images/lib3x-fibonacci_lattice-2.JPG)
