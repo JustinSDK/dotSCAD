@@ -7,7 +7,7 @@ function fibonacci_lattice2(n, radius = 1, rt_dir = "CT_CLK") =
         for(i = [0:n - 1]) 
         let(
             r = sqrt(i / n),
-            theta = dir * i * g * 180
+            theta = dir * i * g * 360
         )
         [radius * r * cos(theta), radius * r * sin(theta)]
     ];
