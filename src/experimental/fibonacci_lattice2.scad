@@ -1,7 +1,7 @@
 function fibonacci_lattice2(n, radius = 1, rt_dir = "CT_CLK") =
     let(
         g = (1 + sqrt(5)) / 2,
-        dir = rt_dir == "CT_CLK" ? 1 : -1
+        dir = rt_dir == "CT_CLK" ? -1 : 1
     ) 
     [
         for(i = [0:n - 1]) 
