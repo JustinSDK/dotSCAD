@@ -78,7 +78,7 @@ module curved_cabinet(size, shelf_thickness, draw_thickness, drawer_numbers, spa
         }
     }
 
-    *translate([0, size.y * 0.5 - shelf_thickness - spacing * 0.5, 0])
+    translate([0, size.y * 0.5 - shelf_thickness - spacing * 0.5, 0])
     rotate([90, 0, 0])
     for(i = [0:drawer_numbers - 1]) {
         translate([0, 0, size.y * 0.9 - size.y / drawer_numbers * i]) {
