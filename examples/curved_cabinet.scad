@@ -7,7 +7,7 @@ size = [100, 50, 120];
 shelf_thickness = 1.5;
 draw_thickness = 1.25;
 drawer_numbers = 3;
-spacing = 0.6;
+spacing = 0.8;
 
 curved_cabinet(size, shelf_thickness, draw_thickness, drawer_numbers, spacing);
 
