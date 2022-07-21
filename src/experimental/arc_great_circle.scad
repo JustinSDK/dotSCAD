@@ -10,7 +10,7 @@ function arc_great_circle(p1, p2, center = [0, 0, 0]) =
     )
     steps == 0 ? [p1, p2] :
     let(a_step = a / steps)
-    [for(i = [0:steps]) ptf_rotate(p1, a_step * i, normal_vt)];
+    [for(i = [0:steps]) ptf_rotate(p1, a_step * i, normal_vt) + center];
 
 /*
 use <experimental/arc_great_circle.scad>
