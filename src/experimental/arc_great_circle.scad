@@ -19,7 +19,7 @@ use <fibonacci_lattice.scad>
 use <polyline_join.scad>
 
 n = 10;
-radius = 10;
+radius = 20;
 
 points = fibonacci_lattice(n, radius);
 #for(p = points) {
@@ -30,12 +30,16 @@ points = fibonacci_lattice(n, radius);
 %sphere(radius);
 
 for(cell = vrn_sphere(points)) {
+    for(p = cell) {
+        translate(p)
+            sphere(1);
+    }
     pts = concat(cell, [cell[0]]);
 
     for(i = [0:len(pts) - 2]) {
         p1 = pts[i];
         p2 = pts[i + 1];
-        arc = arc_great_circle(pts[i], pts[i + 1], $fn = 36);
+        arc = arc_great_circle(pts[i], pts[i + 1], $fn = 48);
         polyline_join(arc)
             sphere(.5, $fn = 4);
     }
