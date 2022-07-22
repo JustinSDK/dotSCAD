@@ -45,3 +45,42 @@ for(cell = vrn_sphere(points)) {
     }
 }
 */
+
+/*
+use <experimental/arc_great_circle.scad>
+use <voronoi/vrn_sphere.scad>
+use <fibonacci_lattice.scad>
+
+use <shape_circle.scad>
+use <path_extrude.scad>
+
+n = 8;
+radius = 20;
+
+points = fibonacci_lattice(n, radius);
+#for(p = points) {
+    translate(p)
+        sphere(1);
+}
+
+%sphere(radius);
+
+shape = shape_circle(1.5, $fn = 36);
+
+for(cell = vrn_sphere(points)) {
+    color("green")
+    for(p = cell) {
+        translate(p)
+            sphere(3, $fn = 48);
+    }
+    pts = concat(cell, [cell[0]]);
+    
+    
+    for(i = [0:len(pts) - 2]) {
+        p1 = pts[i];
+        p2 = pts[i + 1];
+        arc = arc_great_circle(pts[i], pts[i + 1], $fn = 96);
+        path_extrude(shape, arc);
+    }
+}
+*/
