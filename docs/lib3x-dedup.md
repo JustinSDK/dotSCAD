@@ -13,6 +13,8 @@ Eliminating duplicate copies of repeating vectors.
 
 ## Examples
 
+    use <util/dedup.scad>
+
     eq = function(e1, e2) e1[0] == e2[0] && e1[1] == e2[1] && e1[2] == e2[2];
 
     points = [[1, 1, 2], [3, 4, 2], [7, 2, 2], [3, 4, 2], [1, 2, 3]];
