@@ -18,41 +18,8 @@ use <voronoi/vrn_sphere.scad>
 use <fibonacci_lattice.scad>
 use <polyline_join.scad>
 
-n = 10;
-radius = 20;
-
-points = fibonacci_lattice(n, radius);
-#for(p = points) {
-    translate(p)
-        sphere(.5);
-}
-
-%sphere(radius);
-
-for(cell = vrn_sphere(points)) {
-    for(p = cell) {
-        translate(p)
-            sphere(1);
-    }
-    pts = concat(cell, [cell[0]]);
-
-    for(i = [0:len(pts) - 2]) {
-        p1 = pts[i];
-        p2 = pts[i + 1];
-        arc = arc_great_circle(pts[i], pts[i + 1], $fn = 48);
-        polyline_join(arc)
-            sphere(.5, $fn = 4);
-    }
-}
-*/
-
-/*
-use <experimental/arc_great_circle.scad>
-use <voronoi/vrn_sphere.scad>
-use <fibonacci_lattice.scad>
-
-use <shape_circle.scad>
-use <path_extrude.scad>
+use <util/dedup.scad>
+use <util/reverse.scad>
 
 n = 8;
 radius = 20;
@@ -65,22 +32,75 @@ points = fibonacci_lattice(n, radius);
 
 %sphere(radius);
 
-shape = shape_circle(1.5, $fn = 36);
+edges = [
+    for(cell = vrn_sphere(points))
+    for(i = [0:len(cell) - 2])
+    [cell[i], cell[i + 1]]    
+];
 
-for(cell = vrn_sphere(points)) {
-    color("green")
-    for(p = cell) {
-        translate(p)
-            sphere(3, $fn = 48);
-    }
-    pts = concat(cell, [cell[0]]);
-    
-    
-    for(i = [0:len(pts) - 2]) {
-        p1 = pts[i];
-        p2 = pts[i + 1];
-        arc = arc_great_circle(pts[i], pts[i + 1], $fn = 96);
-        path_extrude(shape, arc);
-    }
+deduped = dedup(edges, function(e1, e2) e1 == e2 || reverse(e1) == e2, function(e) 0, number_of_buckets = 1);
+
+for(edge = deduped) {
+        p1 = edge[0];
+        p2 = edge[1];
+        
+        color("green") {
+            translate(p1, $fn = 36)
+                sphere(3);
+            
+            translate(p2)
+                sphere(3, $fn = 36);
+        }
+            
+        polyline_join(arc_great_circle(p1, p2, $fn = 96))
+            sphere(2, $fn = 4);
+}
+*/
+
+/*
+use <experimental/arc_great_circle.scad>
+use <voronoi/vrn_sphere.scad>
+use <fibonacci_lattice.scad>
+
+use <shape_star.scad>
+use <path_extrude.scad>
+
+use <util/dedup.scad>
+use <util/reverse.scad>
+
+n = 8;
+radius = 20;
+
+points = fibonacci_lattice(n, radius);
+#for(p = points) {
+    translate(p)
+        sphere(1);
+}
+
+%sphere(radius);
+
+shape = shape_star(inner_radius = .5) * 2;
+
+edges = [
+    for(cell = vrn_sphere(points))
+    for(i = [0:len(cell) - 2])
+    [cell[i], cell[i + 1]]    
+];
+
+deduped = dedup(edges, function(e1, e2) e1 == e2 || reverse(e1) == e2, function(e) 0, number_of_buckets = 1);
+
+for(edge = deduped) {
+        p1 = edge[0];
+        p2 = edge[1];
+        
+        color("green") {
+            translate(p1, $fn = 36)
+                sphere(3);
+            
+            translate(p2)
+                sphere(3, $fn = 36);
+        }
+            
+        path_extrude(shape, arc_great_circle(p1, p2, $fn = 96));
 }
 */
