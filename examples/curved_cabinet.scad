@@ -107,7 +107,7 @@ module curved_cabinet(size, shelf_thickness, draw_thickness, drawer_numbers, spa
                         halign = "center"
                     );
                 linear_extrude(draw_thickness * 3)
-                    square([size.z / 10, size.z / 5], center = true);
+                    square([size.y / 4, size.z / 5], center = true);
             }
         }
     }
