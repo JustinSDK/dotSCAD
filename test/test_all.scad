@@ -105,6 +105,7 @@ include <matrix/test_m_scaling.scad>
 include <matrix/test_m_translation.scad>
 include <matrix/test_m_determinant.scad>
 include <matrix/test_m_rotation.scad>
+include <matrix/test_m_replace.scad>
 
 // Voronoi
 include <voronoi/test_vrn2_cells_space.scad>
