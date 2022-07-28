@@ -21,9 +21,6 @@ new:
 - lemniscate_curve?
 - perlin_sphere?
 
-
-- m_replace?
-
 - lsystem2, lsystem3, add seed param
 
 doc-ed
@@ -37,4 +34,5 @@ doc-ed
     new:
     - util/sorted, util/binary_search, util/contains
     - maze/mz_square, maze/mz_theta, maze/mz_squarewalls, maze/mz_hexwalls
+    - matrix/m_replace
     
