@@ -398,6 +398,12 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 [**util/binary_search**(sorted, target[, lo, hi])](https://openhome.cc/eGossip/OpenSCAD/lib3x-binary_search.html) | search a value in a sorted list.
 [**util/count**(lt, test)](https://openhome.cc/eGossip/OpenSCAD/lib3x-count.html) | return the number of times `test` return `true` in the list.
 
+## Matrix
+
+ Signature | Description
+--|--
+[**matrix/m_replace**(m, i, j, value)](https://openhome.cc/eGossip/OpenSCAD/lib3x-m_replace.html) | replace the aᵢⱼ element of a matrix.
+
 ## Point Picking
 
  Signature | Description
