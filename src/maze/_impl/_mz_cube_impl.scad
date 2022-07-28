@@ -11,7 +11,7 @@ function update(cells, cell) =
         z = cell.z,
         rowY = [for(c = cells[z][y]) if(c.x == x) cell else c]
     )
-    m_replace(cells, y, z, rowY);
+    m_replace(cells, z, y, rowY);
 
 // is (x, y) visited?
 function visited(x, y, z, cells) = cells[z][y][x][4];

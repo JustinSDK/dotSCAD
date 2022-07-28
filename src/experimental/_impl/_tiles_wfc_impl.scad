@@ -70,7 +70,7 @@ function _replaceStatesAt(wf, x, y, states) =
 	    wf_width(wf),
 		wf_height(wf),
 		wf_weights(wf),
-		m_replace(wf_eigenstates(wf), x, y, states)
+		m_replace(wf_eigenstates(wf), y, x, states)
 	];
 
 function wf_not_collapsed_coords(wf, notCollaspedCoords) = 

@@ -116,7 +116,7 @@ function sampling_trySampleFromOneActive(s, seed) =
             w = sampling_w(s),
             x = floor(sample.x / w),
             y = floor(sample.y / w),
-            nx_grid = m_replace(sampling_grid(s), x, y, sample)
+            nx_grid = m_replace(sampling_grid(s), y, x, sample)
         )
         [
             sampling_r(s), 

@@ -1,14 +1,14 @@
-function m_replace(m, x, y, value) =
+function m_replace(m, i, j, value) =
     let(
-		rowY = m[y],
-		newRowY = [
-            for(i = [0:len(rowY) - 1]) 
-            if(i == x) value
-            else rowY[i]
+		rowI = m[i],
+		newRowI = [
+            for(c = [0:len(rowI) - 1]) 
+            if(c == j) value
+            else rowI[c]
         ]
 	)
     [
-        for(i = [0:len(m) - 1])
-        if(i == y) newRowY
-        else m[i]
+        for(r = [0:len(m) - 1])
+        if(r == i) newRowI
+        else m[r]
     ];

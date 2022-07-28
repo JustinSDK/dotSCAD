@@ -14,7 +14,7 @@ function visitable(x, y, cells, rows, columns) =
 
 // setting (x, y) as being visited
 function set_visited(x, y, cells) = 
-    m_replace(cells, x, y, [x, y, get_type(cells[y][x]), VISITED]);
+    m_replace(cells, y, x, [x, y, get_type(cells[y][x]), VISITED]);
     
 // 0(right), 1(top), 2(left), 3(bottom)
 _rand_dir_table = [
@@ -61,11 +61,11 @@ function next_y(y, dir, rows, wrapping) =
     
 // go right and carve the right wall
 function carve_right(x, y, cells) = 
-    m_replace(cells, x, y, top_right_wall(cells[y][x]) ? [x, y, TOP_WALL, VISITED] : [x, y, NO_WALL, VISITED]);
+    m_replace(cells, y, x, top_right_wall(cells[y][x]) ? [x, y, TOP_WALL, VISITED] : [x, y, NO_WALL, VISITED]);
 
 // go up and carve the top wall
 function carve_top(x, y, cells) = 
-    m_replace(cells, x, y, top_right_wall(cells[y][x]) ? [x, y, RIGHT_WALL, VISITED] : [x, y, NO_WALL, VISITED]);
+    m_replace(cells, y, x, top_right_wall(cells[y][x]) ? [x, y, RIGHT_WALL, VISITED] : [x, y, NO_WALL, VISITED]);
 
 // go left and carve the right wall of the left cell
 function carve_left(x, y, cells, columns) = 
@@ -73,7 +73,7 @@ function carve_left(x, y, cells, columns) =
         x_minus_one = x - 1,
         nx = x_minus_one < 0 ? x_minus_one + columns : x_minus_one
     )
-    m_replace(cells, nx, y, [nx, y, TOP_WALL, UNVISITED]);
+    m_replace(cells, y, nx, [nx, y, TOP_WALL, UNVISITED]);
 
 // go down and carve the top wall of the bottom cell
 function carve_bottom(x, y, cells, rows) = 
@@ -81,7 +81,7 @@ function carve_bottom(x, y, cells, rows) =
         y_minus_one = y - 1,
         ny = y_minus_one < 0 ? y_minus_one + rows : y_minus_one
     )
-    m_replace(cells, x, ny, [x, ny, RIGHT_WALL, UNVISITED]);
+    m_replace(cells, ny, x, [x, ny, RIGHT_WALL, UNVISITED]);
 
 // 0(right), 1(top), 2(left), 3(bottom)
 function carve(dir, x, y, cells, rows, columns) =

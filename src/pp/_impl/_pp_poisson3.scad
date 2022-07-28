@@ -5,7 +5,7 @@ use <../../util/find_index.scad>
 function grid_replace(g, x, y, z, p) = 
     [
         for(i = [0:len(g) - 1]) 
-        if(i == z) m_replace(g[z], x, y, p)
+        if(i == z) m_replace(g[z], y, x, p)
         else g[i]
     ];
 
