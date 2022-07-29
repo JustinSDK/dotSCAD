@@ -5,7 +5,7 @@ function great_circle_arc(p1, p2) =
     let(
         radius = norm(p1),
         normal_vt = cross(p2, p1),
-        a = acos(p2 * p1 / pow(radius, 2)),
+        a = asin(norm(normal_vt) / (p1 * p1)),
         steps = round(a / (360 / __frags(radius)))
     )
     steps == 0 ? [p1, p2] :
