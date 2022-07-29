@@ -1,7 +1,7 @@
 use <__comm__/__frags.scad>
 use <ptf/ptf_rotate.scad>
 
-function arc_great_circle(p1, p2, center = [0, 0, 0]) =
+function great_circle_arc(p1, p2, center = [0, 0, 0]) =
     let(
         radius = norm(p1 - center),
         normal_vt = cross(p2, p1),
@@ -13,7 +13,7 @@ function arc_great_circle(p1, p2, center = [0, 0, 0]) =
     [for(i = [0:steps]) ptf_rotate(p1, a_step * i, normal_vt) + center];
 
 /*
-use <experimental/arc_great_circle.scad>
+use <experimental/great_circle_arc.scad>
 use <voronoi/vrn_sphere.scad>
 use <fibonacci_lattice.scad>
 use <polyline_join.scad>
@@ -52,13 +52,13 @@ for(edge = deduped) {
                 sphere(3, $fn = 36);
         }
             
-        polyline_join(arc_great_circle(p1, p2, $fn = 96))
+        polyline_join(great_circle_arc(p1, p2, $fn = 96))
             sphere(2, $fn = 4);
 }
 */
 
 /*
-use <experimental/arc_great_circle.scad>
+use <experimental/great_circle_arc.scad>
 use <voronoi/vrn_sphere.scad>
 use <fibonacci_lattice.scad>
 
@@ -101,6 +101,6 @@ for(edge = deduped) {
                 sphere(3, $fn = 36);
         }
             
-        path_extrude(shape, arc_great_circle(p1, p2, $fn = 96));
+        path_extrude(shape, great_circle_arc(p1, p2, $fn = 96));
 }
 */
