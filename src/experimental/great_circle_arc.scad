@@ -20,6 +20,9 @@ use <polyline_join.scad>
 
 use <util/dedup.scad>
 use <util/reverse.scad>
+use <util/sorted.scad>
+
+include <__comm__/_str_hash.scad>
 
 n = 8;
 radius = 20;
@@ -38,22 +41,22 @@ edges = [
     [cell[i], cell[i + 1]]    
 ];
 
-deduped = dedup(edges, function(e1, e2) e1 == e2 || reverse(e1) == e2, function(e) 0, number_of_buckets = 1);
+deduped = dedup(edges, function(e1, e2) e1 == e2 || reverse(e1) == e2, function(e) _str_hash(str(sorted(e))));
 
 for(edge = deduped) {
-        p1 = edge[0];
-        p2 = edge[1];
+    p1 = edge[0];
+    p2 = edge[1];
+    
+    color("green") {
+        translate(p1, $fn = 36)
+            sphere(3);
         
-        color("green") {
-            translate(p1, $fn = 36)
-                sphere(3);
-            
-            translate(p2)
-                sphere(3, $fn = 36);
-        }
-            
-        polyline_join(great_circle_arc(p1, p2, $fn = 96))
-            sphere(2, $fn = 4);
+        translate(p2)
+            sphere(3, $fn = 36);
+    }
+        
+    polyline_join(great_circle_arc(p1, p2, $fn = 96))
+        sphere(2, $fn = 4);
 }
 */
 
@@ -67,6 +70,9 @@ use <path_extrude.scad>
 
 use <util/dedup.scad>
 use <util/reverse.scad>
+use <util/sorted.scad>
+
+include <__comm__/_str_hash.scad>
 
 n = 8;
 radius = 20;
@@ -87,7 +93,7 @@ edges = [
     [cell[i], cell[i + 1]]    
 ];
 
-deduped = dedup(edges, function(e1, e2) e1 == e2 || reverse(e1) == e2, function(e) 0, number_of_buckets = 1);
+deduped = dedup(edges, function(e1, e2) e1 == e2 || reverse(e1) == e2, function(e) _str_hash(str(sorted(e))));
 
 for(edge = deduped) {
         p1 = edge[0];
