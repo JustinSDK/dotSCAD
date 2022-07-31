@@ -19,7 +19,6 @@ use <fibonacci_lattice.scad>
 use <polyline_join.scad>
 
 use <util/dedup.scad>
-use <util/reverse.scad>
 use <util/sorted.scad>
 
 include <__comm__/_str_hash.scad>
@@ -41,7 +40,7 @@ edges = [
     [cell[i], cell[i + 1]]    
 ];
 
-deduped = dedup(edges, function(e1, e2) e1 == e2 || reverse(e1) == e2, function(e) _str_hash(str(sorted(e))));
+deduped = dedup(edges, function(e1, e2) sorted(e1) == sorted(e2), function(e) _str_hash(str(sorted(e))));
 
 for(edge = deduped) {
     p1 = edge[0];
@@ -69,7 +68,6 @@ use <shape_star.scad>
 use <path_extrude.scad>
 
 use <util/dedup.scad>
-use <util/reverse.scad>
 use <util/sorted.scad>
 
 include <__comm__/_str_hash.scad>
@@ -93,7 +91,7 @@ edges = [
     [cell[i], cell[i + 1]]    
 ];
 
-deduped = dedup(edges, function(e1, e2) e1 == e2 || reverse(e1) == e2, function(e) _str_hash(str(sorted(e))));
+deduped = dedup(edges, function(e1, e2) sorted(e1) == sorted(e2), function(e) _str_hash(str(sorted(e))));
 
 for(edge = deduped) {
         p1 = edge[0];
