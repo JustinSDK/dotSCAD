@@ -7,7 +7,7 @@ use <util/radians.scad>
 amplitude = 2;
 angle_step = 30;
 voxel_step = 0.2;
-wave_step = 0.1;
+wave_smoothness = 2;
 thickness = 0.5;
 dist = "euclidean"; // [euclidean, manhattan, chebyshev, border] 
 seed = 51;
@@ -32,7 +32,7 @@ module spiral_ripples() {
             for(x = [-40:voxel_step:70]) 
             let(
                 nz = nz_cell(points, [x, y], dist),
-                n = amplitude * nz_perlin2(nz + x * wave_step, nz + y * wave_step, seed)
+                n = amplitude * nz_perlin2(nz / wave_smoothness, nz / wave_smoothness, seed)
             )
             [x, y, n]
         ]
