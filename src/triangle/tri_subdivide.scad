@@ -3,8 +3,8 @@ use <_impl/_tri_subdivide_impl.scad>
 function tri_subdivide(shape_pts, n) =
     n == 0 ? [shape_pts] :
     let(
-        pts = _tri_subdivide_pts(shape_pts, n),
-        indices = _tri_subdivide_indices(n)
+        pts = _tri_subdivide_pts(shape_pts, n + 1),
+        indices = _tri_subdivide_indices(n + 1)
     )
     [
         for(ti = indices) 
