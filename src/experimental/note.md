@@ -6,7 +6,7 @@ new:
 
 - triangle/tri_subdivide
 
-- maze/mz_wang_tiles?
+- maze/mz_tiles?
 
 - mz_hamiltonian supports init_cells
 

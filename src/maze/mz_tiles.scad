@@ -1,20 +1,20 @@
 /**
-* mz_wang_tiles.scad
+* mz_tiles.scad
 *
 * @copyright Justin Lin, 2020
 * @license https://opensource.org/licenses/lgpl-3.0.html
 *
-* @see https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_wang_tiles.html
+* @see https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_tiles.html
 *
 **/
 
-use <_impl/_mz_wang_tiles_impl.scad>
+use <_impl/_mz_tiles_impl.scad>
 use <mz_square_get.scad>
 use <../util/set/hashset.scad>
 
 include <../__comm__/_pt2_hash.scad>
 
-function mz_wang_tiles(cells, left_border = true, bottom_border = true) =
+function mz_tiles(cells, left_border = true, bottom_border = true) =
     let(
         rows = len(cells),
         columns = len(cells[0]),
@@ -27,9 +27,9 @@ function mz_wang_tiles(cells, left_border = true, bottom_border = true) =
                     x = cell.x,
                     y = cell.y,
                     type = mz_square_get(cell, "t"),
-                    pts = type == "TOP_WALL" ? _mz_wang_tiles_top(x, y) :
-                          type == "RIGHT_WALL" ? _mz_wang_tiles_right(x, y) :
-                          type == "TOP_RIGHT_WALL"  || type == "MASK" ? _mz_wang_tiles_top_right(x, y) : []
+                    pts = type == "TOP_WALL" ? _mz_tiles_top(x, y) :
+                          type == "RIGHT_WALL" ? _mz_tiles_right(x, y) :
+                          type == "TOP_RIGHT_WALL"  || type == "MASK" ? _mz_tiles_top_right(x, y) : []
                 )
                 each pts
             ],
@@ -48,5 +48,5 @@ function mz_wang_tiles(cells, left_border = true, bottom_border = true) =
     )
     [
         for(y = [0:rows - 1], x = [0:columns - 1])
-            [x, y, _mz_wang_tile_type(dot_pts, x, y)]
+            [x, y, _mz_tile_type(dot_pts, x, y)]
     ];
