@@ -16,10 +16,8 @@ Just replace the tiles with your own path designs.
 
 ## Examples
     
-	use <maze/mz_square_initialize.scad>
 	use <maze/mz_square.scad>
 	use <maze/mz_tiles.scad>
-	use <util/rand.scad>
 
 	rows = 10;
 	columns = 10;
