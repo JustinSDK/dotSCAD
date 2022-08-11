@@ -421,6 +421,6 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 [**maze/mz_squarewalls**(cells, cell_width[, left_border, bottom_border])](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_squarewalls.html) | a helper for creating square wall data from maze cells.
 [**maze/mz_hexwalls**(cells, cell_radius[, left_border, bottom_border])](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_hexwalls.html) | a helper for creating hex wall data from maze cells.
 [**maze/mz_theta**(rings, beginning_number[, start, seed])](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_theta.html) | return cell data of a theta maze.
-[**maze/mz_tiles**(cells[, left_border, bottom_border])](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_tiles.html) | return cell data of a theta maze.
+[**maze/mz_tiles**(cells[, left_border, bottom_border])](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_tiles.html) | turn maze cells into tiles.
 
 ----
