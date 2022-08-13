@@ -9,8 +9,7 @@ spacing = 1;
 slope = 0.65;
 base_height = height * 1.75;
 
-rotate(90)
-    fidget_skull(beginning_radius, fn, number_of_polygons, height, thickness, spacing, slope, base_height);
+fidget_skull(beginning_radius, fn, number_of_polygons, height, thickness, spacing, slope, base_height);
 
 module fidget_skull(beginning_radius, fn, number_of_polygons, height, thickness, spacing, slope, base_height) {
     
@@ -121,6 +120,12 @@ module fidget_skull(beginning_radius, fn, number_of_polygons, height, thickness,
                 circle(beginning_radius / 2.5);
         }        
     }
+
+    module eye_socket() {
+        translate([0, 0, -half_height])
+        linear_extrude(half_height, scale = s[n - 1])
+            drawPolygon(rs[n - 1]);
+    }
     
     difference() {
         union() {
@@ -129,18 +134,16 @@ module fidget_skull(beginning_radius, fn, number_of_polygons, height, thickness,
                 skull();
         }
         
-        translate([0, rs[len(rs) - 1]] * 1.1) 
-        hull() {
-            half();	
+        translate([0, rs[len(rs) - 1]] * 1.1) {
+            eye_socket();	
             mirror([0, 0, 1])
-                half();
+                eye_socket();
         }
 
-        translate([0, -rs[len(rs) - 1]] * 1.1) 
-        hull(){
-            half();	
+        translate([0, -rs[len(rs) - 1]] * 1.1) {
+            eye_socket();	
             mirror([0, 0, 1])
-                half();
+                eye_socket();
         }
     }
 }
