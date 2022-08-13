@@ -52,53 +52,50 @@ module fidget_skull(beginning_radius, fn, number_of_polygons, height, thickness,
 		}
 	}
 	
-    translate([0, rs[len(rs) - 1]] * 1.1) {
+    translate([rs[len(rs) - 1] * 1.1, 0]) 
+    rotate(90) {
         half();	
         mirror([0, 0, 1])
             half();
     }
-    translate([0, -rs[len(rs) - 1]]  * 1.1) {
+    translate([-rs[len(rs) - 1]  * 1.1, 0]) 
+    rotate(90) {
         half();	
         mirror([0, 0, 1])
             half();
     }
-
 
     // scope
-	module eye_scope() {
-        scale(s[n - 1])
-        difference() {
-            drawPolygon(rs[n - 1]);
-            drawPolygon(rs[n - 1] - thickness);
-        }					
-	}
-
-    module teeth_scope() {
-        translate([-rs[len(rs) - 1] * 1.2, rs[len(rs) - 1] * .6])
-        rotate(-5)
-            rounded_square(size = [beginning_radius * 1.75, beginning_radius * 1.45], corner_r = beginning_radius / 5, center = true);
-
-        translate([-rs[len(rs) - 1] * 1.2, 0])
-            rounded_square(size = [beginning_radius * 1.8, beginning_radius * 1.35], corner_r = beginning_radius / 5, center = true);
-
-        translate([-rs[len(rs) - 1] * 1.2, -rs[len(rs) - 1] * .65])
+    module teeth() {
+        translate([rs[len(rs) - 1] * .6, -rs[len(rs) - 1] * 1.2])
         rotate(5)
+            rounded_square(size = [beginning_radius * 1.45, beginning_radius * 1.75], corner_r = beginning_radius / 5, center = true);
+
+        translate([0, -rs[len(rs) - 1] * 1.2])
+            rounded_square(size = [beginning_radius * 1.35, beginning_radius * 1.8], corner_r = beginning_radius / 5, center = true);
+
+        translate([-rs[len(rs) - 1] * .65, -rs[len(rs) - 1] * 1.2])
+        rotate(-5)
             rounded_square(size = [beginning_radius * 1.5, beginning_radius * 1.5], corner_r = beginning_radius / 5, center = true);
     }
 
     module skull_scope() {
         offset(thickness * 1.5) 
         hull() {
-            translate([0, rs[len(rs) - 1] * 1.1])
-                eye_scope();
+            translate([rs[len(rs) - 1] * 1.1, 0])
+            scale(s[n - 1])
+            rotate(90)
+                drawPolygon(rs[n - 1]);
 
-            translate([0, -rs[len(rs) - 1] * 1.1])
-                eye_scope();
+            translate([-rs[len(rs) - 1] * 1.1, 0])
+            scale(s[n - 1])
+            rotate(90)
+                drawPolygon(rs[n - 1]);
         }
         
         offset(thickness * 6)
         hull()
-            teeth_scope();
+            teeth();
     }
 
     module skull() {
@@ -106,17 +103,17 @@ module fidget_skull(beginning_radius, fn, number_of_polygons, height, thickness,
         difference() {
             translate([0, 0, -height / 2])
                 skull_scope();
-            teeth_scope();
+            teeth();
 
             // nose
-            translate([-beginning_radius * 2, beginning_radius / 4])
+            translate([beginning_radius / 4, -beginning_radius * 2])
             rotate(-15)
-            scale([2, 1])
+            scale([1, 2])
                 circle(beginning_radius / 2.5);
 
-            translate([-beginning_radius * 2, -beginning_radius / 4])
+            translate([-beginning_radius / 4, -beginning_radius * 2])
             rotate(15)
-            scale([2, 1])
+            scale([1, 2])
                 circle(beginning_radius / 2.5);
         }        
     }
@@ -124,6 +121,7 @@ module fidget_skull(beginning_radius, fn, number_of_polygons, height, thickness,
     module eye_socket() {
         translate([0, 0, -half_height])
         linear_extrude(half_height, scale = s[n - 1])
+        rotate(90)
             drawPolygon(rs[n - 1]);
     }
     
@@ -134,13 +132,13 @@ module fidget_skull(beginning_radius, fn, number_of_polygons, height, thickness,
                 skull();
         }
         
-        translate([0, rs[len(rs) - 1]] * 1.1) {
+        translate([rs[len(rs) - 1] * 1.1, 0]) {
             eye_socket();	
             mirror([0, 0, 1])
                 eye_socket();
         }
 
-        translate([0, -rs[len(rs) - 1]] * 1.1) {
+        translate([-rs[len(rs) - 1] * 1.1, 0]) {
             eye_socket();	
             mirror([0, 0, 1])
                 eye_socket();
