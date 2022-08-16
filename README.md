@@ -404,6 +404,12 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 --|--
 [**matrix/m_replace**(m, i, j, value)](https://openhome.cc/eGossip/OpenSCAD/lib3x-m_replace.html) | replace the aᵢⱼ element of a matrix.
 
+## Triangle
+
+ Signature | Description
+--|--
+[**triangle/tri_subdivide**(shape_pts[, n])](https://openhome.cc/eGossip/OpenSCAD/lib3x-tri_subdivide.html) | subdivide a triangle `n` times.
+
 ## Point Picking
 
  Signature | Description

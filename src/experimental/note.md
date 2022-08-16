@@ -4,8 +4,6 @@ to_do:
 
 new:
 
-- triangle/tri_subdivide
-
 - mz_hamiltonian supports init_cells
 
    update doc mz_square_initialize
@@ -33,4 +31,6 @@ doc-ed
     - util/sorted, util/binary_search, util/contains
     - maze/mz_square, maze/mz_theta, maze/mz_squarewalls, maze/mz_hexwalls, maze/mz_tiles
     - matrix/m_replace
+    - triangle/tri_subdivide
+
     
