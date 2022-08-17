@@ -3,7 +3,7 @@ use <util/dedup.scad>
 use <polyline_join.scad>
 
 for(line = dedup(hilbert_curve())) {
-    polyline_join([line[0], line[1]])
+    polyline_join(line)
 	    sphere(.25, $fn = 4);
 }  
 
