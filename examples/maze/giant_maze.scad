@@ -58,11 +58,10 @@ module giant_maze() {
     for(cell = cells) {
         cell_pt = cell[0];
         cell_poly = cell[1];
-        
-        noise = 2 * nz_perlin2(cell_pt.x / height_smooth, cell_pt.y / height_smooth, seed) + height;
 
         b = m[cell_pt[1]][cell_pt[0]];
         if(!is_undef(b) && b == 1) {
+            noise = 2 * nz_perlin2(cell_pt.x / height_smooth, cell_pt.y / height_smooth, seed) + height;
             color("LightGrey")
             translate(cell_pt)   
             linear_extrude(noise, scale = 0.9)
@@ -70,9 +69,10 @@ module giant_maze() {
                 polygon(cell_poly); 
         }
         else {
+            noise = nz_perlin2(cell_pt.x / height_smooth / 2, cell_pt.y / height_smooth / 2, seed + 1) + height / 2;
             color("gray")
             translate(cell_pt)    
-            linear_extrude(height / 2, scale = 0.75)
+            linear_extrude(noise, scale = 0.75)
             translate(-cell_pt)    
                 polygon(cell_poly);  
         }
