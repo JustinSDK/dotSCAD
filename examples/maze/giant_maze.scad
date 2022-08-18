@@ -81,6 +81,7 @@ module giant_maze() {
     color("DimGray")
     linear_extrude(height / 5)
     for(cell = cells) {
-        polygon(cell[1]); 
+        offset(.1)
+            polygon(cell[1]); 
     }
 }
