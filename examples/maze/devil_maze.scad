@@ -11,9 +11,9 @@ beginning_number = 8;
 height = 5;
 height_smooth = 5;
 
-giant_theta_maze();
+devil_maze();
 
-module giant_theta_maze() {
+module devil_maze() {
     cell_width = 3;
     NO_WALL = 0;           
     INWARD_WALL = 1;      
