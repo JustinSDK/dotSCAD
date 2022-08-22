@@ -31,7 +31,8 @@ function __line_intersection3(line_pts1, line_pts2, ext, epsilon = 0.0001) =
         b = b2 - b1,
         c = cross(a, b)
     ) 
-    norm(c) < epsilon ? [] :  // they are parallel or conincident edges
+    cross(a, b1 - a1) * (b2 - a1) != 0 ||   // they aren't coplanar
+    norm(c) < epsilon ? [] :                // they are parallel or conincident edges
     let(
          t = v_scalar(cross(b1 - a1, b), c), 
          p = a1 + a * t
