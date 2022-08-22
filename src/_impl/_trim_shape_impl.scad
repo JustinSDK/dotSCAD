@@ -3,8 +3,8 @@ use <../__comm__/__in_line.scad>
 use <../__comm__/__lines_from.scad>
 
 function _any_intersection_sub(lines, line, lines_leng, i, epsilon) =
-    let(p = __line_intersection2(lines[i], line, epsilon))
-    (p != [] && __in_line(line, p, epsilon) && __in_line(lines[i], p, epsilon)) ? [i, p] : _any_intersection(lines, line, lines_leng, i + 1, epsilon);
+    let(p = __line_intersection2(lines[i], line, false, epsilon))
+    p != [] ? [i, p] : _any_intersection(lines, line, lines_leng, i + 1, epsilon);
 
 // return [idx, [x, y]] or []
 function _any_intersection(lines, line, lines_leng, i, epsilon) =
