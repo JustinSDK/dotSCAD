@@ -5,6 +5,23 @@ use <../../util/set/hashset_elems.scad>
 
 include <../../__comm__/_pt2_hash.scad>
 
+function __line_intersection2(line_pts1, line_pts2, epsilon = 0.0001) = 
+    let(
+        a1 = line_pts1[0],
+        a2 = line_pts1[1],
+        b1 = line_pts2[0],
+        b2 = line_pts2[1],
+        a = a2 - a1, 
+        b = b2 - b1,
+        c = cross(a, b)
+    ) 
+    abs(c) < epsilon ? [] :  // they are parallel or conincident edges
+    let(
+         t = cross(b1 - a1, b) /  c,
+         u = -cross(a1 - b1, a) / c
+    )
+    t >= 0 && t <= 1 && u >= 0 && u <= 1 ? a1 + a * t : [];
+
 function _in_convex_r(convex_pts, pt, leng, i = 0) =
     let(j = i + 1)
     j == leng || 
@@ -25,7 +42,7 @@ function _intersection_ps(closed_shape, line_pts, epsilon) =
     let(
         npts = [
             for(i = [0:len(closed_shape) - 2]) 
-            let(p = lines_intersection(line_pts, [closed_shape[i], closed_shape[i + 1]], epsilon = epsilon))
+            let(p = __line_intersection2(line_pts, [closed_shape[i], closed_shape[i + 1]], epsilon = epsilon))
             if(p != []) p
         ],
         leng = len(npts)
