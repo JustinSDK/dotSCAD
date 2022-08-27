@@ -12,6 +12,7 @@ For more details, please see [3D turtle graphics](https://openhome.cc/eGossip/Op
 - `cmd` : It accepts a string or a list of commands. 
     - Given a string: `"xturn"`, `"yturn"`, `"zturn"`, `"xforward"`, `"yforward"`, `"zforward"`, `"point"` or `"unit_vectors"`. If `"xturn"`, `"yturn"` or `"zturn"` is provided, the `angle` parameter is required. If `"xforward"`, `"yforward"` or `"zforward"` is provided, `leng` is required. `"point"` and `"unit_vectors"` are used to get respective data from a turtle.
     - Given a list: `[[cmd1, value], [cmd2, value2], ...]`. For example, `[["xforward", 10], ["zturn", 120]]` will forward a turtle 10mm along the x axis and turn it 120 degrees around the z axis from your viewpoint. 
+	- `"roll"`, `"pitch"`, `"turn"` and `"forward"` are supported since 3.3.
 - `point` : Set the position of a turtle.
 - `unit_vectors` : Set the unit vectors of a turtle.
 - `angle` : Set the angle of a turtle if `cmd` is not provided. Turn a turtle if `cmd` is `"xturn"`, `"yturn"` or `"zturn"`. 
@@ -19,7 +20,7 @@ For more details, please see [3D turtle graphics](https://openhome.cc/eGossip/Op
 
 ## Examples
 	    
-	use <turtle/t3d.scad>
+    use <turtle/t3d.scad>
 	use <polyline_join.scad>
 	
 	leng = 10;
@@ -27,14 +28,14 @@ For more details, please see [3D turtle graphics](https://openhome.cc/eGossip/Op
 	thickness = 1;
 	
 	t = t3d(point = [0, 0, 0]);
-	t2 = t3d(t, "xforward", leng = leng);
+	t2 = t3d(t, "forward", leng = leng);
     t3 = t3d(t2, [
-        ["zturn", angle],
-        ["xforward", leng]
+        ["turn", angle],
+        ["forward", leng]
     ]);
     t4 = t3d(t3, [
-        ["zturn", angle],
-        ["xforward", leng]
+        ["turn", angle],
+        ["forward", leng]
     ]);   
     
 	polyline_join(
@@ -49,20 +50,20 @@ For more details, please see [3D turtle graphics](https://openhome.cc/eGossip/Op
 	module tree(t, leng, leng_scale1, leng_scale2, leng_limit, 
 				angleZ, angleX, width) {
 		if(leng > leng_limit) {
-			t2 = t3d(t, "xforward", leng = leng);
+			t2 = t3d(t, "forward", leng = leng);
 
 			line3d(
 				t3d(t, "point"), t3d(t2, "point"), 
 				width);
 
 			tree(
-				t3d(t2, "zturn", angle = angleZ),
+				t3d(t2, "turn", angle = angleZ),
 				leng * leng_scale1, leng_scale1, leng_scale2, leng_limit, 
 				angleZ, angleX, 
 				width);
 
 			tree(
-				t3d(t2, "xturn", angle = angleX), 
+				t3d(t2, "roll", angle = angleX), 
 				leng * leng_scale2, leng_scale1, leng_scale2, leng_limit, 
 				angleZ, angleX, 
 				width);
@@ -82,4 +83,4 @@ For more details, please see [3D turtle graphics](https://openhome.cc/eGossip/Op
 	tree(t, leng, leng_scale1, leng_scale2, leng_limit, 
 		angleZ, angleX, width);
 
-![t2d](images/lib3x-t3d-2.JPG)
+![t3d](images/lib3x-t3d-2.JPG)

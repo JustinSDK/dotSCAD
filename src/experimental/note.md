@@ -11,7 +11,6 @@ new:
 - surface/sf_cylinder?
 - noise/worley_sphere?
 - voronoi/vrn_sphere?
-- t3d - roll/pitch/forward
 - polyline_join: doc multi-childs
 
 - lemniscate_curve?
@@ -32,3 +31,4 @@ doc-ed
     - triangle/tri_subdivide
 
     - lsystem2, lsystem3, add seed param
+    - t3d - roll/pitch/turn/forward
