@@ -17,8 +17,6 @@ new:
 - lemniscate_curve?
 - perlin_sphere?
 
-- lsystem2, lsystem3, add seed param
-
 doc-ed
 
     deprecated:
@@ -33,4 +31,4 @@ doc-ed
     - matrix/m_replace
     - triangle/tri_subdivide
 
-    
+    - lsystem2, lsystem3, add seed param

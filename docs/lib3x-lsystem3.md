@@ -27,6 +27,7 @@
 - `start` : The starting point of the turtle. Default to `[0, 0]`.
 - `forward_chars` : Chars used for forwarding after the last iteration. Default to `'F'`. 
 - `rule_prs` : The probabilities for taking rules. If each rule is chosen with a certain probability, it's a stochastic L-system. Each probability value for a rule ranges from 0 to 1.
+- `seed` : Optional. Seed value for random number generator for repeatable results. **Since:** 3.3.
 
 ## Examples
 
