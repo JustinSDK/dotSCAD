@@ -9,6 +9,7 @@ It solidifies two surfaces with triangular mesh.
 - `points1` : A list of `[x, y, z]`s.
 - `points2` : A list of `[x, y, z]`s.
 - `triangles` : Determine which points are connected by an edge. All triangles have points in the same direction, counter-clockwise. See examples below.
+- `convexity` : Integer. This parameter is needed only for correct display of the object in OpenCSG preview mode. It has no effect on the polyhedron rendering. For display problems, setting it to 10 should work fine for most cases. **Since:** 3.3
 
 ## Examples
 

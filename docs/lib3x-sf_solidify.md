@@ -9,6 +9,7 @@ It solidifies two square surfaces, described by a m * n list of `[x, y, z]`s.
 - `surface1` : A m * n list of `[x, y, z]`s.
 - `surface2` : A m * n list of `[x, y, z]`s.
 - `slicing` : Given a rectangle, we have two ways to slice it into two triangles. Using this parameter to determine the way you want. It accepts `"SLASH"` (default) and `"BACK_SLASH"`.
+- `convexity` : Integer. This parameter is needed only for correct display of the object in OpenCSG preview mode. It has no effect on the polyhedron rendering. For display problems, setting it to 10 should work fine for most cases. **Since:** 3.3
 
 ## Examples
 

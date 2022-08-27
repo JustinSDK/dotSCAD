@@ -7,6 +7,7 @@ It thickens a surface, described by a m * n list of `[x, y, z]`s.
 - `points` : A m * n list of `[x, y, z]`s. See examples below.
 - `thickness` : The depth of the thickening.
 - `direction` : The direction of thickening. It accepts `"BOTH"` (default), `"FORWARD"` or `"BACKWARD"`. Thickening is applied in both directions from the surface, the direction of the surface normals or the opposite direction to the surface normals. It also accept a direction vector `[x, y, z]`. Thickening is only applied in the direction you give.
+- `convexity` : Integer. This parameter is needed only for correct display of the object in OpenCSG preview mode. It has no effect on the polyhedron rendering. For display problems, setting it to 10 should work fine for most cases. **Since:** 3.3
 
 ## Examples
 

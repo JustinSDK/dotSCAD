@@ -18,6 +18,7 @@ Follow the steps described in [img2gray](https://github.com/JustinSDK/img2gray).
 - `depth` : The depth of the image. Default to half of `thickness`.
 - `angle` : The central angle of the arc. Default to 180. 
 - `invert` : Inverts height values of the image. Default to `false`.
+- `convexity` : Integer. This parameter is needed only for correct display of the object in OpenCSG preview mode. It has no effect on the polyhedron rendering. For display problems, setting it to 10 should work fine for most cases. **Since:** 3.3
 
 ## Examples
 
