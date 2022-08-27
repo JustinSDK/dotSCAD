@@ -17,6 +17,7 @@ function mz_square_cells(rows, columns, start = [0, 0], init_cells, x_wrapping =
         mz = init_undef ? mz_square_initialize(rows, columns) : init_cells,
         r = len(mz),
         c = len(mz[0]),
+        directions = function(x, y, cells, seed) rand_dirs(x, y, cells, seed),
         generated = go_maze( 
             start.x, 
             start.y,   
@@ -24,7 +25,7 @@ function mz_square_cells(rows, columns, start = [0, 0], init_cells, x_wrapping =
             r, c, 
             x_wrapping, 
             y_wrapping, 
-            function(x, y, cells, seed) rand_dirs(x, y, cells, seed), 
+            directions, 
             seed
         )
     )

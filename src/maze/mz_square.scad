@@ -14,7 +14,8 @@ use <mz_square_initialize.scad>
 function mz_square(rows, columns, start = [0, 0], init_cells, x_wrapping = false, y_wrapping = false, seed) = 
     let(
         init_undef = is_undef(init_cells),
-        mz = init_undef ? mz_square_initialize(rows, columns) : init_cells
+        mz = init_undef ? mz_square_initialize(rows, columns) : init_cells,
+        directions = function(x, y, cells, seed) rand_dirs(x, y, cells, seed)
     )
     go_maze( 
         start.x, 
@@ -24,6 +25,6 @@ function mz_square(rows, columns, start = [0, 0], init_cells, x_wrapping = false
         len(mz[0]), 
         x_wrapping, 
         y_wrapping, 
-        function(x, y, cells, seed) rand_dirs(x, y, cells, seed),
+        directions,
         seed
     );
