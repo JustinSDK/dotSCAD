@@ -91,17 +91,17 @@ function carve(dir, x, y, cells, rows, columns) =
     /*dir 3*/  carve_bottom(x, y, cells, rows);
     
 // go maze from (x, y)
-function go_maze(x, y, cells, rows, columns, x_wrapping, y_wrapping, directions, seed) = 
+function go_maze(x, y, cells, rows, columns, x_wrapping, y_wrapping, seed, directions) = 
     let(
         r_dirs = directions(x, y, cells, seed),
         nxcells0 = set_visited(x, y, cells),
-        nxcells1 = next_cells(x, y, r_dirs[0], nxcells0, rows, columns, x_wrapping, y_wrapping, directions, seed),
-        nxcells2 = next_cells(x, y, r_dirs[1], nxcells1, rows, columns, x_wrapping, y_wrapping, directions, seed),
-        nxcells3 = next_cells(x, y, r_dirs[2], nxcells2, rows, columns, x_wrapping, y_wrapping, directions, seed)
+        nxcells1 = next_cells(x, y, r_dirs[0], nxcells0, rows, columns, x_wrapping, y_wrapping, seed, directions),
+        nxcells2 = next_cells(x, y, r_dirs[1], nxcells1, rows, columns, x_wrapping, y_wrapping, seed, directions),
+        nxcells3 = next_cells(x, y, r_dirs[2], nxcells2, rows, columns, x_wrapping, y_wrapping, seed, directions)
     )
-    next_cells(x, y, r_dirs[3], nxcells3, rows, columns, x_wrapping, y_wrapping, directions, seed);
+    next_cells(x, y, r_dirs[3], nxcells3, rows, columns, x_wrapping, y_wrapping, seed, directions);
     
-function next_cells(x, y, dir, cells, rows, columns, x_wrapping, y_wrapping, directions, seed) =
+function next_cells(x, y, dir, cells, rows, columns, x_wrapping, y_wrapping, seed, directions) =
     let(
         nx = next_x(x, dir, columns, x_wrapping),
         ny = next_y(y, dir, rows, y_wrapping)
@@ -113,6 +113,6 @@ function next_cells(x, y, dir, cells, rows, columns, x_wrapping, y_wrapping, dir
                 carve(dir, x, y, cells, rows, columns),
                 rows, columns,
                 x_wrapping, y_wrapping,
-                directions,
-                seed
+                seed,
+                directions
             );

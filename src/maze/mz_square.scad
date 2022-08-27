@@ -25,6 +25,6 @@ function mz_square(rows, columns, start = [0, 0], init_cells, x_wrapping = false
         len(mz[0]), 
         x_wrapping, 
         y_wrapping, 
-        directions,
-        seed
+        seed,
+        directions
     );

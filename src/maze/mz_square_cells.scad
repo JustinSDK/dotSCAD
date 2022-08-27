@@ -25,8 +25,8 @@ function mz_square_cells(rows, columns, start = [0, 0], init_cells, x_wrapping =
             r, c, 
             x_wrapping, 
             y_wrapping, 
-            directions, 
-            seed
+            seed,
+            directions
         )
     )
     [for(row = generated) each row];
