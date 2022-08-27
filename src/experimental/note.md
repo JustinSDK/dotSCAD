@@ -1,12 +1,9 @@
 to_do:
 
-- doc: sf, stereographic_extrude add convexity
 
 new:
 
-- mz_hamiltonian supports init_cells
-
-   update doc mz_square_initialize
+- update doc mz_square_initialize
 
 - surface/sf_cylinder?
 - noise/worley_sphere?
@@ -32,3 +29,5 @@ doc-ed
 
     - lsystem2, lsystem3, add seed param
     - t3d - roll/pitch/turn/forward
+    - sf, stereographic_extrude add convexity
+    - mz_hamiltonian supports init_cells
