@@ -43,8 +43,8 @@ _rand_dir_table = [
     [3, 2, 0, 1],
     [3, 2, 1, 0]
 ];
-function rand_dirs(c, seed) =
-   let(r = is_undef(seed) ? rands(0, 23, 1) : rands(0, 23, 1, c + seed))
+function rand_dirs(x, y, cells, seed) =
+   let(r = is_undef(seed) ? rands(0, 23, 1) : rands(0, 23, 1, x + y * len(cells[0]) + seed))
     _rand_dir_table[round(r[0])]; 
 
 // get x value by dir
@@ -91,17 +91,17 @@ function carve(dir, x, y, cells, rows, columns) =
     /*dir 3*/  carve_bottom(x, y, cells, rows);
     
 // go maze from (x, y)
-function go_maze(x, y, cells, rows, columns, x_wrapping, y_wrapping, seed) = 
+function go_maze(x, y, cells, rows, columns, x_wrapping, y_wrapping, directions, seed) = 
     let(
-        r_dirs = rand_dirs(x + y * columns, seed),
+        r_dirs = directions(x, y, cells, seed),
         nxcells0 = set_visited(x, y, cells),
-        nxcells1 = next_cells(x, y, r_dirs[0], nxcells0, rows, columns, x_wrapping, y_wrapping, seed),
-        nxcells2 = next_cells(x, y, r_dirs[1], nxcells1, rows, columns, x_wrapping, y_wrapping, seed),
-        nxcells3 = next_cells(x, y, r_dirs[2], nxcells2, rows, columns, x_wrapping, y_wrapping, seed)
+        nxcells1 = next_cells(x, y, r_dirs[0], nxcells0, rows, columns, x_wrapping, y_wrapping, directions, seed),
+        nxcells2 = next_cells(x, y, r_dirs[1], nxcells1, rows, columns, x_wrapping, y_wrapping, directions, seed),
+        nxcells3 = next_cells(x, y, r_dirs[2], nxcells2, rows, columns, x_wrapping, y_wrapping, directions, seed)
     )
-    next_cells(x, y, r_dirs[3], nxcells3, rows, columns, x_wrapping, y_wrapping, seed);
+    next_cells(x, y, r_dirs[3], nxcells3, rows, columns, x_wrapping, y_wrapping, directions, seed);
     
-function next_cells(x, y, dir, cells, rows, columns, x_wrapping, y_wrapping, seed) =
+function next_cells(x, y, dir, cells, rows, columns, x_wrapping, y_wrapping, directions, seed) =
     let(
         nx = next_x(x, dir, columns, x_wrapping),
         ny = next_y(y, dir, rows, y_wrapping)
@@ -113,5 +113,6 @@ function next_cells(x, y, dir, cells, rows, columns, x_wrapping, y_wrapping, see
                 carve(dir, x, y, cells, rows, columns),
                 rows, columns,
                 x_wrapping, y_wrapping,
+                directions,
                 seed
             );

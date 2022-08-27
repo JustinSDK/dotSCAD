@@ -24,6 +24,7 @@ function mz_square_cells(rows, columns, start = [0, 0], init_cells, x_wrapping =
             r, c, 
             x_wrapping, 
             y_wrapping, 
+            function(x, y, cells, seed) rand_dirs(x, y, cells, seed), 
             seed
         )
     )
