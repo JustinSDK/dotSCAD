@@ -23,8 +23,8 @@ function cc_rr(cc) = cc[1];
 
 function delaunay_init(center, width, height, leng_points, _indices_hash) =
     let(
-		halfW = width * 0.5,
-		halfH = height * 0.5,
+		halfW = width * 100,
+		halfH = height * 100,
 		coords = [
 		    center + [-halfW, -halfH],
 			center + [-halfW,  halfH],
