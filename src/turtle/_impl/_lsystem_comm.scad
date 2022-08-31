@@ -27,7 +27,7 @@ function _join(str_lt) =
 function c_or_v(c, v, rules, rules_pr, leng, seed, ci, i = 0) =
     i == leng ? c : 
     let(idx = search([v[i]], rules, num_returns_per_match=0, index_col_num = 1)[0][0])
-    rand(0, 1, seed + ci + i) <= rules_pr[idx] ? v[i] : c_or_v(c, v, rules, rules_pr, leng, seed, ci, i + 1);
+    rand(0, 1, seed + ci) <= rules_pr[idx] ? v[i] : c_or_v(c, v, rules, rules_pr, leng, seed, ci, i + 1);
 
 function _derive1_p(base, rules, rules_pr, seed) = 
     _join([
