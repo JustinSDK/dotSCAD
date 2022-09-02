@@ -89,13 +89,12 @@ module climbing_rose() {
                 a = atan2(v.y, v.x);
                 
                 translate([each p, 0] + [0, 0, rr * 0.55])
-                
                 rotate([0, rands(0, 1, 1)[0] > 0.5 ? 17 : -17, a])
                 rotate(a)
-                scale([rr * 3, rr * 3, rr * 2]) 
+                scale([rr * 3.5, rr * 3.5, rr * 2.5]) 
                 union() {
                     rose(thickness, theta_from * rands(2.75, 3.25, 1)[0] * r / rr, rands(0.75, 1.25, 1)[0] * theta_to * r / rr, rf_to, rf_step);
-                    translate([0, 0, .075])
+                    translate([0, 0, .125])
                         sphere(.1);
                 }
             }
