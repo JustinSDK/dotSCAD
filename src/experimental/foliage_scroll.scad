@@ -9,7 +9,7 @@ function foliage_scroll(size, max_spirals, init_radius, min_radius, angle_step =
     )
     [
         for(spiral = _foliage_scroll(size, init_spirals, max_spirals, min_radius, angle_step, done))
-        [spiral_r(spiral), spiral_path(spiral)]
+        [spiral_r(spiral), spiral_path(spiral), spiral_center(spiral)]
     ];
 
 
