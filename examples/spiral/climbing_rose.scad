@@ -11,7 +11,7 @@ height = 200;
 max_spirals = 4; 
 angle_step = 360 / $fn; 
 min_radius = 15; 
-init_radius = rands(min_radius * 2, min_radius * 3, 1)[0];
+init_radius = rands(min_radius * 2, min_radius * 2.5, 1)[0];
 
 theta_step = 0.1;
 rf_step = 0.1;
@@ -90,15 +90,15 @@ module climbing_rose() {
                 
                 translate([each p, 0] + [0, 0, rr * 0.55])
                 
-                rotate([0, 15, a])
+                rotate([0, rands(0, 1, 1)[0] > 0.5 ? 17 : -17, a])
                 rotate(a)
-                scale(rr * 2.75) 
+                scale([rr * 3, rr * 3, rr * 2]) 
                 union() {
-                    rose(thickness, theta_from * 3 * r / rr, theta_to * r / rr, rf_to, rf_step);
+                    rose(thickness, theta_from * rands(2.75, 3.25, 1)[0] * r / rr, rands(0.75, 1.25, 1)[0] * theta_to * r / rr, rf_to, rf_step);
                     translate([0, 0, .075])
                         sphere(.1);
                 }
-                }
+            }
         }
     }
 
