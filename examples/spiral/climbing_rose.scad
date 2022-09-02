@@ -6,12 +6,12 @@ use <util/choose.scad>
 use <util/reverse.scad>
 
 $fn = 12;
-width = 200;
-height = 200;
+width = 150;
+height = 150;
 max_spirals = 4; 
 angle_step = 360 / $fn; 
 min_radius = 15; 
-init_radius = rands(min_radius * 2, min_radius * 2.5, 1)[0];
+init_radius = rands(min_radius * 1.75, min_radius * 2.25, 1)[0];
 
 theta_step = 0.1;
 rf_step = 0.1;
@@ -72,7 +72,7 @@ module climbing_rose() {
     module draw(spirals) {    
         r = spirals[0][0] / 5;
         for(i = [0:len(spirals) - 1]) {
-            rr = r * ((len(spirals) - pow(i == 0 || i == 1 ? .5 : i, 0.3)) / len(spirals));
+            rr = r * ((len(spirals) - pow(i == 0 || i == 1 ? .5 : i, 0.25)) / len(spirals));
             path = spirals[i][1];
             
             polyline_join(path)
@@ -94,7 +94,7 @@ module climbing_rose() {
                 translate([each p, 0] + [0, 0, rr * 0.55])
                 rotate([0, rands(0, 1, 1)[0] > 0.5 ? 17 : -17, a])
                 rotate(a)
-                scale([rr * 4, rr * 4, rr * 3]) 
+                scale([rr * 4.5, rr * 4.5, rr * 3]) 
                 union() {
                     rose(thickness, theta_from * rands(2.75, 3.25, 1)[0] * r / rr, rands(0.75, 1.25, 1)[0] * theta_to * r / rr, rf_to, rf_step);
                     translate([0, 0, .125])
