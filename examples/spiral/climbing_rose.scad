@@ -72,18 +72,21 @@ module climbing_rose() {
     module draw(spirals) {    
         r = spirals[0][0] / 5;
         for(i = [0:len(spirals) - 1]) {
-            rr = r * ((len(spirals) - sqrt(i == 0 || i == 1 ? .5 : i)) / len(spirals));
+            rr = r * ((len(spirals) - pow(i == 0 || i == 1 ? .5 : i, 0.3)) / len(spirals));
             path = spirals[i][1];
             
             polyline_join(path)
             rotate([45, 0, 0])
                 sphere(rr, $fn = 4);
-                
             
             center = spirals[i][2];
-            
+            leng = len(path);
+            pathes = [
+                [for(i = [leng / 8:leng / 6]) path[i]],
+                [for(i = [leng / 4:leng / 2]) path[i]]
+            ];
             for(i = [0:1]) {
-                p = choose(path);
+                p = choose(pathes[i]);
                 
                 v = (p - center);
                 a = atan2(v.y, v.x);
@@ -91,7 +94,7 @@ module climbing_rose() {
                 translate([each p, 0] + [0, 0, rr * 0.55])
                 rotate([0, rands(0, 1, 1)[0] > 0.5 ? 17 : -17, a])
                 rotate(a)
-                scale([rr * 3.5, rr * 3.5, rr * 2.5]) 
+                scale([rr * 4, rr * 4, rr * 3]) 
                 union() {
                     rose(thickness, theta_from * rands(2.75, 3.25, 1)[0] * r / rr, rands(0.75, 1.25, 1)[0] * theta_to * r / rr, rf_to, rf_step);
                     translate([0, 0, .125])
