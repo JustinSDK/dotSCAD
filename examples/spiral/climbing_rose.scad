@@ -4,6 +4,7 @@ use <stereographic_extrude.scad>
 use <sweep.scad>
 use <util/choose.scad>
 use <util/reverse.scad>
+// use <surface/sf_hull.scad>
 
 $fn = 12;
 width = 150;
@@ -67,6 +68,27 @@ module climbing_rose() {
         ];
         
         sweep(reverse(sections));
+
+        /*
+            // very slow, but a thicker rose is allowed
+            sf_pts = [
+                for(theta = [theta_from:theta_step:theta_to]) [
+                    for(rf = [0.1:rf_step:rf_to])
+                    let(
+                        r = r(rf,theta),
+                        angle = theta * 57.2958, 
+                        angle2 = phi(theta)* 57.2958,
+                        x = r*sin(angle), 
+                        y = r*cos(angle),
+                        z = wave(theta)*(rf*cos(angle2)-g(rf,theta)*sin(angle2))
+                    )
+                    [x, y, z]
+                ]
+            ];
+            
+            sf_hull(sf_pts, thickness, $fn = 3);
+
+        */
     }
 
     module draw(spirals) {    
@@ -94,7 +116,7 @@ module climbing_rose() {
                 translate([each p, 0] + [0, 0, rr * 0.55])
                 rotate([0, rands(0, 1, 1)[0] > 0.5 ? 17 : -17, a])
                 rotate(a)
-                scale([rr * 4.5, rr * 4.5, rr * 3]) 
+                scale([rr * 6, rr * 6, rr * 5]) 
                 union() {
                     rose(thickness, theta_from * rands(2.75, 3.25, 1)[0] * r / rr, rands(0.75, 1.25, 1)[0] * theta_to * r / rr, rf_to, rf_step);
                     translate([0, 0, .125])
