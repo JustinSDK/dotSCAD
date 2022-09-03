@@ -118,7 +118,7 @@ module climbing_rose() {
                 translate([each p, 0] + [0, 0, rr * 0.55])
                 rotate([0, rands(0, 1, 1)[0] > 0.5 ? 17 : -17, a])
                 rotate(a)
-                scale([rr * rose_scale, rr * rose_scale, rr * (rose_scale - 1)]) 
+                scale([rr * rose_scale, rr * rose_scale, rr * rose_scale * 0.6]) 
                 union() {
                     rose(thickness, theta_from * rands(2.75, 3.25, 1)[0] * r / rr, rands(0.75, 1.25, 1)[0] * theta_to * r / rr, rf_to, rf_step);
                     translate([0, 0, .125])
