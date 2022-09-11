@@ -11,14 +11,14 @@ wall_thickness = 1.5;
 moutain_height = 30;
 base_height = 3;
 seed = 35;
-smoothness  = 25;
+smoothing  = 25;
 
 island_maze();
 
 module island_maze() {
     dirs = function(x, y, cells, seed) 
            let(
-               nz = nz_perlin2(x * cell_width / smoothness, y * cell_width / smoothness, seed),
+               nz = nz_perlin2(x * cell_width / smoothing, y * cell_width / smoothing, seed),
                sd = y * len(cells[0]) + x + seed,
                h = choose([[0, 2], [2, 0]], seed = sd),
                v = choose([[1, 3], [3, 1]], seed = sd)
@@ -33,8 +33,8 @@ module island_maze() {
         for(i = [0:len(wall) - 2]) {
             p1 = wall[i];
             p2 = wall[i + 1];
-            h1 = nz_perlin2(p1.x / smoothness , p1.y / smoothness , seed);
-            h2 = nz_perlin2(p2.x / smoothness , p2.y / smoothness , seed);
+            h1 = nz_perlin2(p1.x / smoothing , p1.y / smoothing , seed);
+            h2 = nz_perlin2(p2.x / smoothing , p2.y / smoothing , seed);
             hull() {
                linear_extrude(h1 > 0 ? h1 * moutain_height + base_height : base_height)
                 translate(p1)
