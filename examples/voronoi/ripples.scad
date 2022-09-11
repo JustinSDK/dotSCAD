@@ -6,7 +6,7 @@ size = [30, 30];
 grid_w = 15;
 amplitude = 1;
 mesh_w = 0.2;
-wave_smoothness = 2;
+wave_smoothing = 2;
 thickness = 0.5;
 dist = "euclidean"; // [euclidean, manhattan, chebyshev, border] 
 seed = 51;
@@ -24,7 +24,7 @@ module ripples() {
 				px = x * mesh_w,
 				py = y * mesh_w,
 				nz = nz_worley2(px, py, seed, grid_w, dist)[2],
-				n = amplitude * nz_perlin2(nz / wave_smoothness, nz / wave_smoothness, seed)
+				n = amplitude * nz_perlin2(nz / wave_smoothing, nz / wave_smoothing, seed)
 			)
 			[px, py, n]
 		]
