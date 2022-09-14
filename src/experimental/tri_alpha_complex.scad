@@ -60,12 +60,8 @@ function reduce_tris(indices_tris, dist) =
     )
     len(indices_tris) > len(reduce_tris) ? reduce_tris(reduce_tris, dist) : reduce_tris;
 
-    
-function tri_concave_hull(points, dist, d) = 
-    let(
-        indices_tris = is_undef(d) ? tri_delaunay(points) : tri_delaunay_indices(d)
-    )
-    reduce_tris(indices_tris, dist);
+function tri_alpha_complex(points, dist, d) = 
+    reduce_tris(is_undef(d) ? tri_delaunay(points) : tri_delaunay_indices(d), dist);
    
 dist = 30;
 seed = 101;
@@ -73,7 +69,7 @@ points = [for(i = [0:150]) rands(-100, 100, 2, seed_value = seed + i)];
 
 d = tri_delaunay(points, ret = "DELAUNAY");
 convex_hull_tris = tri_delaunay_indices(d);
-concave_hull_tris = tri_concave_hull(points, dist, d); 
+concave_hull_tris = tri_alpha_complex(points, dist, d); 
 
 for(t = concave_hull_tris) {
     offset(-.2)
