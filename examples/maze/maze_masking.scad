@@ -37,7 +37,7 @@ module maze_masking(start, mask, cell_width, wall_thickness, wall_height, base_h
 	pts = contour ? 
 		vx_contour([
 			for(y = [0:rows - 1], x = [0:columns - 1]) if(mask[rows - y - 1][x] == 1) [x, y]
-		], sorted = true) : 
+		]) : 
 		[];	
 	
     walls = mz_squarewalls(cells, cell_width);
