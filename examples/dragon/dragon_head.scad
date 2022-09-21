@@ -156,13 +156,13 @@ module dragon_head() {
                 polygon(jpath1);
         }
     
-        translate([0, -2.5, -11])
+        translate([-0.15, -2.5, -11])
         rotate([0, 95, 0])
         linear_extrude(1.4, scale = 0.1)
         translate([.4, 0, 0])
             circle(.5, $fn = 6);
 
-        translate([0, 2.5, -11])
+        translate([-0.15, 2.5, -11])
         rotate([0, 95, 0])
         linear_extrude(1.5, scale = 0.1)
         translate([.4, 0, 0])
