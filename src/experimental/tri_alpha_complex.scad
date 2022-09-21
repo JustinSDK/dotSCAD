@@ -1,3 +1,4 @@
+include <__comm__/_pt2_hash.scad>
 use <triangle/tri_delaunay.scad>
 use <triangle/tri_delaunay_indices.scad>
 use <triangle/tri_circumcenter.scad>
@@ -24,17 +25,17 @@ function edge_tri(indices_tris, m, i = 0) =
         t_indices = indices_tris[i],
         
         edge1 = edge(t_indices[0], t_indices[1]),
-        t_lt1 = hashmap_get(m, edge1),
-        m1 = hashmap_put(m, edge1, is_undef(t_lt1) ? [t_indices] : [each t_lt1, t_indices]),
+        t_lt1 = hashmap_get(m, edge1, hash = _pt2_hash),
+        m1 = hashmap_put(m, edge1, is_undef(t_lt1) ? [t_indices] : [each t_lt1, t_indices], hash = _pt2_hash),
         
         edge2 = edge(t_indices[1], t_indices[2]),
-        t_lt2 = hashmap_get(m1, edge2),
-        m2 = hashmap_put(m1, edge2, is_undef(t_lt2) ? [t_indices] : [each t_lt2, t_indices]),
+        t_lt2 = hashmap_get(m1, edge2, hash = _pt2_hash),
+        m2 = hashmap_put(m1, edge2, is_undef(t_lt2) ? [t_indices] : [each t_lt2, t_indices], hash = _pt2_hash),
         
         edge3 = edge(t_indices[2], t_indices[0]),
-        t_lt3 = hashmap_get(m2, edge3)
+        t_lt3 = hashmap_get(m2, edge3, hash = _pt2_hash)
     )
-    edge_tri(indices_tris, hashmap_put(m2, edge3, is_undef(t_lt3) ? [t_indices] : [each t_lt3, t_indices]), i + 1);
+    edge_tri(indices_tris, hashmap_put(m2, edge3, is_undef(t_lt3) ? [t_indices] : [each t_lt3, t_indices], hash = _pt2_hash), i + 1);
 
 function reduce_tris(indices_tris, dist) = 
     let(
