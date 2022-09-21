@@ -122,9 +122,10 @@ module dragon_and_perl() {
     leng_body_path = len(body_path);
     angy_angz = __angy_angz(body_path[0], body_path[1]);
 
-    translate([0, 10, 13.5])
+    translate([-.4, 10, 13.5])
     rotate([-138, -4, 8])
     rotate([0, angy_angz[0], angy_angz[1]])
+    scale(1.1)
         dragon_head();
 
     body_r = 6;
