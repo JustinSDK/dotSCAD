@@ -11,24 +11,15 @@ use <shape_circle.scad>
 dragon_head();
 
 module dragon_head() {
-    module hair() {
-        for(i = [0:35]) {
-            rotate(i * 12 + rands(0, 5, 1, i)[0]) 
-            translate([0, -11.5, .2]) 
-            rotate([rands(0, 2, 1, i)[0], 0, 0]) 
-            linear_extrude(10 + rands(0, 5, 1, i)[0], scale = 0.05, twist = 50 - rands(0, 100, 1, seed = i + 1)[0]) 
-            translate([0, 10, 0]) 
-                circle(3.5, $fn = 6);    
-        }
-
+    module hair() { 
         module face_fin() {
             t_step = 0.05;
 
             points = bezier_curve(t_step, 
-                [[-24.5, -31.5, -20], [20, 2, -15], [10, 15, 2], [25, 15, 10]] * 0.25
+                [[-32, -31.5, -23.5], [39, 2, -15], [10, 15, 2], [25, 15, 10]] * 0.25
             );
 
-            c = shape_circle(2.8, $fn = 5);
+            c = shape_circle(2.8, $fn = 3);
             
             translate([9.5, 0, 0])
             rotate([-25, 0, 25])
@@ -38,7 +29,7 @@ module dragon_head() {
                 path_extrude(c * 1.2, points, scale = 0.05, twist = -60);   
                 
             points2 = bezier_curve(t_step, 
-                [[-47, -35, -20], [-15, -5, 0], [-15, -20, 5], [-5, 15, 10]] * 0.25
+                [[-65, -35, -21], [-5, -5, -15], [-15, -20, 5], [-5, 15, 10]] * 0.25
             );
 
             translate([13.5, -.1, -1.2])
@@ -47,7 +38,17 @@ module dragon_head() {
             rotate([60, -15, 70])
             scale(.75)
             scale([.5, 1.25, 1.5])
-                path_extrude(c, points2, scale = 0.05, twist = -60);   
+                path_extrude(c * 1.45, points2, scale = 0.05, twist = -60);   
+        }
+        
+        union()
+        for(i = [0:35]) {
+            rotate(i * 12 + rands(0, 5, 1, i)[0]) 
+            translate([0, -11.5, .2]) 
+            rotate([rands(0, 2, 1, i)[0], 0, 0]) 
+            linear_extrude(10 + rands(0, 5, 1, i)[0], scale = 0.05, twist = 50 - rands(0, 100, 1, seed = i + 1)[0]) 
+            translate([0, 10, 0]) 
+                circle(3.5, $fn = 6);    
         }
 
         face_fin();
@@ -137,12 +138,12 @@ module dragon_head() {
                     [4, -3.43632], 
                     [5, 0], 
                     [6.5, 2.25], 
-                    [7, 6.43632], 
+                    [6.7, 6.43632], 
                     [5.5, 8.75], 
                     [5.25, 8.75], 
                     [-5.25, 9], 
                     [-5.5, 9], 
-                    [-7, 6.43632], 
+                    [-6.7, 6.43632], 
                     [-6.5, 2.25], 
                     [-5, 0], 
                     [-4, -3.43632], 
