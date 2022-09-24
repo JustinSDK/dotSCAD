@@ -98,11 +98,11 @@ module dragon_head() {
         path4 = [for(p = path3) [-p[0], p[1], p[2]]];
         path5 = [for(p = path2) [-p[0], p[1], p[2]]];
 
-        translate([0, 0, -2]) 
+        translate([-.25, 0, -2]) 
         rotate([90, 0, -90]) 
             sweep(m_transpose([path1, path2, path3, path4, path5]));
 
-       translate([-.15, 0, -3.3]) 
+        translate([-.15, 0, -3.3]) 
         rotate([90, 0, -90]) 
         ellipse_extrude(5.5, slices = 3) 
             polygon([
@@ -170,7 +170,7 @@ module dragon_head() {
     }
     
     module one_eye() {
-        translate([-5, 2.5, -2]) 
+        translate([-5, 2.5, -2])
         rotate([-5, -8, -10]) 
         scale([1, 1, 1.75]) 
             sphere(1.75, $fn = 6);      
@@ -181,7 +181,7 @@ module dragon_head() {
     }
     
     module one_beard() {
-        translate([-10, -12, -10])
+        translate([-10.15, -12, -10])
         rotate(180) 
         linear_extrude(8, scale = 0.15, twist = 35) 
         translate([-9, -10, 0]) 
