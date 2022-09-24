@@ -7,6 +7,7 @@ use <ptf/ptf_rotate.scad>
 use <bezier_curve.scad>
 use <path_extrude.scad>
 use <shape_circle.scad>
+use <polyhedra/octahedron.scad>
 
 dragon_head();
 
@@ -176,9 +177,9 @@ module dragon_head() {
         scale([1, 1, 1.75]) 
             sphere(1.75, $fn = 6);      
 
-        translate([-5.1, 3.75, -2.25]) 
-        rotate([-25, 0, 75]) 
-            sphere(0.65, $fn = 6);                      
+        translate([-5, 3.75, -2.25]) 
+        rotate([-45, 0, 75]) 
+            octahedron(0.625, detail = 1);                      
     }
     
     module one_beard() {
