@@ -3,7 +3,7 @@ beginning_radius = 7.5;
 number_of_polygons = 6;
 height = 15;
 thickness = 1;
-spacing = 1;
+spacing = 1.25;
 slope = 0.58;
 central_scale = 1;
 
