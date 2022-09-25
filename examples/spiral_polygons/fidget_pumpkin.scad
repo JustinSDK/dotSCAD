@@ -3,7 +3,7 @@ beginning_radius = 7.5;
 number_of_polygons = 6;
 height = 15;
 thickness = 1;
-spacing = 1.25;
+spacing = 1.35;
 slope = 0.58;
 central_scale = 1;
 
@@ -61,7 +61,7 @@ module fidget_pumpkin(beginning_radius, n, height, thickness, spacing, slope, ce
 
 	module half() {
 	    translate([0, 0, -half_height]) {
-		    //translate([0, 0, -4])
+		    //translate([0, 0, -4.5])
 			difference() {
 				linear_extrude(half_height, scale = s[0])
 				scale(central_scale)
