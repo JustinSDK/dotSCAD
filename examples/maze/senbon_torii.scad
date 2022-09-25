@@ -95,48 +95,16 @@ module senbon_torii(rows, columns, start, width, height) {
 module torii_symbol() {
     // design your own symbol
     linear_extrude(.1, center = true) 
-    scale(1.25) {
-        difference() {
-            union() {
-                translate([-0.025, 0.10])
-                    text("⛩", font = "Segoe UI Emoji", size = 0.5 * 0.7, halign = "center");
-                
-                translate([0, 0.455])   
-                    square([.46, 0.05], center = true);
-                
-                translate([0, 0.3])   
-                    square([.15, 0.07], center = true);     
-                    
-                translate([0, 0.3715]) 
-                    square([0.35, 0.075], center = true);
-            }
-
-        translate([0, 0.34])   
-            square([0.35 / 5.5, 0.07], center = true);
-        }
-        
-        
-        translate([.201, 0.262])
-        scale([1, 0.75])
-            circle(.05, $fn = 3);
-
-        mirror([1, 0, 0])
-        translate([.201, 0.262])
-        scale([1, 0.75])
-            circle(.05, $fn = 3);        
-    }      
+    scale(1.25) 
+    translate([-0.0125, 0.075])
+        text("⛩", font = "Segoe UI Emoji", size = 0.5 * 0.7, halign = "center");
 }
 
 module top_symbol() {
     // design your own symbol
-    translate([-0.01295, .13]) {
+    translate([-0.01295, -0.0275]) {
         linear_extrude(.2, center = true)     
-        scale([0.975, 1.5])
-        hull()
-            text("🏔", font = "Segoe UI Emoji", size = 0.45 * 0.7, halign = "center"); 
-            
         scale([0.975, 1.75])
-        linear_extrude(.25, center = true)           
-            text("🏔", font = "Segoe UI Emoji", size = 0.45 * 0.7, halign = "center");  
+            text("🏔", font = "Segoe UI Emoji", size = 0.45 * 0.7, halign = "center"); 
     }
 }
