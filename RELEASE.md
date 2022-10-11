@@ -1,5 +1,62 @@
 > Version numbers are based on [Semantic Versioning](https://semver.org/).
 
+# v3.3
+
+## Deprecated
+
+ Signature | Description
+--|--
+**rails2sections** | use [`maxtrix/m_transpose`](https://openhome.cc/eGossip/OpenSCAD/lib3x-m_transpose.html) instead.
+**util/sort** | use [`util/sorted`](https://openhome.cc/eGossip/OpenSCAD/lib3x-sorted.html) instead.
+**util/has** | use [`util/contains`](https://openhome.cc/eGossip/OpenSCAD/lib3x-contains.html) instead.
+**util/bsearch** | use [`util/binary_search`](https://openhome.cc/eGossip/OpenSCAD/lib3x-binary_search.html) instead.
+**maze/mz_square_cells** | use [`maze/mz_square`](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_square.html).
+**maze/mz_square_walls** | use [`maze/mz_squarewalls`](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_squarewalls.html) instead.
+**maze/mz_hex_walls** | use [`maze/mz_hexwalls`](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_hexwalls.html) instead.
+**maze/mz_theta_cells** | use [`maze/mz_theta`](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_theta.html) instead.
+
+
+## Util
+
+ Signature | Description
+--|--
+[**util/sorted**(lt[, cmp, key, reverse])](https://openhome.cc/eGossip/OpenSCAD/lib3x-sorted.html) | sort a list.
+[**util/contains**(lt, elem)](https://openhome.cc/eGossip/OpenSCAD/lib3x-contains.html) | return `true` if `lt` contains `elem`.
+[**util/binary_search**(sorted, target[, lo, hi])](https://openhome.cc/eGossip/OpenSCAD/lib3x-binary_search.html) | search a value in a sorted list.
+[**util/count**(lt, test)](https://openhome.cc/eGossip/OpenSCAD/lib3x-count.html) | return the number of times `test` return `true` in the list.
+
+## Matrix
+
+ Signature | Description
+--|--
+[**matrix/m_replace**(m, i, j, value)](https://openhome.cc/eGossip/OpenSCAD/lib3x-m_replace.html) | replace the aᵢⱼ element of a matrix.
+
+## Triangle
+
+ Signature | Description
+--|--
+[**triangle/tri_subdivide**(shape_pts[, n])](https://openhome.cc/eGossip/OpenSCAD/lib3x-tri_subdivide.html) | subdivide a triangle `n` times.
+
+## Point Picking
+
+ Signature | Description
+--|--
+[**pp/pp_disk**(radius, value_count[, seed])](https://openhome.cc/eGossip/OpenSCAD/lib3x-pp_disk.html) | generate random points over a disk.
+[**pp/pp_sphere**(radius, value_count[, seed])](https://openhome.cc/eGossip/OpenSCAD/lib3x-pp_sphere.html) | pick random points on the surface of a sphere.
+[**pp/pp_poisson2**(size, r[, start, k, seed])](https://openhome.cc/eGossip/OpenSCAD/lib3x-pp_poisson2.html) | perform poisson sampling over a rectangle area.
+[**pp/pp_poisson3**(size, r[, start, k, seed])](https://openhome.cc/eGossip/OpenSCAD/lib3x-pp_poisson3.html) | perform poisson sampling over a cube space.
+
+## Maze
+
+ Signature | Description
+--|--
+[**maze/mz_square**([rows, columns, start, init_cells, x_wrapping, y_wrapping, seed])](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_square.html) | return cell data of a square maze.
+[**maze/mz_squarewalls**(cells, cell_width[, left_border, bottom_border])](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_squarewalls.html) | a helper for creating square wall data from maze cells.
+[**maze/mz_hexwalls**(cells, cell_radius[, left_border, bottom_border])](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_hexwalls.html) | a helper for creating hex wall data from maze cells.
+[**maze/mz_theta**(rings, beginning_number[, start, seed])](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_theta.html) | return cell data of a theta maze.
+[**maze/mz_tiles**(cells[, left_border, bottom_border])](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_tiles.html) | turn maze cells into tiles.
+
+
 # v3.2.2
 
 Maintenance release: bug fixes & performance improvements.
