@@ -3,8 +3,6 @@ to_do:
 
 new:
 
-- update doc mz_square_initialize
-
 - surface/sf_cylinder?
 - noise/worley_sphere?
 - voronoi/vrn_sphere?
