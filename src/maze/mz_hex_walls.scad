@@ -11,6 +11,7 @@
 use <_impl/_mz_hex_walls.scad>
 
 function mz_hex_walls(cells, rows, columns, cell_radius, left_border = true, bottom_border = true) = 
+    echo("mz_hex_walls is deprecated. use maze/mz_hexwalls instead.")
     [
         each [for(cell = cells, wall = _build_cell(cell_radius, cell)) wall],
 

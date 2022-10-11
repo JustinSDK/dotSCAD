@@ -12,7 +12,7 @@ use <_impl/_mz_square_walls_impl.scad>
 
 function mz_square_walls(cells, rows, columns, cell_width, left_border = true, bottom_border = true) = 
     let(
-        left_walls = left_border ? [for(y = [0:rows - 1]) [[0, cell_width * (y + 1)], [0, cell_width * y]]] : [],
+        left_walls = echo("mz_square_walls is deprecated. use maze/mz_squarewalls instead.") left_border ? [for(y = [0:rows - 1]) [[0, cell_width * (y + 1)], [0, cell_width * y]]] : [],
         buttom_walls = bottom_border ? [for(x = [0:columns - 1]) [[cell_width * x, 0], [cell_width * (x + 1), 0]]] : []
     )
      concat(

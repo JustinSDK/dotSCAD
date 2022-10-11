@@ -10,4 +10,4 @@
 
 use <matrix/m_transpose.scad>
 
-function rails2sections(rails) = m_transpose(rails);
+function rails2sections(rails) = echo("rails2sections is deprecated. use maxtrix/m_transpose instead.") m_transpose(rails);
