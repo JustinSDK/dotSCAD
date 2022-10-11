@@ -1,4 +1,4 @@
-# dotSCAD 3.2.2
+# dotSCAD 3.3
 
 > **Reduce the burden of mathematics/algorithm when playing OpenSCAD.**
 
@@ -94,7 +94,6 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 [**cross_sections**(shape_pts, path_pts, angles[, twist, scale])](https://openhome.cc/eGossip/OpenSCAD/lib3x-cross_sections.html) | given a 2D shape, points and angles along the path, this function returns all cross-sections.
 [**in_polyline**(line_pts, pt[, epsilon])](https://openhome.cc/eGossip/OpenSCAD/lib3x-in_polyline.html) | check whether a point is on a line.
 [**lines_intersection**(line1, line2[, ext, epsilon])](https://openhome.cc/eGossip/OpenSCAD/lib3x-lines_intersection.html) | find the intersection of two line segments. Return `[]` if lines don't intersect.
-[**rails2sections**(rails)](https://openhome.cc/eGossip/OpenSCAD/lib3x-rails2sections.html) | create sections along rails.
 [**path_scaling_sections**(shape_pts, edge_path)](https://openhome.cc/eGossip/OpenSCAD/lib3x-path_scaling_sections.html) | given an edge path with the first point at the outline of a shape, this function uses the path to calculate scaling factors and returns all scaled sections in the reversed order of the edge path. 
 [**midpt_smooth**(points, n[, closed])](https://openhome.cc/eGossip/OpenSCAD/lib3x-midpt_smooth.html) | given a 2D path, this function constructs a mid-point smoothed version by joining the mid-points of the lines of the path.
 
@@ -159,19 +158,20 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 
  Signature | Description
 --|--
-[**util/bsearch**(sorted, target)](https://openhome.cc/eGossip/OpenSCAD/lib3x-bsearch.html) | search a value in a list whose elements must be sorted by zyx.
-[**util/has**(lt, elem[, sorted])](https://openhome.cc/eGossip/OpenSCAD/lib3x-has.html) | return `true` if `lt` contains elem.
+[**util/binary_search**(sorted, target[, lo, hi])](https://openhome.cc/eGossip/OpenSCAD/lib3x-binary_search.html) | search a value in a sorted list.
+[**util/contains**(lt, elem)](https://openhome.cc/eGossip/OpenSCAD/lib3x-contains.html) | return `true` if `lt` contains `elem`.
 [**util/find_index**(lt, test)](https://openhome.cc/eGossip/OpenSCAD/lib3x-find_index.html) | return the index of the first element that satisfies the testing function. 
 [**util/dedup**(lt, ...)](https://openhome.cc/eGossip/OpenSCAD/lib3x-dedup.html) | eliminate duplicate vectors.
 [**util/flat**(lt[, depth])](https://openhome.cc/eGossip/OpenSCAD/lib3x-flat.html) | return a new list with all sub-list elements concatenated into it recursively up to the specified depth.
 [**util/reverse**(lt)](https://openhome.cc/eGossip/OpenSCAD/lib3x-reverse.html) | reverse a list.
 [**util/slice**(lt, begin, end)](https://openhome.cc/eGossip/OpenSCAD/lib3x-slice.html) | return a list selected from `begin` to `end`, or to the `end` of the list (`end` not included).
-[**util/sort**(lt[, by, idx])](https://openhome.cc/eGossip/OpenSCAD/lib3x-sort.html) | sort a list.
+[**util/sorted**(lt[, cmp, key, reverse])](https://openhome.cc/eGossip/OpenSCAD/lib3x-sorted.html) | sort a list.
 [**util/sum**(lt)](https://openhome.cc/eGossip/OpenSCAD/lib3x-sum.html) | use `+` to sum up all elements in a list.
 [**util/swap**(lt, i, j)](https://openhome.cc/eGossip/OpenSCAD/lib3x-swap.html) | swap two elements in a list.
 [**util/zip**(lts, combine)](https://openhome.cc/eGossip/OpenSCAD/lib3x-zip.html) | make a list that aggregates elements from each of the lists.
 [**util/every**(lt, test)](https://openhome.cc/eGossip/OpenSCAD/lib3x-every.html) | test whether all elements in the list pass the test implemented by the provided function.
 [**util/some**(lt, test)](https://openhome.cc/eGossip/OpenSCAD/lib3x-some.html) | test whether at least one element in the list passes the test implemented by the provided function.
+[**util/count**(lt, test)](https://openhome.cc/eGossip/OpenSCAD/lib3x-count.html) | return the number of times `test` return `true` in the list.
 
 ### util/random
 
@@ -235,6 +235,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 [**matrix/m_shearing**([sx, sy, sz])](https://openhome.cc/eGossip/OpenSCAD/lib3x-m_shearing.html) | generate a transformation matrix which can pass into `multmatrix` to shear all child elements along the X-axis, Y-axis, or Z-axis in 3D.
 [**matrix/m_translation**(v)](https://openhome.cc/eGossip/OpenSCAD/lib3x-m_translation.html) | generate a transformation matrix which can pass into multmatrix to translates (moves) its child elements along the specified vector.
 [**maxtrix/m_transpose**(m)](https://openhome.cc/eGossip/OpenSCAD/lib3x-m_transpose.html) | transpose a matrix.
+[**matrix/m_replace**(m, i, j, value)](https://openhome.cc/eGossip/OpenSCAD/lib3x-m_replace.html) | replace the aᵢⱼ element of a matrix.
 
 ## Point Transformation
 
@@ -260,6 +261,7 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 [**triangle/tri_delaunay_indices**(d)](https://openhome.cc/eGossip/OpenSCAD/lib3x-tri_delaunay_indices.html) | return triangle indices from a delaunay object.
 [**triangle/tri_delaunay_shapes**(d)](https://openhome.cc/eGossip/OpenSCAD/lib3x-tri_delaunay_shapes.html) | return triangle shapes from a delaunay object.
 [**triangle/tri_delaunay_voronoi**(d)](https://openhome.cc/eGossip/OpenSCAD/lib3x-tri_delaunay_voronoi.html) | return [Voronoi](https://en.wikipedia.org/wiki/Voronoi_diagram) cells from a delaunay object.
+[**triangle/tri_subdivide**(shape_pts[, n])](https://openhome.cc/eGossip/OpenSCAD/lib3x-tri_subdivide.html) | subdivide a triangle `n` times.
 
 ----
 
@@ -349,14 +351,15 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 
  Signature | Description
 --|--
-[**maze/mz_square_cells**(rows, columns[, start, ...])](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_square_cells.html) | return cell data of a square maze.
+[**maze/mz_square**([rows, columns, start, init_cells, x_wrapping, y_wrapping, seed])](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_square.html) | return cell data of a square maze.
 [**maze/mz_square_get**(cell, query)](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_square_get.html) | a helper for getting data from a square-maze cell.
-[**maze/mz_square_walls**(cells, rows, columns, cell_width, ...)](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_square_walls.html) | a helper for creating square wall data from maze cells.
-[**maze/mz_hex_walls**(cells, rows, columns, cell_radius, ...)](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_hex_walls.html) | a helper for creating hex wall data from maze cells.
+[**maze/mz_squarewalls**(cells, cell_width[, left_border, bottom_border])](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_squarewalls.html) | a helper for creating square wall data from maze cells.
+[**maze/mz_hexwalls**(cells, cell_radius[, left_border, bottom_border])](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_hexwalls.html) | a helper for creating hex wall data from maze cells.
 [**maze/mz_square_initialize**(rows, columns, mask)](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_square_initialize.html) | a helper for initializing cell data of a maze.
 [**maze/mz_hamiltonian**(rows, columns[, start, seed])](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_hamiltonian.html) | create a hamiltonian path from a maze.
 [**maze/mz_theta_cells**(rows, beginning_number[, start, seed])](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_theta_cells.html) | return cell data of a theta maze.
-[**maze/mz_theta_get**(cell, query)](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_theta_get.html) | a helper for getting data from a theta-maze cell.
+[**maze/mz_theta**(rings, beginning_number[, start, seed])](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_theta.html) | return cell data of a theta maze.
+[**maze/mz_tiles**(cells[, left_border, bottom_border])](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_tiles.html) | turn maze cells into tiles.
 
 ## Polyhedra
 
@@ -371,45 +374,6 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 [**polyhedra/icosahedron**(radius[, detail])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_icosahedron.html) | create a icosahedron.
 [**polyhedra/superellipsoid**(radius[, detail])](https://openhome.cc/eGossip/OpenSCAD/lib3x-polyhedra_superellipsoid.html) | create a superellipsoid.
 
-----
-
-# Preview
-
-## Deprecated
-
- Signature | Description
---|--
-**rails2sections** | use [`maxtrix/m_transpose`](https://openhome.cc/eGossip/OpenSCAD/lib3x-m_transpose.html) instead.
-**util/sort** | use [`util/sorted`](https://openhome.cc/eGossip/OpenSCAD/lib3x-sorted.html) instead.
-**util/has** | use [`util/contains`](https://openhome.cc/eGossip/OpenSCAD/lib3x-contains.html) instead.
-**util/bsearch** | use [`util/binary_search`](https://openhome.cc/eGossip/OpenSCAD/lib3x-binary_search.html) instead.
-**maze/mz_square_cells** | use [`maze/mz_square`](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_square.html).
-**maze/mz_square_walls** | use [`maze/mz_squarewalls`](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_squarewalls.html) instead.
-**maze/mz_hex_walls** | use [`maze/mz_hexwalls`](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_hexwalls.html) instead.
-**maze/mz_theta_cells** | use [`maze/mz_theta`](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_theta.html) instead.
-
-
-## Util
-
- Signature | Description
---|--
-[**util/sorted**(lt[, cmp, key, reverse])](https://openhome.cc/eGossip/OpenSCAD/lib3x-sorted.html) | sort a list.
-[**util/contains**(lt, elem)](https://openhome.cc/eGossip/OpenSCAD/lib3x-contains.html) | return `true` if `lt` contains `elem`.
-[**util/binary_search**(sorted, target[, lo, hi])](https://openhome.cc/eGossip/OpenSCAD/lib3x-binary_search.html) | search a value in a sorted list.
-[**util/count**(lt, test)](https://openhome.cc/eGossip/OpenSCAD/lib3x-count.html) | return the number of times `test` return `true` in the list.
-
-## Matrix
-
- Signature | Description
---|--
-[**matrix/m_replace**(m, i, j, value)](https://openhome.cc/eGossip/OpenSCAD/lib3x-m_replace.html) | replace the aᵢⱼ element of a matrix.
-
-## Triangle
-
- Signature | Description
---|--
-[**triangle/tri_subdivide**(shape_pts[, n])](https://openhome.cc/eGossip/OpenSCAD/lib3x-tri_subdivide.html) | subdivide a triangle `n` times.
-
 ## Point Picking
 
  Signature | Description
@@ -418,15 +382,5 @@ These examples incubate dotSCAD and dotSCAD refactors these examples. See [examp
 [**pp/pp_sphere**(radius, value_count[, seed])](https://openhome.cc/eGossip/OpenSCAD/lib3x-pp_sphere.html) | pick random points on the surface of a sphere.
 [**pp/pp_poisson2**(size, r[, start, k, seed])](https://openhome.cc/eGossip/OpenSCAD/lib3x-pp_poisson2.html) | perform poisson sampling over a rectangle area.
 [**pp/pp_poisson3**(size, r[, start, k, seed])](https://openhome.cc/eGossip/OpenSCAD/lib3x-pp_poisson3.html) | perform poisson sampling over a cube space.
-
-## Maze
-
- Signature | Description
---|--
-[**maze/mz_square**([rows, columns, start, init_cells, x_wrapping, y_wrapping, seed])](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_square.html) | return cell data of a square maze.
-[**maze/mz_squarewalls**(cells, cell_width[, left_border, bottom_border])](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_squarewalls.html) | a helper for creating square wall data from maze cells.
-[**maze/mz_hexwalls**(cells, cell_radius[, left_border, bottom_border])](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_hexwalls.html) | a helper for creating hex wall data from maze cells.
-[**maze/mz_theta**(rings, beginning_number[, start, seed])](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_theta.html) | return cell data of a theta maze.
-[**maze/mz_tiles**(cells[, left_border, bottom_border])](https://openhome.cc/eGossip/OpenSCAD/lib3x-mz_tiles.html) | turn maze cells into tiles.
 
 ----
