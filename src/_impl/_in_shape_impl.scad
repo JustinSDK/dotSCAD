@@ -1,4 +1,4 @@
-use <__comm__/__in_line.scad>
+use <../__comm__/__in_line.scad>
 
 function _in_any_edges(edges, pt, epsilon) = 
     let( 
